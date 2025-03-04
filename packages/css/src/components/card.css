@@ -1,0 +1,5 @@
+@import url('../utils.css');
+
+[_card] {
+  background-color: var(--card);
+}

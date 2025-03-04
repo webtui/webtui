@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ESNext",
+    "declaration": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "nodenext",
+    "types": ["react"],
+    "moduleResolution": "nodenext"
+  },
+  "include": ["index.ts"]
+}

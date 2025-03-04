@@ -1,0 +1,19 @@
+{
+  "name": "@monohype/css",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./index.css": "./dist/index.css",
+    "./button.css": "./dist/button.css",
+    "./card.css": "./dist/card.css"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}
