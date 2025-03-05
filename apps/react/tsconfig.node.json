@@ -18,8 +18,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "types": ["@monohype/react-types"]
+    "noUncheckedSideEffectImports": true
   },
   "include": ["vite.config.ts"]
 }
