@@ -1,25 +1,15 @@
-import { useState } from 'react'
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <button _variant="outline"></button>
-      <h1 css-flex="asdf">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div flex-="col">
+      <h1>Vite + React</h1>
+      <button>[Y] Yes</button>
+      <button variant-="secondary">Secondary</button>
+      <button variant-="outline">Outline</button>
+      <button variant-="muted">Muted</button>
+      <button variant-="warning">Warning</button>
+      <button variant-="danger">Danger</button>
+    </div>
+  );
 }
 
-export default App
+export default App;

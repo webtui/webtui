@@ -1,18 +1,22 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
+import { globSync } from "glob";
+
+const cssFiles = globSync("src/**/*.css");
 
 export default defineConfig({
   build: {
-    // If you'd like to bundle, specify entry points or skip
-    cssCodeSplit: true, // Each CSS should remain separate
     rollupOptions: {
-      input: {
-        index: 'src/index.css',
-        button: 'src/components/button.css',
-        card: 'src/components/card.css',
-      },
+      input: cssFiles.reduce(
+        (prev, file) => {
+          prev[file.slice(4, -4)] = file;
+
+          return prev;
+        },
+        {} as Record<string, string>,
+      ),
       output: {
-        assetFileNames: '[name].[ext]',
-      }
+        assetFileNames: "[name].[ext]",
+      },
     },
   },
 });

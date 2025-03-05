@@ -1,9 +1,7 @@
-@import url('../utils.css');
+@import "../components/button.css";
 
-button {
-  background-color: var(--background);
-
-  &[_variant="outline"] {
-    border: 1px solid red;
+@layer components {
+  button {
+    cursor: pointer;
   }
 }

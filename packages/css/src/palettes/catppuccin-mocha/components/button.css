@@ -1,0 +1,40 @@
+@import "../components/button.css";
+
+@layer components {
+  button {
+    &[variant-="default"],
+    &:not([variant-]) {
+      background-color: var(--primary-background);
+      color: var(--primary-foreground);
+      border-color: var(--primary-border);
+    }
+
+    &[variant-="secondary"] {
+      background-color: var(--secondary-background);
+      color: var(--secondary-foreground);
+      border-color: var(--secondary-border);
+    }
+
+    &[variant-="outline"] {
+      background-color: var(--outline-background);
+      color: var(--outline-foreground);
+      box-shadow: inset 0px 0px 0px 2px var(--outline-border);
+    }
+
+    &[variant-="muted"] {
+      background-color: var(--muted-background);
+      color: var(--muted-foreground);
+      border-color: var(--muted-border);
+    }
+
+    &[variant-="danger"] {
+      background-color: var(--danger-background);
+      color: var(--danger-foreground);
+      border-color: var(--danger-border);
+    }
+
+    &[size-="default"], &:not([size-]) {
+      padding: 1cap 2ch;
+    }
+  }
+}

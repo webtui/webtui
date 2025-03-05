@@ -1,5 +1,5 @@
 {
-  "name": "@monohype/css",
+  "name": "monohype",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,12 +9,8 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    "./index.css": "./dist/index.css",
-    "./button.css": "./dist/button.css",
-    "./card.css": "./dist/card.css"
-  },
   "devDependencies": {
+    "glob": "^11.0.1",
     "vite": "^6.2.0"
   }
 }

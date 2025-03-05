@@ -11,7 +11,7 @@
     "clean": "rm -rf dist .turbo node_modules"
   },
   "dependencies": {
-    "@monohype/css": "workspace:*"
+    "monohype": "workspace:*"
   },
   "devDependencies": {
     "vite": "^6.2.0"

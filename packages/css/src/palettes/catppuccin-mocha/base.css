@@ -1,0 +1,35 @@
+@layer theme, components;
+
+@layer theme {
+  :root {
+    --background: #1e1e2e;
+    --foreground: #cdd6f4;
+    --border: #313244;
+
+    --primary-background: #cba6f7;
+    --primary-foreground: var(--background);
+    --primary-border: #cba6f7;
+
+    --secondary-background: #45475a;
+    --secondary-foreground: var(--foreground);
+    --secondary-border: #585b70;
+
+    --outline-background: transparent;
+    --outline-foreground: var(--foreground);
+    --outline-border: #585b70;
+
+    --muted-background: #313244;
+    --muted-foreground: #a6adc8;
+    --muted-border: #45475a;
+
+    --danger-background: #f38ba8;
+    --danger-foreground: var(--background);
+    --danger-border: #f38ba8;
+  }
+
+  body,
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
