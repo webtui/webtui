@@ -33,7 +33,8 @@
       border-color: var(--danger-border);
     }
 
-    &[size-="default"], &:not([size-]) {
+    &[size-="default"],
+    &:not([size-]) {
       padding: 1cap 2ch;
     }
   }

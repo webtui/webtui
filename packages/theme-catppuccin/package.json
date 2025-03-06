@@ -1,0 +1,20 @@
+{
+  "name": "@postdash/theme-catppuccin",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "bundle": "vite build",
+    "clean": "rm -rf dist .turbo"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/full.css",
+    "./*": "./dist/*"
+  },
+  "devDependencies": {
+    "glob": "^11.0.1",
+    "vite": "^6.2.0"
+  }
+}
