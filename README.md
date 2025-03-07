@@ -2,6 +2,19 @@
 
 Modular CSS Terminal-like UI library
 
+# WARNING: THIS IS A WORK IN PROGRESS AND IS NOT READY FOR USE
+
+If you want to try out the dev version, you can:
+1. Clone the repo
+2. cd into the repo
+3. Run `bun i`
+4. Run `bun run bundle`
+5. Run `bun run dev` to start the dev server
+
+For feature requests please open an issue.
+
+Thanks.
+
 ## TODO
 
 - each component has its own css variables for modular control
