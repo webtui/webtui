@@ -1,0 +1,66 @@
+@layer utils {
+  [flex-] {
+    display: flex;
+
+    &[flex-~="row"] {
+      flex-direction: row;
+    }
+
+    &[flex-~="col"] {
+      flex-direction: column;
+    }
+
+    &[flex-~="align:center"] {
+      align-items: center;
+    }
+
+    &[flex-~="align:start"] {
+      align-items: flex-start;
+    }
+
+    &[flex-~="align:end"] {
+      align-items: flex-end;
+    }
+
+    &[flex-~="justify:center"] {
+      justify-content: center;
+    }
+
+    &[flex-~="justify:start"] {
+      justify-content: flex-start;
+    }
+
+    &[flex-~="justify:end"] {
+      justify-content: flex-end;
+    }
+
+    &[flex-~="col"] {
+      &[flex-~="gap:1"] {
+        gap: 1lh;
+      }
+
+      &[flex-~="gap:2"] {
+        gap: 2lh;
+      }
+
+      &[flex-~="gap:4"] {
+        gap: 4lh;
+      }
+    }
+
+    &[flex-~="row"],
+    &:not([flex-~="col"]) {
+      &[flex-~="gap:1"] {
+        gap: 1ch;
+      }
+
+      &[flex-~="gap:2"] {
+        gap: 2ch;
+      }
+
+      &[flex-~="gap:4"] {
+        gap: 4ch;
+      }
+    }
+  }
+}

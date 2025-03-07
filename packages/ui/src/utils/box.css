@@ -1,0 +1,45 @@
+@layer utils {
+  [box-] {
+    position: relative;
+    padding: 1lh 1ch;
+    isolation: isolate;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: calc(100% - 1ch - 2px);
+      height: calc(100% - 1lh - 2px);
+      border: solid 2px var(--box-border, var(--foreground));
+      z-index: -1;
+    }
+
+    &[box-~="rounded"]::before {
+      border-radius: var(--rounded-box-radius);
+    }
+
+    &[box-~="rounded"]::after {
+      border-radius: calc(var(--rounded-box-radius) + 2px);
+    }
+
+    &[box-~="double"] {
+      &::before {
+        border-width: 1px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        width: calc(100% - 1ch + 2px);
+        height: calc(100% - 1lh + 2px);
+        border: solid 1px var(--box-border, var(--foreground));
+        z-index: -1;
+      }
+    }
+  }
+}

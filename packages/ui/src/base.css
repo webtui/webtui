@@ -1,16 +1,23 @@
-@layer base, components;
-
 @layer base {
   :root {
     --font-family: "JetBrains Mono", Monaco, monospace;
     --font-size: 16px;
+    --line-height: 1em;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    --rounded-box-radius: 4px;
+    --box-border: var(--foreground);
+    --list-marker-color: inherit;
   }
 
   body,
   html {
     font-family: var(--font-family);
     font-size: var(--font-size);
-    line-height: 1.5;
+    line-height: var(--line-height, 1.5);
     font-variant-ligatures: common-ligatures;
   }
 

@@ -1,6 +1,6 @@
-# @postdash/ui-mono
+# @ricersheet/ui
 
-Mono UI library for Postdash
+work in progress
 
 ## Getting Started
 
@@ -20,3 +20,9 @@ Customization is done with css variables in the `base` layer.
 | --------------- | ---------------------- | ------------------------------------- |
 | `--font-family` | The font family to use | `"JetBrains Mono", Monaco, monospace` |
 | `--font-size`   | The font size to use   | `16px`                                |
+
+## Utilities
+
+### Flexbox
+
+### Boxes

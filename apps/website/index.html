@@ -1,23 +1,53 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      @import "@postdash/theme-catppuccin";
-      @import "@postdash/ui-mono";
-    </style>
-  </head>
 
-  <body>
-    <button flex-="row">Hello World</button>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    @layer base, utils, components;
+
+    @import "@ricersheet/theme-catppuccin";
+    @import "@ricersheet/ui";
+
+    @layer theme {
+      :root {
+        --box-border: var(--border);
+      }
+    }
+
+    body,
+    html {
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body flex-="col justify:center">
+  <div flex-="col" box-="square">
+    <div box-="square">
+      <p>List of things</p>
+    </div>
+    <div box-="square">
+      <ul variant-="fork">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+    <div flex-="justify:end">
+      <button size-="large" box-="square" variant-="secondary">[N] No</button>
+      <button size-="large" box-="square">[Y] Yes</button>
+    </div>
+  </div>
+</body>
+
 </html>

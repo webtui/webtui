@@ -1,18 +1,8 @@
-# Postdash CSS
+# Ricersheet
 
-modular css library with interchangeable styles and palettes
+Modular CSS Terminal-like UI library
 
-forces people to use html and css for major things
-
-css library with some nice components and pre-built styles
-
-## Getting Started
-
-- Import a ui package
-- Import a palette
-- Extend components with the @components layer
-
-## Modules
+## TODO
 
 - each component has its own css variables for modular control
 - components (separate modules)

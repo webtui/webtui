@@ -1,0 +1,76 @@
+@layer components {
+  ol {
+    list-style-position: inside;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li::before {
+      color: var(--list-marker-color, inherit);
+    }
+
+    &:not([variant-]),
+    &[variant-="default"] {
+      li::before {
+        content: "- ";
+      }
+    }
+
+    &[variant-="check"] {
+      li::before {
+        content: "✓ ";
+      }
+    }
+
+    &[variant-="radio"] {
+      li::before {
+        content: "◯ ";
+      }
+    }
+
+    &[variant-="radio-filled"] {
+      li::before {
+        content: "◉ ";
+      }
+    }
+
+    &[variant-="fork"] {
+      li::before {
+        content: "├ ";
+      }
+
+      li:first-of-type::before {
+        content: "┌ ";
+      }
+
+      li:last-of-type::before {
+        content: "└ ";
+      }
+    }
+
+    & > li[variant-="check"]::before {
+      content: "✓ " !important;
+    }
+
+    & > li[variant-="radio"]::before {
+      content: "◯ " !important;
+    }
+
+    & > li[variant-="radio-filled"]::before {
+      content: "◉ " !important;
+    }
+
+    & > li[variant-="fork"]::before {
+      content: "├ " !important;
+    }
+
+    & > li:first-of-type[variant-="fork"]::before {
+      content: "┌ " !important;
+    }
+
+    & > li:last-of-type[variant-="fork"]::before {
+      content: "└ " !important;
+    }
+  }
+}

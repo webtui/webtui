@@ -11,8 +11,8 @@
     "clean": "rm -rf dist .turbo node_modules"
   },
   "dependencies": {
-    "@postdash/theme-catppuccin": "workspace:*",
-    "@postdash/ui-mono": "workspace:*"
+    "@ricersheet/theme-catppuccin": "workspace:*",
+    "@ricersheet/ui": "workspace:*"
   },
   "devDependencies": {
     "vite": "^6.2.0"
