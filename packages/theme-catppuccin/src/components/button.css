@@ -2,43 +2,14 @@
   button {
     &[variant-="default"],
     &:not([variant-]) {
-      background-color: var(--primary-background);
-      color: var(--primary-foreground);
-      border-color: var(--primary-border);
+      background-color: var(--mauve);
+      color: var(--background);
 
       &[box-] {
-        --box-border: var(--primary-background);
-        color: var(--primary-background);
+        --box-border: var(--mauve);
+        background-color: var(--background);
+        color: var(--mauve);
       }
-    }
-
-    &[variant-="secondary"] {
-      background-color: var(--secondary-background);
-      color: var(--secondary-foreground);
-      border-color: var(--secondary-border);
-
-      &[box-] {
-        --box-border: var(--secondary-background);
-        color: var(--secondary-background);
-      }
-    }
-
-    &[variant-="muted"] {
-      background-color: var(--muted-background);
-      color: var(--muted-foreground);
-      border-color: var(--muted-border);
-    }
-
-    &[variant-="danger"] {
-      background-color: var(--danger-background);
-      color: var(--danger-foreground);
-      border-color: var(--danger-border);
-    }
-
-    &[box-] {
-      background-color: var(--background);
-      color: var(--foreground);
-      --box-border: var(--foreground);
     }
   }
 }

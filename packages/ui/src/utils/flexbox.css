@@ -34,6 +34,18 @@
       justify-content: flex-end;
     }
 
+    &[flex-~="justify:between"] {
+      justify-content: space-between;
+    }
+
+    &[flex-~="justify:around"] {
+      justify-content: space-around;
+    }
+
+    &[flex-~="justify:evenly"] {
+      justify-content: space-evenly;
+    }
+
     &[flex-~="col"] {
       &[flex-~="gap:1"] {
         gap: 1lh;

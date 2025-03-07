@@ -1,7 +1,10 @@
 @layer utils {
-  [box-] {
+
+  /* Requires `box-` to contain `square`, `rounded`, or `double` in order to work */
+  [box-~="square"],
+  [box-~="rounded"],
+  [box-~="double"] {
     position: relative;
-    padding: 1lh 1ch;
     isolation: isolate;
 
     &::before {
@@ -16,14 +19,18 @@
       z-index: -1;
     }
 
-    &[box-~="rounded"]::before {
-      border-radius: var(--rounded-box-radius);
+    /* Apply border radius to the inner and outer (if present) border */
+    &[box-~="rounded"] {
+      &::before {
+        border-radius: var(--rounded-box-radius);
+      }
+
+      &::after {
+        border-radius: calc(var(--rounded-box-radius) + 2px);
+      }
     }
 
-    &[box-~="rounded"]::after {
-      border-radius: calc(var(--rounded-box-radius) + 2px);
-    }
-
+    /* Adds the second border to the element */
     &[box-~="double"] {
       &::before {
         border-width: 1px;
@@ -40,6 +47,49 @@
         border: solid 1px var(--box-border, var(--foreground));
         z-index: -1;
       }
+    }
+
+    /* Containment Variants */
+    &[box-~="contain"] {
+      padding: 1lh 1ch;
+    }
+
+    &[box-~="contain:\!top"] {
+      padding-left: 1ch;
+      padding-right: 1ch;
+      padding-bottom: 1lh;
+    }
+
+    &[box-~="contain:\!bottom"] {
+      padding-top: 1lh;
+      padding-left: 1ch;
+      padding-right: 1ch;
+    }
+
+    &[box-~="contain:x"] {
+      padding-left: 1ch;
+      padding-right: 1ch;
+    }
+
+    &[box-~="contain:y"] {
+      padding-top: 1lh;
+      padding-bottom: 1lh;
+    }
+
+    &[box-~="contain:top"] {
+      padding-top: 1lh;
+    }
+
+    &[box-~="contain:bottom"] {
+      padding-bottom: 1lh;
+    }
+
+    &[box-~="contain:left"] {
+      padding-left: 1ch;
+    }
+
+    &[box-~="contain:right"] {
+      padding-right: 1ch;
     }
   }
 }

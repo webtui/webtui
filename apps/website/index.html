@@ -19,23 +19,132 @@
 
     @layer theme {
       :root {
-        --box-border: var(--border);
+        /* --box-border: var(--border); */
       }
     }
 
     body,
     html {
       height: 100vh;
+      overflow-y: scroll;
+      padding: 2lh 4ch;
+    }
+
+    .spacer-badge {
+      background: var(--background);
+      padding-left: 1ch;
+      padding-right: 1ch;
+    }
+
+    .content {
+      padding: 1lh 2ch;
     }
   </style>
 </head>
 
-<body flex-="col justify:center">
-  <div flex-="col" box-="square">
-    <div box-="square">
-      <p>List of things</p>
+<body flex-="col gap:2">
+  <div flex-="col gap:1">
+    <h1>Ricersheet</h1>
+    <p>Modular CSS Terminal UI library</p>
+  </div>
+
+  <div flex-="col gap:1">
+    <h2>Boxes</h2>
+
+    <div flex-="row gap:2">
+      <div box-="square contain:!top">
+        <span class="spacer-badge">Left</span>
+        <div class="content">Square Box</div>
+      </div>
+      <div box-="rounded contain:!top">
+        <span class="spacer-badge">Left</span>
+        <div class="content">Round Box</div>
+      </div>
+      <div box-="double contain:!top">
+        <div flex-="justify:center">
+          <span class="spacer-badge">Center</span>
+        </div>
+        <div class="content">Double Box</div>
+      </div>
+      <div box-="double rounded contain:!top">
+        <div flex-="justify:end">
+          <span class="spacer-badge">Right</span>
+        </div>
+        <div class="content">Double Round Box</div>
+      </div>
     </div>
-    <div box-="square">
+
+    <div flex-="row gap:2">
+      <div box-="square contain">
+        <span class="spacer-badge">Left</span>
+        <div class="content">Contained Square Box</div>
+      </div>
+      <div box-="square contain">
+        <div flex-="justify:center">
+          <span class="spacer-badge">Center</span>
+        </div>
+        <div class="content">Contained Square Box</div>
+      </div>
+      <div box-="square contain">
+        <div flex-="justify:end">
+          <span class="spacer-badge">Right</span>
+        </div>
+        <div class="content">Contained Square Box</div>
+      </div>
+    </div>
+
+    <div flex-="row gap:2">
+      <div box-="square contain">
+        <div class="content">Contained Square Box</div>
+        <span class="spacer-badge">Left</span>
+      </div>
+      <div box-="square contain">
+        <div class="content">Contained Square Box</div>
+        <div flex-="justify:center">
+          <span class="spacer-badge">Center</span>
+        </div>
+      </div>
+      <div box-="square contain">
+        <div class="content">Contained Square Box</div>
+        <div flex-="justify:end">
+          <span class="spacer-badge">Right</span>
+        </div>
+      </div>
+    </div>
+
+    <div flex-="row gap:2">
+      <div box-="square contain:!bottom">
+        <div class="content bottom">Square Box</div>
+        <span class="spacer-badge">Left</span>
+      </div>
+      <div box-="square contain:!bottom">
+        <div class="content">Square Box</div>
+        <div flex-="justify:center">
+          <span class="spacer-badge">Center</span>
+        </div>
+      </div>
+      <div box-="square contain:!bottom">
+        <div class="content">Square Box</div>
+        <div flex-="justify:end">
+          <span class="spacer-badge">Right</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div flex-="col gap:1">
+    <h2>Lists</h2>
+    <div box-="square contain" flex-="col gap:1">
+      <h3>Default</h3>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+    <div box-="square contain" flex-="col gap:1">
+      <h3>Fork</h3>
       <ul variant-="fork">
         <li>Item 1</li>
         <li>Item 2</li>
@@ -43,9 +152,33 @@
         <li>Item 4</li>
       </ul>
     </div>
-    <div flex-="justify:end">
-      <button size-="large" box-="square" variant-="secondary">[N] No</button>
-      <button size-="large" box-="square">[Y] Yes</button>
+    <div box-="square contain" flex-="col gap:1">
+      <h3>Dot</h3>
+      <ul variant-="dot">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+    <div box-="square contain" flex-="col gap:1">
+      <h3>Circle</h3>
+      <ul variant-="circle">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+  </div>
+
+  <div flex-="col gap:1">
+    <h2>Buttons</h2>
+    <div flex-="row gap:1">
+      <button size-="medium">Medium</button>
+      <button size-="large">Large</button>
+      <button size-="medium" box-="square">Medium w/ Box</button>
+      <button size-="large" box-="rounded">Large w/ Box</button>
     </div>
   </div>
 </body>

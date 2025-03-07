@@ -44,3 +44,4 @@ Thanks.
     - surface (div[is-="surface"], auto-surfacing utils)
     - skeleton (div[is-="skeleton])
 - index.css (everything)
+- CI lint/format checks

@@ -1,0 +1,32 @@
+@layer components {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    font-weight: var(--font-weight-bold);
+  } 
+
+  h1::before {
+    content: "# ";
+  }
+
+  h2::before {
+    content: "## ";
+  }
+
+  h3::before {
+    content: "### ";
+  }
+
+  h4::before {
+    content: "#### ";
+  }
+
+  h5::before {
+    content: "##### ";
+  }
+
+  h6::before {
+    content: "###### ";
+  }
+}

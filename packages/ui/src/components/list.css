@@ -23,15 +23,15 @@
       }
     }
 
-    &[variant-="radio"] {
+    &[variant-="circle"] {
       li::before {
-        content: "◯ ";
+        content: "● ";
       }
     }
 
-    &[variant-="radio-filled"] {
+    &[variant-="dot"] {
       li::before {
-        content: "◉ ";
+        content: "• ";
       }
     }
 
@@ -53,12 +53,12 @@
       content: "✓ " !important;
     }
 
-    & > li[variant-="radio"]::before {
-      content: "◯ " !important;
+    & > li[variant-="circle"]::before {
+      content: "● " !important;
     }
 
-    & > li[variant-="radio-filled"]::before {
-      content: "◉ " !important;
+    & > li[variant-="dot"]::before {
+      content: "• " !important;
     }
 
     & > li[variant-="fork"]::before {

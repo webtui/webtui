@@ -1,12 +1,15 @@
 @layer components {
   button {
+    color: var(--background);
+    background: var(--foreground);
     font-family: var(--font-family);
     font-size: var(--font-size);
     border: none;
     cursor: pointer;
 
-    &[size-="small"] {
-      padding: 0 1ch;
+    &[box-] {
+      color: var(--foreground);
+      background: var(--background);
     }
 
     &[size-="medium"],
@@ -17,6 +20,5 @@
     &[size-="large"] {
       padding: 1lh 2ch;
     }
-
   }
 }

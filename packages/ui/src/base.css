@@ -1,5 +1,8 @@
 @layer base {
   :root {
+    --background: white;
+    --foreground: black;
+
     --font-family: "JetBrains Mono", Monaco, monospace;
     --font-size: 16px;
     --line-height: 1em;
