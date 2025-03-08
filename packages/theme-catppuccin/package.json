@@ -1,5 +1,5 @@
 {
-  "name": "@ricersheet/theme-catppuccin",
+  "name": "@webtui/theme-catppuccin",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

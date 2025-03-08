@@ -11,8 +11,8 @@
     "clean": "rm -rf dist .turbo node_modules"
   },
   "dependencies": {
-    "@ricersheet/theme-catppuccin": "workspace:*",
-    "@ricersheet/ui": "workspace:*"
+    "@webtui/theme-catppuccin": "workspace:*",
+    "@webtui/css": "workspace:*"
   },
   "devDependencies": {
     "vite": "^6.2.0"

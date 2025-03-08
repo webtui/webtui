@@ -1,4 +1,4 @@
-# Ricersheet
+# WebTUI
 
 Modular CSS Terminal-like UI library
 
