@@ -1,0 +1,21 @@
+{
+  "name": "docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "rm -rf dist .astro node_modules",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.1.0",
+    "@webtui/css": "workspace:*",
+    "@webtui/theme-catppuccin": "workspace:*",
+    "astro": "^5.4.2"
+  },
+  "devDependencies": {
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

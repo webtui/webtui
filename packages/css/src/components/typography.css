@@ -1,10 +1,16 @@
 @layer components {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height);
     font-weight: var(--font-weight-bold);
-  } 
+  }
 
   h1::before {
     content: "# ";
@@ -28,5 +34,19 @@
 
   h6::before {
     content: "###### ";
+  }
+
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  blockquote {
+  }
+
+  code {
   }
 }

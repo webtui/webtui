@@ -6,15 +6,8 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build", "^bundle"],
-      "outputs": ["dist"]
-    },
-    "bundle": {
-      "dependsOn": ["^bundle"],
-      "outputs": ["dist"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "dev": {
       "cache": false,

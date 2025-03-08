@@ -46,33 +46,19 @@
       justify-content: space-evenly;
     }
 
-    &[flex-~="col"] {
-      &[flex-~="gap:1"] {
-        gap: 1lh;
-      }
-
-      &[flex-~="gap:2"] {
-        gap: 2lh;
-      }
-
-      &[flex-~="gap:4"] {
-        gap: 4lh;
-      }
+    &[flex-~="gap:1"] {
+      column-gap: 1lh;
+      row-gap: 1ch;
     }
 
-    &[flex-~="row"],
-    &:not([flex-~="col"]) {
-      &[flex-~="gap:1"] {
-        gap: 1ch;
-      }
+    &[flex-~="gap:2"] {
+      column-gap: 2lh;
+      row-gap: 2ch;
+    }
 
-      &[flex-~="gap:2"] {
-        gap: 2ch;
-      }
-
-      &[flex-~="gap:4"] {
-        gap: 4ch;
-      }
+    &[flex-~="gap:4"] {
+      column-gap: 4lh;
+      row-gap: 4ch;
     }
   }
 }

@@ -1,47 +1,10 @@
-<!doctype html>
-<html lang="en">
+---
+import catppuccin from "@webtui/theme-catppuccin?url";
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
-  <style>
-    @layer base, utils, components;
+let dynamicStyle = catppuccin;
+---
 
-    @import "@webtui/theme-catppuccin";
-    @import "@webtui/css";
-
-    @layer theme {
-      :root {
-        /* --box-border: var(--border); */
-      }
-    }
-
-    body,
-    html {
-      height: 100vh;
-      overflow-y: scroll;
-      padding: 2lh 4ch;
-    }
-
-    .spacer-badge {
-      background: var(--background);
-      padding-left: 1ch;
-      padding-right: 1ch;
-    }
-
-    .content {
-      padding: 1lh 2ch;
-    }
-  </style>
-</head>
-
+<link rel="stylesheet" href={dynamicStyle} />
 <body flex-="col gap:2">
   <div flex-="col gap:1">
     <h1>WebTUI</h1>
@@ -183,4 +146,14 @@
   </div>
 </body>
 
-</html>
+<style>
+  .spacer-badge {
+    background: var(--background);
+    padding-left: 1ch;
+    padding-right: 1ch;
+  }
+
+  .content {
+    padding: 1lh 2ch;
+  }
+</style>

@@ -1,5 +1,4 @@
 @layer utils {
-
   /* Requires `box-` to contain `square`, `rounded`, or `double` in order to work */
   [box-~="square"],
   [box-~="rounded"],

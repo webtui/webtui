@@ -1,0 +1,11 @@
+@layer components {
+  button {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    border: none;
+    cursor: pointer;
+    padding: 1lh 2ch;
+  }
+}

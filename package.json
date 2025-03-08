@@ -5,8 +5,8 @@
     "build": "turbo run build",
     "bundle": "turbo run bundle",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,css}\"",
     "clean": "rm -rf node_modules .turbo bun.lockb && turbo run clean"
   },
   "devDependencies": {
