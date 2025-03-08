@@ -1,8 +1,106 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import "@webtui/theme-catppuccin";
 ---
 
 <Layout>
-  <h1>WebTUI</h1>
+  <main flex-="grow col">
+    <div box-="square contain" flex-="center col gap:1" id="main-box">
+      <pre>██   ██  ██████  █████   ██████  ██  ██  ██████
+██   ██  ██      ██  ██    ██    ██  ██    ██
+██ █ ██  ████    █████     ██    ██  ██    ██
+███████  ██      ██  ██    ██    ██  ██    ██ 
+ ██ ██   ██████  █████     ██     ████   ██████</pre>
+      <p>Modular CSS Library for building Beautiful Terminal-like UIs</p>
+    </div>
+
+    <div flex-="gap:1">
+      <div box-="square" class="link-card">
+        <div><a href="/docs/">Get Started</a></div>
+        <ul variant-="fork">
+          <li><a href="/docs/intro">Introduction</a></li>
+          <li><a href="/docs/quickstart">Quickstart</a></li>
+          <li><a href="/docs/installation">Installation</a></li>
+        </ul>
+      </div>
+      <div box-="square" class="link-card">
+        <div><a href="/docs/utils">Components</a></div>
+        <ul variant-="fork">
+          <li><a href="/docs/components/button">Buttons</a></li>
+          <li><a href="/docs/components/list">Lists</a></li>
+          <li><a href="/docs/components/input">Inputs</a></li>
+          <li><a href="/docs/components/typography">Typography</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div flex-="gap:1">
+      <div box-="square" class="link-card">
+        <div><a href="/docs/utils">Utilities</a></div>
+        <ul variant-="fork">
+          <li><a href="/docs/utils/ascii-boxes">ASCII Boxes</a></li>
+          <li><a href="/docs/utils/flexbox">Flexbox</a></li>
+        </ul>
+      </div>
+      <div box-="square" class="link-card">
+        <div><a href="/docs/themes">Themeing</a></div>
+        <ul variant-="fork">
+          <li><a href="/docs/themes/base">Base Theme</a></li>
+          <li><a href="/docs/themes/customization">Customization</a></li>
+          <li><a href="/docs/themes/official">Official Themes</a></li>
+          <li><a href="/docs/themes/community">Community Themes</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  #main-box {
+    padding: 2lh 4ch;
+    --box-border: var(--overlay0);
+  }
+
+  main {
+    padding: 1lh 0;
+    max-width: 96ch;
+    align-self: center;
+    width: 100%;
+  }
+
+  pre {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height, 1.5);
+    font-variant-ligatures: common-ligatures;
+    color: var(--blue);
+  }
+
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    flex-grow: 1;
+    padding-left: 2ch;
+    padding-right: 2ch;
+    padding-bottom: 2lh;
+    --box-border: var(--surface0);
+
+    &:hover {
+      --box-border: var(--surface1);
+    }
+
+    & > div {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 1lh;
+      & > a {
+        background: var(--box-border);
+        padding: 0 1ch;
+      }
+    }
+  }
+
+  .link-card-header {
+  }
+</style>

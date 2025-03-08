@@ -46,19 +46,36 @@
       justify-content: space-evenly;
     }
 
+    &[flex-~="center"] {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &[flex-~="grow"] {
+      flex-grow: 1;
+    }
+
+    &[flex-~="\!grow"] {
+      flex-grow: 0;
+    }
+
+    &[flex-~="\!basis"] {
+      flex-basis: 0;
+    }
+
     &[flex-~="gap:1"] {
-      column-gap: 1lh;
-      row-gap: 1ch;
+      column-gap: 1ch;
+      row-gap: 1lh;
     }
 
     &[flex-~="gap:2"] {
-      column-gap: 2lh;
-      row-gap: 2ch;
+      column-gap: 2ch;
+      row-gap: 2lh;
     }
 
     &[flex-~="gap:4"] {
-      column-gap: 4lh;
-      row-gap: 4ch;
+      column-gap: 4ch;
+      row-gap: 4lh;
     }
   }
 }

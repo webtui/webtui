@@ -22,4 +22,14 @@
   h6 {
     color: var(--purple);
   }
+
+  a {
+    color: var(--sky);
+    text-decoration: underline;
+    text-decoration-color: var(--sky);
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
 }
