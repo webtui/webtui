@@ -2,13 +2,13 @@
   button {
     &[variant-="default"],
     &:not([variant-]) {
-      background-color: var(--mauve);
-      color: var(--background);
+      --foreground: var(--base);
+      --background: var(--mauve);
 
       &[box-] {
         --box-border: var(--mauve);
-        background-color: var(--background);
-        color: var(--mauve);
+        --background: var(--base);
+        --foreground: var(--mauve);
       }
     }
   }

@@ -1,3 +1,5 @@
+@layer base, utils, components;
+
 @import "./base.css";
 @import "./components/button.css";
 @import "./components/typography.css";

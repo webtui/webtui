@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "bundle": "vite build",
-    "clean": "rm -rf dist .turbo"
+    "dev": "vite build --watch",
+    "build": "rm -rf dist && vite build",
+    "clean": "rm -rf dist .turbo",
+    "prepublishOnly": "bun run build"
   },
   "files": [
     "dist"
