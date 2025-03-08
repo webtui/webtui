@@ -1,16 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@webtui/theme-catppuccin";
+
+const headerText = `
+██   ██  ██████  █████   ██████  ██  ██  ██████
+██   ██  ██      ██  ██    ██    ██  ██    ██
+██ █ ██  ████    █████     ██    ██  ██    ██
+███████  ██      ██  ██    ██    ██  ██    ██ 
+ ██ ██   ██████  █████     ██     ████   ██████`
 ---
 
 <Layout>
   <main flex-="grow col">
     <div box-="square contain" flex-="center col gap:1" id="main-box">
-      <pre>██   ██  ██████  █████   ██████  ██  ██  ██████
-██   ██  ██      ██  ██    ██    ██  ██    ██
-██ █ ██  ████    █████     ██    ██  ██    ██
-███████  ██      ██  ██    ██    ██  ██    ██ 
- ██ ██   ██████  █████     ██     ████   ██████</pre>
+      <pre>{headerText}</pre>
       <p>Modular CSS Library for building Beautiful Terminal-like UIs</p>
     </div>
 
