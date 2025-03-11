@@ -28,7 +28,7 @@ const categories: Array<{
     // Get all pages in the category
     const categoryPages = fs
       .readdirSync(categoryPath)
-      .filter((file) => file !== "_meta.json" && !file.startsWith("index"));
+      .filter((file) => file !== "_meta.json");
 
     // Parse each page, return the frontmatter and slug
     const pages = categoryPages
@@ -59,24 +59,24 @@ const categories: Array<{
     <div id="category-list">
       {
         categories.map((category) => (
-          <div data-category={category.slug}>
-            <a href={join("/docs", category.slug)}>{category.category.title}</a>
-            <ul variant-="fork" cap-="bottom">
+          <details open>
+            <summary>{category.category.title}</summary>
+            <ul marker-="tree" cap-="end">
               {category.pages.map((page) => (
-                <a href={join("/docs", page.slug)} data-slug={page.slug}>
+                <a data-slug={page.slug} href={join("/docs", page.slug)}>
                   <li>{page.title}</li>
                 </a>
               ))}
             </ul>
-          </div>
+          </details>
         ))
       }
     </div>
   </div>
 
-  <div box-="square contain:!top" id="keybind-box">
-    <div><span is-="badge">Keybinds</span></div>
-    <ul variant-="none">
+  <div box-="square contain:!top" id="keybind-container">
+    <span is-="badge">Keybinds</span>
+    <ul marker-="none" space-="p:1">
       <li><code>&lt;C-b&gt;</code> focus sidebar</li>
       <li><code>↓/j</code> move down</li>
       <li><code>↑/k</code> move up</li>
@@ -92,14 +92,10 @@ const categories: Array<{
     max-width: 32ch;
     overflow: hidden;
     width: 100%;
-
     --box-border-color: var(--surface0);
 
-    header {
-      span {
-        padding: 0 1ch;
-        background-color: var(--background);
-      }
+    &:focus-within {
+      --box-border-color: var(--subtext0);
     }
 
     #category-container {
@@ -117,56 +113,50 @@ const categories: Array<{
       overflow-y: auto;
     }
 
-    #keybind-box {
-      margin: 0 1ch;
-
-      ul {
-        padding-left: 1ch;
-        padding-top: 1lh;
-        padding-bottom: 1lh;
-      }
-    }
-  }
-
-  [data-category] {
-    & > a {
-      display: block;
-      text-decoration: none;
-      color: var(--text);
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    & > a:hover {
-      background-color: var(--surface0);
-    }
-
-    &.active > a {
-      color: var(--sky);
-      background-color: var(--surface0);
+    #keybind-container {
+      --box-border-color: var(--surface0);
     }
   }
 
   [data-slug] {
     color: var(--subtext0);
     text-decoration: none;
+    outline: none;
 
     &.active {
-      color: var(--sky);
+      color: var(--background);
 
-      & > li {
-        background-color: var(--surface0);
+      li {
+        background-color: var(--sky);
+      }
+
+      &:focus {
+        color: var(--sky);
+
+        li {
+          background-color: var(--surface0);
+          /* Make it look like the first character is selected */
+        }
       }
     }
 
-    &:hover {
-      text-decoration: underline;
+    &:focus > li {
+      background-color: var(--surface0);
+    }
+  }
 
-      & > li {
-        background-color: var(--surface0);
-      }
+  [data-slug]:focus > li,
+  summary:focus {
+    background-image: linear-gradient(
+      to right,
+      transparent 0,
+      var(--text) 0,
+      var(--text) 1ch,
+      transparent 1ch,
+      transparent
+    );
+    &::before, &::marker {
+      color: var(--background) !important;
     }
   }
 </style>
@@ -176,29 +166,45 @@ const categories: Array<{
   const [category, page] = locationPath.split("/docs/")[1].split("/");
 
   if (category && page) {
-    const categoryElement = document.querySelector(
-      `[data-category="${category}"]`,
-    );
-    const categoryElements = document.querySelectorAll(`[data-category]`);
-    const pageElement = document.querySelector(
+    const pageLinkElement: HTMLAnchorElement | null = document.querySelector(
       `[data-slug="${category}/${page}"]`,
     );
-    const pageElements = document.querySelectorAll(`[data-slug]`);
+    const pageLinkElements = document.querySelectorAll(`[data-slug]`);
 
-    if (categoryElement && pageElement) {
-      categoryElements.forEach((el) => el.classList.remove("active"));
-      pageElements.forEach((el) => el.classList.remove("active"));
-      pageElement.classList.add("active");
-    }
-  } else if (category) {
-    const categoryElement = document.querySelector(
-      `[data-category="${category}"]`,
-    );
-    const categoryElements = document.querySelectorAll(`[data-category]`);
+    if (pageLinkElement) {
+      pageLinkElements.forEach((el) => el.classList.remove("active"));
+      pageLinkElement.classList.add("active");
 
-    if (categoryElement) {
-      categoryElements.forEach((el) => el.classList.remove("active"));
-      categoryElement.classList.add("active");
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "b" && e.ctrlKey) {
+          pageLinkElement.focus();
+        }
+
+        const container = document.querySelector("nav:focus-within");
+
+        if (container && document.activeElement) {
+          const focusableElements: NodeListOf<HTMLAnchorElement> =
+            document.querySelectorAll("details[open] a, summary");
+          const currentIndex = Array.from(focusableElements).indexOf(
+            document.activeElement as HTMLAnchorElement,
+          );
+
+          if (e.key === "j") {
+            e.preventDefault();
+            focusableElements[
+              (currentIndex + 1) % focusableElements.length
+            ].focus();
+          }
+
+          if (e.key === "k") {
+            e.preventDefault();
+            focusableElements[
+              (currentIndex - 1 + focusableElements.length) %
+                focusableElements.length
+            ].focus();
+          }
+        }
+      });
     }
   }
 </script>

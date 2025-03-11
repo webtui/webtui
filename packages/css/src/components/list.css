@@ -10,79 +10,45 @@
       color: var(--list-marker-color, inherit);
     }
 
-    &:not([variant-]),
-    &[variant-="default"] {
+    &:not([marker-]),
+    &[marker-="default"] {
       li::before {
         content: "- ";
       }
     }
 
-    &[variant-="check"] {
-      li::before {
-        content: "✓ ";
-      }
-    }
-
-    &[variant-="circle"] {
-      li::before {
-        content: "● ";
-      }
-    }
-
-    &[variant-="dot"] {
+    &[marker-="bullet"] {
       li::before {
         content: "• ";
       }
     }
 
-    &[variant-="fork"] {
+    &[marker-="tree"] {
       li::before {
         content: "├ ";
       }
 
-      &[cap-="auto"]>li:first-of-type::before,
-      &[cap-="top"]>li:first-of-type::before {
+      &[cap-="both"]>li:first-of-type::before,
+      &[cap-="start"]>li:first-of-type::before {
         content: "┌ ";
       }
 
-      &[cap-="auto"]>li:last-of-type::before,
-      &[cap-="bottom"]>li:last-of-type::before {
+      &[cap-="both"]>li:last-of-type::before,
+      &[cap-="end"]>li:last-of-type::before {
         content: "└ ";
       }
     }
 
-    &[variant-="none"] {
+    &[marker-="none"] {
       li::before {
         content: none;
       }
     }
 
-    &>li[variant-="check"]::before {
-      content: "✓ " !important;
-    }
-
-    &>li[variant-="circle"]::before {
-      content: "● " !important;
-    }
-
-    &>li[variant-="dot"]::before {
-      content: "• " !important;
-    }
-
-    &>li[variant-="fork"]::before {
-      content: "├ " !important;
-    }
-
-    &>li:first-of-type[variant-="fork"]::before {
-      content: "┌ " !important;
-    }
-
-    &>li:last-of-type[variant-="fork"]::before {
-      content: "└ " !important;
-    }
-
-    &>li[variant-="none"]::before {
-      content: none !important;
-    }
+    & li[marker-="bullet"]::before { content: "• " !important; }
+    & li[marker-="tree"]::before { content: "├ " !important; }
+    & li:first-of-type[marker-="tree-start"]::before { content: "┌ " !important; }
+    & li:last-of-type[marker-="tree-end"]::before { content: "└ " !important; }
+    & li[marker-="none"]::before { content: none !important; }
   }
 }
