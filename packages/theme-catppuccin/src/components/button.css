@@ -6,7 +6,7 @@
       --background: var(--mauve);
 
       &[box-] {
-        --box-border: var(--mauve);
+        --box-border-color: var(--mauve);
         --background: var(--base);
         --foreground: var(--mauve);
       }

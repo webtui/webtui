@@ -57,3 +57,11 @@ For feature requests please open an issue.
   - [ ] Support multiple catppuccin flavors
 - [ ] Nord
 - [ ] Rose Pine
+
+## Logo
+
+```
+┌WT┐
+└UI┘
+```
+

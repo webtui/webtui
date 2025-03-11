@@ -60,7 +60,7 @@ const headerText = `
 <style>
   #main-box {
     padding: 2lh 4ch;
-    --box-border: var(--overlay0);
+    --box-border-color: var(--overlay0);
   }
 
   main {
@@ -86,10 +86,10 @@ const headerText = `
     padding-left: 2ch;
     padding-right: 2ch;
     padding-bottom: 2lh;
-    --box-border: var(--surface0);
+    --box-border-color: var(--surface0);
 
     &:hover {
-      --box-border: var(--surface1);
+      --box-border-color: var(--surface1);
     }
 
     & > div {
@@ -97,7 +97,7 @@ const headerText = `
       justify-content: center;
       padding-bottom: 1lh;
       & > a {
-        background: var(--box-border);
+        background-color: var(--box-border-color);
         padding: 0 1ch;
       }
     }

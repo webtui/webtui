@@ -31,4 +31,11 @@
       color: var(--blue);
     }
   }
+
+  code {
+    color: var(--red);
+    background-color: var(--surface0);
+    padding-left: 1ch;
+    padding-right: 1ch;
+  }
 }

@@ -5,14 +5,14 @@
 
     --font-family: "JetBrains Mono", Monaco, monospace;
     --font-size: 16px;
-    --line-height: 1em;
+    --line-height: 1;
 
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
 
-    --rounded-box-radius: 4px;
-    --box-border: var(--foreground);
+    --box-rounded-radius: 4px;
+    --box-border-color: var(--foreground);
 
     --list-marker-color: inherit;
   }

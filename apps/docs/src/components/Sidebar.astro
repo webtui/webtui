@@ -1,0 +1,204 @@
+---
+import fs from "fs";
+import { join } from "path";
+import matter from "gray-matter";
+import {
+  docCategorySchema,
+  docMatterSchema,
+  type DocCategory,
+  type DocMatter,
+} from "@/types";
+
+const docsPath = join(process.cwd(), "src", "pages", "docs");
+const directories = fs.readdirSync(docsPath);
+
+const categories: Array<{
+  category: DocCategory;
+  pages: Array<DocMatter & { slug: string }>;
+  slug: string;
+}> = directories
+  .map((dir) => {
+    const categoryPath = join(docsPath, dir);
+    const metaJsonPath = join(categoryPath, "/_meta.json");
+
+    // Read the _meta.json file at the root of each doc directory
+    const categoryJson = JSON.parse(fs.readFileSync(metaJsonPath, "utf8"));
+    const category = docCategorySchema.parse(categoryJson);
+
+    // Get all pages in the category
+    const categoryPages = fs
+      .readdirSync(categoryPath)
+      .filter((file) => file !== "_meta.json" && !file.startsWith("index"));
+
+    // Parse each page, return the frontmatter and slug
+    const pages = categoryPages
+      .map((page) => {
+        const docPagePath = join(categoryPath, page);
+        const docFrontMatter = matter.read(docPagePath).data;
+
+        return {
+          ...docMatterSchema.parse(docFrontMatter),
+          slug: join(dir, page.split(".")[0]),
+        };
+      })
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    return {
+      category,
+      pages,
+      slug: dir,
+    };
+  })
+  .sort((a, b) => a.category.order - b.category.order);
+---
+
+<nav box-="square contain:!top">
+  <div><span is-="badge">Documentation</span></div>
+
+  <div id="category-container">
+    <div id="category-list">
+      {
+        categories.map((category) => (
+          <div data-category={category.slug}>
+            <a href={join("/docs", category.slug)}>{category.category.title}</a>
+            <ul variant-="fork" cap-="bottom">
+              {category.pages.map((page) => (
+                <a href={join("/docs", page.slug)} data-slug={page.slug}>
+                  <li>{page.title}</li>
+                </a>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div box-="square contain:!top" id="keybind-box">
+    <div><span is-="badge">Keybinds</span></div>
+    <ul variant-="none">
+      <li><code>&lt;C-b&gt;</code> focus sidebar</li>
+      <li><code>↓/j</code> move down</li>
+      <li><code>↑/k</code> move up</li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    max-width: 32ch;
+    overflow: hidden;
+    width: 100%;
+
+    --box-border-color: var(--surface0);
+
+    header {
+      span {
+        padding: 0 1ch;
+        background-color: var(--background);
+      }
+    }
+
+    #category-container {
+      position: relative;
+      flex-grow: 1;
+    }
+
+    #category-list {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1lh;
+      padding: 0 1ch;
+      overflow-y: auto;
+    }
+
+    #keybind-box {
+      margin: 0 1ch;
+
+      ul {
+        padding-left: 1ch;
+        padding-top: 1lh;
+        padding-bottom: 1lh;
+      }
+    }
+  }
+
+  [data-category] {
+    & > a {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    & > a:hover {
+      background-color: var(--surface0);
+    }
+
+    &.active > a {
+      color: var(--sky);
+      background-color: var(--surface0);
+    }
+  }
+
+  [data-slug] {
+    color: var(--subtext0);
+    text-decoration: none;
+
+    &.active {
+      color: var(--sky);
+
+      & > li {
+        background-color: var(--surface0);
+      }
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      & > li {
+        background-color: var(--surface0);
+      }
+    }
+  }
+</style>
+
+<script>
+  const locationPath = window.location.pathname;
+  const [category, page] = locationPath.split("/docs/")[1].split("/");
+
+  if (category && page) {
+    const categoryElement = document.querySelector(
+      `[data-category="${category}"]`,
+    );
+    const categoryElements = document.querySelectorAll(`[data-category]`);
+    const pageElement = document.querySelector(
+      `[data-slug="${category}/${page}"]`,
+    );
+    const pageElements = document.querySelectorAll(`[data-slug]`);
+
+    if (categoryElement && pageElement) {
+      categoryElements.forEach((el) => el.classList.remove("active"));
+      pageElements.forEach((el) => el.classList.remove("active"));
+      pageElement.classList.add("active");
+    }
+  } else if (category) {
+    const categoryElement = document.querySelector(
+      `[data-category="${category}"]`,
+    );
+    const categoryElements = document.querySelectorAll(`[data-category]`);
+
+    if (categoryElement) {
+      categoryElements.forEach((el) => el.classList.remove("active"));
+      categoryElement.classList.add("active");
+    }
+  }
+</script>

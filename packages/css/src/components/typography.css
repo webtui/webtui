@@ -1,4 +1,5 @@
 @layer components {
+
   h1,
   h2,
   h3,
@@ -43,7 +44,11 @@
     text-decoration: underline;
   }
 
-  blockquote {}
-
-  code {}
+  code {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: inherit;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }

@@ -1,0 +1,26 @@
+---
+import Sidebar from "@/components/Sidebar.astro";
+import Layout from "@/layouts/Layout.astro";
+import "@webtui/theme-catppuccin";
+---
+
+<Layout>
+  <div id="container">
+    <Sidebar />
+    <main flex-="col gap:1 grow">
+      <slot />
+    </main>
+  </div>
+</Layout>
+
+<style>
+  #container {
+    display: flex;
+    flex-grow: 1;
+    gap: 1ch;
+    padding: 1lh 2ch;
+  }
+  main {
+    
+  }
+</style>

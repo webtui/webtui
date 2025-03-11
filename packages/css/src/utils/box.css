@@ -1,10 +1,11 @@
 @layer utils {
-  /* Requires `box-` to contain `square`, `rounded`, or `double` in order to work */
+  /* Requires `box-` to contain `square`, `round`, or `double` in order to work */
   [box-~="square"],
-  [box-~="rounded"],
+  [box-~="round"],
   [box-~="double"] {
     position: relative;
     isolation: isolate;
+    padding: 1lh 1ch;
 
     &::before {
       content: "";
@@ -14,18 +15,18 @@
       translate: -50% -50%;
       width: calc(100% - 1ch - 2px);
       height: calc(100% - 1lh - 2px);
-      border: solid 2px var(--box-border, var(--foreground));
+      border: solid 2px var(--box-border-color, var(--foreground));
       z-index: -1;
     }
 
     /* Apply border radius to the inner and outer (if present) border */
-    &[box-~="rounded"] {
+    &[box-~="round"] {
       &::before {
-        border-radius: var(--rounded-box-radius);
+        border-radius: var(--box-rounded-radius);
       }
 
       &::after {
-        border-radius: calc(var(--rounded-box-radius) + 2px);
+        border-radius: calc(var(--box-rounded-radius) + 2px);
       }
     }
 
@@ -43,52 +44,23 @@
         translate: -50% -50%;
         width: calc(100% - 1ch + 2px);
         height: calc(100% - 1lh + 2px);
-        border: solid 1px var(--box-border, var(--foreground));
+        border: solid 1px var(--box-border-color, var(--foreground));
         z-index: -1;
       }
     }
 
     /* Containment Variants */
-    &[box-~="contain"] {
-      padding: 1lh 1ch;
+    &[box-~="contain:none"] {
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
-    &[box-~="contain:\!top"] {
-      padding-left: 1ch;
-      padding-right: 1ch;
-      padding-bottom: 1lh;
+    &[box-~="contain:!top"] {
+      padding-top: 0;
     }
 
-    &[box-~="contain:\!bottom"] {
-      padding-top: 1lh;
-      padding-left: 1ch;
-      padding-right: 1ch;
-    }
-
-    &[box-~="contain:x"] {
-      padding-left: 1ch;
-      padding-right: 1ch;
-    }
-
-    &[box-~="contain:y"] {
-      padding-top: 1lh;
-      padding-bottom: 1lh;
-    }
-
-    &[box-~="contain:top"] {
-      padding-top: 1lh;
-    }
-
-    &[box-~="contain:bottom"] {
-      padding-bottom: 1lh;
-    }
-
-    &[box-~="contain:left"] {
-      padding-left: 1ch;
-    }
-
-    &[box-~="contain:right"] {
-      padding-right: 1ch;
+    &[box-~="contain:!bottom"] {
+      padding-bottom: 0;
     }
   }
 }

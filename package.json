@@ -6,7 +6,7 @@
     "bundle": "turbo run bundle",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,astro}\"",
     "clean": "rm -rf node_modules .turbo bun.lockb && turbo run clean"
   },
   "devDependencies": {

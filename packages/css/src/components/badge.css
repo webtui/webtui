@@ -1,0 +1,7 @@
+@layer components {
+  [is-="badge"] {
+    color: var(--foreground);
+    background-color: var(--background);
+    padding: 0 1ch;
+  }
+}

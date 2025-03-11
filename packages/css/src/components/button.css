@@ -1,7 +1,7 @@
 @layer components {
   button {
     color: var(--foreground);
-    background: var(--background);
+    background-color: var(--background);
     font-family: var(--font-family);
     font-size: var(--font-size);
     border: none;

@@ -1,0 +1,9 @@
+@layer components {
+  [is-="badge"] {
+    &[variant-="mauve"] {
+      background-color: var(--mauve);
+      color: var(--background);
+    }
+    /* TODO: Add badge variants */
+  }
+}

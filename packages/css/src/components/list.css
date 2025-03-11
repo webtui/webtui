@@ -40,37 +40,49 @@
         content: "├ ";
       }
 
-      li:first-of-type::before {
+      &[cap-="auto"]>li:first-of-type::before,
+      &[cap-="top"]>li:first-of-type::before {
         content: "┌ ";
       }
 
-      li:last-of-type::before {
+      &[cap-="auto"]>li:last-of-type::before,
+      &[cap-="bottom"]>li:last-of-type::before {
         content: "└ ";
       }
     }
 
-    & > li[variant-="check"]::before {
+    &[variant-="none"] {
+      li::before {
+        content: none;
+      }
+    }
+
+    &>li[variant-="check"]::before {
       content: "✓ " !important;
     }
 
-    & > li[variant-="circle"]::before {
+    &>li[variant-="circle"]::before {
       content: "● " !important;
     }
 
-    & > li[variant-="dot"]::before {
+    &>li[variant-="dot"]::before {
       content: "• " !important;
     }
 
-    & > li[variant-="fork"]::before {
+    &>li[variant-="fork"]::before {
       content: "├ " !important;
     }
 
-    & > li:first-of-type[variant-="fork"]::before {
+    &>li:first-of-type[variant-="fork"]::before {
       content: "┌ " !important;
     }
 
-    & > li:last-of-type[variant-="fork"]::before {
+    &>li:last-of-type[variant-="fork"]::before {
       content: "└ " !important;
+    }
+
+    &>li[variant-="none"]::before {
+      content: none !important;
     }
   }
 }
