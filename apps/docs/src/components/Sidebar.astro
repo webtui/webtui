@@ -189,14 +189,14 @@ const categories: Array<{
             document.activeElement as HTMLAnchorElement,
           );
 
-          if (e.key === "j") {
+          if (e.key === "j" || e.key === "ArrowDown") {
             e.preventDefault();
             focusableElements[
               (currentIndex + 1) % focusableElements.length
             ].focus();
           }
 
-          if (e.key === "k") {
+          if (e.key === "k" || e.key === "ArrowUp") {
             e.preventDefault();
             focusableElements[
               (currentIndex - 1 + focusableElements.length) %
