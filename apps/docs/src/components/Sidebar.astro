@@ -1,55 +1,45 @@
 ---
-import fs from "fs";
-import { join } from "path";
-import matter from "gray-matter";
-import {
-  docCategorySchema,
-  docMatterSchema,
-  type DocCategory,
-  type DocMatter,
-} from "@/types";
+import { type DocCategory } from "@/types";
+import { type MarkdownInstance } from "astro";
 
-const docsPath = join(process.cwd(), "src", "pages", "docs");
-const directories = fs.readdirSync(docsPath);
+// order of documentation categories
+// if a category is not included in the array, it will be moved to the end
+const categoryOrder = ["intro", "components", "themes"];
 
-const categories: Array<{
-  category: DocCategory;
-  pages: Array<DocMatter & { slug: string }>;
-  slug: string;
-}> = directories
-  .map((dir) => {
-    const categoryPath = join(docsPath, dir);
-    const metaJsonPath = join(categoryPath, "/_meta.json");
+const docPages = Object.values(
+  import.meta.glob<MarkdownInstance<DocCategory>>("src/pages/docs/**/*.md", {
+    eager: true,
+  }),
+);
+const cats: Map<string, MarkdownInstance<DocCategory>[]> = new Map();
 
-    // Read the _meta.json file at the root of each doc directory
-    const categoryJson = JSON.parse(fs.readFileSync(metaJsonPath, "utf8"));
-    const category = docCategorySchema.parse(categoryJson);
+for (const docPage of docPages) {
+  if (!docPage.url) continue;
 
-    // Get all pages in the category
-    const categoryPages = fs
-      .readdirSync(categoryPath)
-      .filter((file) => file !== "_meta.json");
+  const [category] = docPage.url
+    .replace("/docs/", "")
+    .split("/")
+    .filter(Boolean);
 
-    // Parse each page, return the frontmatter and slug
-    const pages = categoryPages
-      .map((page) => {
-        const docPagePath = join(categoryPath, page);
-        const docFrontMatter = matter.read(docPagePath).data;
+  cats.set(
+    category,
+    [...(cats.get(category) || []), docPage].sort(
+      (a, b) => a.frontmatter.order - b.frontmatter.order,
+    ),
+  );
+}
 
-        return {
-          ...docMatterSchema.parse(docFrontMatter),
-          slug: join(dir, page.split(".")[0]),
-        };
-      })
-      .sort((a, b) => (a.order || 0) - (b.order || 0));
+const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
+  const indexA = categoryOrder.indexOf(catA);
+  const indexB = categoryOrder.indexOf(catB);
 
-    return {
-      category,
-      pages,
-      slug: dir,
-    };
-  })
-  .sort((a, b) => a.category.order - b.category.order);
+  const inOrderA = indexA !== -1;
+  const inOrderB = indexB !== -1;
+
+  if (inOrderA && inOrderB) return indexA - indexB;
+  else if (inOrderA) return -1;
+  else if (inOrderB) return 1; else return 0;
+});
 ---
 
 <nav box-="square contain:!top">
@@ -58,13 +48,13 @@ const categories: Array<{
   <div id="category-container">
     <div id="category-list">
       {
-        categories.map((category) => (
+        categories.map(([slug, pages]) => (
           <details open>
-            <summary>{category.category.title}</summary>
+            <summary>{slug}</summary>
             <ul marker-="tree" cap-="end">
-              {category.pages.map((page) => (
-                <a data-slug={page.slug} href={join("/docs", page.slug)}>
-                  <li>{page.title}</li>
+              {pages.map((page) => (
+                <a href={page.url}>
+                  <li>{page.frontmatter.title}</li>
                 </a>
               ))}
             </ul>
@@ -118,7 +108,7 @@ const categories: Array<{
     }
   }
 
-  [data-slug] {
+  ul > a[href] {
     color: var(--subtext0);
     text-decoration: none;
     outline: none;
@@ -145,7 +135,7 @@ const categories: Array<{
     }
   }
 
-  [data-slug]:focus > li,
+  ul > a[href]:focus > li,
   summary:focus {
     background-image: linear-gradient(
       to right,
@@ -155,7 +145,8 @@ const categories: Array<{
       transparent 1ch,
       transparent
     );
-    &::before, &::marker {
+    &::before,
+    &::marker {
       color: var(--background) !important;
     }
   }
@@ -163,48 +154,44 @@ const categories: Array<{
 
 <script>
   const locationPath = window.location.pathname;
-  const [category, page] = locationPath.split("/docs/")[1].split("/");
+  const pageLinkElement: HTMLAnchorElement | null = document.querySelector(
+    `ul > a[href="${locationPath}"]`,
+  );
+  const pageLinkElements = document.querySelectorAll(`ul > a[href]`);
 
-  if (category && page) {
-    const pageLinkElement: HTMLAnchorElement | null = document.querySelector(
-      `[data-slug="${category}/${page}"]`,
-    );
-    const pageLinkElements = document.querySelectorAll(`[data-slug]`);
+  if (pageLinkElement) {
+    pageLinkElements.forEach((el) => el.classList.remove("active"));
+    pageLinkElement.classList.add("active");
 
-    if (pageLinkElement) {
-      pageLinkElements.forEach((el) => el.classList.remove("active"));
-      pageLinkElement.classList.add("active");
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "b" && e.ctrlKey) {
+        pageLinkElement.focus();
+      }
 
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "b" && e.ctrlKey) {
-          pageLinkElement.focus();
+      const container = document.querySelector("nav:focus-within");
+
+      if (container && document.activeElement) {
+        const focusableElements: NodeListOf<HTMLAnchorElement> =
+          document.querySelectorAll("details[open] a, summary");
+        const currentIndex = Array.from(focusableElements).indexOf(
+          document.activeElement as HTMLAnchorElement,
+        );
+
+        if (e.key === "j" || e.key === "ArrowDown") {
+          e.preventDefault();
+          focusableElements[
+            (currentIndex + 1) % focusableElements.length
+          ].focus();
         }
 
-        const container = document.querySelector("nav:focus-within");
-
-        if (container && document.activeElement) {
-          const focusableElements: NodeListOf<HTMLAnchorElement> =
-            document.querySelectorAll("details[open] a, summary");
-          const currentIndex = Array.from(focusableElements).indexOf(
-            document.activeElement as HTMLAnchorElement,
-          );
-
-          if (e.key === "j" || e.key === "ArrowDown") {
-            e.preventDefault();
-            focusableElements[
-              (currentIndex + 1) % focusableElements.length
-            ].focus();
-          }
-
-          if (e.key === "k" || e.key === "ArrowUp") {
-            e.preventDefault();
-            focusableElements[
-              (currentIndex - 1 + focusableElements.length) %
-                focusableElements.length
-            ].focus();
-          }
+        if (e.key === "k" || e.key === "ArrowUp") {
+          e.preventDefault();
+          focusableElements[
+            (currentIndex - 1 + focusableElements.length) %
+              focusableElements.length
+          ].focus();
         }
-      });
-    }
+      }
+    });
   }
 </script>

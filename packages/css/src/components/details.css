@@ -1,15 +1,14 @@
 @layer components {
   details {
+    &[open] > summary::marker {
+        content: "∨ ";
+    }
     summary {
       user-select: none;
       cursor: pointer;
 
       &::marker {
         content: "> ";
-      }
-
-      details[open] > &::marker {
-        content: "∨ ";
       }
     }
   }
