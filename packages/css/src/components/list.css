@@ -28,13 +28,13 @@
         content: "├ ";
       }
 
-      &[cap-="both"]>li:first-of-type::before,
-      &[cap-="start"]>li:first-of-type::before {
+      &[cap-="both"] > li:first-of-type::before,
+      &[cap-="start"] > li:first-of-type::before {
         content: "┌ ";
       }
 
-      &[cap-="both"]>li:last-of-type::before,
-      &[cap-="end"]>li:last-of-type::before {
+      &[cap-="both"] > li:last-of-type::before,
+      &[cap-="end"] > li:last-of-type::before {
         content: "└ ";
       }
     }
@@ -45,10 +45,20 @@
       }
     }
 
-    & li[marker-="bullet"]::before { content: "• " !important; }
-    & li[marker-="tree"]::before { content: "├ " !important; }
-    & li:first-of-type[marker-="tree-start"]::before { content: "┌ " !important; }
-    & li:last-of-type[marker-="tree-end"]::before { content: "└ " !important; }
-    & li[marker-="none"]::before { content: none !important; }
+    & li[marker-="bullet"]::before {
+      content: "• " !important;
+    }
+    & li[marker-="tree"]::before {
+      content: "├ " !important;
+    }
+    & li:first-of-type[marker-="tree-start"]::before {
+      content: "┌ " !important;
+    }
+    & li:last-of-type[marker-="tree-end"]::before {
+      content: "└ " !important;
+    }
+    & li[marker-="none"]::before {
+      content: none !important;
+    }
   }
 }

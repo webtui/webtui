@@ -23,6 +23,8 @@ For feature requests please open an issue.
 - [ ] Add descriptive READMEs to each package, docs
 - [ ] Logo & Branding
 
+- [ ] Fix box border css variables getting passed to children
+
 ## Components
 
 - [x] button
@@ -64,4 +66,3 @@ For feature requests please open an issue.
 ┌WT┐
 └UI┘
 ```
-

@@ -3,19 +3,26 @@
 ## TODO
 
 - [ ] Homepage
-    - [ ] Open for sponsorship
+  - [ ] Open for sponsorship
 - [ ] Quickstart
-    - [ ] CDN
-    - [ ] NPM Package
-    - [ ] Framework-specifics
+  - [ ] CDN
+  - [ ] NPM Package
+  - [ ] Framework-specifics
 - [ ] Modularity
-    - [ ] Importing what you need
+  - [ ] Importing what you need
 - [ ] About
-- [ ] Layout, sidebar
+- [ ] Layout
+  - [x] Sidebar
+  - [ ] Markdown body, vim-navigable
 - [ ] Components
 - [ ] Style Guide
 - [ ] Typography
 - [ ] Themes
-    - [ ] Theme previews / switching
+  - [ ] Theme previews / switching
 - [ ] Contributing
 
+- [ ] Decouple from Catppuccin theme in particular
+
+## Nice-to-have
+
+- [ ] Fuzzy Search in sidebar with `/`

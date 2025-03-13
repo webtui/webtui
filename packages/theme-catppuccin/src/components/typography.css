@@ -32,10 +32,22 @@
     }
   }
 
-  code {
+  :not(pre) > code {
     color: var(--red);
     background-color: var(--surface0);
     padding-left: 1ch;
     padding-right: 1ch;
+  }
+
+  pre {
+    background-color: var(--surface0);
+    padding: 1lh 1ch;
+    overflow-x: auto;
+
+    code {
+      color: var(--text);
+      background-color: transparent;
+      padding: 0;
+    }
   }
 }

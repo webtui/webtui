@@ -1,31 +1,29 @@
 ---
-import { type DocCategory } from "@/types";
-import { type MarkdownInstance } from "astro";
+import { join } from "path";
+import { getCollection } from "astro:content";
 
 // order of documentation categories
 // if a category is not included in the array, it will be moved to the end
 const categoryOrder = ["intro", "components", "themes"];
 
-const docPages = Object.values(
-  import.meta.glob<MarkdownInstance<DocCategory>>("src/pages/docs/**/*.md", {
-    eager: true,
-  }),
-);
-const cats: Map<string, MarkdownInstance<DocCategory>[]> = new Map();
+const docPages = await getCollection("docs");
+const cats: Map<string, typeof docPages> = new Map();
 
 for (const docPage of docPages) {
-  if (!docPage.url) continue;
+  const [category] = docPage.id.split("/");
 
-  const [category] = docPage.url
-    .replace("/docs/", "")
-    .split("/")
-    .filter(Boolean);
+  const categoryPages = [...(cats.get(category) || []), docPage];
 
   cats.set(
     category,
-    [...(cats.get(category) || []), docPage].sort(
-      (a, b) => a.frontmatter.order - b.frontmatter.order,
-    ),
+    categoryPages
+      .sort((a, b) => a.data.title.localeCompare(b.data.title))
+      .sort((a, b) => {
+        return (
+          (a.data.order ?? categoryPages.length) -
+          (b.data.order ?? categoryPages.length)
+        );
+      }),
   );
 }
 
@@ -38,7 +36,8 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
 
   if (inOrderA && inOrderB) return indexA - indexB;
   else if (inOrderA) return -1;
-  else if (inOrderB) return 1; else return 0;
+  else if (inOrderB) return 1;
+  else return 0;
 });
 ---
 
@@ -51,11 +50,9 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
         categories.map(([slug, pages]) => (
           <details open>
             <summary>{slug}</summary>
-            <ul marker-="tree" cap-="end">
+            <ul>
               {pages.map((page) => (
-                <a href={page.url}>
-                  <li>{page.frontmatter.title}</li>
-                </a>
+                <a href={join("/docs", page.id)}>{page.data.title}</a>
               ))}
             </ul>
           </details>
@@ -65,7 +62,7 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
   </div>
 
   <div box-="square contain:!top" id="keybind-container">
-    <span is-="badge">Keybinds</span>
+    <span is-="badge">Shortcuts</span>
     <ul marker-="none" space-="p:1">
       <li><code>&lt;C-b&gt;</code> focus sidebar</li>
       <li><code>↓/j</code> move down</li>
@@ -112,22 +109,24 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
     color: var(--subtext0);
     text-decoration: none;
     outline: none;
+    display: list-item;
+
+    &::before {
+      content: "├ ";
+    }
+
+    &:last-of-type::before {
+      content: "└ ";
+    }
+
+    &::highlight(vim) {
+      background-color: var(--text);
+      color: var(--background);
+    }
 
     &.active {
-      color: var(--background);
-
-      li {
-        background-color: var(--sky);
-      }
-
-      &:focus {
-        color: var(--sky);
-
-        li {
-          background-color: var(--surface0);
-          /* Make it look like the first character is selected */
-        }
-      }
+      color: var(--sky);
+      background-color: var(--surface0);
     }
 
     &:focus > li {
@@ -135,63 +134,64 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
     }
   }
 
-  ul > a[href]:focus > li,
-  summary:focus {
-    background-image: linear-gradient(
-      to right,
-      transparent 0,
-      var(--text) 0,
-      var(--text) 1ch,
-      transparent 1ch,
-      transparent
-    );
-    &::before,
-    &::marker {
-      color: var(--background) !important;
-    }
+  summary::highlight(vim) {
+    background-color: var(--text);
+    color: var(--background);
   }
 </style>
 
 <script>
+  import { applyVimCursorHighlight } from "@/utils/vim";
+
   const locationPath = window.location.pathname;
-  const pageLinkElement: HTMLAnchorElement | null = document.querySelector(
+  const pageLinkElement = document.querySelector(
     `ul > a[href="${locationPath}"]`,
-  );
+  ) as HTMLAnchorElement;
   const pageLinkElements = document.querySelectorAll(`ul > a[href]`);
+  let currentElement: HTMLElement | null = null;
 
-  if (pageLinkElement) {
-    pageLinkElements.forEach((el) => el.classList.remove("active"));
-    pageLinkElement.classList.add("active");
+  pageLinkElements.forEach((el) => el.classList.remove("active"));
+  pageLinkElement.classList.add("active");
 
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "b" && e.ctrlKey) {
-        pageLinkElement.focus();
-      }
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "b" && e.ctrlKey) {
+      const elementToFocus = currentElement ?? pageLinkElement;
 
-      const container = document.querySelector("nav:focus-within");
+      elementToFocus.focus();
+      applyVimCursorHighlight(elementToFocus);
+    }
+  });
 
-      if (container && document.activeElement) {
-        const focusableElements: NodeListOf<HTMLAnchorElement> =
-          document.querySelectorAll("details[open] a, summary");
-        const currentIndex = Array.from(focusableElements).indexOf(
-          document.activeElement as HTMLAnchorElement,
-        );
+  document.querySelector("nav")?.addEventListener("keydown", (e) => {
+    const focusableElements: NodeListOf<HTMLElement> =
+      document.querySelectorAll("details[open] a, summary");
+    const currentIndex = Array.from(focusableElements).indexOf(
+      document.activeElement as HTMLElement,
+    );
 
-        if (e.key === "j" || e.key === "ArrowDown") {
-          e.preventDefault();
-          focusableElements[
-            (currentIndex + 1) % focusableElements.length
-          ].focus();
-        }
+    if (e.key === "j" || e.key === "ArrowDown") {
+      e.preventDefault();
+      const nextActiveElement =
+        focusableElements[(currentIndex + 1) % focusableElements.length];
 
-        if (e.key === "k" || e.key === "ArrowUp") {
-          e.preventDefault();
-          focusableElements[
-            (currentIndex - 1 + focusableElements.length) %
-              focusableElements.length
-          ].focus();
-        }
-      }
-    });
-  }
+      nextActiveElement.focus();
+      nextActiveElement.scrollIntoView({ block: "nearest", inline: "nearest" });
+      applyVimCursorHighlight(nextActiveElement);
+      currentElement = nextActiveElement;
+    }
+
+    if (e.key === "k" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const nextActiveElement =
+        focusableElements[
+          (currentIndex - 1 + focusableElements.length) %
+            focusableElements.length
+        ];
+
+      nextActiveElement.focus();
+      nextActiveElement.scrollIntoView({ block: "nearest", inline: "nearest" });
+      applyVimCursorHighlight(nextActiveElement);
+      currentElement = nextActiveElement;
+    }
+  });
 </script>

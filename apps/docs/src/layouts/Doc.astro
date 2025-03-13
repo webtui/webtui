@@ -2,14 +2,26 @@
 import Sidebar from "@/components/Sidebar.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@webtui/theme-catppuccin";
+
+const { frontmatter } = Astro.props;
 ---
 
 <Layout>
   <div id="container">
     <Sidebar />
-    <main flex-="col gap:1 grow">
-      <slot />
-    </main>
+    <article box-="square contain:!top">
+      <header flex-="row j:content:between">
+        <div is-="badge"><h1>{frontmatter.title}</h1></div>
+        <div is-="badge">
+          <code>?</code> Toggle Shortcuts
+        </div>
+      </header>
+      <div id="scroll-container">
+        <main id="main-content">
+          <slot />
+        </main>
+      </div>
+    </article>
   </div>
 </Layout>
 
@@ -20,7 +32,101 @@ import "@webtui/theme-catppuccin";
     gap: 1ch;
     padding: 1lh 2ch;
   }
-  main {
-    
+
+  #scroll-container {
+    position: relative;
+    flex-grow: 1;
+  }
+
+  #main-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    padding: 0 1ch;
+    overflow-y: auto;
+
+    [tabindex="0"] {
+      outline: none;
+
+      &:focus {
+        background-color: var(--surface0);
+      }
+
+      &::highlight(vim) {
+        background-color: var(--text);
+        color: var(--background);
+      }
+    }
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1lh;
+    --box-border-color: var(--surface0);
+
+    &:focus-within {
+      --box-border-color: var(--subtext0);
+    }
   }
 </style>
+
+<script>
+  import { applyVimCursorHighlight } from "@/utils/vim";
+
+  const vimTabbableElements: NodeListOf<HTMLElement> = (() =>
+    document.querySelectorAll('#main-content [tabindex="0"]'))();
+  let currentElement: HTMLElement | null = null;
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "i" && e.ctrlKey) {
+      const elementToFocus =
+        currentElement ??
+        Array.from(vimTabbableElements).find((el) => {
+          const rect = el.getBoundingClientRect();
+
+          return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        }) ??
+        null;
+
+      if (elementToFocus) {
+        elementToFocus.focus();
+        applyVimCursorHighlight(elementToFocus);
+      }
+    }
+  });
+
+  document.getElementById("main-content")?.addEventListener("keydown", (e) => {
+    const currentIndex = Array.from(vimTabbableElements).indexOf(
+      document.activeElement as HTMLElement,
+    );
+
+    if (e.key === "j" || e.key === "ArrowDown") {
+      e.preventDefault();
+      const nextActiveElement =
+        vimTabbableElements[(currentIndex + 1) % vimTabbableElements.length];
+
+      nextActiveElement.focus();
+      nextActiveElement.scrollIntoView({ block: "nearest", inline: "nearest" });
+      applyVimCursorHighlight(nextActiveElement);
+      currentElement = nextActiveElement;
+    }
+
+    if (e.key === "k" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const nextActiveElement =
+        vimTabbableElements[
+          (currentIndex - 1 + vimTabbableElements.length) %
+            vimTabbableElements.length
+        ];
+
+      nextActiveElement.focus();
+      nextActiveElement.scrollIntoView({ block: "nearest", inline: "nearest" });
+      applyVimCursorHighlight(nextActiveElement);
+      currentElement = nextActiveElement;
+    }
+  });
+</script>

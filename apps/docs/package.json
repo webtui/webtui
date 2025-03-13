@@ -12,11 +12,9 @@
   "dependencies": {
     "@astrojs/mdx": "^4.1.0",
     "@webtui/css": "workspace:*",
+    "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
-    "astro": "^5.4.2",
-    "glob": "^11.0.1",
-    "gray-matter": "^4.0.3",
-    "zod": "^3.24.2"
+    "astro": "^5.4.2"
   },
   "devDependencies": {
     "prettier-plugin-astro": "^0.14.1",
