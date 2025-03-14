@@ -67,6 +67,7 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
       <li><code>&lt;C-b&gt;</code> focus sidebar</li>
       <li><code>↓/j</code> move down</li>
       <li><code>↑/k</code> move up</li>
+      <li><code>?</code> show more</li>
     </ul>
   </div>
 </nav>
@@ -143,14 +144,18 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
 <script>
   import { applyVimCursorHighlight } from "@/utils/vim";
 
+  let currentElement: HTMLElement | null = null;
   const locationPath = window.location.pathname;
   const pageLinkElement = document.querySelector(
     `ul > a[href="${locationPath}"]`,
   ) as HTMLAnchorElement;
-  const pageLinkElements = document.querySelectorAll(`ul > a[href]`);
-  let currentElement: HTMLElement | null = null;
+  const focusableElements: NodeListOf<HTMLElement> = document.querySelectorAll(
+    "details[open] a, summary",
+  );
 
-  pageLinkElements.forEach((el) => el.classList.remove("active"));
+  document
+    .querySelectorAll(`ul > a[href]`)
+    .forEach((el) => el.classList.remove("active"));
   pageLinkElement.classList.add("active");
 
   window.addEventListener("keydown", (e) => {
@@ -158,13 +163,10 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
       const elementToFocus = currentElement ?? pageLinkElement;
 
       elementToFocus.focus();
-      applyVimCursorHighlight(elementToFocus);
     }
   });
 
   document.querySelector("nav")?.addEventListener("keydown", (e) => {
-    const focusableElements: NodeListOf<HTMLElement> =
-      document.querySelectorAll("details[open] a, summary");
     const currentIndex = Array.from(focusableElements).indexOf(
       document.activeElement as HTMLElement,
     );
@@ -175,9 +177,6 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
         focusableElements[(currentIndex + 1) % focusableElements.length];
 
       nextActiveElement.focus();
-      nextActiveElement.scrollIntoView({ block: "nearest", inline: "nearest" });
-      applyVimCursorHighlight(nextActiveElement);
-      currentElement = nextActiveElement;
     }
 
     if (e.key === "k" || e.key === "ArrowUp") {
@@ -189,9 +188,14 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
         ];
 
       nextActiveElement.focus();
-      nextActiveElement.scrollIntoView({ block: "nearest", inline: "nearest" });
-      applyVimCursorHighlight(nextActiveElement);
-      currentElement = nextActiveElement;
     }
   });
+
+  focusableElements.forEach((el) =>
+    el.addEventListener("focus", () => {
+      el.scrollIntoView({ block: "nearest", inline: "nearest" });
+      applyVimCursorHighlight(el);
+      currentElement = el;
+    }),
+  );
 </script>

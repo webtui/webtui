@@ -23,7 +23,7 @@ For feature requests please open an issue.
 - [ ] Add descriptive READMEs to each package, docs
 - [ ] Logo & Branding
 
-- [ ] Fix box border css variables getting passed to children
+- [x] Fix box border css variables getting passed to children
 
 ## Components
 
@@ -56,8 +56,8 @@ For feature requests please open an issue.
 
 ## Themes
 
-- [ ] Default (black and white)
-- [ ] Catppuccin
+- [x] Default (black and white)
+- [x] Catppuccin
   - [ ] Support multiple catppuccin flavors
 - [ ] Nord
 - [ ] Rose Pine

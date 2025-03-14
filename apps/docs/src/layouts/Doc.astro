@@ -1,25 +1,51 @@
 ---
 import Sidebar from "@/components/Sidebar.astro";
 import Layout from "@/layouts/Layout.astro";
-import "@webtui/theme-catppuccin";
+import catppuccinUrl from "@webtui/theme-catppuccin?url";
 
 const { frontmatter } = Astro.props;
 ---
 
+<link rel="stylesheet" href={catppuccinUrl} id="theme-stylesheet" />
+
+<!-- Syntax Highlighting Themes -->
+<style>
+  @layer components {
+    html[data-theme] {
+      pre.astro-code {
+        background-color: var(--background1) !important;
+      }
+    }
+
+    html[data-theme="catppuccin"] {
+      pre.astro-code,
+      pre.astro-code span {
+        color: var(--shiki-catppuccin) !important;
+      }
+    }
+
+    html[data-theme="nord"] {
+      pre.astro-code,
+      pre.astro-code span {
+        color: var(--shiki-nord) !important;
+      }
+    }
+  }
+</style>
+
 <Layout>
   <div id="container">
     <Sidebar />
-    <article box-="square contain:!top">
+    <article box-="square contain:!top" data-shiki-theme="catppuccin">
       <header flex-="row j:content:between">
         <div is-="badge"><h1>{frontmatter.title}</h1></div>
         <div is-="badge">
-          <code>?</code> Toggle Shortcuts
+          <code>&lt;C-i&gt;</code> focus content
         </div>
       </header>
       <div id="scroll-container">
         <main id="main-content">
           <slot />
-          <button variant-="default" box-="double round">hello</button>
         </main>
       </div>
     </article>
@@ -78,8 +104,8 @@ const { frontmatter } = Astro.props;
 <script>
   import { applyVimCursorHighlight } from "@/utils/vim";
 
-  const vimTabbableElements: NodeListOf<HTMLElement> = (() =>
-    document.querySelectorAll('#main-content [tabindex="0"]'))();
+  const vimTabbableElements: NodeListOf<HTMLElement> =
+    document.querySelectorAll('#main-content [tabindex="0"]');
   let currentElement: HTMLElement | null = null;
 
   window.addEventListener("keydown", (e) => {

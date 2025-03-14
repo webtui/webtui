@@ -8,6 +8,14 @@ import rehypeTabIndex from "@webtui/rehype-tabindex";
 export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeHeadingIds, rehypeTabIndex],
+    shikiConfig: {
+      themes: {
+        nord: "nord",
+        catppuccin: "catppuccin-mocha"
+      },
+      defaultColor: "catppuccin",
+      wrap: true
+    }
   },
   integrations: [mdx({ extendMarkdownConfig: true })],
 });

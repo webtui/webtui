@@ -11,17 +11,18 @@
 - [ ] Modularity
   - [ ] Importing what you need
 - [ ] About
-- [ ] Layout
+- [x] Layout
   - [x] Sidebar
-  - [ ] Markdown body, vim-navigable
+  - [x] Markdown body, vim-navigable
 - [ ] Components
 - [ ] Style Guide
 - [ ] Typography
 - [ ] Themes
   - [ ] Theme previews / switching
 - [ ] Contributing
+- [ ] Responsiveness
 
-- [ ] Decouple from Catppuccin theme in particular
+- [x] Decouple from Catppuccin theme in particular
 
 ## Nice-to-have
 
