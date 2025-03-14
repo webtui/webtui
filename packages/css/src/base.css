@@ -1,26 +1,27 @@
 @layer base {
   :root {
-    --background: white;
-    --foreground: black;
+    --background0: white;
+    --background1: #ddd;
+    --background2: #bbb;
+    --background3: #999;
 
-    --font-family: "JetBrains Mono", Monaco, monospace;
+    --foreground0: black;
+    --foreground1: #444;
+    --foreground2: #888;
+
+    --font-family: Monaco, monospace;
     --font-size: 16px;
     --line-height: 1;
 
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
-
-    --box-rounded-radius: 4px;
-    --box-border-color: var(--foreground);
-
-    --list-marker-color: inherit;
   }
 
   body,
   html {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--background0);
+    color: var(--foreground0);
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height, 1.5);

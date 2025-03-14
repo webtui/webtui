@@ -30,14 +30,19 @@
     --mantle: #181825;
     --crust: #11111b;
 
-    --background: var(--base);
-    --foreground: var(--text);
-    --border: var(--surface0);
+    --background0: var(--base);
+    --background1: var(--surface0);
+    --background2: var(--surface1);
+    --background3: var(--surface2);
+
+    --foreground0: var(--text);
+    --foreground1: var(--subtext1);
+    --foreground2: var(--subtext0);
   }
 
   body,
   html {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--background0);
+    color: var(--foreground0);
   }
 }

@@ -1,7 +1,19 @@
 @layer components {
+  @property --button-background {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--foreground0);
+  }
+
+  @property --button-foreground {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--background0);
+  }
+
   button {
-    color: var(--foreground);
-    background-color: var(--background);
+    color: var(--button-foreground);
+    background-color: var(--button-background);
     font-family: var(--font-family);
     font-size: var(--font-size);
     border: none;

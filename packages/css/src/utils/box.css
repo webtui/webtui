@@ -1,4 +1,16 @@
 @layer utils {
+  @property --box-border-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--foreground0);
+  }
+
+  @property --box-rounded-radius {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 4px;
+  }
+
   /* Requires `box-` to contain `square`, `round`, or `double` in order to work */
   [box-~="square"],
   [box-~="round"],
@@ -6,6 +18,9 @@
     position: relative;
     isolation: isolate;
     padding: 1lh 1ch;
+
+    /* Resets the --box-border-color property so it doesn't get inherited */
+    --box-border-color: var(--foreground0);
 
     &::before {
       content: "";
@@ -15,7 +30,7 @@
       translate: -50% -50%;
       width: calc(100% - 1ch - 2px);
       height: calc(100% - 1lh - 2px);
-      border: solid 2px var(--box-border-color, var(--foreground));
+      border: solid 2px var(--box-border-color);
       z-index: -1;
     }
 
@@ -44,7 +59,7 @@
         translate: -50% -50%;
         width: calc(100% - 1ch + 2px);
         height: calc(100% - 1lh + 2px);
-        border: solid 1px var(--box-border-color, var(--foreground));
+        border: solid 1px var(--box-border-color);
         z-index: -1;
       }
     }

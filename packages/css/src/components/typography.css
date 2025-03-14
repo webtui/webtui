@@ -1,4 +1,5 @@
 @layer components {
+
   h1,
   h2,
   h3,
@@ -46,8 +47,20 @@
   code {
     font-family: var(--font-family);
     font-size: var(--font-size);
-    line-height: inherit;
+    line-height: var(--line-height);
+    color: var(--foreground0);
     display: inline-block;
-    vertical-align: middle;
+  }
+
+  :not(pre)>code {
+    background-color: var(--background1);
+    padding-left: 1ch;
+    padding-right: 1ch;
+  }
+
+  pre {
+    background-color: var(--background1);
+    padding: 1lh 1ch;
+    overflow-x: auto;
   }
 }

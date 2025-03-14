@@ -79,10 +79,10 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
     max-width: 32ch;
     overflow: hidden;
     width: 100%;
-    --box-border-color: var(--surface0);
+    --box-border-color: var(--background1);
 
     &:focus-within {
-      --box-border-color: var(--subtext0);
+      --box-border-color: var(--foreground2);
     }
 
     #category-container {
@@ -101,12 +101,12 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
     }
 
     #keybind-container {
-      --box-border-color: var(--surface0);
+      --box-border-color: var(--background1);
     }
   }
 
   ul > a[href] {
-    color: var(--subtext0);
+    color: var(--foreground2);
     text-decoration: none;
     outline: none;
     display: list-item;
@@ -120,23 +120,23 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
     }
 
     &::highlight(vim) {
-      background-color: var(--text);
-      color: var(--background);
+      background-color: var(--foreground0);
+      color: var(--background0);
     }
 
     &.active {
       color: var(--sky);
-      background-color: var(--surface0);
+      background-color: var(--background1);
     }
 
     &:focus > li {
-      background-color: var(--surface0);
+      background-color: var(--background1);
     }
   }
 
   summary::highlight(vim) {
-    background-color: var(--text);
-    color: var(--background);
+    background-color: var(--foreground0);
+    color: var(--background0);
   }
 </style>
 

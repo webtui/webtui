@@ -1,15 +1,16 @@
 @layer components {
   button {
+
     &[variant-="default"],
     &:not([variant-]) {
-      --foreground: var(--base);
-      --background: var(--mauve);
+      --button-background: var(--mauve);
+      --button-foreground: var(--background0);
+    }
 
-      &[box-] {
-        --box-border-color: var(--mauve);
-        --background: var(--base);
-        --foreground: var(--mauve);
-      }
+    &[box-] {
+      --button-background: transparent;
+      --box-border-color: var(--mauve);
+      --button-foreground: var(--mauve);
     }
   }
 }

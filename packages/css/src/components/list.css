@@ -1,4 +1,10 @@
 @layer components {
+  @property --list-marker-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--foreground0);
+  }
+
   ol {
     list-style-position: inside;
   }

@@ -34,20 +34,15 @@
 
   :not(pre) > code {
     color: var(--red);
-    background-color: var(--surface0);
-    padding-left: 1ch;
-    padding-right: 1ch;
+    background-color: var(--background1);
   }
 
   pre {
-    background-color: var(--surface0);
-    padding: 1lh 1ch;
-    overflow-x: auto;
+    background-color: var(--background1);
 
     code {
-      color: var(--text);
+      color: var(--foreground0);
       background-color: transparent;
-      padding: 0;
     }
   }
 }
