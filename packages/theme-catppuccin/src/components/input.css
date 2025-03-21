@@ -1,0 +1,7 @@
+@layer components {
+  input {
+    &[box-] {
+      background-color: transparent;
+    }
+  }
+}

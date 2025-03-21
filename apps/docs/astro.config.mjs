@@ -11,9 +11,9 @@ export default defineConfig({
     shikiConfig: {
       themes: {
         nord: "nord",
-        catppuccin: "catppuccin-mocha"
+        "catppuccin-mocha": "catppuccin-mocha"
       },
-      defaultColor: "catppuccin",
+      defaultColor: "catppuccin-mocha",
       wrap: true
     }
   },

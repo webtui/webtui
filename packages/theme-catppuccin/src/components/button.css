@@ -1,16 +1,28 @@
 @layer components {
   button {
-
     &[variant-="default"],
     &:not([variant-]) {
-      --button-background: var(--mauve);
-      --button-foreground: var(--background0);
+      background-color: var(--mauve);
+      color: var(--background0);
+
+      &[box-] {
+        --box-border-color: var(--mauve);
+        color: var(--mauve);
+      }
+    }
+
+    &[variant-="secondary"] {
+      background-color: var(--background1);
+      color: var(--foreground0);
+
+      &[box-] {
+        --box-border-color: var(--background1);
+        color: var(--foreground0);
+      }
     }
 
     &[box-] {
-      --button-background: transparent;
-      --box-border-color: var(--mauve);
-      --button-foreground: var(--mauve);
+      background-color: transparent;
     }
   }
 }

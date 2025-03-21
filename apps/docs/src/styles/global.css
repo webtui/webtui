@@ -1,0 +1,14 @@
+@layer base {
+  :root {
+    --font-family: "JetBrainsMonoNL NFP", Monaco, monospace;
+  }
+}
+
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}

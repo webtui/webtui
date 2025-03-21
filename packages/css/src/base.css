@@ -28,6 +28,10 @@
     font-variant-ligatures: common-ligatures;
   }
 
+  [contenteditable] {
+    outline: none;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;

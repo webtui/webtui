@@ -1,12 +1,21 @@
+---
+import "@/styles/flexbox.css";
+import "@/styles/spacing.css";
+import "@/styles/global.css";
+import "@webtui/css";
+---
+
 <!doctype html>
-<html lang="en" data-theme="catppuccin">
+<html lang="en" data-theme="catppuccin-mocha">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-    rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@v3.3.0/build/jetbrainsmono.css"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>WebTUI</title>
   </head>
@@ -14,22 +23,3 @@
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @import "@webtui/css";
-
-  @layer base {
-    :root {
-      --font-family: "JetBrains Mono", Monaco, monospace;
-    }
-  }
-
-  body,
-  html {
-    width: 100vw;
-    height: 100vh;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-  }
-</style>

@@ -11,6 +11,18 @@
     initial-value: 4px;
   }
 
+  @property --box-border-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 2px;
+  }
+
+  @property --box-double-border-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 1px;
+  }
+
   /* Requires `box-` to contain `square`, `round`, or `double` in order to work */
   [box-~="square"],
   [box-~="round"],
@@ -30,7 +42,7 @@
       translate: -50% -50%;
       width: calc(100% - 1ch - 2px);
       height: calc(100% - 1lh - 2px);
-      border: solid 2px var(--box-border-color);
+      border: solid var(--box-border-width) var(--box-border-color);
       z-index: -1;
     }
 
@@ -48,7 +60,7 @@
     /* Adds the second border to the element */
     &[box-~="double"] {
       &::before {
-        border-width: 1px;
+        border-width: var(--box-double-border-width);
       }
 
       &::after {
@@ -59,7 +71,7 @@
         translate: -50% -50%;
         width: calc(100% - 1ch + 2px);
         height: calc(100% - 1lh + 2px);
-        border: solid 1px var(--box-border-color);
+        border: solid var(--box-double-border-width) var(--box-border-color);
         z-index: -1;
       }
     }

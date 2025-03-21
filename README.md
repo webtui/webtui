@@ -48,8 +48,8 @@ For feature requests please open an issue.
 - [ ] tooltip (hover)
 - [ ] misc
   - [x] badge ([is-="badge"])
-      - [ ] variants for catppuccin theme
-      - [ ] slants
+    - [ ] variants for catppuccin theme
+    - [ ] slants
   - [ ] avatar ([is-="avatar"])
   - [ ] card ([is-="card"])
   - [ ] pure css ascii loaders w/ steps ([loader-="dots"])

@@ -5,7 +5,6 @@
     }
     summary {
       user-select: none;
-      cursor: pointer;
 
       &::marker {
         content: "> ";

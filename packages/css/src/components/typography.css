@@ -1,5 +1,4 @@
 @layer components {
-
   h1,
   h2,
   h3,
@@ -52,7 +51,7 @@
     display: inline-block;
   }
 
-  :not(pre)>code {
+  :not(pre) > code {
     background-color: var(--background1);
     padding-left: 1ch;
     padding-right: 1ch;

@@ -6,8 +6,6 @@
 
 /* Utilities */
 @import "./utils/box.css";
-@import "./utils/flexbox.css";
-@import "./utils/space.css";
 
 /* Components */
 @import "./components/button.css";
@@ -15,3 +13,4 @@
 @import "./components/typography.css";
 @import "./components/badge.css";
 @import "./components/details.css";
+@import "./components/input.css";

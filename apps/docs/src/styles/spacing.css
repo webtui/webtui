@@ -1,8 +1,7 @@
 @layer utils {
   [space-] {
-    /* Padding */
     &[space-~="p:0"] {
-      padding: 0 0;
+      padding: 0;
     }
     &[space-~="p:1"] {
       padding: 1lh 1ch;
@@ -10,9 +9,7 @@
     &[space-~="p:2"] {
       padding: 2lh 2ch;
     }
-    &[space-~="p:4"] {
-      padding: 4lh 4ch;
-    }
+
     &[space-~="px:0"] {
       padding-left: 0;
       padding-right: 0;
@@ -25,10 +22,15 @@
       padding-left: 2ch;
       padding-right: 2ch;
     }
+    &[space-~="px:3"] {
+      padding-left: 3ch;
+      padding-right: 3ch;
+    }
     &[space-~="px:4"] {
       padding-left: 4ch;
       padding-right: 4ch;
     }
+
     &[space-~="py:0"] {
       padding-top: 0;
       padding-bottom: 0;
@@ -41,46 +43,7 @@
       padding-top: 2lh;
       padding-bottom: 2lh;
     }
-    &[space-~="py:4"] {
-      padding-top: 4lh;
-      padding-bottom: 4lh;
-    }
-    &[space-~="pt:0"] {
-      padding-top: 0;
-    }
-    &[space-~="pt:1"] {
-      padding-top: 1lh;
-    }
-    &[space-~="pt:2"] {
-      padding-top: 2lh;
-    }
-    &[space-~="pt:4"] {
-      padding-top: 4lh;
-    }
-    &[space-~="pr:0"] {
-      padding-right: 0;
-    }
-    &[space-~="pr:1"] {
-      padding-right: 1ch;
-    }
-    &[space-~="pr:2"] {
-      padding-right: 2ch;
-    }
-    &[space-~="pr:4"] {
-      padding-right: 4ch;
-    }
-    &[space-~="pb:0"] {
-      padding-bottom: 0;
-    }
-    &[space-~="pb:1"] {
-      padding-bottom: 1lh;
-    }
-    &[space-~="pb:2"] {
-      padding-bottom: 2lh;
-    }
-    &[space-~="pb:4"] {
-      padding-bottom: 4lh;
-    }
+
     &[space-~="pl:0"] {
       padding-left: 0;
     }
@@ -90,23 +53,38 @@
     &[space-~="pl:2"] {
       padding-left: 2ch;
     }
-    &[space-~="pl:4"] {
-      padding-left: 4ch;
+
+    &[space-~="pr:0"] {
+      padding-right: 0;
+    }
+    &[space-~="pr:1"] {
+      padding-right: 1ch;
+    }
+    &[space-~="pr:2"] {
+      padding-right: 2ch;
+    }
+
+    &[space-~="pt:0"] {
+      padding-top: 0;
+    }
+    &[space-~="pt:1"] {
+      padding-top: 1lh;
+    }
+    &[space-~="pt:2"] {
+      padding-top: 2lh;
+    }
+
+    &[space-~="pb:0"] {
+      padding-bottom: 0;
+    }
+    &[space-~="pb:1"] {
+      padding-bottom: 1lh;
+    }
+    &[space-~="pb:2"] {
+      padding-bottom: 2lh;
     }
 
     /* Margin */
-    &[space-~="m:0"] {
-      margin: 0 0;
-    }
-    &[space-~="m:1"] {
-      margin: 1lh 1ch;
-    }
-    &[space-~="m:2"] {
-      margin: 2lh 2ch;
-    }
-    &[space-~="m:4"] {
-      margin: 4lh 4ch;
-    }
     &[space-~="mx:0"] {
       margin-left: 0;
       margin-right: 0;
@@ -119,10 +97,7 @@
       margin-left: 2ch;
       margin-right: 2ch;
     }
-    &[space-~="mx:4"] {
-      margin-left: 4ch;
-      margin-right: 4ch;
-    }
+
     &[space-~="my:0"] {
       margin-top: 0;
       margin-bottom: 0;
@@ -135,46 +110,7 @@
       margin-top: 2lh;
       margin-bottom: 2lh;
     }
-    &[space-~="my:4"] {
-      margin-top: 4lh;
-      margin-bottom: 4lh;
-    }
-    &[space-~="mt:0"] {
-      margin-top: 0;
-    }
-    &[space-~="mt:1"] {
-      margin-top: 1lh;
-    }
-    &[space-~="mt:2"] {
-      margin-top: 2lh;
-    }
-    &[space-~="mt:4"] {
-      margin-top: 4lh;
-    }
-    &[space-~="mr:0"] {
-      margin-right: 0;
-    }
-    &[space-~="mr:1"] {
-      margin-right: 1ch;
-    }
-    &[space-~="mr:2"] {
-      margin-right: 2ch;
-    }
-    &[space-~="mr:4"] {
-      margin-right: 4ch;
-    }
-    &[space-~="mb:0"] {
-      margin-bottom: 0;
-    }
-    &[space-~="mb:1"] {
-      margin-bottom: 1lh;
-    }
-    &[space-~="mb:2"] {
-      margin-bottom: 2lh;
-    }
-    &[space-~="mb:4"] {
-      margin-bottom: 4lh;
-    }
+
     &[space-~="ml:0"] {
       margin-left: 0;
     }
@@ -184,8 +120,35 @@
     &[space-~="ml:2"] {
       margin-left: 2ch;
     }
-    &[space-~="ml:4"] {
-      margin-left: 4ch;
+
+    &[space-~="mr:0"] {
+      margin-right: 0;
+    }
+    &[space-~="mr:1"] {
+      margin-right: 1ch;
+    }
+    &[space-~="mr:2"] {
+      margin-right: 2ch;
+    }
+
+    &[space-~="mt:0"] {
+      margin-top: 0;
+    }
+    &[space-~="mt:1"] {
+      margin-top: 1lh;
+    }
+    &[space-~="mt:2"] {
+      margin-top: 2lh;
+    }
+
+    &[space-~="mb:0"] {
+      margin-bottom: 0;
+    }
+    &[space-~="mb:1"] {
+      margin-bottom: 1lh;
+    }
+    &[space-~="mb:2"] {
+      margin-bottom: 2lh;
     }
   }
 }

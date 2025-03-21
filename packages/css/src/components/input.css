@@ -1,0 +1,34 @@
+@layer components {
+  input {
+    background-color: var(--background1);
+    color: var(--foreground0);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
+    outline: none;
+    border: none;
+    min-width: 24ch;
+
+    &::placeholder {
+      color: var(--foreground2);
+    }
+
+    &[size-="medium"],
+    &[size-="default"],
+    &:not([size-]) {
+      height: 1lh;
+      padding: 0 1ch;
+    }
+
+    &[size-="small"] {
+      height: 1lh;
+      padding: 0 0;
+    }
+
+    &[size-="large"] {
+      height: 3lh;
+      padding: 1lh 2ch;
+    }
+  }
+}

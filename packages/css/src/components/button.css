@@ -1,23 +1,22 @@
 @layer components {
-  @property --button-background {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--foreground0);
-  }
-
-  @property --button-foreground {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--background0);
-  }
-
   button {
-    color: var(--button-foreground);
-    background-color: var(--button-background);
+    color: var(--foreground0);
+    background-color: var(--background0);
     font-family: var(--font-family);
     font-size: var(--font-size);
+    line-height: var(--line-height);
     border: none;
-    cursor: pointer;
     padding: 1lh 2ch;
+    height: 3lh;
+
+    &[size-="tiny"] {
+      height: 1lh;
+      padding: 0 0;
+    }
+
+    &[size-="small"] {
+      height: 1lh;
+      padding: 0 1ch;
+    }
   }
 }

@@ -1,4 +1,5 @@
 ---
+import "./Sidebar.css";
 import { join } from "path";
 import { getCollection } from "astro:content";
 
@@ -39,10 +40,16 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
   else if (inOrderB) return 1;
   else return 0;
 });
+
+const { pathname: urlPath } = Astro.url;
 ---
 
-<nav box-="square contain:!top">
+<nav box-="square contain:!top" id="sidebar">
   <div><span is-="badge">Documentation</span></div>
+
+  <div space-="px:1" flex-="row" id="filter-container" class="hidden">
+    <input id="filter-input" flex-="grow" placeholder="Filter" />
+  </div>
 
   <div id="category-container">
     <div id="category-list">
@@ -51,9 +58,18 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
           <details open>
             <summary>{slug}</summary>
             <ul>
-              {pages.map((page) => (
-                <a href={join("/docs", page.id)}>{page.data.title}</a>
-              ))}
+              {pages.map((page) => {
+                const path = join("/", page.id);
+                return (
+                  <a
+                    href={path}
+                    class={urlPath === path ? "active" : ""}
+                    data-slug={page.id}
+                  >
+                    {page.data.title}
+                  </a>
+                );
+              })}
             </ul>
           </details>
         ))
@@ -64,138 +80,117 @@ const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
   <div box-="square contain:!top" id="keybind-container">
     <span is-="badge">Shortcuts</span>
     <ul marker-="none" space-="p:1">
-      <li><code>&lt;C-b&gt;</code> focus sidebar</li>
-      <li><code>↓/j</code> move down</li>
-      <li><code>↑/k</code> move up</li>
-      <li><code>?</code> show more</li>
+      <li><code>h</code> focus sidebar</li>
+      <li><code>j</code> move down</li>
+      <li><code>k</code> move up</li>
+      <li><code>l</code> focus content</li>
+      <li><code>/</code> filter</li>
     </ul>
   </div>
 </nav>
 
-<style>
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-    max-width: 32ch;
-    overflow: hidden;
-    width: 100%;
-    --box-border-color: var(--background1);
-
-    &:focus-within {
-      --box-border-color: var(--foreground2);
-    }
-
-    #category-container {
-      position: relative;
-      flex-grow: 1;
-    }
-
-    #category-list {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1lh;
-      padding: 0 1ch;
-      overflow-y: auto;
-    }
-
-    #keybind-container {
-      --box-border-color: var(--background1);
-    }
-  }
-
-  ul > a[href] {
-    color: var(--foreground2);
-    text-decoration: none;
-    outline: none;
-    display: list-item;
-
-    &::before {
-      content: "├ ";
-    }
-
-    &:last-of-type::before {
-      content: "└ ";
-    }
-
-    &::highlight(vim) {
-      background-color: var(--foreground0);
-      color: var(--background0);
-    }
-
-    &.active {
-      color: var(--sky);
-      background-color: var(--background1);
-    }
-
-    &:focus > li {
-      background-color: var(--background1);
-    }
-  }
-
-  summary::highlight(vim) {
-    background-color: var(--foreground0);
-    color: var(--background0);
-  }
-</style>
-
+<!-- Vim Navigation -->
 <script>
-  import { applyVimCursorHighlight } from "@/utils/vim";
+  import { applyVimNavigation, isUserTyping } from "@/utils/vim";
 
-  let currentElement: HTMLElement | null = null;
-  const locationPath = window.location.pathname;
-  const pageLinkElement = document.querySelector(
-    `ul > a[href="${locationPath}"]`,
-  ) as HTMLAnchorElement;
-  const focusableElements: NodeListOf<HTMLElement> = document.querySelectorAll(
-    "details[open] a, summary",
+  let currentElement: HTMLElement | null = document.querySelector(
+    `ul > a[href="${window.location.pathname}"]`,
   );
-
-  document
-    .querySelectorAll(`ul > a[href]`)
-    .forEach((el) => el.classList.remove("active"));
-  pageLinkElement.classList.add("active");
 
   window.addEventListener("keydown", (e) => {
-    if (e.key === "b" && e.ctrlKey) {
-      const elementToFocus = currentElement ?? pageLinkElement;
+    // Don't navigate if the user is typing
+    if (isUserTyping()) {
+      return;
+    }
 
-      elementToFocus.focus();
+    if (e.key === "h") {
+      const elementToFocus = currentElement ?? null;
+
+      if (elementToFocus) {
+        elementToFocus.focus();
+      }
     }
   });
 
-  document.querySelector("nav")?.addEventListener("keydown", (e) => {
-    const currentIndex = Array.from(focusableElements).indexOf(
-      document.activeElement as HTMLElement,
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar) {
+    applyVimNavigation(
+      sidebar,
+      "details:not(.hidden)[open] a:not(.hidden), details:not(.hidden) summary",
+      (element) => {
+        currentElement = element;
+      },
     );
+  }
+</script>
 
-    if (e.key === "j" || e.key === "ArrowDown") {
+<!-- Filter -->
+<script>
+  import { applyVimCursorHighlight, isUserTyping } from "@/utils/vim";
+
+  const sidebar = document.getElementById("sidebar") as HTMLElement;
+  const filterInput = document.getElementById(
+    "filter-input",
+  ) as HTMLInputElement;
+  const filterContainer = document.getElementById(
+    "filter-container",
+  ) as HTMLDivElement;
+
+  sidebar.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
+
+    if (e.key === "/") {
       e.preventDefault();
-      const nextActiveElement =
-        focusableElements[(currentIndex + 1) % focusableElements.length];
-
-      nextActiveElement.focus();
-    }
-
-    if (e.key === "k" || e.key === "ArrowUp") {
-      e.preventDefault();
-      const nextActiveElement =
-        focusableElements[
-          (currentIndex - 1 + focusableElements.length) %
-            focusableElements.length
-        ];
-
-      nextActiveElement.focus();
+      filterContainer.classList.remove("hidden");
+      filterInput.focus();
     }
   });
 
-  focusableElements.forEach((el) =>
-    el.addEventListener("focus", () => {
-      el.scrollIntoView({ block: "nearest", inline: "nearest" });
-      applyVimCursorHighlight(el);
-      currentElement = el;
-    }),
-  );
+  filterInput.addEventListener("input", () => {
+    const value = filterInput.value.trim();
+
+    const focusableLinks = document.querySelectorAll("details a");
+
+    focusableLinks.forEach((element) => {
+      element.classList.remove("hidden");
+
+      if (element.getAttribute("data-slug")?.includes(value.toLowerCase()))
+        return;
+
+      element.classList.add("hidden");
+    });
+
+    const details = document.querySelectorAll("details");
+
+    details.forEach((detail) => {
+      detail.classList.remove("hidden");
+
+      const links = Array.from(detail.querySelectorAll("a"));
+
+      if (links.every((link) => link.classList.contains("hidden"))) {
+        detail.classList.add("hidden");
+      }
+    });
+  });
+
+  filterInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || e.key === "Enter") {
+      e.preventDefault();
+
+      const visibleFocusableElements: NodeListOf<HTMLElement> =
+        document.querySelectorAll(`details:not(.hidden)[open] a:not(.hidden)`);
+
+      if (visibleFocusableElements.length > 0) {
+        const [elementToFocus] = visibleFocusableElements;
+
+        elementToFocus.focus();
+        elementToFocus.scrollIntoView({ block: "nearest", inline: "nearest" });
+        applyVimCursorHighlight(elementToFocus);
+      }
+
+      if (filterInput.value.trim() === "") {
+        filterContainer.classList.add("hidden");
+      }
+    }
+  });
 </script>

@@ -31,7 +31,7 @@ How about a paragraph with a [link](https://example.com)?
 
 And a paragraph with `inline code`, which should not be focusable
 
-```python
+```python title="asdf.py"
 # Comment showing different elements
 
 # Numbers and operators

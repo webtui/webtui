@@ -1,19 +1,7 @@
 @layer components {
-  @property --badge-background {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--foreground0);
-  }
-
-  @property --badge-foreground {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--background0);
-  }
-
   [is-="badge"] {
-    color: var(--badge-foreground, var(--foreground0));
-    background-color: var(--badge-background, var(--background0));
+    color: var(--foreground0);
+    background-color: var(--background0);
     padding: 0 1ch;
   }
 }
