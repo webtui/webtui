@@ -37,7 +37,7 @@ const { frontmatter } = Astro.props;
 
 <!-- Vim Navigation -->
 <script>
-  import { applyVimNavigation, isUserTyping } from "@/utils/vim";
+  import { applyVimNavigation, isUserTyping, vimFocusElement } from "@/utils/vim";
 
   const vimTabbableElements: NodeListOf<HTMLElement> =
     document.querySelectorAll('#main-content [tabindex="0"]');
@@ -62,7 +62,7 @@ const { frontmatter } = Astro.props;
         currentElement ?? findFirstFocusableElement() ?? null;
 
       if (elementToFocus) {
-        elementToFocus.focus();
+        vimFocusElement(elementToFocus);
       }
     }
   });

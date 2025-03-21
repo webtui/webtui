@@ -91,7 +91,7 @@ const { pathname: urlPath } = Astro.url;
 
 <!-- Vim Navigation -->
 <script>
-  import { applyVimNavigation, isUserTyping } from "@/utils/vim";
+  import { applyVimNavigation, isUserTyping, vimFocusElement } from "@/utils/vim";
 
   let currentElement: HTMLElement | null = document.querySelector(
     `ul > a[href="${window.location.pathname}"]`,
@@ -107,7 +107,7 @@ const { pathname: urlPath } = Astro.url;
       const elementToFocus = currentElement ?? null;
 
       if (elementToFocus) {
-        elementToFocus.focus();
+        vimFocusElement(elementToFocus);
       }
     }
   });
@@ -126,7 +126,7 @@ const { pathname: urlPath } = Astro.url;
 
 <!-- Filter -->
 <script>
-  import { applyVimCursorHighlight, isUserTyping } from "@/utils/vim";
+  import { applyVimCursorHighlight, isUserTyping, vimFocusElement } from "@/utils/vim";
 
   const sidebar = document.getElementById("sidebar") as HTMLElement;
   const filterInput = document.getElementById(
@@ -183,9 +183,7 @@ const { pathname: urlPath } = Astro.url;
       if (visibleFocusableElements.length > 0) {
         const [elementToFocus] = visibleFocusableElements;
 
-        elementToFocus.focus();
-        elementToFocus.scrollIntoView({ block: "nearest", inline: "nearest" });
-        applyVimCursorHighlight(elementToFocus);
+        vimFocusElement(elementToFocus);
       }
 
       if (filterInput.value.trim() === "") {

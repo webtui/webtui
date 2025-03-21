@@ -36,6 +36,12 @@ export function applyVimCursorHighlight(element: HTMLElement) {
   CSS.highlights.set("vim", hi);
 }
 
+export function vimFocusElement(element: HTMLElement) {
+  element.focus();
+  element.scrollIntoView({ block: "nearest", inline: "nearest" });
+  applyVimCursorHighlight(element);
+}
+
 // Adds vim-like navigation to an element
 export function applyVimNavigation(
   element: HTMLElement,
@@ -53,39 +59,36 @@ export function applyVimNavigation(
       document.activeElement as HTMLElement,
     );
 
-    function navigateToElement(element: HTMLElement) {
-      element.focus();
-      element.scrollIntoView({ block: "nearest", inline: "nearest" });
-      applyVimCursorHighlight(element);
-      onElementFocus?.(element);
-    }
-
     if (e.key === "j" || e.key === "ArrowDown") {
       const nextActiveElement =
         vimTabbableElements[
-          Math.min(currentIndex + 1, vimTabbableElements.length - 1)
+        Math.min(currentIndex + 1, vimTabbableElements.length - 1)
         ];
 
-      navigateToElement(nextActiveElement);
+      vimFocusElement(nextActiveElement);
+      onElementFocus?.(nextActiveElement);
     }
 
     if (e.key === "k" || e.key === "ArrowUp") {
       const nextActiveElement =
         vimTabbableElements[Math.max(currentIndex - 1, 0)];
 
-      navigateToElement(nextActiveElement);
+      vimFocusElement(nextActiveElement);
+      onElementFocus?.(nextActiveElement);
     }
 
     if (e.key === "G") {
       const lastElement = vimTabbableElements[vimTabbableElements.length - 1];
 
-      navigateToElement(lastElement);
+      vimFocusElement(lastElement);
+      onElementFocus?.(lastElement);
     }
 
     if (e.key === "g") {
       const firstElement = vimTabbableElements[0];
 
-      navigateToElement(firstElement);
+      vimFocusElement(firstElement);
+      onElementFocus?.(firstElement);
     }
   });
 }
