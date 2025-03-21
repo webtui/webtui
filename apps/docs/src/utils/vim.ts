@@ -62,7 +62,7 @@ export function applyVimNavigation(
     if (e.key === "j" || e.key === "ArrowDown") {
       const nextActiveElement =
         vimTabbableElements[
-        Math.min(currentIndex + 1, vimTabbableElements.length - 1)
+          Math.min(currentIndex + 1, vimTabbableElements.length - 1)
         ];
 
       vimFocusElement(nextActiveElement);

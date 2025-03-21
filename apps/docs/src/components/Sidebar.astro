@@ -59,7 +59,7 @@ const { pathname: urlPath } = Astro.url;
             <summary>{slug}</summary>
             <ul>
               {pages.map((page) => {
-                const path = join("/", page.id);
+                const path = `/${page.id}`;
                 return (
                   <a
                     href={path}
@@ -91,10 +91,14 @@ const { pathname: urlPath } = Astro.url;
 
 <!-- Vim Navigation -->
 <script>
-  import { applyVimNavigation, isUserTyping, vimFocusElement } from "@/utils/vim";
+  import {
+    applyVimNavigation,
+    isUserTyping,
+    vimFocusElement,
+  } from "@/utils/vim";
 
   let currentElement: HTMLElement | null = document.querySelector(
-    `ul > a[href="${window.location.pathname}"]`,
+    `ul > a.active`,
   );
 
   window.addEventListener("keydown", (e) => {
@@ -126,7 +130,7 @@ const { pathname: urlPath } = Astro.url;
 
 <!-- Filter -->
 <script>
-  import { applyVimCursorHighlight, isUserTyping, vimFocusElement } from "@/utils/vim";
+  import { isUserTyping, vimFocusElement } from "@/utils/vim";
 
   const sidebar = document.getElementById("sidebar") as HTMLElement;
   const filterInput = document.getElementById(
