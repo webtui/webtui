@@ -1,6 +1,6 @@
 ---
+import { compareUrlPaths } from "@/utils/url";
 import "./Sidebar.css";
-import { join } from "path";
 import { getCollection } from "astro:content";
 
 // order of documentation categories
@@ -63,7 +63,7 @@ const { pathname: urlPath } = Astro.url;
                 return (
                   <a
                     href={path}
-                    class={urlPath === path ? "active" : ""}
+                    class={compareUrlPaths(urlPath, page.id) ? "active" : ""}
                     data-slug={page.id}
                   >
                     {page.data.title}
