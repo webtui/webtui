@@ -46,6 +46,11 @@
     gap: 1lh;
     padding: 0 1ch;
     overflow-y: auto;
+    color: var(--foreground1);
+
+    strong {
+      color: var(--foreground0);
+    }
 
     [tabindex="0"] {
       outline: none;

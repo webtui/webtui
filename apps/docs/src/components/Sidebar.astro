@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 
 // order of documentation categories
 // if a category is not included in the array, it will be moved to the end
-const categoryOrder = ["intro", "components", "themes"];
+const categoryOrder = ["start", "components", "themes"];
 
 const docPages = await getCollection("docs");
 const cats: Map<string, typeof docPages> = new Map();

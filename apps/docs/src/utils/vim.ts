@@ -1,3 +1,4 @@
+// If the user is typing in an input, textarea, select, or contenteditable element
 export function isUserTyping() {
   return (
     document.activeElement &&
@@ -28,7 +29,6 @@ export function applyVimCursorHighlight(element: HTMLElement) {
 
   const range = new Range();
   range.setStart(textNode, firstNonWhitespace);
-  // Highlight from zero to the first non-whitespace character, or just 1 if none found
   range.setEnd(textNode, firstNonWhitespace + 1);
 
   const hi = new Highlight(range);

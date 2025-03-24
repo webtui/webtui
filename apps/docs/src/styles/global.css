@@ -1,6 +1,6 @@
 @layer base {
   :root {
-    --font-family: "JetBrainsMonoNL NFP", Monaco, monospace;
+    --font-family: "JetBrainsMono NFP", Monaco, monospace !important;
   }
 }
 

@@ -18,7 +18,7 @@ For feature requests please open an issue.
 
 - [ ] Documentation
 - [x] CI
-- [ ] Publish packages to npm, get CDN urls
+- [x] Publish packages to npm, get CDN urls
 - [ ] Contribution guidelines 'n stuff
 - [ ] Add descriptive READMEs to each package, docs
 - [ ] Logo & Branding

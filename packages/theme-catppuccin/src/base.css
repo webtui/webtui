@@ -36,7 +36,7 @@
     --background3: var(--surface2);
 
     --foreground0: var(--text);
-    --foreground1: var(--subtext0);
+    --foreground1: var(--subtext1);
     --foreground2: var(--overlay2);
   }
 
