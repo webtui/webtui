@@ -15,11 +15,11 @@ export default defineConfig({
     shikiConfig: {
       themes: {
         nord: "nord",
-        "catppuccin-mocha": "catppuccin-mocha"
+        "catppuccin-mocha": "catppuccin-mocha",
       },
       defaultColor: "catppuccin-mocha",
-      wrap: true
-    }
+      wrap: true,
+    },
   },
   integrations: [mdx({ extendMarkdownConfig: true })],
 });

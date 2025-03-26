@@ -2,13 +2,18 @@
 @layer components {
   html[data-theme] {
     pre.astro-code {
-      height: unset !important;
+      display: flex !important;
       overflow: unset !important;
       background-color: var(--background1) !important;
+
+      code {
+        overflow: hidden;
+      }
     }
   }
 
   html[data-theme="catppuccin"] {
+
     pre.astro-code,
     pre.astro-code span {
       color: var(--shiki-catppuccin) !important;
@@ -16,9 +21,38 @@
   }
 
   html[data-theme="nord"] {
+
     pre.astro-code,
     pre.astro-code span {
       color: var(--shiki-nord) !important;
+    }
+  }
+}
+
+#doc-pagination {
+  display: flex;
+
+  &:has(> .prev) {
+    justify-content: flex-start;
+  }
+
+  &:has(> .next) {
+    justify-content: flex-end;
+  }
+
+  &:has(> .prev):has(> .next) {
+    justify-content: space-between;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover [box-] {
+      --box-border-color: var(--foreground0);
+    }
+
+    & [box-] {
+      --box-border-color: var(--background2);
     }
   }
 }

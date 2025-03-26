@@ -1,45 +1,9 @@
 ---
 import { compareUrlPaths } from "@/utils/url";
 import "./Sidebar.css";
-import { getCollection } from "astro:content";
+import { makeSortedCategoryEntries } from "@/utils/content";
 
-// order of documentation categories
-// if a category is not included in the array, it will be moved to the end
-const categoryOrder = ["start", "components", "themes"];
-
-const docPages = await getCollection("docs");
-const cats: Map<string, typeof docPages> = new Map();
-
-for (const docPage of docPages) {
-  const [category] = docPage.id.split("/");
-
-  const categoryPages = [...(cats.get(category) || []), docPage];
-
-  cats.set(
-    category,
-    categoryPages
-      .sort((a, b) => a.data.title.localeCompare(b.data.title))
-      .sort((a, b) => {
-        return (
-          (a.data.order ?? categoryPages.length) -
-          (b.data.order ?? categoryPages.length)
-        );
-      }),
-  );
-}
-
-const categories = Array.from(cats.entries()).sort(([catA], [catB]) => {
-  const indexA = categoryOrder.indexOf(catA);
-  const indexB = categoryOrder.indexOf(catB);
-
-  const inOrderA = indexA !== -1;
-  const inOrderB = indexB !== -1;
-
-  if (inOrderA && inOrderB) return indexA - indexB;
-  else if (inOrderA) return -1;
-  else if (inOrderB) return 1;
-  else return 0;
-});
+const categories = makeSortedCategoryEntries();
 
 const { pathname: urlPath } = Astro.url;
 ---

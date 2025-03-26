@@ -1,8 +1,8 @@
 ---
+import "@webtui/css";
+import "@/styles/global.css";
 import "@/styles/flexbox.css";
 import "@/styles/spacing.css";
-import "@/styles/global.css";
-import "@webtui/css";
 ---
 
 <!doctype html>
@@ -10,8 +10,14 @@ import "@webtui/css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@v3.3.0/build/jetbrainsmono.css"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link
       href="https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@v3.3.0/build/jetbrainsmono.css"
       rel="stylesheet"

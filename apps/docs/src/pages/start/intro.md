@@ -4,20 +4,54 @@ title: Introduction
 order: 0
 ---
 
-**WebTUI** is a **CSS library** for building **Terminal-like UIs in the browser**
+**WebTUI** is a **CSS library** that brings the beauty of **Terminal User Interfaces** (TUIs) to the browser
 
-To get started, you must first part with some practices you were taught in web development and embrace the following principles:
+**TUIs** use **ASCII/Unicode characters** to represent UI elements
 
-1. Use a **Monospace Font** in which every character has the same width
-2. Use a consistent font size for everything, **including headers**
-3. Stop thinking of spacing and sizing in standard CSS units like `px, em, rem, %` and start thinking in **character cells**
+**GUIs** instead use **graphical elements** like windows, buttons, inputs, etc
 
-## Units
+To build **Terminal-like UIs** in the browser, you must _part from some standard web development practices_ and **embrace** the following principles:
 
-Let me introduce you to two new CSS units that you will use frequently when building with WebTUI
+1. Use a [Monospace Font](#monospace-fonts)
+2. Use [Character Cells](#character-cells) for spacing, sizing, and positioning
 
-- `ch` is equal to the **ch**aracter width of `0` glyph in the current font [[docs ↗]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#ch)
-- `lh` is equal to the **l**ine **h**eight of the element on which it is used [[docs ↗]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh)
+## Monospace Fonts
+
+In most traditional fonts, some characters (like `i`) are narrower than others (like `w`)
+
+All characters in **Monospace Fonts** occupy the same width
+
+This makes it easier to align characters
+
+It also makes it easier to create ASCII art
+
+```
+         _nnnn_
+        dGGGGMMb
+       @p~qp~~qMb
+       M|@||@) M|
+       @,----.JM|
+      JS^\__/  qKL
+     dZP        qKRb
+    dZP          qKKb
+   fZP            SMMb
+   HZM            MMMM
+   FqM            MMMM
+ __| ".        |\dS"qML
+ |    `.       | `' \Zq
+_)      \.___.,|     .'
+\____   )MMMMMP|   .'
+     `-'       `--' hjm
+```
+
+## Character Cells
+
+When building **Terminal-like UIs**, you will need to stop thinking in standard CSS units like `px, em, rem, %`
+
+Luckily, CSS comes with two units that represent the width and height of a single character cell:
+
+- `ch` is equal to the **ch**aracter width of the `0` glyph in the current font [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#ch)
+- `lh` is equal to the **l**ine **h**eight of the element on which it is used [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh)
 
 Rember that when using a **Monospace font**, _every character has the **same width**_, so `ch` applies for **all characters**
 
@@ -32,4 +66,4 @@ If I were to create a box that is 10 characters wide and 5 lines tall, I would u
 
 ---
 
-Now that you know what rules to break, move on to the [next step](/start/installation) to install and start building with WebTUI
+Now that you understand the differences between building TUIs and GUIs, let's dive in

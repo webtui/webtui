@@ -2,9 +2,23 @@
 import "./Doc.css";
 import Sidebar from "@/components/Sidebar.astro";
 import Layout from "@/layouts/Layout.astro";
+import { makeSortedCategoryEntries } from "@/utils/content";
+import { compareUrlPaths } from "@/utils/url";
 import catppuccinUrl from "@webtui/theme-catppuccin?url";
 
 const { frontmatter } = Astro.props;
+
+const sortedPages = makeSortedCategoryEntries()
+  .map((category) => category[1])
+  .flat(1);
+const pageIndex = sortedPages.findIndex((page) =>
+  compareUrlPaths(page.id, Astro.url.pathname),
+);
+const nextDoc =
+  pageIndex === sortedPages.length - 1
+    ? undefined
+    : sortedPages.at(pageIndex + 1);
+const prevDoc = pageIndex === 0 ? undefined : sortedPages.at(pageIndex - 1);
 ---
 
 <link rel="stylesheet" href={catppuccinUrl} id="theme-stylesheet" />
@@ -22,6 +36,36 @@ const { frontmatter } = Astro.props;
         <div id="scroll-container">
           <main id="main-content">
             <slot />
+            <div id="doc-pagination">
+              {
+                prevDoc && (
+                  <a href={`/${prevDoc.id}`} class="prev">
+                    <div box-="round contain:!top" flex-="col">
+                      <div>
+                        <span is-="badge">← Previous</span>
+                      </div>
+                      <span space-="p:1">
+                        {prevDoc.id.split("/")[0]}/{prevDoc.data.title}
+                      </span>
+                    </div>
+                  </a>
+                )
+              }
+              {
+                nextDoc && (
+                  <a href={`/${nextDoc.id}`} class="next">
+                    <div box-="round contain:!top" flex-="col">
+                      <div flex-="row justify:end">
+                        <span is-="badge">Next →</span>
+                      </div>
+                      <span space-="p:1">
+                        {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
+                      </span>
+                    </div>
+                  </a>
+                )
+              }
+            </div>
           </main>
         </div>
       </article>
@@ -37,7 +81,11 @@ const { frontmatter } = Astro.props;
 
 <!-- Vim Navigation -->
 <script>
-  import { applyVimNavigation, isUserTyping, vimFocusElement } from "@/utils/vim";
+  import {
+    applyVimNavigation,
+    isUserTyping,
+    vimFocusElement,
+  } from "@/utils/vim";
 
   const vimTabbableElements: NodeListOf<HTMLElement> =
     document.querySelectorAll('#main-content [tabindex="0"]');

@@ -69,7 +69,8 @@
   }
 
   hr {
-    height: 1lh;
+    display: block;
+    padding: 0.5lh 0;
     width: 100%;
     border: none;
     background-image: linear-gradient(0deg,
