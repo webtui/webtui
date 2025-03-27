@@ -23,7 +23,7 @@ pnpm install @webtui/css
 
 ## Setup
 
-In your global CSS file, **before** importing the base styles, define the order of layers [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
+In your global CSS file, **before** importing the base styles, define the order of layers using the `@layer` at-rule [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
 
 ```css
 @layer base, utils, components;
@@ -35,7 +35,7 @@ In your global CSS file, **before** importing the base styles, define the order 
 - `utils` consists of utility style rules
 - `components` contains styles for all components
 
-After importing the base styles, you can import specific stylesheets for themes, utils, and components
+After importing the base styles, you can import color themes, utilities, and components
 
 ```diff
 @layer base, utils, components;
@@ -91,7 +91,7 @@ export default function Button(props: Props) {
 
 ## CDN Imports
 
-You can import specific stylesheets via `<link>` tags via CDN if you like thiccc `<head>` tags
+You can import specific stylesheets via `<link>` tags via CDN if you like **thiccc** `<head>` tags
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css/dist/base.css" />
@@ -120,9 +120,9 @@ You can view and access all available stylesheets on the CDN via [JSDelivr](http
 
 ## Full Library Import
 
-WebTUI is bundled in a modular approach so you can import only the parts you need
+WebTUI was designed with a modular approach in mind so you can import only the parts you need
 
-You can import the entire library by just importing the package's base path after defining the order of layers
+For testing, you can import the entire library by just importing the package's base path after defining the order of layers
 
 ```css
 @layer base, utils, components;
@@ -141,5 +141,6 @@ import "@webtui/theme-catppuccin";
 For the CDN, you will have to import `/dist/full.css` instead of the base path
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css@latest/dist/full.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css/dist/full.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/theme-catppuccin/dist/full.css" />
 ```

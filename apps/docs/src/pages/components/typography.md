@@ -1,6 +1,4 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Card
+title: Typography
 ---
-
-lol

@@ -1,6 +1,4 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Checkbox
+title: Details
 ---
-
-lol

@@ -4,7 +4,7 @@ title: Introduction
 order: 0
 ---
 
-**WebTUI** is a **CSS library** that brings the beauty of **Terminal User Interfaces** (TUIs) to the browser
+**WebTUI** is a **modular CSS library** that brings the beauty of **Terminal User Interfaces** (TUIs) to the browser
 
 **TUIs** use **ASCII/Unicode characters** to represent UI elements
 

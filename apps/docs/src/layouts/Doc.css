@@ -37,8 +37,8 @@
 }
 
 div[box-]:has(> .image-caption) {
-  max-width: 480px;
-  max-height: 600px;
+  max-width: 48ch;
+  max-height: 24lh;
   width: 100%;
   display: flex;
   flex-direction: column;

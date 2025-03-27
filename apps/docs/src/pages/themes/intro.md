@@ -1,6 +1,6 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: What are Themes?
+title: Intro to Themes
 order: 0
 ---
 

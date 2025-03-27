@@ -1,7 +1,5 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Textarea
+title: Intro to Components
 order: 0
 ---
-
-lol
