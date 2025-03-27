@@ -1,5 +1,5 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Configuration
+title: Base Config
 order: 0
 ---

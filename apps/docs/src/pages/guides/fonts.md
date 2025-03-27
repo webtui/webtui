@@ -1,5 +1,5 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Font Customization
+title: Custom Fonts
 order: 1
 ---

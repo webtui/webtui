@@ -5,9 +5,16 @@
       display: flex !important;
       overflow: unset !important;
       background-color: var(--background1) !important;
+      position: relative;
 
       code {
         overflow: hidden;
+
+        /* Diff markers */
+        span:has(> span[style*="user-select: none"]) {
+          position: absolute;
+          left: 0;
+        }
       }
     }
   }
@@ -26,6 +33,29 @@
     pre.astro-code span {
       color: var(--shiki-nord) !important;
     }
+  }
+}
+
+div[box-]:has(> .image-caption) {
+  max-width: 480px;
+  max-height: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  --box-border-color: var(--background2);
+
+  & .image-caption {
+    display: flex;
+    & figcaption {
+      background-color: var(--background0);
+      padding: 0 1ch;
+    }
+  }
+
+  & img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
   }
 }
 
