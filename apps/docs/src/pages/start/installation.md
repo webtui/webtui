@@ -8,7 +8,9 @@ It is **highly recommended** that you use **CSS Imports** with **WebTUI**
 
 It's _possible_ to use [ESM imports](#esm-imports) or [CDN imports](#cdn-imports)
 
-You _will still have to write **some CSS**_, so you'd might as well use it, the way God intended
+WebTUI is a **CSS Library** meaning you _will still have to write **some** CSS_
+
+Use it the way God intended
 
 ## Installation
 
@@ -21,9 +23,7 @@ yarn add @webtui/css
 pnpm install @webtui/css
 ```
 
-## Setup
-
-In your global CSS file, **before** importing the base styles, define the order of layers using the `@layer` at-rule [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
+In your global CSS file, define the order of layers using the `@layer` at-rule [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) **before** importing the base stylesheet
 
 ```css
 @layer base, utils, components;
@@ -31,27 +31,19 @@ In your global CSS file, **before** importing the base styles, define the order 
 @import "@webtui/css/base.css";
 ```
 
-- `base` consists of default styles and CSS variables (see [base config](/reference/base-config))
-- `utils` consists of utility style rules
-- `components` contains styles for all components
+After importing the base styles, you can import the desired utilities, components, and themes
 
-After importing the base styles, you can import color themes, utilities, and components
-
-```diff
+```css
 @layer base, utils, components;
 
 @import "@webtui/css/base.css";
 
-+/* Utils */
-+@import "@webtui/css/utils/box.css";
-+
-+/* Components */
-+@import "@webtui/css/components/button.css";
-+@import "@webtui/css/components/input.css";
-+@import "@webtui/css/components/typography.css";
-+
-+/* Theme */
-+@import "@webtui/theme-catppuccin";
+/* Utils */
+@import "@webtui/css/utils/box.css"; /*[!code ++]*/
+
+/* Components */
+@import "@webtui/css/components/button.css"; /*[!code ++]*/
+@import "@webtui/css/components/typography.css"; /*[!code ++]*/
 ```
 
 Add some HTML
@@ -71,9 +63,28 @@ Add some HTML
 </div>
 ```
 
-Now your website should look **awesome**
+You should see a significant upgrade from standard HTML styles
 
 ![installation-html.png](../../assets/installation-html.png)
+
+Finally, import a theme stylesheet **after** all the `@webtui/css` imports
+
+```css
+@layer base, utils, components;
+
+@import "@webtui/css/base.css";
+
+/* Utils */
+@import "@webtui/css/utils/box.css";
+
+/* Components */
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/typography.css";
+
+@import "@webtui/theme-catppuccin"; /*[!code ++]*/
+```
+
+![installation-html-catppuccin.png](../../assets/installation-html-catppuccin.png)
 
 ## ESM Imports
 
@@ -82,10 +93,12 @@ Although a huge [soyjack](https://knowyourmeme.com/editorials/guides/who-is-soyj
 ```tsx
 import "@webtui/css/components/button.css";
 
-type Props = {/* ... */};
+type Props = {
+  /* ... */
+};
 
 export default function Button(props: Props) {
-    return <button>{props.children}</button>;
+  return <button>{props.children}</button>;
 }
 ```
 
@@ -94,13 +107,19 @@ export default function Button(props: Props) {
 You can import specific stylesheets via `<link>` tags via CDN if you like **thiccc** `<head>` tags
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css/dist/base.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@webtui/css/dist/base.css"
+/>
 ```
 
 To import a specific version, add `@<version>` to the CDN URL after `/@webtui/css`
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/base.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/base.css"
+/>
 ```
 
 Although not recommended, you can just use the latest version of WebTUI by using the `@latest` tag for the version.
@@ -111,8 +130,14 @@ Although not recommended, you can just use the latest version of WebTUI by using
 <style>
   @layer base, utils, components;
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/base.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/components/button.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/base.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/components/button.css"
+/>
 <!-- ... -->
 ```
 
@@ -120,27 +145,29 @@ You can view and access all available stylesheets on the CDN via [JSDelivr](http
 
 ## Full Library Import
 
-WebTUI was designed with a modular approach in mind so you can import only the parts you need
+WebTUI was designed with a **modular approach** in which you import only the parts you need
 
-For testing, you can import the entire library by just importing the package's base path after defining the order of layers
+For testing purposes, you can import the entire library by importing the package directly
+
+Make sure to do this **after** defining the order of layers
 
 ```css
 @layer base, utils, components;
 
 @import "@webtui/css";
-@import "@webtui/theme-catppuccin";
 ```
 
 ESM Imports are almost identical to CSS imports
 
 ```js
 import "@webtui/css";
-import "@webtui/theme-catppuccin";
 ```
 
-For the CDN, you will have to import `/dist/full.css` instead of the base path
+For the CDN, import `/dist/full.css` instead of the base path
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/css/dist/full.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@webtui/theme-catppuccin/dist/full.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@webtui/css/dist/full.css"
+/>
 ```

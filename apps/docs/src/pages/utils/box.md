@@ -8,23 +8,7 @@ The **Box** utility utilizes CSS `::before` and `::after` pseudo-elements to mim
 
 Below is an example of what you can do with the box utility:
 
-<div flex-="row">
-    <div box-="square contain:none" flex-="col">
-        <div flex-="row justify:between">
-            <span is-="badge">top-left</span>
-            <span is-="badge">top-right</span>
-        </div>
-        <div space-="p:1">Lorem ipsum dolor sit amet idk i dont speak French</div>
-        <div flex-="row justify:end gap:1" space-="px:1">
-            <button variant-="secondary" box-="round">Cancel</button>
-            <button box-="round">Ok</button>
-        </div>
-        <div flex-="row justify:between">
-            <span is-="badge">bottom-left</span>
-            <span is-="badge">bottom-right</span>
-        </div>
-    </div>
-</div>
+![box-demo.png](../../assets/box-demo.png)
 
 ## Usage
 
@@ -38,15 +22,11 @@ Add the `box-` attribute to any HTML element that supports pseudo-elements
 
 ```html
 <div box-="square">
-    <h1>Hi Mom</h1>
+  <h1>Hi Mom</h1>
 </div>
 ```
 
-<div flex-="row">
-    <div box-="square">
-        <h1>Hi Mom</h1>
-    </div>
-</div>
+![box-hi-mom.png](../../assets/box-hi-mom.png)
 
 **Important**: The `box-` utility is **suffixed** with a **dash** (`-`). Using `box="..."` **will not work**
 
@@ -55,50 +35,42 @@ Add the `box-` attribute to any HTML element that supports pseudo-elements
 The box utility supports three different border types:
 
 ```html
-<div box-="square"></div>
-<div box-="round"></div>
-<div box-="double"></div>
+<div box-="square">Square</div>
+<div box-="round">Round</div>
+<div box-="double">Double</div>
 ```
 
-<div flex-="row wrap gap:1">
-    <div box-="square"><code>box-="square"</code></div>
-    <div box-="round"><code>box-="round"</code></div>
-    <div box-="double"><code>box-="double"</code></div>
-</div>
+![box-types.png](../../assets/box-types.png)
 
 ## Containment
 
 You can choose whether to contain the top and/or bottom lines of the box by adding a containment keyword to the `box-` attribute
 
-- `box-="<type> contain:!top"` will **not** contain the top line
-- `box-="<type> contain:!bottom"` will **not** contain the bottom line
-- `box-="<type> contain:none"` will **not** contain the top or bottom lines
+- `box-="<type> contain:!top"` will **not** contain the **top** line
+- `box-="<type> contain:!bottom"` will **not** contain the **bottom** line
+- `box-="<type> contain:none"` will **not** contain the _**top** or **bottom**_ lines
 
 Take a moment and observe the screenshot below
 
 - Highlighted in **<span style="color: var(--blue)">blue</span>** is the **content** of the box
 - Highlighted in **<span style="color: var(--green)">green</span>** is the **padding** of the box
+- The box border lines are constructed with the CSS `::before` and `::after` pseudo-elements
+- The box border lines appear **behind** the content within the `<div box-="*">` element
 
 ![box-containment.png](../../assets/box-containment.png)
 
-The box border lines are constructed with the CSS `::before` and `::after` pseudo-elements and are layered **behind** the content, as you can see in the screenshot above
+Check out the [Box Captions](/guides/box-captions) guide if you want to learn how to add captions to the top and/or bottom lines of your boxes...
 
-### Creating a Caption
-
-The following screenshot breaks down the layers of making a caption appear to be in the top or bottom row of a box
-
-- The box has `contain:!top` set to specifically **not** contain the top line
-- The top line serves as the caption
-- The top line is a `<div>` that contains a `<span>` element with the text "One"
-
-In the colored example, the `<div>` on the first line is colored
-In the uncolored example, the `<span>` containing the text "One" is colored the same as the background
-
-![box-caption.png](../../assets/box-caption.png)
+<div flex-="row">
+<div box-="square contain:!top">
+    <div><span is-="badge">...Like this</span></div>
+    <div space-="px:1"><a href="/guides/box-captions">Box Captions Guide</a></div>
+</div>
+</div>
 
 ## Custom Properties
 
-Elements with the `box-` attribute can be customized several custom CSS properties [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)
+Elements with the `box-` attribute can be customized via **Custom CSS properties** [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)
 
 ### `--box-border-color`
 
@@ -109,9 +81,9 @@ The border color of the box
 
 ```html
 <style>
-#my-box {
-  --box-border-color: red;
-}
+  #my-box {
+    --box-border-color: red;
+  }
 </style>
 
 <div box-="square" id="my-box"></div>
@@ -126,9 +98,9 @@ The border radius of the `round` boxes
 
 ```html
 <style>
-#my-box {
-  --box-rounded-radius: 10px;
-}
+  #my-box {
+    --box-rounded-radius: 10px;
+  }
 </style>
 
 <div box-="round" id="my-box"></div>
@@ -143,9 +115,9 @@ The border width for `square` and `round` boxes
 
 ```html
 <style>
-#my-box {
-  --box-border-width: 10px;
-}
+  #my-box {
+    --box-border-width: 10px;
+  }
 </style>
 
 <div box-="square" id="my-box"></div>
@@ -160,7 +132,8 @@ The width of boxes with `double` borders
 
 ```html
 <style>
-#my-box {
-  --box-double-border-width: 10px;
-}
+  #my-box {
+    --box-double-border-width: 10px;
+  }
 </style>
+```

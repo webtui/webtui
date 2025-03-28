@@ -33,18 +33,20 @@ export function makeCategoryMap() {
 
 export function makeSortedCategoryEntries() {
   const categoryMap = makeCategoryMap();
-  const categories = Array.from(categoryMap.entries()).sort(([catA], [catB]) => {
-    const indexA = categoryOrder.indexOf(catA);
-    const indexB = categoryOrder.indexOf(catB);
+  const categories = Array.from(categoryMap.entries()).sort(
+    ([catA], [catB]) => {
+      const indexA = categoryOrder.indexOf(catA);
+      const indexB = categoryOrder.indexOf(catB);
 
-    const inOrderA = indexA !== -1;
-    const inOrderB = indexB !== -1;
+      const inOrderA = indexA !== -1;
+      const inOrderB = indexB !== -1;
 
-    if (inOrderA && inOrderB) return indexA - indexB;
-    else if (inOrderA) return -1;
-    else if (inOrderB) return 1;
-    else return 0;
-  });
+      if (inOrderA && inOrderB) return indexA - indexB;
+      else if (inOrderA) return -1;
+      else if (inOrderB) return 1;
+      else return 0;
+    },
+  );
 
   return categories;
 }

@@ -2,58 +2,33 @@
   @layer base, utils, components;
 
   @import "@webtui/css/base.css";
-  @import "../styles/global.css";
-  @import "../styles/flexbox.css";
-  @import "../styles/spacing.css";
 
   /* Utils */
   @import "@webtui/css/utils/box.css";
-
-  /* Components */
-  @import "@webtui/css/components/button.css";
-  @import "@webtui/css/components/input.css";
   @import "@webtui/css/components/typography.css";
+  @import "@webtui/css/components/badge.css";
+  @import "@webtui/css/components/button.css";
 
-  /* Theme */
-  /* @import "@webtui/theme-catppuccin"; */
-
-  .content {
-    background-color: rgba(200, 200, 255, 0.8);
-  }
-
-  [box-~="square"]:not([box-~="wat"]) {
-    background-color: lightgreen;
-  }
-
-  .caption {
-    display: flex;
-    background-color: rgba(255, 0, 0, 0.2);
-
-    span {
-      background-color: rgb(255, 75, 25);
-      padding: 0 1ch;
-    }
-  }
+  @import "../styles/flexbox.css";
+  @import "../styles/spacing.css";
 </style>
 
-<div flex-="col gap:1" style="max-width: 48ch;">
-  <div>
-    <code>Colors to show layers</code>
-    <div box-="square contain:!top">
-      <div class="content">
-        <div class="caption"><span>One</span></div>
-        Two<br />Three
-      </div>
+<div flex-="row">
+<div space-="p:1">
+    <div box-="square contain:none" flex-="col">
+        <div flex-="row justify:between">
+            <span is-="badge">top-left</span>
+            <span is-="badge">top-right</span>
+        </div>
+        <div space-="p:1">Lorem ipsum dolor sit amet idk i dont speak French</div>
+        <div flex-="row justify:end gap:1" space-="px:1">
+            <button variant-="secondary" box-="round">Cancel</button>
+            <button box-="round">Ok</button>
+        </div>
+        <div flex-="row justify:between">
+            <span is-="badge">bottom-left</span>
+            <span is-="badge">bottom-right</span>
+        </div>
     </div>
-  </div>
-
-  <div>
-    <code>Same as background</code>
-    <div box-="square contain:!top wat">
-      <div>
-        <div flex-="row"><span style="background-color: white; padding: 0 1ch;">One</span></div>
-        Two<br />Three
-      </div>
-    </div>
-  </div>
+</div>
 </div>
