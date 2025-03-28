@@ -4,18 +4,27 @@ title: Introduction
 order: 0
 ---
 
-**WebTUI** is a **modular CSS library** that brings the beauty of **Terminal User Interfaces** (TUIs) to the browser
+**WebTUI** is a **CSS library** that brings the beauty of **Terminal User Interfaces** (TUIs) to the browser
 
-**TUIs** use **ASCII/Unicode characters** to represent UI elements
+## Features
 
-**GUIs** instead use **graphical elements** like windows, buttons, inputs, etc
+- **Modular Design Approach** - Use and import only what you need
+- **Themable** - Import and create custom themes on top of the base styles
+- **CSS Layer Precedence** - Uses CSS layers [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) so you don't have to overuse `!important`
+- **Purist Approach** - Designed to be used with minimal markup and CSS
 
-To build **Terminal-like UIs** in the browser, you must _part from some standard web development practices_ and **embrace** the following principles:
+## TUIs vs GUIs
 
-1. Use a [Monospace Font](#monospace-fonts)
-2. Use [Character Cells](#character-cells) for spacing, sizing, and positioning
+**Terminal UIs** (TUIs) use **ASCII/Unicode characters** to represent UI elements
 
-## Monospace Fonts
+**Graphical UIs** (GUIs) instead use **graphical elements** like windows, buttons, inputs, etc
+
+To build **Terminal-like UIs**, you will need to
+
+- Use a [Monospace Font](#monospace-fonts)
+- Start thinking in [Character Cells](#character-cells) for spacing, sizing, and positioning
+
+### Monospace Fonts
 
 In most traditional fonts, some characters (like `i`) are narrower than others (like `w`)
 
@@ -44,11 +53,13 @@ _)      \.___.,|     .'
      `-'       `--' hjm
 ```
 
-## Character Cells
+### Character Cells
 
-When building **Terminal-like UIs**, you will need to stop thinking in standard CSS units like `px, em, rem, %`
+Stop thinking in standard CSS units like `px, em, rem, %`
 
-Luckily, CSS comes with two units that represent the width and height of a single character cell:
+Start thinking in **Character Cells** for spacing, sizing, and positioning
+
+CSS comes with two units that represent the width and height of a single **character cell**:
 
 - `ch` is equal to the **ch**aracter width of the `0` glyph in the current font [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#ch)
 - `lh` is equal to the **l**ine **h**eight of the element on which it is used [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh)

@@ -1,6 +1,6 @@
 @layer base {
   :root {
-    --font-family: "JetBrainsMono NFP", Monaco, monospace !important;
+    --font-family: "JetBrainsMono NFM", Menlo, Monaco, monospace;
     --font-size: 18px;
     --line-height: 1.3;
   }

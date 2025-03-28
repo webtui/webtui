@@ -1,3 +1,137 @@
+#mobile-nav {
+  --box-border-color: var(--background1);
+  display: none;
+}
+
+#sidebar-container {
+  display: flex;
+  max-width: 32ch;
+  width: 100%;
+}
+
+#scroll-container {
+  position: relative;
+  flex-grow: 1;
+
+  #main-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    padding: 1lh 1ch;
+    overflow-y: auto;
+    color: var(--foreground1);
+
+    strong {
+      color: var(--foreground0);
+    }
+
+    [tabindex="0"] {
+      outline: none;
+
+      &:focus {
+        background-color: var(--background1);
+      }
+
+      &::highlight(vim) {
+        background-color: var(--foreground0);
+        color: var(--background0);
+      }
+    }
+
+    #doc-pagination {
+      display: flex;
+
+      &:has(> .prev) {
+        justify-content: flex-start;
+      }
+
+      &:has(> .next) {
+        justify-content: flex-end;
+      }
+
+      &:has(> .prev):has(> .next) {
+        justify-content: space-between;
+      }
+
+      a {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+
+        &:hover [box-] {
+          --box-border-color: var(--foreground0);
+        }
+
+        & [box-] {
+          --box-border-color: var(--background2);
+        }
+      }
+    }
+  }
+}
+
+#contents {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2ch;
+  padding-right: 1ch;
+  position: relative;
+  isolation: isolate;
+  --box-border-color: var(--background2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(0.5ch - var(--box-border-width) / 2);
+    width: var(--box-border-width);
+    height: 100%;
+    background-color: var(--background2);
+  }
+
+  .content-link {
+    color: var(--foreground2);
+
+    &:hover {
+      color: var(--foreground0);
+    }
+  }
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  --box-border-color: var(--background1);
+
+  &:focus-within {
+    --box-border-color: var(--foreground1);
+  }
+}
+
+@media (max-width: 96ch) {
+  #sidebar-container {
+    max-width: 100%;
+  }
+
+  #mobile-nav {
+    display: flex;
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 148ch) {
+  #contents {
+    display: none;
+  }
+}
+
 /* Syntax Highlighting */
 @layer components {
   html[data-theme] {
@@ -46,6 +180,7 @@ div[box-]:has(> .image-caption) {
 
   & .image-caption {
     display: flex;
+
     & figcaption {
       background-color: var(--background0);
       padding: 0 1ch;
@@ -56,103 +191,5 @@ div[box-]:has(> .image-caption) {
     object-fit: contain;
     width: 100%;
     height: 100%;
-  }
-}
-
-#doc-pagination {
-  display: flex;
-
-  &:has(> .prev) {
-    justify-content: flex-start;
-  }
-
-  &:has(> .next) {
-    justify-content: flex-end;
-  }
-
-  &:has(> .prev):has(> .next) {
-    justify-content: space-between;
-  }
-
-  a {
-    text-decoration: none;
-
-    &:hover [box-] {
-      --box-border-color: var(--foreground0);
-    }
-
-    & [box-] {
-      --box-border-color: var(--background2);
-    }
-  }
-}
-
-#mobile-nav {
-  --box-border-color: var(--background1);
-  display: none;
-}
-
-#sidebar-container {
-  display: flex;
-  max-width: 32ch;
-  width: 100%;
-}
-
-#scroll-container {
-  position: relative;
-  flex-grow: 1;
-
-  #main-content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-    padding: 0 1ch;
-    overflow-y: auto;
-    color: var(--foreground1);
-
-    strong {
-      color: var(--foreground0);
-    }
-
-    [tabindex="0"] {
-      outline: none;
-
-      &:focus {
-        background-color: var(--background1);
-      }
-
-      &::highlight(vim) {
-        background-color: var(--foreground0);
-        color: var(--background0);
-      }
-    }
-  }
-}
-
-article {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 1lh;
-  --box-border-color: var(--background1);
-
-  &:focus-within {
-    --box-border-color: var(--foreground1);
-  }
-}
-
-@media (max-width: 96ch) {
-  #sidebar-container {
-    max-width: 100%;
-  }
-
-  #mobile-nav {
-    display: flex;
-  }
-
-  .mobile-hidden {
-    display: none !important;
   }
 }

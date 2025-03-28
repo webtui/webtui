@@ -14,7 +14,7 @@
 
     --font-weight-bold: 700;
     --font-weight-normal: 400;
-    --font-family: Monaco, monospace;
+    --font-family: Menlo, Monaco, Consolas, monospace;
   }
 
   body,

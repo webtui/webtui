@@ -45,6 +45,7 @@ For feature requests please open an issue.
 - [ ] select
 - [ ] details
 - [ ] typography
+  - [ ] separator / hr
 - [ ] tooltip (hover)
 - [ ] misc
   - [x] badge ([is-="badge"])

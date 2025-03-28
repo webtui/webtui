@@ -6,7 +6,7 @@ import { makeSortedCategoryEntries } from "@/utils/content";
 import { compareUrlPaths } from "@/utils/url";
 import catppuccinUrl from "@webtui/theme-catppuccin?url";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 
 const sortedPages = makeSortedCategoryEntries()
   .map((category) => category[1])
@@ -19,6 +19,25 @@ const nextDoc =
     ? undefined
     : sortedPages.at(pageIndex + 1);
 const prevDoc = pageIndex === 0 ? undefined : sortedPages.at(pageIndex - 1);
+
+const headers: Array<
+  Array<{
+    depth: number;
+    text: string;
+    slug: string;
+  }>
+> = [[]];
+
+let currentDepth = headings[0].depth;
+
+for (const heading of headings) {
+  if (heading.depth === currentDepth) {
+    headers.at(-1)?.push(heading);
+  } else {
+    headers.push([heading]);
+    currentDepth = heading.depth;
+  }
+}
 ---
 
 <link rel="stylesheet" href={catppuccinUrl} id="theme-stylesheet" />
@@ -33,40 +52,68 @@ const prevDoc = pageIndex === 0 ? undefined : sortedPages.at(pageIndex - 1);
         <header flex-="row justify:between">
           <div is-="badge"><h1>{frontmatter.title}</h1></div>
         </header>
-        <div id="scroll-container">
-          <main id="main-content">
-            <slot />
-            <div id="doc-pagination">
-              {
-                prevDoc && (
-                  <a href={`/${prevDoc.id}`} class="prev">
-                    <div box-="round contain:!top" flex-="col">
+        <div flex-="row gap:1 grow">
+          <div id="scroll-container">
+            <main id="main-content">
+              <slot />
+              <div id="doc-pagination">
+                {
+                  prevDoc && (
+                    <a
+                      href={`/${prevDoc.id}`}
+                      class="prev"
+                      box-="round contain:!top"
+                    >
                       <div>
                         <span is-="badge">← Previous</span>
                       </div>
                       <span space-="p:1">
                         {prevDoc.id.split("/")[0]}/{prevDoc.data.title}
                       </span>
-                    </div>
-                  </a>
-                )
-              }
-              {
-                nextDoc && (
-                  <a href={`/${nextDoc.id}`} class="next">
-                    <div box-="round contain:!top" flex-="col">
+                    </a>
+                  )
+                }
+                {
+                  nextDoc && (
+                    <a
+                      href={`/${nextDoc.id}`}
+                      class="next"
+                      box-="round contain:!top"
+                    >
                       <div flex-="row justify:end">
                         <span is-="badge">Next →</span>
                       </div>
                       <span space-="p:1">
                         {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
                       </span>
-                    </div>
-                  </a>
-                )
-              }
-            </div>
-          </main>
+                    </a>
+                  )
+                }
+              </div>
+            </main>
+          </div>
+          <div id="contents">
+            <span>Contents</span>
+            {
+              headers.map((headings) => (
+                <ul
+                  marker-="tree"
+                  cap-="end"
+                  style={{
+                    marginLeft: `${Math.max(headings[0].depth - 2, 0) * 2}ch`,
+                  }}
+                >
+                  {headings.map((heading) => (
+                    <li>
+                      <a class="content-link" href={`#${heading.slug}`}>
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ))
+            }
+          </div>
         </div>
       </article>
     </div>
