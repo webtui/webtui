@@ -28,14 +28,16 @@ const headers: Array<
   }>
 > = [[]];
 
-let currentDepth = headings[0].depth;
+if (headings.length > 0) {
+  let currentDepth = headings[0].depth;
 
-for (const heading of headings) {
-  if (heading.depth === currentDepth) {
-    headers.at(-1)?.push(heading);
-  } else {
-    headers.push([heading]);
-    currentDepth = heading.depth;
+  for (const heading of headings) {
+    if (heading.depth === currentDepth) {
+      headers.at(-1)?.push(heading);
+    } else {
+      headers.push([heading]);
+      currentDepth = heading.depth;
+    }
   }
 }
 ---
@@ -92,28 +94,30 @@ for (const heading of headings) {
               </div>
             </main>
           </div>
-          <div id="contents">
-            <span>Contents</span>
-            {
-              headers.map((headings) => (
-                <ul
-                  marker-="tree"
-                  cap-="end"
-                  style={{
-                    marginLeft: `${Math.max(headings[0].depth - 2, 0) * 2}ch`,
-                  }}
-                >
-                  {headings.map((heading) => (
-                    <li>
-                      <a class="content-link" href={`#${heading.slug}`}>
-                        {heading.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ))
-            }
-          </div>
+          {
+            headings.length > 0 && (
+              <div id="contents">
+                <span>Contents</span>
+                {headers.map((headings) => (
+                  <ul
+                    marker-="tree"
+                    cap-="end"
+                    style={{
+                      marginLeft: `${Math.max(headings[0].depth - 2, 0) * 2}ch`,
+                    }}
+                  >
+                    {headings.map((heading) => (
+                      <li>
+                        <a class="content-link" href={`#${heading.slug}`}>
+                          {heading.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+              </div>
+            )
+          }
         </div>
       </article>
     </div>
