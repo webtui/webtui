@@ -1,0 +1,213 @@
+---
+import type { MarkdownHeading } from "astro";
+import "./Filter.css";
+import { docPages } from "@/utils/content";
+
+const docHeadings = docPages
+  .map((page) => ({
+    headings:
+      (page.rendered?.metadata?.headings as
+        | Array<MarkdownHeading>
+        | undefined) ?? [],
+    title: page.data.title,
+    id: page.id,
+  }))
+  .reduce(
+    (prev, curr) => {
+      const headings: Array<[string, string | MarkdownHeading]> = [
+        [curr.id, curr.title],
+      ];
+
+      for (const heading of curr.headings) {
+        headings.push([curr.id, heading]);
+      }
+
+      return [...prev, ...headings];
+    },
+    [] as Array<[string, string | MarkdownHeading]>,
+  );
+---
+
+<dialog id="search-dialog">
+  <div box-="round contain:!top" id="search-content">
+    <div flex-="row"><span is-="badge">&#xea6d; Search</span></div>
+    <div box-="round" flex-="row">
+      <input id="search-input" flex-="grow" placeholder="Filter" autofocus />
+    </div>
+
+    <div id="search-results">
+      <div id="search-results-container">
+        {
+          docHeadings.map(([id, header], i) => {
+            const headerText =
+              typeof header === "string" ? header : header.text;
+
+            return (
+              <a
+                class:list={["search-result", i === 0 ? "active" : ""]}
+                tabindex="0"
+                href={`/${id}${typeof header === "string" ? "" : `#${header.slug}`}`}
+                data-value={`${id}: ${headerText}`}
+              >
+                {id}:{" "}
+                {typeof header === "string" ? "" : "#".repeat(header.depth)}
+                {headerText}
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import { isUserTyping } from "@/utils/vim";
+
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement;
+  const focusableLinks = document.querySelectorAll(".search-result");
+
+  let activeLink: HTMLAnchorElement | null =
+    (focusableLinks[0] as HTMLAnchorElement | null) ?? null;
+
+  const treeWalker = document.createTreeWalker(
+    document.getElementById("search-results-container") as HTMLElement,
+    NodeFilter.SHOW_TEXT,
+  );
+  const allTextNodes: Array<Text> = [];
+  let currentNode = treeWalker.nextNode();
+  while (currentNode) {
+    allTextNodes.push(currentNode as Text);
+    currentNode = treeWalker.nextNode();
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
+
+    if (e.key === "/") {
+      e.preventDefault();
+      searchDialog.showModal();
+    }
+  });
+
+  searchInput.addEventListener("input", () => {
+    const value = searchInput.value.trim();
+
+    const focusableLinks = document.querySelectorAll(".search-result");
+
+    focusableLinks.forEach((element) => {
+      element.classList.remove("hidden");
+
+      if (
+        element
+          .getAttribute("data-value")
+          ?.toLowerCase()
+          .includes(value.toLowerCase())
+      )
+        return;
+
+      element.classList.add("hidden");
+    });
+
+    const visibleLinks = document.querySelectorAll(
+      ".search-result:not(.hidden)",
+    );
+
+    if (visibleLinks.length > 0) {
+      activeLink = visibleLinks[0] as HTMLAnchorElement;
+    } else {
+      activeLink = null;
+    }
+
+    CSS.highlights.clear();
+
+    if (!value) return;
+
+    const ranges = allTextNodes
+      .map((el) => {
+        return { el, text: el.textContent?.toLowerCase() };
+      })
+      .map(({ text, el }) => {
+        const indices = [];
+        let startPos = 0;
+
+        if (!text) return [];
+        while (startPos < text.length) {
+          const index = text.indexOf(value, startPos);
+          if (index === -1) break;
+          indices.push(index);
+          startPos = index + value.length;
+        }
+
+        // Create a range object for each instance of
+        // str we found in the text node.
+        return indices.map((index) => {
+          const range = new Range();
+          range.setStart(el, index);
+          range.setEnd(el, index + value.length);
+          return range;
+        });
+      });
+
+    // Create a Highlight object for the ranges.
+    const searchResultsHighlight = new Highlight(...ranges.flat());
+
+    // Register the Highlight object in the registry.
+    CSS.highlights.set("search", searchResultsHighlight);
+  });
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || (e.key === "c" && e.ctrlKey)) {
+      e.preventDefault();
+      searchDialog.close();
+      return;
+    }
+
+    if (!activeLink) return;
+
+    const visibleLinks = document.querySelectorAll(
+      ".search-result[tabindex]:not(.hidden)",
+    ) as NodeListOf<HTMLAnchorElement>;
+    const activeLinkIndex = Array.from(visibleLinks).indexOf(activeLink);
+
+    if ((e.key === "n" && e.ctrlKey) || e.key === "ArrowDown") {
+      e.preventDefault();
+
+      visibleLinks.forEach((link) => {
+        link.classList.remove("active");
+      });
+      activeLink =
+        visibleLinks[Math.min(activeLinkIndex + 1, visibleLinks.length - 1)];
+      activeLink.scrollIntoView({ block: "nearest", inline: "nearest" });
+      activeLink.classList.add("active");
+    }
+
+    if ((e.key === "p" && e.ctrlKey) || e.key === "ArrowUp") {
+      e.preventDefault();
+
+      visibleLinks.forEach((link) => {
+        link.classList.remove("active");
+      });
+      activeLink = visibleLinks[Math.max(activeLinkIndex - 1, 0)];
+      activeLink.scrollIntoView({ block: "nearest", inline: "nearest" });
+      activeLink.classList.add("active");
+    }
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      activeLink?.click();
+    }
+  });
+
+  document.querySelectorAll(".search-result:not(.hidden)").forEach((link) => {
+    link.addEventListener("click", () => {
+      searchDialog.close();
+    });
+  });
+</script>

@@ -2,6 +2,7 @@
 import "./Doc.css";
 import Sidebar from "@/components/Sidebar.astro";
 import Layout from "@/layouts/Layout.astro";
+import Filter from "@/components/Filter.astro";
 import { makeSortedCategoryEntries } from "@/utils/content";
 import { compareUrlPaths } from "@/utils/url";
 import catppuccinUrl from "@webtui/theme-catppuccin?url";
@@ -65,9 +66,12 @@ if (headings.length > 0) {
                       href={`/${prevDoc.id}`}
                       class="prev"
                       box-="round contain:!top"
+                      tabindex="0"
                     >
                       <div>
-                        <span is-="badge">← Previous</span>
+                        <span is-="badge">
+                          ← <code>&lt;C-p&gt;</code> Previous
+                        </span>
                       </div>
                       <span space-="p:1">
                         {prevDoc.id.split("/")[0]}/{prevDoc.data.title}
@@ -81,9 +85,12 @@ if (headings.length > 0) {
                       href={`/${nextDoc.id}`}
                       class="next"
                       box-="round contain:!top"
+                      tabindex="0"
                     >
                       <div flex-="row justify:end">
-                        <span is-="badge">Next →</span>
+                        <span is-="badge">
+                          <code>&lt;C-n&gt;</code> Next →
+                        </span>
                       </div>
                       <span space-="p:1">
                         {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
@@ -96,7 +103,7 @@ if (headings.length > 0) {
           </div>
           {
             headings.length > 0 && (
-              <div id="contents">
+              <div id="content">
                 <span>Contents</span>
                 {headers.map((headings) => (
                   <ul
@@ -128,6 +135,7 @@ if (headings.length > 0) {
       <button flex-="grow !basis" id="docs-button">&#xf15b; Docs</button>
     </div>
   </div>
+  <Filter/>
 </Layout>
 
 <!-- Vim Navigation -->
@@ -170,6 +178,19 @@ if (headings.length > 0) {
 
   applyVimNavigation(mainContent, '#main-content [tabindex="0"]', (element) => {
     currentElement = element;
+  });
+
+  mainContent.addEventListener("keydown", (event) => {
+    const nextHref = document.querySelector(".next")?.getAttribute("href");
+    const prevHref = document.querySelector(".prev")?.getAttribute("href");
+
+    if (event.key === "n" && event.ctrlKey && nextHref) {
+      window.location.href = nextHref;
+    }
+
+    if (event.key === "p" && event.ctrlKey && prevHref) {
+      window.location.href = prevHref;
+    }
   });
 </script>
 

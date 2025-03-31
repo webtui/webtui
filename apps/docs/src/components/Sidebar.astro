@@ -11,10 +11,6 @@ const { pathname: urlPath } = Astro.url;
 <nav box-="square contain:!top" id="sidebar">
   <div><span is-="badge">Documentation</span></div>
 
-  <div space-="px:1" flex-="row" id="filter-container" class="hidden">
-    <input id="filter-input" flex-="grow" placeholder="Filter" />
-  </div>
-
   <div id="category-container">
     <div id="category-list">
       {
@@ -45,10 +41,10 @@ const { pathname: urlPath } = Astro.url;
     <span is-="badge">Shortcuts</span>
     <ul marker-="none" space-="p:1">
       <li><code>h</code> focus sidebar</li>
-      <li><code>j</code> move down</li>
-      <li><code>k</code> move up</li>
+      <li><code>j</code> down</li>
+      <li><code>k</code> up</li>
       <li><code>l</code> focus content</li>
-      <li><code>/</code> filter</li>
+      <li><code>/</code> search</li>
     </ul>
   </div>
 </nav>
@@ -90,73 +86,4 @@ const { pathname: urlPath } = Astro.url;
       },
     );
   }
-</script>
-
-<!-- Filter -->
-<script>
-  import { isUserTyping, vimFocusElement } from "@/utils/vim";
-
-  const sidebar = document.getElementById("sidebar") as HTMLElement;
-  const filterInput = document.getElementById(
-    "filter-input",
-  ) as HTMLInputElement;
-  const filterContainer = document.getElementById(
-    "filter-container",
-  ) as HTMLDivElement;
-
-  sidebar.addEventListener("keydown", (e) => {
-    if (isUserTyping()) return;
-
-    if (e.key === "/") {
-      e.preventDefault();
-      filterContainer.classList.remove("hidden");
-      filterInput.focus();
-    }
-  });
-
-  filterInput.addEventListener("input", () => {
-    const value = filterInput.value.trim();
-
-    const focusableLinks = document.querySelectorAll("details a");
-
-    focusableLinks.forEach((element) => {
-      element.classList.remove("hidden");
-
-      if (element.getAttribute("data-slug")?.includes(value.toLowerCase()))
-        return;
-
-      element.classList.add("hidden");
-    });
-
-    const details = document.querySelectorAll("details");
-
-    details.forEach((detail) => {
-      detail.classList.remove("hidden");
-
-      const links = Array.from(detail.querySelectorAll("a"));
-
-      if (links.every((link) => link.classList.contains("hidden"))) {
-        detail.classList.add("hidden");
-      }
-    });
-  });
-
-  filterInput.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" || e.key === "Enter") {
-      e.preventDefault();
-
-      const visibleFocusableElements: NodeListOf<HTMLElement> =
-        document.querySelectorAll(`details:not(.hidden)[open] a:not(.hidden)`);
-
-      if (visibleFocusableElements.length > 0) {
-        const [elementToFocus] = visibleFocusableElements;
-
-        vimFocusElement(elementToFocus);
-      }
-
-      if (filterInput.value.trim() === "") {
-        filterContainer.classList.add("hidden");
-      }
-    }
-  });
 </script>

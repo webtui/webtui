@@ -1,0 +1,68 @@
+#search-dialog {
+  background-color: var(--background0);
+  color: var(--foreground);
+  border: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  max-height: 20lh;
+  max-width: 48ch;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &::backdrop {
+    backdrop-filter: grayscale(100%);
+  }
+}
+
+#search-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#search-results {
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+
+  #search-results-container {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    padding-left: 1ch;
+    padding-right: 1ch;
+    display: flex;
+    flex-direction: column;
+
+    .search-result {
+      text-decoration: none;
+      color: var(--foreground1);
+
+      &.hidden {
+        display: none;
+      }
+
+      &:focus, &:hover, &.active {
+        background-color: var(--background1);
+      }
+
+      &::highlight(vim) {
+        background-color: var(--foreground0);
+        color: var(--background0);
+      }
+    }
+  }
+}
+
+#search-input {
+  background-color: var(--background0);
+}
+
+&::highlight(search) {
+  background-color: var(--background2);
+  color: var(--foreground0);
+}
