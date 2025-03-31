@@ -46,7 +46,9 @@
         display: none;
       }
 
-      &:focus, &:hover, &.active {
+      &:focus,
+      &:hover,
+      &.active {
         background-color: var(--background1);
       }
 

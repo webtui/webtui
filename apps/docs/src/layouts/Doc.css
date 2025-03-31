@@ -58,7 +58,8 @@
         --box-border-color: var(--background2);
         outline: none;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           --box-border-color: var(--foreground2);
         }
       }
@@ -91,7 +92,8 @@
     color: var(--foreground2);
     text-decoration: none;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--foreground0);
     }
   }
