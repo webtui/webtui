@@ -9,11 +9,15 @@
     list-style-position: inside;
   }
 
-  ul {
+  ul, [is-="list"] {
     list-style-type: none;
 
     li::before {
       color: var(--list-marker-color, inherit);
+    }
+
+    li > ul {
+      margin-left: 2ch;
     }
 
     &:not([marker-]),

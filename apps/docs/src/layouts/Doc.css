@@ -122,6 +122,10 @@ article {
   .mobile-hidden {
     display: none !important;
   }
+
+  .next code, .prev code {
+    display: none;
+  }
 }
 
 @media (max-width: 148ch) {
