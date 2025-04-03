@@ -14,8 +14,6 @@
       color: var(--foreground2);
     }
 
-    &[size-="medium"],
-    &[size-="default"],
     &:not([size-]) {
       height: 1lh;
       padding: 0 1ch;

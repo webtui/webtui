@@ -31,9 +31,6 @@
     isolation: isolate;
     padding: 1lh 1ch;
 
-    /* Resets the --box-border-color property so it doesn't get inherited */
-    --box-border-color: var(--foreground0);
-
     &::before {
       content: "";
       position: absolute;

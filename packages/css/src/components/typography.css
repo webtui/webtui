@@ -10,6 +10,11 @@
     font-size: var(--font-size);
     line-height: var(--line-height);
     font-weight: var(--font-weight-bold);
+
+    code {
+      color: inherit;
+      background-color: var(--background1);
+    }
   }
 
   h1::before {
@@ -39,7 +44,7 @@
   p,
   blockquote,
   li,
-  [is-="typography-block"] {
+  [is-~="typography-block"] {
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height);

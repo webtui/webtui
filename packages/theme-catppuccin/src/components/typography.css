@@ -23,26 +23,22 @@
     color: var(--purple);
   }
 
-  a {
-    color: var(--sky);
-    text-decoration: underline;
+  p,
+  blockquote,
+  li,
+  [is-~="typography-block"] {
+    a {
+      color: var(--sky);
+      text-decoration: underline;
 
-    &:hover {
-      color: var(--blue);
+      &:hover {
+        color: var(--blue);
+      }
     }
-  }
 
-  :not(pre) > code {
-    color: var(--red);
-    background-color: var(--background1);
-  }
-
-  h1 code,
-  h2 code,
-  h3 code,
-  h4 code,
-  h5 code,
-  h6 code {
-    color: inherit;
+    code {
+      color: var(--red);
+      background-color: var(--background1);
+    }
   }
 }

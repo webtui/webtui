@@ -71,18 +71,16 @@ The **Typography** stylesheet provides styles for headings and inline elements
 - paragraphs, blockquotes, list items, elements with `is-="typography-block"` and their respective inline elements
 
 ```css
-@layer components {
-    h1, h2, h3, h4, h5 {/* ... */}
+h1, h2, h3, h4, h5 {/* ... */}
 
-    p,
-    blockquote,
-    li,
-    [is-="typography-block"] {
-        /* ... */
+p,
+blockquote,
+li,
+[is-~="typography-block"] {
+    /* ... */
 
-        strong {/* ... */}
-        a {/* ... */}
-        code {/* ... */}
-    }
+    strong {/* ... */}
+    a {/* ... */}
+    code {/* ... */}
 }
 ```

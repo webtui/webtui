@@ -9,7 +9,7 @@
     list-style-position: inside;
   }
 
-  ul, [is-="list"] {
+  ul, [is-~="list"] {
     list-style-type: none;
 
     li::before {
@@ -20,8 +20,7 @@
       margin-left: 2ch;
     }
 
-    &:not([marker-]),
-    &[marker-="default"] {
+    &:not([marker-]) {
       li::before {
         content: "- ";
       }

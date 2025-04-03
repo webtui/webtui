@@ -1,7 +1,90 @@
 @layer components {
-  [is-="badge"] {
+  @property --badge-background-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--background0);
+  }
+
+  [is-~="badge"] {
     color: var(--foreground0);
-    background-color: var(--background0);
-    padding: 0 1ch;
+    display: inline-flex;
+    background-image: linear-gradient(90deg,
+        transparent 0,
+        transparent 1ch,
+        var(--badge-background-color) 1ch,
+        var(--badge-background-color) calc(100% - 1ch),
+        transparent calc(100% - 1ch),
+        transparent);
+
+    &[variant-="background0"],
+    &:not([variant-]) {
+      --badge-background-color: var(--background0);
+    }
+
+    &[variant-="transparent"] {
+      --badge-background-color: transparent;
+    }
+
+    &[variant-="background1"] {
+      --badge-background-color: var(--background1);
+    }
+
+    &[variant-="background2"] {
+      --badge-background-color: var(--background2);
+    }
+
+    &[variant-="background3"] {
+      --badge-background-color: var(--background3);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      width: 1ch;
+      height: 1lh;
+      background-color: var(--badge-background-color);
+      color: transparent;
+    }
+
+    &[cap-] {
+
+      &::before,
+      &::after {
+        background-color: transparent;
+        color: var(--badge-background-color);
+      }
+
+      &[cap-^="round"] {
+        &::before { content: "\e0b6"; }
+      }
+      &[cap-^="triangle"] {
+        &::before { content: "\e0b2"; }
+      }
+      &[cap-^="inverse"] {
+        &::before { content: "\e0d7"; }
+      }
+      &[cap-^="slant-top"] {
+        &::before { content: "\e0be"; }
+      }
+      &[cap-^="slant-bottom"] {
+        &::before { content: "\e0ba"; }
+      }
+
+      &[cap-$="round"] {
+        &::after { content: "\e0b4"; }
+      }
+      &[cap-$="triangle"] {
+        &::after { content: "\e0b0"; }  
+      }
+      &[cap-$="inverse"] {
+        &::after { content: "\e0d6"; }  
+      }
+      &[cap-$="slant-top"] {
+        &::after { content: "\e0bc"; }
+      }
+      &[cap-$="slant-bottom"] {
+        &::after { content: "\e0b8"; }
+      }
+    }
   }
 }

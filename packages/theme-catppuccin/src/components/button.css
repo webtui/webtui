@@ -1,6 +1,5 @@
 @layer components {
   button {
-    &[variant-="default"],
     &:not([variant-]) {
       background-color: var(--mauve);
       color: var(--background0);

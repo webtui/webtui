@@ -68,12 +68,12 @@ if (headings.length > 0) {
                       box-="round contain:!top"
                       tabindex="0"
                     >
-                      <div>
+                      <div is-="typography-block">
                         <span is-="badge">
-                          ← <code>&lt;C-p&gt;</code> Previous
+                          ← <code space-="mx:1">&lt;C-p&gt;</code> Previous
                         </span>
                       </div>
-                      <span space-="p:1">
+                      <span space-="px:1">
                         {prevDoc.id.split("/")[0]}/{prevDoc.data.title}
                       </span>
                     </a>
@@ -87,12 +87,12 @@ if (headings.length > 0) {
                       box-="round contain:!top"
                       tabindex="0"
                     >
-                      <div flex-="row justify:end">
+                      <div flex-="row justify:end" is-="typography-block">
                         <span is-="badge">
-                          <code>&lt;C-n&gt;</code> Next →
+                          Next <code space-="mx:1">&lt;C-n&gt;</code> →
                         </span>
                       </div>
-                      <span space-="p:1">
+                      <span space-="px:1">
                         {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
                       </span>
                     </a>
@@ -135,7 +135,7 @@ if (headings.length > 0) {
       <button flex-="grow !basis" id="docs-button">&#xf15b; Docs</button>
     </div>
   </div>
-  <Filter/>
+  <Filter />
 </Layout>
 
 <!-- Vim Navigation -->
