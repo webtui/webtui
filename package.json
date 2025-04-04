@@ -3,14 +3,13 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "bundle": "turbo run bundle",
     "dev": "turbo run dev",
-    "format": "prettier --write \"**/*.{ts,tsx,md,css}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,astro}\"",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
+    "lint": "turbo run lint",
     "clean": "rm -rf node_modules .turbo bun.lockb && turbo run clean"
   },
   "devDependencies": {
-    "prettier": "^3.5.3",
     "turbo": "^2.4.4",
     "typescript": "5.8.2"
   },

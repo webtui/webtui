@@ -8,15 +8,14 @@
   [is-~="badge"] {
     color: var(--foreground0);
     display: inline-flex;
-    background-image: linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 1ch,
-      var(--badge-background-color) 1ch,
-      var(--badge-background-color) calc(100% - 1ch),
-      transparent calc(100% - 1ch),
-      transparent
-    );
+    vertical-align: middle;
+    background-image: linear-gradient(90deg,
+        transparent 0,
+        transparent 1ch,
+        var(--badge-background-color) 1ch,
+        var(--badge-background-color) calc(100% - 1ch),
+        transparent calc(100% - 1ch),
+        transparent);
 
     &[variant-="background0"],
     &:not([variant-]) {
@@ -44,62 +43,81 @@
       content: "";
       width: 1ch;
       height: 1lh;
-      background-color: var(--badge-background-color);
-      color: transparent;
+      background-color: transparent;
+      color: var(--badge-background-color);
+    }
+
+    &:not([cap-]),
+    &[cap-^="square"] {
+      &::before {
+        background-color: var(--badge-background-color);
+        color: transparent;
+      }
+    }
+
+    &:not([cap-]),
+    &[cap-$="square"] {
+      &::after {
+        background-color: var(--badge-background-color);
+        color: transparent;
+      }
     }
 
     &[cap-] {
-      &::before,
-      &::after {
-        background-color: transparent;
-        color: var(--badge-background-color);
-      }
-
       &[cap-^="round"] {
         &::before {
           content: "\e0b6";
         }
       }
+
       &[cap-^="triangle"] {
         &::before {
           content: "\e0b2";
         }
       }
+
       &[cap-^="ribbon"] {
         &::before {
           content: "\e0d7";
         }
       }
+
       &[cap-^="slant-top"] {
         &::before {
           content: "\e0be";
         }
       }
+
       &[cap-^="slant-bottom"] {
         &::before {
           content: "\e0ba";
         }
       }
+
       &[cap-$="round"] {
         &::after {
           content: "\e0b4";
         }
       }
+
       &[cap-$="triangle"] {
         &::after {
           content: "\e0b0";
         }
       }
+
       &[cap-$="ribbon"] {
         &::after {
           content: "\e0d6";
         }
       }
+
       &[cap-$="slant-top"] {
         &::after {
           content: "\e0bc";
         }
       }
+
       &[cap-$="slant-bottom"] {
         &::after {
           content: "\e0b8";
