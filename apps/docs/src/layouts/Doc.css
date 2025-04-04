@@ -124,7 +124,8 @@ article {
     display: none !important;
   }
 
-  .next code, .prev code {
+  .next code,
+  .prev code {
     display: none;
   }
 }

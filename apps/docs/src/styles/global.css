@@ -21,13 +21,15 @@ html {
     padding: 0.5lh 0;
     width: 100%;
     border: none;
-    background-image: linear-gradient(0deg,
-        transparent 0,
-        transparent calc(0.5lh - 1px),
-        var(--foreground2) calc(0.5lh - 1px),
-        var(--foreground2) calc(0.5lh + 1px),
-        transparent calc(0.5lh + 1px),
-        transparent);
+    background-image: linear-gradient(
+      0deg,
+      transparent 0,
+      transparent calc(0.5lh - 1px),
+      var(--foreground2) calc(0.5lh - 1px),
+      var(--foreground2) calc(0.5lh + 1px),
+      transparent calc(0.5lh + 1px),
+      transparent
+    );
   }
 
   pre {

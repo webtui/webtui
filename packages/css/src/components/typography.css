@@ -1,5 +1,4 @@
 @layer components {
-
   h1,
   h2,
   h3,
@@ -59,7 +58,7 @@
         position: absolute;
         top: 0;
         left: 0.5ch;
-        width: var(--box-border-width, 2px); 
+        width: var(--box-border-width, 2px);
         height: 100%;
         translate: -50%;
         background: var(--background2);

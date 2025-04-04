@@ -7,6 +7,9 @@
     "dev": "vite build --watch",
     "build": "rm -rf dist && vite build",
     "clean": "rm -rf dist .turbo",
+    "format": "bunx biome format --write src/index.ts",
+    "format:check": "bunx biome format src/index.ts",
+    "lint": "bunx biome check src/index.ts",
     "prepublishOnly": "bun run build"
   },
   "files": ["dist"],

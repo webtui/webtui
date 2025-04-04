@@ -7,6 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "clean": "rm -rf dist .astro node_modules dist .turbo",
+    "lint": "bunx biome check src/**/*.{astro,css,ts}",
+    "format": "bunx biome format --write src/**/*.{astro,css,ts}",
+    "format:check": "bunx biome format src/**/*.{astro,css,ts}",
     "astro": "astro"
   },
   "dependencies": {

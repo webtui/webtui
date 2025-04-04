@@ -1,7 +1,7 @@
 ---
-import type { MarkdownHeading } from "astro";
-import "./Filter.css";
-import { docPages } from "@/utils/content";
+import type { MarkdownHeading } from 'astro';
+import './Filter.css';
+import { docPages } from '@/utils/content';
 
 const docHeadings = docPages
   .map((page) => ({
@@ -22,7 +22,7 @@ const docHeadings = docPages
         headings.push([curr.id, heading]);
       }
 
-      return [...prev, ...headings];
+      return prev.concat(headings);
     },
     [] as Array<[string, string | MarkdownHeading]>,
   );

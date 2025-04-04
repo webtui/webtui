@@ -1,17 +1,17 @@
 // order of documentation categories
 
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
 // if a category is not included in the array, it will be moved to the end
-export const categoryOrder = ["start", "utils", "components", "themes"];
+export const categoryOrder = ['start', 'utils', 'components', 'themes'];
 
-export const docPages = await getCollection("docs");
+export const docPages = await getCollection('docs');
 
 export function makeCategoryMap() {
   const categoryMap: Map<string, typeof docPages> = new Map();
 
   for (const docPage of docPages) {
-    const [category] = docPage.id.split("/");
+    const [category] = docPage.id.split('/');
 
     const categoryPages = [...(categoryMap.get(category) || []), docPage];
 
@@ -42,9 +42,9 @@ export function makeSortedCategoryEntries() {
       const inOrderB = indexB !== -1;
 
       if (inOrderA && inOrderB) return indexA - indexB;
-      else if (inOrderA) return -1;
-      else if (inOrderB) return 1;
-      else return 0;
+      if (inOrderA) return -1;
+      if (inOrderB) return 1;
+      return 0;
     },
   );
 

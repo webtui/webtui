@@ -16,8 +16,11 @@ jobs:
       - name: Install Dependencies
         run: bun i
 
+      - name: Lint
+        run: bunx turbo lint
+
       - name: Check code style
-        run: bun format:check
+        run: bunx turbo format:check
 
       - name: Build Packages & Docs
-        run: bun run build
+        run: bunx turbo run build

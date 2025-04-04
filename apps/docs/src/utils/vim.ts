@@ -3,7 +3,7 @@ export function isUserTyping() {
   return (
     document.activeElement &&
     (/input|textarea|select/i.test(document.activeElement.tagName) ||
-      document.activeElement.hasAttribute("contenteditable"))
+      document.activeElement.hasAttribute('contenteditable'))
   );
 }
 
@@ -25,7 +25,7 @@ export function applyVimCursorHighlight(element: HTMLElement) {
   const textNode = getFirstTextNode(firstChild);
 
   const firstNonWhitespace =
-    textNode.textContent?.split("").findIndex((c) => !/\s/.test(c)) ?? 0;
+    textNode.textContent?.split('').findIndex((c) => !/\s/.test(c)) ?? 0;
 
   const range = new Range();
   range.setStart(textNode, firstNonWhitespace);
@@ -33,12 +33,12 @@ export function applyVimCursorHighlight(element: HTMLElement) {
 
   const hi = new Highlight(range);
 
-  CSS.highlights.set("vim", hi);
+  CSS.highlights.set('vim', hi);
 }
 
 export function vimFocusElement(element: HTMLElement) {
   element.focus();
-  element.scrollIntoView({ block: "nearest", inline: "nearest" });
+  element.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   applyVimCursorHighlight(element);
 }
 
@@ -48,7 +48,7 @@ export function applyVimNavigation(
   queryString: string,
   onElementFocus?: (element: HTMLElement) => void,
 ) {
-  element.addEventListener("keydown", (e) => {
+  element.addEventListener('keydown', (e) => {
     if (isUserTyping()) return;
 
     const vimTabbableElements = document.querySelectorAll(
@@ -59,7 +59,7 @@ export function applyVimNavigation(
       document.activeElement as HTMLElement,
     );
 
-    if (e.key === "j" || e.key === "ArrowDown") {
+    if (e.key === 'j' || e.key === 'ArrowDown') {
       const nextActiveElement =
         vimTabbableElements[
           Math.min(currentIndex + 1, vimTabbableElements.length - 1)
@@ -69,7 +69,7 @@ export function applyVimNavigation(
       onElementFocus?.(nextActiveElement);
     }
 
-    if (e.key === "k" || e.key === "ArrowUp") {
+    if (e.key === 'k' || e.key === 'ArrowUp') {
       const nextActiveElement =
         vimTabbableElements[Math.max(currentIndex - 1, 0)];
 
@@ -77,14 +77,14 @@ export function applyVimNavigation(
       onElementFocus?.(nextActiveElement);
     }
 
-    if (e.key === "G") {
+    if (e.key === 'G') {
       const lastElement = vimTabbableElements[vimTabbableElements.length - 1];
 
       vimFocusElement(lastElement);
       onElementFocus?.(lastElement);
     }
 
-    if (e.key === "g") {
+    if (e.key === 'g') {
       const firstElement = vimTabbableElements[0];
 
       vimFocusElement(firstElement);

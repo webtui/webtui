@@ -1,5 +1,5 @@
 export function splitPathChunks(path: string) {
-  return path.split("/").filter((chunk) => chunk.trim() !== "");
+  return path.split('/').filter((chunk) => chunk.trim() !== '');
 }
 
 export function compareUrlPaths(a: string, b: string) {

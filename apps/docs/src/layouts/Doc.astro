@@ -1,17 +1,17 @@
 ---
-import "./Doc.css";
-import Sidebar from "@/components/Sidebar.astro";
-import Layout from "@/layouts/Layout.astro";
-import Filter from "@/components/Filter.astro";
-import { makeSortedCategoryEntries } from "@/utils/content";
-import { compareUrlPaths } from "@/utils/url";
-import catppuccinUrl from "@webtui/theme-catppuccin?url";
+import './Doc.css';
+import Sidebar from '@/components/Sidebar.astro';
+import Filter from '@/components/Filter.astro';
+import Layout from '@/layouts/Layout.astro';
+import { makeSortedCategoryEntries } from '@/utils/content';
+import { compareUrlPaths } from '@/utils/url';
+import catppuccinUrl from '@webtui/theme-catppuccin?url';
 
 const { frontmatter, headings } = Astro.props;
 
-const sortedPages = makeSortedCategoryEntries()
-  .map((category) => category[1])
-  .flat(1);
+const sortedPages = makeSortedCategoryEntries().flatMap(
+  (category) => category[1],
+);
 const pageIndex = sortedPages.findIndex((page) =>
   compareUrlPaths(page.id, Astro.url.pathname),
 );

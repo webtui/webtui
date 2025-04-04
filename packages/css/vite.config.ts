@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import { globSync } from "glob";
+import { defineConfig } from 'vite';
+import { globSync } from 'glob';
 
-const cssFiles = globSync("src/**/*.css");
+const cssFiles = globSync('src/**/*.css');
 
 export default defineConfig({
   build: {
@@ -15,7 +15,7 @@ export default defineConfig({
         {} as Record<string, string>,
       ),
       output: {
-        assetFileNames: "[name].[ext]",
+        assetFileNames: '[name].[ext]',
       },
     },
   },
