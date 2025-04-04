@@ -60,7 +60,7 @@
       &[cap-^="triangle"] {
         &::before { content: "\e0b2"; }
       }
-      &[cap-^="inverse"] {
+      &[cap-^="ribbon"] {
         &::before { content: "\e0d7"; }
       }
       &[cap-^="slant-top"] {
@@ -69,14 +69,13 @@
       &[cap-^="slant-bottom"] {
         &::before { content: "\e0ba"; }
       }
-
       &[cap-$="round"] {
         &::after { content: "\e0b4"; }
       }
       &[cap-$="triangle"] {
         &::after { content: "\e0b0"; }  
       }
-      &[cap-$="inverse"] {
+      &[cap-$="ribbon"] {
         &::after { content: "\e0d6"; }  
       }
       &[cap-$="slant-top"] {
