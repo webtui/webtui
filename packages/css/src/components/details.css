@@ -5,6 +5,7 @@
     }
     summary {
       user-select: none;
+      outline: none;
 
       &::marker {
         content: "> ";

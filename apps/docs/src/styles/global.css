@@ -1,3 +1,11 @@
+@layer base, utils, components;
+
+@import '@webtui/css/base.css';
+@import '@webtui/css/utils/box.css';
+@import '@webtui/css/components/typography.css';
+@import '@/styles/flexbox.css';
+@import '@/styles/spacing.css';
+
 @layer base {
   :root {
     --font-family: "JetBrainsMono NFM", Menlo, Monaco, monospace;

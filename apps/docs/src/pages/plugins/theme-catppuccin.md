@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
 title: Catppuccin
-order: 1
+pluginType: theme
 ---
 
 # Catppuccin

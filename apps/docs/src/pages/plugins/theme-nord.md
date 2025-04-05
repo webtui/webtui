@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Nord
-order: 2
+title: Nord Theme
+pluginType: theme
 ---
 
 # Nord

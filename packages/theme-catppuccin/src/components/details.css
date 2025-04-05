@@ -1,8 +1,6 @@
 @layer components {
   details {
     summary {
-      outline: none;
-
       &:focus,
       &:hover {
         background-color: var(--surface0);

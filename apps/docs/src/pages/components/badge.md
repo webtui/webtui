@@ -87,6 +87,8 @@ You can also define a start and end cap by adding a second value to the `cap-` a
 
 ## Scope
 
+- All elements with the `is-~="badge"` selector
+
 ```css
 [is-~="badge"] { /* ... */ }
 ```

@@ -1,25 +1,7 @@
 @layer components {
-  @property --list-marker-color {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--foreground0);
-  }
-
-  ol {
-    list-style-position: inside;
-  }
-
   ul,
   [is-~="list"] {
     list-style-type: none;
-
-    li::before {
-      color: var(--list-marker-color, inherit);
-    }
-
-    li > ul {
-      margin-left: 2ch;
-    }
 
     &:not([marker-]) {
       li::before {

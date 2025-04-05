@@ -1,3 +1,7 @@
+@import "@webtui/css/components/badge.css";
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/details.css";
+
 #mobile-nav {
   --box-border-color: var(--background1);
   display: none;
@@ -138,39 +142,23 @@ article {
 
 /* Syntax Highlighting */
 @layer components {
-  html[data-theme] {
-    pre.astro-code {
-      display: flex !important;
-      overflow: unset !important;
-      background-color: var(--background1) !important;
-      position: relative;
+  pre.astro-code {
+    display: flex !important;
+    overflow: unset !important;
+    background-color: var(--background1) !important;
+    position: relative;
 
-      code {
-        overflow: hidden;
+    code {
+      overflow: hidden;
 
-        /* Diff markers */
-        span.diff.add {
-          background-color: #a6e3a135;
-        }
-
-        span.diff.remove {
-          background-color: #f38ba845;
-        }
+      /* Diff markers */
+      span.diff.add {
+        background-color: #a6e3a135;
       }
-    }
-  }
 
-  html[data-theme="catppuccin"] {
-    pre.astro-code,
-    pre.astro-code span {
-      color: var(--shiki-catppuccin) !important;
-    }
-  }
-
-  html[data-theme="nord"] {
-    pre.astro-code,
-    pre.astro-code span {
-      color: var(--shiki-nord) !important;
+      span.diff.remove {
+        background-color: #f38ba845;
+      }
     }
   }
 }

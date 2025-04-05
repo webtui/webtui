@@ -1,6 +1,8 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: List
+title: Nerd Font
+pluginType: plugin
 ---
 
-this is a list
+
+

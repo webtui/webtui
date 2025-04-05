@@ -8,9 +8,7 @@ It is **highly recommended** that you use **CSS Imports** with **WebTUI**
 
 It's _possible_ to use [ESM imports](#esm-imports) or [CDN imports](#cdn-imports)
 
-WebTUI is a **CSS Library** meaning you _will still have to write **some** CSS_
-
-Use it the way God intended
+WebTUI is a **Pure CSS Library** meaning you _will still have to write **some** CSS_
 
 ## Installation
 
@@ -67,28 +65,11 @@ You should see a significant upgrade from standard HTML styles
 
 ![installation-html.png](../../assets/installation-html.png)
 
-Finally, import a theme stylesheet **after** all the `@webtui/css` imports
-
-```css
-@layer base, utils, components;
-
-@import "@webtui/css/base.css";
-
-/* Utils */
-@import "@webtui/css/utils/box.css";
-
-/* Components */
-@import "@webtui/css/components/button.css";
-@import "@webtui/css/components/typography.css";
-
-@import "@webtui/theme-catppuccin"; /*[!code ++]*/
-```
-
-![installation-html-catppuccin.png](../../assets/installation-html-catppuccin.png)
+If you want to add a pre-built color theme, check out the [Plugins](/plugins/intro) section
 
 ## ESM Imports
 
-Although a huge [soyjack](https://knowyourmeme.com/editorials/guides/who-is-soyjack-the-meme-and-wojak-character-explained) move, you can import stylesheets via ESM if your bundler supports it
+You can import stylesheets via ESM if your bundler supports it
 
 ```tsx
 import "@webtui/css/components/button.css";
@@ -104,7 +85,7 @@ export default function Button(props: Props) {
 
 ## CDN Imports
 
-You can import specific stylesheets via `<link>` tags via CDN if you like **thiccc** `<head>` tags
+You can import specific stylesheets via `<link>` tags via CDN
 
 ```html
 <link
@@ -122,9 +103,9 @@ To import a specific version, add `@<version>` to the CDN URL after `/@webtui/cs
 />
 ```
 
-Although not recommended, you can just use the latest version of WebTUI by using the `@latest` tag for the version.
+Although not recommended, you can just use the latest version of WebTUI by using the `@latest` tag
 
-**Note:** You must define the order of layers **before** importing any styles from **WebTUI**
+**Important:** You must define the order of layers **before** importing any styles from **WebTUI**
 
 ```html
 <style>

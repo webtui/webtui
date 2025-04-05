@@ -40,6 +40,27 @@
     content: "###### ";
   }
 
+  ol {
+    list-style-position: inside;
+
+    li > ol {
+      margin-left: 2ch;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+
+    li::before {
+      color: inherit;
+      content: "- ";
+    }
+
+    li > ul {
+      margin-left: 2ch;
+    }
+  }
+
   p,
   blockquote,
   li,

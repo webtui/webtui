@@ -1,6 +1,4 @@
-@layer theme, components;
-
-@layer theme {
+@layer utils {
   :root {
     /* Catppuccin Palette Colors */
     --rosewater: #f5e0dc;
@@ -38,11 +36,5 @@
     --foreground0: var(--text);
     --foreground1: var(--subtext1);
     --foreground2: var(--overlay2);
-  }
-
-  body,
-  html {
-    background-color: var(--background0);
-    color: var(--foreground0);
   }
 }

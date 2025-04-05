@@ -1,6 +1,8 @@
+@import '@webtui/css/components/input.css';
+
 #search-dialog {
   background-color: var(--background0);
-  color: var(--foreground);
+  color: var(--foreground0);
   border: none;
   position: fixed;
   top: 50%;

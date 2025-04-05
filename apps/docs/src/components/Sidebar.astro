@@ -1,7 +1,8 @@
 ---
-import { compareUrlPaths } from '@/utils/url';
-import './Sidebar.css';
-import { makeSortedCategoryEntries } from '@/utils/content';
+import { compareUrlPaths } from "@/utils/url";
+import "./Sidebar.css";
+import { makeSortedCategoryEntries } from "@/utils/content";
+import { pluginInfo } from "@/content.config";
 
 const categories = makeSortedCategoryEntries();
 
@@ -20,12 +21,21 @@ const { pathname: urlPath } = Astro.url;
             <ul>
               {pages.map((page) => {
                 const path = `/${page.id}`;
+                const plugin = page.data.pluginType
+                  ? pluginInfo[page.data.pluginType]
+                  : null;
+
                 return (
                   <a
                     href={path}
                     class={compareUrlPaths(urlPath, page.id) ? "active" : ""}
                     data-slug={page.id}
                   >
+                    {plugin && (
+                      <span style={`color: ${plugin.color}`}>
+                        {plugin.icon}
+                      </span>
+                    )}{" "}
                     {page.data.title}
                   </a>
                 );
@@ -57,9 +67,8 @@ const { pathname: urlPath } = Astro.url;
     vimFocusElement,
   } from "@/utils/vim";
 
-  let currentElement: HTMLElement | null = document.querySelector(
-    `ul > a.active`,
-  );
+  let currentElement: HTMLElement | null =
+    document.querySelector(`ul > a.active`);
 
   window.addEventListener("keydown", (e) => {
     // Don't navigate if the user is typing

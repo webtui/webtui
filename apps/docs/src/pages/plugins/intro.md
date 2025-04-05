@@ -1,4 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Details
+title: Introduction
+order: 0
 ---
+
+Plugins

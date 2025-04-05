@@ -6,11 +6,14 @@ order: 0
 
 **WebTUI** is a **CSS library** that brings the beauty of **Terminal User Interfaces** (TUIs) to the browser
 
+The base libary ships with **component** and **utility** stylesheets
+
+Plugins such as **themes** can be installed separately
+
 ## Features
 
 - **Modular Design Approach** - Use and import only what you need
-- **Themable** - Import and create custom themes on top of the base styles
-- **CSS Layer Precedence** - Uses CSS layers [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) so you don't have to overuse `!important`
+- **CSS Layer Precedence** - Uses CSS layers [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) so you rarely have to use `!important`
 - **Purist Approach** - Designed to be used with minimal markup and CSS
 
 ## TUIs vs GUIs
