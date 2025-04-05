@@ -30,6 +30,12 @@ The **Badge** stylesheet provides styles for **statusline**-like badges
 
 By default, badges use **square** caps. For the others, you will need to [use a Nerd Font](/guides/fonts).
 
+## Installation
+
+```css
+@import "@webtui/css/components/badge.css";
+```
+
 ## Usage
 
 Simply add the `is-="badge"` attribute to any element

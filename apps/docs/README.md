@@ -3,14 +3,13 @@
 ## TODO
 
 - [ ] Homepage
-  - [ ] Open for sponsorship
-- [ ] Quickstart
-  - [ ] CDN
-  - [ ] NPM Package
-  - [ ] Framework-specifics
-- [ ] Modularity
-  - [ ] Importing what you need
-- [ ] About
+  - [ ] Demos
+- [x] Quickstart
+  - [x] CDN
+  - [x] NPM Package
+  - [x] Framework-specifics
+- [x] Modularity
+  - [x] Importing what you need
 - [x] Layout
   - [x] Sidebar
   - [x] Markdown body, vim-navigable
@@ -26,4 +25,4 @@
 
 ## Nice-to-have
 
-- [ ] Fuzzy Search in sidebar with `/`
+- [x] Fuzzy Search in sidebar with `/`

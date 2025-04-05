@@ -1,18 +1,66 @@
 @layer components {
+  @property --button-primary {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--foreground0);
+  }
+
+  @property --button-secondary {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: var(--background0);
+  }
+
   button,
   [is-~="button"] {
-    color: var(--foreground0);
-    background-color: var(--background0);
+    --button-primary: var(--foreground0);
+    --button-secondary: var(--background0);
+
+    color: var(--button-secondary);
+    background: var(--button-primary);
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    padding: 1lh 2ch;
+    padding: 0 2ch;
     height: 3lh;
+    outline: none;
 
-    &[size-="tiny"] {
-      height: 1lh;
-      padding: 0 0;
+    &[box-] {
+      color: var(--button-primary);
+      background: var(--button-secondary);
+      --box-border-color: var(--button-primary);
+    }
+
+    &:focus {
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    &:active {
+      color: var(--button-primary);
+      background: var(--button-secondary);
+
+      &[box-] {
+        color: var(--button-secondary);
+        background: var(--button-primary);
+        --box-border-color: var(--button-secondary);
+      }
+    }
+
+    &:disabled {
+      background-color: color-mix(in srgb, var(--button-primary) 50%, gray);
+      color: color-mix(in srgb, var(--button-secondary) 50%, gray);
+
+      &[box-] {
+        --box-border-color: color-mix(in srgb, var(--button-primary) 50%, gray);
+        color: color-mix(in srgb, var(--button-primary) 50%, gray);
+        background-color: color-mix(in srgb, var(--button-secondary) 50%, gray);
+      }
     }
 
     &[size-="small"] {

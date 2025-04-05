@@ -49,10 +49,9 @@ For feature requests please open an issue.
 - [ ] misc
   - [x] badge ([is-="badge"])
     - [ ] variants for catppuccin theme
-    - [ ] slants
+    - [x] caps
   - [ ] avatar ([is-="avatar"])
   - [ ] card ([is-="card"])
-  - [ ] pure css ascii loaders w/ steps ([loader-="dots"])
 
 ## Themes
 

@@ -1,34 +1,29 @@
 <style>
-  @layer base, utils, components;
+    @layer base, utils, components;
 
-  @import "@webtui/css/base.css";
+    @import "@webtui/css/base.css";
 
-  /* Utils */
-  @import "@webtui/css/utils/box.css";
-  @import "@webtui/css/components/typography.css";
-  @import "@webtui/css/components/badge.css";
-  @import "@webtui/css/components/button.css";
+    /* Utils */
+    @import "@webtui/css/utils/box.css";
+    @import "@webtui/css/components/button.css";
 
-  @import "../styles/flexbox.css";
-  @import "../styles/spacing.css";
+    @import "../styles/flexbox.css";
+    @import "../styles/spacing.css";
+
+    body,
+    html {
+        background: grey;
+    }
+
+    button {
+        --button-primary: black;
+        --button-secondary: #00ff00;
+    }
 </style>
 
-<div flex-="row">
-<div space-="p:1">
-    <div box-="square contain:none" flex-="col">
-        <div flex-="row justify:between">
-            <span is-="badge">top-left</span>
-            <span is-="badge">top-right</span>
-        </div>
-        <div space-="p:1">Lorem ipsum dolor sit amet idk i dont speak French</div>
-        <div flex-="row justify:end gap:1" space-="px:1">
-            <button variant-="secondary" box-="round">Cancel</button>
-            <button box-="round">Ok</button>
-        </div>
-        <div flex-="row justify:between">
-            <span is-="badge">bottom-left</span>
-            <span is-="badge">bottom-right</span>
-        </div>
-    </div>
-</div>
+<div flex-="row gap:1 wrap">
+    <button box-="square">Boxed</button>
+    <button box-="square" disabled="">Boxed</button>
+    <button>Normal</button>
+    <button disabled="">Normal</button>
 </div>
