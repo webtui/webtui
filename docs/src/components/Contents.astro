@@ -1,0 +1,88 @@
+---
+interface Props {
+  headers: Array<Array<{ depth: number; text: string; slug: string }>>;
+}
+
+const { headers } = Astro.props as Props;
+---
+
+<div id="contents">
+  <span>Contents</span>
+  {
+    headers.map((headings) => (
+      <ul
+        style={{
+          marginLeft: `${Math.max((headings[0]?.depth || 0) - 2, 0) * 2}ch`,
+        }}
+      >
+        {headings
+          .filter(({ depth }) => depth < 4)
+          .map((heading) => (
+            <li>
+              <a
+                class="content-link"
+                href={`#${heading.slug}`}
+                data-depth={heading.depth}
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+      </ul>
+    ))
+  }
+</div>
+
+<style>
+  #contents {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2ch;
+    padding-right: 1ch;
+    position: relative;
+    isolation: isolate;
+    outline: none;
+    --box-border-color: var(--background2);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: calc(0.5ch - var(--box-border-width) / 2);
+      width: var(--box-border-width);
+      height: 100%;
+      background-color: var(--background2);
+    }
+
+    .content-link {
+      color: var(--foreground2);
+      text-decoration: none;
+
+      &[data-depth="2"] {
+        color: var(--peach);
+        &::before {
+          content: "## ";
+        }
+      }
+
+      &[data-depth="3"] {
+        color: var(--yellow);
+        &::before {
+          content: "### ";
+        }
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: 148ch) {
+    #contents {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,109 @@
+@layer components {
+  [is-~="badge"] {
+    background-color: transparent;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 1ch,
+      var(--badge-color) 1ch,
+      var(--badge-color) calc(100% - 1ch),
+      transparent calc(100% - 1ch),
+      transparent
+    );
+    color: var(--badge-text);
+    padding-left: 0;
+    padding-right: 0;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 1ch;
+      height: 1lh;
+      line-height: 1lh;
+      display: inline-block;
+      vertical-align: middle;
+      background-color: transparent;
+      color: var(--badge-color);
+    }
+
+    &:not([cap-]),
+    &[cap-^="square"] {
+      &::before {
+        content: "a";
+        background-color: var(--badge-color);
+        color: transparent;
+      }
+    }
+
+    &:not([cap-]),
+    &[cap-$="square"] {
+      &::after {
+        content: "a";
+        background-color: var(--badge-color);
+        color: transparent;
+      }
+    }
+
+    &[cap-] {
+      &[cap-^="round"] {
+        &::before {
+          content: "\e0b6";
+        }
+      }
+
+      &[cap-^="triangle"] {
+        &::before {
+          content: "\e0b2";
+        }
+      }
+
+      &[cap-^="ribbon"] {
+        &::before {
+          content: "\e0d4";
+        }
+      }
+
+      &[cap-^="slant-top"] {
+        &::before {
+          content: "\e0be";
+        }
+      }
+
+      &[cap-^="slant-bottom"] {
+        &::before {
+          content: "\e0ba";
+        }
+      }
+
+      &[cap-$="round"] {
+        &::after {
+          content: "\e0b4";
+        }
+      }
+
+      &[cap-$="triangle"] {
+        &::after {
+          content: "\e0b0";
+        }
+      }
+
+      &[cap-$="ribbon"] {
+        &::after {
+          content: "\e0d2";
+        }
+      }
+
+      &[cap-$="slant-top"] {
+        &::after {
+          content: "\e0bc";
+        }
+      }
+
+      &[cap-$="slant-bottom"] {
+        &::after {
+          content: "\e0b8";
+        }
+      }
+    }
+  }
+}

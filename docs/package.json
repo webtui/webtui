@@ -1,0 +1,28 @@
+{
+  "name": "docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "rm -rf dist .astro node_modules dist .turbo",
+    "lint": "bunx biome check src/**/*.{astro,css,ts}",
+    "format": "bunx biome format --write src/**/*.{astro,css,ts}",
+    "format:check": "bunx biome format src/**/*.{astro,css,ts}",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.1.0",
+    "@shikijs/transformers": "^3.2.1",
+    "@webtui/css": "workspace:*",
+    "@webtui/rehype-tabindex": "workspace:*",
+    "@webtui/theme-catppuccin": "workspace:*",
+    "@webtui/theme-nf": "workspace:*",
+    "astro": "^5.4.2"
+  },
+  "devDependencies": {
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "5.8.2"
+  }
+}

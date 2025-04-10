@@ -1,0 +1,32 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Badge
+---
+
+import Badges from "../../components/examples/Badges.astro";
+
+The **Badge** stylesheet provides styles for **statusline**-like badges
+
+<Badges />
+
+## Installation
+
+```css
+@import "@webtui/css/components/badge.css";
+```
+
+## Usage
+
+Simply add the `is-="badge"` attribute to any element
+
+```html
+<span is-="badge">badge</span>
+```
+
+## Scope
+
+- All elements with the `is-~="badge"` selector
+
+```css
+[is-~="badge"] { /* ... */ }
+```

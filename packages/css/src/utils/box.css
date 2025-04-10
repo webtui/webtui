@@ -1,10 +1,4 @@
 @layer utils {
-  @property --box-border-color {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--foreground0);
-  }
-
   @property --box-rounded-radius {
     syntax: "<length>";
     inherits: false;
@@ -27,6 +21,8 @@
   [box-~="square"],
   [box-~="round"],
   [box-~="double"] {
+    --box-border-color: var(--foreground0);
+
     position: relative;
     isolation: isolate;
     padding: 1lh 1ch;

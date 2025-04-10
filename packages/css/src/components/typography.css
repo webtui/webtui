@@ -13,6 +13,7 @@
     code {
       color: inherit;
       background-color: var(--background1);
+      padding: 0 1ch;
     }
   }
 
@@ -54,6 +55,24 @@
     li::before {
       color: inherit;
       content: "- ";
+    }
+
+    &[marker-="bullet"] li::before {
+      content: "• ";
+    }
+
+    &[marker-~="tree"] {
+      li::before {
+        content: "├ ";
+      }
+
+      &:not([marker-^="open"]) li:first-of-type::before {
+        content: "┌ ";
+      }
+
+      &:not([marker-$="open"]) li:last-of-type::before {
+        content: "└ ";
+      }
     }
 
     li > ul {

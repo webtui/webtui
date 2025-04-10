@@ -1,0 +1,39 @@
+<style>
+    @layer base, utils, components;
+
+    @import "@webtui/css/base.css";
+
+    /* Utils */
+    @import "@webtui/css/utils/box.css";
+    @import "@webtui/css/components/badge.css";
+    @import "@webtui/css/components/typography.css";
+    @import "@webtui/plugin-nf";
+
+    @import "../styles/flexbox.css";
+    @import "../styles/spacing.css";
+
+    body, html {
+        margin: 0;
+    }
+
+    body {
+        padding: 2ch 1lh;
+    }
+
+    @layer base {
+        :root {
+            --line-height: 1.4;
+        }
+    }
+
+    span[is-~="badge"] {
+        --badge-color: black;
+        color: white;
+    }
+</style>
+
+<div flex-="row gap:1 wrap">
+    <span is-="badge" cap-="square round">square + round</span>
+    <span is-="badge" cap-="round ribbon">round + ribbon</span>
+    <span is-="badge" cap-="slant-top slant-bottom">slant-top + slant-bottom</span>
+</div>

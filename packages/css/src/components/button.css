@@ -1,16 +1,4 @@
 @layer components {
-  @property --button-primary {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--foreground0);
-  }
-
-  @property --button-secondary {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--background0);
-  }
-
   button,
   [is-~="button"] {
     --button-primary: var(--foreground0);

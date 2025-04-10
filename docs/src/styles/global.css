@@ -1,0 +1,76 @@
+@layer base, utils, components;
+
+@import "@webtui/css";
+@import "@/styles/flexbox.css";
+@import "@/styles/spacing.css";
+@import "@webtui/plugin-nf";
+
+@font-face {
+  font-family: "JetBrainsMonoNFM";
+  src: url("/fonts/JetBrainsMonoNerdFontMono-Bold.ttf") format("ttf");
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "JetBrainsMonoNFM";
+  src: url("/fonts/JetBrainsMonoNerdFontMono-BoldItalic.ttf") format("ttf");
+  font-stretch: normal;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "JetBrainsMonoNFM";
+  src: url("/fonts/JetBrainsMonoNerdFontMono-Italic.ttf") format("ttf");
+  font-stretch: normal;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "JetBrainsMonoNFM";
+  src: url("/fonts/JetBrainsMonoNerdFontMono-Regular.ttf") format("ttf");
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@layer base {
+  :root {
+    --font-family: "JetBrainsMonoNFM", Menlo, Monaco, monospace;
+    --font-size: 18px;
+    --line-height: 1.4;
+  }
+
+  body,
+  html {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::highlight(vim) {
+    background-color: var(--foreground0);
+    color: var(--background0);
+  }
+}
+
+@layer components {
+  hr {
+    display: block;
+    padding: 0.5lh 0;
+    width: 100%;
+    border: none;
+    background-image: linear-gradient(0deg,
+        transparent 0,
+        transparent calc(0.5lh - 1px),
+        var(--foreground2) calc(0.5lh - 1px),
+        var(--foreground2) calc(0.5lh + 1px),
+        transparent calc(0.5lh + 1px),
+        transparent);
+  }
+}

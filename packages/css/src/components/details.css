@@ -1,15 +1,6 @@
 @layer components {
-  details {
-    &[open] > summary::marker {
-      content: "∨ ";
-    }
-    summary {
-      user-select: none;
-      outline: none;
-
-      &::marker {
-        content: "> ";
-      }
-    }
+  details summary {
+    user-select: none;
+    outline: none;
   }
 }

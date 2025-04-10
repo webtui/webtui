@@ -1,0 +1,16 @@
+<style is:global>
+    .b { color: var(--background0); }
+    .red { --badge-color: var(--red); }
+    .yellow { --badge-color: var(--yellow); }
+    .green { --badge-color: var(--green); }
+    .blue { --badge-color: var(--blue); }
+    .fg { --badge-color: var(--foreground0); }
+</style>
+
+<div flex-="row gap:1 wrap">
+    <span is-="badge" class="b fg">badge</span>
+    <span is-="badge" class="b red">error</span>
+    <span is-="badge" class="b yellow">warning</span>
+    <span is-="badge" class="b blue">info</span>
+    <span is-="badge" class="b green">success</span>
+</div>

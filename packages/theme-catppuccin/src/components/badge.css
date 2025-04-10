@@ -1,9 +1,20 @@
 @layer components {
   [is-~="badge"] {
-    &[variant-="mauve"] {
-      background: var(--mauve);
-      color: var(--background0);
-    }
-    /* TODO: Add badge variants */
+    --badge-color: var(--foreground0);
+    --badge-text: var(--background0);
+
+    &[variant-="rosewater"] { --badge-color: var(--rosewater); }
+    &[variant-="flamingo"] { --badge-color: var(--flamingo); }
+    &[variant-="pink"] { --badge-color: var(--pink); }
+    &[variant-="mauve"] { --badge-color: var(--mauve); }
+    &[variant-="red"] { --badge-color: var(--red); }
+    &[variant-="maroon"] { --badge-color: var(--maroon); }
+    &[variant-="peach"] { --badge-color: var(--peach); }
+    &[variant-="yellow"] { --badge-color: var(--yellow); }
+    &[variant-="green"] { --badge-color: var(--green); }
+    &[variant-="teal"] { --badge-color: var(--teal); }
+    &[variant-="sky"] { --badge-color: var(--sky); }
+    &[variant-="sapphire"] { --badge-color: var(--sapphire); }
+    &[variant-="blue"] { --badge-color: var(--blue); }
   }
 }

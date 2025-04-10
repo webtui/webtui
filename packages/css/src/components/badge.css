@@ -1,128 +1,35 @@
 @layer components {
-  @property --badge-background-color {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: var(--background0);
-  }
-
   [is-~="badge"] {
-    color: var(--foreground0);
+    --badge-color: var(--foreground0);
+    --badge-text: var(--background0);
+
+    color: var(--badge-text);
+    background-color: var(--badge-color);
     display: inline-flex;
     vertical-align: middle;
-    background-image: linear-gradient(90deg,
-        transparent 0,
-        transparent 1ch,
-        var(--badge-background-color) 1ch,
-        var(--badge-background-color) calc(100% - 1ch),
-        transparent calc(100% - 1ch),
-        transparent);
+    white-space: nowrap;
+    height: 1lh;
+    line-height: 1lh;
+    padding: 0 1ch;
 
-    &[variant-="background0"],
-    &:not([variant-]) {
-      --badge-background-color: var(--background0);
-    }
-
-    &[variant-="transparent"] {
-      --badge-background-color: transparent;
+    &[variant-="background0"] {
+      --badge-color: var(--background0);
+      --badge-text: var(--foreground0);
     }
 
     &[variant-="background1"] {
-      --badge-background-color: var(--background1);
+      --badge-color: var(--background1);
+      --badge-text: var(--foreground0);
     }
 
     &[variant-="background2"] {
-      --badge-background-color: var(--background2);
+      --badge-color: var(--background2);
+      --badge-text: var(--foreground0);
     }
 
     &[variant-="background3"] {
-      --badge-background-color: var(--background3);
-    }
-
-    &::before,
-    &::after {
-      content: "";
-      width: 1ch;
-      height: 1lh;
-      background-color: transparent;
-      color: var(--badge-background-color);
-    }
-
-    &:not([cap-]),
-    &[cap-^="square"] {
-      &::before {
-        background-color: var(--badge-background-color);
-        color: transparent;
-      }
-    }
-
-    &:not([cap-]),
-    &[cap-$="square"] {
-      &::after {
-        background-color: var(--badge-background-color);
-        color: transparent;
-      }
-    }
-
-    &[cap-] {
-      &[cap-^="round"] {
-        &::before {
-          content: "\e0b6";
-        }
-      }
-
-      &[cap-^="triangle"] {
-        &::before {
-          content: "\e0b2";
-        }
-      }
-
-      &[cap-^="ribbon"] {
-        &::before {
-          content: "\e0d7";
-        }
-      }
-
-      &[cap-^="slant-top"] {
-        &::before {
-          content: "\e0be";
-        }
-      }
-
-      &[cap-^="slant-bottom"] {
-        &::before {
-          content: "\e0ba";
-        }
-      }
-
-      &[cap-$="round"] {
-        &::after {
-          content: "\e0b4";
-        }
-      }
-
-      &[cap-$="triangle"] {
-        &::after {
-          content: "\e0b0";
-        }
-      }
-
-      &[cap-$="ribbon"] {
-        &::after {
-          content: "\e0d6";
-        }
-      }
-
-      &[cap-$="slant-top"] {
-        &::after {
-          content: "\e0bc";
-        }
-      }
-
-      &[cap-$="slant-bottom"] {
-        &::after {
-          content: "\e0b8";
-        }
-      }
+      --badge-color: var(--background3);
+      --badge-text: var(--foreground0);
     }
   }
 }

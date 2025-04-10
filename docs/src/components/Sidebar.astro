@@ -1,0 +1,161 @@
+---
+import { compareUrlPaths } from "@/utils/url";
+import { makeSortedCategoryEntries } from "@/utils/content";
+import { pluginInfo } from "@/content.config";
+
+const categories = makeSortedCategoryEntries();
+
+const { pathname: urlPath } = Astro.url;
+---
+
+<nav box-="square contain:!top" id="sidebar">
+  <div><span is-="badge" variant-="background0">Documentation</span></div>
+  <div id="category-container">
+    <div id="category-list">
+      {
+        categories.map(([slug, pages]) => (
+          <details open>
+            <summary>{slug}</summary>
+            <ul>
+              {pages.map(({ id, data: { pluginType, title } }) => (
+                <a
+                  href={`/${id}`}
+                  class={compareUrlPaths(urlPath, id) ? "active" : ""}
+                  data-slug={id}
+                >
+                  {pluginType && (
+                    <span style={`color: ${pluginInfo[pluginType].color}`}>
+                      {pluginInfo[pluginType].icon}
+                    </span>
+                  )}{" "}
+                  {title}
+                </a>
+              ))}
+            </ul>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+  <div box-="square contain:!top" id="keybind-container">
+    <span is-="badge" variant-="background0">Shortcuts</span>
+    <ul marker-="none" space-="p:1">
+      <li><code>h</code> focus sidebar</li>
+      <li><code>j</code> down</li>
+      <li><code>k</code> up</li>
+      <li><code>l</code> focus content</li>
+      <li><code>/</code> search</li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  #sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    overflow: hidden;
+    flex-grow: 1;
+    --box-border-color: var(--background1);
+
+    &:focus-within {
+      --box-border-color: var(--foreground2);
+    }
+
+    #category-container {
+      position: relative;
+      flex-grow: 1;
+    }
+
+    #category-list {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1lh;
+      padding: 0 1ch;
+      overflow-y: auto;
+    }
+
+    #keybind-container {
+      --box-border-color: var(--background1);
+    }
+  }
+
+  ul > a[href] {
+    color: var(--foreground1);
+    text-decoration: none;
+    outline: none;
+    display: list-item;
+
+    &::before {
+      content: "├ ";
+    }
+
+    &:last-of-type::before {
+      content: "└ ";
+    }
+
+    &.active {
+      color: var(--sky);
+      background-color: var(--background1);
+    }
+
+    &:focus {
+      background-color: var(--background1);
+    }
+  }
+
+  #filter-container {
+    --box-border-color: var(--foreground2);
+  }
+
+  details[open] a.hidden,
+  details.hidden,
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 96ch) {
+    #keybind-container {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import {
+    applyVimNavigation,
+    isUserTyping,
+    vimFocusElement,
+  } from "@/utils/vim";
+
+  let currentElement: HTMLElement | null =
+    document.querySelector(`ul > a.active`);
+
+  window.addEventListener("keydown", (e) => {
+    // Don't navigate if the user is typing
+    if (isUserTyping()) {
+      return;
+    }
+
+    if (e.key === "h") {
+      const elementToFocus = currentElement ?? null;
+
+      if (elementToFocus) {
+        vimFocusElement(elementToFocus);
+      }
+    }
+  });
+
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar) {
+    applyVimNavigation(
+      sidebar,
+      "details:not(.hidden)[open] a:not(.hidden), details:not(.hidden) summary",
+      (element) => {
+        currentElement = element;
+      },
+    );
+  }
+</script>

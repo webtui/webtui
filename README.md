@@ -24,6 +24,8 @@ For feature requests please open an issue.
 
 - [x] Fix box border css variables getting passed to children
 
+</#>
+
 ## Components
 
 - [x] button
