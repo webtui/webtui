@@ -98,16 +98,17 @@ details[open] summary::marker { /* ... */ }
 
 Adds additional end cap styles to badges
 
+![nf-badges.png](../../assets/nf-badges.png)
+
+#### `cap-`
+
+Use the `cap-` attribute to customize the start and end caps of badges
+
 ```html
 <span is-="badge">square</span>
 <span is-="badge" cap-="round">round</span>
 <span is-="badge" cap-="triangle">triangle</span>
-<span is-="badge" cap-="ribbon">ribbon</span>
-<span is-="badge" cap-="slant-top">slant-top</span>
-<span is-="badge" cap-="slant-bottom">slant-bottom</span>
 ```
-
-![nf-badges.png](../../assets/nf-badges.png)
 
 You can also define a start and end cap by using two values separated by a space
 
@@ -117,21 +118,13 @@ You can also define a start and end cap by using two values separated by a space
 
 ![nf-badge-caps.png](../../assets/nf-badge-caps.png)
 
-#### Cap Values 
-
-<style>
-.b {
-    color: var(--background0); 
-    --badge-color: var(--foreground0);
-}
-</style>
-
-- `cap-="square"` - <span is-="badge" cap-="square" class="b">square</span>
-- `cap-="round"` - <span is-="badge" cap-="round" class="b">round</span>
-- `cap-="triangle"` - <span is-="badge" cap-="triangle" class="b">triangle</span>
-- `cap-="ribbon"` - <span is-="badge" cap-="ribbon" class="b">ribbon</span>
-- `cap-="slant-top"` - <span is-="badge" cap-="slant-top" class="b">slant-top</span>
-- `cap-="slant-bottom"` - <span is-="badge" cap-="slant-bottom" class="b">slant-bottom</span>
+##### Values
+- `cap-="square"` - 
+- `cap-="round"` - 
+- `cap-="triangle"` - 
+- `cap-="ribbon"` - 
+- `cap-="slant-top"` - 
+- `cap-="slant-bottom"` - 
 
 #### Scope
 

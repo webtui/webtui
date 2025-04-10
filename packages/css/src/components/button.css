@@ -55,5 +55,41 @@
       height: 1lh;
       padding: 0 1ch;
     }
+
+    &[variant-="foreground0"],
+    &:not([variant]) {
+      --button-primary: var(--foreground0);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="foreground1"] {
+      --button-primary: var(--foreground1);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="foreground2"] {
+      --button-primary: var(--foreground2);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="background0"] {
+      --button-primary: var(--background0);
+      --button-secondary: var(--foreground0);
+    }
+
+    &[variant-="background1"] {
+      --button-primary: var(--background1);
+      --button-secondary: var(--foreground0);
+    }
+
+    &[variant-="background2"] {
+      --button-primary: var(--background2);
+      --button-secondary: var(--foreground0);
+    }
+
+    &[variant-="background3"] {
+      --button-primary: var(--background3);
+      --button-secondary: var(--foreground0);
+    }
   }
 }

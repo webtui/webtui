@@ -17,7 +17,7 @@ The **Input** stylesheet provides styles for **inputs**
 <input />
 ```
 
-### With `box-`
+### `box-`
 
 The `<input>` HTML element **does not** support pseudo-elements like `::before` and `::after` 
 

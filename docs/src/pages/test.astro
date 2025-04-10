@@ -7,33 +7,43 @@
     @import "@webtui/css/utils/box.css";
     @import "@webtui/css/components/badge.css";
     @import "@webtui/css/components/typography.css";
+    @import "@webtui/css/components/button.css";
     @import "@webtui/plugin-nf";
 
     @import "../styles/flexbox.css";
     @import "../styles/spacing.css";
 
-    body, html {
+    body,
+    html {
         margin: 0;
     }
 
     body {
         padding: 2ch 1lh;
     }
-
-    @layer base {
-        :root {
-            --line-height: 1.4;
-        }
-    }
-
-    span[is-~="badge"] {
-        --badge-color: black;
-        color: white;
-    }
 </style>
 
-<div flex-="row gap:1 wrap">
-    <span is-="badge" cap-="square round">square + round</span>
-    <span is-="badge" cap-="round ribbon">round + ribbon</span>
-    <span is-="badge" cap-="slant-top slant-bottom">slant-top + slant-bottom</span>
+<div flex-="col gap:1">
+    <div flex-="row gap:1 wrap">
+        <button variant-="foreground0">foreground0</button>
+        <button variant-="foreground1">foreground1</button>
+        <button variant-="foreground2">foreground2</button>
+    </div>
+    <div flex-="row gap:1 wrap">
+        <button variant-="background0">background0</button>
+        <button variant-="background1">background1</button>
+        <button variant-="background2">background2</button>
+        <button variant-="background3">background3</button>
+    </div>
+    <div flex-="row gap:1 wrap">
+        <button variant-="foreground0" box-="round">foreground0</button>
+        <button variant-="foreground1" box-="round">foreground1</button>
+        <button variant-="foreground2" box-="round">foreground2</button>
+    </div>
+    <div flex-="row gap:1 wrap">
+        <button variant-="background0" box-="round">background0</button>
+        <button variant-="background1" box-="round">background1</button>
+        <button variant-="background2" box-="round">background2</button>
+        <button variant-="background3" box-="round">background3</button>
+    </div>
 </div>

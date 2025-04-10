@@ -13,11 +13,12 @@
 - [x] Layout
   - [x] Sidebar
   - [x] Markdown body, vim-navigable
-- [ ] Components
-- [ ] Style Guide
+- [x] Components
+- [x] Style Guide
 - [ ] Typography
 - [ ] Themes
   - [ ] Theme previews / switching
+  - How the base theme works
 - [ ] Contributing
 - [ ] Responsiveness
 

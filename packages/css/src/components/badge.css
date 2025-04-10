@@ -1,8 +1,5 @@
 @layer components {
   [is-~="badge"] {
-    --badge-color: var(--foreground0);
-    --badge-text: var(--background0);
-
     color: var(--badge-text);
     background-color: var(--badge-color);
     display: inline-flex;
@@ -11,6 +8,21 @@
     height: 1lh;
     line-height: 1lh;
     padding: 0 1ch;
+
+    &[variant-="foreground0"], &:not([variant]) {
+      --badge-color: var(--foreground0);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="foreground1"] {
+      --badge-color: var(--foreground1);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="foreground2"] {
+      --badge-color: var(--foreground2);
+      --badge-text: var(--background0);
+    }
 
     &[variant-="background0"] {
       --badge-color: var(--background0);

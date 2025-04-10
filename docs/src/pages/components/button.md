@@ -23,7 +23,7 @@ It is **highly recommended** that you use the [Box Utility](/utils/box) along wi
 
 ![buttons.png](../../assets/buttons.png)
 
-### Sizing
+### `size-`
 
 You can control the size of your button by using the `size-` attribute
 
@@ -36,7 +36,7 @@ You can control the size of your button by using the `size-` attribute
 
 - `size-="small"` - A small button
 
-### Boxes Borders
+### `box-`
 
 To add a box border to your button, simply add the `box-` attribute and specify the box type you want
 

@@ -3,11 +3,9 @@ layout: "@/layouts/Doc.astro"
 title: Badge
 ---
 
-import Badges from "../../components/examples/Badges.astro";
+The **Badge** stylesheet provides styles for badges
 
-The **Badge** stylesheet provides styles for **statusline**-like badges
-
-<Badges />
+![badge-variants.png](../../assets/badge-variants.png)
 
 ## Installation
 
@@ -21,6 +19,38 @@ Simply add the `is-="badge"` attribute to any element
 
 ```html
 <span is-="badge">badge</span>
+```
+
+### `variant-`
+
+Use the `variant-` attribute to change the color of the badge
+
+```html
+<span is-="badge" variant-="foreground1">foreground1</span>
+<span is-="badge" variant-="background2">background2</span>
+```
+
+#### Values
+
+- `variant-="foreground0"`
+- `variant-="foreground1"`
+- `variant-="foreground2"`
+- `variant-="background0"`
+- `variant-="background1"`
+- `variant-="background2"`
+- `variant-="background3"`
+
+Defaults to `foreground0`
+
+### Styling
+
+For arbitrary styling, use the custom `--badge-color` and `--badge-text` properties to style the badge
+
+```css
+#my-custom-badge {
+  --badge-color: #ffffff;
+  --badge-text: #000000;
+}
 ```
 
 ## Scope
