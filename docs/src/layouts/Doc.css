@@ -1,5 +1,3 @@
-@import "@webtui/theme-catppuccin";
-
 #mobile-nav {
   --box-border-color: var(--background1);
   display: none;

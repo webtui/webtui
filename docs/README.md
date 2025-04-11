@@ -1,29 +1,14 @@
 # WebTUI Docs
 
-## TODO
+- better intro
+- landing page
+- theme docs
+- nf docs
 
-- [ ] Homepage
-  - [ ] Demos
-- [x] Quickstart
-  - [x] CDN
-  - [x] NPM Package
-  - [x] Framework-specifics
-- [x] Modularity
-  - [x] Importing what you need
-- [x] Layout
-  - [x] Sidebar
-  - [x] Markdown body, vim-navigable
-- [x] Components
-- [x] Style Guide
-- [ ] Typography
-- [ ] Themes
-  - [ ] Theme previews / switching
-  - How the base theme works
-- [ ] Contributing
-- [ ] Responsiveness
+## TODO (later)
 
-- [x] Decouple from Catppuccin theme in particular
-
-## Nice-to-have
-
-- [x] Fuzzy Search in sidebar with `/`
+- [ ] contribution guidelines / docs
+- [ ] framework-specific installations
+- [ ] box captions guide (using badges)
+- [ ] changelog
+- [ ] examples in component doc pages

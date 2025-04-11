@@ -1,10 +1,9 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: Box
-order: 0
+title: ASCII Boxes
 ---
 
-The **Box** utility utilizes CSS `::before` and `::after` pseudo-elements to mimic a boxes drawn with ASCII [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters)
+The `box-` utility utilizes CSS `::before` and `::after` pseudo-elements to mimic a boxes drawn with ASCII [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters)
 
 Below is an example of what you can do with the box utility:
 
@@ -58,15 +57,6 @@ Take a moment and observe the screenshot below
 - The box border lines appear **behind** the content within the `<div box-="*">` element
 
 ![box-containment.png](../../assets/box-containment.png)
-
-Check out the [Box Captions](/guides/box-captions) guide if you want to learn how to add captions to the top and/or bottom lines of your boxes...
-
-<div flex-="row">
-<div box-="square contain:!top">
-    <div><span is-="badge">...Like this</span></div>
-    <div space-="px:1"><a href="/guides/box-captions">Box Captions Guide</a></div>
-</div>
-</div>
 
 ## Custom Properties
 

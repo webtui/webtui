@@ -3,9 +3,7 @@ layout: "@/layouts/Doc.astro"
 title: Input
 ---
 
-The **Input** stylesheet provides styles for **inputs**
-
-## Installation
+## Import
 
 ```css
 @import "@webtui/css/components/input.css";
@@ -19,11 +17,11 @@ The **Input** stylesheet provides styles for **inputs**
 
 ### `box-`
 
-The `<input>` HTML element **does not** support pseudo-elements like `::before` and `::after` 
+`<input>` **does not** support pseudo-elements like `::before` and `::after`
 
-You **cannot** use the `box-` utility directly on an `<input>` element
+Therefore you **cannot** use the `box-` utility directly on an `<input>` element
 
-You can use a `<div>` element to wrap the `<input>`
+Wrap an `<input>` with a `<div box-="*">` to apply a box border
 
 ```html
 <div box-="round">
@@ -31,11 +29,46 @@ You can use a `<div>` element to wrap the `<input>`
 </div>
 ```
 
-Or you can use a `contenteditable` div
+Passing the `contenteditable` attribute to a `<div>` element is an alternative option
 
 ```html
 <div contenteditable box-="round"></div>
 ```
+
+### `size-`
+
+Use the `size-` attribute to change the size of an input
+
+```html
+<!-- Default -->
+<input />
+<!-- Small, no padding -->
+<input size-="small" />
+<!-- Large, padded -->
+<input size-="large" />
+```
+
+### Extending
+
+To extend the Input stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    input
+        :not([type="button"])
+        :not([type="submit"])
+        :not([type="reset"])
+        :not([type="checkbox"])
+        :not([type="radio"]),
+    [is-~="input"] {
+        &[size-="thicc"] {
+            height: 3lh;
+            padding: 1lh 8ch;
+        }
+
+        /* ... */
+    }
+}
 
 ## Scope
 

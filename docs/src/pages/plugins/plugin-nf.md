@@ -1,15 +1,12 @@
 ---
 layout: "@/layouts/Doc.astro"
 title: Nerd Font Plugin
-pluginType: plugin
 order: 2
 ---
 
-The **Nerd Font Plugin** adds additional styles and variants to the base styles that depend on a [Nerd Font](https://nerdfonts.com)
+Provides additional variants that utilize a [Nerd Font](https://nerdfonts.com) to some base `@webtui/css` components
 
 **Nerd Fonts** add additional glyphs from popular icon packs such as [Font Awesome](https://fontawesome.com), [Devicons](http://vorillaz.github.io/devicons/), [Octicons](https://github.com/github/octicons), and more
-
-These docs use the `JetBrainsMono NFM` Nerd Font, were built with ``, ``, ``, and Astro, all in `` btw
 
 ## Installation
 
@@ -56,7 +53,7 @@ Use the `@font-face` CSS at-rule to define the font faces
 
 ### CDN
 
-If you prefer to use Nerd Fonts served over a CDN, choose a Nerd Font from [this repository](https://github.com/mshaugh/nerdfont-webfonts) 
+If you prefer to import a Nerd Fonts served via CDN, choose a Nerd Font from [this repository](https://github.com/mshaugh/nerdfont-webfonts) 
 
 Add the desired font to the `<head>` of your HTML document
 
@@ -67,18 +64,16 @@ Add the desired font to the `<head>` of your HTML document
 />
 ```
 
-You can find a list of available Nerd Fonts from [this repository](https://github.com/mshaugh/nerdfont-webfonts)
-
 ## Components
 
 - [Details](#details)
-- [Badge](#is-~="badge")
+- [Badge](#badge)
 
 ---
 
 ### `<details>`
 
-Modifies the marker of the `<summary>` element to be a chevron instead of the default `▶︎` and `▼` default triangles
+Modifies the marker of the `<summary>` element to be a chevron instead of the default `▶︎` and `▼` symbols
 
 ```html
 <details>
@@ -87,14 +82,7 @@ Modifies the marker of the `<summary>` element to be a chevron instead of the de
 </details>
 ```
 
-#### Scope
-
-```css
-details summary::marker { /* ... */ }
-details[open] summary::marker { /* ... */ }
-```
-
-### `[is-~="badge"]`
+### `Badge`
 
 Adds additional end cap styles to badges
 
@@ -110,28 +98,19 @@ Use the `cap-` attribute to customize the start and end caps of badges
 <span is-="badge" cap-="triangle">triangle</span>
 ```
 
-You can also define a start and end cap by using two values separated by a space
+Passing two values separated by a space styles the start and end caps
 
 ```html
-<span is-="badge" cap-="ribbon round">ribbon + round</span>
+<span is-="badge" cap-="square round">square + round</span>
 ```
 
 ![nf-badge-caps.png](../../assets/nf-badge-caps.png)
 
-##### Values
-- `cap-="square"` - 
-- `cap-="round"` - 
-- `cap-="triangle"` - 
-- `cap-="ribbon"` - 
-- `cap-="slant-top"` - 
-- `cap-="slant-bottom"` - 
-
-#### Scope
-
-```css
-[is-~="badge"] {
-    /* ... */
-
-    &[cap-] { /* ... */ }
-}
+```html
+<span is-="square"></span>
+<span is-="round"></span>
+<span is-="triangle"></span>
+<span is-="ribbon"></span>
+<span is-="slant-top"></span>
+<span is-="slant-bottom"></span>
 ```

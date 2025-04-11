@@ -15,27 +15,24 @@ For feature requests please open an issue.
 
 ## TODO
 
-- [ ] Documentation
-- [x] CI
-- [x] Publish packages to npm, get CDN urls
-- [ ] Contribution guidelines 'n stuff
+- [ ] Contribution guidelines
 - [ ] Add descriptive READMEs to each package, docs
-- [ ] Logo & Branding
+- [ ] Multiple catppuccin flavors in catppuccin theme
+- [ ] Nord theme
+- [ ] Rose Pine theme
+- [ ] Gruvbox theme
+- [ ] Landing page
+  - [ ] Examples / Demos
 
-- [x] Fix box border css variables getting passed to children
-
-</#>
-
-## Components
+## Roadmap
 
 - [x] button
-  - [ ] checkbox
   - [ ] radio
-- [ ] input
-  - [ ] input[type="checkbox"]
+- [x] input
   - [ ] input[type="radio"]
   - [ ] input[type="range"]
-  - [ ] switch
+- [ ] checkbox
+  - [ ] switch variant
 - [ ] textarea
 - [ ] pre
 - [ ] label
@@ -44,28 +41,13 @@ For feature requests please open an issue.
   - [ ] popover (backdrop? + pointer events)
   - [ ] drawer / sheet
 - [ ] select
-- [ ] details
-- [ ] typography
+- [x] details
+- [x] typography
   - [ ] separator / hr
 - [ ] tooltip (hover)
 - [ ] misc
   - [x] badge ([is-="badge"])
-    - [ ] variants for catppuccin theme
+    - [x] variants for catppuccin theme
     - [x] caps
   - [ ] avatar ([is-="avatar"])
   - [ ] card ([is-="card"])
-
-## Themes
-
-- [x] Default (black and white)
-- [x] Catppuccin
-  - [ ] Support multiple catppuccin flavors
-- [ ] Nord
-- [ ] Rose Pine
-
-## Logo
-
-```
-┌WT┐
-└UI┘
-```

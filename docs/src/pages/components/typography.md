@@ -6,7 +6,7 @@ order: 1
 
 The **Typography** stylesheet provides styles for headings and inline elements
 
-## Installation
+## Import
 
 ```css
 @import "@webtui/css/components/typography.css";
@@ -57,9 +57,9 @@ The **Typography** stylesheet provides styles for headings and inline elements
 </ul>
 ```
 
-#### List Markers
+#### `<ul>` Markers
 
-You can customize list markers by using the `marker-` attribute on the `<ul>` element
+You can customize unordered list markers by using the `marker-` attribute on the `<ul>` element
 
 ```html
 <ul><!--...--></ul>

@@ -3,42 +3,30 @@ layout: "@/layouts/Doc.astro"
 title: Button
 ---
 
-The **Button** stylesheet provides styles for **buttons**
+## Import
 
-## Installation
+```css
+@import "@webtui/css/components/button.css";
+```
 
-It is **highly recommended** that you use the [Box Utility](/utils/box) along with the Button stylesheet
+The [Box Utility](/intro/ascii-boxes) can be used to add box borders to buttons
 
 ```css
 @import "@webtui/css/utils/box.css";
-@import "@webtui/css/components/button.css";
 ```
 
 ## Usage
 
+Create a `<button>` element, or add `is-="button"` to any HTML element
+
 ```html
 <button>Normal button</button>
-<button box-="round">Button with Box</button>
+<div is-="button">Div Button</div>
 ```
-
-![buttons.png](../../assets/buttons.png)
-
-### `size-`
-
-You can control the size of your button by using the `size-` attribute
-
-```html
-<button>Default</button>
-<button size-="small">Small</button>
-```
-
-![button-sizes.png](../../assets/button-sizes.png)
-
-- `size-="small"` - A small button
 
 ### `box-`
 
-To add a box border to your button, simply add the `box-` attribute and specify the box type you want
+Use the `box-` attribute to add a box border a button (requires the `box` utility)
 
 ```html
 <button box-="round">Round</button>
@@ -48,13 +36,33 @@ To add a box border to your button, simply add the `box-` attribute and specify 
 
 ![button-boxes.png](../../assets/button-boxes.png)
 
+### `variant-`
+
+Use the `variant-` attribute to change the color of a button
+
+Available variants match the [base theme colors](/start/theming#colors)
+
+```html
+<button variant-="background0"></button>
+<button variant-="background1"></button>
+<button variant-="background2"></button>
+<button variant-="background3"></button>
+<button variant-="foreground0"></button>
+<button variant-="foreground1"></button>
+<button variant-="foreground2"></button>
+```
+
+### `disabled`
+
+Use the `disabled` attribute to mark a button as disabled
+
+```html
+<button disabled>Disabled</button>
+```
+
 ### Styling
 
 Buttons are styled using the custom `--button-primary` and `--button-secondary` CSS properties
-
-It's possible to set the button color using `background` and `color`
-
-If you are using the `box-` utility, things get trickier due to the custom `--box-border-color` property
 
 ```css
 button {
@@ -63,9 +71,26 @@ button {
 }
 ```
 
+Buttons automatically switch between `--button-primary` and `--button-secondary` based on whether `box-` is applied or not
+
 ![button-colors.png](../../assets/button-colors.png)
 
-Buttons will automatically switch between the primary and secondary colors based on whether the `box-` attribute is applied or not
+### Extending
+
+To extend the Button stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    button, [is-~="button"] {
+        &[variant-="red"] {
+            --button-primary: red;
+            --button-secondary: white;
+        }
+
+        /* ... */
+    }
+}
+```
 
 ## Scope
 

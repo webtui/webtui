@@ -1,20 +1,32 @@
 @layer base {
   :root {
-    --background0: white;
+    --background0: #fff;
     --background1: #ddd;
     --background2: #bbb;
     --background3: #999;
 
-    --foreground0: black;
+    --foreground0: #000;
     --foreground1: #444;
     --foreground2: #888;
 
-    --font-size: 16px;
-    --line-height: 1.3;
+    --font-size: 16px; --line-height: 1.3;
 
     --font-weight-bold: 700;
     --font-weight-normal: 400;
-    --font-family: Menlo, Monaco, Consolas, monospace;
+    --font-family: monospace;
+  }
+
+  @media(prefers-color-scheme: dark) {
+    :root {
+      --background0: #000;
+      --background1: #222;
+      --background2: #444;
+      --background3: #666;
+
+      --foreground0: #fff;
+      --foreground1: #ccc;
+      --foreground2: #999;
+    }
   }
 
   body,
@@ -28,13 +40,10 @@
     font-variant-ligatures: common-ligatures;
   }
 
-  [contenteditable] {
-    outline: none;
-  }
-
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: none;
   }
 }

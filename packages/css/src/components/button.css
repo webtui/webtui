@@ -1,4 +1,5 @@
-@layer components {
+layer components {
+
   button,
   [is-~="button"] {
     --button-primary: var(--foreground0);
@@ -19,14 +20,13 @@
 
     &[box-] {
       color: var(--button-primary);
-      background: var(--button-secondary);
+      background: transparent;
       --box-border-color: var(--button-primary);
     }
 
     &:focus {
       font-weight: bold;
       text-decoration: underline;
-      text-decoration-style: dotted;
     }
 
     &:active {
@@ -34,26 +34,14 @@
       background: var(--button-secondary);
 
       &[box-] {
-        color: var(--button-secondary);
-        background: var(--button-primary);
         --box-border-color: var(--button-secondary);
+        background: transparent;
       }
     }
 
     &:disabled {
-      background-color: color-mix(in srgb, var(--button-primary) 50%, gray);
-      color: color-mix(in srgb, var(--button-secondary) 50%, gray);
-
-      &[box-] {
-        --box-border-color: color-mix(in srgb, var(--button-primary) 50%, gray);
-        color: color-mix(in srgb, var(--button-primary) 50%, gray);
-        background-color: color-mix(in srgb, var(--button-secondary) 50%, gray);
-      }
-    }
-
-    &[size-="small"] {
-      height: 1lh;
-      padding: 0 1ch;
+      text-decoration: line-through;
+      pointer-events: none;
     }
 
     &[variant-="foreground0"],

@@ -1,7 +1,6 @@
 ---
-import { compareUrlPaths } from "@/utils/url";
-import { makeSortedCategoryEntries } from "@/utils/content";
-import { pluginInfo } from "@/content.config";
+import { compareUrlPaths } from '@/utils/url';
+import { makeSortedCategoryEntries } from '@/utils/content';
 
 const categories = makeSortedCategoryEntries();
 
@@ -17,17 +16,12 @@ const { pathname: urlPath } = Astro.url;
           <details open>
             <summary>{slug}</summary>
             <ul>
-              {pages.map(({ id, data: { pluginType, title } }) => (
+              {pages.map(({ id, data: { title } }) => (
                 <a
                   href={`/${id}`}
                   class={compareUrlPaths(urlPath, id) ? "active" : ""}
                   data-slug={id}
                 >
-                  {pluginType && (
-                    <span style={`color: ${pluginInfo[pluginType].color}`}>
-                      {pluginInfo[pluginType].icon}
-                    </span>
-                  )}{" "}
                   {title}
                 </a>
               ))}
@@ -108,6 +102,10 @@ const { pathname: urlPath } = Astro.url;
 
   #filter-container {
     --box-border-color: var(--foreground2);
+  }
+
+  details summary:hover {
+    background: var(--background1);
   }
 
   details[open] a.hidden,
