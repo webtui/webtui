@@ -18,7 +18,7 @@
     "@webtui/css": "workspace:*",
     "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
-    "@webtui/theme-nf": "workspace:*",
+    "@webtui/plugin-nf": "workspace:*",
     "astro": "^5.4.2"
   },
   "devDependencies": {
