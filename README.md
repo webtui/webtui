@@ -15,10 +15,11 @@ For feature requests please open an issue.
 
 ## TODO
 
+- [ ] Publish to NPM
 - [ ] Contribution guidelines
-- [ ] Add descriptive READMEs to each package, docs
+- [x] Add descriptive READMEs to each package, docs
 - [ ] Multiple catppuccin flavors in catppuccin theme
-- [ ] Nord theme
+- [x] Nord theme
 - [ ] Rose Pine theme
 - [ ] Gruvbox theme
 - [ ] Landing page
@@ -29,8 +30,8 @@ For feature requests please open an issue.
 - [x] button
   - [ ] radio
 - [x] input
-  - [ ] input[type="radio"]
-  - [ ] input[type="range"]
+- [ ] input[type="radio"]
+- [ ] input[type="range"]
 - [ ] checkbox
   - [ ] switch variant
 - [ ] textarea
@@ -41,9 +42,9 @@ For feature requests please open an issue.
   - [ ] popover (backdrop? + pointer events)
   - [ ] drawer / sheet
 - [ ] select
-- [x] details
+- [ ] details (accordion)
 - [x] typography
-  - [ ] separator / hr
+- [ ] separator / hr
 - [ ] tooltip (hover)
 - [ ] misc
   - [x] badge ([is-="badge"])

@@ -19,7 +19,13 @@ yarn add @webtui/plugin-nf
 pnpm i @webtui/plugin-nf
 ```
 
+Import the plugin at the end of your import chain
+
 ```css
+@import "@webtui/css/base.css";
+@import "@webtui/css/components/typography.css";
+/* ... */
+
 @import "@webtui/plugin-nf";
 ```
 

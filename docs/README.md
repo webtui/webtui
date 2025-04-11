@@ -1,8 +1,5 @@
 # WebTUI Docs
 
-- landing page
-- remove wip from readme
-
 ## TODO (later)
 
 - [ ] contribution guidelines / docs
