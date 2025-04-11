@@ -1,3 +1,5 @@
-h1 {
-  display: block;
-}
+@import "./base.css";
+
+@import "./components/button.css";
+@import "./components/typography.css";
+@import "./components/badge.css";

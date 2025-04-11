@@ -1,0 +1,86 @@
+@layer components {
+  button {
+    /* nord0 - nord3 are the same as background0 - background3 */
+    &[variant-="nord0"] {
+      --button-primary: var(--background0);
+      --button-secondary: var(--foreground0);
+    }
+
+    &[variant-="nord1"] {
+      --button-primary: var(--background1);
+      --button-secondary: var(--foreground0);
+    }
+
+    &[variant-="nord2"] {
+      --button-primary: var(--background2);
+      --button-secondary: var(--foreground0);
+    }
+
+    &[variant-="nord3"] {
+      --button-primary: var(--background3);
+      --button-secondary: var(--foreground0);
+    }
+
+    /* nord6 - nord4 are the same as foreground0 - foreground2 */
+    &[variant-="nord6"] {
+      --button-primary: var(--foreground0);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord5"] {
+      --button-primary: var(--foreground1);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord4"] {
+      --button-primary: var(--foreground2);
+      --button-secondary: var(--background0);
+    }
+
+    /* accent colors */
+    &[variant-="nord7"] {
+      --button-primary: var(--nord7);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord8"] {
+      --button-primary: var(--nord8);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord9"] {
+      --button-primary: var(--nord9);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord10"] {
+      --button-primary: var(--nord10);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord11"] {
+      --button-primary: var(--nord11);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord12"] {
+      --button-primary: var(--nord12);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord13"] {
+      --button-primary: var(--nord13);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord14"] {
+      --button-primary: var(--nord14);
+      --button-secondary: var(--background0);
+    }
+
+    &[variant-="nord15"] {
+      --button-primary: var(--nord15);
+      --button-secondary: var(--background0);
+    }
+  }
+}

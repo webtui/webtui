@@ -9,7 +9,8 @@
     line-height: 1lh;
     padding: 0 1ch;
 
-    &[variant-="foreground0"], &:not([variant]) {
+    &[variant-="foreground0"],
+    &:not([variant]) {
       --badge-color: var(--foreground0);
       --badge-text: var(--background0);
     }

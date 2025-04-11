@@ -68,6 +68,6 @@
     &[variant-="lavender"] {
       --button-primary: var(--lavender);
       --button-secondary: var(--background0);
-    } 
+    }
   }
 }

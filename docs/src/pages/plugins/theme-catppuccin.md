@@ -43,7 +43,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 
 ### Badge
 
-- Adds additional variants to badges matching all custom accent colors
+Adds additional variants to badges matching all custom accent colors
 
 ```html
 <span is-="badge" variant-="rosewater">rosewater</span>
@@ -55,7 +55,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 
 ### Button
 
-- Adds additional variants to buttons matching all custom accent colors
+Adds additional variants to buttons matching all custom accent colors
 
 ```html
 <button variant-="rosewater">rosewater</button>

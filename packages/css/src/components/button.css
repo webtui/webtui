@@ -1,5 +1,4 @@
 layer components {
-
   button,
   [is-~="button"] {
     --button-primary: var(--foreground0);
