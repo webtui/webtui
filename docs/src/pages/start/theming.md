@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
 title: Theming
-order: 3
+order: -2
 ---
 
 Theming can be done by editing the CSS variables in the base stylesheet, or if you install a [theme plugin](#theme-plugins)
@@ -10,7 +10,7 @@ Theming can be done by editing the CSS variables in the base stylesheet, or if y
 
 `@webtui/css` ships with a set of CSS variables that control [font styles](#font-styles) and [background/foreground colors](#colors)
 
-You can customize these variables by customizing the `:root` under `@layer base` in your global CSS file
+These can be customized with the CSS `:root` selector on the `base` layer
 
 ```css
 @layer base {
@@ -70,7 +70,7 @@ Shown below is a screenshot showing the background and foreground colors of a ba
 
 `@webtui/css` ships with a very basic black-and-white theme that automatically changes based on the user's color preference
 
-You can customize dark/light mode colors with a `prefers-color-scheme` media query
+The user's preferred color scheme can be respected with the `prefers-color-scheme` media query
 
 ```css
 @layer base {
@@ -83,7 +83,7 @@ You can customize dark/light mode colors with a `prefers-color-scheme` media que
 }
 ```
 
-Alternatively, you can assign a class to the `html` element and use javascript to change it
+A `class` can be used on the `html` element if you intend to change the color scheme dynamically with JavaScript
 
 ```html
 <html class="dark">

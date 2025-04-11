@@ -1,9 +1,7 @@
 # WebTUI Docs
 
-- better intro
 - landing page
-- theme docs
-- nf docs
+- remove wip from readme
 
 ## TODO (later)
 

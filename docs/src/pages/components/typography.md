@@ -59,7 +59,7 @@ The **Typography** stylesheet provides styles for headings and inline elements
 
 #### `<ul>` Markers
 
-You can customize unordered list markers by using the `marker-` attribute on the `<ul>` element
+Add the `marker-` attribute to a `<ul>` element to customize its list markers
 
 ```html
 <ul><!--...--></ul>
@@ -69,7 +69,7 @@ You can customize unordered list markers by using the `marker-` attribute on the
 
 ![typography-list-markers.png](../../assets/typography-list-markers.png)
 
-You can leave the top and/or bottom markers of the `tree` variant open by adding the `open` keyword to the start and/or end of `marker-`
+Use the `open` keyword at the start and/or end of the `marker-` attribute to leave the top/bottom tree markers open
 
 ```html
 <ul marker-="tree open"><!--...--></ul>

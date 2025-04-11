@@ -5,7 +5,7 @@ title: ASCII Boxes
 
 The `box-` utility utilizes CSS `::before` and `::after` pseudo-elements to mimic a boxes drawn with ASCII [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters)
 
-Below is an example of what you can do with the box utility:
+Below is an example of what the box utility is capable of:
 
 ![box-demo.png](../../assets/box-demo.png)
 
@@ -43,7 +43,7 @@ The box utility supports three different border types:
 
 ## Containment
 
-You can choose whether to contain the top and/or bottom lines of the box by adding a containment keyword to the `box-` attribute
+The top and/or bottom lines of the box can be contained by adding the `contain:*` modifier to the `box-` attribute
 
 - `box-="<type> contain:!top"` will **not** contain the **top** line
 - `box-="<type> contain:!bottom"` will **not** contain the **bottom** line

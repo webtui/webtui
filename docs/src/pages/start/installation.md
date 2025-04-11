@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
 title: Installation
-order: 1
+order: 3
 ---
 
 It is **highly recommended** that you use **CSS Imports** with **WebTUI**
@@ -29,7 +29,7 @@ In your global CSS file, define the order of layers using the `@layer` at-rule [
 @import "@webtui/css/base.css";
 ```
 
-After importing the base styles, you can import the desired utilities, components, and themes
+Import the desired utilities, components, and themes **after** importing the base stylesheet
 
 ```css
 @layer base, utils, components;
@@ -69,7 +69,7 @@ If you want to add a pre-built color theme, check out the [Plugins](/plugins/int
 
 ## ESM Imports
 
-You can import stylesheets via ESM if your bundler supports it
+Stylesheets can be imported via ESM if your bundler supports it
 
 ```tsx
 import "@webtui/css/components/button.css";
@@ -85,7 +85,7 @@ export default function Button(props: Props) {
 
 ## CDN Imports
 
-You can import specific stylesheets via `<link>` tags via CDN
+Stylesheets can be imported with `<link>` served via CDN
 
 ```html
 <link
@@ -103,7 +103,7 @@ To import a specific version, add `@<version>` to the CDN URL after `/@webtui/cs
 />
 ```
 
-Although not recommended, you can just use the latest version of WebTUI by using the `@latest` tag
+Although not recommended, the latest version of WebTUI can be imported via the `@latest` tag
 
 **Important:** You must define the order of layers **before** importing any styles from **WebTUI**
 
@@ -122,15 +122,11 @@ Although not recommended, you can just use the latest version of WebTUI by using
 <!-- ... -->
 ```
 
-You can view and access all available stylesheets on the CDN via [JSDelivr](https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/)
+All available stylesheets on the CDN are viewable via [JSDelivr](https://cdn.jsdelivr.net/npm/@webtui/css@0.0.0/dist/)
 
 ## Full Library Import
 
-WebTUI was designed with a **modular approach** in which you import only the parts you need
-
-For testing purposes, you can import the entire library by importing the package directly
-
-Make sure to do this **after** defining the order of layers
+Import the entire library by importing the package directly, **after** defining the order of layers
 
 ```css
 @layer base, utils, components;
