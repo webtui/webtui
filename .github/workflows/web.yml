@@ -2,7 +2,7 @@
 #
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
-name: Deploy Docs to Pages
+name: Deploy Website to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -38,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs/dist
+          path: ./web/dist
 
   # Deployment job
   deploy:
