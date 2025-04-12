@@ -1,44 +1,226 @@
 ---
+import Filter from '@/components/Filter.astro';
 import Layout from '../layouts/Layout.astro';
 import '@webtui/theme-catppuccin';
-
-const headerText = `
-██   ██  ██████  █████   ██████  ██  ██  ██████
-██   ██  ██      ██  ██    ██    ██  ██    ██
-██ █ ██  ████    █████     ██    ██  ██    ██
-███████  ██      ██  ██    ██    ██  ██    ██ 
- ██ ██   ██████  █████     ██     ████   ██████`;
+import Navbar from '@/components/Navbar.astro';
 ---
 
 <Layout>
-  <main flex-="grow col">
-    <div box-="square contain" flex-="center col gap:1" id="main-box">
-      <pre>{headerText}</pre>
-      <div flex-="col gap:1">
-        <p>Modular CSS Library for building Beautiful Terminal-like UIs</p>
-        <ul>
-          <li><a href="/docs">View Docs</a></li>
-          <li>More coming soon</li>
-        </ul>
+  <section flex-="row center grow">
+    <div flex-="col">
+      <main flex-="col gap:1" space-="px:2 py:1">
+        <Navbar />
+        <header flex-="col gap:1">
+          <div flex-="col gap:1" space-="px:1">
+            <h1 tabindex="0" autofocus>
+              UI Design that goes <strong>HARD</strong>
+            </h1>
+            <p tabindex="0">
+              WebTUI is a modular CSS library that brings the beauty of Terminal
+              UIs to the browser
+            </p>
+          </div>
+          <div id="start-links" box-="square contain:!top">
+            <div>
+              <span is-="badge" variant-="background0" tabindex="0"
+                >Contents</span>
+            </div>
+            <div space-="px:1 pb:1">
+              <a
+                flex-="row gap:1"
+                tabindex="0"
+                href="/start/intro"
+                is-="typography-block"
+                ><code>S</code>
+                <span>Get Started</span>
+              </a>
+              <a
+                flex-="row gap:1"
+                tabindex="0"
+                href="/examples"
+                is-="typography-block"
+                ><code>E</code>
+                <span>View Examples</span>
+              </a>
+              <a
+                flex-="row gap:1"
+                tabindex="0"
+                href="/examples"
+                is-="typography-block"
+                ><code>C</code>
+                <span>Components</span>
+              </a>
+              <a
+                flex-="row gap:1"
+                tabindex="0"
+                href="/examples"
+                is-="typography-block"
+                ><code>/</code>
+                <span>Search</span>
+              </a>
+            </div>
+          </div>
+        </header>
+      </main>
+      <div flex-="row" id="statusline">
+        <span is-="badge" variant-="blue">NORMAL</span>
+        <span is-="badge" variant-="background1">
+          <span class="branch-name">&#xe725; master</span>
+        </span>
+        <div flex-="grow">
+          <span is-="badge" variant-="background0">index.astro</span>
+        </div>
+        <span is-="badge" variant-="background0">utf-8</span>
+        <span is-="badge" variant-="background1">
+          <span id="percent">Top</span>
+        </span>
+        <span is-="badge" variant-="blue"><span id="line">1</span>:1</span>
       </div>
+      <input id="cmdline" />
     </div>
-  </main>
+  </section>
+  <Filter />
 </Layout>
 
 <style>
-  #main-box {
-    padding: 2lh 4ch;
-    --box-border-color: var(--overlay0);
+  #start-links {
+    --box-border-color: var(--background2);
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+
+    a {
+      text-decoration: none;
+      color: var(--foreground1);
+
+      span {
+        text-decoration: underline;
+      }
+    }
   }
 
-  pre {
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    line-height: var(--line-height, 1.5);
-    font-variant-ligatures: common-ligatures;
-    color: var(--blue);
+  #statusline {
+    background-color: var(--background0);
+  }
+
+  #cmdline {
+    background-color: var(--background0);
+    padding: 0;
+  }
+
+  section {
+    background-color: var(--crust);
+    padding: 1lh 2ch;
+
+    main {
+      background-color: var(--background0);
+      width: 100%;
+      max-width: 84ch;
+    }
+  }
+
+  header h1 strong {
+    text-decoration: underline;
+    color: #eba0ac;
+  }
+
+  header [tabindex="0"]:focus {
     background-color: var(--background1);
-    padding: 1lh 1ch;
-    overflow-x: auto;
+  }
+
+  .branch-name {
+    color: #89b4fa;
+  }
+
+  #shorcuts-badge {
+    display: inline-flex;
+  }
+
+  #content-badge {
+    display: none;
+  }
+
+  @media (max-width: 80ch) {
+    #statusline,
+    #cmdline {
+      display: none;
+    }
+
+    #start-links code {
+      display: none;
+    }
+
+    #shorcuts-badge {
+      display: none;
+    }
+
+    #content-badge {
+      display: inline-flex;
+    }
   }
 </style>
+
+<script>
+  import {
+    applyVimCursorHighlight,
+    applyVimNavigation,
+    isUserTyping,
+  } from "@/utils/vim";
+
+  const header = document.querySelector("header") as HTMLElement;
+  const headerElements: NodeListOf<HTMLElement> = header.querySelectorAll(
+    'header [tabindex="0"]',
+  );
+  const lineNumber = document.getElementById("line") as HTMLSpanElement;
+  const percentage = document.getElementById("percent") as HTMLSpanElement;
+  const cmdline = document.getElementById("cmdline") as HTMLInputElement;
+
+  if (window.innerHeight > 800) {
+    applyVimCursorHighlight(headerElements[0]);
+  }
+
+  applyVimNavigation(header, 'header [tabindex="0"]', (element) => {
+    const index = Array.from(headerElements).indexOf(element);
+
+    lineNumber.innerText = String(index + 1);
+
+    if (index === 0) {
+      percentage.innerText = "Top";
+    } else if (index === headerElements.length) {
+      percentage.innerText = "Bot";
+    } else {
+      const percent = Math.round((index / headerElements.length) * 100);
+      percentage.innerText = String(percent) + "%";
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
+
+    if (e.key === ":") {
+      cmdline.focus();
+    }
+
+    if (e.key === "s" || e.key === "S") {
+      window.location.href = "/start/intro";
+    }
+
+    if (e.key === "e" || e.key === "E") {
+      window.location.href = "/examples";
+    }
+
+    if (e.key === "c" || e.key === "C") {
+      window.location.href = "/components/typography";
+    }
+  });
+
+  cmdline.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const value = cmdline.value;
+
+      if (value.startsWith(":") && value.includes("q")) {
+        alert("Skill Issue");
+      }
+    }
+  });
+</script>

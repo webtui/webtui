@@ -5,6 +5,7 @@ import Layout from '@/layouts/Layout.astro';
 import { makeSortedCategoryEntries } from '@/utils/content';
 import { compareUrlPaths } from '@/utils/url';
 import Contents from '@/components/Contents.astro';
+import Navbar from '@/components/Navbar.astro';
 
 const { frontmatter, headings } = Astro.props;
 
@@ -49,6 +50,7 @@ if (headings.length > 0) {
 
 <Layout>
   <div flex-="col grow" space-="px:2 py:1">
+    <Navbar />
     <div flex-="row grow gap:1">
       <div id="sidebar-container" class="mobile-hidden">
         <Sidebar />

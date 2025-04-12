@@ -1,0 +1,111 @@
+---
+import Filter from "@/components/Filter.astro";
+import "@webtui/theme-catppuccin";
+---
+
+<nav flex-="row gap:1 justify:between" space-="px:2 py:1" box-="square">
+  <a href="/" id="home-link">
+    &lt;/<span>#&gt;</span><span>WebTUI</span>
+  </a>
+  <div class="links">
+    <a href="/start/intro">
+      <span>&#xf15c</span>
+      <span>Docs</span>
+    </a>
+    <a href="/start/plugins#theme">
+      <span>&#xe22b</span>
+      <span>Themes</span>
+    </a>
+    <a href="https://github.com/webtui/webtui" target="_blank">
+      <span>&#xe709</span>
+      <span>Github</span>
+    </a>
+    <button id="search-button" size-="small">&#xea6d; Search</button>
+  </div>
+</nav>
+<Filter />
+
+<style is:global>
+  .links {
+    display: flex;
+    row-gap: 2ch;
+    column-gap: 1lh;
+
+    a {
+      display: inline-flex;
+      gap: 1ch;
+      text-decoration: none;
+      color: var(--foreground2);
+      span {
+        color: var(--foreground0);
+      }
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  nav {
+    container-type: inline-size;
+    container-name: navbar;
+    --box-border-color: var(--background1);
+    white-space: nowrap;
+
+    #home-link {
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--foreground1);
+
+      span:first-of-type {
+        color: #a6e3a1;
+      }
+
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: 80ch) {
+    .links {
+      gap: 1ch;
+
+      a {
+        background-color: var(--background1);
+        padding: 0 1ch;
+        span:last-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 48ch) {
+    #home-link span:last-of-type {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { isUserTyping } from "@/utils/vim";
+
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement;
+
+  document.getElementById("search-button")?.addEventListener("click", () => {
+    searchDialog.showModal();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
+
+    if (e.key === "/") {
+      e.preventDefault();
+      searchDialog.showModal();
+    }
+  });
+</script>

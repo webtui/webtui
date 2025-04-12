@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
 title: Plugins
-order: -1
+order: -2
 ---
 
 Plugins are external stylesheets that are designed to work alongside `@webtui/css`

@@ -1,4 +1,4 @@
-layer components {
+@layer components {
   button,
   [is-~="button"] {
     --button-primary: var(--foreground0);
@@ -41,6 +41,11 @@ layer components {
     &:disabled {
       text-decoration: line-through;
       pointer-events: none;
+    }
+
+    &[size-="small"] {
+      padding: 0 1ch;
+      height: 1lh;
     }
 
     &[variant-="foreground0"],

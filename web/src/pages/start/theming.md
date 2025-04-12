@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/Doc.astro"
 title: Theming
-order: -2
+order: -1
 ---
 
 Theming can be done by editing the CSS variables in the base stylesheet, or if you install a [theme plugin](#theme-plugins)

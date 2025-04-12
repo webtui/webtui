@@ -48,12 +48,27 @@ export function applyVimNavigation(
   queryString: string,
   onElementFocus?: (element: HTMLElement) => void,
 ) {
+  function reattachTabbableElements() {
+    const vimTabbableElements = element.querySelectorAll(
+      queryString,
+    ) as NodeListOf<HTMLElement>;
+
+    for (const el of vimTabbableElements) {
+      el.onfocus = () => {
+        vimFocusElement(el);
+        onElementFocus?.(el);
+      };
+    }
+
+    return vimTabbableElements;
+  }
+
+  reattachTabbableElements();
+
   element.addEventListener('keydown', (e) => {
     if (isUserTyping()) return;
 
-    const vimTabbableElements = document.querySelectorAll(
-      queryString,
-    ) as NodeListOf<HTMLElement>;
+    const vimTabbableElements = reattachTabbableElements();
 
     const currentIndex = Array.from(vimTabbableElements).indexOf(
       document.activeElement as HTMLElement,
@@ -62,33 +77,29 @@ export function applyVimNavigation(
     if (e.key === 'j' || e.key === 'ArrowDown') {
       const nextActiveElement =
         vimTabbableElements[
-          Math.min(currentIndex + 1, vimTabbableElements.length - 1)
+        Math.min(currentIndex + 1, vimTabbableElements.length - 1)
         ];
 
-      vimFocusElement(nextActiveElement);
-      onElementFocus?.(nextActiveElement);
+      nextActiveElement.focus();
     }
 
     if (e.key === 'k' || e.key === 'ArrowUp') {
       const nextActiveElement =
         vimTabbableElements[Math.max(currentIndex - 1, 0)];
 
-      vimFocusElement(nextActiveElement);
-      onElementFocus?.(nextActiveElement);
+      nextActiveElement.focus();
     }
 
     if (e.key === 'G') {
       const lastElement = vimTabbableElements[vimTabbableElements.length - 1];
 
-      vimFocusElement(lastElement);
-      onElementFocus?.(lastElement);
+      lastElement.focus();
     }
 
     if (e.key === 'g') {
       const firstElement = vimTabbableElements[0];
 
-      vimFocusElement(firstElement);
-      onElementFocus?.(firstElement);
+      firstElement.focus();
     }
   });
 }

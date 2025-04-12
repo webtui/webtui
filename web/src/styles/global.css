@@ -76,3 +76,9 @@
     );
   }
 }
+
+@media(max-width: 480px) {
+  :root {
+    --font-size: 16px;
+  }
+}

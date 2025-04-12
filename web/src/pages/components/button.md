@@ -52,6 +52,15 @@ Available variants match the [base theme colors](/start/theming#colors)
 <button variant-="foreground2"></button>
 ```
 
+### `size-`
+
+Use the `size-` attribute to change the size of a button
+
+```html
+<button>Default</button>
+<button size-="small">Small</button>
+```
+
 ### `disabled`
 
 Use the `disabled` attribute to mark a button as disabled
