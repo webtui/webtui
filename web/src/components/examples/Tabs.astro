@@ -7,8 +7,12 @@ const { tabs } = Astro.props as Props;
 const hashIndex = Number(Astro.url.hash.split('-').at(-1) ?? 0);
 ---
 
-<div flex-="col">
-  <div flex-="col" box-="square contain:!top" style="--box-border-color: var(--background2)">
+<div flex-="col grow">
+  <div
+    flex-="col"
+    box-="square contain:!top"
+    style="--box-border-color: var(--background2)"
+  >
     <div><span is-="badge" variant-="background0">Example</span></div>
     <div flex-="row gap:1 wrap" id="tabs" space-="px:1">
       {
@@ -30,7 +34,7 @@ const hashIndex = Number(Astro.url.hash.split('-').at(-1) ?? 0);
     </div>
   </div>
   <hr />
-  <div id="content-container">
+  <div id="content-container" flex-="col grow">
     <slot />
   </div>
 </div>
@@ -50,6 +54,10 @@ const hashIndex = Number(Astro.url.hash.split('-').at(-1) ?? 0);
         --badge-color: var(--background2);
       }
     }
+  }
+
+  #content-container {
+    min-height: 100vh;
   }
 </style>
 

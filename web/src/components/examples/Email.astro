@@ -1,0 +1,181 @@
+---
+
+---
+
+<div flex-="row gap:1 grow">
+  <div flex-="col gap:1" id="sidebar" box-="square">
+    <div flex-="row" space-="px:1">
+      <button flex-="grow" size-="small">[C] Compose &#xf1d8;</button>
+    </div>
+    <div flex-="col" space-="px:1" is-="typography-block">
+      <div>&#xf0687; <code>&lt;C-i&gt;</code> Inbox</div>
+      <div>&#xf1d8; <code>&lt;C-s&gt;</code> Sent</div>
+      <div>&#xea7b; <code>&lt;C-d&gt;</code> Drafts</div>
+      <div>&#xf1f8; <code>&lt;C-t&gt;</code> Trash</div>
+      <div>&#xf1767; <code>&lt;C-x&gt;</code> Spam</div>
+      <div>&#xf003c; <code>&lt;C-a&gt;</code> Archive</div>
+      <hr />
+      <div>&#xf4fd; <code>&lt;C-p&gt;</code> Social</div>
+      <div>&#xeb9a; <code>&lt;C-u&gt;</code> Updates</div>
+      <div>&#xf07a; <code>&lt;C-S&gt;</code> Shopping</div>
+      <div>&#xf1167; <code>&lt;C-P&gt;</code> Promotions</div>
+    </div>
+  </div>
+
+  <div flex-="col grow !basis" box-="square contain:!top" id="mail-container">
+    <div flex-="row"><span is-="badge" variant-="background0">Mail</span></div>
+
+    <div flex-="col gap:1" space-="px:1">
+      <div
+        flex-="col gap:1"
+        is-="typography-block"
+        box-="round contain:none"
+        class="mail-item"
+      >
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="background0"
+            ><strong>John Dough</strong></span
+          >
+          <span is-="badge" variant-="background0">Hello World!</span>
+        </div>
+        <p space-="px:1">
+          Lorem Ipsum Dolor Sit amet your mom never gonna give you up
+        </p>
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="foreground2">Social</span>
+          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
+        </div>
+      </div>
+
+      <div
+        flex-="col gap:1"
+        is-="typography-block"
+        box-="round contain:none"
+        class="mail-item"
+      >
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="background0"
+            ><strong>Jane Dough</strong></span
+          >
+          <span is-="badge" variant-="background0">Hello World!</span>
+        </div>
+        <p space-="px:1">
+          Lorem Ipsum Dolor Sit amet your mom never gonna give you up
+        </p>
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="green" cap-="ribbon">Promotions</span>
+          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
+        </div>
+      </div>
+
+      <div
+        flex-="col gap:1"
+        is-="typography-block"
+        box-="round contain:none"
+        class="mail-item"
+      >
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="background0"
+            ><strong>Play Dough</strong></span
+          >
+          <span is-="badge" variant-="background0">Hello World!</span>
+        </div>
+        <p space-="px:1">
+          Lorem Ipsum Dolor Sit amet your mom never gonna give you up
+        </p>
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="red" cap-="triangle">Spam</span>
+          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
+        </div>
+      </div>
+
+      <div
+        flex-="col gap:1"
+        is-="typography-block"
+        box-="round contain:none"
+        class="mail-item"
+      >
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="background0"
+            ><strong>Bread Dough</strong></span
+          >
+          <span is-="badge" variant-="background0">Hello World!</span>
+        </div>
+        <p space-="px:1">Your bread is ready</p>
+        <div flex-="row justify:between">
+          <span is-="badge" variant-="yellow" cap-="round">Shopping</span>
+          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div flex-="col grow !basis" box-="square contain:!top" id="mail-preview">
+    <div flex-="row">
+      <span is-="badge" variant-="background0">Preview</span>
+    </div>
+
+    <div flex-="row justify:between" space-="px:1">
+      <div flex-="row gap:1">
+        <button size-="small" variant-="background1">&#xf1f8;</button>
+        <button size-="small" variant-="background1">&#xf1767;</button>
+        <button size-="small" variant-="background1">&#xf003c;</button>
+      </div>
+
+      <div flex-="row gap:1">
+        <button size-="small" variant-="background1">&#xf112;</button>
+        <button size-="small" variant-="background1">&#xf122;</button>
+        <button size-="small" variant-="background1">&#xf064;</button>
+      </div>
+    </div>
+    <hr />
+
+    <div flex-="col gap:1" space-="px:1">
+      <h1>Hello World!</h1>
+
+      <p>
+        Lorem <strong>Ipsum</strong>
+        <em>Dolor</em> Sit amet your mom never gonna give you up
+      </p>
+      <h2>Ipsum Lorem</h2>
+      <p>
+        Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
+        aliquam nisl nisl sit amet nisl.
+      </p>
+      <h3>Ipsum Baco;n</h3>
+      <p>
+        C*m sociis natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus.up
+      </p>
+      <p>
+        Lorem Ipsum Dolor Sit amet your mom never gonna giveCras mattis
+        consectetur purus sit amet fermentum.
+      </p>
+
+      <div flex-="row gap:1 wrap">
+        <button box-="round">Reply</button>
+        <button box-="round">Reply All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #sidebar {
+    min-width: 24ch;
+    height: 100%;
+    --box-border-color: var(--background1);
+  }
+
+  #mail-container {
+    --box-border-color: var(--background1);
+  }
+
+  #mail-preview {
+    --box-border-color: var(--background1);
+  }
+
+  .mail-item {
+    --box-border-color: var(--background2);
+  }
+</style>

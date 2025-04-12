@@ -13,15 +13,17 @@ For feature requests please open an issue.
 
 ## TODO
 
-- [ ] Publish to NPM
+- [x] Publish to NPM
 - [ ] Contribution guidelines
 - [x] Add descriptive READMEs to each package, docs
 - [ ] Multiple catppuccin flavors in catppuccin theme
 - [x] Nord theme
 - [ ] Rose Pine theme
 - [ ] Gruvbox theme
-- [ ] Landing page
+- [x] Landing page
   - [ ] Examples / Demos
+- [ ] SEO / accessibility
+- [ ] Refactor some things to use web components
 
 ## Roadmap
 
