@@ -1,0 +1,89 @@
+---
+import Tabs from '@/components/examples/Tabs.astro';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import catppuccinStyle from '@webtui/theme-catppuccin?raw';
+import nordStyle from '@webtui/theme-nord?raw';
+import ThemeSwitcher from '@/components/examples/ThemeSwitcher.astro';
+---
+
+<Layout>
+  <main flex-="grow col">
+    <Navbar />
+    <div flex-="col" space-="px:1">
+      <ThemeSwitcher />
+      <Tabs tabs={["Auth", "Email", "Ecommerce", "AI Chat", "All Components"]}>
+        <div>[Auth example Coming Soon]</div>
+        <div>[Email example Coming Soon]</div>
+        <div>[Ecommerce example Coming Soon]</div>
+        <div>[AI Chat example Coming Soon]</div>
+        <div>[All Components example Coming Soon]</div>
+      </Tabs>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @layer base {
+    html.light {
+      --background0: #fff;
+      --background1: #ddd;
+      --background2: #bbb;
+      --background3: #999;
+
+      --foreground0: #000;
+      --foreground1: #444;
+      --foreground2: #888;
+    }
+
+    html.dark {
+      --background0: #000;
+      --background1: #222;
+      --background2: #444;
+      --background3: #666;
+
+      --foreground0: #fff;
+      --foreground1: #ccc;
+      --foreground2: #999;
+    }
+  }
+</style>
+
+<style id="inline-theme" is:raw set:html={catppuccinStyle}></style>
+
+<script define:vars={{ catppuccinStyle, nordStyle }}>
+  const html = document.querySelector("html");
+
+  const appendInlineStyle = (style) => {
+    const existingInlineTheme = document.getElementById("inline-theme");
+    if (existingInlineTheme) {
+      existingInlineTheme.remove();
+    }
+    const inlineTheme = document.createElement("style");
+    inlineTheme.id = "inline-theme";
+    inlineTheme.innerHTML = style;
+    document.head.appendChild(inlineTheme);
+  };
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        const themeClass = mutation.target.getAttribute("class");
+        console.log(themeClass);
+
+        if (themeClass === "catppuccin") {
+          appendInlineStyle(catppuccinStyle);
+        } else if (themeClass === "nord") {
+          appendInlineStyle(nordStyle);
+        } else {
+          document.getElementById("inline-theme")?.remove();
+        }
+      }
+    });
+  });
+
+  observer.observe(html, { attributes: true });
+</script>

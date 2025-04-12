@@ -1,0 +1,104 @@
+---
+interface Props {
+  tabs: Array<string>;
+}
+
+const { tabs } = Astro.props as Props;
+const hashIndex = Number(Astro.url.hash.split('-').at(-1) ?? 0);
+---
+
+<div flex-="col">
+  <div flex-="col" box-="square contain:!top" style="--box-border-color: var(--background2)">
+    <div><span is-="badge" variant-="background0">Example</span></div>
+    <div flex-="row gap:1 wrap" id="tabs" space-="px:1">
+      {
+        tabs.map((tab, i) => (
+          <a
+            href={`#${tab.toLowerCase()}-${i}`}
+            data-index={i}
+            class={tabs.indexOf(tab) === hashIndex ? "active" : ""}
+          >
+            <span is-="badge" variant-="background2">
+              {i + 1}
+            </span>
+            <span is-="badge" variant-="background1">
+              {tab}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <hr />
+  <div id="content-container">
+    <slot />
+  </div>
+</div>
+
+<style>
+  #tabs {
+    a {
+      display: inline-flex;
+      text-decoration: none;
+      color: var(--foreground0);
+
+      &.active span:first-of-type {
+        --badge-color: #fab387;
+        color: var(--background1);
+      }
+      &.active span:last-of-type {
+        --badge-color: var(--background2);
+      }
+    }
+  }
+</style>
+
+<script define:vars={{ tabs }}>
+  const container = document.getElementById("content-container");
+  const children = Array.from(container.children).filter(
+    (child) => child instanceof HTMLElement,
+  );
+  let hashIndex = Number(window.location.hash.split("-").at(-1) ?? 0);
+
+  children.forEach((child, i) => {
+    child.style.display = i === hashIndex ? "flex" : "none";
+  });
+
+  window.addEventListener("hashchange", () => {
+    hashIndex = Number(window.location.hash.split("-").at(-1) ?? 0);
+
+    children.forEach((child, i) => {
+      child.style.display = i === hashIndex ? "flex" : "none";
+    });
+
+    const links = document.querySelectorAll("a[data-index]");
+
+    links.forEach((link) => {
+      if (Number(link.dataset.index) === hashIndex) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "h") {
+      const prevIndex = Math.max(hashIndex - 1, 0);
+      const prevTab = tabs[prevIndex];
+      window.location.hash = `#${prevTab.toLowerCase()}-${prevIndex}`;
+    }
+
+    if (e.key === "ArrowRight" || e.key === "l") {
+      const nextIndex = Math.min(hashIndex + 1, tabs.length - 1);
+      const nextTab = tabs[nextIndex];
+      window.location.hash = `#${nextTab.toLowerCase()}-${nextIndex}`;
+    }
+
+    if (!isNaN(Number(e.key))) {
+      const index = Math.min(Math.max(Number(e.key) - 1, 0), tabs.length - 1);
+      const tab = tabs[index];
+      window.location.hash = `#${tab.toLowerCase()}-${index}`;
+    }
+  });
+</script>
