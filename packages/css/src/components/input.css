@@ -1,5 +1,4 @@
 @layer components {
-
   input,
   [is-~="input"] {
     background-color: var(--background1);
