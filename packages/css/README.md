@@ -2,7 +2,7 @@
 
 Modular CSS Library that brings the beauty of Terminal UIs to the browser
 
-https://webtui.ironclad.sh/docs
+Read the docs at https://webtui.ironclad.sh
 
 ## Installation
 
@@ -31,9 +31,9 @@ Import the desired utilities, components, and themes **after** importing the bas
 @import "@webtui/css/base.css";
 
 /* Utils */
-@import "@webtui/css/utils/box.css"; /*[!code ++]*/
+@import "@webtui/css/utils/box.css";
 
 /* Components */
-@import "@webtui/css/components/button.css"; /*[!code ++]*/
-@import "@webtui/css/components/typography.css"; /*[!code ++]*/
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/typography.css";
 ```

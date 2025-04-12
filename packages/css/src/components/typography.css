@@ -101,7 +101,7 @@
         width: var(--box-border-width, 2px);
         height: 100%;
         translate: -50%;
-        background: var(--background2);
+        background-color: var(--background2);
       }
     }
 

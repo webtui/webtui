@@ -104,8 +104,8 @@ const { pathname: urlPath } = Astro.url;
     --box-border-color: var(--foreground2);
   }
 
-  details summary:hover {
-    background: var(--background1);
+  details summary:hover, details summary:focus {
+    background-color: var(--background1);
   }
 
   details[open] a.hidden,

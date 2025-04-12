@@ -1,10 +1,6 @@
 @layer components {
-  input
-    :not([type="button"])
-    :not([type="submit"])
-    :not([type="reset"])
-    :not([type="checkbox"])
-    :not([type="radio"]),
+
+  input,
   [is-~="input"] {
     background-color: var(--background1);
     color: var(--foreground0);

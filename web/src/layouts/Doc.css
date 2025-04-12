@@ -29,6 +29,24 @@
 
     [tabindex="0"] {
       outline: none;
+
+      &:focus {
+        background-color: var(--background1);
+
+        &:is(pre) {
+          span.line:first-child {
+            text-decoration: underline;
+          }
+        }
+
+        &:has(> div.image-caption) {
+          background-color: var(--background0);
+
+          figcaption {
+            background-color: var(--background1);
+          }
+        }
+      }
     }
 
     #doc-pagination {

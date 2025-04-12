@@ -54,12 +54,7 @@ To extend the Input stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    input
-        :not([type="button"])
-        :not([type="submit"])
-        :not([type="reset"])
-        :not([type="checkbox"])
-        :not([type="radio"]),
+    input,
     [is-~="input"] {
         &[size-="thicc"] {
             height: 3lh;
@@ -76,11 +71,6 @@ To extend the Input stylesheet, define a CSS rule on the `components` layer
 - All `<input>` elements that are not of type `button`, `submit`, `reset`, `checkbox`, or `radio`
 
 ```css
-input
-    :not([type="button"])
-    :not([type="submit"])
-    :not([type="reset"])
-    :not([type="checkbox"])
-    :not([type="radio"]),
+input,
 [is-~="input"] { /* ... */ }
 ```

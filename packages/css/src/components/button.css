@@ -5,7 +5,7 @@ layer components {
     --button-secondary: var(--background0);
 
     color: var(--button-secondary);
-    background: var(--button-primary);
+    background-color: var(--button-primary);
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height);
@@ -19,7 +19,7 @@ layer components {
 
     &[box-] {
       color: var(--button-primary);
-      background: transparent;
+      background-color: transparent;
       --box-border-color: var(--button-primary);
     }
 
@@ -30,11 +30,11 @@ layer components {
 
     &:active {
       color: var(--button-primary);
-      background: var(--button-secondary);
+      background-color: var(--button-secondary);
 
       &[box-] {
         --box-border-color: var(--button-secondary);
-        background: transparent;
+        background-color: transparent;
       }
     }
 

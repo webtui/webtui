@@ -2,9 +2,7 @@
 
 Modular CSS Terminal-like UI library
 
-## WARNING: THIS IS A WORK IN PROGRESS AND IS NOT READY FOR USE
-
-If you want to try out the dev version, you can:
+Read the docs at https://webtui.ironclad.sh
 
 1. Clone the repo
 2. `cd` into the repo

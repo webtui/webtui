@@ -11,10 +11,6 @@ Some guardrails for designing Terminal-like UIs
 - Use the `ch` (**ch**aracter width) CSS unit for horizontal padding/margins/gaps [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#ch)
 - Use the `lh` (**l**ine **h**eight) CSS unit for vertical padding/margins/gaps [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh)
 
-## Colors
-
-- Smooth gradients are not recommended for Terminal-like UIs
-
 ## Text
 
 - All text should be using a fixed-width monospace font
