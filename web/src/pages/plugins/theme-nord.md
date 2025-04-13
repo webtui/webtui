@@ -21,7 +21,27 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 @import '@webtui/theme-nord';
 ```
 
+Set the `data-webtui-theme` attribute to the `<html>` tag
+
+```html
+<html data-webtui-theme="nord">
+```
+
+To only apply the theme to a specific element, use the same attribute
+
+```html
+<html data-webtui-theme="dark">
+    <body>
+        <div data-webtui-theme="nord">
+            <!-- ... -->
+        </div>
+    </body>
+</html>
+```
+
 ## Components
+
+Components affected/modified by the theme
 
 - [Typography](#typography)
 - [Badge](#badge)

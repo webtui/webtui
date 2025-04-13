@@ -3,11 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import Email from '@/components/examples/Email.astro';
 import Tabs from '@/components/examples/Tabs.astro';
-import catppuccinStyle from '@webtui/theme-catppuccin?raw';
-import nordStyle from '@webtui/theme-nord?raw';
+import '@webtui/theme-nord';
+import '@webtui/theme-catppuccin';
 ---
-
-<style id="inline-theme" is:raw set:html={catppuccinStyle}></style>
 
 <Layout>
   <column self-="grow">
@@ -84,7 +82,7 @@ import nordStyle from '@webtui/theme-nord?raw';
   }
 
   @layer base {
-    html.light {
+    html[data-webtui-theme="light"] {
       --background0: #fff;
       --background1: #ddd;
       --background2: #bbb;
@@ -95,7 +93,7 @@ import nordStyle from '@webtui/theme-nord?raw';
       --foreground2: #888;
     }
 
-    html.dark {
+    html[data-webtui-theme="dark"] {
       --background0: #000;
       --background1: #222;
       --background2: #444;
@@ -132,35 +130,14 @@ import nordStyle from '@webtui/theme-nord?raw';
 </script>
 
 <!-- Theme Switcher -->
-<script define:vars={{ catppuccinStyle, nordStyle }}>
-  const themelist = document.getElementById("themelist");
-  const html = document.querySelector("html");
-
-  const appendInlineStyle = (style) => {
-    const existingInlineTheme = document.getElementById("inline-theme");
-    if (existingInlineTheme) {
-      existingInlineTheme.remove();
-    }
-    const inlineTheme = document.createElement("style");
-    inlineTheme.id = "inline-theme";
-    inlineTheme.innerHTML = style;
-    document.head.appendChild(inlineTheme);
-  };
+<script>
+  const themelist = document.getElementById("themelist")!;
+  const html = document.querySelector("html")!;
 
   const observer = new MutationObserver(() => {
-    const value = themelist.getAttribute("data-tab");
+    const value = themelist.getAttribute("data-tab") as string;
 
-    if (value === "catppuccin") {
-      appendInlineStyle(catppuccinStyle);
-    } else if (value === "nord") {
-      appendInlineStyle(nordStyle);
-    } else {
-      const existingInlineTheme = document.getElementById("inline-theme");
-      if (existingInlineTheme) {
-        existingInlineTheme.remove();
-      }
-      html.className = value;
-    }
+    html.setAttribute("data-webtui-theme", value);
   });
 
   observer.observe(themelist, {
