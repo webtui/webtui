@@ -6,18 +6,19 @@ import catppuccinStyle from '@webtui/theme-catppuccin?raw';
 import nordStyle from '@webtui/theme-nord?raw';
 import ThemeSwitcher from '@/components/examples/ThemeSwitcher.astro';
 import Email from '@/components/examples/Email.astro';
+import AiChat from '@/components/examples/AiChat.astro';
 ---
 
 <Layout>
   <column self-="grow">
     <Navbar />
-    <column self-="grow" space-="px:1">
+    <column self-="grow" space-="px:1" class="examples-container">
       <ThemeSwitcher />
       <Tabs tabs={["Email", "Auth", "Ecommerce", "AI Chat", "All Components"]}>
         <column self-="grow"><Email /></column>
         <div>[Auth example Coming Soon]</div>
         <div>[Ecommerce example Coming Soon]</div>
-        <div>[AI Chat example Coming Soon]</div>
+        <div class="fullscreen-tab"><AiChat /></div>
         <div>[All Components example Coming Soon]</div>
       </Tabs>
     </column>
@@ -47,6 +48,17 @@ import Email from '@/components/examples/Email.astro';
       --foreground1: #ccc;
       --foreground2: #999;
     }
+  }
+
+  .fullscreen-tab {
+    height: calc(100vh - 8lh);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .examples-container {
+    height: 100vh;
+    overflow: hidden;
   }
 </style>
 
