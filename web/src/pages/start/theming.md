@@ -68,42 +68,17 @@ Shown below is a screenshot showing the background and foreground colors of a ba
 
 ### Light & Dark
 
-`@webtui/css` ships with a very basic black-and-white theme that automatically changes based on the user's color preference
+`@webtui/css` ships with a basic light and dark theme
 
-The user's preferred color scheme can be respected with the `prefers-color-scheme` media query
-
-```css
-@layer base {
-    @media(prefers-color-scheme: dark) {
-        :root {
-            --background0: #000;
-            /* ... */
-        }
-    }
-}
-```
-
-A `class` can be used on the `html` element if you intend to change the color scheme dynamically with JavaScript
+To enable the dark theme, simply add `data-webtui-theme="dark"` to the `<html>` tag, or any element that should inherit the theme colors
 
 ```html
-<html class="dark">
-    <head>
-        <style>
-            @layer base {
-                html.dark {
-                    --background0: #000;
-                    /* ... */
-                }
-            }
-        </style>
-    </head>
-<!-- ... -->
-</html>
+<html data-webtui-theme="dark">
 ```
 
 ## Theme Plugins
 
-Theme plugins include additional color variants for individual components on top of changing the base colors
+Theme plugins change the base colors and often include additional color variants and styles for individual components
 
 ![catppuccin-badges.png](../../assets/catppuccin-badges.png)
 

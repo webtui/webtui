@@ -1,73 +1,75 @@
 @layer components {
-  [is-~="badge"] {
-    &[variant-="rosewater"] {
-      --badge-color: var(--rosewater);
-      --badge-text: var(--background0);
-    }
+  [data-webtui-theme|="catppuccin"] {
+    [is-~="badge"] {
+      &[variant-="rosewater"] {
+        --badge-color: var(--rosewater);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="flamingo"] {
-      --badge-color: var(--flamingo);
-      --badge-text: var(--background0);
-    }
+      &[variant-="flamingo"] {
+        --badge-color: var(--flamingo);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="pink"] {
-      --badge-color: var(--pink);
-      --badge-text: var(--background0);
-    }
+      &[variant-="pink"] {
+        --badge-color: var(--pink);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="mauve"] {
-      --badge-color: var(--mauve);
-      --badge-text: var(--background0);
-    }
+      &[variant-="mauve"] {
+        --badge-color: var(--mauve);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="red"] {
-      --badge-color: var(--red);
-      --badge-text: var(--background0);
-    }
+      &[variant-="red"] {
+        --badge-color: var(--red);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="maroon"] {
-      --badge-color: var(--maroon);
-      --badge-text: var(--background0);
-    }
+      &[variant-="maroon"] {
+        --badge-color: var(--maroon);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="peach"] {
-      --badge-color: var(--peach);
-      --badge-text: var(--background0);
-    }
+      &[variant-="peach"] {
+        --badge-color: var(--peach);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="yellow"] {
-      --badge-color: var(--yellow);
-      --badge-text: var(--background0);
-    }
+      &[variant-="yellow"] {
+        --badge-color: var(--yellow);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="green"] {
-      --badge-color: var(--green);
-      --badge-text: var(--background0);
-    }
+      &[variant-="green"] {
+        --badge-color: var(--green);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="teal"] {
-      --badge-color: var(--teal);
-      --badge-text: var(--background0);
-    }
+      &[variant-="teal"] {
+        --badge-color: var(--teal);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="sky"] {
-      --badge-color: var(--sky);
-      --badge-text: var(--background0);
-    }
+      &[variant-="sky"] {
+        --badge-color: var(--sky);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="sapphire"] {
-      --badge-color: var(--sapphire);
-      --badge-text: var(--background0);
-    }
+      &[variant-="sapphire"] {
+        --badge-color: var(--sapphire);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="blue"] {
-      --badge-color: var(--blue);
-      --badge-text: var(--background0);
-    }
+      &[variant-="blue"] {
+        --badge-color: var(--blue);
+        --badge-text: var(--background0);
+      }
 
-    &[variant-="lavender"] {
-      --badge-color: var(--lavender);
-      --badge-text: var(--background0);
+      &[variant-="lavender"] {
+        --badge-color: var(--lavender);
+        --badge-text: var(--background0);
+      }
     }
   }
 }

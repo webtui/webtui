@@ -1,5 +1,5 @@
-@layer utils {
-  :root {
+@layer base {
+  [data-webtui-theme="nord"] {
     /* Polar Night */
     --nord0: #2e3440;
     --nord1: #3b4252;
