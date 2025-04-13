@@ -1,0 +1,384 @@
+---
+const products = [
+    {
+        id: 1,
+        name: "Mechanical Keyboard",
+        price: 149.99,
+        stock: 15,
+        category: { label: "Electronics", color: "blue", cap: "square" },
+        description: "Cherry MX switches, PBT keycaps, RGB backlight"
+    },
+    {
+        id: 2,
+        name: "Dev Sticker Pack",
+        price: 12.99,
+        stock: 50,
+        category: { label: "Accessories", color: "green", cap: "round" },
+        description: "Pack of 10 programming language stickers"
+    },
+    {
+        id: 3,
+        name: "Code Mug",
+        price: 19.99,
+        stock: 30,
+        category: { label: "Merch", color: "yellow", cap: "ribbon" },
+        description: "Coffee += Code; // 350ml ceramic mug"
+    },
+    {
+        id: 4,
+        name: "USB-C Hub",
+        price: 79.99,
+        stock: 8,
+        category: { label: "Electronics", color: "blue", cap: "square" },
+        description: "7-in-1 USB-C hub with HDMI, USB 3.0, SD card reader"
+    },
+    {
+        id: 5,
+        name: "Developer Hoodie",
+        price: 49.99,
+        stock: 25,
+        category: { label: "Merch", color: "yellow", cap: "ribbon" },
+        description: "Comfy hoodie with 'while(sleeping){code()}' print"
+    },
+    {
+        id: 6,
+        name: "Wireless Mouse",
+        price: 89.99,
+        stock: 12,
+        category: { label: "Electronics", color: "blue", cap: "square" },
+        description: "Ultra-responsive gaming mouse with RGB"
+    },
+    {
+        id: 7,
+        name: "Terminal Theme Pack",
+        price: 9.99,
+        stock: 100,
+        category: { label: "Accessories", color: "green", cap: "round" },
+        description: "Collection of 5 custom terminal themes"
+    },
+    {
+        id: 8,
+        name: "Code Font Bundle",
+        price: 29.99,
+        stock: 200,
+        category: { label: "Accessories", color: "green", cap: "round" },
+        description: "5 premium monospace programming fonts"
+    }
+];
+
+// Initial cart state
+const initialCart = [
+    { id: 1, quantity: 1 },
+    { id: 2, quantity: 2 }
+];
+---
+
+<row gap-="1" self-="grow" id="ecommerce-app" data-initial-cart={JSON.stringify(initialCart)} data-products={JSON.stringify(products)}>
+  <!-- Categories Sidebar -->
+  <column gap-="1" id="categories" box-="square">
+    <column space-="px:1">
+      <button size-="small">[F] Filter &#xf0b0;</button>
+    </column>
+    <column space-="px:1" is-="typography-block">
+      <div>&#xf6ff; All Products</div>
+      <div>&#xf553; Electronics</div>
+      <div>&#xf51f; Accessories</div>
+      <div>&#xf77b; Merch</div>
+      <hr />
+      <div>&#xf07a; Cart (<span id="cart-count">2</span>)</div>
+      <div>&#xf0c4; Orders</div>
+      <div>&#xf004; Wishlist</div>
+    </column>
+  </column>
+
+  <!-- Product Listing -->
+  <column self-="grow !basis" box-="square contain:!top">
+    <column>
+      <span is-="badge" variant-="background0">Products</span>
+    </column>
+    <column gap-="1" space-="px:1" id="product-list">
+      {
+        products.map((product) => (
+          <column
+            gap-="1"
+            is-="typography-block"
+            box-="round contain:none"
+            class="product-item"
+            data-product-id={product.id}
+          >
+            <row align-="between">
+              <span is-="badge" variant-="background0">
+                <strong>{product.name}</strong>
+              </span>
+              <span is-="badge" variant-="background0">
+                ${product.price}
+              </span>
+            </row>
+            <p space-="px:1">{product.description}</p>
+            <row align-="between">
+              <span
+                is-="badge"
+                variant-={product.category.color}
+                cap-={product.category.cap}
+              >
+                {product.category.label}
+              </span>
+              <row gap-="1">
+                <span is-="badge" variant-="background1" class="stock-badge">
+                  Stock: {product.stock}
+                </span>
+                <button 
+                  size-="small" 
+                  variant-="green" 
+                  class="add-to-cart-btn"
+                  data-product-id={product.id}
+                >
+                  Add to Cart &#xf07a;
+                </button>
+              </row>
+            </row>
+          </column>
+        ))
+      }
+    </column>
+  </column>
+  <!-- Cart Preview -->
+  <column self-="grow !basis" box-="square contain:!top">
+    <row>
+      <span is-="badge" variant-="background0">Shopping Cart</span>
+    </row>
+
+    <!-- Cart Actions -->
+    <row align-="between" space-="px:1">
+      <row gap-="1">
+        <button size-="small" variant-="background1" id="clear-cart">&#xf2ed; Clear</button>
+        <button size-="small" variant-="background1" id="update-cart">&#xf021; Update</button>
+      </row>
+      <button size-="small" variant-="green">&#xf09d; Checkout</button>
+    </row>
+
+    <hr />
+
+    <!-- Cart Items -->
+    <column gap-="1" space-="px:1" id="cart-items">
+      <!-- Cart items will be rendered here by JavaScript -->
+    </column>
+  </column>
+</row>
+
+<script>
+  // Define types
+  type Product = {
+    id: number;
+    name: string;
+    price: number;
+    stock: number;
+    category: {
+      label: string;
+      color: string;
+      cap: string;
+    };
+    description: string;
+  };
+
+  type CartItem = {
+    id: number;
+    quantity: number;
+  };
+
+  // Get initial data
+  const ecommerceApp = document.getElementById('ecommerce-app');
+  const products: Product[] = JSON.parse(ecommerceApp?.dataset.products || '[]');
+  const initialCartData = ecommerceApp?.dataset.initialCart || '[]';
+  let cart: CartItem[] = JSON.parse(localStorage.getItem('cart') || initialCartData);
+
+  // Initialize cart state
+  function initializeCart() {
+    if (!localStorage.getItem('cart')) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    } else {
+      cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+    updateCartDisplay();
+  }
+
+  // Add to cart handler
+  function handleAddToCart(productId: number) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ id: productId, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+
+    // Visual feedback
+    const button = document.querySelector(`button[data-product-id="${productId}"]`);
+    if (button) {
+      const originalHTML = button.innerHTML;
+      button.setAttribute('variant-', 'background1');
+      button.innerHTML = '✓ Added';
+      setTimeout(() => {
+        button.setAttribute('variant-', 'green');
+        button.innerHTML = originalHTML;
+      }, 1000);
+    }
+  }
+
+  // Update cart display
+  function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    if (!cartItemsContainer || !cartCount) return;
+
+    // Update cart count
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems.toString();
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = `
+        <column box-="round contain:none" class="cart-item">
+          <row align-="center">
+            <span is-="badge" variant-="background1">
+              Cart is empty
+            </span>
+          </row>
+        </column>
+      `;
+      return;
+    }
+
+    // Render cart items
+    cartItemsContainer.innerHTML = cart.map(item => {
+      const product = products.find(p => p.id === item.id);
+      if (!product) return '';
+      
+      return `
+        <column box-="round contain:none" class="cart-item">
+          <row align-="between">
+            <span is-="badge" variant-="background0">
+              ${product.name}
+            </span>
+            <span is-="badge" variant-="background0">
+              x${item.quantity}
+            </span>
+          </row>
+          <row align-="between" space-="py:1">
+            <span is-="badge" variant-="background1">
+              $${product.price} each
+            </span>
+            <span is-="badge" variant-="background1">
+              Total: $${(product.price * item.quantity).toFixed(2)}
+            </span>
+          </row>
+          <button 
+            size-="small" 
+            variant-="background1" 
+            class="remove-item-btn"
+            data-product-id="${product.id}"
+          >
+            &#xf2ed; Remove
+          </button>
+        </column>
+      `;
+    }).join('');
+
+    // Add subtotal
+    const subtotal = cart.reduce((total, item) => {
+      const product = products.find(p => p.id === item.id);
+      return total + (product?.price || 0) * item.quantity;
+    }, 0);
+
+    cartItemsContainer.innerHTML += `
+      <hr />
+      <row align-="between">
+        <span is-="badge" variant-="background0">Subtotal:</span>
+        <span is-="badge" variant-="background0">$${subtotal.toFixed(2)}</span>
+      </row>
+      <button box-="round" variant-="green">Proceed to Checkout &#xf09d;</button>
+    `;
+
+    // Add remove button listeners
+    document.querySelectorAll('.remove-item-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const productId = Number((e.target as HTMLElement).dataset.productId);
+        removeFromCart(productId);
+      });
+    });
+  }
+
+  // Remove from cart
+  function removeFromCart(productId: number) {
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+  }
+
+  // Clear cart handler
+  function handleClearCart() {
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+  }
+
+  // Set up event listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize cart
+    initializeCart();
+
+    // Add to cart buttons - using event delegation
+    document.getElementById('product-list')?.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('add-to-cart-btn')) {
+        const productId = Number(target.dataset.productId);
+        handleAddToCart(productId);
+      }
+    });
+
+    // Clear cart button
+    document.getElementById('clear-cart')?.addEventListener('click', handleClearCart);
+
+    // Update cart button
+    document.getElementById('update-cart')?.addEventListener('click', updateCartDisplay);
+  });
+</script>
+
+<style>
+  #categories {
+    min-width: 24ch;
+    height: 100%;
+  }
+
+  [box-~="square"] {
+    --box-border-color: var(--background1);
+  }
+
+  .product-item,
+  .cart-item {
+    --box-border-color: var(--background2);
+  }
+
+  .add-to-cart-btn,
+  .remove-item-btn {
+    transition: all 0.2s ease;
+  }
+
+  .add-to-cart-btn[variant-="background1"],
+  .remove-item-btn[variant-="background1"] {
+    cursor: pointer;
+  }
+
+  .cart-item {
+    position: relative;
+  }
+
+  .remove-item-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+</style>
