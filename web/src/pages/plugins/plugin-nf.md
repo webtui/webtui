@@ -40,7 +40,7 @@ Use the `@font-face` CSS at-rule to define the font faces
 ```css
 @font-face {
   font-family: "JetBrainsMonoNFM";
-  src: url("/path/to/fonts/JetBrainsMonoNFM-Regular.ttf") format("ttf");
+  src: url("/path/to/fonts/JetBrainsMonoNFM-Regular.ttf") format("truetype");
   font-stretch: normal;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +48,7 @@ Use the `@font-face` CSS at-rule to define the font faces
 
 @font-face {
   font-family: "JetBrainsMonoNFM";
-  src: url("/path/to/fonts/JetBrainsMonoNFM-Bold.ttf") format("ttf");
+  src: url("/path/to/fonts/JetBrainsMonoNFM-Bold.ttf") format("truetype");
   font-stretch: normal;
   font-style: normal;
   font-weight: 700;

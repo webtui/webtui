@@ -4,7 +4,7 @@ interface Props {
 }
 
 const { tabs } = Astro.props as Props;
-const hashIndex = Number(Astro.url.hash.split('-').at(-1) ?? 0);
+const hashIndex = Number(Astro.url.hash.split("-").at(-1) ?? 0);
 ---
 
 <column self-="grow">
@@ -13,7 +13,7 @@ const hashIndex = Number(Astro.url.hash.split('-').at(-1) ?? 0);
     style="--box-border-color: var(--background2)"
   >
     <row><span is-="badge" variant-="background0">Example</span></row>
-    <row space-="px:1">
+    <row space-="px:1" id="tabs">
       {
         tabs.map((tab, i) => (
           <a

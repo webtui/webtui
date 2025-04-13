@@ -1,8 +1,8 @@
 ---
-import Filter from "@/components/Filter.astro";
-import Layout from "../layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import "@webtui/theme-catppuccin";
+import Filter from '@/components/Filter.astro';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import '@webtui/theme-catppuccin';
 ---
 
 <Layout>
@@ -19,32 +19,32 @@ import "@webtui/theme-catppuccin";
               WebTUI is a modular CSS library that brings the beauty of Terminal
               UIs to the browser
             </p>
+            <div id="start-links" box-="square contain:!top">
+              <row>
+                <span is-="badge" variant-="background0" tabindex="0"
+                  >Contents</span
+                >
+              </row>
+              <column space-="px:1 pb:1" is-="typography-block">
+                <a tabindex="0" href="/start/intro"
+                  ><code>S</code>
+                  <span>Get Started</span>
+                </a>
+                <a tabindex="0" href="/examples"
+                  ><code>E</code>
+                  <span>View Examples</span>
+                </a>
+                <a tabindex="0" href="/examples"
+                  ><code>C</code>
+                  <span>Components</span>
+                </a>
+                <a tabindex="0" href="/examples"
+                  ><code>/</code>
+                  <span>Search</span>
+                </a>
+              </column>
+            </div>
           </header>
-          <div id="start-links" box-="square contain:!top">
-            <row>
-              <span is-="badge" variant-="background0" tabindex="0"
-                >Contents</span
-              >
-            </row>
-            <column space-="px:1 pb:1" is-="typography-block">
-              <a tabindex="0" href="/start/intro"
-                ><code>S</code>
-                <span>Get Started</span>
-              </a>
-              <a tabindex="0" href="/examples"
-                ><code>E</code>
-                <span>View Examples</span>
-              </a>
-              <a tabindex="0" href="/examples"
-                ><code>C</code>
-                <span>Components</span>
-              </a>
-              <a tabindex="0" href="/examples"
-                ><code>/</code>
-                <span>Search</span>
-              </a>
-            </column>
-          </div>
         </column>
       </column>
       <row id="statusline">
@@ -61,7 +61,7 @@ import "@webtui/theme-catppuccin";
         </span>
         <span is-="badge" variant-="blue"><span id="line">1</span>:1</span>
       </row>
-      <input id="cmdline" />
+      <input id="cmdline" aria-label="vim cmdline" />
     </column>
   </row>
   <Filter />
