@@ -6,6 +6,7 @@ import catppuccinStyle from '@webtui/theme-catppuccin?raw';
 import nordStyle from '@webtui/theme-nord?raw';
 import ThemeSwitcher from '@/components/examples/ThemeSwitcher.astro';
 import Email from '@/components/examples/Email.astro';
+import Ecommerce from '@/components/examples/Ecommerce.astro';
 ---
 
 <Layout>
@@ -16,7 +17,7 @@ import Email from '@/components/examples/Email.astro';
       <Tabs tabs={["Email", "Auth", "Ecommerce", "AI Chat", "All Components"]}>
         <column self-="grow"><Email /></column>
         <div>[Auth example Coming Soon]</div>
-        <div>[Ecommerce example Coming Soon]</div>
+        <column self-="grow"><Ecommerce /></column>
         <div>[AI Chat example Coming Soon]</div>
         <div>[All Components example Coming Soon]</div>
       </Tabs>
