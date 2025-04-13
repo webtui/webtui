@@ -1,6 +1,11 @@
 #mobile-nav {
   --box-border-color: var(--background1);
   display: none;
+  gap: 1ch;
+
+  button {
+    flex-grow: 1;
+  }
 }
 
 #sidebar-container {
@@ -51,6 +56,7 @@
 
     #doc-pagination {
       display: flex;
+      flex-wrap: wrap;
 
       &:has(> .prev) {
         justify-content: flex-start;
@@ -72,6 +78,10 @@
         --box-border-color: var(--background2);
         outline: none;
 
+        &.next {
+          text-align: right;
+        }
+
         &:hover,
         &:focus {
           --box-border-color: var(--foreground2);
@@ -92,7 +102,7 @@ article {
   }
 }
 
-@media (max-width: 96ch) {
+@media (max-width: 120ch) {
   #sidebar-container {
     max-width: 100%;
   }
@@ -105,9 +115,13 @@ article {
     display: none !important;
   }
 
-  .next code,
-  .prev code {
-    display: none;
+  .next,
+  .prev {
+    flex-grow: 1;
+
+    code {
+      display: none;
+    }
   }
 }
 
