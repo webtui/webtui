@@ -1,0 +1,118 @@
+@layer components {
+  [is-~="badge"] {
+    &[variant-="bg0"] {
+      --badge-color: var(--background0);
+      --badge-text: var(--foreground0);
+    }
+
+    &[variant-="bg1"] {
+      --badge-color: var(--background1);
+      --badge-text: var(--foreground0);
+    }
+
+    &[variant-="bg2"] {
+      --badge-color: var(--background2);
+      --badge-text: var(--foreground0);
+    }
+
+    &[variant-="bg3"] {
+      --badge-color: var(--background3);
+      --badge-text: var(--foreground0);
+    }
+
+    &[variant-="fg0"] {
+      --badge-color: var(--foreground-bright);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="fg1"] {
+      --badge-color: var(--foreground0);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="fg2"] {
+      --badge-color: var(--foreground1);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="fg3"] {
+      --badge-color: var(--foreground2);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="gray"] {
+      --badge-color: var(--accent-gray);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="red"] {
+      --badge-color: var(--accent-red);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="green"] {
+      --badge-color: var(--accent-green);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="yellow"] {
+      --badge-color: var(--accent-yellow);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="blue"] {
+      --badge-color: var(--accent-blue);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="purple"] {
+      --badge-color: var(--accent-purple);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="aqua"] {
+      --badge-color: var(--accent-aqua);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="orange"] {
+      --badge-color: var(--accent-orange);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-red"] {
+      --badge-color: var(--accent-bright-red);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-green"] {
+      --badge-color: var(--accent-bright-green);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-yellow"] {
+      --badge-color: var(--accent-bright-yellow);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-blue"] {
+      --badge-color: var(--accent-bright-blue);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-purple"] {
+      --badge-color: var(--accent-bright-purple);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-aqua"] {
+      --badge-color: var(--accent-bright-aqua);
+      --badge-text: var(--background0);
+    }
+
+    &[variant-="bright-orange"] {
+      --badge-color: var(--accent-bright-orange);
+      --badge-text: var(--background0);
+    }
+  }
+}
