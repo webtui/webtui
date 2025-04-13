@@ -1,116 +1,106 @@
 ---
-interface Props {
-  tabs: Array<string>;
-}
-
-const { tabs } = Astro.props as Props;
-const hashIndex = Number(Astro.url.hash.split("-").at(-1) ?? 0);
+const { label, ...rest } = Astro.props;
 ---
 
-<column self-="grow">
-  <column
-    box-="square contain:!top"
-    style="--box-border-color: var(--background2)"
-  >
-    <row><span is-="badge" variant-="background0">Example</span></row>
-    <row space-="px:1" id="tabs">
-      {
-        tabs.map((tab, i) => (
-          <a
-            href={`#${tab.toLowerCase()}-${i}`}
-            data-index={i}
-            class={tabs.indexOf(tab) === hashIndex ? "active" : ""}
-          >
-            <span is-="badge" variant-="background2">
-              {i + 1}
-            </span>
-            <span is-="badge" variant-="background1">
-              {tab}
-            </span>
-          </a>
-        ))
-      }
-    </row>
-  </column>
-  <hr />
-  <column id="content-container">
-    <slot />
-  </column>
-</column>
+<tabs-component label={label} role="tablist" {...rest}>
+  <slot />
+</tabs-component>
 
-<style>
-  #tabs {
-    gap: 1ch;
-    flex-wrap: wrap;
-    padding: 0 1ch;
+<template id="tabs-template">
+  <style>
+    #tabs-list {
+      display: flex;
+      flex-direction: row;
+    }
+  </style>
+  <div id="tabs-list">
+    <Fragment set:html={"<slot/>"} />
+  </div>
+</template>
 
-    a {
-      display: inline-flex;
-      text-decoration: none;
-      color: var(--foreground0);
+<script>
+  import { paginateElements } from "@/utils/vim";
 
-      &.active span:first-of-type {
-        --badge-color: #fab387;
-        color: var(--background1);
-      }
-      &.active span:last-of-type {
-        --badge-color: var(--background2);
-      }
+  const template = document.getElementById(
+    "tabs-template",
+  ) as HTMLTemplateElement;
+
+  class Tabs extends HTMLElement {
+    constructor() {
+      super();
+
+      const shadow = this.attachShadow({ mode: "open" });
+      shadow.appendChild(template.content.cloneNode(true));
+
+      const self = this;
+      const slot = shadow.querySelector("slot")!;
+
+      slot.addEventListener("slotchange", () => {
+        const items = slot
+          .assignedElements({ flatten: false })
+          .filter((node) => node instanceof HTMLButtonElement);
+
+        if (items.length === 0)
+          throw new Error("Tabs component requires at least one child element");
+        if (!items.every((item) => item.hasAttribute("data-value"))) {
+          throw new Error(
+            "Each direct child of Tabs must have a `data-tab` attribute",
+          );
+        }
+
+        if(!self.hasAttribute("data-tab"))
+        self.setAttribute("data-tab", items[0].getAttribute("data-value")!);
+
+        for (const item of items) {
+          self.initializeTab(item);
+        }
+      });
+    }
+
+    initializeTab(item: HTMLElement) {
+      const self = this;
+      const shadow = self.shadowRoot!;
+      const slot = shadow.querySelector("slot")!;
+
+      const items = slot
+        .assignedElements({ flatten: false })
+        .filter((item) => item instanceof HTMLButtonElement);
+
+      const value =
+        self.getAttribute("data-tab") ?? items[0].getAttribute("data-value");
+
+      const setCurrentTab = () => {
+        items.forEach((item) => {
+          item.setAttribute("aria-selected", "false");
+        });
+
+        self.setAttribute(
+          "data-tab",
+          item.getAttribute("data-value") as string,
+        );
+        item.setAttribute("aria-selected", "true");
+      };
+
+      item.setAttribute(
+        "aria-selected",
+        value === item.getAttribute("data-value") ? "true" : "false",
+      );
+      item.setAttribute("tabindex", "0");
+      item.setAttribute("role", "tab");
+      item.addEventListener("click", setCurrentTab);
+      item.addEventListener("focus", setCurrentTab);
+
+      item.addEventListener("keydown", (e) => {
+        const { next, prev } = paginateElements(
+          document.activeElement as HTMLElement,
+          items,
+        );
+
+        if (e.key === "ArrowLeft" || e.key === "h") prev.focus();
+        if (e.key === "ArrowRight" || e.key === "l") next.focus();
+      });
     }
   }
 
-  #content-container {
-    min-height: 100vh;
-    flex-grow: 1;
-  }
-</style>
-
-<script define:vars={{ tabs }}>
-  const container = document.getElementById("content-container");
-  const children = Array.from(container.children).filter(
-    (child) => child instanceof HTMLElement,
-  );
-  let hashIndex = Number(window.location.hash.split("-").at(-1) ?? 0);
-
-  children.forEach((child, i) => {
-    child.style.display = i === hashIndex ? "flex" : "none";
-  });
-
-  window.addEventListener("hashchange", () => {
-    hashIndex = Number(window.location.hash.split("-").at(-1) ?? 0);
-
-    children.forEach((child, i) => {
-      child.style.display = i === hashIndex ? "flex" : "none";
-    });
-
-    const links = document.querySelectorAll("a[data-index]");
-
-    links.forEach((link) => {
-      if (Number(link.dataset.index) === hashIndex) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
-    });
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" || e.key === "h") {
-      const prevIndex = Math.max(hashIndex - 1, 0);
-      const prevTab = tabs[prevIndex];
-      window.location.hash = `#${prevTab.toLowerCase()}-${prevIndex}`;
-    }
-
-    if (e.key === "ArrowRight" || e.key === "l") {
-      const nextIndex = Math.min(hashIndex + 1, tabs.length - 1);
-      const nextTab = tabs[nextIndex];
-      window.location.hash = `#${nextTab.toLowerCase()}-${nextIndex}`;
-    }
-
-    if (!isNaN(Number(e.key))) {
-      const index = Math.min(Math.max(Number(e.key) - 1, 0), tabs.length - 1);
-      const tab = tabs[index];
-      window.location.hash = `#${tab.toLowerCase()}-${index}`;
-    }
-  });
+  customElements.define("tabs-component", Tabs);
 </script>

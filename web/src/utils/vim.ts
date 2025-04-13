@@ -68,38 +68,27 @@ export function applyVimNavigation(
   element.addEventListener('keydown', (e) => {
     if (isUserTyping()) return;
 
-    const vimTabbableElements = reattachTabbableElements();
-
-    const currentIndex = Array.from(vimTabbableElements).indexOf(
+    const { next, prev, first, last } = paginateElements(
       document.activeElement as HTMLElement,
+      reattachTabbableElements(),
     );
 
-    if (e.key === 'j' || e.key === 'ArrowDown') {
-      const nextActiveElement =
-        vimTabbableElements[
-          Math.min(currentIndex + 1, vimTabbableElements.length - 1)
-        ];
-
-      nextActiveElement.focus();
-    }
-
-    if (e.key === 'k' || e.key === 'ArrowUp') {
-      const nextActiveElement =
-        vimTabbableElements[Math.max(currentIndex - 1, 0)];
-
-      nextActiveElement.focus();
-    }
-
-    if (e.key === 'G') {
-      const lastElement = vimTabbableElements[vimTabbableElements.length - 1];
-
-      lastElement.focus();
-    }
-
-    if (e.key === 'g') {
-      const firstElement = vimTabbableElements[0];
-
-      firstElement.focus();
-    }
+    if (e.key === 'j' || e.key === 'ArrowDown') next.focus();
+    if (e.key === 'k' || e.key === 'ArrowUp') prev.focus();
+    if (e.key === 'G') first.focus();
+    if (e.key === 'g') last.focus();
   });
+}
+
+export function paginateElements(
+  element: HTMLElement,
+  elements: NodeListOf<HTMLElement> | HTMLElement[],
+) {
+  const currentIndex = Array.from(elements).indexOf(element);
+  const first = elements[0];
+  const next = elements[Math.min(currentIndex + 1, elements.length - 1)];
+  const prev = elements[Math.max(currentIndex - 1, 0)];
+  const last = elements[elements.length - 1];
+
+  return { first, next, prev, last };
 }

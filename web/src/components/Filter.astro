@@ -132,7 +132,7 @@ const docHeadings = docPages
 </style>
 
 <script>
-  import { isUserTyping } from "@/utils/vim";
+  import { isUserTyping, paginateElements } from "@/utils/vim";
 
   const searchInput = document.getElementById(
     "search-input",
@@ -243,7 +243,8 @@ const docHeadings = docPages
     const visibleLinks = document.querySelectorAll(
       ".search-result[tabindex]:not(.hidden)",
     ) as NodeListOf<HTMLAnchorElement>;
-    const activeLinkIndex = Array.from(visibleLinks).indexOf(activeLink);
+
+    const { prev, next } = paginateElements(activeLink, visibleLinks);
 
     if ((e.key === "n" && e.ctrlKey) || e.key === "ArrowDown") {
       e.preventDefault();
@@ -251,10 +252,8 @@ const docHeadings = docPages
       visibleLinks.forEach((link) => {
         link.classList.remove("active");
       });
-      activeLink =
-        visibleLinks[Math.min(activeLinkIndex + 1, visibleLinks.length - 1)];
-      activeLink.scrollIntoView({ block: "nearest", inline: "nearest" });
-      activeLink.classList.add("active");
+      next.scrollIntoView({ block: "nearest", inline: "nearest" });
+      next.classList.add("active");
     }
 
     if ((e.key === "p" && e.ctrlKey) || e.key === "ArrowUp") {
@@ -263,9 +262,8 @@ const docHeadings = docPages
       visibleLinks.forEach((link) => {
         link.classList.remove("active");
       });
-      activeLink = visibleLinks[Math.max(activeLinkIndex - 1, 0)];
-      activeLink.scrollIntoView({ block: "nearest", inline: "nearest" });
-      activeLink.classList.add("active");
+      prev.scrollIntoView({ block: "nearest", inline: "nearest" });
+      prev.classList.add("active");
     }
 
     if (e.key === "Enter") {
