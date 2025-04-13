@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: "JetBrainsMonoNFM";
-  src: url("/fonts/JetBrainsMonoNerdFontMono-Bold.ttf") format("ttf");
+  src: url("/fonts/JetBrainsMonoNerdFontMono-Bold.ttf") format("truetype");
   font-stretch: normal;
   font-style: normal;
   font-weight: 700;
@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: "JetBrainsMonoNFM";
-  src: url("/fonts/JetBrainsMonoNerdFontMono-BoldItalic.ttf") format("ttf");
+  src: url("/fonts/JetBrainsMonoNerdFontMono-BoldItalic.ttf") format("truetype");
   font-stretch: normal;
   font-style: italic;
   font-weight: 700;
@@ -23,7 +23,7 @@
 
 @font-face {
   font-family: "JetBrainsMonoNFM";
-  src: url("/fonts/JetBrainsMonoNerdFontMono-Italic.ttf") format("ttf");
+  src: url("/fonts/JetBrainsMonoNerdFontMono-Italic.ttf") format("truetype");
   font-stretch: normal;
   font-style: italic;
   font-weight: 400;
@@ -31,7 +31,7 @@
 
 @font-face {
   font-family: "JetBrainsMonoNFM";
-  src: url("/fonts/JetBrainsMonoNerdFontMono-Regular.ttf") format("ttf");
+  src: url("/fonts/JetBrainsMonoNerdFontMono-Regular.ttf") format("truetype");
   font-stretch: normal;
   font-style: normal;
   font-weight: 400;
