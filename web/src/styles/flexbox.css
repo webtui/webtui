@@ -1,110 +1,68 @@
 @layer utils {
-  [flex-] {
-    &[flex-~="row"],
-    &[flex-~="col"],
-    &[flex-~="row-reverse"],
-    &[flex-~="col-reverse"] {
-      display: flex;
-    }
+  column,
+  [is-~="column"] {
+    flex-direction: column;
+  }
 
-    /* Flex Direction */
-    &[flex-~="row"] {
-      flex-direction: row;
-    }
+  row,
+  column,
+  [is-~="row"],
+  [is-~="column"] {
+    display: flex;
 
-    &[flex-~="col"] {
-      flex-direction: column;
-    }
-
-    &[flex-~="row:reverse"] {
-      flex-direction: row-reverse;
-    }
-
-    &[flex-~="col:reverse"] {
-      flex-direction: column-reverse;
-    }
-
-    /* Flex Wrap */
-    &[flex-~="wrap"] {
-      flex-wrap: wrap;
-    }
-
-    /* Align Items */
-    &[flex-~="align:center"] {
-      align-items: center;
-    }
-
-    &[flex-~="align:start"] {
-      align-items: flex-start;
-    }
-
-    &[flex-~="align:end"] {
-      align-items: flex-end;
-    }
-
-    /* Justify Content */
-    &[flex-~="justify:center"] {
-      justify-content: center;
-    }
-
-    &[flex-~="justify:start"] {
-      justify-content: flex-start;
-    }
-
-    &[flex-~="justify:end"] {
-      justify-content: flex-end;
-    }
-
-    &[flex-~="justify:between"] {
-      justify-content: space-between;
-    }
-
-    /* Shorthand Center */
-    &[flex-~="center"] {
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Grow, Shrink, basis */
-    &[flex-~="grow"] {
-      flex-grow: 1;
-    }
-
-    &[flex-~="\!grow"] {
-      flex-grow: 0;
-    }
-
-    &[flex-~="shrink"] {
-      flex-shrink: 1;
-    }
-
-    &[flex-~="\!shrink"] {
-      flex-shrink: 0;
-    }
-
-    &[flex-~="\!basis"] {
-      flex-basis: 0;
-    }
-
-    /* Gap */
-    &[flex-~="gap:0"] {
-      column-gap: 0;
-      row-gap: 0;
-    }
-
-    &[flex-~="gap:1"] {
+    &[gap-~="1"] {
       column-gap: 1ch;
       row-gap: 1lh;
     }
-
-    &[flex-~="gap:2"] {
+    &[gap-~="2"] {
       column-gap: 2ch;
       row-gap: 2lh;
     }
-
-    &[flex-~="gap:4"] {
+    &[gap-~="4"] {
       column-gap: 4ch;
       row-gap: 4lh;
+    }
+
+    &[self-~="grow"] {
+      flex-grow: 1;
+    }
+    &[self-~="!grow"] {
+      flex-grow: 1;
+    }
+    &[self-~="shrink"] {
+      flex-shrink: 1;
+    }
+    &[self-~="!shrink"] {
+      flex-shrink: 1;
+    }
+    &[self-~="!basis"] {
+      flex-basis: 0;
+    }
+
+    &[align-^="start"] {
+      align-items: flex-start;
+    }
+    &[align-^="end"] {
+      align-items: flex-end;
+    }
+    &[align-^="center"] {
+      align-items: center;
+    }
+    &[align-^="stretch"] {
+      align-items: stretch;
+    }
+
+    &[align-$="between"] {
+      justify-content: space-between;
+    }
+    &[align-$="start"] {
+      justify-content: flex-start;
+    }
+    &[align-$="end"] {
+      justify-content: flex-end;
+    }
+    &[align-$="center"] {
+      justify-content: center;
     }
   }
 }
