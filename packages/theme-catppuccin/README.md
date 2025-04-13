@@ -18,7 +18,40 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 @import '@webtui/theme-catppuccin';
 ```
 
+Set the `data-webtui-theme` attribute to the `<html>` tag
+
+```html
+<html data-webtui-theme="catppuccin-mocha">
+```
+
+To only apply the theme to a specific element, use the same attribute
+
+```html
+<html data-webtui-theme="dark">
+    <body>
+        <div data-webtui-theme="catppuccin-mocha">
+            <!-- ... -->
+        </div>
+    </body>
+</html>
+```
+
+## Flavors
+
+Supports all four Catppuccin theme flavors.
+
+```html
+<!-- `catppuccin` defaults to `catppuccin-mocha` -->
+<html data-webtui-theme="catppuccin">
+<html data-webtui-theme="catppuccin-mocha">
+<html data-webtui-theme="catppuccin-macchiato">
+<html data-webtui-theme="catppuccin-frappe">
+<html data-webtui-theme="catppuccin-latte">
+```
+
 ## Components
+
+Components affected/modified by the theme
 
 - [Typography](#typography)
 - [Badge](#badge)
