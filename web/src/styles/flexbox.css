@@ -1,9 +1,13 @@
 @layer utils {
-  column, [is-~="column"] {
+  column,
+  [is-~="column"] {
     flex-direction: column;
   }
 
-  row, column, [is-~="row"], [is-~="column"] {
+  row,
+  column,
+  [is-~="row"],
+  [is-~="column"] {
     display: flex;
 
     &[gap-~="1"] {
