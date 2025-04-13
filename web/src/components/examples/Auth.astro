@@ -1,0 +1,332 @@
+---
+let currentView = 'login';
+---
+
+<row space-="gap:2">
+  <!-- Terminal Style Auth -->
+  <column box-="square contain:!top" style="--box-border-color: var(--background2)" self-="grow basis:1/2">
+    <row>
+      <span is-="badge" variant-="background0">Auth Terminal</span>
+      <span is-="badge" variant-="background1" id="status-badge">Ready</span>
+    </row>
+
+    <div id="terminal-content" space-="p:1">
+      <div id="output-container">
+        <pre class="output">Welcome to Auth Terminal v1.0.0
+Type 'help' to see available commands
+        </pre>
+      </div>
+
+      <div class="command-line">
+        <span class="prompt">guest@auth:~$</span>
+        <input 
+          type="text" 
+          id="command-input" 
+          placeholder="Enter command"
+          autocomplete="off"
+          style="background: transparent; border: none; color: inherit; outline: none; width: 100%;"
+        />
+      </div>
+    </div>
+  </column>
+
+  <!-- Classic Style Auth -->
+  <column box-="square contain:!top" style="--box-border-color: var(--background2)" self-="grow basis:1/2">
+    <row>
+      <span is-="badge" variant-="background0">Classic Auth</span>
+      <span is-="badge" variant-="background1" id="classic-status">Sign In</span>
+    </row>
+
+    <div id="classic-auth" space-="p:1">
+      <div id="classic-form" class="classic-content">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            placeholder="Enter username"
+            autocomplete="off"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Enter password"
+          />
+        </div>
+        <div class="form-actions">
+          <button id="login-btn" is-="button" variant-="background0">Login</button>
+          <button id="register-switch-btn" is-="button" variant-="background1">Switch to Register</button>
+        </div>
+        <div id="classic-message" class="message"></div>
+      </div>
+    </div>
+  </column>
+</row>
+
+<style>
+  #terminal-content {
+    font-family: var(--font-family);
+    background-color: var(--background0);
+    color: var(--foreground0);
+    height: 60vh;
+    overflow-y: auto;
+  }
+
+  .command-line {
+    display: flex;
+    gap: 1ch;
+    margin-top: 1lh;
+  }
+
+  .prompt {
+    color: var(--foreground1);
+    white-space: nowrap;
+  }
+
+  .output {
+    margin: 0;
+    white-space: pre-wrap;
+    color: var(--foreground1);
+  }
+
+  .error {
+    color: #f38ba8;
+  }
+
+  .success {
+    color: #a6e3a1;
+  }
+
+  /* Classic Auth Styles */
+  #classic-auth {
+    background-color: var(--background0);
+    color: var(--foreground0);
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .classic-content {
+    width: 100%;
+    max-width: 320px;
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--foreground1);
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--background1);
+    border: 1px solid var(--background2);
+    color: var(--foreground0);
+    border-radius: 4px;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .message {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .message.error {
+    color: #f38ba8;
+  }
+
+  .message.success {
+    color: #a6e3a1;
+  }
+</style>
+
+<script>
+  const commands = {
+    help: "Available commands:\n" +
+          "  login <username> <password>  - Log in to your account\n" +
+          "  register <username> <password> <email>  - Create a new account\n" +
+          "  logout  - Log out from current session\n" +
+          "  clear   - Clear terminal output\n" +
+          "  help    - Show this help message",
+    
+    users: new Map() // Simulated user database
+  };
+
+  let currentUser: string | null = null;
+  const input = document.getElementById('command-input') as HTMLInputElement;
+  const output = document.querySelector('.output') as HTMLPreElement;
+  const statusBadge = document.getElementById('status-badge') as HTMLSpanElement;
+
+  // Prevent event propagation for terminal input
+  input?.addEventListener('keydown', (e) => {
+    e.stopPropagation();
+  });
+
+  input?.addEventListener('keypress', (e) => {
+    e.stopPropagation();
+  });
+
+  function updateStatusBadge() {
+    statusBadge.textContent = currentUser ? `Logged in as ${currentUser}` : 'Not logged in';
+    statusBadge.setAttribute('variant-', currentUser ? 'foreground0' : 'background1');
+  }
+
+  function appendOutput(text: string, type: 'normal' | 'error' | 'success' = 'normal') {
+    const line = document.createElement('div');
+    line.textContent = text;
+    line.className = type;
+    output.appendChild(line);
+    output.scrollTop = output.scrollHeight;
+  }
+
+  function handleCommand(cmd: string) {
+    const args = cmd.trim().split(' ');
+    const command = args[0].toLowerCase();
+
+    switch(command) {
+      case 'help':
+        appendOutput(commands.help);
+        break;
+
+      case 'clear':
+        output.innerHTML = '';
+        break;
+
+      case 'login':
+        if (currentUser) {
+          appendOutput('Error: Already logged in', 'error');
+          break;
+        }
+        if (args.length !== 3) {
+          appendOutput('Usage: login <username> <password>', 'error');
+          break;
+        }
+        const [_, username, password] = args;
+        if (commands.users.has(username) && commands.users.get(username).password === password) {
+          currentUser = username;
+          appendOutput(`Successfully logged in as ${username}`, 'success');
+          updateStatusBadge();
+        } else {
+          appendOutput('Error: Invalid credentials', 'error');
+        }
+        break;
+
+      case 'register':
+        if (args.length !== 4) {
+          appendOutput('Usage: register <username> <password> <email>', 'error');
+          break;
+        }
+        const [__, newUsername, newPassword, email] = args;
+        if (commands.users.has(newUsername)) {
+          appendOutput('Error: Username already exists', 'error');
+          break;
+        }
+        commands.users.set(newUsername, { password: newPassword, email });
+        appendOutput(`Successfully registered user ${newUsername}`, 'success');
+        break;
+
+      case 'logout':
+        if (!currentUser) {
+          appendOutput('Error: Not logged in', 'error');
+          break;
+        }
+        currentUser = null;
+        appendOutput('Successfully logged out', 'success');
+        updateStatusBadge();
+        break;
+
+      default:
+        appendOutput(`Command not found: ${command}. Type 'help' for available commands.`, 'error');
+    }
+  }
+
+  input?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && input.value.trim()) {
+      const command = input.value;
+      appendOutput(`${document.querySelector('.prompt')?.textContent} ${command}`);
+      handleCommand(command);
+      input.value = '';
+    }
+  });
+
+  // Classic Auth Implementation
+  let isLoginView = true;
+  const classicStatus = document.getElementById('classic-status') as HTMLSpanElement;
+  const usernameInput = document.getElementById('username') as HTMLInputElement;
+  const passwordInput = document.getElementById('password') as HTMLInputElement;
+  const loginBtn = document.getElementById('login-btn') as HTMLButtonElement;
+  const registerSwitchBtn = document.getElementById('register-switch-btn') as HTMLButtonElement;
+  const classicMessage = document.getElementById('classic-message') as HTMLDivElement;
+
+  // Prevent event propagation for classic auth inputs
+  usernameInput?.addEventListener('keydown', (e) => {
+    e.stopPropagation();
+  });
+
+  passwordInput?.addEventListener('keydown', (e) => {
+    e.stopPropagation();
+  });
+
+  function showMessage(message: string, type: 'error' | 'success') {
+    classicMessage.textContent = message;
+    classicMessage.className = `message ${type}`;
+  }
+
+  function toggleAuthView() {
+    isLoginView = !isLoginView;
+    classicStatus.textContent = isLoginView ? 'Sign In' : 'Register';
+    loginBtn.textContent = isLoginView ? 'Login' : 'Register';
+    registerSwitchBtn.textContent = isLoginView ? 'Switch to Register' : 'Switch to Login';
+  }
+
+  registerSwitchBtn?.addEventListener('click', toggleAuthView);
+
+  loginBtn?.addEventListener('click', () => {
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+
+    if (!username || !password) {
+      showMessage('Please fill in all fields', 'error');
+      return;
+    }
+
+    if (isLoginView) {
+      if (commands.users.has(username) && commands.users.get(username).password === password) {
+        showMessage('Successfully logged in!', 'success');
+      } else {
+        showMessage('Invalid credentials', 'error');
+      }
+    } else {
+      if (commands.users.has(username)) {
+        showMessage('Username already exists', 'error');
+      } else {
+        commands.users.set(username, { password, email: '' });
+        showMessage('Successfully registered!', 'success');
+        toggleAuthView();
+      }
+    }
+
+    usernameInput.value = '';
+    passwordInput.value = '';
+  });
+
+  // Add some example users
+  commands.users.set('admin', { password: 'admin123', email: 'admin@example.com' });
+  commands.users.set('demo', { password: 'demo123', email: 'demo@example.com' });
+</script>
