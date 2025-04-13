@@ -1,0 +1,30 @@
+@layer components {
+    [is-~="progress-bar"] {
+      background-color: var(--background1);
+      border: solid var(--box-border-width) var(--foreground2);
+      height: 1lh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+  
+    .progress-bar .bar {
+      background-color: var(--green); /* Example progress color */
+      height: 100%;
+    }
+  
+    .progress-bar .label {
+      color: var(--foreground1);
+      font-size: 0.8em;
+      margin-left: 0.5ch;
+    }
+  }
+
+  /* How to use
+  
+  
+  <div is-="progress-bar">
+  <div class="bar" style="width: 60%;"></div>
+  <span class="label">60%</span>
+</div>
+  */

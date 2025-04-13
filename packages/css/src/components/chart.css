@@ -1,0 +1,59 @@
+@layer components {
+    [is-~="chart"] {
+      background-color: var(--background1);
+      color: var(--foreground1);
+      font-family: var(--font-family);
+      font-size: 0.9em;
+      line-height: 1.2;
+      padding: 1lh 1ch;
+      border: solid var(--box-border-width) var(--foreground2);
+    }
+  
+    .chart .bar-label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.25lh;
+    }
+  
+    .chart .label {
+      width: 8ch;
+      text-align: right;
+      margin-right: 0.5ch;
+    }
+  
+    .chart .bar {
+      height: 1lh;
+      background-color: var(--foreground1); /* Default bar color */
+      margin-right: 0.5ch;
+    }
+  
+    .chart .value {
+      width: 3ch;
+      text-align: right;
+    }
+  }
+
+
+  /* 
+
+  HOW TO USE
+
+  
+  <div is-="chart">
+  <div class="bar-label">
+    <span class="label">Data A</span>
+    <span class="bar" style="width: 70%; background-color: var(--green);"></span>
+    <span class="value">70</span>
+  </div>
+  <div class="bar-label">
+    <span class="label">Data B</span>
+    <span class="bar" style="width: 45%; background-color: var(--blue);"></span>
+    <span class="value">45</span>
+  </div>
+  <div class="bar-label">
+    <span class="label">Data C</span>
+    <span class="bar" style="width: 90%; background-color: var(--red);"></span>
+    <span class="value">90</span>
+  </div>
+</div>
+  */

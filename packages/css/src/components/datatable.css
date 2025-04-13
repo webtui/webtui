@@ -1,0 +1,53 @@
+@layer components {
+    [is-~="data-table"] {
+      background-color: var(--background1);
+      color: var(--foreground1);
+      font-family: var(--font-family);
+      font-size: 0.9em;
+      line-height: 1.2;
+      border-collapse: collapse;
+      border: solid var(--box-border-width) var(--foreground2);
+    }
+  
+    .data-table th,
+    .data-table td {
+      padding: 0.25lh 0.5ch;
+      border: solid thin var(--foreground2);
+      text-align: left;
+    }
+  
+    .data-table th {
+      font-weight: var(--font-weight-bold);
+      color: var(--foreground0);
+    }
+  }
+
+  /* how to use \
+  <table is-="data-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Alice</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Bob</td>
+      <td>Inactive</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Charlie</td>
+      <td>Pending</td>
+    </tr>
+  </tbody>
+</table>
+  
+  */

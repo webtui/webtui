@@ -1,0 +1,57 @@
+@layer components {
+    [is-~="file-explorer"] {
+      list-style-type: none;
+      padding-left: 1ch; /* Initial indent */
+    }
+  
+    [is-~="file-explorer"] li {
+      padding-left: 1ch; /* Indent for children */
+    }
+  
+    [is-~="file-explorer"] > li {
+      padding-left: 0; /* Remove indent for top-level items */
+    }
+  
+    [is-~="file-explorer"] details > summary {
+      list-style-type: none; /* Hide default marker */
+      cursor: pointer;
+      padding-left: 1ch;
+      position: relative;
+    }
+  
+    [is-~="file-explorer"] details > summary::before {
+      content: "▶︎ "; /* Default closed arrow */
+      position: absolute;
+      left: 0;
+    }
+  
+    [is-~="file-explorer"] details[open] > summary::before {
+      content: "▼ "; /* Default open arrow */
+    }
+  
+    /* Apply tree marker styles from typography */
+  }
+
+  /* How to use
+  
+  <ul is-="file-explorer" marker-="tree">
+  <li>
+    <details marker-="open">
+      <summary>folder1</summary>
+      <ul>
+        <li>file1.txt</li>
+        <li>file2.md</li>
+        <li>
+          <details>
+            <summary>subfolder</summary>
+            <ul>
+              <li>subfile.js</li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </details>
+  </li>
+  <li>file3.log</li>
+</ul>
+  */

@@ -1,0 +1,104 @@
+@layer components {
+    [is-~="calendar"] {
+      background-color: var(--background1);
+      color: var(--foreground1);
+      font-family: var(--font-family);
+      font-size: 0.9em;
+      line-height: 1.2;
+      padding: 1lh 1ch;
+      border: solid var(--box-border-width) var(--foreground2);
+    }
+  
+    .calendar .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5lh;
+    }
+  
+    .calendar .header button {
+      background-color: transparent;
+      color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 0 0.5ch;
+    }
+  
+    .calendar .month-year {
+      font-weight: var(--font-weight-bold);
+    }
+  
+    .calendar .days {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  
+    .calendar .days th,
+    .calendar .days td {
+      padding: 0.25lh 0.5ch;
+      text-align: center;
+    }
+  
+    .calendar .days th {
+      font-weight: var(--font-weight-normal);
+      color: var(--foreground2);
+    }
+  
+    .calendar .days td.today {
+      color: var(--sky);
+      font-weight: var(--font-weight-bold);
+      /* Optional background highlight */
+    }
+  
+    .calendar .days td.empty {
+      color: transparent;
+    }
+  }
+
+  /* How to use
+  
+  
+  
+  <div is-="calendar">
+  <div class="header">
+    <button class="prev">&lt;</button>
+    <span class="month-year">October 2025</span>
+    <button class="next">&gt;</button>
+  </div>
+  <table class="days">
+    <thead>
+      <tr>
+        <th>Su</th>
+        <th>Mo</th>
+        <th>Tu</th>
+        <th>We</th>
+        <th>Th</th>
+        <th>Fr</th>
+        <th>Sa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="empty"></td>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>7</td>
+        <td class="today">8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+      </tbody>
+  </table>
+</div>
+
+*/

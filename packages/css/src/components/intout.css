@@ -1,0 +1,53 @@
+@layer components {
+    [is-~="command-line"] {
+      background-color: var(--background0);
+      color: var(--foreground0);
+      font-family: var(--font-family);
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      padding: 1lh 1ch;
+      border: solid var(--box-border-width) var(--foreground2); /* Optional border */
+    }
+  
+    .command-line .input-line {
+      display: flex;
+      align-items: center;
+    }
+  
+    .command-line .prompt {
+      margin-right: 1ch;
+      color: var(--sky); /* Example prompt color */
+      font-weight: var(--font-weight-bold);
+    }
+  
+    .command-line input[type="text"] {
+      background-color: transparent;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      border: none;
+      outline: none;
+      flex-grow: 1;
+      min-width: 0; /* Prevent overflow */
+    }
+  
+    .command-line .output {
+      margin-top: 0.5lh;
+      padding: 0.5lh 0;
+      white-space: pre-wrap; /* Preserve formatting */
+    }
+  }
+
+
+  /* How to use 
+  
+  <div is-="command-line">
+  <div class="input-line">
+    <span class="prompt">user@host:~$</span>
+    <input type="text" placeholder="Enter command" />
+  </div>
+  <pre class="output"></pre>
+</div>
+
+  */

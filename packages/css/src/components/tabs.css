@@ -1,0 +1,50 @@
+@layer components {
+    [is-~="tabs"] {
+      /* Basic styling */
+    }
+  
+    .tabs .tab-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      border-bottom: solid var(--box-border-width) var(--foreground2);
+    }
+  
+    .tabs .tab-item {
+      padding: 0.5lh 1ch;
+      cursor: pointer;
+      color: var(--foreground1);
+    }
+  
+    .tabs .tab-item.active {
+      color: var(--foreground0);
+      font-weight: var(--font-weight-bold);
+      border-bottom: solid 2px var(--sky); /* Active tab indicator */
+    }
+  
+    .tabs .tab-content {
+      padding: 1lh 1ch;
+      display: none; /* Initially hide content */
+    }
+  
+    .tabs .tab-content.active {
+      display: block;
+    }
+  }
+
+  /* How to use 
+  
+  <div is-="tabs">
+  <ul class="tab-list">
+    <li class="tab-item active">Tab 1</li>
+    <li class="tab-item">Tab 2</li>
+    <li class="tab-item">Tab 3</li>
+  </ul>
+  <div class="tab-content active">Content for Tab 1</div>
+  <div class="tab-content">Content for Tab 2</div>
+  <div class="tab-content">Content for Tab 3</div>
+</div>
+
+
+  */

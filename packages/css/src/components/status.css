@@ -1,0 +1,28 @@
+@layer components {
+    [is-~="status-bar"] {
+      background-color: var(--background1);
+      color: var(--foreground1);
+      font-family: var(--font-family);
+      font-size: 0.8em;
+      line-height: 1.5;
+      padding: 0.25lh 0.5ch;
+      display: flex;
+      justify-content: space-between;
+      border-top: solid var(--box-border-width) var(--foreground2);
+    }
+  
+    .status-bar .left,
+    .status-bar .right {
+      /* Optional styling */
+    }
+  }
+
+
+  /* 
+  How to use
+
+  <div is-="status-bar">
+  <span class="left">Status: Ready</span>
+  <span class="right">Ln 1, Col 10</span>
+</div>
+  */
