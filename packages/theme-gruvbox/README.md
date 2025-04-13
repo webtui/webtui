@@ -8,7 +8,7 @@ Provides additional variants for the listed components in the base WebTUI librar
 
 Ensure you import the theme **after** all the other stylesheets from `@webtui/css`
 
-````css
+```css
 @layer base, utils, components;
 
 @import '@webtui/css/base.css';
@@ -16,6 +16,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 /* ... */
 
 @import '@webtui/theme-gruvbox'; /* Import Gruvbox theme */
+```
 
 ## Theme Switching
 
