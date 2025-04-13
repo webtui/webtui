@@ -1,138 +1,123 @@
 ---
-
+const placeholderEmails = [
+  {
+    name: 'John Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Social', color: 'foreground2', cap: 'square' },
+    date: 'Yesterday at 5:30 PM',
+  },
+  {
+    name: 'Jane Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Promotions', color: 'green', cap: 'ribbon' },
+    date: 'Yesterday at 4:30 PM',
+  },
+  {
+    name: 'Play Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Shopping', color: 'yellow', cap: 'round' },
+    date: 'Yesterday at 3:30 PM',
+  },
+  {
+    name: 'Bread Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Spam', color: 'red', cap: 'triangle' },
+    date: 'Yesterday at 2:30 PM',
+  },
+];
 ---
 
-<div flex-="row gap:1 grow">
-  <div flex-="col gap:1" id="sidebar" box-="square">
-    <div flex-="row" space-="px:1">
-      <button flex-="grow" size-="small">[C] Compose &#xf1d8;</button>
-    </div>
-    <div flex-="col" space-="px:1" is-="typography-block">
-      <div>&#xf0687; <code>&lt;C-i&gt;</code> Inbox</div>
-      <div>&#xf1d8; <code>&lt;C-s&gt;</code> Sent</div>
-      <div>&#xea7b; <code>&lt;C-d&gt;</code> Drafts</div>
-      <div>&#xf1f8; <code>&lt;C-t&gt;</code> Trash</div>
-      <div>&#xf1767; <code>&lt;C-x&gt;</code> Spam</div>
-      <div>&#xf003c; <code>&lt;C-a&gt;</code> Archive</div>
+<row gap-="1" self-="grow">
+  <!-- Sidebar -->
+  <column gap-="1" id="sidebar" box-="square">
+    <column space-="px:1">
+      <button size-="small">[C] Compose &#xf1d8;</button>
+    </column>
+    <column space-="px:1" is-="typography-block">
+      <div>&#xf0687; Inbox</div>
+      <div>&#xf1d8; Sent</div>
+      <div>&#xea7b; Drafts</div>
+      <div>&#xf1f8; Trash</div>
+      <div>&#xf1767; Spam</div>
+      <div>&#xf003c; Archive</div>
       <hr />
-      <div>&#xf4fd; <code>&lt;C-p&gt;</code> Social</div>
-      <div>&#xeb9a; <code>&lt;C-u&gt;</code> Updates</div>
-      <div>&#xf07a; <code>&lt;C-S&gt;</code> Shopping</div>
-      <div>&#xf1167; <code>&lt;C-P&gt;</code> Promotions</div>
-    </div>
-  </div>
+      <div>&#xf4fd; Social</div>
+      <div>&#xeb9a; Updates</div>
+      <div>&#xf07a; Shopping</div>
+      <div>&#xf1167; Promotions</div>
+    </column>
+  </column>
 
-  <div flex-="col grow !basis" box-="square contain:!top" id="mail-container">
-    <div flex-="row"><span is-="badge" variant-="background0">Mail</span></div>
-
-    <div flex-="col gap:1" space-="px:1">
-      <div
-        flex-="col gap:1"
-        is-="typography-block"
-        box-="round contain:none"
-        class="mail-item"
-      >
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="background0"
-            ><strong>John Dough</strong></span
+  <!-- Mail Container -->
+  <column self-="grow !basis" box-="square contain:!top">
+    <column>
+      <span is-="badge" variant-="background0">Mail</span>
+    </column>
+    <column gap-="1" space-="px:1">
+      {
+        placeholderEmails.map((email) => (
+          <column
+            gap-="1"
+            is-="typography-block"
+            box-="round contain:none"
+            class="mail-item"
           >
-          <span is-="badge" variant-="background0">Hello World!</span>
-        </div>
-        <p space-="px:1">
-          Lorem Ipsum Dolor Sit amet your mom never gonna give you up
-        </p>
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="foreground2">Social</span>
-          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
-        </div>
-      </div>
+            <row align-="between">
+              <span is-="badge" variant-="background0">
+                <strong>{email.name}</strong>
+              </span>
+              <span is-="badge" variant-="background0">
+                {email.subject}
+              </span>
+            </row>
+            <p space-="px:1">{email.body}</p>
+            <row align-="between">
+              <span
+                is-="badge"
+                variant-={email.category.color}
+                cap-={email.category.cap}
+              >
+                {email.category.label}
+              </span>
+              <span is-="badge" variant-="background0">
+                {email.date}
+              </span>
+            </row>
+          </column>
+        ))
+      }
+    </column>
+  </column>
 
-      <div
-        flex-="col gap:1"
-        is-="typography-block"
-        box-="round contain:none"
-        class="mail-item"
-      >
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="background0"
-            ><strong>Jane Dough</strong></span
-          >
-          <span is-="badge" variant-="background0">Hello World!</span>
-        </div>
-        <p space-="px:1">
-          Lorem Ipsum Dolor Sit amet your mom never gonna give you up
-        </p>
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="green" cap-="ribbon">Promotions</span>
-          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
-        </div>
-      </div>
-
-      <div
-        flex-="col gap:1"
-        is-="typography-block"
-        box-="round contain:none"
-        class="mail-item"
-      >
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="background0"
-            ><strong>Play Dough</strong></span
-          >
-          <span is-="badge" variant-="background0">Hello World!</span>
-        </div>
-        <p space-="px:1">
-          Lorem Ipsum Dolor Sit amet your mom never gonna give you up
-        </p>
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="red" cap-="triangle">Spam</span>
-          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
-        </div>
-      </div>
-
-      <div
-        flex-="col gap:1"
-        is-="typography-block"
-        box-="round contain:none"
-        class="mail-item"
-      >
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="background0"
-            ><strong>Bread Dough</strong></span
-          >
-          <span is-="badge" variant-="background0">Hello World!</span>
-        </div>
-        <p space-="px:1">Your bread is ready</p>
-        <div flex-="row justify:between">
-          <span is-="badge" variant-="yellow" cap-="round">Shopping</span>
-          <span is-="badge" variant-="background0">Yesterday at 5:30 PM</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div flex-="col grow !basis" box-="square contain:!top" id="mail-preview">
-    <div flex-="row">
+  <!-- Mail Preview -->
+  <column self-="grow !basis" box-="square contain:!top">
+    <row>
       <span is-="badge" variant-="background0">Preview</span>
-    </div>
+    </row>
 
-    <div flex-="row justify:between" space-="px:1">
-      <div flex-="row gap:1">
+    <!-- Mail Actions -->
+    <row align-="between" space-="px:1">
+      <row gap-="1">
         <button size-="small" variant-="background1">&#xf1f8;</button>
         <button size-="small" variant-="background1">&#xf1767;</button>
         <button size-="small" variant-="background1">&#xf003c;</button>
-      </div>
-
-      <div flex-="row gap:1">
+      </row>
+      <row gap-="1">
         <button size-="small" variant-="background1">&#xf112;</button>
         <button size-="small" variant-="background1">&#xf122;</button>
         <button size-="small" variant-="background1">&#xf064;</button>
-      </div>
-    </div>
+      </row>
+    </row>
+
     <hr />
 
-    <div flex-="col gap:1" space-="px:1">
+    <!-- Preview Content -->
+    <column gap-="1" space-="px:1">
       <h1>Hello World!</h1>
-
       <p>
         Lorem <strong>Ipsum</strong>
         <em>Dolor</em> Sit amet your mom never gonna give you up
@@ -142,7 +127,7 @@
         Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
         aliquam nisl nisl sit amet nisl.
       </p>
-      <h3>Ipsum Baco;n</h3>
+      <h3>Ipsum Bacon</h3>
       <p>
         C*m sociis natoque penatibus et magnis dis parturient montes, nascetur
         ridiculus mus.up
@@ -151,27 +136,21 @@
         Lorem Ipsum Dolor Sit amet your mom never gonna giveCras mattis
         consectetur purus sit amet fermentum.
       </p>
-
-      <div flex-="row gap:1 wrap">
+      <row gap-="1">
         <button box-="round">Reply</button>
         <button box-="round">Reply All</button>
-      </div>
-    </div>
-  </div>
-</div>
+      </row>
+    </column>
+  </column>
+</row>
 
 <style>
   #sidebar {
     min-width: 24ch;
     height: 100%;
-    --box-border-color: var(--background1);
   }
 
-  #mail-container {
-    --box-border-color: var(--background1);
-  }
-
-  #mail-preview {
+  [box-~="square"] {
     --box-border-color: var(--background1);
   }
 

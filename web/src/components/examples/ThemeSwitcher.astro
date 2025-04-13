@@ -2,14 +2,13 @@
 const themes = ['catppuccin', 'dark', 'light', 'nord'];
 ---
 
-<div flex-="row">
-  <div
-    flex-="col"
+<row>
+  <column
     box-="square contain:!top"
     style="--box-border-color: var(--background2)"
   >
-    <div><span is-="badge" variant-="background0">Theme</span></div>
-    <div flex-="row" id="theme-buttons" space-="px:1">
+    <row><span is-="badge" variant-="background0">Theme</span></row>
+    <row id="theme-buttons">
       {
         themes.map((theme, i) => (
           <button
@@ -21,11 +20,15 @@ const themes = ['catppuccin', 'dark', 'light', 'nord'];
           </button>
         ))
       }
-    </div>
-  </div>
-</div>
+    </row>
+  </column>
+</row>
 
 <style>
+  #theme-buttons {
+    padding: 0 1ch;
+  }
+
   #theme-tabs {
     a {
       display: inline-flex;
