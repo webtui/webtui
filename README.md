@@ -23,6 +23,7 @@ For feature requests please open an issue.
 - [x] Landing page
   - [ ] Examples / Demos
 - [ ] SEO / accessibility
+- [ ] Meta info
 - [ ] Refactor some things to use web components
 
 ## Roadmap

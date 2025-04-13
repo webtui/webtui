@@ -1,6 +1,8 @@
 #mobile-nav {
   --box-border-color: var(--background1);
   display: none;
+  display: flex;
+  gap: 1ch;
 }
 
 #sidebar-container {
@@ -95,6 +97,7 @@ article {
 @media (max-width: 96ch) {
   #sidebar-container {
     max-width: 100%;
+    display: none;
   }
 
   #mobile-nav {

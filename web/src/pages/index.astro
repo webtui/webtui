@@ -1,17 +1,17 @@
 ---
-import Filter from '@/components/Filter.astro';
-import Layout from '../layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import '@webtui/theme-catppuccin';
+import Filter from "@/components/Filter.astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import "@webtui/theme-catppuccin";
 ---
 
 <Layout>
-  <section flex-="row center grow">
-    <div flex-="col">
-      <main flex-="col gap:1" space-="px:2 py:1">
+  <row self-="grow" align-="center" id="section">
+    <column>
+      <column gap-="1" space-="px:2 py:1" id="main">
         <Navbar />
-        <header flex-="col gap:1">
-          <div flex-="col gap:1" space-="px:1">
+        <column gap-="1">
+          <header is-="column" gap-="1" space-="px:1">
             <h1 tabindex="0" autofocus>
               UI Design that goes <strong>HARD</strong>
             </h1>
@@ -19,66 +19,51 @@ import '@webtui/theme-catppuccin';
               WebTUI is a modular CSS library that brings the beauty of Terminal
               UIs to the browser
             </p>
-          </div>
+          </header>
           <div id="start-links" box-="square contain:!top">
-            <div>
+            <row>
               <span is-="badge" variant-="background0" tabindex="0"
-                >Contents</span>
-            </div>
-            <div space-="px:1 pb:1">
-              <a
-                flex-="row gap:1"
-                tabindex="0"
-                href="/start/intro"
-                is-="typography-block"
+                >Contents</span
+              >
+            </row>
+            <column space-="px:1 pb:1" is-="typography-block">
+              <a tabindex="0" href="/start/intro"
                 ><code>S</code>
                 <span>Get Started</span>
               </a>
-              <a
-                flex-="row gap:1"
-                tabindex="0"
-                href="/examples"
-                is-="typography-block"
+              <a tabindex="0" href="/examples"
                 ><code>E</code>
                 <span>View Examples</span>
               </a>
-              <a
-                flex-="row gap:1"
-                tabindex="0"
-                href="/examples"
-                is-="typography-block"
+              <a tabindex="0" href="/examples"
                 ><code>C</code>
                 <span>Components</span>
               </a>
-              <a
-                flex-="row gap:1"
-                tabindex="0"
-                href="/examples"
-                is-="typography-block"
+              <a tabindex="0" href="/examples"
                 ><code>/</code>
                 <span>Search</span>
               </a>
-            </div>
+            </column>
           </div>
-        </header>
-      </main>
-      <div flex-="row" id="statusline">
+        </column>
+      </column>
+      <row id="statusline">
         <span is-="badge" variant-="blue">NORMAL</span>
         <span is-="badge" variant-="background1">
           <span class="branch-name">&#xe725; master</span>
         </span>
-        <div flex-="grow">
+        <row self-="grow">
           <span is-="badge" variant-="background0">index.astro</span>
-        </div>
+        </row>
         <span is-="badge" variant-="background0">utf-8</span>
         <span is-="badge" variant-="background1">
           <span id="percent">Top</span>
         </span>
         <span is-="badge" variant-="blue"><span id="line">1</span>:1</span>
-      </div>
+      </row>
       <input id="cmdline" />
-    </div>
-  </section>
+    </column>
+  </row>
   <Filter />
 </Layout>
 
@@ -92,6 +77,8 @@ import '@webtui/theme-catppuccin';
     a {
       text-decoration: none;
       color: var(--foreground1);
+      display: inline-flex;
+      gap: 1ch;
 
       span {
         text-decoration: underline;
@@ -108,11 +95,11 @@ import '@webtui/theme-catppuccin';
     padding: 0;
   }
 
-  section {
+  #section {
     background-color: var(--crust);
     padding: 1lh 2ch;
 
-    main {
+    #main {
       background-color: var(--background0);
       width: 100%;
       max-width: 84ch;

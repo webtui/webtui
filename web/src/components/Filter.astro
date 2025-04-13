@@ -29,13 +29,13 @@ const docHeadings = docPages
 
 <dialog id="search-dialog">
   <div box-="round contain:!top" id="search-content">
-    <div flex-="row justify:between">
+    <row align-="between">
       <span is-="badge" variant-="background0">&#xea6d; Search</span>
       <button id="close-btn" variant-="foreground0" size-="small">x</button>
-    </div>
-    <div box-="round" flex-="row">
-      <input id="search-input" flex-="grow" placeholder="Filter" autofocus />
-    </div>
+    </row>
+    <column box-="round">
+      <input id="search-input" placeholder="Filter" autofocus />
+    </column>
 
     <div id="search-results">
       <div id="search-results-container">

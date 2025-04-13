@@ -1,51 +1,38 @@
 ---
-import Filter from '@/components/Filter.astro';
+import Filter from "@/components/Filter.astro";
 ---
 
-<nav flex-="row gap:1 justify:between" space-="px:2 py:1" box-="square">
+<nav box-="square">
   <a href="/" id="home-link">
     &lt;/<span>#&gt;</span><span>WebTUI</span>
   </a>
-  <div class="links">
+  <row id="links">
     <a href="/start/intro">
       <span>&#xf15c</span>
       <span>Docs</span>
     </a>
-    <a href="/start/plugins#theme">
-      <span>&#xe22b</span>
-      <span>Themes</span>
+    <a href="/examples">
+      <span>&#xebeb</span>
+      <span>Examples</span>
     </a>
     <a href="https://github.com/webtui/webtui" target="_blank">
       <span>&#xe709</span>
       <span>Github</span>
     </a>
-    <button id="search-button" size-="small">&#xea6d; Search</button>
-  </div>
+    <button id="search-button" size-="small">
+      <span>&#xea6d;</span>
+      <span>Search</span>
+    </button>
+  </row>
 </nav>
 <Filter />
 
-<style is:global>
-  .links {
-    display: flex;
-    row-gap: 2ch;
-    column-gap: 1lh;
-
-    a {
-      display: inline-flex;
-      gap: 1ch;
-      text-decoration: none;
-      color: var(--foreground2);
-      span {
-        color: var(--foreground0);
-      }
-      &:focus,
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
+<style>
   nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1lh 2ch;
     container-type: inline-size;
     container-name: navbar;
     --box-border-color: var(--background1);
@@ -67,8 +54,30 @@ import Filter from '@/components/Filter.astro';
     }
   }
 
-  @media (max-width: 80ch) {
-    .links {
+  #links {
+    row-gap: 2ch;
+    column-gap: 1lh;
+
+    a {
+      display: inline-flex;
+      gap: 1ch;
+      text-decoration: none;
+      color: var(--foreground2);
+
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #search-button {
+    display: inline-flex;
+    gap: 1ch;
+  }
+
+  @media (max-width: 84ch) {
+    #links {
       gap: 1ch;
 
       a {
@@ -82,7 +91,7 @@ import Filter from '@/components/Filter.astro';
   }
 
   @media (max-width: 48ch) {
-    #home-link span:last-of-type {
+    #search-button span:last-of-type {
       display: none;
     }
   }
