@@ -1,30 +1,88 @@
 ---
-import Tabs from '@/components/examples/Tabs.astro';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
+import Email from '@/components/examples/Email.astro';
+import Tabs from '@/components/examples/Tabs.astro';
 import catppuccinStyle from '@webtui/theme-catppuccin?raw';
 import nordStyle from '@webtui/theme-nord?raw';
-import ThemeSwitcher from '@/components/examples/ThemeSwitcher.astro';
-import Email from '@/components/examples/Email.astro';
 ---
+
+<style id="inline-theme" is:raw set:html={catppuccinStyle}></style>
 
 <Layout>
   <column self-="grow">
     <Navbar />
     <column self-="grow" space-="px:1">
-      <ThemeSwitcher />
-      <Tabs tabs={["Email", "Auth", "Ecommerce", "AI Chat", "All Components"]}>
-        <column self-="grow"><Email /></column>
-        <div>[Auth example Coming Soon]</div>
-        <div>[Ecommerce example Coming Soon]</div>
-        <div>[AI Chat example Coming Soon]</div>
-        <div>[All Components example Coming Soon]</div>
-      </Tabs>
+      <column gap-="1">
+        <column>
+          <span>Theme</span>
+          <Tabs id="themelist">
+            <button
+              data-value="catppuccin"
+              size-="small"
+              variant-="background1"
+            >
+              Catppuccin
+            </button>
+            <button data-value="dark" size-="small" variant-="background1">
+              Dark
+            </button>
+            <button data-value="light" size-="small" variant-="background1">
+              Light
+            </button>
+            <button data-value="nord" size-="small" variant-="background1">
+              Nord
+            </button>
+          </Tabs>
+        </column>
+        <column>
+          <span>Examples</span>
+          <Tabs id="tabslist">
+            <button data-value="email" size-="small" variant-="background1">
+              Email
+            </button>
+            <button data-value="auth" size-="small" variant-="background1">
+              Auth
+            </button>
+            <button data-value="ecommerce" size-="small" variant-="background1">
+              Ecommerce
+            </button>
+            <button data-value="ai" size-="small" variant-="background1">
+              AI Chat
+            </button>
+            <button data-value="all" size-="small" variant-="background1">
+              All Components
+            </button>
+          </Tabs>
+        </column>
+      </column>
+
+      <div id="tab-contents">
+        <div data-tab="email" class="active"><Email /></div>
+        <div data-tab="auth">[Auth example Coming Soon]</div>
+        <div data-tab="ecommerce">[Ecommerce example Coming Soon]</div>
+        <div data-tab="ai">[AI Chat example Coming Soon]</div>
+        <div data-tab="all">[All Components example Coming Soon]</div>
+      </div>
     </column>
   </column>
 </Layout>
 
 <style>
+  #tabslist,
+  #themelist {
+    [aria-selected="true"] {
+      background-color: var(--background2);
+    }
+  }
+  #tab-contents [data-tab] {
+    display: none;
+
+    &.active {
+      display: flex;
+    }
+  }
+
   @layer base {
     html.light {
       --background0: #fff;
@@ -50,9 +108,32 @@ import Email from '@/components/examples/Email.astro';
   }
 </style>
 
-<style id="inline-theme" is:raw set:html={catppuccinStyle}></style>
+<!-- Tab Switcher -->
+<script>
+  const tabslist = document.getElementById("tabslist")!;
+  const tabContents = document.querySelectorAll("#tab-contents [data-tab]");
 
+  const observer = new MutationObserver(() => {
+    const value = tabslist.getAttribute("data-tab");
+
+    tabContents.forEach((tab) => {
+      if (tab.getAttribute("data-tab") === value) {
+        tab.classList.add("active");
+      } else {
+        tab.classList.remove("active");
+      }
+    });
+  });
+
+  observer.observe(tabslist, {
+    attributes: true,
+    attributeFilter: ["data-tab"],
+  });
+</script>
+
+<!-- Theme Switcher -->
 <script define:vars={{ catppuccinStyle, nordStyle }}>
+  const themelist = document.getElementById("themelist");
   const html = document.querySelector("html");
 
   const appendInlineStyle = (style) => {
@@ -66,25 +147,24 @@ import Email from '@/components/examples/Email.astro';
     document.head.appendChild(inlineTheme);
   };
 
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (
-        mutation.type === "attributes" &&
-        mutation.attributeName === "class"
-      ) {
-        const themeClass = mutation.target.getAttribute("class");
-        console.log(themeClass);
+  const observer = new MutationObserver(() => {
+    const value = themelist.getAttribute("data-tab");
 
-        if (themeClass === "catppuccin") {
-          appendInlineStyle(catppuccinStyle);
-        } else if (themeClass === "nord") {
-          appendInlineStyle(nordStyle);
-        } else {
-          document.getElementById("inline-theme")?.remove();
-        }
+    if (value === "catppuccin") {
+      appendInlineStyle(catppuccinStyle);
+    } else if (value === "nord") {
+      appendInlineStyle(nordStyle);
+    } else {
+      const existingInlineTheme = document.getElementById("inline-theme");
+      if (existingInlineTheme) {
+        existingInlineTheme.remove();
       }
-    });
+      html.className = value;
+    }
   });
 
-  observer.observe(html, { attributes: true });
+  observer.observe(themelist, {
+    attributes: true,
+    attributeFilter: ["data-tab"],
+  });
 </script>
