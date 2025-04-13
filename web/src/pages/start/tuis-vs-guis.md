@@ -53,7 +53,7 @@ CSS comes with two units that represent the width and height of a single **chara
 - `ch` is equal to the **ch**aracter width of the `0` glyph in the current font [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#ch)
 - `lh` is equal to the **l**ine **h**eight of the element on which it is used [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh)
 
-Rember that when using a **Monospace font**, _every character has the **same width**_, so `ch` applies for **all characters**
+Remember that when using a **Monospace font**, _every character has the **same width**_, so `ch` applies for **all characters**
 
 If I were to create a box that is 10 characters wide and 5 lines tall, I would use the following CSS:
 
