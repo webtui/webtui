@@ -1,5 +1,6 @@
 @layer utils {
-  :root {
+  :root,
+  [data-webtui-theme="dark"] {
     --gb-dark-bg0-h: #1d2021;
     --gb-dark-bg0: #282828;
     --gb-dark-bg0-s: #32302f;
@@ -52,7 +53,7 @@
   }
 
   .gruvbox-light,
-  [data-theme="light"] {
+  [data-webtui-theme="light"] {
     --gb-light-bg0-h: #f9f5d7;
     --gb-light-bg0: #fbf1c7;
     --gb-light-bg0-s: #f2e5bc;
