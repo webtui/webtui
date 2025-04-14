@@ -6,7 +6,7 @@
         --badge-text: var(--background0);
 
         [data-webtui-theme|="gruvbox-light"] & {
-           --badge-color: var(--gb-light-gray);
+          --badge-color: var(--gb-light-gray);
         }
       }
 
