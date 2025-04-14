@@ -11,31 +11,32 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 ```css
 @layer base, utils, components;
 
-@import '@webtui/css/base.css';
-@import '@webtui/css/components/typography.css';
+@import "@webtui/css/base.css";
+@import "@webtui/css/components/typography.css";
 /* ... */
 
-@import '@webtui/theme-gruvbox';
+@import "@webtui/theme-gruvbox";
 ```
 
 Set the `data-webtui-theme` attribute on the `<html>` tag or a container element.
 
 ```html
-<html data-webtui-theme="gruvbox-dark-medium">
+<html data-webtui-theme="gruvbox-dark-medium"></html>
 ```
 
 To only apply the theme to a specific element:
 
 ```html
-<html data-webtui-theme="dark"> <!-- Example base theme -->
-    <body>
-        <div data-webtui-theme="gruvbox-light-hard">
-            <!-- Gruvbox light-hard styles applied here -->
-        </div>
-        <div data-webtui-theme="gruvbox-dark-soft">
-            <!-- Gruvbox dark-soft styles applied here -->
-        </div>
-    </body>
+<html data-webtui-theme="dark">
+  <!-- Example base theme -->
+  <body>
+    <div data-webtui-theme="gruvbox-light-hard">
+      <!-- Gruvbox light-hard styles applied here -->
+    </div>
+    <div data-webtui-theme="gruvbox-dark-soft">
+      <!-- Gruvbox dark-soft styles applied here -->
+    </div>
+  </body>
 </html>
 ```
 
@@ -46,13 +47,19 @@ Supports dark and light modes, each with hard, medium, and soft contrast levels.
 ```html
 <!-- Dark Variants -->
 <html data-webtui-theme="gruvbox-dark-hard">
-<html data-webtui-theme="gruvbox-dark-medium"> <!-- Default: gruvbox-dark or gruvbox -->
-<html data-webtui-theme="gruvbox-dark-soft">
-
-<!-- Light Variants -->
-<html data-webtui-theme="gruvbox-light-hard">
-<html data-webtui-theme="gruvbox-light-medium"> <!-- Default: gruvbox-light -->
-<html data-webtui-theme="gruvbox-light-soft">
+  <html data-webtui-theme="gruvbox-dark-medium">
+    <!-- Default: gruvbox-dark or gruvbox -->
+    <html data-webtui-theme="gruvbox-dark-soft">
+      <!-- Light Variants -->
+      <html data-webtui-theme="gruvbox-light-hard">
+        <html data-webtui-theme="gruvbox-light-medium">
+          <!-- Default: gruvbox-light -->
+          <html data-webtui-theme="gruvbox-light-soft"></html>
+        </html>
+      </html>
+    </html>
+  </html>
+</html>
 ```
 
 ## Components
@@ -105,90 +112,60 @@ Adds additional variants to buttons matching Gruvbox accent colors.
 
 Adds the following CSS variables within the `base` layer.
 
-*Note: Dark mode uses bright accents, Light mode uses standard/faded accents.*
+Raw color tokens and base semantic variables (`--background*`, `--foreground*`) are defined within theme-specific variant blocks. Dark mode uses bright accents, Light mode uses standard/faded accents.
 
 ```css
-[data-webtui-theme|="gruvbox-dark"] {
-    /* Dark Backgrounds */
-    --gb-dark-bg0-h: #1d2021;
-    --gb-dark-bg0: ...; /* #1d2021 (hard), #282828 (medium), #32302f (soft) */
-    --gb-dark-bg0-s: #32302f;
-    --gb-dark-bg1: #3c3836;
-    --gb-dark-bg2: #504945;
-    --gb-dark-bg3: #665c54;
-    --gb-dark-bg4: #7c6f64;
+@layer base {
+  /* Common Dark Variables & Semantic Mapping */
+  [data-webtui-theme|="gruvbox-dark"] {
+    /* ... raw dark vars ... */
+    --gb-orange: #fe8019; /* Bright Orange */
 
-    /* Dark Foregrounds */
-    --gb-dark-fg0: #fbf1c7;
-    --gb-dark-fg1: #ebdbb2;
-    --gb-dark-fg2: #d5c4a1;
-    --gb-dark-fg3: #bdae93;
-    --gb-dark-fg4: #a89984;
-    --gb-dark-gray: #928374;
-
-    /* Dark Accents (Bright) */
-    --gb-red: #fb4934;
-    --gb-green: #b8bb26;
-    --gb-yellow: #fabd2f;
-    --gb-blue: #83a598;
-    --gb-purple: #d3869b;
-    --gb-aqua: #8ec07c;
-    --gb-orange: #fe8019;
-}
-
-[data-webtui-theme|="gruvbox-light"] {
-    /* Light Backgrounds */
-    --gb-light-bg0-h: #f9f5d7;
-    --gb-light-bg0: ...; /* #f9f5d7 (hard), #fbf1c7 (medium), #f2e5bc (soft) */
-    --gb-light-bg0-s: #f2e5bc;
-    --gb-light-bg1: #ebdbb2;
-    --gb-light-bg2: #d5c4a1;
-    --gb-light-bg3: #bdae93;
-    --gb-light-bg4: #a89984;
-
-    /* Light Foregrounds */
-    --gb-light-fg0: #282828;
-    --gb-light-fg1: #3c3836;
-    --gb-light-fg2: #504945;
-    --gb-light-fg3: #665c54;
-    --gb-light-fg4: #7c6f64;
-    --gb-light-gray: #a89984;
-
-    /* Light Accents (Standard/Faded) */
-    --gb-red: #cc241d;
-    --gb-green: #98971a;
-    --gb-yellow: #d79921;
-    --gb-blue: #458588;
-    --gb-purple: #b16286;
-    --gb-aqua: #689d6a;
-    --gb-orange: #d65d0e;
-}
-```
-
-The base WebTUI background/foreground variables are mapped like this:
-
-```css
-[data-webtui-theme|="gruvbox"] {
-    /* Defaults to dark values */
+    /* Semantic Mapping (Dark) */
     --background0: var(--gb-dark-bg0);
     --background1: var(--gb-dark-bg1);
     --background2: var(--gb-dark-bg2);
     --background3: var(--gb-dark-bg3);
-
     --foreground0: var(--gb-dark-fg1);
     --foreground1: var(--gb-dark-fg2);
     --foreground2: var(--gb-dark-fg3);
+  }
 
-    /* Override for any light variant */
-    [data-webtui-theme|="gruvbox-light"] & {
-      --background0: var(--gb-light-bg0);
-      --background1: var(--gb-light-bg1);
-      --background2: var(--gb-light-bg2);
-      --background3: var(--gb-light-bg3);
+  /* Dark Contrast Specific bg0 */
+  [data-webtui-theme="gruvbox-dark-hard"] {
+    --gb-dark-bg0: #1d2021;
+  }
+  [data-webtui-theme="gruvbox-dark-medium"] {
+    --gb-dark-bg0: #282828;
+  }
+  [data-webtui-theme="gruvbox-dark-soft"] {
+    --gb-dark-bg0: #32302f;
+  }
 
-      --foreground0: var(--gb-light-fg1);
-      --foreground1: var(--gb-light-fg2);
-      --foreground2: var(--gb-light-fg3);
-    }
+  /* Common Light Variables & Semantic Mapping */
+  [data-webtui-theme|="gruvbox-light"] {
+    /* ... raw light vars ... */
+    --gb-orange: #d65d0e; /* Standard/Faded Orange */
+
+    /* Semantic Mapping (Light) */
+    --background0: var(--gb-light-bg0);
+    --background1: var(--gb-light-bg1);
+    --background2: var(--gb-light-bg2);
+    --background3: var(--gb-light-bg3);
+    --foreground0: var(--gb-light-fg1);
+    --foreground1: var(--gb-light-fg2);
+    --foreground2: var(--gb-light-fg3);
+  }
+
+  /* Light Contrast Specific bg0 */
+  [data-webtui-theme="gruvbox-light-hard"] {
+    --gb-light-bg0: #f9f5d7;
+  }
+  [data-webtui-theme="gruvbox-light-medium"] {
+    --gb-light-bg0: #fbf1c7;
+  }
+  [data-webtui-theme="gruvbox-light-soft"] {
+    --gb-light-bg0: #f2e5bc;
+  }
 }
 ```

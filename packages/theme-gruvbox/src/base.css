@@ -19,13 +19,27 @@
     --gb-purple: #d3869b;
     --gb-aqua: #8ec07c;
     --gb-orange: #fe8019;
+
+    --background0: var(--gb-dark-bg0);
+    --background1: var(--gb-dark-bg1);
+    --background2: var(--gb-dark-bg2);
+    --background3: var(--gb-dark-bg3);
+    --foreground0: var(--gb-dark-fg1);
+    --foreground1: var(--gb-dark-fg2);
+    --foreground2: var(--gb-dark-fg3);
   }
 
-  [data-webtui-theme="gruvbox-dark-hard"] { --gb-dark-bg0: #1d2021; }
+  [data-webtui-theme="gruvbox-dark-hard"] {
+    --gb-dark-bg0: #1d2021;
+  }
   [data-webtui-theme="gruvbox-dark-medium"],
   [data-webtui-theme="gruvbox-dark"],
-  [data-webtui-theme="gruvbox"] { --gb-dark-bg0: #282828; }
-  [data-webtui-theme="gruvbox-dark-soft"] { --gb-dark-bg0: #32302f; }
+  [data-webtui-theme="gruvbox"] {
+    --gb-dark-bg0: #282828;
+  }
+  [data-webtui-theme="gruvbox-dark-soft"] {
+    --gb-dark-bg0: #32302f;
+  }
 
   [data-webtui-theme|="gruvbox-light"] {
     --gb-light-bg0-h: #f9f5d7;
@@ -47,32 +61,24 @@
     --gb-purple: #b16286;
     --gb-aqua: #689d6a;
     --gb-orange: #d65d0e;
+
+    --background0: var(--gb-light-bg0);
+    --background1: var(--gb-light-bg1);
+    --background2: var(--gb-light-bg2);
+    --background3: var(--gb-light-bg3);
+    --foreground0: var(--gb-light-fg1);
+    --foreground1: var(--gb-light-fg2);
+    --foreground2: var(--gb-light-fg3);
   }
 
-  [data-webtui-theme="gruvbox-light-hard"] { --gb-light-bg0: #f9f5d7; }
+  [data-webtui-theme="gruvbox-light-hard"] {
+    --gb-light-bg0: #f9f5d7;
+  }
   [data-webtui-theme="gruvbox-light-medium"],
-  [data-webtui-theme="gruvbox-light"] { --gb-light-bg0: #fbf1c7; }
-  [data-webtui-theme="gruvbox-light-soft"] { --gb-light-bg0: #f2e5bc; }
-
-  [data-webtui-theme|="gruvbox"] {
-    --background0: var(--gb-dark-bg0);
-    --background1: var(--gb-dark-bg1);
-    --background2: var(--gb-dark-bg2);
-    --background3: var(--gb-dark-bg3);
-
-    --foreground0: var(--gb-dark-fg1);
-    --foreground1: var(--gb-dark-fg2);
-    --foreground2: var(--gb-dark-fg3);
-
-    [data-webtui-theme|="gruvbox-light"] & {
-      --background0: var(--gb-light-bg0);
-      --background1: var(--gb-light-bg1);
-      --background2: var(--gb-light-bg2);
-      --background3: var(--gb-light-bg3);
-
-      --foreground0: var(--gb-light-fg1);
-      --foreground1: var(--gb-light-fg2);
-      --foreground2: var(--gb-light-fg3);
-    }
+  [data-webtui-theme="gruvbox-light"] {
+    --gb-light-bg0: #fbf1c7;
+  }
+  [data-webtui-theme="gruvbox-light-soft"] {
+    --gb-light-bg0: #f2e5bc;
   }
 }

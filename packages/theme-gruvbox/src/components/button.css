@@ -1,49 +1,48 @@
 @layer components {
   [data-webtui-theme|="gruvbox"] {
     button {
-      &[variant-="gray"] {
-        --button-primary: var(--gb-dark-gray);
-        --button-secondary: var(--background0);
-
-        [data-webtui-theme|="gruvbox-light"] & {
-          --button-primary: var(--gb-light-gray);
-        }
-      }
-
       &[variant-="red"] {
         --button-primary: var(--gb-red);
         --button-secondary: var(--background0);
       }
-
       &[variant-="green"] {
         --button-primary: var(--gb-green);
         --button-secondary: var(--background0);
       }
-
       &[variant-="yellow"] {
         --button-primary: var(--gb-yellow);
         --button-secondary: var(--background0);
       }
-
       &[variant-="blue"] {
         --button-primary: var(--gb-blue);
         --button-secondary: var(--background0);
       }
-
       &[variant-="purple"] {
         --button-primary: var(--gb-purple);
         --button-secondary: var(--background0);
       }
-
       &[variant-="aqua"] {
         --button-primary: var(--gb-aqua);
         --button-secondary: var(--background0);
       }
-
       &[variant-="orange"] {
         --button-primary: var(--gb-orange);
         --button-secondary: var(--background0);
       }
+    }
+  }
+
+  [data-webtui-theme|="gruvbox-dark"] {
+    button[variant-="gray"] {
+      --button-primary: var(--gb-dark-gray);
+      --button-secondary: var(--background0);
+    }
+  }
+
+  [data-webtui-theme|="gruvbox-light"] {
+    button[variant-="gray"] {
+      --button-primary: var(--gb-light-gray);
+      --button-secondary: var(--background0);
     }
   }
 }
