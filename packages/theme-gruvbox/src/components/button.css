@@ -1,118 +1,49 @@
 @layer components {
-  button {
-    &[variant-="bg0"] {
-      --button-primary: var(--background0);
-      --button-secondary: var(--foreground0);
-    }
+  [data-webtui-theme|="gruvbox"] {
+    button {
+      &[variant-="gray"] {
+        --button-primary: var(--gb-dark-gray);
+        --button-secondary: var(--background0);
 
-    &[variant-="bg1"] {
-      --button-primary: var(--background1);
-      --button-secondary: var(--foreground0);
-    }
+        [data-webtui-theme|="gruvbox-light"] & {
+          --button-primary: var(--gb-light-gray);
+        }
+      }
 
-    &[variant-="bg2"] {
-      --button-primary: var(--background2);
-      --button-secondary: var(--foreground0);
-    }
+      &[variant-="red"] {
+        --button-primary: var(--gb-red);
+        --button-secondary: var(--background0);
+      }
 
-    &[variant-="bg3"] {
-      --button-primary: var(--background3);
-      --button-secondary: var(--foreground0);
-    }
+      &[variant-="green"] {
+        --button-primary: var(--gb-green);
+        --button-secondary: var(--background0);
+      }
 
-    &[variant-="fg0"] {
-      --button-primary: var(--foreground-bright);
-      --button-secondary: var(--background0);
-    }
+      &[variant-="yellow"] {
+        --button-primary: var(--gb-yellow);
+        --button-secondary: var(--background0);
+      }
 
-    &[variant-="fg1"] {
-      --button-primary: var(--foreground0);
-      --button-secondary: var(--background0);
-    }
+      &[variant-="blue"] {
+        --button-primary: var(--gb-blue);
+        --button-secondary: var(--background0);
+      }
 
-    &[variant-="fg2"] {
-      --button-primary: var(--foreground1);
-      --button-secondary: var(--background0);
-    }
+      &[variant-="purple"] {
+        --button-primary: var(--gb-purple);
+        --button-secondary: var(--background0);
+      }
 
-    &[variant-="fg3"] {
-      --button-primary: var(--foreground2);
-      --button-secondary: var(--background0);
-    }
+      &[variant-="aqua"] {
+        --button-primary: var(--gb-aqua);
+        --button-secondary: var(--background0);
+      }
 
-    &[variant-="gray"] {
-      --button-primary: var(--accent-gray);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="red"] {
-      --button-primary: var(--accent-red);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="green"] {
-      --button-primary: var(--accent-green);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="yellow"] {
-      --button-primary: var(--accent-yellow);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="blue"] {
-      --button-primary: var(--accent-blue);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="purple"] {
-      --button-primary: var(--accent-purple);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="aqua"] {
-      --button-primary: var(--accent-aqua);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="orange"] {
-      --button-primary: var(--accent-orange);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-red"] {
-      --button-primary: var(--accent-bright-red);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-green"] {
-      --button-primary: var(--accent-bright-green);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-yellow"] {
-      --button-primary: var(--accent-bright-yellow);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-blue"] {
-      --button-primary: var(--accent-bright-blue);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-purple"] {
-      --button-primary: var(--accent-bright-purple);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-aqua"] {
-      --button-primary: var(--accent-bright-aqua);
-      --button-secondary: var(--background0);
-    }
-
-    &[variant-="bright-orange"] {
-      --button-primary: var(--accent-bright-orange);
-      --button-secondary: var(--background0);
+      &[variant-="orange"] {
+        --button-primary: var(--gb-orange);
+        --button-secondary: var(--background0);
+      }
     }
   }
 }

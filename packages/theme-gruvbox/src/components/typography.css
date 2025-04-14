@@ -1,28 +1,30 @@
 @layer components {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--accent-green);
-  }
-
-  p,
-  blockquote,
-  li,
-  [is-~="typography-block"] {
-    a {
-      color: var(--accent-blue);
-      text-decoration: underline;
-
-      &:hover {
-        color: var(--accent-bright-blue);
-      }
+  [data-webtui-theme|="gruvbox"] {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--gb-green);
     }
 
-    code {
-      color: var(--accent-orange);
+    p,
+    blockquote,
+    li,
+    [is-~="typography-block"] {
+      a {
+        color: var(--gb-blue);
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--gb-aqua);
+        }
+      }
+
+      code {
+        color: var(--gb-orange);
+      }
     }
   }
 }

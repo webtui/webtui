@@ -1,4 +1,7 @@
-# @webtui/theme-gruvbox
+---
+layout: "@/layouts/Doc.astro"
+title: Gruvbox Theme
+---
 
 A port of the [Gruvbox](https://github.com/morhetz/gruvbox) color palette to [WebTUI](https://github.com/webtui/webtui).
 
