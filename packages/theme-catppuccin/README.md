@@ -6,6 +6,15 @@ Provides additional variants for the listed components in the base WebTUI librar
 
 ## Installation
 
+Install the theme with your preferred package manager
+
+```bash
+bun i @webtui/theme-catppuccin
+npm i @webtui/theme-catppuccin
+yarn add @webtui/theme-catppuccin
+pnpm i @webtui/theme-catppuccin
+```
+
 Ensure you import the theme **after** all the other stylesheets from `@webtui/css`
 
 ```css

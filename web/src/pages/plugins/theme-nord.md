@@ -9,6 +9,15 @@ Provides additional variants for the listed components in the base WebTUI librar
 
 ## Installation
 
+Install the theme with your preferred package manager
+
+```bash
+bun i @webtui/theme-nord
+npm i @webtui/theme-nord
+yarn add @webtui/theme-nord
+pnpm i @webtui/theme-nord
+```
+
 Ensure you import the theme **after** all the other stylesheets from `@webtui/css`
 
 ```css

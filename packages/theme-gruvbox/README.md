@@ -6,6 +6,15 @@ Provides additional variants for the listed components in the base WebTUI librar
 
 ## Installation
 
+Install the theme with your preferred package manager
+
+```bash
+bun i @webtui/theme-gruvbox
+npm i @webtui/theme-gruvbox
+yarn add @webtui/theme-gruvbox
+pnpm i @webtui/theme-gruvbox
+```
+
 Ensure you import the theme **after** all the other stylesheets from `@webtui/css` or the styles will not be applied.
 
 ```css
