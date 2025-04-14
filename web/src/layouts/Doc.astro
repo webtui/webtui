@@ -1,6 +1,5 @@
 ---
 import Sidebar from '@/components/Sidebar.astro';
-import Filter from '@/components/Filter.astro';
 import Layout from '@/layouts/Layout.astro';
 import { makeSortedCategoryEntries } from '@/utils/content';
 import { compareUrlPaths } from '@/utils/url';
@@ -49,19 +48,19 @@ if (headings.length > 0) {
 </style>
 
 <Layout>
-  <div flex-="col grow" space-="px:2 py:1">
+  <column self-="grow" space-="px:2 py:1">
     <Navbar />
-    <div flex-="row grow gap:1">
+    <row self-="grow" gap-="1">
       <div id="sidebar-container" class="mobile-hidden">
         <Sidebar />
       </div>
       <article box-="square contain:!top">
-        <header flex-="row justify:between">
+        <header is-="row" align-="between">
           <div is-="badge" variant-="background0">
             <h1>{frontmatter.title}</h1>
           </div>
         </header>
-        <div flex-="row gap:1 grow">
+        <row gap-="1" self-="grow">
           <div id="scroll-container">
             <main id="main-content">
               <slot />
@@ -93,11 +92,11 @@ if (headings.length > 0) {
                       box-="round contain:!top"
                       tabindex="0"
                     >
-                      <div flex-="row justify:end" is-="typography-block">
+                      <row align-="start end" is-="typography-block">
                         <span is-="badge" variant-="background0">
                           Next <code space-="mx:1">&lt;C-n&gt;</code> →
                         </span>
-                      </div>
+                      </row>
                       <span space-="px:1">
                         {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
                       </span>
@@ -113,17 +112,14 @@ if (headings.length > 0) {
                 <Contents headers={headers} />
               )
           }
-        </div>
+        </row>
       </article>
+    </row>
+    <div id="mobile-nav">
+      <button variant-="background1" size-="small" id="menu-button">&#xeb86; Menu</button>
+      <button id="docs-button" size-="small">&#xf15b; Docs</button>
     </div>
-    <div box-="square contain" id="mobile-nav" flex-="row gap:1">
-      <button flex-="grow !basis" variant-="secondary" id="menu-button"
-        >&#xeb86; Menu</button
-      >
-      <button flex-="grow !basis" id="docs-button">&#xf15b; Docs</button>
-    </div>
-  </div>
-  <Filter />
+  </column>
 </Layout>
 
 <!-- Vim Navigation -->
@@ -198,14 +194,14 @@ if (headings.length > 0) {
   menuButton.addEventListener("click", () => {
     sidebarContainer.classList.remove("mobile-hidden");
     article.classList.add("mobile-hidden");
-    menuButton.setAttribute("variant-", "default");
-    docsButton.setAttribute("variant-", "secondary");
+    menuButton.setAttribute("variant-", "");
+    docsButton.setAttribute("variant-", "background1");
   });
 
   docsButton.addEventListener("click", () => {
     sidebarContainer.classList.add("mobile-hidden");
     article.classList.remove("mobile-hidden");
-    menuButton.setAttribute("variant-", "secondary");
-    docsButton.setAttribute("variant-", "default");
+    menuButton.setAttribute("variant-", "background1");
+    docsButton.setAttribute("variant-", "");
   });
 </script>

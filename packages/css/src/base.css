@@ -16,17 +16,15 @@
     --font-family: monospace;
   }
 
-  @media(prefers-color-scheme: dark) {
-    :root {
-      --background0: #000;
-      --background1: #222;
-      --background2: #444;
-      --background3: #666;
+  [data-webtui-theme="dark"] {
+    --background0: #000;
+    --background1: #222;
+    --background2: #444;
+    --background3: #666;
 
-      --foreground0: #fff;
-      --foreground1: #ccc;
-      --foreground2: #999;
-    }
+    --foreground0: #fff;
+    --foreground1: #ccc;
+    --foreground2: #999;
   }
 
   body,

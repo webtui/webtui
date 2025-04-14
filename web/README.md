@@ -1,9 +1,3 @@
-# WebTUI Docs
+# WebTUI Website
 
-## TODO (later)
-
-- [ ] contribution guidelines / docs
-- [ ] framework-specific installations
-- [ ] box captions guide (using badges)
-- [ ] changelog
-- [ ] examples in component doc pages
+https://webtui.ironclad.sh

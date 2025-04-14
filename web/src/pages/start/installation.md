@@ -65,7 +65,7 @@ You should see a significant upgrade from standard HTML styles
 
 ![installation-html.png](../../assets/installation-html.png)
 
-If you want to add a pre-built color theme, check out the [Plugins](/plugins/intro) section
+If you want to add a pre-built color theme, check out the [Plugins](/start/plugins) section
 
 ## ESM Imports
 
