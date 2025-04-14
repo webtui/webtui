@@ -20,7 +20,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 
 ## Theme Switching
 
-The theme defaults to dark mode. To enable light mode, add the class `gruvbox-light` or the attribute `data-theme='light'` to an element.
+The theme defaults to dark mode. To enable light mode, add the class `gruvbox-light` or the attribute `data-webtui-theme='light'` to an element.
 
 ```html
 <body class="gruvbox-light"></body>
@@ -104,7 +104,8 @@ Adds the following CSS variables to the `base` layer
 
 ```css
 @layer utils {
-  :root {
+  :root,
+  [data-webtui-theme="dark"] {
     --gb-dark-bg0-h: #1d2021;
     --gb-dark-bg0: #282828;
     --gb-dark-bg0-s: #32302f;
@@ -157,7 +158,7 @@ Adds the following CSS variables to the `base` layer
   }
 
   .gruvbox-light,
-  [data-theme="light"] {
+  [data-webtui-theme="light"] {
     --gb-light-bg0-h: #f9f5d7;
     --gb-light-bg0: #fbf1c7;
     --gb-light-bg0-s: #f2e5bc;
@@ -196,10 +197,11 @@ Adds the following CSS variables to the `base` layer
 }
 ```
 
-The theme defines semantic aliases for easier use. These aliases automatically switch between dark and light mode values based on the presence of `.gruvbox-light` or `[data-theme]='light'`
+The theme defines semantic aliases for easier use. These aliases automatically switch between dark and light mode values based on the presence of `.gruvbox-light` or `[data-webtui-theme]='light'`
 
 ```css
-:root {
+:root,
+[data-webtui-theme="dark"] {
   --background0: var(--gb-dark-bg0);
   --background1: var(--gb-dark-bg1);
   --background2: var(--gb-dark-bg2);
@@ -229,7 +231,7 @@ The theme defines semantic aliases for easier use. These aliases automatically s
 }
 
 .gruvbox-light,
-[data-theme='light'] {
+[data-webtui-theme='light'] {
   --background0: var(--gb-light-bg0);
   --background1: var(--gb-light-bg1);
   --background2: var(--gb-light-bg2);
