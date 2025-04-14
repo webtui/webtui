@@ -1,0 +1,48 @@
+@layer components {
+  [data-webtui-theme|="gruvbox"] {
+    [is-~="badge"] {
+      &[variant-="red"] {
+        --badge-color: var(--gb-red);
+        --badge-text: var(--background0);
+      }
+      &[variant-="green"] {
+        --badge-color: var(--gb-green);
+        --badge-text: var(--background0);
+      }
+      &[variant-="yellow"] {
+        --badge-color: var(--gb-yellow);
+        --badge-text: var(--background0);
+      }
+      &[variant-="blue"] {
+        --badge-color: var(--gb-blue);
+        --badge-text: var(--background0);
+      }
+      &[variant-="purple"] {
+        --badge-color: var(--gb-purple);
+        --badge-text: var(--background0);
+      }
+      &[variant-="aqua"] {
+        --badge-color: var(--gb-aqua);
+        --badge-text: var(--background0);
+      }
+      &[variant-="orange"] {
+        --badge-color: var(--gb-orange);
+        --badge-text: var(--background0);
+      }
+    }
+  }
+
+  [data-webtui-theme|="gruvbox-dark"] {
+    [is-~="badge"][variant-="gray"] {
+      --badge-color: var(--gb-dark-gray);
+      --badge-text: var(--background0);
+    }
+  }
+
+  [data-webtui-theme|="gruvbox-light"] {
+    [is-~="badge"][variant-="gray"] {
+      --badge-color: var(--gb-light-gray);
+      --badge-text: var(--background0);
+    }
+  }
+}
