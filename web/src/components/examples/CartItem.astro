@@ -7,42 +7,53 @@ export interface Props {
 }
 
 const { id, name, price, quantity } = Astro.props;
+const total = price * quantity;
 ---
-<column box-="round contain:none" class="cart-item">
+<article class="cart-item" box-="round contain:none">
   <row align-="between">
     <span is-="badge" variant-="background0">
       {name}
     </span>
-    <span is-="badge" variant-="background0">
-      x{quantity}
-    </span>
+    <div class="quantity-display">
+      <span is-="badge" variant-="background1">x{quantity}</span>
+    </div>
   </row>
+  
   <row align-="between" space-="py:1">
     <span is-="badge" variant-="background1">
-      ${price} each
+      ${price.toFixed(2)} each
     </span>
     <span is-="badge" variant-="background1">
-      Total: ${(price * quantity).toFixed(2)}
+      Total: ${total.toFixed(2)}
     </span>
   </row>
+
   <button 
+    type="button"
     size-="small" 
     variant-="background1" 
-    class="remove-item-btn"
-    data-product-id={id}
+    class="demo-btn"
   >
     &#xf2ed; Remove
   </button>
-</column>
+</article>
 
 <style>
-.remove-item-btn {
-  margin-top: 0.5rem;
-  width: 100%;
-  transition: all 0.2s ease;
+.cart-item {
+  --box-border-color: var(--background1);
 }
 
-.remove-item-btn[variant-="background1"] {
-  cursor: pointer;
+.demo-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.demo-btn:active {
+  --button-primary: var(--background2);
+}
+
+.quantity-display {
+  min-width: 4ch;
+  text-align: center;
 }
 </style>

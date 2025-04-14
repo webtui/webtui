@@ -2,6 +2,7 @@
 import CartItem from './CartItem.astro';
 import ProductCard from './ProductCard.astro';
 import Banner from './Banner.astro';
+import Cart from './Cart.astro';
 
 interface Product {
   id: number;
@@ -83,13 +84,13 @@ const products: Product[] = [
     }
 ];
 
-const dealOfTheDay = products[0];
 const topCategories = ["Electronics", "Accessories", "Merch"];
+const dealOfTheDay = products[0];
 ---
 
-<column gap-="1" self-="grow" id="ecommerce-app">
+<column space-="px:1" self-="grow" style="width: 100%;">
   <!-- Top Banners -->
-  <row gap-="1">
+  <row gap-="1" style="width: 100%;">
     <column self-="grow !basis">
       <Banner 
         title="Deal of the Day"
@@ -109,31 +110,27 @@ const topCategories = ["Electronics", "Accessories", "Merch"];
   </row>
 
   <!-- Main Content -->
-  <row gap-="1" self-="grow">
+  <row gap-="1" self-="grow" style="width: 100%;">
     <!-- Categories Sidebar -->
-    <column gap-="1" id="categories" box-="square">
+    <nav class="categories" box-="square">
       <column space-="px:1">
-        <button size-="small">&#xf0b0; Filter</button>
+        <span is-="badge" variant-="background0">Categories</span>
       </column>
       <column space-="px:1" is-="typography-block">
-        <div data-category="all" class="category-item active">&#xf6ff; All Products</div>
+        <div class="category-item active">&#xf6ff; All Products</div>
         {topCategories.map(cat => (
-          <div data-category={cat} class="category-item">
+          <div class="category-item">
             {cat === "Electronics" && "&#xf553; "}
             {cat === "Accessories" && "&#xf51f; "}
             {cat === "Merch" && "&#xf77b; "}
             {cat}
           </div>
         ))}
-        <hr />
-        <div>&#xf07a; Cart (<span id="cart-count">0</span>)</div>
-        <div>&#xf0c4; Orders</div>
-        <div>&#xf004; Wishlist</div>
       </column>
-    </column>
+    </nav>
 
     <!-- Product Grid -->
-    <column self-="grow !basis" box-="square contain:!top">
+    <main class="products" box-="square contain:!top" style="flex: 1;">
       <!-- Category Banners -->
       <row gap-="1" class="category-banners">
         {topCategories.map(cat => (
@@ -148,268 +145,72 @@ const topCategories = ["Electronics", "Accessories", "Merch"];
         ))}
       </row>
 
-      <column>
+      <div class="product-header">
         <span is-="badge" variant-="background0">Featured Products</span>
-      </column>
+      </div>
       
       <!-- Product Grid -->
-      <div id="product-list" class="product-grid">
-        {products.map((product) => (
+      <div class="product-grid">
+        {products.map(product => (
           <ProductCard {...product} />
         ))}
       </div>
-    </column>
+    </main>
 
-    <!-- Cart Preview -->
-    <column self-="grow !basis" box-="square contain:!top">
-      <row>
-        <span is-="badge" variant-="background0">Shopping Cart</span>
-      </row>
-
-      <!-- Cart Actions -->
-      <row align-="between" space-="px:1">
-        <row gap-="1">
-          <button size-="small" variant-="background1" id="clear-cart">&#xf2ed; Clear</button>
-          <button size-="small" variant-="background1" id="update-cart">&#xf021; Update</button>
-        </row>
-        <button size-="small" variant-="green">&#xf09d; Checkout</button>
-      </row>
-
-      <hr />
-
-      <!-- Cart Items -->
-      <column gap-="1" space-="px:1" id="cart-items">
-        <!-- Cart items will be rendered here -->
-      </column>
-    </column>
+    <!-- Cart -->
+    <Cart />
   </row>
 </column>
 
 <style>
-  #categories {
-    min-width: 24ch;
-    height: 100%;
-  }
+.categories {
+  min-width: 24ch;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1lh;
+}
 
-  [box-~="square"] {
-    --box-border-color: var(--background1);
-  }
+.category-item {
+  padding: 0 1ch;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
 
-  .category-item {
-    cursor: pointer;
-    padding: 0 1ch;
-  }
+.category-item:hover {
+  background-color: var(--background1);
+}
 
-  .category-item:hover {
-    background-color: var(--background1);
-  }
+.category-item.active {
+  background-color: var(--background2);
+}
 
-  .category-item.active {
-    background-color: var(--background2);
-  }
+.product-header {
+  padding: 0 2lh;
+}
 
+.products {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2lh;
+  padding: 2lh;
+  width: 100%;
+}
+
+.category-banners {
+  margin-bottom: 2lh;
+}
+
+@media (max-width: 768px) {
   .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2lh;
-    padding: 2lh;
+    grid-template-columns: 1fr;
   }
-
-  .category-banners {
-    margin-bottom: 2lh;
-  }
-
-  @media (max-width: 768px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+}
 </style>
-
-<script define:vars={{ products }}>
-  // State management using a custom store
-  const createStore = (initialState) => {
-    let state = initialState;
-    const listeners = new Set();
-
-    return {
-      getState: () => state,
-      setState: (newState) => {
-        state = { ...state, ...newState };
-        listeners.forEach(listener => listener(state));
-      },
-      subscribe: (listener) => {
-        listeners.add(listener);
-        return () => listeners.delete(listener);
-      }
-    };
-  };
-
-  // Create store
-  const store = createStore({
-    cart: [],
-    activeCategory: 'all'
-  });
-
-  // Cart Operations
-  const handleAddToCart = (productId) => {
-    const { cart } = store.getState();
-    const existingItem = cart.find(item => item.id === productId);
-    
-    if (existingItem) {
-      existingItem.quantity += 1;
-      store.setState({ cart: [...cart] });
-    } else {
-      store.setState({ cart: [...cart, { id: productId, quantity: 1 }] });
-    }
-
-    // Visual feedback
-    const button = document.querySelector(`button[data-product-id="${productId}"]`);
-    if (button) {
-      const originalHTML = button.innerHTML;
-      button.setAttribute('variant-', 'background1');
-      button.innerHTML = '✓ Added';
-      setTimeout(() => {
-        button.setAttribute('variant-', 'green');
-        button.innerHTML = originalHTML;
-      }, 1000);
-    }
-  };
-
-  const handleRemoveFromCart = (productId) => {
-    const { cart } = store.getState();
-    store.setState({
-      cart: cart.filter(item => item.id !== productId)
-    });
-  };
-
-  const handleClearCart = () => {
-    store.setState({ cart: [] });
-  };
-
-  // Filtering
-  const handleCategoryClick = (category) => {
-    store.setState({ activeCategory: category });
-    
-    document.querySelectorAll('.category-item').forEach(item => {
-      if (item instanceof HTMLElement) {
-        item.classList.toggle('active', item.dataset.category === category);
-      }
-    });
-
-    document.querySelectorAll('.product-item').forEach(item => {
-      if (item instanceof HTMLElement) {
-        const productId = Number(item.dataset.productId);
-        const product = products.find(p => p.id === productId);
-        
-        if (!product) return;
-        
-        if (category === 'all' || product.category.label === category) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      }
-    });
-  };
-
-  // Render functions
-  const updateCartDisplay = () => {
-    const { cart } = store.getState();
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartCount = document.getElementById('cart-count');
-    if (!cartItemsContainer || !cartCount) return;
-
-    // Update cart count
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems.toString();
-
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = `
-        <column box-="round contain:none" class="cart-item">
-          <row align-="center">
-            <span is-="badge" variant-="background1">
-              Cart is empty
-            </span>
-          </row>
-        </column>
-      `;
-      return;
-    }
-
-    // Render cart items
-    const cartContent = cart.map(item => {
-      const product = products.find(p => p.id === item.id);
-      if (!product) return '';
-      
-      const props = {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: item.quantity
-      };
-
-      const template = document.createElement('template');
-      template.innerHTML = `<CartItem ${Object.entries(props).map(([k, v]) => `${k}="${v}"`).join(' ')} />`;
-      return template.innerHTML;
-    }).join('');
-
-    cartItemsContainer.innerHTML = cartContent;
-
-    // Add subtotal
-    const subtotal = cart.reduce((total, item) => {
-      const product = products.find(p => p.id === item.id);
-      return total + (product?.price || 0) * item.quantity;
-    }, 0);
-
-    cartItemsContainer.innerHTML += `
-      <hr />
-      <row align-="between">
-        <span is-="badge" variant-="background0">Subtotal:</span>
-        <span is-="badge" variant-="background0">$${subtotal.toFixed(2)}</span>
-      </row>
-      <button box-="round" variant-="green">Proceed to Checkout &#xf09d;</button>
-    `;
-  };
-
-  // Event listeners
-  document.addEventListener('DOMContentLoaded', () => {
-    // Subscribe to store changes
-    store.subscribe(updateCartDisplay);
-
-    // Add to cart buttons
-    document.getElementById('product-list')?.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target && target.classList.contains('add-to-cart-btn')) {
-        const productId = Number(target.dataset.productId);
-        handleAddToCart(productId);
-      }
-    });
-
-    // Remove from cart buttons
-    document.getElementById('cart-items')?.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target && target.classList.contains('remove-item-btn')) {
-        const productId = Number(target.dataset.productId);
-        handleRemoveFromCart(productId);
-      }
-    });
-
-    // Category filtering
-    document.querySelectorAll('.category-item').forEach(item => {
-      if (item instanceof HTMLElement) {
-        item.addEventListener('click', () => {
-          const category = item.dataset.category || 'all';
-          handleCategoryClick(category);
-        });
-      }
-    });
-
-    // Cart actions
-    document.getElementById('clear-cart')?.addEventListener('click', handleClearCart);
-    document.getElementById('update-cart')?.addEventListener('click', updateCartDisplay);
-
-    // Initial render
-    updateCartDisplay();
-  });
-</script>

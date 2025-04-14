@@ -59,11 +59,21 @@ import nordStyle from '@webtui/theme-nord?raw';
       </column>
 
       <div id="tab-contents">
-        <div data-tab="email" class="active"><Email /></div>
-        <div data-tab="auth">[Auth example Coming Soon]</div>
-        <div data-tab="ecommerce"><Ecommerce /></div>
-        <div data-tab="ai">[AI Chat example Coming Soon]</div>
-        <div data-tab="all">[All Components example Coming Soon]</div>
+        <div data-tab="email" class="active">
+          <Email />
+        </div>
+        <div data-tab="auth">
+          [Auth example Coming Soon]
+        </div>
+        <div data-tab="ecommerce" class="example-content">
+          <Ecommerce />
+        </div>
+        <div data-tab="ai">
+          [AI Chat example Coming Soon]
+        </div>
+        <div data-tab="all">
+          [All Components example Coming Soon]
+        </div>
       </div>
     </column>
   </column>
@@ -78,10 +88,18 @@ import nordStyle from '@webtui/theme-nord?raw';
   }
   #tab-contents [data-tab] {
     display: none;
+    width: 100%;
+    max-width: 100vw;
+    padding: 0;
 
     &.active {
       display: flex;
     }
+  }
+
+  .example-content {
+    width: 100%;
+    padding: 0;
   }
 
   @layer base {

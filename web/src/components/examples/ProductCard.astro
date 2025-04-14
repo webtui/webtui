@@ -10,7 +10,6 @@ export interface Props {
     cap: string;
   };
   description: string;
-  image?: string; // Optional for now
 }
 
 const { id, name, price, stock, category, description } = Astro.props;
@@ -41,7 +40,7 @@ const asciiArt = {
   |__________|`
 };
 
-// Get random ASCII art for the category
+// Get ASCII art for the category
 const getAsciiArt = (categoryLabel: string) => {
   if (categoryLabel in asciiArt) {
     return asciiArt[categoryLabel as keyof typeof asciiArt];
@@ -49,47 +48,52 @@ const getAsciiArt = (categoryLabel: string) => {
   return asciiArt.Electronics;
 };
 ---
-<column box-="round contain:none" class="product-card" data-product-id={id}>
-  <row class="product-header" align-="between">
-    <span is-="badge" variant-="background0">
-      <strong>{name}</strong>
-    </span>
-    <span 
-      is-="badge" 
-      variant-={inStock ? "green" : "red"}
-      cap-="slant-bottom"
-    >
-      {inStock ? `${stock} in stock` : 'Out of stock'}
-    </span>
-  </row>
+<article class="product-card" box-="round contain:none">
+  <header class="product-header">
+    <row align-="between">
+      <span is-="badge" variant-="background0">
+        <strong>{name}</strong>
+      </span>
+      <span 
+        is-="badge" 
+        variant-={inStock ? "green" : "red"}
+        cap-="slant-bottom"
+      >
+        {inStock ? `${stock} in stock` : 'Out of stock'}
+      </span>
+    </row>
+  </header>
 
-  <column space-="px:1 py:1" class="product-info">
+  <div class="product-content" space-="px:1 py:1">
     <div class="product-image" box-="square">
       <pre class="ascii-art">{getAsciiArt(category.label)}</pre>
     </div>
     <p class="product-description">{description}</p>
     
-    <row align-="between" class="product-footer">
-      <column>
-        <span is-="badge" variant-={category.color} cap-={category.cap}>
-          {category.label}
-        </span>
-        <span is-="badge" variant-="background0" class="price-tag">
-          ${price.toFixed(2)}
-        </span>
-      </column>
-      <button 
-        size-="small" 
-        variant-="green" 
-        class="add-to-cart-btn"
-        data-product-id={id}
-        disabled={!inStock}
-      >
-        Add to Cart &#xf07a;
-      </button>
-    </row>
-  </column>
-</column>
+    <footer class="product-footer">
+      <row align-="between">
+        <column>
+          <span is-="badge" variant-={category.color} cap-={category.cap}>
+            {category.label}
+          </span>
+          <span is-="badge" variant-="background0" class="price-tag">
+            ${price.toFixed(2)}
+          </span>
+        </column>
+        {inStock && (
+          <button 
+            size-="small" 
+            variant-="green"
+            class="demo-btn"
+            aria-label="Add to Cart Demo Button"
+          >
+            Add to Cart &#xf07a;
+          </button>
+        )}
+      </row>
+    </footer>
+  </div>
+</article>
 
 <style>
 .product-card {
@@ -137,14 +141,10 @@ const getAsciiArt = (categoryLabel: string) => {
   font-size: 1.2em;
 }
 
-.add-to-cart-btn {
-  cursor: pointer;
-  padding: 0 2ch;
-}
-
-.add-to-cart-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.product-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-footer {
@@ -152,7 +152,11 @@ const getAsciiArt = (categoryLabel: string) => {
   padding-top: 1lh;
 }
 
-.product-info {
-  height: 100%;
+.demo-btn {
+  padding: 0 2ch;
+}
+
+.demo-btn:active {
+  --button-primary: var(--background1);
 }
 </style>
