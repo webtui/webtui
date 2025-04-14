@@ -1,0 +1,48 @@
+---
+export interface Props {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+const { id, name, price, quantity } = Astro.props;
+---
+<column box-="round contain:none" class="cart-item">
+  <row align-="between">
+    <span is-="badge" variant-="background0">
+      {name}
+    </span>
+    <span is-="badge" variant-="background0">
+      x{quantity}
+    </span>
+  </row>
+  <row align-="between" space-="py:1">
+    <span is-="badge" variant-="background1">
+      ${price} each
+    </span>
+    <span is-="badge" variant-="background1">
+      Total: ${(price * quantity).toFixed(2)}
+    </span>
+  </row>
+  <button 
+    size-="small" 
+    variant-="background1" 
+    class="remove-item-btn"
+    data-product-id={id}
+  >
+    &#xf2ed; Remove
+  </button>
+</column>
+
+<style>
+.remove-item-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.remove-item-btn[variant-="background1"] {
+  cursor: pointer;
+}
+</style>

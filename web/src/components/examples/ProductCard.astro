@@ -1,0 +1,158 @@
+---
+export interface Props {
+  id: number;
+  name: string;
+  price: number;
+  stock: number;
+  category: {
+    label: string;
+    color: string;
+    cap: string;
+  };
+  description: string;
+  image?: string; // Optional for now
+}
+
+const { id, name, price, stock, category, description } = Astro.props;
+const inStock = stock > 0;
+
+// ASCII art patterns for different categories
+const asciiArt = {
+  Electronics: `
++------------------+
+|     [<_>]       |
+|    /|___|\      |
+|   /_____/_\     |
+|  /_/_/_/_/_\    |
++------------------+`,
+  Accessories: `
+   .-""""-.
+  /  _.._  \\
+ ;_/    \\_\\_;
+     /  \\
+    (    )
+     \\__/`,
+  Merch: `
+   __________
+  |          |
+  |   </> {  |
+  |     }    |
+  |  _____   |
+  |__________|`
+};
+
+// Get random ASCII art for the category
+const getAsciiArt = (categoryLabel: string) => {
+  if (categoryLabel in asciiArt) {
+    return asciiArt[categoryLabel as keyof typeof asciiArt];
+  }
+  return asciiArt.Electronics;
+};
+---
+<column box-="round contain:none" class="product-card" data-product-id={id}>
+  <row class="product-header" align-="between">
+    <span is-="badge" variant-="background0">
+      <strong>{name}</strong>
+    </span>
+    <span 
+      is-="badge" 
+      variant-={inStock ? "green" : "red"}
+      cap-="slant-bottom"
+    >
+      {inStock ? `${stock} in stock` : 'Out of stock'}
+    </span>
+  </row>
+
+  <column space-="px:1 py:1" class="product-info">
+    <div class="product-image" box-="square">
+      <pre class="ascii-art">{getAsciiArt(category.label)}</pre>
+    </div>
+    <p class="product-description">{description}</p>
+    
+    <row align-="between" class="product-footer">
+      <column>
+        <span is-="badge" variant-={category.color} cap-={category.cap}>
+          {category.label}
+        </span>
+        <span is-="badge" variant-="background0" class="price-tag">
+          ${price.toFixed(2)}
+        </span>
+      </column>
+      <button 
+        size-="small" 
+        variant-="green" 
+        class="add-to-cart-btn"
+        data-product-id={id}
+        disabled={!inStock}
+      >
+        Add to Cart &#xf07a;
+      </button>
+    </row>
+  </column>
+</column>
+
+<style>
+.product-card {
+  --box-border-color: var(--background2);
+  transition: all 0.2s ease;
+  width: 100%;
+  min-height: 400px;
+}
+
+.product-card:hover {
+  --box-border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.product-description {
+  color: var(--foreground1);
+  margin: 1lh 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.product-image {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background1);
+  margin-bottom: 1lh;
+  padding: 1lh;
+}
+
+.ascii-art {
+  color: var(--foreground0);
+  font-family: monospace;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+  white-space: pre;
+}
+
+.price-tag {
+  margin-top: 0.5lh;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.add-to-cart-btn {
+  cursor: pointer;
+  padding: 0 2ch;
+}
+
+.add-to-cart-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.product-footer {
+  margin-top: auto;
+  padding-top: 1lh;
+}
+
+.product-info {
+  height: 100%;
+}
+</style>

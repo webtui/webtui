@@ -1,8 +1,8 @@
 ---
+import Ecommerce from '@/components/examples/Ecommerce.astro';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import Email from '@/components/examples/Email.astro';
-import Ecommerce from '@/components/examples/Ecommerce.astro';
 import Tabs from '@/components/examples/Tabs.astro';
 import catppuccinStyle from '@webtui/theme-catppuccin?raw';
 import nordStyle from '@webtui/theme-nord?raw';
@@ -39,7 +39,7 @@ import nordStyle from '@webtui/theme-nord?raw';
         <column>
           <span>Examples</span>
           <Tabs id="tabslist">
-            <button data-value="email" size-="small" variant-="background1">
+            <button data-value="email" size-="small" variant-="background1" aria-selected="true">
               Email
             </button>
             <button data-value="auth" size-="small" variant-="background1">
