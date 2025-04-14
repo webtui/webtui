@@ -1,7 +1,5 @@
 @layer base {
   [data-webtui-theme|="gruvbox-dark"] {
-    --gb-dark-bg0-h: #1d2021;
-    --gb-dark-bg0-s: #32302f;
     --gb-dark-bg1: #3c3836;
     --gb-dark-bg2: #504945;
     --gb-dark-bg3: #665c54;
@@ -20,7 +18,6 @@
     --gb-aqua: #8ec07c;
     --gb-orange: #fe8019;
 
-    --background0: var(--gb-dark-bg0);
     --background1: var(--gb-dark-bg1);
     --background2: var(--gb-dark-bg2);
     --background3: var(--gb-dark-bg3);
@@ -31,19 +28,20 @@
 
   [data-webtui-theme="gruvbox-dark-hard"] {
     --gb-dark-bg0: #1d2021;
+    --background0: var(--gb-dark-bg0);
   }
   [data-webtui-theme="gruvbox-dark-medium"],
   [data-webtui-theme="gruvbox-dark"],
   [data-webtui-theme="gruvbox"] {
     --gb-dark-bg0: #282828;
+    --background0: var(--gb-dark-bg0);
   }
   [data-webtui-theme="gruvbox-dark-soft"] {
     --gb-dark-bg0: #32302f;
+    --background0: var(--gb-dark-bg0);
   }
 
   [data-webtui-theme|="gruvbox-light"] {
-    --gb-light-bg0-h: #f9f5d7;
-    --gb-light-bg0-s: #f2e5bc;
     --gb-light-bg1: #ebdbb2;
     --gb-light-bg2: #d5c4a1;
     --gb-light-bg3: #bdae93;
@@ -62,7 +60,6 @@
     --gb-aqua: #689d6a;
     --gb-orange: #d65d0e;
 
-    --background0: var(--gb-light-bg0);
     --background1: var(--gb-light-bg1);
     --background2: var(--gb-light-bg2);
     --background3: var(--gb-light-bg3);
@@ -73,12 +70,15 @@
 
   [data-webtui-theme="gruvbox-light-hard"] {
     --gb-light-bg0: #f9f5d7;
+    --background0: var(--gb-light-bg0);
   }
   [data-webtui-theme="gruvbox-light-medium"],
   [data-webtui-theme="gruvbox-light"] {
     --gb-light-bg0: #fbf1c7;
+    --background0: var(--gb-light-bg0);
   }
   [data-webtui-theme="gruvbox-light-soft"] {
     --gb-light-bg0: #f2e5bc;
+    --background0: var(--gb-light-bg0);
   }
 }
