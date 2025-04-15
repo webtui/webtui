@@ -14,7 +14,7 @@ title: Popover
 Add the `is-~="popover"` attribute to a `<details>` element to make it a popover
 
 ```html
-<details>
+<details is-="popover">
     <summary>Popover</summary>
     <div>Popover content</div>
 </details>

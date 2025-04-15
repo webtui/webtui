@@ -21,6 +21,9 @@
     "web",
     "packages/*"
   ],
+  "trustedDependencies": [
+    "turbo"
+  ],
   "dependencies": {
     "@biomejs/biome": "^1.9.4"
   }
