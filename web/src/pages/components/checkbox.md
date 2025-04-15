@@ -21,10 +21,22 @@ Add a native `<input type="checkbox">` to your markup. The TUI style will be app
 </div>
 
 ```html
-<label> <input type="checkbox" /> Unchecked </label>
-<label> <input type="checkbox" checked /> Checked </label>
-<label> <input type="checkbox" disabled /> Disabled </label>
-<label> <input type="checkbox" checked disabled /> Checked Disabled </label>
+<label>
+  <input type="checkbox" />
+  Unchecked
+</label>
+<label>
+  <input type="checkbox" checked />
+  Checked
+</label>
+<label>
+  <input type="checkbox" disabled />
+  Disabled
+</label>
+<label>
+  <input type="checkbox" checked disabled />
+  Checked Disabled
+</label>
 ```
 
 ## Block Style
@@ -32,15 +44,41 @@ Add a native `<input type="checkbox">` to your markup. The TUI style will be app
 Add the `block` class to create a boxed checkbox with its label:
 
 <div style="display: flex; flex-direction: column; gap: 0.5em; margin-bottom: 1em;">
-  <label> <input type="checkbox" class="block" /> Block style </label>
-  <label> <input type="checkbox" class="block" checked /> Checked block </label>
-  <label> <input type="checkbox" class="block" disabled /> Disabled block </label>
+<label>
+  <input type="checkbox" class="block" />
+  Unchecked
+</label>
+<label>
+  <input type="checkbox" class="block" checked />
+  Checked
+</label>
+<label>
+  <input type="checkbox" class="block" disabled />
+  Disabled
+</label>
+<label>
+  <input type="checkbox" class="block" checked disabled />
+  Checked Disabled
+</label>
 </div>
 
 ```html
-<label> <input type="checkbox" class="block" /> Block style </label>
-<label> <input type="checkbox" class="block" checked /> Checked block </label>
-<label> <input type="checkbox" class="block" disabled /> Disabled block </label>
+<label>
+  <input type="checkbox" class="block" />
+  Block style
+</label>
+<label>
+  <input type="checkbox" class="block" checked />
+  Checked block
+</label>
+<label>
+  <input type="checkbox" class="block" disabled />
+  Disabled block
+</label>
+<label>
+  <input type="checkbox" class="block" checked disabled />
+  Checked Disabled Block
+</label>
 ```
 
 ## Focus

@@ -1,0 +1,69 @@
+@layer components {
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    width: 3ch;
+    min-width: initial;
+    height: 1lh;
+    vertical-align: text-top;
+    cursor: pointer;
+    color: var(--foreground0, inherit);
+    font-family: var(--font-family, monospace);
+    font-size: var(--font-size, 1rem);
+    line-height: var(--line-height, 1.5);
+    outline: none;
+    background: transparent;
+  }
+
+  input[type="checkbox"]::before {
+    content: "[ ]";
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  input[type="checkbox"]:checked::before {
+    content: "[X]";
+  }
+
+  label:has(input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.5ch;
+    cursor: pointer;
+    max-width: fit-content;
+  }
+
+  label:has(input[type="checkbox"].block) {
+    border: 1px solid var(--foreground0, currentColor);
+    padding: 0.25em 0.5em;
+  }
+
+  label:has(input[type="checkbox"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  input[type="checkbox"]:disabled {
+    color: var(--foreground2, gray);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  label:has(input[type="checkbox"]:disabled) {
+    color: var(--foreground2, gray);
+    text-decoration: line-through;
+    cursor: default;
+  }
+
+  label:has(input[type="checkbox"].block:disabled) {
+    border-color: var(--foreground2, gray);
+  }
+}
