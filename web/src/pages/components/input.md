@@ -64,6 +64,7 @@ To extend the Input stylesheet, define a CSS rule on the `components` layer
         /* ... */
     }
 }
+```
 
 ## Scope
 
