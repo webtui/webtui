@@ -38,9 +38,12 @@ Available variants match the [base theme colors](/start/theming#colors)
 <span is-="badge" variant-="foreground2"></span>
 ```
 
-### Styling
+### Properties
 
-Badges are styled using the custom `--badge-color` and `--badge-text` CSS properties
+It is preferred to use the following custom CSS properties to style badges
+
+- `--badge-color`: The color of the badge
+- `--badge-text`: The text color of the badge
 
 ```css
 #my-custom-badge {

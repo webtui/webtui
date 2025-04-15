@@ -69,9 +69,10 @@ Use the `disabled` attribute to mark a button as disabled
 <button disabled>Disabled</button>
 ```
 
-### Styling
+### Properties
 
-Buttons are styled using the custom `--button-primary` and `--button-secondary` CSS properties
+- `--button-primary`: The primary color of the button
+- `--button-secondary`: The secondary color of the button
 
 ```css
 button {
