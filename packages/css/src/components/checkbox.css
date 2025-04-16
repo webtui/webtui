@@ -3,21 +3,18 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    margin: 0;
-    padding: 0;
     display: inline-block;
     position: relative;
     width: 3ch;
     min-width: initial;
-    height: 1lh;
     vertical-align: text-top;
     cursor: pointer;
-    color: var(--foreground2, inherit);
-    font-family: var(--font-family, monospace);
-    font-size: var(--font-size, 1rem);
-    line-height: var(--line-height, 1.5);
+    color: var(--foreground2);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
     outline: none;
-    background: var(--background1, transparent);
+    background: var(--background1);
   }
 
   input[type="checkbox"]::before {
@@ -47,13 +44,13 @@
   }
 
   input[type="checkbox"]:disabled {
-    color: var(--foreground2, gray);
+    color: var(--foreground2);
     cursor: default;
     pointer-events: none;
   }
 
   label:has(input[type="checkbox"]:disabled) {
-    color: var(--foreground2, gray);
+    color: var(--foreground2);
     text-decoration: line-through;
     cursor: default;
   }
