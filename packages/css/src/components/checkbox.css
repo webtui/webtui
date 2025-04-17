@@ -1,0 +1,57 @@
+@layer components {
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    position: relative;
+    width: 3ch;
+    min-width: initial;
+    vertical-align: text-top;
+    cursor: pointer;
+    color: var(--foreground2);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    outline: none;
+    background: var(--background1);
+  }
+
+  input[type="checkbox"]::before {
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3ch;
+  }
+
+  input[type="checkbox"]:checked::before {
+    content: "X";
+  }
+
+  label:has(input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 1ch;
+    cursor: pointer;
+    max-width: fit-content;
+  }
+
+  label:has(input[type="checkbox"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  input[type="checkbox"]:disabled {
+    color: var(--foreground2);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  label:has(input[type="checkbox"]:disabled) {
+    color: var(--foreground2);
+    text-decoration: line-through;
+    cursor: default;
+  }
+}
