@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  variant?: string;
+  icon?: string;
+}
+
+const { title, subtitle, variant = "background2", icon = "f07a" } = Astro.props;
+---
+<column box-="round contain:none" class="banner">
+  <row align-="between" space-="px:2 py:1">
+    <column>
+      <span is-="badge" variant-={variant} cap-="slant-bottom">
+        {title}
+      </span>
+      <p space-="px:1">{subtitle}</p>
+    </column>
+    <span class="banner-icon" style={`color: var(--${variant})`}>&#x{icon};</span>
+  </row>
+</column>
+
+<style>
+.banner {
+  --box-border-color: var(--background2);
+  margin-bottom: 1lh;
+}
+
+.banner-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+</style>

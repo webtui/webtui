@@ -1,0 +1,65 @@
+---
+import CartItem from './CartItem.astro';
+
+// Demo cart items
+const demoItems = [
+  {
+    id: 1,
+    name: "Mechanical Keyboard",
+    price: 149.99,
+    quantity: 1
+  },
+  {
+    id: 2,
+    name: "Dev Sticker Pack",
+    price: 12.99,
+    quantity: 2
+  }
+];
+
+const subtotal = demoItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+---
+<aside class="cart" box-="square contain:!top">
+  <header>
+    <row>
+      <span is-="badge" variant-="background0">Shopping Cart</span>
+    </row>
+  </header>
+
+  <!-- Cart Actions -->
+  <row align-="between" space-="px:1">
+    <row gap-="1">
+      <button type="button" size-="small" variant-="background1" class="demo-btn">
+        &#xf2ed; Clear
+      </button>
+    </row>
+    <button type="button" size-="small" variant-="green" class="demo-btn">
+      &#xf09d; Checkout
+    </button>
+  </row>
+
+  <hr />
+
+  <!-- Cart Items -->
+  <div class="cart-items" space-="px:1">
+    <column gap-="1">
+      {demoItems.map(item => <CartItem {...item} />)}
+      <hr />
+      <row align-="between">
+        <span is-="badge" variant-="background0">Subtotal:</span>
+        <span is-="badge" variant-="background0">${subtotal.toFixed(2)}</span>
+      </row>
+    </column>
+  </div>
+</aside>
+
+<style>
+.cart-items {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.demo-btn:active {
+  --button-primary: var(--background2);
+}
+</style>

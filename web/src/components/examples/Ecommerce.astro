@@ -1,0 +1,216 @@
+---
+import CartItem from './CartItem.astro';
+import ProductCard from './ProductCard.astro';
+import Banner from './Banner.astro';
+import Cart from './Cart.astro';
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  stock: number;
+  category: {
+    label: string;
+    color: string;
+    cap: string;
+  };
+  description: string;
+}
+
+const products: Product[] = [
+    {
+        id: 1,
+        name: "Mechanical Keyboard",
+        price: 149.99,
+        stock: 15,
+        category: { label: "Electronics", color: "blue", cap: "square" },
+        description: "Cherry MX switches, PBT keycaps, RGB backlight"
+    },
+    {
+        id: 2,
+        name: "Dev Sticker Pack",
+        price: 12.99,
+        stock: 50,
+        category: { label: "Accessories", color: "green", cap: "round" },
+        description: "Pack of 10 programming language stickers"
+    },
+    {
+        id: 3,
+        name: "Code Mug",
+        price: 19.99,
+        stock: 30,
+        category: { label: "Merch", color: "yellow", cap: "ribbon" },
+        description: "Coffee += Code; // 350ml ceramic mug"
+    },
+    {
+        id: 4,
+        name: "USB-C Hub",
+        price: 79.99,
+        stock: 8,
+        category: { label: "Electronics", color: "blue", cap: "square" },
+        description: "7-in-1 USB-C hub with HDMI, USB 3.0, SD card reader"
+    },
+    {
+        id: 5,
+        name: "Developer Hoodie",
+        price: 49.99,
+        stock: 25,
+        category: { label: "Merch", color: "yellow", cap: "ribbon" },
+        description: "Comfy hoodie with 'while(sleeping){code()}' print"
+    },
+    {
+        id: 6,
+        name: "Wireless Mouse",
+        price: 89.99,
+        stock: 12,
+        category: { label: "Electronics", color: "blue", cap: "square" },
+        description: "Ultra-responsive gaming mouse with RGB"
+    },
+    {
+        id: 7,
+        name: "Terminal Theme Pack",
+        price: 9.99,
+        stock: 100,
+        category: { label: "Accessories", color: "green", cap: "round" },
+        description: "Collection of 5 custom terminal themes"
+    },
+    {
+        id: 8,
+        name: "Code Font Bundle",
+        price: 29.99,
+        stock: 200,
+        category: { label: "Accessories", color: "green", cap: "round" },
+        description: "5 premium monospace programming fonts"
+    }
+];
+
+const topCategories = ["Electronics", "Accessories", "Merch"];
+const dealOfTheDay = products[0];
+---
+
+<column space-="px:1" self-="grow" style="width: 100%;">
+  <!-- Top Banners -->
+  <row gap-="1" style="width: 100%;">
+    <column self-="grow !basis">
+      <Banner 
+        title="Deal of the Day"
+        subtitle={`${dealOfTheDay.name} - $${dealOfTheDay.price}`}
+        variant="green"
+        icon="f3c1"
+      />
+    </column>
+    <column self-="grow !basis">
+      <Banner 
+        title="Free Shipping"
+        subtitle="On orders over $50"
+        variant="blue"
+        icon="f0d1"
+      />
+    </column>
+  </row>
+
+  <!-- Main Content -->
+  <row gap-="1" self-="grow" style="width: 100%;">
+    <!-- Categories Sidebar -->
+    <nav class="categories" box-="square">
+      <column space-="px:1">
+        <span is-="badge" variant-="background0">Categories</span>
+      </column>
+      <column space-="px:1" is-="typography-block">
+        <div class="category-item active">&#xf6ff; All Products</div>
+        {topCategories.map(cat => (
+          <div class="category-item">
+            {cat === "Electronics" && "&#xf553; "}
+            {cat === "Accessories" && "&#xf51f; "}
+            {cat === "Merch" && "&#xf77b; "}
+            {cat}
+          </div>
+        ))}
+      </column>
+    </nav>
+
+    <!-- Product Grid -->
+    <main class="products" box-="square contain:!top" style="flex: 1;">
+      <!-- Category Banners -->
+      <row gap-="1" class="category-banners">
+        {topCategories.map(cat => (
+          <column self-="grow !basis">
+            <Banner 
+              title={cat}
+              subtitle={`Browse our ${cat.toLowerCase()}`}
+              variant={cat === "Electronics" ? "blue" : cat === "Accessories" ? "green" : "yellow"}
+              icon={cat === "Electronics" ? "f553" : cat === "Accessories" ? "f51f" : "f77b"}
+            />
+          </column>
+        ))}
+      </row>
+
+      <div class="product-header">
+        <span is-="badge" variant-="background0">Featured Products</span>
+      </div>
+      
+      <!-- Product Grid -->
+      <div class="product-grid">
+        {products.map(product => (
+          <ProductCard {...product} />
+        ))}
+      </div>
+    </main>
+
+    <!-- Cart -->
+    <Cart />
+  </row>
+</column>
+
+<style>
+.categories {
+  min-width: 24ch;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1lh;
+}
+
+.category-item {
+  padding: 0 1ch;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.category-item:hover {
+  background-color: var(--background1);
+}
+
+.category-item.active {
+  background-color: var(--background2);
+}
+
+.product-header {
+  padding: 0 2lh;
+}
+
+.products {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2lh;
+  padding: 2lh;
+  width: 100%;
+}
+
+.category-banners {
+  margin-bottom: 2lh;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
