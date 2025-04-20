@@ -1,0 +1,286 @@
+---
+const placeholderChats = [
+    {
+        role: "user",
+        content: "Hello! Can you help me with JavaScript async/await?",
+        timestamp: "5 min ago",
+    },
+    {
+        role: "assistant",
+        content:
+            "Of course! Async/await is a way to handle asynchronous operations in JavaScript. It makes asynchronous code look and behave more like synchronous code. Would you like to see some examples?",
+        timestamp: "4 min ago",
+    },
+    {
+        role: "user",
+        content: "Yes please! Show me how to use it with fetch()",
+        timestamp: "3 min ago",
+    },
+    {
+        role: "assistant",
+        content: `Here's a simple example using async/await with fetch():
+
+async function getUser(id) {
+  try {
+    const response = await fetch(\`/api/users/\${id}\`);
+    const user = await response.json();
+    return user;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+The async keyword tells JavaScript this function returns a Promise
+The await keyword pauses execution until the Promise resolves
+Would you like me to explain more about error handling?`,
+        timestamp: "2 min ago",
+    },
+    {
+        role: "user",
+        content: "Yes, how do I handle errors properly with try/catch?",
+        timestamp: "1 min ago",
+    },
+];
+---
+
+<row gap-="1" self-="grow" class="chat-container">
+    <!-- Sidebar with chat options -->
+    <column gap-="1" id="chat-sidebar" box-="square">
+        <div class="new-chat-button" space-="p:1">
+            <button variant-="foreground0" box-="round" class="new-chat">
+                <span class="icon">&#xf067;</span>
+                New Chat
+            </button>
+        </div>
+        <column space-="px:1" is-="typography-block" class="sidebar-menu">
+            <div class="menu-item active">&#xf075; Recent Chats</div>
+            <div class="menu-item">&#xf5da; JavaScript Help</div>
+            <div class="menu-item">&#xf121; Code Review</div>
+            <div class="menu-item">&#xf0eb; Brainstorming</div>
+            <hr />
+            <div class="menu-item">&#xf013; Settings</div>
+            <div class="menu-item">&#xf0c5; Templates</div>
+            <div class="menu-item">&#xf12e; Models</div>
+        </column>
+    </column>
+
+    <!-- Chat Container -->
+    <column self-="grow !basis" box-="square contain:!top" class="main-chat">
+        <column space-="p:1">
+            <span is-="badge" variant-="foreground0"
+                >JavaScript Help Session</span
+            >
+        </column>
+
+        <!-- Messages -->
+        <div class="messages-wrapper">
+            <column gap-="1" space-="p:2" class="chat-messages">
+                {
+                    placeholderChats.map((msg) => (
+                        <column
+                            gap-="1"
+                            is-="typography-block"
+                            box-="round"
+                            class={`chat-message ${msg.role}`}
+                        >
+                            <row align-="between" space-="px:1">
+                                <span
+                                    is-="badge"
+                                    variant-={
+                                        msg.role === "assistant"
+                                            ? "blue"
+                                            : "green"
+                                    }
+                                    cap-="round"
+                                >
+                                    {msg.role === "assistant"
+                                        ? "&#xf544; Assistant"
+                                        : "&#xf007; You"}
+                                </span>
+                                <span is-="badge" variant-="background1">
+                                    {msg.timestamp}
+                                </span>
+                            </row>
+                            <div class="message-content" space-="px:2 py:1">
+                                {msg.content}
+                            </div>
+                        </column>
+                    ))
+                }
+            </column>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-wrapper" space-="p:1">
+            <column gap-="1">
+                <div box-="round">
+                    <input
+                        placeholder="Ask me anything about async/await..."
+                        size-="large"
+                    />
+                </div>
+                <row gap-="1" align-="end">
+                    <button size-="small" variant-="background1" box-="round"
+                        >&#xf0c6; Attach</button
+                    >
+                    <button size-="small" variant-="background1" box-="round"
+                        >&#xf573; Upload</button
+                    >
+                    <button box-="round" variant-="blue">Send &#xf1d8;</button>
+                </row>
+            </column>
+        </div>
+    </column>
+
+    <!-- Context Panel -->
+    <column class="context-panel" box-="square contain:!top">
+        <column space-="p:1">
+            <span is-="badge" variant-="foreground0">Context & Tools</span>
+        </column>
+
+        <column gap-="1" space-="px:1">
+            <div box-="square" space-="p:1">
+                <h3>Current Topic</h3>
+                <p>JavaScript async/await</p>
+                <hr />
+                <ul marker-="tree">
+                    <li>Promise basics</li>
+                    <li>async function declaration</li>
+                    <li>error handling with try/catch</li>
+                    <li>practical examples with fetch</li>
+                </ul>
+            </div>
+
+            <div box-="square" space-="p:1">
+                <h3>Tools Available</h3>
+                <row gap-="1" space-="pt:1">
+                    <span is-="badge" variant-="red" cap-="triangle"
+                        >Terminal</span
+                    >
+                    <span is-="badge" variant-="yellow" cap-="ribbon"
+                        >Files</span
+                    >
+                    <span is-="badge" variant-="green" cap-="round">Web</span>
+                </row>
+            </div>
+
+            <div box-="square" space-="p:1">
+                <h3>Settings</h3>
+                <p>Model: GPT-4</p>
+                <p>Temperature: 0.7</p>
+                <p>Context: Full</p>
+            </div>
+        </column>
+    </column>
+</row>
+
+<style>
+    .chat-container {
+        height: calc(100vh - 8lh);
+        margin: 0 auto;
+    }
+
+    #chat-sidebar {
+        min-width: 24ch;
+        max-width: 32ch;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .new-chat-button {
+        width: 100%;
+    }
+
+    .new-chat {
+        width: 100%;
+        height: 2lh;
+        display: flex;
+        align-items: center;
+        gap: 1ch;
+    }
+
+    .context-panel {
+        min-width: 32ch;
+        max-width: 40ch;
+    }
+
+    .main-chat {
+        min-width: 80ch;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .messages-wrapper {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .chat-messages {
+        position: absolute;
+        inset: 0;
+        overflow-y: auto;
+    }
+
+    .input-wrapper {
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--background0);
+        border-top: solid var(--box-border-width) var(--background1);
+        margin: 0;
+        padding: 1lh;
+
+        input {
+            width: 100%;
+        }
+
+        row {
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+
+    .chat-message {
+        --box-border-color: var(--background2);
+
+        &.assistant {
+            --box-border-color: var(--foreground2);
+        }
+
+        &.user {
+            --box-border-color: var(--foreground1);
+        }
+    }
+
+    .message-content {
+        white-space: pre-wrap;
+        font-family: var(--font-family);
+        overflow-x: auto;
+    }
+
+    .sidebar-menu .menu-item {
+        padding: 0.5lh 1ch;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--background1);
+        }
+
+        &.active {
+            background-color: var(--background1);
+            font-weight: var(--font-weight-bold);
+        }
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid var(--background1);
+        margin: 1lh 0;
+    }
+
+    [box-~="square"] {
+        --box-border-color: var(--background1);
+    }
+</style>
