@@ -3,82 +3,106 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import Email from '@/components/examples/Email.astro';
 import Tabs from '@/components/examples/Tabs.astro';
-import '@webtui/theme-nord';
-import '@webtui/theme-catppuccin';
+
+const themes = {
+  'catppuccin-mocha': 'Catppuccin Mocha',
+  'catppuccin-macchiato': 'Catppuccin Macchiato',
+  'catppuccin-frappe': 'Catppuccin Frappe',
+  'catppuccin-latte': 'Catppuccin Latte',
+  dark: 'Dark',
+  light: 'Light',
+  'gruvbox-dark-hard': 'Gruvbox Dark Hard',
+  'gruvbox-dark-medium': 'Gruvbox Dark Medium',
+  'gruvbox-dark-soft': 'Gruvbox Dark Soft',
+  'gruvbox-light-hard': 'Gruvbox Light Hard',
+  'gruvbox-light-medium': 'Gruvbox Light Medium',
+  'gruvbox-light-soft': 'Gruvbox Light Soft',
+  nord: 'Nord',
+};
 ---
 
 <Layout>
-  <column self-="grow">
-    <Navbar />
-    <column self-="grow" space-="px:1">
-      <column gap-="1">
-        <column>
-          <span>Theme</span>
-          <Tabs id="themelist">
-            <button
-              data-value="catppuccin"
-              size-="small"
-              variant-="background1"
-            >
-              Catppuccin
-            </button>
-            <button data-value="dark" size-="small" variant-="background1">
-              Dark
-            </button>
-            <button data-value="light" size-="small" variant-="background1">
-              Light
-            </button>
-            <button data-value="nord" size-="small" variant-="background1">
-              Nord
-            </button>
-          </Tabs>
-        </column>
-        <column>
-          <span>Examples</span>
-          <Tabs id="tabslist">
-            <button data-value="email" size-="small" variant-="background1">
-              Email
-            </button>
-            <button data-value="auth" size-="small" variant-="background1">
-              Auth
-            </button>
-            <button data-value="ecommerce" size-="small" variant-="background1">
-              Ecommerce
-            </button>
-            <button data-value="ai" size-="small" variant-="background1">
-              AI Chat
-            </button>
-            <button data-value="all" size-="small" variant-="background1">
-              All Components
-            </button>
-          </Tabs>
-        </column>
-      </column>
+  <!-- Stupid workaround because I can't figure out how to make popover contents appear above box- elements that appear after it -->
+  <column style="flex-direction: column-reverse;">
+    <div id="tab-contents">
+      <div data-tab="email" class="active"><Email /></div>
+      <div data-tab="auth">[Auth example coming soon]</div>
+      <div data-tab="ecommerce">[Ecommerce example Coming Soon]</div>
+      <div data-tab="ai">[AI Chat example Coming Soon]</div>
+      <div data-tab="all">[All Components example Coming Soon]</div>
+    </div>
 
-      <div id="tab-contents">
-        <div data-tab="email" class="active"><Email /></div>
-        <div data-tab="auth">[Auth example Coming Soon]</div>
-        <div data-tab="ecommerce">[Ecommerce example Coming Soon]</div>
-        <div data-tab="ai">[AI Chat example Coming Soon]</div>
-        <div data-tab="all">[All Components example Coming Soon]</div>
-      </div>
+    <column box-="square contain:!top">
+      <row><span is-="badge" variant-="background0">Settings</span></row>
+      <row class="wrap" gap-="1" space-="px:1" align-="center between">
+        <Tabs id="tabslist">
+          <button data-value="email" size-="small" variant-="background1">
+            Email
+          </button>
+          <button data-value="auth" size-="small" variant-="background1">
+            Auth
+          </button>
+          <button data-value="ecommerce" size-="small" variant-="background1">
+            Ecommerce
+          </button>
+          <button data-value="ai" size-="small" variant-="background1">
+            AI Chat
+          </button>
+          <button data-value="all" size-="small" variant-="background1">
+            All Components
+          </button>
+        </Tabs>
+        <row style="position: relative; z-index: 10; isolation: isolate;">
+          <details
+            is-="popover"
+            position-="bottom baseline-right"
+            id="theme-popover"
+          >
+            <summary tabindex="0" is-="button" size-="small"
+              >Select Theme &#xf078;</summary
+            >
+            <column id="theme-options">
+              {
+                Object.entries(themes).map(([key, value]) => (
+                  <button data-value={key} size-="small" variant-="background1">
+                    {value}
+                  </button>
+                ))
+              }
+            </column>
+          </details>
+        </row>
+      </row>
     </column>
+
+    <Navbar />
   </column>
 </Layout>
 
 <style>
-  #tabslist,
-  #themelist {
+  #tabslist {
     [aria-selected="true"] {
       background-color: var(--background2);
     }
-  }
-  #tab-contents [data-tab] {
-    display: none;
 
-    &.active {
-      display: flex;
+    button {
+      white-space: nowrap;
     }
+  }
+
+  #tab-contents {
+    [data-tab] {
+      display: none;
+      flex-grow: 1;
+
+      &.active {
+        display: flex;
+      }
+    }
+  }
+
+  .wrap {
+    flex-wrap: wrap;
   }
 
   @layer base {
@@ -102,6 +126,15 @@ import '@webtui/theme-catppuccin';
       --foreground0: #fff;
       --foreground1: #ccc;
       --foreground2: #999;
+    }
+  }
+
+  #theme-options {
+    background-color: var(--background0);
+
+    button {
+      white-space: nowrap;
+      justify-content: flex-start;
     }
   }
 </style>
@@ -131,17 +164,23 @@ import '@webtui/theme-catppuccin';
 
 <!-- Theme Switcher -->
 <script>
-  const themelist = document.getElementById("themelist")!;
+  const themeOptions = document.querySelectorAll(
+    "#theme-options button",
+  ) as NodeListOf<HTMLButtonElement>;
+  const themePopoverTrigger = document.querySelector(
+    "#theme-popover summary",
+  ) as HTMLElement;
   const html = document.querySelector("html")!;
 
-  const observer = new MutationObserver(() => {
-    const value = themelist.getAttribute("data-tab") as string;
-
-    html.setAttribute("data-webtui-theme", value);
-  });
-
-  observer.observe(themelist, {
-    attributes: true,
-    attributeFilter: ["data-tab"],
+  themeOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      themeOptions.forEach((opt) =>
+        opt.setAttribute("variant-", "background1"),
+      );
+      option.setAttribute("variant-", "default");
+      const value = option.getAttribute("data-value") as string;
+      html.setAttribute("data-webtui-theme", value);
+      themePopoverTrigger.click();
+    });
   });
 </script>

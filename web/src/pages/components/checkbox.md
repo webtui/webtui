@@ -32,9 +32,17 @@ Add a native `<input type="checkbox">` to your markup. The TUI style will be app
 </label>
 ```
 
-## Focus
+### Extending
 
-Tab to a checkbox to see the label become bold and underlined.
+To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+  input[type="checkbox"] {
+    /* ... */
+  }
+}
+```
 
 ## Scope
 

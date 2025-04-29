@@ -27,13 +27,13 @@
       flex-grow: 1;
     }
     &[self-~="!grow"] {
-      flex-grow: 1;
+      flex-grow: 0;
     }
     &[self-~="shrink"] {
       flex-shrink: 1;
     }
     &[self-~="!shrink"] {
-      flex-shrink: 1;
+      flex-shrink: 0;
     }
     &[self-~="!basis"] {
       flex-basis: 0;
