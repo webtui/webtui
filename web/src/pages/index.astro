@@ -2,7 +2,6 @@
 import Filter from '@/components/Filter.astro';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
-import '@webtui/theme-catppuccin';
 ---
 
 <Layout>
@@ -33,10 +32,6 @@ import '@webtui/theme-catppuccin';
                 <a tabindex="0" href="/examples"
                   ><code>E</code>
                   <span>View Examples</span>
-                </a>
-                <a tabindex="0" href="/examples"
-                  ><code>C</code>
-                  <span>Components</span>
                 </a>
                 <a tabindex="0" href="/examples"
                   ><code>/</code>
@@ -194,10 +189,6 @@ import '@webtui/theme-catppuccin';
 
     if (e.key === "e" || e.key === "E") {
       window.location.href = "/examples";
-    }
-
-    if (e.key === "c" || e.key === "C") {
-      window.location.href = "/components/typography";
     }
   });
 

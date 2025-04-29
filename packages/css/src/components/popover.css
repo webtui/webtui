@@ -7,6 +7,10 @@
     position: relative;
 
     summary {
+      &:focus {
+        text-decoration: underline;
+      }
+
       &::marker {
         content: "";
         display: none;

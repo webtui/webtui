@@ -4,6 +4,9 @@
 @import "@/styles/flexbox.css";
 @import "@/styles/spacing.css";
 @import "@webtui/plugin-nf";
+@import "@webtui/theme-catppuccin";
+@import "@webtui/theme-nord";
+@import "@webtui/theme-gruvbox";
 
 @font-face {
   font-family: "JetBrainsMonoNFM";
