@@ -75,8 +75,8 @@ export function applyVimNavigation(
 
     if (e.key === 'j' || e.key === 'ArrowDown') next.focus();
     if (e.key === 'k' || e.key === 'ArrowUp') prev.focus();
-    if (e.key === 'G') first.focus();
-    if (e.key === 'g') last.focus();
+    if (e.key === 'g') first.focus();
+    if (e.key === 'G') last.focus();
   });
 }
 
