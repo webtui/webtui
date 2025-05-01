@@ -4,6 +4,9 @@ title: Typography
 order: 1
 ---
 
+import Example from "@/components/Example.astro";
+import typographyStylesheet from '@webtui/css/components/typography.css?raw';
+
 The **Typography** stylesheet provides styles for headings and inline elements
 
 ## Import
@@ -16,70 +19,161 @@ The **Typography** stylesheet provides styles for headings and inline elements
 
 ### `<h1>`-`<h6>`
 
-```html
-<h1>Heading 1</h1>
+Headings
+
+<Example 
+    stylesheets={[
+        typographyStylesheet, 
+    ]} 
+    html={`<h1>Heading 1</h1>
 <h2>Heading 2</h2>
 <h3>Heading 3</h3>
 <h4>Heading 4</h4>
 <h5>Heading 5</h5>
-<h6>Heading 6</h6>
-```
+<h6>Heading 6</h6>`}
+/>
 
 ### `<p>`
 
-```html
-<p>Lorem <strong>Ipsum</strong> <em>Dolor</em> <code>Sit</code> <a href="https://example.com">Amet</a></p>
-```
+Paragraphs
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    html={`
+<p>
+    Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna
+</p>
+`}
+/>
+
+### Inline Elements
+
+Includes `<strong>`, `<em>`, `<code>`, and `<a>` tags
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    html={`
+<p>
+    Lorem
+    <strong>Ipsum</strong>
+    <em>Dolor</em>
+    <code>Sit</code>
+    <a href="https://example.com">Amet</a>
+</p>
+`}
+/>
 
 ### `<blockquote>`
 
-```html
-<blockquote>Lorem Ipsum Dolor Sit Amet</blockquote>
-```
+Block Quotes
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    html={`
+<blockquote>
+    Lorem Ipsum Dolor Sit Amet
+</blockquote>
+`}
+/>
 
 ### `<ol>`
 
-```html
+Ordered Lists
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    html={`
 <ol>
     <li>One</li>
     <li>Two</li>
     <li>Three</li>
 </ol>
-```
+`}
+/>
 
 ### `<ul>`
 
-```html
+Unordered Lists
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    html={`
 <ul>
     <li>One</li>
     <li>Two</li>
     <li>Three</li>
 </ul>
-```
+`}
+/>
 
 #### `<ul>` Markers
 
 Add the `marker-` attribute to a `<ul>` element to customize its list markers
 
 ```html
-<ul><!--...--></ul>
-<ul marker-="bullet"><!--...--></ul>
-<ul marker-="tree"><!--...--></ul>
+<ul marker-="bullet">
+<ul marker-="tree">
 ```
 
-![typography-list-markers.png](../../assets/typography-list-markers.png)
+<Example
+    stylesheets={[
+        typographyStylesheet, 
+        `body { display: flex; flex-direction: column; gap: 1lh; }`
+    ]}
+    html={`
+<ul>
+    <li>List</li>
+    <li>With</li>
+    <li><code>default</code> Markers</li>
+</ul>
+<ul marker-="bullet">
+    <li>List</li>
+    <li>With</li>
+    <li><code>bullet</code> Markers</li>
+</ul>
+<ul marker-="tree">
+    <li>List</li>
+    <li>With</li>
+    <li><code>tree</code> Markers</li>
+</ul>
+`}
+/>
 
 Use the `open` keyword at the start and/or end of the `marker-` attribute to leave the top/bottom tree markers open
 
 ```html
-<ul marker-="tree open"><!--...--></ul>
-<ul marker-="open tree"><!--...--></ul>
-<ul marker-="open tree open"><!--...--></ul>
+<ul marker-="tree open">
+<ul marker-="open tree">
+<ul marker-="open tree open">
 ```
 
-![typography-open-trees.png](../../assets/typography-open-trees.png)
+<Example
+    stylesheets={[
+        typographyStylesheet, 
+        `body { display: flex; flex-direction: column; gap: 1lh; }`
+    ]}
+    html={`
+<ul marker-="tree open">
+    <li>Tree</li>
+    <li>With</li>
+    <li><code>marker-="tree open"</code></li>
+</ul>
+<ul marker-="open tree">
+    <li>Tree</li>
+    <li>With</li>
+    <li><code>marker-="open tree"</code></li>
+</ul>
+<ul marker-="open tree open">
+    <li>Tree</li>
+    <li>With</li>
+    <li><code>marker-="open tree open"</code></li>
+</ul>
+`}
+/>
 
 ### `[is-="typography-block"]`
+
+Apply typography styles to an element's children
 
 ```html
 <div is-="typography-block">

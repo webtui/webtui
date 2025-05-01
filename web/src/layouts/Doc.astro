@@ -130,7 +130,7 @@ if (headings.length > 0) {
   } from "@/utils/vim";
 
   const vimTabbableElements: NodeListOf<HTMLElement> =
-    document.querySelectorAll('#main-content [tabindex="0"]');
+    document.querySelectorAll('#main-content > [tabindex="0"]');
 
   let currentElement: HTMLElement | null = null;
 
@@ -159,7 +159,7 @@ if (headings.length > 0) {
 
   const mainContent = document.getElementById("main-content") as HTMLElement;
 
-  applyVimNavigation(mainContent, '#main-content [tabindex="0"]', (element) => {
+  applyVimNavigation(mainContent, '#main-content > [tabindex="0"]', (element) => {
     currentElement = element;
   });
 

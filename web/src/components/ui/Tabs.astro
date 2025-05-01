@@ -1,12 +1,8 @@
 ---
-const { label, ...rest } = Astro.props;
+const props = Astro.props;
 ---
 
-<tabs-component label={label} role="tablist" {...rest}>
-  <slot />
-</tabs-component>
-
-<template id="tabs-template">
+<tabs-component role="tablist" {...props}>
   <style>
     #tabs-list {
       display: flex;
@@ -15,57 +11,48 @@ const { label, ...rest } = Astro.props;
     }
   </style>
   <div id="tabs-list">
-    <Fragment set:html={"<slot/>"} />
+    <slot />
   </div>
-</template>
+</tabs-component>
 
 <script>
   import { paginateElements } from "@/utils/vim";
-
-  const template = document.getElementById(
-    "tabs-template",
-  ) as HTMLTemplateElement;
 
   class Tabs extends HTMLElement {
     constructor() {
       super();
 
-      const shadow = this.attachShadow({ mode: "open" });
-      shadow.appendChild(template.content.cloneNode(true));
-
       const self = this;
-      const slot = shadow.querySelector("slot")!;
+      const items = Array.from(
+        self.querySelectorAll(
+          "#tabs-list > button",
+        ) as NodeListOf<HTMLButtonElement>,
+      );
 
-      slot.addEventListener("slotchange", () => {
-        const items = slot
-          .assignedElements({ flatten: false })
-          .filter((node) => node instanceof HTMLButtonElement);
+      if (items.length === 0)
+        throw new Error("Tabs component requires at least one child element");
+      if (!items.every((item) => item.hasAttribute("data-value"))) {
+        throw new Error(
+          "Each direct child of Tabs must have a `data-tab` attribute",
+        );
+      }
 
-        if (items.length === 0)
-          throw new Error("Tabs component requires at least one child element");
-        if (!items.every((item) => item.hasAttribute("data-value"))) {
-          throw new Error(
-            "Each direct child of Tabs must have a `data-tab` attribute",
-          );
-        }
-
-        if(!self.hasAttribute("data-tab"))
+      if (!self.hasAttribute("data-tab"))
         self.setAttribute("data-tab", items[0].getAttribute("data-value")!);
 
-        for (const item of items) {
-          self.initializeTab(item);
-        }
-      });
+      for (const item of items) {
+        self.initializeTab(item);
+      }
     }
 
     initializeTab(item: HTMLElement) {
       const self = this;
-      const shadow = self.shadowRoot!;
-      const slot = shadow.querySelector("slot")!;
+      const activeVariant = self.getAttribute("data-active-variant") ?? "default";
+      const secondaryVariant = self.getAttribute("data-secondary-variant") ?? "background1";
 
-      const items = slot
-        .assignedElements({ flatten: false })
-        .filter((item) => item instanceof HTMLButtonElement);
+      const items = self.querySelectorAll(
+        "#tabs-list > button",
+      ) as NodeListOf<HTMLButtonElement>;
 
       const value =
         self.getAttribute("data-tab") ?? items[0].getAttribute("data-value");
@@ -73,19 +60,24 @@ const { label, ...rest } = Astro.props;
       const setCurrentTab = () => {
         items.forEach((item) => {
           item.setAttribute("aria-selected", "false");
+          item.setAttribute("variant-", secondaryVariant);
         });
 
         self.setAttribute(
           "data-tab",
           item.getAttribute("data-value") as string,
         );
+        item.setAttribute("variant-", activeVariant);
         item.setAttribute("aria-selected", "true");
       };
 
+      const isSelected = value === item.getAttribute("data-value");
+
       item.setAttribute(
         "aria-selected",
-        value === item.getAttribute("data-value") ? "true" : "false",
+        isSelected ? "true" : "false",
       );
+      item.setAttribute("variant-", isSelected ? activeVariant: secondaryVariant);
       item.setAttribute("tabindex", "0");
       item.setAttribute("role", "tab");
       item.addEventListener("click", setCurrentTab);

@@ -1,0 +1,195 @@
+---
+import webtuiBase from '@webtui/css/base.css?raw';
+import jetBrainsMono from '@/styles/jetbrainsmono.css?raw';
+
+import Dropdown from '@/components/ui/Dropdown.astro';
+import Tabs from '@/components/ui/Tabs.astro';
+
+import { getHighlighter } from 'shiki';
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  html: string;
+  stylesheets?: string[];
+  /**
+   * A key-value pair of theme keys and labels
+   */
+  themes?: Record<string, string>;
+}
+
+const { html, stylesheets, themes, ...rest } = Astro.props as Props;
+
+const highlighter = await getHighlighter({
+  themes: ['catppuccin-mocha'],
+  langs: ['xml'],
+});
+const preHtml = highlighter.codeToHtml(html.trim(), {
+  lang: 'xml',
+  theme: 'catppuccin-mocha',
+});
+---
+
+<doc-example {...rest}>
+  <div id="container">
+    <div id="content">
+      <iframe
+        id="preview"
+        srcdoc={`<html>
+<head>
+<style>${webtuiBase}</style>
+<style>${jetBrainsMono}</style>
+${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).join("") : ""}
+<style>
+@layer base {
+  :root {
+    --font-family: "JetBrainsMonoNFM", Menlo, Monaco, monospace;
+  }
+
+  body {
+    padding: 1lh 1ch;
+  }
+}
+</style>
+</head>
+<body>${html}</body>
+</html>
+`}></iframe>
+      <div id="code-container" set:html={preHtml} />
+    </div>
+
+    <div id="header">
+      <Tabs id="example-code-tabs" data-secondary-variant="background2">
+        <button data-value="example" size-="small" variant-="foreground0">
+          &#xf03e; Example
+        </button>
+        <button data-value="code" size-="small" variant-="background2">
+          &#xf121; Code
+        </button>
+      </Tabs>
+      <Dropdown
+        label="Select Theme "
+        items={{
+          light: "Light",
+          dark: "Dark",
+          ...themes,
+        }}
+        id="theme-dropdown"
+        position="bottom baseline-right"
+      />
+    </div>
+  </div>
+</doc-example>
+
+<style>
+  #container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background2);
+
+    #button-tabs {
+      display: flex;
+    }
+  }
+
+  #content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    #preview {
+      border: none;
+      outline: none;
+      min-height: 240px;
+    }
+
+    #code-container {
+      padding: 1lh 1ch;
+      background-color: var(--background1);
+
+      pre {
+        white-space: pre-wrap;
+        background-color: var(--background1) !important;
+      }
+    }
+
+    #preview,
+    #code-container {
+      display: none;
+    }
+  }
+
+  doc-example:has(#example-code-tabs[data-tab="example"]) {
+    #preview {
+      display: block;
+    }
+  }
+
+  doc-example:has(#example-code-tabs[data-tab="code"]) {
+    #code-container {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  class Example extends HTMLElement {
+    static get observedAttributes() {
+      return ["data-theme"];
+    }
+
+    constructor() {
+      super();
+
+      const self = this;
+
+      const iframe = self.querySelector("#preview") as HTMLIFrameElement;
+
+      iframe.addEventListener("load", () => {
+        self.updateIframeTheme();
+      });
+
+      // Weird race condition where the iframe can already be loaded
+      self.updateIframeTheme();
+
+      const themeDropdown = self.querySelector(
+        "#theme-dropdown",
+      ) as HTMLElement;
+
+      new MutationObserver(() => {
+        const value = themeDropdown.getAttribute("data-value") as string;
+        self.setAttribute("data-theme", value);
+      }).observe(themeDropdown, {
+        attributes: true,
+        attributeFilter: ["data-value"],
+      });
+    }
+
+    updateIframeTheme() {
+      const selfWebtuiTheme = this.getAttribute("data-theme");
+
+      if (!selfWebtuiTheme) return;
+
+      const iframe = this.querySelector("#preview") as HTMLIFrameElement;
+
+      const previewDoc = iframe.contentDocument;
+      const previewHtml = previewDoc?.querySelector("html");
+
+      if (!previewHtml) return;
+
+      previewHtml.setAttribute("data-webtui-theme", selfWebtuiTheme);
+    }
+
+    attributeChangedCallback(name: string) {
+      if (name === "data-theme") {
+        this.updateIframeTheme();
+      }
+    }
+  }
+
+  customElements.define("doc-example", Example);
+</script>

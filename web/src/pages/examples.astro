@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import Email from '@/components/examples/Email.astro';
-import Tabs from '@/components/examples/Tabs.astro';
+import Tabs from '@/components/ui/Tabs.astro';
+import Dropdown from '@/components/ui/Dropdown.astro';
 
 const themes = {
   'catppuccin-mocha': 'Catppuccin Mocha',
@@ -36,7 +37,7 @@ const themes = {
       <row><span is-="badge" variant-="background0">Settings</span></row>
       <row class="wrap" gap-="1" space-="px:1" align-="center between">
         <Tabs id="tabslist">
-          <button data-value="email" size-="small" variant-="background1">
+          <button data-value="email" size-="small" variant-="default">
             Email
           </button>
           <button data-value="auth" size-="small" variant-="background1">
@@ -53,24 +54,12 @@ const themes = {
           </button>
         </Tabs>
         <row style="position: relative; z-index: 10; isolation: isolate;">
-          <details
-            is-="popover"
-            position-="bottom baseline-right"
-            id="theme-popover"
-          >
-            <summary tabindex="0" is-="button" size-="small"
-              >Select Theme &#xf078;</summary
-            >
-            <column id="theme-options">
-              {
-                Object.entries(themes).map(([key, value]) => (
-                  <button data-value={key} size-="small" variant-="background1">
-                    {value}
-                  </button>
-                ))
-              }
-            </column>
-          </details>
+          <Dropdown
+            label="Select Theme "
+            items={themes}
+            id="theme-dropdown"
+            position="bottom baseline-right"
+          />
         </row>
       </row>
     </column>
@@ -80,16 +69,6 @@ const themes = {
 </Layout>
 
 <style>
-  #tabslist {
-    [aria-selected="true"] {
-      background-color: var(--background2);
-    }
-
-    button {
-      white-space: nowrap;
-    }
-  }
-
   #tab-contents {
     [data-tab] {
       display: none;
@@ -104,39 +83,6 @@ const themes = {
   .wrap {
     flex-wrap: wrap;
   }
-
-  @layer base {
-    html[data-webtui-theme="light"] {
-      --background0: #fff;
-      --background1: #ddd;
-      --background2: #bbb;
-      --background3: #999;
-
-      --foreground0: #000;
-      --foreground1: #444;
-      --foreground2: #888;
-    }
-
-    html[data-webtui-theme="dark"] {
-      --background0: #000;
-      --background1: #222;
-      --background2: #444;
-      --background3: #666;
-
-      --foreground0: #fff;
-      --foreground1: #ccc;
-      --foreground2: #999;
-    }
-  }
-
-  #theme-options {
-    background-color: var(--background0);
-
-    button {
-      white-space: nowrap;
-      justify-content: flex-start;
-    }
-  }
 </style>
 
 <!-- Tab Switcher -->
@@ -144,7 +90,7 @@ const themes = {
   const tabslist = document.getElementById("tabslist")!;
   const tabContents = document.querySelectorAll("#tab-contents [data-tab]");
 
-  const observer = new MutationObserver(() => {
+  new MutationObserver(() => {
     const value = tabslist.getAttribute("data-tab");
 
     tabContents.forEach((tab) => {
@@ -154,9 +100,7 @@ const themes = {
         tab.classList.remove("active");
       }
     });
-  });
-
-  observer.observe(tabslist, {
+  }).observe(tabslist, {
     attributes: true,
     attributeFilter: ["data-tab"],
   });
@@ -164,23 +108,15 @@ const themes = {
 
 <!-- Theme Switcher -->
 <script>
-  const themeOptions = document.querySelectorAll(
-    "#theme-options button",
-  ) as NodeListOf<HTMLButtonElement>;
-  const themePopoverTrigger = document.querySelector(
-    "#theme-popover summary",
-  ) as HTMLElement;
-  const html = document.querySelector("html")!;
+  const themeDropdown = document.querySelector("#theme-dropdown") as HTMLElement;
+  const html = document.querySelector("html")! as HTMLElement;
 
-  themeOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      themeOptions.forEach((opt) =>
-        opt.setAttribute("variant-", "background1"),
-      );
-      option.setAttribute("variant-", "default");
-      const value = option.getAttribute("data-value") as string;
-      html.setAttribute("data-webtui-theme", value);
-      themePopoverTrigger.click();
-    });
+  new MutationObserver(() => {
+    const value = themeDropdown.getAttribute("data-value") as string;
+
+    html.setAttribute("data-webtui-theme", value);
+  }).observe(themeDropdown, {
+    attributes: true,
+    attributeFilter: ["data-value"],
   });
 </script>
