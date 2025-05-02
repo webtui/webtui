@@ -14,16 +14,18 @@
     font-size: var(--font-size);
     line-height: var(--line-height);
     outline: none;
-    background: var(--background1);
   }
 
   input[type="checkbox"]::before {
+    content: "";
     position: absolute;
     inset: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 3ch;
+    height: 1lh;
+    background: var(--background1);
   }
 
   input[type="checkbox"]:checked::before {

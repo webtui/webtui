@@ -1,8 +1,18 @@
 @layer components {
+  @property --popover-offset-x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --popover-offset-y {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
   details[is-="popover"] {
     --popover-backdrop-color: transparent;
-    --popover-offset-x: 0;
-    --popover-offset-y: 0;
 
     position: relative;
 

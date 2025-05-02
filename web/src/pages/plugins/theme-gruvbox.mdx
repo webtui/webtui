@@ -3,9 +3,46 @@ layout: "@/layouts/Doc.astro"
 title: Gruvbox Theme
 ---
 
+import Example from '@/components/Example.astro';
+import typographyStyle from '@webtui/css/components/typography.css?raw';
+import gruvboxStyle from '@webtui/theme-gruvbox?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+
 A port of the [Gruvbox](https://github.com/morhetz/gruvbox) color palette to [WebTUI](https://github.com/webtui/webtui).
 
-Provides additional variants for the listed components in the base WebTUI library and supports both dark (default) and light themes with multiple contrast levels.
+<Example
+    stylesheets={[
+        typographyStyle,
+        buttonStyle,
+        badgeStyle,
+        gruvboxStyle,
+    ]}
+    themes={{
+        'gruvbox-dark-hard': 'Gruvbox Dark Hard',
+        'gruvbox-dark-medium': 'Gruvbox Dark Medium',
+        'gruvbox-dark-soft': 'Gruvbox Dark Soft',
+        'gruvbox-light-hard': 'Gruvbox Light Hard',
+        'gruvbox-light-medium': 'Gruvbox Light Medium',
+        'gruvbox-light-soft': 'Gruvbox Light Soft',
+    }}
+    data-initial-theme="gruvbox-dark-hard"
+html={`
+<h1>Headings</h1>
+<h2>Are</h2>
+<h3>Colored</h3>
+<span is-="badge" variant-="red">So</span>
+<span is-="badge" variant-="green">Are</span>
+<span is-="badge" variant-="yellow">All</span>
+<span is-="badge" variant-="blue">The</span>
+<span is-="badge" variant-="purple">Different</span>
+<span is-="badge" variant-="aqua">Badge</span>
+<span is-="badge" variant-="orange">Variants</span><br/>
+<button variant-="green">And</button>
+<button variant-="orange">The</button>
+<button variant-="yellow">Buttons</button>
+`}
+/>
 
 ## Installation
 

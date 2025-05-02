@@ -115,7 +115,9 @@ if (headings.length > 0) {
       </article>
     </row>
     <div id="mobile-nav">
-      <button variant-="background1" size-="small" id="menu-button">&#xeb86; Menu</button>
+      <button variant-="background1" size-="small" id="menu-button"
+        >&#xeb86; Menu</button
+      >
       <button id="docs-button" size-="small">&#xf15b; Docs</button>
     </div>
   </column>
@@ -129,8 +131,11 @@ if (headings.length > 0) {
     vimFocusElement,
   } from "@/utils/vim";
 
+  const queryString =
+    '#main-content > [tabindex="0"], #main-content li[tabindex="0"]';
+
   const vimTabbableElements: NodeListOf<HTMLElement> =
-    document.querySelectorAll('#main-content > [tabindex="0"]');
+    document.querySelectorAll(queryString);
 
   let currentElement: HTMLElement | null = null;
 
@@ -159,7 +164,7 @@ if (headings.length > 0) {
 
   const mainContent = document.getElementById("main-content") as HTMLElement;
 
-  applyVimNavigation(mainContent, '#main-content > [tabindex="0"]', (element) => {
+  applyVimNavigation(mainContent, queryString, (element) => {
     currentElement = element;
   });
 

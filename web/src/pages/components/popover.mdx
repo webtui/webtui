@@ -1,0 +1,299 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Popover
+---
+
+import Example from '@/components/Example.astro';
+import popoverStyle from '@webtui/css/components/popover.css?raw';
+
+Creates a popover component powered by the [Details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) and [Summary](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary) elements
+
+<Example 
+    stylesheets={[
+        popoverStyle, 
+    ]}
+css={`
+div {
+    background-color: var(--background1);
+    padding: 1lh 1ch;
+}
+`}
+    html={`
+<details is-="popover">
+    <summary>Click Me</summary>
+    <div>Popover content</div>
+</details>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/popover.css";
+```
+
+## Usage
+
+```html
+<details is-="popover">
+    <summary>Popover</summary>
+    <div>Popover content</div>
+</details>
+```
+
+## Examples
+
+### Positioning
+
+<Example 
+    stylesheets={[
+        popoverStyle, 
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    justify-content: center;
+height: 100vh;
+}
+.row {
+    display: flex;
+    gap: 1ch;
+aling-items: center;
+    justify-content: center;
+}
+summary {
+    background-color: var(--background1);
+}
+.popover-content {
+    background-color: var(--background1);
+    white-space: nowrap;
+    padding: 1lh 1ch;
+}
+`}
+    html={`
+<div class="row">
+    <details is-="popover" position-="bottom right">
+        <summary>BR ↘</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+    <details is-="popover" position-="bottom left">
+        <summary>BL ↙</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+</div>
+<div class="row">
+    <details is-="popover" position-="top right">
+        <summary>TR ↗</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+    <details is-="popover" position-="top left">
+        <summary>TL ↖</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+</div>
+`}
+/>
+
+Use `baseline-*` values to position the content relative to the edges of the popover
+
+<Example 
+    stylesheets={[
+        popoverStyle, 
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+.row {
+    display: flex;
+    gap: 1ch;
+}
+summary {
+    background-color: var(--background1);
+}
+.popover-content {
+    background-color: var(--background1);
+    white-space: nowrap;
+    padding: 1lh 1ch;
+}
+`}
+    html={`
+<div class="row">
+    <details is-="popover" position-="bottom baseline-right">
+        <summary>Bottom Baseline-Right</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+    <details is-="popover" position-="bottom baseline-left">
+        <summary>Bottom Baseline-Left</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+</div>
+<div class="row">
+    <details is-="popover" position-="right baseline-top">
+        <summary>Right Baseline-Top</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+    <details is-="popover" position-="left baseline-bottom">
+        <summary>Left Baseline-Bottom</summary>
+        <div class="popover-content">Popover content</div>
+    </details>
+</div>
+`}
+/>
+
+The image below shows the values and positions that can be used in the `position-` property
+
+![popover-positioning.png](../../assets/popover-positioning.png)
+
+### Backdrop
+
+<Example 
+    stylesheets={[
+        popoverStyle, 
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+[is-="popover"] {
+    --popover-backdrop-color: rgba(0, 0, 0, 0.5);
+}
+.popover-content {
+    background-color: var(--background1);
+    white-space: nowrap;
+    padding: 1lh 1ch;
+}
+`}
+    html={`<details is-="popover">
+    <summary>Click Me</summary>
+    <div class="popover-content">Popover content</div>
+</details>
+<p>This appears behind the backdrop</p>`}
+/>
+
+### Offset
+
+<Example 
+    stylesheets={[
+        popoverStyle, 
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+.row {
+    display: flex;
+}
+details[is-="popover"] {
+    --popover-offset-x: 1ch;
+    --popover-offset-y: 1lh;
+}
+.popover-content {
+    background-color: var(--background1);
+    white-space: nowrap;
+    padding: 1lh 1ch;
+}
+`}
+html={`
+<div class="row">
+<details is-="popover" position-="bottom">
+    <summary>Click Me</summary>
+    <div class="popover-content">Offset y 1lh</div>
+</details>
+</div>
+<div class="row">
+<details is-="popover" position-="right baseline-top">
+    <summary>Click Me as well</summary>
+    <div class="popover-content">Offset x 1ch</div>
+</details>
+</div>
+`}
+/>
+
+## Caveats
+
+Elements using the `box-` utility that appear **after** the popover in the html markup will appear above the popover content no matter what z-index you provide
+
+```html
+<style>
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<div class="column">
+    <details is-="popover">
+        <summary>Popover</summary>
+        <div>Popover content</div>
+    </details>
+    <div box-="square">Will appear above the open popover since defined after it in the html</div>
+</div>
+```
+
+As a workaround, you can set the `flex-direction` to `row-reverse` or `column-reverse` on the parent element of the popover
+
+```html
+<style>
+    .column-reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+</style>
+
+<div class="column-reverse">
+    <div box-="square">Will appear behind the open popover since defined before it in the html</div>
+    <details is-="popover">
+        <summary>Popover</summary>
+        <div>Popover content</div>
+    </details>
+</div>
+```
+
+
+## Reference
+
+### Properties
+
+- `--popover-backdrop-color`: The background color of the backdrop (transparent by default)
+- `--popover-offset-x`: The horizontal offset of the popover
+- `--popover-offset-y`: The vertical offset of the popover
+
+```css
+#my-custom-popover {
+    --popover-backdrop-color: rgba(0, 0, 0, 0.5);
+    --popover-offset-x: 1ch;
+    --popover-offset-y: 1lh;
+}
+```
+
+### Extending
+
+To extend the Popover stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    details[is-~="popover"] {
+        &[variant-="inverted"] {
+            /* ... */
+        }
+
+        /* ... */
+    }
+}
+```
+
+
+### Scope
+
+```css
+details[is-~="popover"] { /* ... */ }
+```

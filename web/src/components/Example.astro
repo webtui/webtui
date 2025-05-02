@@ -9,6 +9,7 @@ import { getHighlighter } from 'shiki';
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   html: string;
+  css?: string;
   stylesheets?: string[];
   /**
    * A key-value pair of theme keys and labels
@@ -16,16 +17,22 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
   themes?: Record<string, string>;
 }
 
-const { html, stylesheets, themes, ...rest } = Astro.props as Props;
+const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
 
 const highlighter = await getHighlighter({
   themes: ['catppuccin-mocha'],
-  langs: ['xml'],
+  langs: ['xml', 'css'],
 });
-const preHtml = highlighter.codeToHtml(html.trim(), {
+const htmlCodePreHtml = highlighter.codeToHtml(html.trim(), {
   lang: 'xml',
   theme: 'catppuccin-mocha',
 });
+const cssCodePreHtml = css
+  ? highlighter.codeToHtml(css.trim(), {
+      lang: 'css',
+      theme: 'catppuccin-mocha',
+    })
+  : '';
 ---
 
 <doc-example {...rest}>
@@ -35,9 +42,11 @@ const preHtml = highlighter.codeToHtml(html.trim(), {
         id="preview"
         srcdoc={`<html>
 <head>
+<style>@layer base, utils, components;</style>
 <style>${webtuiBase}</style>
 <style>${jetBrainsMono}</style>
 ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).join("") : ""}
+${css ? `<style>${css}</style>` : ""}
 <style>
 @layer base {
   :root {
@@ -53,7 +62,8 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
 <body>${html}</body>
 </html>
 `}></iframe>
-      <div id="code-container" set:html={preHtml} />
+      <div id="html-container" set:html={htmlCodePreHtml} />
+      {css && <div id="css-container" set:html={cssCodePreHtml} />}
     </div>
 
     <div id="header">
@@ -62,15 +72,22 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
           &#xf03e; Example
         </button>
         <button data-value="code" size-="small" variant-="background2">
-          &#xf121; Code
+          &#xf121; HTML
         </button>
+        {
+          css && (
+            <button data-value="css" size-="small" variant-="background2">
+              &#xf121; CSS
+            </button>
+          )
+        }
       </Tabs>
       <Dropdown
         label="Select Theme "
         items={{
-          light: "Light",
-          dark: "Dark",
           ...themes,
+          dark: "Dark",
+          light: "Light",
         }}
         id="theme-dropdown"
         position="bottom baseline-right"
@@ -107,7 +124,12 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
       min-height: 240px;
     }
 
-    #code-container {
+    #html-container,
+    #css-container {
+      max-height: 360px;
+      min-height: 240px;
+      overflow-y: auto;
+      overflow-x: hidden;
       padding: 1lh 1ch;
       background-color: var(--background1);
 
@@ -118,7 +140,8 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
     }
 
     #preview,
-    #code-container {
+    #html-container,
+    #css-container {
       display: none;
     }
   }
@@ -130,7 +153,13 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
   }
 
   doc-example:has(#example-code-tabs[data-tab="code"]) {
-    #code-container {
+    #html-container {
+      display: block;
+    }
+  }
+
+  doc-example:has(#example-code-tabs[data-tab="css"]) {
+    #css-container {
       display: block;
     }
   }
@@ -138,42 +167,53 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
 
 <script>
   class Example extends HTMLElement {
-    static get observedAttributes() {
-      return ["data-theme"];
-    }
-
     constructor() {
       super();
 
       const self = this;
 
       const iframe = self.querySelector("#preview") as HTMLIFrameElement;
+      const colorPreference = window.matchMedia("(prefers-color-scheme: dark)");
+      const initialTheme = self.getAttribute("data-initial-theme");
+      const preferredTheme =
+        initialTheme ?? (colorPreference.matches ? "dark" : "light");
 
-      iframe.addEventListener("load", () => {
-        self.updateIframeTheme();
-      });
+      const iframeDocument = iframe.contentDocument;
 
-      // Weird race condition where the iframe can already be loaded
-      self.updateIframeTheme();
+      if (!iframeDocument || iframeDocument.readyState === "loading") {
+        iframe.addEventListener("load", () => {
+          self.updateIframeTheme(preferredTheme);
+        });
+      } else {
+        // Weird race condition where the iframe can already be loaded
+        self.updateIframeTheme(preferredTheme);
+      }
 
       const themeDropdown = self.querySelector(
         "#theme-dropdown",
       ) as HTMLElement;
+      const html = document.querySelector("html") as HTMLElement;
 
+      // Watch for changes in the theme dropdown
       new MutationObserver(() => {
         const value = themeDropdown.getAttribute("data-value") as string;
-        self.setAttribute("data-theme", value);
+        html.setAttribute("data-example-theme", value);
       }).observe(themeDropdown, {
         attributes: true,
         attributeFilter: ["data-value"],
       });
+
+      // Watch for changes in the html element
+      new MutationObserver(() => {
+        const value = html.getAttribute("data-example-theme");
+        self.updateIframeTheme(value ?? preferredTheme);
+      }).observe(html, {
+        attributes: true,
+        attributeFilter: ["data-example-theme"],
+      });
     }
 
-    updateIframeTheme() {
-      const selfWebtuiTheme = this.getAttribute("data-theme");
-
-      if (!selfWebtuiTheme) return;
-
+    updateIframeTheme(theme: string) {
       const iframe = this.querySelector("#preview") as HTMLIFrameElement;
 
       const previewDoc = iframe.contentDocument;
@@ -181,13 +221,7 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
 
       if (!previewHtml) return;
 
-      previewHtml.setAttribute("data-webtui-theme", selfWebtuiTheme);
-    }
-
-    attributeChangedCallback(name: string) {
-      if (name === "data-theme") {
-        this.updateIframeTheme();
-      }
+      previewHtml.setAttribute("data-webtui-theme", theme);
     }
   }
 
