@@ -40,7 +40,7 @@ const cssCodePreHtml = css
     <div id="content">
       <iframe
         id="preview"
-        srcdoc={`<html>
+        srcdoc={`<html data-webtui-theme="${rest['data-initial-theme']}">
 <head>
 <style>@layer base, utils, components;</style>
 <style>${webtuiBase}</style>
@@ -89,6 +89,7 @@ ${css ? `<style>${css}</style>` : ""}
           dark: "Dark",
           light: "Light",
         }}
+        data-value={rest['data-initial-theme']}
         id="theme-dropdown"
         position="bottom baseline-right"
       />

@@ -8,7 +8,7 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 const { items, label, position, ...props } = Astro.props as Props;
 
 const itemEntries = Object.entries(items);
-const initialValue = itemEntries[0][0];
+const initialValue = props['data-value'] ?? itemEntries[0][0];
 ---
 
 <select-dropdown data-value={initialValue} {...props}>
