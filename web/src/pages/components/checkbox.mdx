@@ -1,0 +1,96 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Checkbox
+---
+
+import Example from '@/components/Example.astro';
+import checkboxStyle from '@webtui/css/components/checkbox.css?raw';
+
+Displays a checkbox
+
+<Example 
+    stylesheets={[
+        checkboxStyle, 
+    ]}
+    html={`<label>
+    <input type="checkbox" />
+    Checkbox
+</label>`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/checkbox.css";
+```
+
+## Usage
+
+```html
+<label>
+    <input type="checkbox" />
+    Checkbox
+</label>
+```
+
+## Examples
+
+### Checked/Unchecked
+
+<Example 
+    stylesheets={[
+        checkboxStyle, 
+    ]}
+html={`
+<label>
+    <input type="checkbox" />
+    Unchecked
+</label>
+<label>
+    <input type="checkbox" checked />
+    Checked
+</label>
+`}
+/>
+
+### Disabled
+
+<Example 
+    stylesheets={[
+        checkboxStyle, 
+    ]}
+html={`
+<label>
+    <input type="checkbox" disabled />
+    Disabled
+</label>
+<label>
+    <input type="checkbox" checked disabled />
+    Checked Disabled
+</label>
+`}
+/>
+
+## Reference
+
+### Extending
+
+To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+  input[type="checkbox"] {
+    /* ... */
+  }
+}
+```
+
+### Scope
+
+- All native `<input type="checkbox">` elements
+
+```css
+input[type="checkbox"] {
+  /* ... */
+}
+```

@@ -1,0 +1,114 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Input
+---
+
+import Example from '@/components/Example.astro';
+import inputStyle from '@webtui/css/components/input.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
+
+Displays an input
+
+<Example 
+    stylesheets={[
+        inputStyle, 
+    ]}
+    html={`<input placeholder="Type something" />`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/input.css";
+```
+
+## Usage
+
+```html
+<input />
+```
+
+## Examples
+
+### Sizing
+
+<Example 
+    stylesheets={[
+        inputStyle, 
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}`}
+    html={`
+<input size-="small" placeholder="Small" />
+<input placeholder="Default" />
+<input size-="large" placeholder="Large" />
+`}
+/>
+
+### Box Borders
+
+The `box-` utility cannot be used directly on an `<input>` element because inputs don't support pseudo-elements
+
+Instead, wrap an `<input>` with a `<div box-="*">` or use a `contenteditable` element
+
+<Example 
+    stylesheets={[
+        inputStyle, 
+        boxStyle, 
+    ]}
+css={`
+input {
+    background-color: var(--background0);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+.row {
+    display: flex;
+}`}
+html={`
+<div class="row">
+    <div box-="round">
+        <input placeholder="wrapped input" />
+    </div>
+</div>
+<div contenteditable box-="round">
+    content editable div
+</div>`}
+/>
+
+## Reference
+
+### Extending
+
+To extend the Input stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    input,
+    [is-~="input"] {
+        &[size-="thicc"] {
+            height: 3lh;
+            padding: 1lh 8ch;
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All elements with the `is-~="input"` selector
+- All `<input>` elements that are not of type `button`, `submit`, `reset`, `checkbox`, or `radio`
+
+```css
+input,
+[is-~="input"] { /* ... */ }
+```

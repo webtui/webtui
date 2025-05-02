@@ -1,0 +1,229 @@
+---
+import webtuiBase from '@webtui/css/base.css?raw';
+import jetBrainsMono from '@/styles/jetbrainsmono.css?raw';
+
+import Dropdown from '@/components/ui/Dropdown.astro';
+import Tabs from '@/components/ui/Tabs.astro';
+
+import { getHighlighter } from 'shiki';
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  html: string;
+  css?: string;
+  stylesheets?: string[];
+  /**
+   * A key-value pair of theme keys and labels
+   */
+  themes?: Record<string, string>;
+}
+
+const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
+
+const highlighter = await getHighlighter({
+  themes: ['catppuccin-mocha'],
+  langs: ['xml', 'css'],
+});
+const htmlCodePreHtml = highlighter.codeToHtml(html.trim(), {
+  lang: 'xml',
+  theme: 'catppuccin-mocha',
+});
+const cssCodePreHtml = css
+  ? highlighter.codeToHtml(css.trim(), {
+      lang: 'css',
+      theme: 'catppuccin-mocha',
+    })
+  : '';
+---
+
+<doc-example {...rest}>
+  <div id="container">
+    <div id="content">
+      <iframe
+        id="preview"
+        srcdoc={`<html>
+<head>
+<style>@layer base, utils, components;</style>
+<style>${webtuiBase}</style>
+<style>${jetBrainsMono}</style>
+${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).join("") : ""}
+${css ? `<style>${css}</style>` : ""}
+<style>
+@layer base {
+  :root {
+    --font-family: "JetBrainsMonoNFM", Menlo, Monaco, monospace;
+  }
+
+  body {
+    padding: 1lh 1ch;
+  }
+}
+</style>
+</head>
+<body>${html}</body>
+</html>
+`}></iframe>
+      <div id="html-container" set:html={htmlCodePreHtml} />
+      {css && <div id="css-container" set:html={cssCodePreHtml} />}
+    </div>
+
+    <div id="header">
+      <Tabs id="example-code-tabs" data-secondary-variant="background2">
+        <button data-value="example" size-="small" variant-="foreground0">
+          &#xf03e; Example
+        </button>
+        <button data-value="code" size-="small" variant-="background2">
+          &#xf121; HTML
+        </button>
+        {
+          css && (
+            <button data-value="css" size-="small" variant-="background2">
+              &#xf121; CSS
+            </button>
+          )
+        }
+      </Tabs>
+      <Dropdown
+        label="Select Theme "
+        items={{
+          ...themes,
+          dark: "Dark",
+          light: "Light",
+        }}
+        id="theme-dropdown"
+        position="bottom baseline-right"
+      />
+    </div>
+  </div>
+</doc-example>
+
+<style>
+  #container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background2);
+
+    #button-tabs {
+      display: flex;
+    }
+  }
+
+  #content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    #preview {
+      border: none;
+      outline: none;
+      min-height: 240px;
+    }
+
+    #html-container,
+    #css-container {
+      max-height: 360px;
+      min-height: 240px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 1lh 1ch;
+      background-color: var(--background1);
+
+      pre {
+        white-space: pre-wrap;
+        background-color: var(--background1) !important;
+      }
+    }
+
+    #preview,
+    #html-container,
+    #css-container {
+      display: none;
+    }
+  }
+
+  doc-example:has(#example-code-tabs[data-tab="example"]) {
+    #preview {
+      display: block;
+    }
+  }
+
+  doc-example:has(#example-code-tabs[data-tab="code"]) {
+    #html-container {
+      display: block;
+    }
+  }
+
+  doc-example:has(#example-code-tabs[data-tab="css"]) {
+    #css-container {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  class Example extends HTMLElement {
+    constructor() {
+      super();
+
+      const self = this;
+
+      const iframe = self.querySelector("#preview") as HTMLIFrameElement;
+      const colorPreference = window.matchMedia("(prefers-color-scheme: dark)");
+      const initialTheme = self.getAttribute("data-initial-theme");
+      const preferredTheme =
+        initialTheme ?? (colorPreference.matches ? "dark" : "light");
+
+      const iframeDocument = iframe.contentDocument;
+
+      if (!iframeDocument || iframeDocument.readyState === "loading") {
+        iframe.addEventListener("load", () => {
+          self.updateIframeTheme(preferredTheme);
+        });
+      } else {
+        // Weird race condition where the iframe can already be loaded
+        self.updateIframeTheme(preferredTheme);
+      }
+
+      const themeDropdown = self.querySelector(
+        "#theme-dropdown",
+      ) as HTMLElement;
+      const html = document.querySelector("html") as HTMLElement;
+
+      // Watch for changes in the theme dropdown
+      new MutationObserver(() => {
+        const value = themeDropdown.getAttribute("data-value") as string;
+        html.setAttribute("data-example-theme", value);
+      }).observe(themeDropdown, {
+        attributes: true,
+        attributeFilter: ["data-value"],
+      });
+
+      // Watch for changes in the html element
+      new MutationObserver(() => {
+        const value = html.getAttribute("data-example-theme");
+        self.updateIframeTheme(value ?? preferredTheme);
+      }).observe(html, {
+        attributes: true,
+        attributeFilter: ["data-example-theme"],
+      });
+    }
+
+    updateIframeTheme(theme: string) {
+      const iframe = this.querySelector("#preview") as HTMLIFrameElement;
+
+      const previewDoc = iframe.contentDocument;
+      const previewHtml = previewDoc?.querySelector("html");
+
+      if (!previewHtml) return;
+
+      previewHtml.setAttribute("data-webtui-theme", theme);
+    }
+  }
+
+  customElements.define("doc-example", Example);
+</script>

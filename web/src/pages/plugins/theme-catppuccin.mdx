@@ -3,9 +3,46 @@ layout: "@/layouts/Doc.astro"
 title: Catppuccin Theme
 ---
 
+import Example from '@/components/Example.astro';
+import typographyStyle from '@webtui/css/components/typography.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import catppuccinStyle from '@webtui/theme-catppuccin?raw';
+
 A port of the [Catppuccin](https://catppuccin.com) color palette to WebTUI
 
-Provides additional variants for the listed components in the base WebTUI library
+<Example
+    stylesheets={[
+        typographyStyle,
+        badgeStyle,
+        buttonStyle,
+        catppuccinStyle,
+    ]}
+    themes={{
+        'catppuccin-mocha': 'Catppuccin Mocha',
+        'catppuccin-macchiato': 'Catppuccin Macchiato',
+        'catppuccin-frappe': 'Catppuccin Frappe',
+        'catppuccin-latte': 'Catppuccin Latte',
+    }}
+    data-initial-theme="catppuccin-macchiato"
+html={`
+<h1>Lots</h1>
+<h2>Of</h2>
+<h3>Colored</h3>
+<h4>Headings</h4>
+<h5>And</h5>
+<h6>Stuff</h6>
+<p>And links are <a href="https://example.com">blue</a> now and <code>code</code> is red</p>
+<span is-="badge" variant-="red">Many</span>
+<span is-="badge" variant-="teal">Colorful</span>
+<span is-="badge" variant-="mauve">Badge</span>
+<span is-="badge" variant-="flamingo">Variants</span><br/>
+<span is-="badge" variant-="peach">And</span><br/>
+<button variant-="maroon">Sick</button>
+<button variant-="rosewater">Button</button>
+<button variant-="sky">Variants</button>
+`}
+/>
 
 ## Installation
 

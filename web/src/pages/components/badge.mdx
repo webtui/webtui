@@ -3,6 +3,20 @@ layout: "@/layouts/Doc.astro"
 title: Badge
 ---
 
+import Example from '@/components/Example.astro';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+
+Displays a badge
+
+<Example 
+    stylesheets={[
+        badgeStyle, 
+    ]}
+    html={`
+<span is-="badge">Badge</span>
+`}
+/>
+
 ## Import
 
 ```css
@@ -11,13 +25,13 @@ title: Badge
 
 ## Usage
 
-Simply add the `is-="badge"` attribute to any HTML element
-
 ```html
 <span is-="badge">badge</span>
 ```
 
-### `variant-`
+## Examples
+
+### Variants
 
 Use the `variant-` attribute to change the color of a badge
 
@@ -26,17 +40,25 @@ Use the `variant-` attribute to change the color of a badge
 <span is-="badge" variant-="background2">background2</span>
 ```
 
+<Example 
+    stylesheets={[
+        badgeStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
+    ]}
+    html={`
+<span is-="badge" variant-="background0">background0</span>
+<span is-="badge" variant-="background1">background1</span>
+<span is-="badge" variant-="background2">background2</span>
+<span is-="badge" variant-="background3">background3</span>
+<span is-="badge" variant-="foreground0">foreground0</span>
+<span is-="badge" variant-="foreground1">foreground1</span>
+<span is-="badge" variant-="foreground2">foreground2</span>
+`}
+/>
+
 Available variants match the [base theme colors](/start/theming#colors)
 
-```html
-<span is-="badge" variant-="background0"></span>
-<span is-="badge" variant-="background1"></span>
-<span is-="badge" variant-="background2"></span>
-<span is-="badge" variant-="background3"></span>
-<span is-="badge" variant-="foreground0"></span>
-<span is-="badge" variant-="foreground1"></span>
-<span is-="badge" variant-="foreground2"></span>
-```
+## Reference
 
 ### Properties
 
@@ -69,7 +91,7 @@ To extend the Badge stylesheet, define a CSS rule on the `components` layer
 }
 ```
 
-## Scope
+### Scope
 
 - All elements with the `is-~="badge"` selector
 

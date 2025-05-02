@@ -68,9 +68,18 @@ export function applyVimNavigation(
   element.addEventListener('keydown', (e) => {
     if (isUserTyping()) return;
 
+    const activeElements = reattachTabbableElements();
+
+    if (
+      Array.from(activeElements).indexOf(
+        document.activeElement as HTMLElement,
+      ) === -1
+    )
+      return;
+
     const { next, prev, first, last } = paginateElements(
       document.activeElement as HTMLElement,
-      reattachTabbableElements(),
+      activeElements,
     );
 
     if (e.key === 'j' || e.key === 'ArrowDown') next.focus();

@@ -1,0 +1,147 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Button
+---
+
+import Example from '@/components/Example.astro';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
+
+Displays a button
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+        boxStyle, 
+    ]}
+    html={`
+<button>Click Me</button>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/button.css";
+```
+
+To add box borders to button, import the [Box Utility](/intro-ascii-boxes) stylesheet (optional)
+
+```css
+@import "@webtui/css/utils/box.css";
+```
+
+## Usage
+
+```html
+<button>button</button>
+```
+
+Apply `is-="button"` to any HTML element to style it as a button
+
+```html
+<div is-="button">div with button style</div>
+```
+
+## Examples
+
+### Variants
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
+    ]}
+    html={`
+<button variant-="background0">background0</button>
+<button variant-="background1">background1</button>
+<button variant-="background2">background2</button>
+<button variant-="background3">background3</button>
+<button variant-="foreground0">foreground0</button>
+<button variant-="foreground1">foreground1</button>
+<button variant-="foreground2">foreground2</button>
+`}
+/>
+
+Available variants match the [base theme colors](/start/theming#colors)
+
+### Box Borders
+
+Requires the [Box Utility](/intro/ascii-boxes)
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+        boxStyle, 
+    ]}
+    html={`
+<button box-="round">Round</button>
+<button box-="square">Square</button>
+<button box-="double">Double</button>
+`}
+/>
+
+
+### Sizes
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+    ]}
+    html={`
+<button>Default</button>
+<button size-="small">Small</button>
+`}
+/>
+
+### `disabled`
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+    ]}
+    html={`
+<button disabled>Disabled</button>
+`}
+/>
+
+## Reference
+
+### Properties
+
+- `--button-primary`: The primary color of the button
+- `--button-secondary`: The secondary color of the button
+
+```css
+button {
+    --button-primary: black;
+    --button-secondary: green;
+}
+```
+
+Buttons automatically switch between `--button-primary` and `--button-secondary` based on whether `box-` is applied or not
+
+![button-colors.png](../../assets/button-colors.png)
+
+### Extending
+
+To extend the Button stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    button, [is-~="button"] {
+        &[variant-="red"] {
+            --button-primary: red;
+            --button-secondary: white;
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+```css
+button, [is-~="button"] { /* ... */ }
+```

@@ -22,6 +22,9 @@
     "packages/*"
   ],
   "trustedDependencies": [
+    "@biomejs/biome",
+    "esbuild",
+    "sharp",
     "turbo"
   ],
   "dependencies": {

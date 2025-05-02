@@ -1,0 +1,206 @@
+---
+layout: "@/layouts/Doc.astro"
+title: ASCII Boxes
+---
+
+import Example from '@/components/Example.astro';
+import boxStyle from '@webtui/css/utils/box.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+
+The `box-` utility utilizes CSS `::before` and `::after` pseudo-elements to mimic a boxes drawn with ASCII [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters)
+
+<Example 
+    stylesheets={[
+        boxStyle, 
+        badgeStyle,
+        buttonStyle,
+    ]}
+    css={`.header { 
+    display: flex;
+    justify-content: space-between; 
+}
+#content { 
+    padding: 0lh 1ch;
+    padding-top: 1lh;
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+#buttons { 
+    display: flex; 
+    justify-content: flex-end; 
+}`}
+    html={`<div box-="square contain:none">
+    <div class="header">
+        <span is-="badge" variant-="background0">top-left</span>
+        <span is-="badge" variant-="background0">top-right</span>
+    </div>
+    <div id="content">
+        <p>Lorem ipsum dolor sit amet sit dolor ipsum lorem idk i dont speak french</p>
+        <div id="buttons">
+            <button box-="round">Cancel</button>
+            <button box-="round">Ok</button>
+        </div>
+    </div>
+    <div class="header">
+        <span is-="badge" variant-="background0">bottom-left</span>
+        <span is-="badge" variant-="background0">bottom-right</span>
+    </div>
+</div>`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/utils/box.css";
+```
+
+## Usage
+
+```html
+<div box-="square">
+  Hi Mom
+</div>
+```
+
+**Important**: The `box-` utility is **suffixed** with a `-`
+
+Using `box="..."` **will not work**
+
+## Examples
+
+### Box Border Types
+
+<Example 
+    stylesheets={[
+        boxStyle, 
+    ]}
+    html={`
+<div box-="square">Square</div>
+<div box-="round">Round</div>
+<div box-="double">Double</div>
+`}
+/>
+
+### Containment
+
+Choose whether to contain the top and/or bottom lines of the box
+
+<Example 
+    stylesheets={[
+        boxStyle, 
+        badgeStyle,
+    ]}
+    css={`
+    .header { 
+        display: flex;
+        justify-content: space-between; 
+}
+span {
+    background-color: var(--background0);
+    padding: 0 1ch;
+}`}
+    html={`
+<!-- Do not contain the top row -->
+<div box-="square contain:!top">
+    <div class="header">
+        <span>Left</span>
+        <span>Right</span>
+    </div>
+    Caption on Top
+</div>
+
+<!-- Do not contain the bottom row -->
+<div box-="square contain:!bottom">
+    Caption on Bottom
+    <div class="header">
+        <span>Left</span>
+        <span>Right</span>
+    </div>
+</div>
+
+<!-- Do not contain the top or bottom rows -->
+<div box-="square contain:none">
+    <div class="header">
+        <span>Left</span>
+        <span>Right</span>
+    </div>
+    Caption on Top and Bottom
+    <div class="header">
+        <span>Left</span>
+        <span>Right</span>
+    </div>
+</div>
+`}
+/>
+
+## Properties
+
+Elements with the `box-` attribute can be customized via **Custom CSS properties** [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)
+
+### `--box-border-color`
+
+The border color of the box
+
+- Syntax: `<color>`
+- Default Value: `var(--foreground0)`
+
+```html
+<style>
+  #my-box {
+    --box-border-color: red;
+  }
+</style>
+
+<div box-="square" id="my-box"></div>
+```
+
+### `--box-rounded-radius`
+
+The border radius of `round` boxes
+
+- Syntax: `<length>`
+- Default Value: `4px`
+
+```html
+<style>
+  #my-box {
+    --box-rounded-radius: 10px;
+  }
+</style>
+
+<div box-="round" id="my-box"></div>
+```
+
+### `--box-border-width`
+
+The border width for `square` and `round` boxes
+
+- Syntax: `<length>`
+- Default Value: `2px`
+
+```html
+<style>
+  #my-box {
+    --box-border-width: 10px;
+  }
+</style>
+
+<div box-="square" id="my-box"></div>
+```
+
+### `--box-double-border-width`
+
+The width of boxes with `double` borders
+
+- Syntax: `<length>`
+- Default Value: `1px`
+
+```html
+<style>
+  #my-box {
+    --box-double-border-width: 10px;
+  }
+</style>
+```

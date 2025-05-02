@@ -3,9 +3,40 @@ layout: "@/layouts/Doc.astro"
 title: Nord Theme
 ---
 
+import Example from '@/components/Example.astro';
+import typographyStyle from '@webtui/css/components/typography.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import nordStyle from '@webtui/theme-nord?raw';
+
 A port of the [Nord](https://nordtheme.com) color palette to WebTUI
 
-Provides additional variants for the listed components in the base WebTUI library
+<Example
+    stylesheets={[
+        typographyStyle,
+        buttonStyle,
+        badgeStyle,
+        nordStyle,
+    ]}
+    themes={{
+        'nord': 'Nord',
+    }}
+    data-initial-theme="nord"
+html={`
+<h1>Headings</h1>
+<h2>Are</h2>
+<h3>Colored</h3>
+<span is-="badge" variant-="nord7">As</span>
+<span is-="badge" variant-="nord8">Are</span>
+<span is-="badge" variant-="nord9">The</span>
+<span is-="badge" variant-="nord10">Badge</span>
+<span is-="badge" variant-="nord11">Colors</span><br/>
+<span is-="badge" variant-="nord12">And</span><br/>
+<button variant-="nord13">All</button>
+<button variant-="nord14">The</button>
+<button variant-="nord15">Buttons</button>
+`}
+/>
 
 ## Installation
 

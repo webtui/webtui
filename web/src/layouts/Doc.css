@@ -32,7 +32,7 @@
       color: var(--foreground0);
     }
 
-    [tabindex="0"] {
+    & > [tabindex="0"] {
       outline: none;
 
       &:focus {

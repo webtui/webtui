@@ -19,6 +19,8 @@
     "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
     "@webtui/plugin-nf": "workspace:*",
+    "@biomejs/js-api": "0.8.0-beta.1",
+    "@biomejs/wasm-nodejs": "2.0.0-beta.2",
     "astro": "^5.4.2"
   },
   "devDependencies": {
