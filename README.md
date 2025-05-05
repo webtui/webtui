@@ -2,13 +2,23 @@
 
 Modular CSS Library that brings the beauty of Terminal UIs to the browser
 
-Docs: at https://webtui.ironclad.sh
+Docs: https://webtui.ironclad.sh
+Examples: https://webtui.ironclad.sh/examples
+Discord Server: https://discord.gg/yUS6T8YnfT
 
-## Development
+## Local Development
 
-1. Clone the repo
-2. `cd` into the repo
-3. Run `bun i`
-5. Run `bun run dev` to start the dev server
+Ensure [Bun](https://bun.sh/) is installed
 
-For feature requests / bug reports, please open an issue
+1. Clone the repository
+    ```bash
+    git clone https://github.com/webtui/webtui
+    ```
+2. Install dependencies
+    ```bash
+    bun i
+    ```
+3. Start the dev server
+    ```bash
+    bun run dev
+    ```
