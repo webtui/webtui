@@ -1,14 +1,14 @@
 {
   "name": "@webtui/plugin-nf",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",
     "build": "rm -rf dist && vite build",
     "clean": "rm -rf dist .turbo",
-    "format:check": "bunx biome format src/**/*.css",
-    "format": "bunx biome format --write src/**/*.css",
-    "lint": "bunx biome check src/**/*.css",
+    "format:check": "bunx biome format src/index.css",
+    "format": "bunx biome format --write src/index.css",
+    "lint": "bunx biome check src/index.css",
     "prepublishOnly": "bun run build"
   },
   "files": [

@@ -3,15 +3,15 @@
 @import "@webtui/css";
 @import "@/styles/flexbox.css";
 @import "@/styles/spacing.css";
-@import "@webtui/plugin-nf";
 @import "@webtui/theme-catppuccin";
 @import "@webtui/theme-nord";
 @import "@webtui/theme-gruvbox";
-@import "./jetbrainsmono.css";
+@import "@webtui/plugin-nf";
 
 @layer base {
   :root {
-    --font-family: "JetBrainsMonoNFM", Menlo, Monaco, monospace;
+    --font-family: "JetBrains Mono", Menlo, Monaco, monospace,
+      "Symbols Nerd Font";
     --font-size: 18px;
     --line-height: 1.4;
   }

@@ -58,11 +58,53 @@ Use the `variant-` attribute to change the color of a badge
 
 Available variants match the [base theme colors](/start/theming#colors)
 
+### Caps
+
+Use the `cap-` attribute to customize badges' end cap styles
+
+```html
+<span is-="badge">square</span>
+<span is-="badge" cap-="round">round</span>
+<span is-="badge" cap-="triangle">triangle</span>
+```
+
+<Example 
+    stylesheets={[
+        badgeStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
+    ]}
+    html={`
+<span is-="badge" cap-="square">square</span>
+<span is-="badge" cap-="round">round</span>
+<span is-="badge" cap-="triangle">triangle</span>
+<span is-="badge" cap-="ribbon">ribbon</span>
+<span is-="badge" cap-="slant-top">slant-top</span>
+<span is-="badge" cap-="slant-bottom">slant-bottom</span>
+`}
+/>
+
+Pass two values separated by a space to customize the start and end cap styles
+
+<Example 
+    stylesheets={[
+        badgeStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
+    ]}
+    html={`
+<span is-="badge" cap-="square round">square round</span>
+<span is-="badge" cap-="round ribbon">round ribbon</span>
+<span is-="badge" cap-="ribbon triangle">ribbon triangle</span>
+<span is-="badge" cap-="triangle slant-top">triangle slant-top</span>
+<span is-="badge" cap-="slant-top slant-bottom">slant-top slant-bottom</span>
+<span is-="badge" cap-="slant-bottom square">slant-bottom square</span>
+`}
+/>
+
 ## Reference
 
 ### Properties
 
-It is preferred to use the following custom CSS properties to style badges
+Use the following custom CSS properties to style badges
 
 - `--badge-color`: The color of the badge
 - `--badge-text`: The text color of the badge
@@ -73,6 +115,20 @@ It is preferred to use the following custom CSS properties to style badges
   --badge-text: #000000;
 }
 ```
+
+Using `background-color` directly will color behind the badge instead of coloring the badge shape
+
+<Example 
+    stylesheets={[
+        badgeStyle, 
+    ]}
+    css={`span[is-="badge"] {
+    --badge-color: var(--foreground0);
+    --badge-text: var(--background0);
+    background-color: grey;
+}`}
+    html={`<span is-="badge" cap-="slant-top">badge</span>`}
+/>
 
 ### Extending
 

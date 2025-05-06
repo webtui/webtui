@@ -1,4 +1,11 @@
-# @webtui/plugin-nf
+---
+layout: "@/layouts/Doc.astro"
+title: Nerd Font Plugin
+order: 2
+---
+
+import pluginNf from "@webtui/plugin-nf?raw";
+import Example from "@/components/Example.astro";
 
 Provides additional glyphs from popular icon packs such as [Font Awesome](https://fontawesome.com), [Devicons](http://vorillaz.github.io/devicons/), [Octicons](https://github.com/github/octicons), and more (see https://nerdfonts.com)
 
@@ -37,18 +44,16 @@ Add "Symbols Nerd Font" to the **end** of the `--font-family` fallback stack
 
 Now you can use nerd font icons in your HTML and CSS
 
-```html
-<style>
-    @layer base {
-        :root {
-            --font-family: Menlo, Monaco, monospace, "Symbols Nerd Font";
-        }
+<Example
+    stylesheets={[pluginNf]}
+    html={`<span>I use &#xf36f; and <span id="rust"></span>, btw</span>`}
+    css={`@layer base {
+    :root {
+      --font-family: Menlo, Monaco, monospace, "Symbols Nerd Font";
     }
+}
 
-    #rust::before {
-        content: "\\e68b";
-    }
-</style>
-
-<span>I use &#xf36f; and <span id="rust"></span>, btw</span>
-```
+#rust::before {
+    content: "\\e68b"; 
+}`}
+/>

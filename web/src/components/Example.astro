@@ -1,6 +1,5 @@
 ---
 import webtuiBase from '@webtui/css/base.css?raw';
-import jetBrainsMono from '@/styles/jetbrainsmono.css?raw';
 
 import Dropdown from '@/components/ui/Dropdown.astro';
 import Tabs from '@/components/ui/Tabs.astro';
@@ -44,13 +43,11 @@ const cssCodePreHtml = css
 <head>
 <style>@layer base, utils, components;</style>
 <style>${webtuiBase}</style>
-<style>${jetBrainsMono}</style>
 ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).join("") : ""}
-${css ? `<style>${css}</style>` : ""}
 <style>
 @layer base {
   :root {
-    --font-family: "JetBrainsMonoNFM", Menlo, Monaco, monospace;
+    --font-family: Menlo, Monaco, monospace;
   }
 
   body {
@@ -58,6 +55,7 @@ ${css ? `<style>${css}</style>` : ""}
   }
 }
 </style>
+${css ? `<style>${css}</style>` : ""}
 </head>
 <body>${html}</body>
 </html>
