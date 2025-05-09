@@ -1,0 +1,23 @@
+{
+  "name": "@webtui/theme-everforest",
+  "version": "0.0.3",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "rm -rf dist && vite build",
+    "clean": "rm -rf dist .turbo",
+    "format:check": "bunx biome format src/**/*.css",
+    "format": "bunx biome format --write src/**/*.css",
+    "lint": "bunx biome check src/**/*.css",
+    "prepublishOnly": "bun run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/index.css"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

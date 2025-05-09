@@ -1,10 +1,10 @@
 ---
-import webtuiBase from '@webtui/css/base.css?raw';
+import webtuiBase from "@webtui/css/base.css?raw";
 
-import Dropdown from '@/components/ui/Dropdown.astro';
-import Tabs from '@/components/ui/Tabs.astro';
+import Dropdown from "@/components/ui/Dropdown.astro";
+import Tabs from "@/components/ui/Tabs.astro";
 
-import { getHighlighter } from 'shiki';
+import { createHighlighter } from "shiki";
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   html: string;
@@ -18,20 +18,20 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 
 const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
 
-const highlighter = await getHighlighter({
-  themes: ['catppuccin-mocha'],
-  langs: ['xml', 'css'],
+const highlighter = await createHighlighter({
+  themes: ["catppuccin-mocha"],
+  langs: ["xml", "css"],
 });
 const htmlCodePreHtml = highlighter.codeToHtml(html.trim(), {
-  lang: 'xml',
-  theme: 'catppuccin-mocha',
+  lang: "xml",
+  theme: "catppuccin-mocha",
 });
 const cssCodePreHtml = css
   ? highlighter.codeToHtml(css.trim(), {
-      lang: 'css',
-      theme: 'catppuccin-mocha',
+      lang: "css",
+      theme: "catppuccin-mocha",
     })
-  : '';
+  : "";
 ---
 
 <doc-example {...rest}>
@@ -39,7 +39,7 @@ const cssCodePreHtml = css
     <div id="content">
       <iframe
         id="preview"
-        srcdoc={`<html data-webtui-theme="${rest['data-initial-theme']}">
+        srcdoc={`<html data-webtui-theme="${rest["data-initial-theme"]}">
 <head>
 <style>@layer base, utils, components;</style>
 <style>${webtuiBase}</style>
@@ -87,7 +87,7 @@ ${css ? `<style>${css}</style>` : ""}
           dark: "Dark",
           light: "Light",
         }}
-        data-value={rest['data-initial-theme']}
+        data-value={rest["data-initial-theme"]}
         id="theme-dropdown"
         position="bottom baseline-right"
       />
