@@ -1,6 +1,6 @@
 {
   "name": "@webtui/theme-everforest",
-  "version": "0.0.3",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",

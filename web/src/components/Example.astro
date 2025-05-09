@@ -1,10 +1,10 @@
 ---
-import webtuiBase from "@webtui/css/base.css?raw";
+import webtuiBase from '@webtui/css/base.css?raw';
 
-import Dropdown from "@/components/ui/Dropdown.astro";
-import Tabs from "@/components/ui/Tabs.astro";
+import Dropdown from '@/components/ui/Dropdown.astro';
+import Tabs from '@/components/ui/Tabs.astro';
 
-import { createHighlighter } from "shiki";
+import { createHighlighter } from 'shiki';
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   html: string;
@@ -19,19 +19,19 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
 
 const highlighter = await createHighlighter({
-  themes: ["catppuccin-mocha"],
-  langs: ["xml", "css"],
+  themes: ['catppuccin-mocha'],
+  langs: ['xml', 'css'],
 });
 const htmlCodePreHtml = highlighter.codeToHtml(html.trim(), {
-  lang: "xml",
-  theme: "catppuccin-mocha",
+  lang: 'xml',
+  theme: 'catppuccin-mocha',
 });
 const cssCodePreHtml = css
   ? highlighter.codeToHtml(css.trim(), {
-      lang: "css",
-      theme: "catppuccin-mocha",
+      lang: 'css',
+      theme: 'catppuccin-mocha',
     })
-  : "";
+  : '';
 ---
 
 <doc-example {...rest}>

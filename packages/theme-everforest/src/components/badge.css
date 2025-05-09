@@ -31,18 +31,4 @@
       }
     }
   }
-
-  [data-webtui-theme|="everforest-dark"] {
-    [is-~="badge"][variant-="gray"] {
-      --badge-color: var(--gb-dark-gray);
-      --badge-text: var(--background0);
-    }
-  }
-
-  [data-webtui-theme|="everforest-light"] {
-    [is-~="badge"][variant-="gray"] {
-      --badge-color: var(--gb-light-gray);
-      --badge-text: var(--background0);
-    }
-  }
 }

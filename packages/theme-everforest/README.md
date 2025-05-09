@@ -55,20 +55,18 @@ Supports dark and light modes, each with hard, medium, and soft contrast levels.
 
 ```html
 <!-- Dark Variants -->
-<html data-webtui-theme="everforest-dark-hard">
-  <html data-webtui-theme="everforest-dark-medium">
-    <!-- Default: everforest-dark or everforest -->
-    <html data-webtui-theme="everforest-dark-soft">
-      <!-- Light Variants -->
-      <html data-webtui-theme="everforest-light-hard">
-        <html data-webtui-theme="everforest-light-medium">
-          <!-- Default: everforest-light -->
-          <html data-webtui-theme="everforest-light-soft"></html>
-        </html>
-      </html>
-    </html>
-  </html>
-</html>
+<html data-webtui-theme="everforest-dark-hard"></html>
+<!-- Default: everforest-dark or everforest -->
+<html data-webtui-theme="everforest-dark-medium"></html>
+
+<html data-webtui-theme="everforest-dark-soft"></html>
+
+<!-- Light Variants -->
+<html data-webtui-theme="everforest-light-hard"></html>
+
+<html data-webtui-theme="everforest-light-medium"></html>
+<!-- Default: everforest-light -->
+<html data-webtui-theme="everforest-light-soft"></html>
 ```
 
 ## Components
@@ -81,9 +79,9 @@ Components affected/modified by the theme:
 
 ### Typography
 
-- Colors headings from `h1` to `h6` using `var(--gb-green)`.
-- Inline `<a>` tags are underlined and colored `var(--gb-blue)`, changing to `var(--gb-aqua)` on hover.
-- Inline `<code>` tags are colored `var(--gb-orange)`.
+- Colors headings from `h1` to `h6` using `var(--ef-green)`.
+- Inline `<a>` tags are underlined and colored `var(--ef-blue)`, changing to `var(--ef-aqua)` on hover.
+- Inline `<code>` tags are colored `var(--ef-orange)`.
 
 ```html
 <h1>Heading 1</h1>
@@ -98,7 +96,6 @@ Components affected/modified by the theme:
 Adds additional variants to badges matching Everforest accent colors.
 
 ```html
-<span is-="badge" variant-="gray">gray</span>
 <span is-="badge" variant-="red">red</span>
 <!-- ... -->
 <span is-="badge" variant-="aqua">aqua</span>
@@ -110,7 +107,6 @@ Adds additional variants to badges matching Everforest accent colors.
 Adds additional variants to buttons matching Everforest accent colors.
 
 ```html
-<button variant-="gray">gray</button>
 <button variant-="red">red</button>
 <!-- ... -->
 <button variant-="aqua">aqua</button>
@@ -128,53 +124,53 @@ Raw color tokens and base semantic variables (`--background*`, `--foreground*`) 
   /* Common Dark Variables & Semantic Mapping */
   [data-webtui-theme|="everforest-dark"] {
     /* ... raw dark vars ... */
-    --gb-orange: #fe8019; /* Bright Orange */
+    --ef-orange: #fe8019; /* Bright Orange */
 
     /* Semantic Mapping (Dark) */
-    --background0: var(--gb-dark-bg0);
-    --background1: var(--gb-dark-bg1);
-    --background2: var(--gb-dark-bg2);
-    --background3: var(--gb-dark-bg3);
-    --foreground0: var(--gb-dark-fg1);
-    --foreground1: var(--gb-dark-fg2);
-    --foreground2: var(--gb-dark-fg3);
+    --background0: var(--ef-dark-bg0);
+    --background1: var(--ef-dark-bg1);
+    --background2: var(--ef-dark-bg2);
+    --background3: var(--ef-dark-bg3);
+    --foreground0: var(--ef-dark-fg1);
+    --foreground1: var(--ef-dark-fg2);
+    --foreground2: var(--ef-dark-fg3);
   }
 
   /* Dark Contrast Specific bg0 */
   [data-webtui-theme="everforest-dark-hard"] {
-    --gb-dark-bg0: #1d2021;
+    --ef-dark-bg0: #1d2021;
   }
   [data-webtui-theme="everforest-dark-medium"] {
-    --gb-dark-bg0: #282828;
+    --ef-dark-bg0: #282828;
   }
   [data-webtui-theme="everforest-dark-soft"] {
-    --gb-dark-bg0: #32302f;
+    --ef-dark-bg0: #32302f;
   }
 
   /* Common Light Variables & Semantic Mapping */
   [data-webtui-theme|="everforest-light"] {
     /* ... raw light vars ... */
-    --gb-orange: #d65d0e; /* Standard/Faded Orange */
+    --ef-orange: #d65d0e; /* Standard/Faded Orange */
 
     /* Semantic Mapping (Light) */
-    --background0: var(--gb-light-bg0);
-    --background1: var(--gb-light-bg1);
-    --background2: var(--gb-light-bg2);
-    --background3: var(--gb-light-bg3);
-    --foreground0: var(--gb-light-fg1);
-    --foreground1: var(--gb-light-fg2);
-    --foreground2: var(--gb-light-fg3);
+    --background0: var(--ef-light-bg0);
+    --background1: var(--ef-light-bg1);
+    --background2: var(--ef-light-bg2);
+    --background3: var(--ef-light-bg3);
+    --foreground0: var(--ef-light-fg1);
+    --foreground1: var(--ef-light-fg2);
+    --foreground2: var(--ef-light-fg3);
   }
 
   /* Light Contrast Specific bg0 */
   [data-webtui-theme="everforest-light-hard"] {
-    --gb-light-bg0: #f9f5d7;
+    --ef-light-bg0: #f9f5d7;
   }
   [data-webtui-theme="everforest-light-medium"] {
-    --gb-light-bg0: #fbf1c7;
+    --ef-light-bg0: #fbf1c7;
   }
   [data-webtui-theme="everforest-light-soft"] {
-    --gb-light-bg0: #f2e5bc;
+    --ef-light-bg0: #f2e5bc;
   }
 }
 ```

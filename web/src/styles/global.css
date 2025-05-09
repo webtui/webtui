@@ -11,8 +11,8 @@
 
 @layer base {
   :root {
-    --font-family:
-      "JetBrains Mono", Menlo, Monaco, monospace, "Symbols Nerd Font";
+    --font-family: "JetBrains Mono", Menlo, Monaco, monospace,
+      "Symbols Nerd Font";
     --font-size: 18px;
     --line-height: 1.4;
   }
