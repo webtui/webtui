@@ -5,11 +5,10 @@ import { getCollection } from 'astro:content';
 // if a category is not included in the array, it will be moved to the end
 export const categoryOrder = [
   'start',
-  'utils',
+  'installation',
   'components',
   'plugins',
   'guides',
-  'reference',
 ];
 
 export const docPages = await getCollection('docs');
