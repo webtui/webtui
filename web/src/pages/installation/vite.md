@@ -1,6 +1,6 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: CSS Imports
+title: Vite
 order: 2
 ---
 
