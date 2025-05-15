@@ -11,13 +11,13 @@ export const categoryOrder = [
   'contributing',
 ];
 
-export const categoryLabels: Record<typeof categoryOrder[number], string> = {
-  start: "\uf024 Start",
-  installation: "\uf019 Installation",
-  components: "\uf121 Components",
-  plugins: "󰐱 Plugins",
-  contributing: "\uf407 Contributing",
-}
+export const categoryLabels: Record<(typeof categoryOrder)[number], string> = {
+  start: '\uf024 Start',
+  installation: '\uf019 Installation',
+  components: '\uf121 Components',
+  plugins: '󰐱 Plugins',
+  contributing: '\uf407 Contributing',
+};
 
 export const docPages = await getCollection('docs');
 
