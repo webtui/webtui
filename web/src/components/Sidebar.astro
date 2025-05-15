@@ -1,6 +1,6 @@
 ---
 import { compareUrlPaths } from '@/utils/url';
-import { makeSortedCategoryEntries } from '@/utils/content';
+import { makeSortedCategoryEntries, categoryLabels } from '@/utils/content';
 
 const categories = makeSortedCategoryEntries();
 
@@ -14,7 +14,7 @@ const { pathname: urlPath } = Astro.url;
       {
         categories.map(([slug, pages]) => (
           <details open>
-            <summary>{slug}</summary>
+            <summary>{categoryLabels[slug]}</summary>
             <ul>
               {pages.map(({ id, data: { title } }) => (
                 <a
@@ -47,7 +47,6 @@ const { pathname: urlPath } = Astro.url;
   #sidebar {
     display: flex;
     flex-direction: column;
-    gap: 1lh;
     overflow: hidden;
     flex-grow: 1;
     --box-border-color: var(--background1);
@@ -59,6 +58,7 @@ const { pathname: urlPath } = Astro.url;
     #category-container {
       position: relative;
       flex-grow: 1;
+      margin-top: 1lh;
     }
 
     #category-list {
@@ -104,8 +104,29 @@ const { pathname: urlPath } = Astro.url;
     --box-border-color: var(--foreground2);
   }
 
-  details summary:hover, details summary:focus {
-    background-color: var(--background1);
+  details {
+    ul {
+      padding-left: 2ch;
+    }
+
+    summary {
+      &::marker {
+        color: var(--foreground2);
+        content: "\eab6\ ";
+      }
+
+      &:hover, &:focus {
+        background-color: var(--background1);
+      }
+    }
+
+    &[open] {
+      summary {
+        &::marker {
+          content: "\eab4\ "
+        }
+      }
+    }
   }
 
   details[open] a.hidden,
