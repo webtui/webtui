@@ -1,6 +1,6 @@
 ---
 layout: "@/layouts/Doc.astro"
-title: "\ueafc Changelog"
+title: "Changelog"
 ---
 
 ## 0.0.5

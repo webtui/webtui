@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
-import Email from '@/components/examples/Email.astro';
 import Tabs from '@/components/ui/Tabs.astro';
 import Dropdown from '@/components/ui/Dropdown.astro';
+
+import Email from '@/components/examples/Email.astro';
+import Auth from '@/components/examples/Auth/Auth.astro';
 
 const themes = {
   'catppuccin-mocha': 'Catppuccin Mocha',
@@ -26,8 +28,8 @@ const themes = {
   <!-- Stupid workaround because I can't figure out how to make popover contents appear above box- elements that appear after it -->
   <column style="flex-direction: column-reverse;">
     <div id="tab-contents">
-      <div data-tab="email" class="active"><Email /></div>
-      <div data-tab="auth">[Auth example coming soon]</div>
+      <div data-tab="email"><Email /></div>
+      <div data-tab="auth" class="active"><Auth /></div>
       <div data-tab="ecommerce">[Ecommerce example Coming Soon]</div>
       <div data-tab="ai">[AI Chat example Coming Soon]</div>
       <div data-tab="all">[All Components example Coming Soon]</div>

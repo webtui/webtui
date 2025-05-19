@@ -1,0 +1,80 @@
+@layer components {
+  @property --separator-width {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 2px;
+  }
+
+  [is-~="separator"] {
+    display: inline-flex;
+    background-color: var(--separator-color);
+
+    &::before,
+    &::after {
+      content: "";
+      display: inline-block;
+      background-color: var(--separator-background);
+      position: absolute;
+    }
+
+    &[direction-="horizontal"],
+    &[direction-="x"] {
+      height: 1lh;
+      position: relative;
+
+      &::before,
+      &::after {
+        height: calc(0.5lh - (var(--separator-width) / 2));
+        left: 0;
+        right: 0;
+        width: 100%;
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+    }
+
+    &[direction-="vertical"],
+    &[direction-="y"] {
+      width: 1ch;
+      position: relative;
+
+      &::before,
+      &::after {
+        width: calc(0.5ch - (var(--separator-width) / 2));
+        top: 0;
+        bottom: 0;
+        height: 100%;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+
+    &[variant-="foreground0"],
+    &:not([variant-]) {
+      --separator-color: var(--foreground0);
+      --separator-background: var(--background0);
+    }
+
+    &[variant-="foreground1"] {
+      --separator-color: var(--foreground1);
+      --separator-background: var(--background0);
+    }
+
+    &[variant-="foreground2"] {
+      --separator-color: var(--foreground2);
+      --separator-background: var(--background0);
+    }
+  }
+}

@@ -18,7 +18,7 @@
 
     /* Color Variants */
     &[variant-="foreground0"],
-    &:not([variant]) {
+    &:not([variant-]) {
       --badge-color: var(--foreground0);
       --badge-text: var(--background0);
     }

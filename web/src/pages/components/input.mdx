@@ -6,6 +6,7 @@ title: Input
 import Example from '@/components/Example.astro';
 import inputStyle from '@webtui/css/components/input.css?raw';
 import boxStyle from '@webtui/css/utils/box.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
 
 Displays an input
 
@@ -53,11 +54,12 @@ body {
 
 The `box-` utility cannot be used directly on an `<input>` element because inputs don't support pseudo-elements
 
-Instead, wrap an `<input>` with a `<div box-="*">` or use a `contenteditable` element
+Instead, wrap an `<input>` with a `<label box-="*">` or use a `contenteditable` element
 
 <Example 
     stylesheets={[
         inputStyle, 
+        badgeStyle,
         boxStyle, 
     ]}
 css={`
@@ -73,11 +75,12 @@ body {
     display: flex;
 }`}
 html={`
-<div class="row">
-    <div box-="round">
-        <input placeholder="wrapped input" />
+<label box-="round contain:!top">
+    <div clas="row">
+        <span is-="badge" variant-="background0">Username</span>
     </div>
-</div>
+    <input placeholder="johndoe123" />
+</label>
 <div contenteditable box-="round">
     content editable div
 </div>`}
