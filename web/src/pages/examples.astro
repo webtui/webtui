@@ -6,6 +6,9 @@ import Dropdown from '@/components/ui/Dropdown.astro';
 
 import Email from '@/components/examples/Email.astro';
 import Auth from '@/components/examples/Auth/Auth.astro';
+import Ecommerce from '@/components/examples/Ecommerce/Ecommerce.astro';
+
+import '@/styles/themes/terminaldotshop.css';
 
 const themes = {
   'catppuccin-mocha': 'Catppuccin Mocha',
@@ -20,6 +23,7 @@ const themes = {
   'gruvbox-light-hard': 'Gruvbox Light Hard',
   'gruvbox-light-medium': 'Gruvbox Light Medium',
   'gruvbox-light-soft': 'Gruvbox Light Soft',
+  'terminaldotshop': 'terminal.shop',
   nord: 'Nord',
 };
 ---
@@ -28,9 +32,9 @@ const themes = {
   <!-- Stupid workaround because I can't figure out how to make popover contents appear above box- elements that appear after it -->
   <column style="flex-direction: column-reverse;">
     <div id="tab-contents">
-      <div data-tab="email" class="active"><Email /></div>
+      <div data-tab="email"><Email /></div>
       <div data-tab="auth"><Auth /></div>
-      <div data-tab="ecommerce">[Ecommerce example Coming Soon]</div>
+      <div data-tab="ecommerce" class="active"><Ecommerce /></div>
       <div data-tab="ai">[AI Chat example Coming Soon]</div>
       <div data-tab="all">[All Components example Coming Soon]</div>
     </div>

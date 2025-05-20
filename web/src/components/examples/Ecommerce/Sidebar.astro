@@ -1,0 +1,24 @@
+<column id="sidebar" gap-="1" self-="!shrink">
+  <column>
+    <span is-="badge" variant-="background0">~ featured ~</span>
+    <button size-="small" variant-="flow">flow</button>
+    <button size-="small" variant-="cron">cron</button>
+  </column>
+  <column>
+    <span is-="badge" variant-="background0">~ originals ~</span>
+    <button size-="small" variant-="artisan">artisan</button>
+    <button size-="small" variant-="object-object">[object Object]</button>
+    <button size-="small" variant-="segfault">segfault</button>
+    <button size-="small" variant-="dark-mode">dark mode</button>
+    <button size-="small" variant-="404">404</button>
+  </column>
+</column>
+
+<style is:global>
+  button {
+    --button-primary: var(--background0);
+    --button-secondary: var(--foreground0);
+    text-align: left;
+    justify-content: flex-start;
+  }
+</style>

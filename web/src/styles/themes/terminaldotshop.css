@@ -1,0 +1,65 @@
+@layer base {
+  [data-webtui-theme="terminaldotshop"] {
+    --background: #000000;
+    --border: #3A3F42;
+    --accent: #FFFFFF;
+    --body: #889096;
+
+    --brand: #FF5C00;
+    --cron: #00FDFF;
+    --artisan: #FF5F5F;
+    --object-object: #FFAF00;
+    --segfault: #00AFAF;
+    --dark-mode: #00875F;
+    --404: #D75F87;
+
+    --background0: #000000;
+    --background1: #151719;
+    --background2: #191C1E;
+    --background3: #222628;
+    --foreground0: #FFFFFF;
+    --foreground1: #A7ACB3;
+    --foreground2: #737A82;
+  }
+}
+
+@layer components {
+  [data-webtui-theme="terminaldotshop"] {
+    [is-~="badge"] {
+      &[variant-="brand"] {
+        --badge-color: var(--brand);
+        --badge-text: var(--accent);
+      }
+
+      &[variant-="artisan"] {
+        --badge-color: var(--artisan);
+        --badge-text: var(--accent);
+      }
+
+      &[variant-="object-object"] {
+        --badge-color: var(--object-object);
+        --badge-text: var(--accent);
+      }
+
+      &[variant-="segfault"] {
+        --badge-color: var(--segfault);
+        --badge-text: var(--accent);
+      }
+
+      &[variant-="dark-mode"] {
+        --badge-color: var(--dark-mode);
+        --badge-text: var(--accent);
+      }
+
+      &[variant-="404"] {
+        --badge-color: var(--404);
+        --badge-text: var(--accent);
+      }
+
+      &[variant-="cron"] {
+        --badge-color: var(--cron);
+        --badge-text: var(--background0);
+      }
+    }
+  }
+}

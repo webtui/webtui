@@ -49,7 +49,7 @@
     }
 
     &[variant-="foreground0"],
-    &:not([variant]) {
+    &:not([variant-]) {
       --button-primary: var(--foreground0);
       --button-secondary: var(--background0);
     }
