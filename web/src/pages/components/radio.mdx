@@ -1,0 +1,99 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Radio
+---
+
+import Example from '@/components/Example.astro';
+import radioStyle from '@webtui/css/components/radio.css?raw';
+
+Displays a radio input styled like a terminal UI radio
+
+<Example 
+    stylesheets={[
+        radioStyle, 
+    ]}
+html={`
+<label>
+    <input type="radio" name="choice" />
+    Option
+</label>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/radio.css";
+````
+
+## Usage
+
+```html
+<label>
+    <input type="radio" name="choice" />
+    Option
+</label>
+```
+
+## Examples
+
+### Checked/Unchecked
+
+<Example
+    stylesheets={[
+        radioStyle,
+    ]}
+html={`
+<label>
+    <input type="radio" name="r" /> 
+    Unchecked 
+</label>
+<label>
+    <input type="radio" name="r" checked /> 
+    Checked 
+</label>
+`}
+/>
+
+
+### Disabled
+
+<Example
+    stylesheets={[
+        radioStyle,
+    ]}
+html={`
+<label>
+    <input type="radio" name="r2" disabled />
+    Disabled
+</label>
+<label>
+    <input type="radio" name="r2" checked disabled /> 
+    Checked Disabled
+</label>
+`}
+/>
+
+## Reference
+
+### Extending
+
+To extend the Radio stylesheet, define a CSS rule on the `components` layer:
+
+```css
+@layer components {
+  input[type="radio"] {
+    /* ... */
+  }
+}
+```
+
+### Scope
+
+* All native `<input type="radio">` elements
+
+```css
+input[type="radio"] {
+  /* ... */
+}
+```
