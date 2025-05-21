@@ -3,6 +3,11 @@ layout: "@/layouts/Doc.astro"
 title: "Changelog"
 ---
 
+## 0.0.6
+
+- Added the Separator Component
+- Added the Radio Component
+
 ## 0.0.5
 
 - Fixed black lines between badges
