@@ -1,0 +1,87 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Textarea
+---
+
+import Example from '@/components/Example.astro';
+import textareaStyle from '@webtui/css/components/textarea.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+
+Displays a textarea.
+
+<Example 
+    stylesheets={[
+        textareaStyle, 
+    ]}
+    html={`<textarea placeholder="Type something..."></textarea>`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/textarea.css";
+````
+
+## Usage
+
+```html
+<textarea></textarea>
+```
+
+## Examples
+
+### Sizing
+
+<Example
+stylesheets={[
+textareaStyle,
+]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5lh;
+}`}
+html={`
+
+<textarea size-="small" placeholder="Small textarea"></textarea>
+
+<textarea placeholder="Default textarea"></textarea>
+
+<textarea size-="large" placeholder="Large textarea"></textarea>
+
+`}
+/>
+
+## Reference
+
+### Extending
+
+To customize textarea styles, extend the component using `@layer components`:
+
+```css
+@layer components {
+    textarea,
+    [is-~="textarea"] {
+        &[size-="thicc"] {
+            min-height: 6lh;
+            padding: 2lh 4ch;
+        }
+
+        /* Add more custom styles here */
+    }
+}
+```
+
+### Scope
+
+* All native `<textarea>` elements
+* Any element with `is-~="textarea"`
+
+```css
+textarea,
+[is-~="textarea"] {
+  /* ... */
+}
+```
