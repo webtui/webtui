@@ -1,0 +1,103 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Separator
+---
+
+import Example from '@/components/Example.astro';
+import separatorStyle from '@webtui/css/components/separator.css?raw';
+
+A horizontal or vertical separator
+
+<Example 
+    stylesheets={[
+        separatorStyle,
+    ]}
+css={`#container {
+    display: flex;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}`}
+    html={`<div id="container">
+    <div class="column">
+        <p>The quick brown</p>
+        <div is-="separator" direction-="horizontal"></div>
+        <p>dog jumps over</p>
+    </div>
+    <div is-="separator" direction-="vertical"></div>
+    <p>the lazy fox</p>
+</div>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/separator.css";
+```
+
+## Usage
+
+```html
+<!-- Horizontal -->
+<div is-="separator"></div>
+<div is-="separator" direction-="horizontal"></div>
+<div is-="separator" direction-="x"></div>
+
+<!-- Vertical -->
+<div is-="separator" direction-="vertical"></div>
+<div is-="separator" direction-="y"></div>
+```
+
+If `direction-` is not specified, separators are horizontal by default
+
+## Reference
+
+### Properties
+
+Use the following custom CSS properties to style separators
+
+- `--separator-width`: The width of the separator line
+- `--separator-color`: The color of the separator line
+- `--separator-background`: The background color of the separator behind the line
+
+<Example 
+    stylesheets={[
+        separatorStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    flex-direction: column;
+}
+div[is-="separator"] {
+    --separator-width: 1px;
+    --separator-color: orange;
+    --separator-background: #444;
+}`}
+    html={`<p>The quick green dog</p>
+<div is-="separator"></div>
+<p>eats the lazy fox</p>`}
+/>
+
+### Extending
+
+To extend the Separator stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+  input[type="checkbox"] {
+    /* ... */
+  }
+}
+```
+
+### Scope
+
+- All elements with the `is-~="separator"` selector
+
+```css
+input[type="checkbox"] {
+  /* ... */
+}
+```
