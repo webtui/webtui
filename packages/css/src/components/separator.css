@@ -7,58 +7,34 @@
 
   [is-~="separator"] {
     display: inline-flex;
-    background-color: var(--separator-color);
 
-    &::before,
-    &::after {
-      content: "";
-      display: inline-block;
-      background-color: var(--separator-background);
-      position: absolute;
-    }
-
+    &[direction-="x"],
     &[direction-="horizontal"],
-    &[direction-="x"] {
+    &:not([direction-]) {
       height: 1lh;
-      position: relative;
-
-      &::before,
-      &::after {
-        height: calc(0.5lh - (var(--separator-width) / 2));
-        left: 0;
-        right: 0;
-        width: 100%;
-      }
-
-      &::before {
-        top: 0;
-      }
-
-      &::after {
-        bottom: 0;
-      }
+      background-image: linear-gradient(
+        0deg,
+        var(--separator-background) 0,
+        var(--separator-background) calc(0.5lh - var(--separator-width) / 2),
+        var(--separator-color) calc(0.5lh - (var(--separator-width) / 2)),
+        var(--separator-color) calc(0.5lh + (var(--separator-width) / 2)),
+        var(--separator-background) calc(0.5lh + (var(--separator-width) / 2)),
+        var(--separator-background)
+      );
     }
 
-    &[direction-="vertical"],
-    &[direction-="y"] {
+    &[direction-="y"],
+    &[direction-="vertical"] {
       width: 1ch;
-      position: relative;
-
-      &::before,
-      &::after {
-        width: calc(0.5ch - (var(--separator-width) / 2));
-        top: 0;
-        bottom: 0;
-        height: 100%;
-      }
-
-      &::before {
-        left: 0;
-      }
-
-      &::after {
-        right: 0;
-      }
+      background-image: linear-gradient(
+        to right,
+        var(--separator-background) 0,
+        var(--separator-background) calc(0.5ch - (var(--separator-width) / 2)),
+        var(--separator-color) calc(0.5ch - (var(--separator-width) / 2)),
+        var(--separator-color) calc(0.5ch + (var(--separator-width) / 2)),
+        var(--separator-background) calc(0.5ch + (var(--separator-width) / 2)),
+        var(--separator-background)
+      );
     }
 
     &[variant-="foreground0"],
