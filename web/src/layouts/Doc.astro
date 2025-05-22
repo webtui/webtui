@@ -53,7 +53,7 @@ if (headings.length > 0) {
       <div id="sidebar-container" class="mobile-hidden">
         <Sidebar />
       </div>
-      <article box-="square contain:!top">
+      <article box-="square" shear-="top">
         <header is-="row" align-="between">
           <div is-="badge" variant-="background0">
             <h1>{frontmatter.title}</h1>
@@ -69,7 +69,8 @@ if (headings.length > 0) {
                     <a
                       href={`/${prevDoc.id}`}
                       class="prev"
-                      box-="round contain:!top"
+                      box-="round"
+                      shear-="top"
                       tabindex="0"
                     >
                       <div is-="typography-block">
@@ -88,7 +89,8 @@ if (headings.length > 0) {
                     <a
                       href={`/${nextDoc.id}`}
                       class="next"
-                      box-="round contain:!top"
+                      box-="round"
+                      shear-="top"
                       tabindex="0"
                     >
                       <row align-="start end" is-="typography-block">

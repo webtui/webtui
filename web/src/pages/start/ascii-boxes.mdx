@@ -31,7 +31,7 @@ The `box-` utility utilizes CSS `::before` and `::after` pseudo-elements to mimi
     display: flex; 
     justify-content: flex-end; 
 }`}
-    html={`<div box-="square contain:none">
+    html={`<div box-="square" shear-="both">
     <div class="header">
         <span is-="badge" variant-="background0">top-left</span>
         <span is-="badge" variant-="background0">top-right</span>
@@ -70,7 +70,7 @@ Using `box="..."` **will not work**
 
 ## Examples
 
-### Box Border Types
+### Border Types
 
 <Example 
     stylesheets={[
@@ -80,12 +80,13 @@ Using `box="..."` **will not work**
 <div box-="square">Square</div>
 <div box-="round">Round</div>
 <div box-="double">Double</div>
+<div box-="double round">Double + Round</div>
 `}
 />
 
-### Containment
+### Shearing
 
-Choose whether to contain the top and/or bottom lines of the box
+Shearing off top/bottom padding allows overlaying content over the top and/or bottom edges of the box
 
 <Example 
     stylesheets={[
@@ -102,8 +103,8 @@ span {
     padding: 0 1ch;
 }`}
     html={`
-<!-- Do not contain the top row -->
-<div box-="square contain:!top">
+<!-- Shear off the top edge's padding -->
+<div box-="square" shear-="top">
     <div class="header">
         <span>Left</span>
         <span>Right</span>
@@ -111,8 +112,8 @@ span {
     Caption on Top
 </div>
 
-<!-- Do not contain the bottom row -->
-<div box-="square contain:!bottom">
+<!-- Shear off the bottom edge's padding -->
+<div box-="square" shear-="bottom">
     Caption on Bottom
     <div class="header">
         <span>Left</span>
@@ -120,8 +121,8 @@ span {
     </div>
 </div>
 
-<!-- Do not contain the top or bottom rows -->
-<div box-="square contain:none">
+<!-- Shear off the padding of both top & bottom edges -->
+<div box-="square" shear-="both">
     <div class="header">
         <span>Left</span>
         <span>Right</span>
@@ -135,72 +136,33 @@ span {
 `}
 />
 
-## Properties
+## Reference
 
-Elements with the `box-` attribute can be customized via **Custom CSS properties** [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@property)
+### Properties
 
-### `--box-border-color`
+- `--box-border-color`: The border color of the box
+- `--box-rounded-radius`: The border radius of `round` boxes
+- `--box-border-width`: The border width for `square` and `round` boxes
+- `--box-double-border-width`: The width of boxes with `double` borders
 
-The border color of the box
-
-- Syntax: `<color>`
-- Default Value: `var(--foreground0)`
-
-```html
-<style>
-  #my-box {
-    --box-border-color: red;
-  }
-</style>
-
-<div box-="square" id="my-box"></div>
+```css
+#my-box {
+    --box-border-color: cyan;
+    --box-rounded-radius: 8px;
+    --box-border-width: 1px;
+    --box-double-border-width: 1px;
+}
 ```
 
-### `--box-rounded-radius`
+### Extending
 
-The border radius of `round` boxes
+To extend the Box stylesheet, define a CSS rule on the `utils` layer
 
-- Syntax: `<length>`
-- Default Value: `4px`
-
-```html
-<style>
-  #my-box {
-    --box-rounded-radius: 10px;
-  }
-</style>
-
-<div box-="round" id="my-box"></div>
-```
-
-### `--box-border-width`
-
-The border width for `square` and `round` boxes
-
-- Syntax: `<length>`
-- Default Value: `2px`
-
-```html
-<style>
-  #my-box {
-    --box-border-width: 10px;
-  }
-</style>
-
-<div box-="square" id="my-box"></div>
-```
-
-### `--box-double-border-width`
-
-The width of boxes with `double` borders
-
-- Syntax: `<length>`
-- Default Value: `1px`
-
-```html
-<style>
-  #my-box {
-    --box-double-border-width: 10px;
-  }
-</style>
-```
+```css
+@layer utils {
+    [box-~="square"], 
+    [box-~="round"],
+    [box-~="double"] {
+        /* ... */
+    }
+}
