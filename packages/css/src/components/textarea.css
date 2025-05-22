@@ -9,7 +9,7 @@
     line-height: var(--line-height);
     outline: none;
     border: none;
-    resize: both;
+    resize: vertical;
     min-width: 24ch;
 
     &::placeholder {
