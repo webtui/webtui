@@ -53,7 +53,7 @@ const placeholderEmails = [
   </column>
 
   <!-- Mail Container -->
-  <column self-="grow !basis" box-="square" shear-="top">
+  <column self-="grow !basis" box-="square contain:!top">
     <row>
       <span is-="badge" variant-="background0">Mail</span>
     </row>
@@ -63,8 +63,7 @@ const placeholderEmails = [
           <column
             gap-="1"
             is-="typography-block"
-            box-="round"
-            shear-="both"
+            box-="round contain:none"
             class="mail-item"
           >
             <row align-="between">
@@ -95,7 +94,7 @@ const placeholderEmails = [
   </column>
 
   <!-- Mail Preview -->
-  <column self-="grow !basis" box-="square" shear-="top">
+  <column self-="grow !basis" box-="square contain:!top">
     <row>
       <span is-="badge" variant-="background0">Preview</span>
     </row>
