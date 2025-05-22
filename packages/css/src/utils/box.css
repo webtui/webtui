@@ -18,9 +18,9 @@
   }
 
   /* Requires `box-` to contain `square`, `round`, or `double` in order to work */
-  [box-~="square"],
-  [box-~="round"],
-  [box-~="double"] {
+  [box-="square"],
+  [box-="round"],
+  [box-="double"] {
     --box-border-color: var(--foreground0);
 
     position: relative;
@@ -40,7 +40,7 @@
     }
 
     /* Apply border radius to the inner and outer (if present) border */
-    &[box-~="round"] {
+    &[box-="round"] {
       &::before {
         border-radius: var(--box-rounded-radius);
       }
@@ -51,7 +51,7 @@
     }
 
     /* Adds the second border to the element */
-    &[box-~="double"] {
+    &[box-="double"] {
       &::before {
         border-width: var(--box-double-border-width);
       }
@@ -70,16 +70,16 @@
     }
 
     /* Containment Variants */
-    &[box-~="contain:none"] {
+    &[shear-="both"] {
       padding-top: 0;
       padding-bottom: 0;
     }
 
-    &[box-~="contain:!top"] {
+    &[shear-="top"] {
       padding-top: 0;
     }
 
-    &[box-~="contain:!bottom"] {
+    &[shear-="bottom"] {
       padding-bottom: 0;
     }
   }
