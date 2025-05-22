@@ -52,7 +52,7 @@ body {
 
 ### Box Borders
 
-The `box-` utility cannot be used directly on an `<input>` element because inputs don't support pseudo-elements
+The `box-` utility cannot be used directly on `<input>` elements because inputs don't support pseudo-elements
 
 Instead, wrap an `<input>` with a `<label box-="*">` or use a `contenteditable` element
 
@@ -62,7 +62,7 @@ Instead, wrap an `<input>` with a `<label box-="*">` or use a `contenteditable` 
         badgeStyle,
         boxStyle, 
     ]}
-css={`
+    css={`
 input {
     background-color: var(--background0);
 }
@@ -74,8 +74,7 @@ body {
 .row {
     display: flex;
 }`}
-html={`
-<label box-="round contain:!top">
+    html={`<label box-="round" shear-="top">
     <div clas="row">
         <span is-="badge" variant-="background0">Username</span>
     </div>
