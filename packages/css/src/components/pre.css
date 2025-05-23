@@ -1,0 +1,26 @@
+@layer components {
+  pre,
+  [is-~="pre"] {
+    background-color: var(--background1);
+    white-space: pre-wrap;
+    color: var(--foreground0);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
+    outline: none;
+    border: none;
+
+    &[size-="small"] {
+      padding: 0 0;
+    }
+
+    &:not([size-]) {
+      padding: 0 1ch;
+    }
+
+    &[size-="large"] {
+      padding: 1lh 1ch;
+    }
+  }
+}

@@ -57,7 +57,8 @@ const rehypeMarkdownTabIndex: Plugin<[], Root> = () => {
           type: 'element',
           tagName: 'div',
           properties: {
-            'box-': 'square contain:!top',
+            'box-': 'square',
+            'shear-': 'top',
             tabIndex: 0,
           },
           children: [figcaptionContainer, node],

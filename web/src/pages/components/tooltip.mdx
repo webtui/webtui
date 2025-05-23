@@ -1,0 +1,224 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Tooltip
+---
+
+import Example from '@/components/Example.astro';
+import tooltipStyle from '@webtui/css/components/tooltip.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+
+Displays information in a popup when a specified trigger is focused or hovered over
+
+<Example 
+    stylesheets={[
+        tooltipStyle, 
+buttonStyle,
+        badgeStyle
+    ]}
+css={`
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+[is-="tooltip-content"] {
+    background-color: var(--background1);
+    padding: 1lh 1ch;
+    width: 100%;
+}
+`}
+    html={`
+<div is-="tooltip">
+    <span is-="tooltip-trigger badge" variant-="background2">Hover me</span>
+    <div is-="tooltip-content">
+        <p>Tooltip content</p>
+    </div>
+</div>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/tooltip.css";
+```
+
+## Usage
+
+```html
+<div is-="tooltip">
+    <div is-="tooltip-trigger">Tooltip trigger</div>
+    <div is-="tooltip-content">
+        <p>Tooltip content</p>
+    </div>
+</div>
+```
+
+## Examples
+
+### Positioning
+
+<Example 
+    stylesheets={[
+        tooltipStyle, 
+        badgeStyle,
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    justify-content: center;
+    height: 100vh;
+}
+.row {
+    display: flex;
+    gap: 1ch;
+aling-items: center;
+    justify-content: center;
+}
+[is-="tooltip-content"] {
+    background-color: var(--background1);
+    padding: 1lh 1ch;
+}
+`}
+    html={`
+<div class="row">
+    <div is-="tooltip">
+        <div is-="tooltip-trigger badge" variant-="background2">BR ↘</div>
+        <div is-="tooltip-content" position-="bottom right">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+    <div is-="tooltip">
+        <div is-="tooltip-trigger badge" variant-="background2">BL ↙</div>
+        <div is-="tooltip-content" position-="bottom left">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div is-="tooltip">
+        <span is-="tooltip-trigger badge" variant-="background2">TR ↗</span>
+        <div is-="tooltip-content" position-="top right">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+    <div is-="tooltip">
+        <span is-="tooltip-trigger badge" variant-="background2">TL ↖</span>
+        <div is-="tooltip-content" position-="top left">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+</div>
+`}
+/>
+
+Use `baseline-*` values to position the content relative to the edges of the tooltip
+
+<Example 
+    stylesheets={[
+        tooltipStyle, 
+        badgeStyle,
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    justify-content: center;
+    height: 100vh;
+}
+.row {
+    display: flex;
+    gap: 1ch;
+aling-items: center;
+    justify-content: center;
+}
+[is-="tooltip-content"] {
+    background-color: var(--background1);
+    padding: 1lh 1ch;
+}
+`}
+    html={`
+<div class="row">
+    <div is-="tooltip">
+        <div is-="tooltip-trigger badge" variant-="background2">Bottom Baseline-Right</div>
+        <div is-="tooltip-content" position-="bottom baseline-right">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+    <div is-="tooltip">
+        <div is-="tooltip-trigger badge" variant-="background2">Bottom Baseline-Left</div>
+        <div is-="tooltip-content" position-="bottom baseline-left">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div is-="tooltip">
+        <span is-="tooltip-trigger badge" variant-="background2">Right Baseline-Top</span>
+        <div is-="tooltip-content" position-="right baseline-top">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+    <div is-="tooltip">
+        <span is-="tooltip-trigger badge" variant-="background2">Left Baseline-Top</span>
+        <div is-="tooltip-content" position-="left baseline-top">
+            <p>Tooltip content</p>
+        </div>
+    </div>
+</div>
+`}
+/>
+
+This image from the [Popover](/components/popover) page shows the values and positions that can be used in the `position-` property
+
+![popover-positioning.png](../../assets/popover-positioning.png)
+
+## Reference
+
+### Properties
+
+- `--tooltip-offset-x`: The horizontal offset of the tooltip
+- `--tooltip-offset-y`: The vertical offset of the tooltip
+- `--tooltip-delay`: The delay before the tooltip appears
+
+```css
+#my-custom-tooltip {
+    --tooltip-offset-x: 1ch;
+    --tooltip-offset-y: 1lh;
+    --tooltip-delay: 0.5s;
+}
+```
+
+### Extending
+
+To extend the Tooltip stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    [is-~="tooltip"] {
+        &[variant-="inverted"] {
+            /* ... */
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All elements with the `is-~="tooltip"` selector
+- Children of `is-="tooltip"` with the `is-~="tooltip-trigger"` selector
+- Children of `is-="tooltip"` with the `is-~="tooltip-content"` selector
+
+```css
+[is-~="tooltip"] { 
+    [is-~="tooltip-trigger"] { /* ... */ }
+    [is-~="tooltip-content"] { /* ... */ }
+}
+```

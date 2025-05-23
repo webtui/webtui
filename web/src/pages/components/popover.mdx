@@ -55,7 +55,7 @@ body {
     flex-direction: column;
     gap: 1lh;
     justify-content: center;
-height: 100vh;
+    height: 100vh;
 }
 .row {
     display: flex;
@@ -177,47 +177,6 @@ body {
 <p>This appears behind the backdrop</p>`}
 />
 
-### Offset
-
-<Example 
-    stylesheets={[
-        popoverStyle, 
-    ]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}
-.row {
-    display: flex;
-}
-details[is-="popover"] {
-    --popover-offset-x: 1ch;
-    --popover-offset-y: 1lh;
-}
-.popover-content {
-    background-color: var(--background1);
-    white-space: nowrap;
-    padding: 1lh 1ch;
-}
-`}
-html={`
-<div class="row">
-<details is-="popover" position-="bottom">
-    <summary>Click Me</summary>
-    <div class="popover-content">Offset y 1lh</div>
-</details>
-</div>
-<div class="row">
-<details is-="popover" position-="right baseline-top">
-    <summary>Click Me as well</summary>
-    <div class="popover-content">Offset x 1ch</div>
-</details>
-</div>
-`}
-/>
-
 ## Caveats
 
 Elements using the `box-` utility that appear **after** the popover in the html markup will appear above the popover content no matter what z-index you provide
@@ -257,7 +216,6 @@ As a workaround, you can set the `flex-direction` to `row-reverse` or `column-re
     </details>
 </div>
 ```
-
 
 ## Reference
 
