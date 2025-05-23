@@ -1,0 +1,83 @@
+@layer components {
+  @property --table-border-width {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 2px;
+  }
+
+  table {
+    --table-border-color: var(--foreground0);
+
+    border: none;
+    outline: none;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
+    text-align: left;
+    position: relative;
+    border-spacing: 0 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: calc(0.5lh - (var(--table-border-width) / 2));
+      left: calc(0.5ch - (var(--table-border-width) / 2));
+      width: calc(100% - 1ch - var(--table-border-width));
+      height: calc(100% - 1lh - var(--table-border-width));
+      border: solid var(--table-border-width) var(--table-border-color);
+    }
+
+    tr {
+      &:first-of-type td,
+      &:first-of-type th {
+        padding-top: 1lh;
+      }
+
+      th {
+        font-weight: var(--font-weight-bold);
+      }
+
+      th,
+      td {
+        &:first-of-type {
+          padding-left: 1ch;
+        }
+
+        position: relative;
+        padding-right: 1ch;
+        padding-bottom: 1lh;
+
+        &::before {
+          content: "";
+          position: absolute;
+          right: calc(0.5ch - var(--table-border-width) / 2);
+          bottom: calc(0.5lh - var(--table-border-width) / 2);
+          border-left: solid var(--table-border-width) var(--table-border-color);
+          height: 2lh;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: calc(0.5ch + var(--table-border-width) / 2);
+          bottom: calc(0.5lh - var(--table-border-width) / 2);
+          width: 100%;
+          border-top: solid var(--table-border-width) var(--table-border-color);
+        }
+
+        &:last-of-type::after {
+          width: calc(100% - 1ch);
+        }
+      }
+    }
+
+    thead + tbody tr,
+    tbody + tfoot tr {
+      &:first-of-type td,
+      &:first-of-type th {
+        padding-top: 0;
+      }
+    }
+  }
+}
