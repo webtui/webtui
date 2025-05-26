@@ -1,0 +1,258 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Dialog
+---
+
+import Example from '@/components/Example.astro';
+import dialogStyle from '@webtui/css/components/dialog.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+
+A dialog
+
+<Example 
+    stylesheets={[
+        dialogStyle, 
+        boxStyle, 
+        buttonStyle,
+    ]}
+css={`dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    padding: 2lh 2ch 1lh 2ch;
+    background-color: var(--background1);
+}
+#buttons {
+    display: flex;
+    gap: 1ch;
+    justify-content: flex-end;
+}`}
+html={`<dialog id="dialog" popover>
+    <div box-="round" id="content">
+        <p>Are you sure you want to delete this?</p>
+        <div id="buttons">
+            <button box-="round">Cancel</button>
+            <button box-="round">Delete</button>
+        </div>
+    </div>
+</dialog>
+<button popovertarget="dialog">Open Dialog</button>`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/dialog.css";
+```
+
+## Usage
+
+```html
+<dialog>
+    <div>Dialog content</div>
+</dialog>
+```
+
+See the [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog) on how to show and hide `<dialog>` elements
+
+## Examples
+
+### Positioning
+
+Use the `position-` property to control the position of the dialog
+
+Pass two values into `position-` to set the horizontal and vertical position anchor
+
+```html
+<dialog position-="<anchor>"></dialog>
+<dialog position-="<x-anchor> <y-anchor>"></dialog>
+
+<dialog position-="center"></dialog>
+<dialog position-="start end"></dialog>
+```
+
+<Example 
+    stylesheets={[
+        dialogStyle, 
+        boxStyle, 
+        buttonStyle,
+    ]}
+css={`
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+dialog {
+    padding: 1lh 2ch;
+    background-color: var(--background1);
+}
+.row {
+    display: flex;
+    gap: 1ch;
+}
+`}
+html={`<div class="row">
+    <dialog id="start" position-="start" popover>start</dialog>
+    <button popovertarget="start">start</button>
+
+    <dialog id="center-start" position-="center start" popover>end start</dialog>
+    <button popovertarget="center-start">center start</button>
+
+    <dialog id="end-start" position-="end start" popover>end start</dialog>
+    <button popovertarget="end-start">end start</button>
+</div>
+
+<div class="row">
+    <dialog id="start-center" position-="start center" popover>start center</dialog>
+    <button popovertarget="start-center">start center</button>
+
+    <dialog id="center" position-="center" popover>center</dialog>
+    <button popovertarget="center">center</button>
+
+    <dialog id="end-center" position-="end center" popover>end center</dialog>
+    <button popovertarget="end-center">end center</button>
+</div>
+
+<div class="row">
+    <dialog id="start-end" position-="start end" popover>start end</dialog>
+    <button popovertarget="start-end">start end</button>
+
+    <dialog id="center-end" position-="center end" popover>center end</dialog>
+    <button popovertarget="center-end">center end</button>
+
+    <dialog id="end" position-="end" popover>end</dialog>
+    <button popovertarget="end">end</button>
+</div>`}
+/>
+
+### Container
+
+Use the `container-` property to control the container sizing behavior
+
+<Example 
+    stylesheets={[
+        dialogStyle, 
+        buttonStyle,
+    ]}
+css={`
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+dialog {
+    padding: 1lh 2ch;
+    background-color: var(--background1);
+}
+`}
+html={`<div class="row">
+    <dialog id="auto" container-="auto" popover>auto</dialog>
+    <button popovertarget="auto">auto</button>
+
+    <dialog id="fill" container-="fill" popover>fill</dialog>
+    <button popovertarget="fill">fill</button>
+</div>`}
+/>
+
+### Sizing
+
+Use the `size-` property to control the max size of the dialog
+
+<Example 
+    stylesheets={[
+        dialogStyle, 
+        boxStyle, 
+        buttonStyle,
+    ]}
+css={`
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+dialog {
+    padding: 1lh 2ch;
+    background-color: var(--background1);
+}
+`}
+html={`<div class="row">
+    <dialog id="small" size-="small" container-="fill" popover>small</dialog>
+    <button popovertarget="small">small</button>
+
+    <dialog id="default" container-="fill" popover>default</dialog>
+    <button popovertarget="default">default</button>
+
+    <dialog id="full" size-="full" container-="fill" popover>full (esc to close)</dialog>
+    <button popovertarget="full">full</button>
+</div>`}
+/>
+
+### Offset
+
+Use the `--dialog-offset-x` and `--dialog-offset-y` CSS properties to control the offset of the dialog
+
+<Example 
+    stylesheets={[
+        dialogStyle, 
+        buttonStyle,
+    ]}
+css={`
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+dialog {
+    padding: 1lh 2ch;
+    background-color: var(--background1);
+}
+#offset {
+    --dialog-offset-x: 2ch;
+    --dialog-offset-y: 2lh;
+}
+`}
+html={`<div class="row">
+    <dialog id="full" size-="full" container-="fill" popover>no offsets (esc to close)</dialog>
+    <button popovertarget="full">no offsets</button>
+
+    <dialog id="offset" size-="full" container-="fill" popover>offsets (esc or click on backdrop to close)</dialog>
+    <button popovertarget="offset">offsets</button>
+</div>`}
+/>
+
+## Reference
+
+### Properties
+
+- `--dialog-offset-x`: The horizontal offset of the dialog
+- `--dialog-offset-y`: The vertical offset of the dialog
+- `--dialog-max-width`: The maximum width of the dialog
+- `--dialog-max-height`: The maximum height of the dialog
+
+```css
+#my-custom-dialog {
+    --dialog-offset-x: 1ch;
+    --dialog-offset-y: 1lh;
+}
+```
+
+The `--dialog-max-width` and `--dialog-max-height` CSS properties are automatically controlled by the `size-` variant but can be overridden
+
+### Extending
+
+To extend the Dialog stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    dialog {
+        &[size-="tiny"] {
+            /* ... */
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+```css
+dialog { /* ... */ }
+```

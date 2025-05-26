@@ -45,6 +45,18 @@ div {
 
 ### Positioning
 
+Use the `position-` property to control the position of the popover
+
+Pass two values into `position-` to set the horizontal and vertical position anchor
+
+```html
+<details is-="popover" position-="<anchor>"></details>
+<details is-="popover" position-="<x-anchor> <y-anchor>"></details>
+
+<details is-="popover" position-="center"></details>
+<details is-="popover" position-="start end"></details>
+```
+
 <Example 
     stylesheets={[
         popoverStyle, 
