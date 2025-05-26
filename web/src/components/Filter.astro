@@ -27,8 +27,8 @@ const docHeadings = docPages
   );
 ---
 
-<dialog id="search-dialog">
-  <div box-="round contain:!top" id="search-content">
+<dialog id="search-dialog" size-="small" position-="center" sizing-="fill">
+  <div box-="round" shear-="top" id="search-content">
     <row align-="between">
       <span is-="badge" variant-="background0">&#xea6d; Search</span>
       <button id="close-btn" variant-="foreground0" size-="small">x</button>
@@ -65,18 +65,7 @@ const docHeadings = docPages
 
 <style>
   #search-dialog {
-    background-color: var(--background0);
-    color: var(--foreground0);
-    border: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    max-height: 20lh;
-    max-width: 48ch;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
 
     &::backdrop {
       backdrop-filter: grayscale(100%);
@@ -281,5 +270,9 @@ const docHeadings = docPages
 
   document.getElementById("close-btn")?.addEventListener("click", () => {
     searchDialog.close();
+  });
+
+  searchDialog.addEventListener("click", (e) => {
+    if (e.target === searchDialog) searchDialog.close();
   });
 </script>

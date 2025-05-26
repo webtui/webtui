@@ -3,9 +3,11 @@
   [is-~="button"] {
     --button-primary: var(--foreground0);
     --button-secondary: var(--background0);
+    --mapped-primary: var(--button-primary);
+    --mapped-secondary: var(--button-secondary);
 
-    color: var(--button-secondary);
-    background-color: var(--button-primary);
+    color: var(--mapped-secondary);
+    background-color: var(--mapped-primary);
     font-family: var(--font-family);
     font-size: var(--font-size);
     line-height: var(--line-height);
@@ -14,13 +16,12 @@
     justify-content: center;
     border: none;
     padding: 0 2ch;
-    height: 3lh;
     outline: none;
 
     &[box-] {
-      color: var(--button-primary);
+      color: var(--mapped-primary);
       background-color: transparent;
-      --box-border-color: var(--button-primary);
+      --box-border-color: var(--mapped-primary);
     }
 
     &:focus {
@@ -29,13 +30,8 @@
     }
 
     &:active {
-      color: var(--button-primary);
-      background-color: var(--button-secondary);
-
-      &[box-] {
-        --box-border-color: var(--button-secondary);
-        background-color: transparent;
-      }
+      --mapped-primary: var(--mapped-secondary);
+      --mapped-secondary: var(--mapped-primary);
     }
 
     &:disabled {
@@ -46,6 +42,26 @@
     &[size-="small"] {
       padding: 0 1ch;
       height: 1lh;
+    }
+
+    &:not([size-]):not([box-]),
+    &[size-="default"]:not([box-]) {
+      background-color: transparent;
+      background-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 0.5lh,
+        var(--mapped-primary) 0.5lh,
+        var(--mapped-primary) calc(100% - 0.5lh),
+        transparent calc(100% - 0.5lh),
+        transparent
+      );
+    }
+
+    &[size-="large"],
+    &[size-="default"],
+    &:not([size-]) {
+      height: 3lh;
     }
 
     &[variant-="foreground0"],

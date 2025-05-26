@@ -1,0 +1,112 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Table
+---
+
+import Example from '@/components/Example.astro';
+import tableStyle from '@webtui/css/components/table.css?raw';
+
+Displays a table
+
+<Example 
+    stylesheets={[
+        tableStyle,
+    ]}
+    html={`<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John</td>
+            <td>25</td>
+            <td>USA</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>30</td>
+            <td>Canada</td>
+        </tr>
+    </tbody>
+</table>`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/table.css";
+```
+
+## Usage
+
+```html
+<table>
+    <thead>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+        ...
+    </tbody>
+</table>
+```
+
+## Caveats
+
+The `<caption>` element absolutely obliterates the ascii box-like styling
+
+## Reference
+
+### Properties
+
+- `--table-border-width`: The width of the table borders
+- `--table-border-color`: The color of the table borders
+
+```css
+table {
+    --table-border-width: 1px;
+    --table-border-color: var(--foreground2);
+}
+```
+
+### Extending
+
+To extend the Table stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    table {
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All `<table>` elements 
+- All `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, and `<td>` elements that are children of a `<table>`
+
+```css
+table {
+    thead, tbody, tfoot {
+        /* ... */
+    }
+
+    tr {
+        th { /* ... */ }
+        td { /* ... */ }
+    }
+}
+```

@@ -1,0 +1,84 @@
+---
+layout: "@/layouts/Doc.astro"
+title: "Changelog"
+---
+
+import Example from '@/components/Example.astro';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+
+## 0.1.0
+
+- Removed the `contain:*` keyword from the `box-` utility property in favor of `shear-`
+- Adds the [pre Component](/components/pre)
+- Adds the [Tooltip Component](/components/tooltip)
+- Adds the [Table Component](/components/table)
+- Adds a half-block height variants to [Buttons](/components/button) so they don't appear so tall
+
+### Migration Guide from 0.0.x
+
+#### Box Containment
+
+In versions prior to 0.1.0, a second keyword was added to the `box-` utility property to control whether the box should pad the top and/or bottom lines
+
+```html
+<div box-="square contain:!top"></div>
+<div box-="square contain:!bottom"></div>
+<div box-="square contain:none"></div>
+```
+
+This has been replaced with the `shear-` property
+
+```html
+<div box-="square" shear-="top"></div>
+<div box-="square" shear-="bottom"></div>
+<div box-="square" shear-="both"></div>
+```
+
+Since the selector for `box-` no longer allows more than one keyword, most elements using the `box-` utility will be affected by this change
+
+#### Button Variants
+
+The default button variant has been changed to make the button shorter
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1ch;
+}`}
+    html={`<button size-="large">Large (old default)</button>
+<button>Default</button>
+<button size-="small">Small</button>
+`}
+/>
+
+The `default` button variant is still three lines tall but appears to be shorter as its background doesn't take up the full height of three lines
+
+## 0.0.6
+
+- Added the Separator Component
+- Added the Radio Component
+
+## 0.0.5
+
+- Fixed black lines between badges
+- Split out nerd font plugin to only provide the font
+
+## 0.0.4
+
+- Introduced Checkbox Component
+
+## 0.0.3
+
+- Introduced Popover Component
+
+## 0.0.2
+
+- Introduced Dynamic Theme Approach
+
+## 0.0.1
+
+- Initial Release

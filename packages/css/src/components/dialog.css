@@ -1,0 +1,121 @@
+@layer components {
+  @property --dialog-offset-x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --dialog-offset-y {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --dialog-max-width {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 48ch;
+  }
+
+  @property --dialog-max-height {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 24lh;
+  }
+
+  dialog {
+    --dialog-offset-top: auto;
+    --dialog-offset-right: auto;
+    --dialog-offset-bottom: auto;
+    --dialog-offset-left: auto;
+
+    background-color: var(--background0);
+    color: var(--foreground0);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    border: none;
+    outline: none;
+    position: absolute;
+    max-width: var(--dialog-max-width);
+    max-height: var(--dialog-max-height);
+    overflow: hidden;
+    inset: var(--dialog-offset-top) var(--dialog-offset-right)
+      var(--dialog-offset-bottom) var(--dialog-offset-left);
+
+    &[open],
+    &:popover-open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Size */
+    &[size-="full"] {
+      --dialog-max-width: 100vw;
+      --dialog-max-height: 100vh;
+    }
+
+    &[size-="default"],
+    &:not([size-]) {
+      --dialog-max-width: 64ch;
+      --dialog-max-height: 24lh;
+    }
+
+    &[size-="small"] {
+      --dialog-max-width: 48ch;
+      --dialog-max-height: 16lh;
+    }
+
+    /* Container */
+    &[container-^="auto"],
+    &:not([container-]) {
+      width: auto;
+    }
+
+    &[container-^="fill"] {
+      width: calc(100% - var(--dialog-offset-x) * 2);
+    }
+
+    &[container-$="auto"],
+    &:not([container-]) {
+      height: auto;
+    }
+
+    &[container-$="fill"] {
+      height: calc(100% - var(--dialog-offset-y) * 2);
+    }
+
+    /* Position */
+    &[position-^="start"] {
+      --dialog-offset-left: var(--dialog-offset-x);
+      --dialog-offset-right: auto;
+    }
+
+    &[position-^="end"] {
+      --dialog-offset-left: auto;
+      --dialog-offset-right: var(--dialog-offset-x);
+    }
+
+    &[position-^="center"],
+    &:not([position-]) {
+      --dialog-offset-left: 50%;
+      translate: -50%;
+    }
+
+    &[position-$="start"] {
+      --dialog-offset-top: var(--dialog-offset-y);
+      --dialog-offset-bottom: auto;
+    }
+
+    &[position-$="end"] {
+      --dialog-offset-top: auto;
+      --dialog-offset-bottom: var(--dialog-offset-y);
+    }
+
+    &[position-$="center"],
+    &:not([position-]) {
+      --dialog-offset-top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
