@@ -44,7 +44,8 @@
       height: 1lh;
     }
 
-    &:not([size-]):not([box-]) {
+    &:not([size-]):not([box-]),
+    &[size-="default"]:not([box-]) {
       background-color: transparent;
       background-image: linear-gradient(
         to bottom,
@@ -58,7 +59,7 @@
     }
 
     &[size-="large"],
-    &[size-="medium"],
+    &[size-="default"],
     &:not([size-]) {
       height: 3lh;
     }
