@@ -90,9 +90,22 @@ import Filter from '@/components/Filter.astro';
     }
   }
 
-  @media (max-width: 48ch) {
+  @media (max-width: 54ch) {
+    nav {
+      align-items: normal;
+      gap: 10px;
+    }
     #search-button span:last-of-type {
       display: none;
+    }
+  }
+
+  @media (max-width: 44ch) {
+    nav {
+      flex-direction: column;
+    }
+    #home-link {
+      font-size: 20px;
     }
   }
 </style>
