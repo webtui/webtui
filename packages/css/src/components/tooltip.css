@@ -20,10 +20,6 @@
   [is-~="tooltip"] {
     position: relative;
 
-    & > [is-~="tooltip-trigger"] {
-      cursor: pointer;
-    }
-
     [is-~="tooltip-content"] {
       opacity: 0;
       transition: all 0s linear 0s;

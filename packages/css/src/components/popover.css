@@ -38,7 +38,6 @@
           inset: 0;
           z-index: 1;
           background-color: var(--popover-backdrop-color);
-          cursor: default;
         }
 
         &::marker {

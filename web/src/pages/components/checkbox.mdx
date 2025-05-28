@@ -79,7 +79,7 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-  input[type="checkbox"] {
+  input[type="checkbox"]:not([is-="switch"]) {
     /* ... */
   }
 }
@@ -87,10 +87,10 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 
 ### Scope
 
-- All native `<input type="checkbox">` elements
+- All native `<input type="checkbox">` elements without `is-="switch"`
 
 ```css
-input[type="checkbox"] {
+input[type="checkbox"]:not([is-="switch"]) {
   /* ... */
 }
 ```
