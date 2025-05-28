@@ -1,0 +1,85 @@
+@layer components {
+  input[type="checkbox"][is-="switch"] {
+    --switch-thumb-color: var(--foreground0);
+    --switch-track-color: var(--background1);
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    position: relative;
+    width: 4ch;
+    height: 1lh;
+    min-width: initial;
+    vertical-align: text-top;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    outline: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4ch;
+      height: 1lh;
+      background: var(--switch-track-color);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 2ch;
+      height: 1lh;
+      background: var(--switch-thumb-color);
+    }
+
+    &:checked::after {
+      right: 0;
+    }
+
+    &:disabled {
+      --switch-thumb-color: var(--foreground2);
+      pointer-events: none;
+    }
+
+    &[size-="small"] {
+      width: 2ch;
+
+      &::before {
+        width: 2ch;
+      }
+
+      &::after {
+        width: 1ch;
+      }
+    }
+
+    &[bar-="thin"]::before {
+      height: 0.5lh;
+    }
+
+    &[bar-="line"]::before {
+      height: 2px;
+    }
+  }
+
+  label:has(input[type="checkbox"][is-="switch"]) {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 1ch;
+    max-width: fit-content;
+  }
+
+  label:has(input[type="checkbox"][is-="switch"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  label:has(input[type="checkbox"][is-="switch"]:disabled) {
+    color: var(--foreground2);
+    text-decoration: line-through;
+  }
+}

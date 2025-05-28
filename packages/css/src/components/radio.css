@@ -8,7 +8,6 @@
     width: 3ch;
     min-width: initial;
     vertical-align: text-top;
-    cursor: pointer;
     color: var(--foreground2);
     font-family: var(--font-family);
     font-size: var(--font-size);
@@ -36,7 +35,6 @@
     display: inline-flex;
     align-items: flex-start;
     gap: 1ch;
-    cursor: pointer;
     max-width: fit-content;
   }
 
@@ -47,13 +45,11 @@
 
   input[type="radio"]:disabled {
     color: var(--foreground2);
-    cursor: default;
     pointer-events: none;
   }
 
   label:has(input[type="radio"]:disabled) {
     color: var(--foreground2);
     text-decoration: line-through;
-    cursor: default;
   }
 }
