@@ -29,7 +29,8 @@
     }
 
     &:has([is-~="tooltip-trigger"]:hover) > [is-~="tooltip-content"],
-    &:has([is-~="tooltip-trigger"]:focus) > [is-~="tooltip-content"] {
+    &:has([is-~="tooltip-trigger"]:focus) > [is-~="tooltip-content"],
+    &:has([is-~="tooltip-content"]:hover) > [is-~="tooltip-content"] {
       opacity: 1;
       z-index: 2;
       transform: scale(1);
