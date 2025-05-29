@@ -3,14 +3,14 @@ import Filter from '@/components/Filter.astro';
 
 const url = Astro.url;
 
-let isOn: "docs" | "examples" | "home" = "docs";
+let isOn: 'docs' | 'examples' | 'home' = 'docs';
 
-if (url.pathname.startsWith("/examples")) {
-  isOn = "examples"
+if (url.pathname.startsWith('/examples')) {
+  isOn = 'examples';
 }
 
-if(url.pathname === "/") {
-  isOn = "home"
+if (url.pathname === '/') {
+  isOn = 'home';
 }
 ---
 
