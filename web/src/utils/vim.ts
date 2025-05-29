@@ -24,6 +24,14 @@ export function applyVimCursorHighlight(element: HTMLElement) {
 
   const textNode = getFirstTextNode(firstChild);
 
+  if (
+    typeof textNode?.textContent !== 'string' ||
+    textNode.textContent.trim() === ''
+  ) {
+    CSS.highlights.clear();
+    return;
+  }
+
   const firstNonWhitespace =
     textNode.textContent?.split('').findIndex((c) => !/\s/.test(c)) ?? 0;
 

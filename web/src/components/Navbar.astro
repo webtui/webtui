@@ -1,5 +1,17 @@
 ---
 import Filter from '@/components/Filter.astro';
+
+const url = Astro.url;
+
+let isOn: "docs" | "examples" | "home" = "docs";
+
+if (url.pathname.startsWith("/examples")) {
+  isOn = "examples"
+}
+
+if(url.pathname === "/") {
+  isOn = "home"
+}
 ---
 
 <nav box-="square">
@@ -7,11 +19,11 @@ import Filter from '@/components/Filter.astro';
     &lt;/<span>#&gt;</span><span>WebTUI</span>
   </a>
   <row id="links">
-    <a href="/start/intro">
+    <a href="/start/intro" data-active={isOn === "docs"}>
       <span>&#xf15c</span>
       <span>Docs</span>
     </a>
-    <a href="/examples">
+    <a href="/examples" data-active={isOn === "examples"}>
       <span>&#xebeb</span>
       <span>Examples</span>
     </a>
@@ -63,6 +75,12 @@ import Filter from '@/components/Filter.astro';
       gap: 1ch;
       text-decoration: none;
       color: var(--foreground2);
+
+      &[data-active="true"] {
+        color: var(--foreground0);
+        font-weight: bold;
+        text-decoration: underline;
+      }
 
       &:focus,
       &:hover {
