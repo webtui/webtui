@@ -1,6 +1,6 @@
 @layer components {
   input[type="checkbox"][is-="switch"] {
-    --switch-thumb-color: var(--foreground0);
+    --switch-thumb-color: var(--foreground2);
     --switch-track-color: var(--background1);
 
     appearance: none;
@@ -38,11 +38,16 @@
 
     &:checked::after {
       right: 0;
+      --switch-thumb-color: var(--foreground0);
     }
 
     &:disabled {
-      --switch-thumb-color: var(--foreground2);
+      --switch-thumb-color: var(--background2);
       pointer-events: none;
+    }
+
+    &:disabled:checked::after {
+      --switch-thumb-color: var(--background2);
     }
 
     &[size-="small"] {
