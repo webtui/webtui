@@ -1,5 +1,5 @@
 @layer components {
-  input[type="checkbox"] {
+  input[type="checkbox"]:not([is-="switch"]) {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -8,7 +8,6 @@
     width: 3ch;
     min-width: initial;
     vertical-align: text-top;
-    cursor: pointer;
     color: var(--foreground2);
     font-family: var(--font-family);
     font-size: var(--font-size);
@@ -16,7 +15,7 @@
     outline: none;
   }
 
-  input[type="checkbox"]::before {
+  input[type="checkbox"]:not([is-="switch"])::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -28,32 +27,29 @@
     background: var(--background1);
   }
 
-  input[type="checkbox"]:checked::before {
+  input[type="checkbox"]:not([is-="switch"]):checked::before {
     content: "X";
   }
 
-  label:has(input[type="checkbox"]) {
+  label:has(input[type="checkbox"]:not([is-="switch"])) {
     display: inline-flex;
     align-items: flex-start;
     gap: 1ch;
-    cursor: pointer;
     max-width: fit-content;
   }
 
-  label:has(input[type="checkbox"]:focus) {
+  label:has(input[type="checkbox"]:not([is-="switch"]):focus) {
     font-weight: bold;
     text-decoration: underline;
   }
 
-  input[type="checkbox"]:disabled {
+  input[type="checkbox"]:not([is-="switch"]):disabled {
     color: var(--foreground2);
-    cursor: default;
     pointer-events: none;
   }
 
-  label:has(input[type="checkbox"]:disabled) {
+  label:has(input[type="checkbox"]:not([is-="switch"]):disabled) {
     color: var(--foreground2);
     text-decoration: line-through;
-    cursor: default;
   }
 }

@@ -77,7 +77,7 @@ const { pathname: urlPath } = Astro.url;
   }
 
   ul > a[href] {
-    color: var(--foreground1);
+    color: var(--foreground2);
     text-decoration: none;
     outline: none;
     display: list-item;
@@ -91,7 +91,9 @@ const { pathname: urlPath } = Astro.url;
     }
 
     &.active {
-      color: var(--sky);
+      color: var(--foreground0);
+      text-decoration: underline;
+      font-weight: var(--font-weight-bold);
       background-color: var(--background1);
     }
 
@@ -105,11 +107,8 @@ const { pathname: urlPath } = Astro.url;
   }
 
   details {
-    ul {
-      padding-left: 2ch;
-    }
-
     summary {
+      font-weight: var(--font-weight-bold);
       &::marker {
         color: var(--foreground2);
         content: "\eab6\ ";

@@ -20,10 +20,6 @@
   [is-~="tooltip"] {
     position: relative;
 
-    & > [is-~="tooltip-trigger"] {
-      cursor: pointer;
-    }
-
     [is-~="tooltip-content"] {
       opacity: 0;
       transition: all 0s linear 0s;
@@ -33,7 +29,8 @@
     }
 
     &:has([is-~="tooltip-trigger"]:hover) > [is-~="tooltip-content"],
-    &:has([is-~="tooltip-trigger"]:focus) > [is-~="tooltip-content"] {
+    &:has([is-~="tooltip-trigger"]:focus) > [is-~="tooltip-content"],
+    &:has([is-~="tooltip-content"]:hover) > [is-~="tooltip-content"] {
       opacity: 1;
       z-index: 2;
       transform: scale(1);
