@@ -14,58 +14,13 @@ const indexableElements = [
   'blockquote',
   'pre',
   'li',
+  'p',
 ];
 
 const rehypeMarkdownTabIndex: Plugin<[], Root> = () => {
   return (tree) => {
-    visit(tree, 'element', (node: Element, index, parent) => {
+    visit(tree, 'element', (node: Element) => {
       if (indexableElements.includes(node.tagName)) {
-        node.properties.tabIndex = 0;
-      }
-
-      const imageChild = node.children.find(
-        (child) => child.type === 'element' && child.tagName === 'img',
-      );
-
-      if (node.tagName === 'p' && imageChild) {
-        const figcaption: Element = {
-          type: 'element',
-          tagName: 'figcaption',
-          properties: {},
-          children: [
-            {
-              type: 'text',
-              value: `\uf03e ${
-                ((imageChild as Element).properties.alt as
-                  | string
-                  | undefined) ?? 'Image'
-              }`,
-            },
-          ],
-        };
-
-        const figcaptionContainer: Element = {
-          type: 'element',
-          tagName: 'div',
-          properties: {
-            className: ['image-caption'],
-          },
-          children: [figcaption],
-        };
-
-        const wrapper: Element = {
-          type: 'element',
-          tagName: 'div',
-          properties: {
-            'box-': 'square',
-            'shear-': 'top',
-            tabIndex: 0,
-          },
-          children: [figcaptionContainer, node],
-        };
-
-        parent.children[index] = wrapper;
-      } else if (node.tagName === 'p') {
         node.properties.tabIndex = 0;
       }
     });
