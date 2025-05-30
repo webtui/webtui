@@ -1,0 +1,376 @@
+---
+const themes = [
+  { id: 'light', name: 'Light', description: 'Clean light theme' },
+  { id: 'dark', name: 'Dark', description: 'Clean dark theme' },
+  {
+    id: 'catppuccin',
+    name: 'Catppuccin Mocha',
+    description: 'Soothing pastel theme',
+  },
+  {
+    id: 'catppuccin-macchiato',
+    name: 'Catppuccin Macchiato',
+    description: 'Catppuccin macchiato variant',
+  },
+  {
+    id: 'catppuccin-frappe',
+    name: 'Catppuccin Frappé',
+    description: 'Catppuccin frappé variant',
+  },
+  {
+    id: 'catppuccin-latte',
+    name: 'Catppuccin Latte',
+    description: 'Catppuccin latte variant',
+  },
+  { id: 'nord', name: 'Nord', description: 'Arctic, north-bluish theme' },
+  {
+    id: 'gruvbox-dark-hard',
+    name: 'Gruvbox Dark Hard',
+    description: 'Retro groove dark hard',
+  },
+  {
+    id: 'gruvbox-dark-medium',
+    name: 'Gruvbox Dark Medium',
+    description: 'Retro groove dark medium',
+  },
+  {
+    id: 'gruvbox-dark-soft',
+    name: 'Gruvbox Dark Soft',
+    description: 'Retro groove dark soft',
+  },
+  {
+    id: 'gruvbox-light-hard',
+    name: 'Gruvbox Light Hard',
+    description: 'Retro groove light hard',
+  },
+  {
+    id: 'gruvbox-light-medium',
+    name: 'Gruvbox Light Medium',
+    description: 'Retro groove light medium',
+  },
+  {
+    id: 'gruvbox-light-soft',
+    name: 'Gruvbox Light Soft',
+    description: 'Retro groove light soft',
+  },
+];
+---
+
+<dialog id="theme-dialog">
+  <div box-="round contain:!top" id="theme-content">
+    <row align-="between">
+      <span is-="badge" variant-="background0">&#xf042; Theme</span>
+      <button id="theme-close-btn" variant-="foreground0" size-="small">x</button>
+    </row>
+    <column box-="round">
+      <input id="theme-input" placeholder="Filter themes" autofocus />
+    </column>
+
+    <div id="theme-results">
+      <div id="theme-results-container">
+        {
+          themes.map((theme, i) => (
+            <button
+              class:list={["theme-option", i === 0 ? "active" : ""]}
+              tabindex="0"
+              data-theme-id={theme.id}
+              data-value={`${theme.name}: ${theme.description}`}
+            >
+              <strong>{theme.name}</strong>
+              <span>{theme.description}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  #theme-dialog {
+    background-color: var(--background0);
+    color: var(--foreground0);
+    border: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    max-height: 20lh;
+    max-width: 48ch;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &::backdrop {
+      backdrop-filter: grayscale(100%);
+    }
+  }
+
+  #theme-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #theme-results {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+
+    #theme-results-container {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding-left: 1ch;
+      padding-right: 1ch;
+      display: flex;
+      flex-direction: column;
+
+      .theme-option {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5lh 1ch;
+        text-decoration: none;
+        color: var(--foreground1);
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+
+        &.hidden {
+          display: none;
+        }
+
+        &:focus,
+        &:hover,
+        &.active {
+          background-color: var(--background1);
+        }
+
+        strong {
+          color: var(--foreground0);
+          font-weight: var(--font-weight-bold);
+        }
+
+        span {
+          font-size: 0.9em;
+          color: var(--foreground2);
+        }
+      }
+    }
+  }
+
+  #theme-input {
+    background-color: var(--background0);
+  }
+
+  &::highlight(theme-search) {
+    background-color: var(--background2);
+    color: var(--foreground0);
+  }
+</style>
+
+<script>
+  import { isUserTyping, paginateElements } from "@/utils/vim";
+
+  const themeInput = document.getElementById(
+    "theme-input",
+  ) as HTMLInputElement;
+  const themeDialog = document.getElementById(
+    "theme-dialog",
+  ) as HTMLDialogElement;
+  const themeOptions = document.querySelectorAll(".theme-option");
+
+  let activeOption: HTMLButtonElement | null =
+    (themeOptions[0] as HTMLButtonElement | null) ?? null;
+
+  const treeWalker = document.createTreeWalker(
+    document.getElementById("theme-results-container") as HTMLElement,
+    NodeFilter.SHOW_TEXT,
+  );
+  const allTextNodes: Array<Text> = [];
+  let currentNode = treeWalker.nextNode();
+  while (currentNode) {
+    allTextNodes.push(currentNode as Text);
+    currentNode = treeWalker.nextNode();
+  }
+
+  function setInitialActiveTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-webtui-theme') || 'dark';
+    const currentThemeOption = document.querySelector(`[data-theme-id="${currentTheme}"]`) as HTMLButtonElement;
+
+    if (currentThemeOption) {
+      themeOptions.forEach(option => option.classList.remove('active'));
+      currentThemeOption.classList.add('active');
+      activeOption = currentThemeOption;
+    }
+  }
+
+  setInitialActiveTheme();
+
+  function resetDialogState() {
+    themeInput.value = '';
+    themeOptions.forEach((option) => {
+      option.classList.remove("hidden");
+    });
+
+    CSS.highlights.clear();
+
+    setInitialActiveTheme();
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
+
+    if (e.key === "t") {
+      e.preventDefault();
+      themeDialog.showModal();
+    }
+  });
+
+  themeInput.addEventListener("input", () => {
+    const value = themeInput.value.trim();
+
+    themeOptions.forEach((element) => {
+      element.classList.remove("hidden");
+
+      if (
+        element
+          .getAttribute("data-value")
+          ?.toLowerCase()
+          .includes(value.toLowerCase())
+      )
+        return;
+
+      element.classList.add("hidden");
+    });
+
+    const visibleOptions = document.querySelectorAll(
+      ".theme-option:not(.hidden)",
+    );
+
+    if (visibleOptions.length > 0) {
+      activeOption = visibleOptions[0] as HTMLButtonElement;
+      visibleOptions.forEach(option => option.classList.remove('active'));
+      activeOption.classList.add('active');
+    } else {
+      activeOption = null;
+    }
+
+    CSS.highlights.clear();
+
+    if (!value) return;
+
+    const ranges = allTextNodes
+      .map((el) => {
+        return { el, text: el.textContent?.toLowerCase() };
+      })
+      .map(({ text, el }) => {
+        const indices = [];
+        let startPos = 0;
+
+        if (!text) return [];
+        while (startPos < text.length) {
+          const index = text.indexOf(value, startPos);
+          if (index === -1) break;
+          indices.push(index);
+          startPos = index + value.length;
+        }
+
+        return indices.map((index) => {
+          const range = new Range();
+          range.setStart(el, index);
+          range.setEnd(el, index + value.length);
+          return range;
+        });
+      });
+
+    const themeResultsHighlight = new Highlight(...ranges.flat());
+    CSS.highlights.set("theme-search", themeResultsHighlight);
+  });
+
+  themeInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || (e.key === "c" && e.ctrlKey)) {
+      e.preventDefault();
+      themeDialog.close();
+      return;
+    }
+
+    if (!activeOption) return;
+
+    const visibleOptions = document.querySelectorAll(
+      ".theme-option[tabindex]:not(.hidden)",
+    ) as NodeListOf<HTMLButtonElement>;
+
+    const { prev, next } = paginateElements(activeOption, visibleOptions);
+
+    if ((e.key === "n" && e.ctrlKey) || e.key === "ArrowDown") {
+      e.preventDefault();
+
+      visibleOptions.forEach((option) => {
+        option.classList.remove("active");
+      });
+      next.scrollIntoView({ block: "nearest", inline: "nearest" });
+      next.classList.add("active");
+      activeOption = next as HTMLButtonElement;
+    }
+
+    if ((e.key === "p" && e.ctrlKey) || e.key === "ArrowUp") {
+      e.preventDefault();
+
+      visibleOptions.forEach((option) => {
+        option.classList.remove("active");
+      });
+      prev.scrollIntoView({ block: "nearest", inline: "nearest" });
+      prev.classList.add("active");
+      activeOption = prev as HTMLButtonElement;
+    }
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      activeOption?.click();
+    }
+  });
+
+  themeOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const themeId = option.getAttribute("data-theme-id");
+      if (themeId) {
+        document.documentElement.setAttribute("data-webtui-theme", themeId);
+
+        themeOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        activeOption = option as HTMLButtonElement;
+
+        try {
+          localStorage.setItem('webtui-theme', themeId);
+        } catch (e) {
+          console.error('Error saving theme to localStorage:', e);
+        }
+      }
+      themeDialog.close();
+    });
+  });
+
+  document.getElementById("theme-close-btn")?.addEventListener("click", () => {
+    themeDialog.close();
+  });
+
+  themeDialog.addEventListener("close", () => {
+    resetDialogState();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const savedTheme = localStorage.getItem('webtui-theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-webtui-theme', savedTheme);
+        setInitialActiveTheme();
+      }
+    } catch (e) {
+      console.error("Error loading saved theme preference:", e)
+    }
+  });
+</script>

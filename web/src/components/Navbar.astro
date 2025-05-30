@@ -1,5 +1,9 @@
 ---
 import Filter from '@/components/Filter.astro';
+import ThemeSwitcher from '@/components/ThemeSwitcher.astro';
+import '@webtui/theme-nord';
+import '@webtui/theme-catppuccin';
+import '@webtui/theme-gruvbox';
 
 const url = Astro.url;
 
@@ -31,6 +35,10 @@ if (url.pathname === '/') {
       <span>&#xe709</span>
       <span>Github</span>
     </a>
+    <button id="theme-button" size-="small">
+      <span>&#xf042;</span>
+      <span>Theme</span>
+    </button>
     <button id="search-button" size-="small">
       <span>&#xea6d;</span>
       <span>Search</span>
@@ -38,6 +46,7 @@ if (url.pathname === '/') {
   </row>
 </nav>
 <Filter />
+<ThemeSwitcher />
 
 <style>
   nav {
@@ -89,6 +98,7 @@ if (url.pathname === '/') {
     }
   }
 
+  #theme-button,
   #search-button {
     display: inline-flex;
     gap: 1ch;
@@ -113,6 +123,8 @@ if (url.pathname === '/') {
       align-items: normal;
       gap: 10px;
     }
+  @media (max-width: 48ch) {
+    #theme-button span:last-of-type,
     #search-button span:last-of-type {
       display: none;
     }
@@ -126,6 +138,30 @@ if (url.pathname === '/') {
       font-size: 20px;
     }
   }
+
+  @layer base {
+    html[data-webtui-theme="light"] {
+      --background0: #fff;
+      --background1: #ddd;
+      --background2: #bbb;
+      --background3: #999;
+
+      --foreground0: #000;
+      --foreground1: #444;
+      --foreground2: #888;
+    }
+
+    html[data-webtui-theme="dark"] {
+      --background0: #000;
+      --background1: #222;
+      --background2: #444;
+      --background3: #666;
+
+      --foreground0: #fff;
+      --foreground1: #ccc;
+      --foreground2: #999;
+    }
+  }
 </style>
 
 <script>
@@ -134,9 +170,16 @@ if (url.pathname === '/') {
   const searchDialog = document.getElementById(
     "search-dialog",
   ) as HTMLDialogElement;
+  const themeDialog = document.getElementById(
+    "theme-dialog",
+  ) as HTMLDialogElement;
 
   document.getElementById("search-button")?.addEventListener("click", () => {
     searchDialog.showModal();
+  });
+
+  document.getElementById("theme-button")?.addEventListener("click", () => {
+    themeDialog.showModal();
   });
 
   window.addEventListener("keydown", (e) => {
