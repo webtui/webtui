@@ -56,8 +56,8 @@ const themes = [
 ];
 ---
 
-<dialog id="theme-dialog">
-  <div box-="round contain:!top" id="theme-content">
+<dialog id="theme-dialog" size-="small" position-="center" container-="fill">
+  <div box-="round" shear-="top" id="theme-content">
     <row align-="between">
       <span is-="badge" variant-="background0">&#xf042; Theme</span>
       <button id="theme-close-btn" variant-="foreground0" size-="small">x</button>
@@ -88,18 +88,7 @@ const themes = [
 
 <style>
   #theme-dialog {
-    background-color: var(--background0);
-    color: var(--foreground0);
-    border: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    max-height: 20lh;
-    max-width: 48ch;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
 
     &::backdrop {
       backdrop-filter: grayscale(100%);
@@ -205,6 +194,7 @@ const themes = [
       themeOptions.forEach(option => option.classList.remove('active'));
       currentThemeOption.classList.add('active');
       activeOption = currentThemeOption;
+      currentThemeOption.scrollIntoView({ block: "nearest", inline: "nearest" });
     }
   }
 
@@ -227,6 +217,7 @@ const themes = [
     if (e.key === "t") {
       e.preventDefault();
       themeDialog.showModal();
+      setTimeout(() => setInitialActiveTheme(), 0);
     }
   });
 
@@ -372,5 +363,9 @@ const themes = [
     } catch (e) {
       console.error("Error loading saved theme preference:", e)
     }
+  });
+
+  document.getElementById("theme-button")?.addEventListener("click", () => {
+    setTimeout(() => setInitialActiveTheme(), 0);
   });
 </script>
