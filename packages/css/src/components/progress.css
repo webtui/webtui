@@ -64,12 +64,12 @@
       height: 1lh;
     }
 
-    &[size-="small"] {
+    &[size-="thin"] {
       height: 0.5lh;
     }
 
-    &[size-="large"] {
-      height: 2lh;
+    &[size-="line"] {
+      height: 2px;
     }
 
     &[indeterminate] {
