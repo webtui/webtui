@@ -40,36 +40,19 @@
       --progress-secondary: var(--background1);
     }
 
-    &[variant-="background0"] {
-      --progress-primary: var(--background0);
-      --progress-secondary: var(--foreground0);
-    }
-
-    &[variant-="background1"] {
-      --progress-primary: var(--background1);
-      --progress-secondary: var(--foreground0);
-    }
-
-    &[variant-="background2"] {
-      --progress-primary: var(--background2);
-      --progress-secondary: var(--foreground0);
-    }
-
-    &[variant-="background3"] {
-      --progress-primary: var(--background3);
-      --progress-secondary: var(--foreground0);
-    }
-
     &:not([size-]) {
       height: 1lh;
+      line-height: 1lh;
     }
-
     &[size-="thin"] {
-      height: 0.5lh;
+      height: 1lh;
+      line-height: 1lh;
+      clip-path: inset(25% 0);
     }
-
     &[size-="line"] {
-      height: 2px;
+      height: 1lh;
+      line-height: 1lh;
+      clip-path: inset(45% 0);
     }
 
     &[indeterminate] {
@@ -81,7 +64,6 @@
         var(--mapped-secondary) 1ch,
         var(--mapped-secondary) 2ch
       );
-      animation: progress-indeterminate 1s linear infinite;
     }
   }
 
