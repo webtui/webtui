@@ -18,6 +18,8 @@
     "@webtui/css": "workspace:*",
     "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
+    "@webtui/theme-nord": "workspace:*",
+    "@webtui/theme-gruvbox": "workspace:*",
     "@webtui/plugin-nf": "workspace:*",
     "@biomejs/js-api": "0.8.0-beta.1",
     "@biomejs/wasm-nodejs": "2.0.0-beta.2",
