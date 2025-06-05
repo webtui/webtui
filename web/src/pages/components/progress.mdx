@@ -88,13 +88,15 @@ Use `[indeterminate]` attribute (no value, no `value` or `max`):
 
 ### Properties
 
-* `--progress-primary`: The fill color
-* `--progress-secondary`: The background color
+- `--progress-primary`: The fill color
+- `--progress-secondary`: The background color
+- `--progress-width`: Width of progress bar
 
 ```css
-progress {
-    --progress-primary: red;
-    --progress-secondary: black;
+#my-progress-bar {
+    --progress-primary: var(--foreground0);
+    --progress-secondary: var(--background0);
+    --progress-width: 24ch;
 }
 ```
 

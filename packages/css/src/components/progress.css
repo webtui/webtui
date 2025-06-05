@@ -3,25 +3,25 @@
   [is-~="progress"] {
     --progress-primary: var(--foreground0);
     --progress-secondary: var(--background0);
-    --mapped-primary: var(--progress-primary);
-    --mapped-secondary: var(--progress-secondary);
+    --progress-width: 24ch;
 
     appearance: none;
-    background-color: var(--mapped-secondary);
+    background-color: var(--progress-secondary);
     font-family: var(--font-family);
     font-size: var(--font-size);
     border: none;
+    width: var(--progress-width);
 
     &::-webkit-progress-bar {
-      background-color: var(--mapped-secondary);
+      background-color: var(--progress-secondary);
     }
 
     &::-webkit-progress-value {
-      background-color: var(--mapped-primary);
+      background-color: var(--progress-primary);
     }
 
     &::-moz-progress-bar {
-      background-color: var(--mapped-primary);
+      background-color: var(--progress-primary);
     }
 
     &[variant-="foreground0"],
@@ -59,10 +59,10 @@
       position: relative;
       background: repeating-linear-gradient(
         90deg,
-        var(--mapped-primary),
-        var(--mapped-primary) 1ch,
-        var(--mapped-secondary) 1ch,
-        var(--mapped-secondary) 2ch
+        var(--progress-primary),
+        var(--progress-primary) 1ch,
+        var(--progress-secondary) 1ch,
+        var(--progress-secondary) 2ch
       );
     }
   }
