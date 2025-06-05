@@ -75,10 +75,14 @@ if (headings.length > 0) {
                     >
                       <div is-="typography-block">
                         <span is-="badge" variant-="background0">
-                          ← <code space-="mx:1">&lt;C-p&gt;</code> Previous
+                          <row gap-="1">
+                            <span>←</span>
+                            <code>&lt;C-p&gt;</code>
+                            <span>Previous</span>
+                          </row>
                         </span>
                       </div>
-                      <span space-="px:1">
+                      <span pad-="1 0">
                         {prevDoc.id.split("/")[0]}/{prevDoc.data.title}
                       </span>
                     </a>
@@ -95,10 +99,14 @@ if (headings.length > 0) {
                     >
                       <row align-="start end" is-="typography-block">
                         <span is-="badge" variant-="background0">
-                          Next <code space-="mx:1">&lt;C-n&gt;</code> →
+                          <row gap-="1">
+                            <span>Next</span>
+                            <code>&lt;C-n&gt;</code>
+                            <span>→</span>
+                          </row>
                         </span>
                       </row>
-                      <span space-="px:1">
+                      <span pad-="1 0">
                         {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
                       </span>
                     </a>

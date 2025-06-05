@@ -1,0 +1,50 @@
+---
+import Navbar from "../Navbar.astro";
+---
+
+<column align-="center" self-="grow" id="container">
+  <div id="overlay" />
+  <column id="content" gap-="1" pad-="1">
+    <Navbar />
+    <column gap-="1" pad-="1 0" id="main">
+      <h1>
+        <span is-="badge" variant-="green">&#xf4b5; Terminal UIs</span>
+        for the
+        <span is-="badge" variant-="blue">&#xeb01; Web</span>
+      </h1>
+      <column>
+        <p>WebTUI is a <strong>modular CSS library</strong> that brings the beauty of <a href="/start/tuis-vs-guis">Terminal UIs</a> to the browser</p>
+        <div is-="separator" />
+        <row gap-="1">
+          <a is-="button" href="/start/intro">Get Started &#xf101;</a>
+          <a is-="button" href="/examples" variant-="foreground2" box-="round">Examples &#xea7b;</a>
+        </row>
+      </column>
+    </column>
+  </column>
+</column>
+
+<style>
+  #container {
+    position: relative;
+
+    #overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    #content {
+      background-color: var(--background0);
+      max-width: 60ch;
+
+      h1 { color: var(--foreground0) }
+      h1::before { content: "" }
+    }
+  }
+
+
+  [is-="separator"] {
+    --separator-color: var(--background2);
+  }
+</style>
