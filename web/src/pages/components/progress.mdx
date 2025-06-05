@@ -1,0 +1,124 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Progress
+---
+
+import Example from '@/components/Example.astro';
+import progressStyle from '@webtui/css/components/progress.css?raw';
+
+Displays a progress bar
+
+<Example 
+    stylesheets={[
+        progressStyle
+    ]}
+    html={`
+<progress value="0.5"></progress>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/progress.css";
+````
+
+## Usage
+
+```html
+<progress value="0.5"></progress>
+```
+
+## Examples
+
+### Variants
+
+<Example
+    stylesheets={[
+        progressStyle,
+    ]}
+    css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+`}
+    html={`
+<progress variant-="background0" value="0.4"></progress>
+<progress variant-="background1" value="0.4"></progress>
+<progress variant-="background2" value="0.4"></progress>
+<progress variant-="background3" value="0.4"></progress>
+<progress variant-="foreground0" value="0.4"></progress>
+<progress variant-="foreground1" value="0.4"></progress>
+<progress variant-="foreground2" value="0.4"></progress>
+`}
+/>
+
+Available variants match the [base theme colors](/start/theming#colors)
+
+### Sizes
+
+<Example
+    stylesheets={[
+        progressStyle,
+    ]}
+    css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+`}
+    html={`
+<progress size-="small" value="0.6"></progress>
+<progress value="0.6"></progress>
+<progress size-="large" value="0.6"></progress>
+`}
+/>
+
+### Indeterminate
+
+Use `[indeterminate]` attribute (no value, no `value` or `max`):
+
+<Example
+    stylesheets={[
+        progressStyle
+    ]}
+    html={`<progress indeterminate></progress>`}
+/>
+
+## Reference
+
+### Properties
+
+* `--progress-primary`: The fill color
+* `--progress-secondary`: The background color
+
+```css
+progress {
+    --progress-primary: red;
+    --progress-secondary: black;
+}
+```
+
+### Extending
+
+To extend the Progress stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    progress, [is-~="progress"] {
+        &[variant-="accent"] {
+            --progress-primary: orange;
+            --progress-secondary: white;
+        }
+    }
+}
+```
+
+### Scope
+
+```css
+progress, [is-~="progress"] { /* ... */ }
+```

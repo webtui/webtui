@@ -1,0 +1,96 @@
+@layer components {
+  progress,
+  [is-~="progress"] {
+    --progress-primary: var(--foreground0);
+    --progress-secondary: var(--background0);
+    --mapped-primary: var(--progress-primary);
+    --mapped-secondary: var(--progress-secondary);
+
+    appearance: none;
+    background-color: var(--mapped-secondary);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    border: none;
+
+    &::-webkit-progress-bar {
+      background-color: var(--mapped-secondary);
+    }
+
+    &::-webkit-progress-value {
+      background-color: var(--mapped-primary);
+    }
+
+    &::-moz-progress-bar {
+      background-color: var(--mapped-primary);
+    }
+
+    &[variant-="foreground0"],
+    &:not([variant-]) {
+      --progress-primary: var(--foreground0);
+      --progress-secondary: var(--background1);
+    }
+
+    &[variant-="foreground1"] {
+      --progress-primary: var(--foreground1);
+      --progress-secondary: var(--background1);
+    }
+
+    &[variant-="foreground2"] {
+      --progress-primary: var(--foreground2);
+      --progress-secondary: var(--background1);
+    }
+
+    &[variant-="background0"] {
+      --progress-primary: var(--background0);
+      --progress-secondary: var(--foreground0);
+    }
+
+    &[variant-="background1"] {
+      --progress-primary: var(--background1);
+      --progress-secondary: var(--foreground0);
+    }
+
+    &[variant-="background2"] {
+      --progress-primary: var(--background2);
+      --progress-secondary: var(--foreground0);
+    }
+
+    &[variant-="background3"] {
+      --progress-primary: var(--background3);
+      --progress-secondary: var(--foreground0);
+    }
+
+    &:not([size-]) {
+      height: 1lh;
+    }
+
+    &[size-="small"] {
+      height: 0.5lh;
+    }
+
+    &[size-="large"] {
+      height: 2lh;
+    }
+
+    &[indeterminate] {
+      position: relative;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--mapped-primary),
+        var(--mapped-primary) 1ch,
+        var(--mapped-secondary) 1ch,
+        var(--mapped-secondary) 2ch
+      );
+      animation: progress-indeterminate 1s linear infinite;
+    }
+  }
+
+  @keyframes progress-indeterminate {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 4ch 0;
+    }
+  }
+}
