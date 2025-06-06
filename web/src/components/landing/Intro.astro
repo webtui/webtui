@@ -1,9 +1,10 @@
 ---
 import Navbar from "../Navbar.astro";
+import Widgets from "./widgets/Widgets.astro";
 ---
 
 <column align-="center" self-="grow" id="container">
-  <div id="overlay" />
+  <Widgets />
   <column id="content" gap-="1" pad-="1">
     <Navbar />
     <column gap-="1" pad-="1 0" id="main">
@@ -28,15 +29,11 @@ import Navbar from "../Navbar.astro";
   #container {
     position: relative;
 
-    #overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
     #content {
+      position: absolute;
       background-color: var(--background0);
       max-width: 60ch;
+      display: none;
 
       h1 { color: var(--foreground0) }
       h1::before { content: "" }

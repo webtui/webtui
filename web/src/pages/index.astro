@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
 import Intro from '@/components/landing/Intro.astro';
 ---
 
@@ -35,39 +34,8 @@ import Intro from '@/components/landing/Intro.astro';
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-  }
-
-  @supports selector(::-webkit-scrollbar) {
-    main {
-      &::-webkit-scrollbar {
-          width: 1ch;
-      }
-      
-      &::-webkit-scrollbar-track {
-        background: linear-gradient(
-          to right,
-          transparent,
-          transparent calc(0.5ch - 1px),
-          var(--background2) calc(0.5ch - 1px),
-          var(--background2) calc(0.5ch + 1px),
-          transparent calc(0.5ch + 1px),
-          transparent
-        );
-      }
-      
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--background3);
-        border-radius: 0;
-      }
-    }
-  }
-
-  @supports not selector(::-webkit-scrollbar) {
-    main {
-      scrollbar-width: thin;
-      scrollbar-color: var(--foreground1) var(--background2);
-      scrollbar-gutter: stable both-edges;
-    }
+    scrollbar-width: thin;
+    scrollbar-color: var(--foreground1) var(--background2);
   }
 
   section, header {
