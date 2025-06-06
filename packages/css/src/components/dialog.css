@@ -14,13 +14,13 @@
   @property --dialog-max-width {
     syntax: "<length>";
     inherits: true;
-    initial-value: 48ch;
+    initial-value: 0;
   }
 
   @property --dialog-max-height {
     syntax: "<length>";
     inherits: true;
-    initial-value: 24lh;
+    initial-value: 0;
   }
 
   dialog {
