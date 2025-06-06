@@ -1,0 +1,38 @@
+---
+import ChartWidget from "./ChartWidget.astro";
+import PlayerWidget from "./PlayerWidget.astro";
+import SettingsWidget from "./SettingsWidget.astro";
+import StatsWidget from "./StatsWidget.astro";
+import TimeWidget from "./TimeWidget.astro";
+---
+
+<div id="widgets-grid">
+  <ChartWidget />
+  <StatsWidget />
+  <TimeWidget />
+  <PlayerWidget />
+  <SettingsWidget />
+</div>
+
+<style is:global>
+#widgets-grid {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  display: grid;
+  max-width: 96ch;
+  max-height: 36lh;
+  min-width: 80ch;
+  width: calc(100vw - 4ch);
+  height: calc(100vh - 2lh);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(6lh, auto);
+  grid-column-gap: 1ch;
+  pointer-events: none;
+
+  & > * {
+    --box-border-color: var(--background1);
+  }
+}
+</style>

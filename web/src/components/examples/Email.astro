@@ -34,10 +34,10 @@ const placeholderEmails = [
 <row gap-="1" self-="grow">
   <!-- Sidebar -->
   <column gap-="1" id="sidebar" box-="square">
-    <column space-="px:1">
+    <column pad-="1 0">
       <button size-="small">[C] Compose &#xf1d8;</button>
     </column>
-    <column space-="px:1" is-="typography-block">
+    <column pad-="1 0" is-="typography-block">
       <div>&#xf0687; Inbox</div>
       <div>&#xf1d8; Sent</div>
       <div>&#xea7b; Drafts</div>
@@ -57,7 +57,7 @@ const placeholderEmails = [
     <row>
       <span is-="badge" variant-="background0">Mail</span>
     </row>
-    <column gap-="1" space-="px:1">
+    <column gap-="1" pad-="1 0">
       {
         placeholderEmails.map((email) => (
           <column
@@ -75,7 +75,7 @@ const placeholderEmails = [
                 {email.subject}
               </span>
             </row>
-            <p space-="px:1">{email.body}</p>
+            <p pad-="1 0">{email.body}</p>
             <row align-="between">
               <span
                 is-="badge"
@@ -101,7 +101,7 @@ const placeholderEmails = [
     </row>
 
     <!-- Mail Actions -->
-    <row align-="between" space-="px:1">
+    <row align-="between" pad-="1 0">
       <row gap-="1">
         <button size-="small" variant-="background1">&#xf1f8;</button>
         <button size-="small" variant-="background1">&#xf1767;</button>
@@ -117,7 +117,7 @@ const placeholderEmails = [
     <hr />
 
     <!-- Preview Content -->
-    <column gap-="1" space-="px:1">
+    <column gap-="1" pad-="1 0">
       <h1>Hello World!</h1>
       <p>
         Lorem <strong>Ipsum</strong>
