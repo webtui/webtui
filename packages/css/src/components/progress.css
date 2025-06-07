@@ -1,0 +1,69 @@
+@layer components {
+  progress,
+  [is-~="progress"] {
+    --progress-primary: var(--foreground0);
+    --progress-secondary: var(--background0);
+    --progress-width: 24ch;
+
+    appearance: none;
+    background-color: var(--progress-secondary);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    border: none;
+    width: var(--progress-width);
+
+    &::-webkit-progress-bar {
+      background-color: var(--progress-secondary);
+    }
+
+    &::-webkit-progress-value {
+      background-color: var(--progress-primary);
+    }
+
+    &::-moz-progress-bar {
+      background-color: var(--progress-primary);
+    }
+
+    &[variant-="foreground0"],
+    &:not([variant-]) {
+      --progress-primary: var(--foreground0);
+      --progress-secondary: var(--background1);
+    }
+
+    &[variant-="foreground1"] {
+      --progress-primary: var(--foreground1);
+      --progress-secondary: var(--background1);
+    }
+
+    &[variant-="foreground2"] {
+      --progress-primary: var(--foreground2);
+      --progress-secondary: var(--background1);
+    }
+
+    &:not([size-]) {
+      height: 1lh;
+      line-height: 1lh;
+    }
+    &[size-="thin"] {
+      height: 1lh;
+      line-height: 1lh;
+      clip-path: inset(25% 0);
+    }
+    &[size-="line"] {
+      height: 1lh;
+      line-height: 1lh;
+      clip-path: inset(45% 0);
+    }
+
+    &[indeterminate] {
+      position: relative;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--progress-primary),
+        var(--progress-primary) 1ch,
+        var(--progress-secondary) 1ch,
+        var(--progress-secondary) 2ch
+      );
+    }
+  }
+}
