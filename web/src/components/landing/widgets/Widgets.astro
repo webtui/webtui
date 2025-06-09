@@ -2,13 +2,13 @@
 import ChartWidget from "./ChartWidget.astro";
 import PlayerWidget from "./PlayerWidget.astro";
 import SettingsWidget from "./SettingsWidget.astro";
-import StatsWidget from "./StatsWidget.astro";
+import Player from "./Player.astro";
 import TimeWidget from "./TimeWidget.astro";
 ---
 
 <div id="widgets-grid">
   <ChartWidget />
-  <StatsWidget />
+  <Player />
   <TimeWidget />
   <PlayerWidget />
   <SettingsWidget />
@@ -22,14 +22,16 @@ import TimeWidget from "./TimeWidget.astro";
   transform: translate(-50%, -50%);
   display: grid;
   max-width: 96ch;
-  max-height: 36lh;
+  max-height: 40lh;
   min-width: 80ch;
+  min-height: 32lh;
   width: calc(100vw - 4ch);
   height: calc(100vh - 2lh);
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(6lh, auto);
+  grid-auto-rows: minmax(8lh, 10lh);
   grid-column-gap: 1ch;
   pointer-events: none;
+  /* opacity: 0.75; */
 
   & > * {
     --box-border-color: var(--background1);

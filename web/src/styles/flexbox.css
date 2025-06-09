@@ -10,18 +10,8 @@
   [is-~="column"] {
     display: flex;
 
-    &[gap-~="1"] {
-      column-gap: 1ch;
-      row-gap: 1lh;
-    }
-    &[gap-~="2"] {
-      column-gap: 2ch;
-      row-gap: 2lh;
-    }
-    &[gap-~="4"] {
-      column-gap: 4ch;
-      row-gap: 4lh;
-    }
+    column-gap: attr(gap- ch);
+    row-gap: attr(gap- lh);
 
     &[self-~="grow"] {
       flex-grow: 1;

@@ -1,17 +1,17 @@
-<column box-="square" class="widget" id="chart-widget" pad-="2 1">
+<column box-="square" align-="stretch end" class="widget" id="chart-widget" pad-="2 1">
   <row>
     <row>
       <column gap-="1">
-        <span>5</span>
-        <span>3</span>
-        <span>1</span>
+        <span>4</span>
+        <span>2</span>
+        <span>0</span>
       </column>
       <div is-="separator" direction-="vertical" cap-="default edge" />
     </row>
     <column self-="grow">
       <row self-="grow" gap-="1" align-="end start">
         <div class="line" height-="2" />
-        <div class="line" height-="5" />
+        <div class="line" height-="4" />
         <div class="line" height-="3" />
         <div class="line" height-="1" />
         <div class="line" height-="2" />
@@ -24,7 +24,6 @@
       </row>
     </column>
   </row>
-  <column pad-="2 0" id="caption">Interest / Time</column>
 </column>
 
 <style>
@@ -37,7 +36,6 @@
   height: attr(height- lh);
   width: 1ch;
   background-color: var(--green);
-  filter: brightness(0.8);
 }
 
 [is-="separator"] {

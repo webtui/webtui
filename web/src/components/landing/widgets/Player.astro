@@ -1,0 +1,131 @@
+---
+const songs = [
+  {
+    title: "In the End",
+    album: "Hybrid Theory (Bonus Edition)",
+    artist: "Linkin Park",
+    duration: "3:36",
+  },
+  {
+    title: "Legends Never Die",
+    album: "Legends Never Die",
+    artist: "League of Legends",  
+    duration: "3:55",
+  },
+  {
+    title: "Six Feet Under",
+    album: "Ghost Code",
+    artist: "Smash Into Pieces",
+    duration: "2:58",
+  },
+  {
+    title: "Centuries",
+    album: "American Beauty/American Psycho",
+    artist: "Fall Out Boy",
+    duration: "3:48",
+  },
+  {
+    title: "Survivor",
+    album: "Survivor",
+    artist: "State of Mine",
+    duration: "3:11",
+  },
+  {
+    title: "Afterglow",
+    album: "Ghost Code",
+    artist: "Smash Into Pieces",
+    duration: "3:39",
+  },
+]
+---
+
+<column box-="square" class="widget" id="stats-widget" gap-="1" pad-="2 1">
+  <column box-="round" pad-="2 1" id="playing">
+    <row gap-="1">
+      <span>&#xf04c;</span>
+      <row self-="grow">
+        <strong class="title">Tokio Drift</strong>
+        <span class="album"><span>&#xf001;</span> Tokio Drift</span>
+        <span class="author"><span>&#xf007;</span> ZODIVK</span>
+      </row>
+      <span class="duration">-1:25</span>
+    </row>
+    <row id="progress-bar">
+      <span>[</span>
+      <div id="progress" is-="separator" />
+      <div id="progress-gutter" is-="separator" />
+      <span>]</span>
+    </row>
+  </column>
+
+  <column pad-="1 0" self-="grow" style="overflow: hidden;">
+    <strong>Next up</strong>
+    <column>
+      <div is-="separator" style="--separator-color: var(--background2)" />
+    </column>
+    <column>
+      {songs.map((song, i) => <>
+        <row class="song">
+          <span>&#xf04b;</span>
+          <row self-="grow">
+            <strong class="title">{song.title}</strong>
+            <span class="album"><span>&#xf001;</span> {song.album}</span>
+            <span class="author"><span>&#xf007;</span> {song.artist}</span>
+          </row>
+          <span>{song.duration}</span>
+        </row>
+        {i < songs.length - 1 && <column pad-="1 0"><div is-="separator" style="--separator-color: var(--background1)" /></column>}
+      </>)}
+    </column>
+  </column>
+</column>
+
+<style>
+#progress-bar {
+  color: var(--blue);
+  #progress {
+    --separator-color: var(--lavender);  
+    width: 15ch;
+  }
+
+  #progress-gutter {
+    --separator-color: var(--background2);
+    flex-grow: 1;
+  }
+}
+
+#stats-widget {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+}
+
+#playing {
+  --box-border-color: var(--background2);
+  color: var(--mauve);
+
+}
+
+.song {
+  gap: 1ch;
+  padding-left: 1ch;
+  padding-right: 1ch;
+  color: var(--foreground1);
+}
+
+.author, .album, .title {
+  flex-grow: 1;
+  max-width: 16ch;
+  min-width: 16ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  span {
+    color: var(--pink);
+  }
+}
+
+.author, .album {
+  color: var(--foreground2);
+}
+</style>
