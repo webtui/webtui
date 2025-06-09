@@ -1,13 +1,13 @@
 ---
-import Navbar from "../Navbar.astro";
-import Widgets from "./widgets/Widgets.astro";
+import Navbar from '../Navbar.astro';
+import Widgets from './widgets/Widgets.astro';
 ---
 
 <column align-="center" self-="grow" id="container">
   <Widgets />
-  <column id="content" gap-="1" pad-="1">
+  <column id="content" pad-="2 1">
     <Navbar />
-    <column gap-="1" pad-="1 0" id="main">
+    <column gap-="1" pad-="2 1" id="main" box-="square">
       <h1>
         <span is-="badge" variant-="green">&#xf4b5; Terminal UIs</span>
         for the
@@ -17,8 +17,8 @@ import Widgets from "./widgets/Widgets.astro";
         <p>WebTUI is a <strong>modular CSS library</strong> that brings the beauty of <a href="/start/tuis-vs-guis">Terminal UIs</a> to the browser</p>
         <div is-="separator" />
         <row gap-="1">
-          <a is-="button" href="/start/intro">Get Started &#xf101;</a>
-          <a is-="button" href="/examples" variant-="foreground2" box-="round">Examples &#xea7b;</a>
+          <a href="/start/intro"><button>Get Started</button></a>
+          <a href="/examples"><button variant-="background1">Examples</button></a>
         </row>
       </column>
     </column>
@@ -33,8 +33,10 @@ import Widgets from "./widgets/Widgets.astro";
       position: absolute;
       background-color: var(--background0);
       max-width: 60ch;
-      /* Remove */
-      display: none;
+
+      #main {
+        --box-border-color: var(--background1);
+      }
 
       h1 { color: var(--foreground0) }
       h1::before { content: "" }
