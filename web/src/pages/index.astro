@@ -1,17 +1,39 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Intro from '@/components/landing/Intro.astro';
+import VimNavigation from '@/components/landing/VimNavigation.astro';
 ---
 
 <Layout>
   <main>
-    <header>
+    <header id="intro">
       <Intro />
     </header>
+    <section id="features">
+      <h1>modular</h1>
+    </section>
     <section>
-      <h1>hi</h1>
+      <h1>pure css</h1>
+    </section>
+    <section>
+      <h1>semantic approach</h1>
+    </section>
+    <section id="themes">
+      <h1>themes</h1>
+    </section>
+    <section id="sponsors">
+      <h1>sponsors</h1>
+    </section>
+    <section>
+      <column self-="grow">
+        <h1>final cta</h1>
+      </column>
+      <footer>
+        foot
+      </footer>
     </section>
   </main>
+  <VimNavigation />
 </Layout>
 
 <style is:global>

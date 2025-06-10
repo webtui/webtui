@@ -5,9 +5,9 @@ import Widgets from './widgets/Widgets.astro';
 
 <column align-="center" self-="grow" id="container">
   <Widgets />
-  <column id="content" pad-="2 1">
+  <column id="content">
     <Navbar />
-    <column gap-="1" pad-="2 1" id="main" box-="square">
+    <column id="main" box-="square">
       <h1>
         <span is-="badge" variant-="green">&#xf4b5; Terminal UIs</span>
         for the
@@ -23,6 +23,31 @@ import Widgets from './widgets/Widgets.astro';
       </column>
     </column>
   </column>
+  <column id="next-section">
+    <column box-="square" shear-="top" is-="typography-block">
+      <row><span is-="badge" variant-="background0">On this page</span></row>
+      <row pad-="1 0">
+        <row self-="grow !basis" gap-="1">
+          <span is-="badge" variant-="background1">i</span>
+          <a id="intro-link" href="#intro">Introduction</a>
+        </row>
+        <row self-="grow !basis" gap-="1">
+          <span is-="badge" variant-="background1">f</span>
+          <a id="features-link" href="#features">Features</a>
+        </row>
+      </row>
+      <row pad-="1 0">
+        <row self-="grow !basis" gap-="1">
+          <span is-="badge" variant-="background1">t</span>
+          <a id="themes-link" href="#themes">Themes</a>
+        </row>
+        <row self-="grow !basis" gap-="1">
+          <span is-="badge" variant-="background1">s</span>
+          <a id="sponsors-link" href="#sponsors">Sponsors</a>
+        </row>
+      </row>
+    </column>
+  </column>
 </column>
 
 <style>
@@ -32,9 +57,13 @@ import Widgets from './widgets/Widgets.astro';
     #content {
       position: absolute;
       background-color: var(--background0);
-      max-width: 60ch;
+      max-width: 64ch;
+      width: calc(100% - 2ch);
+      padding: 1lh 2ch;
 
       #main {
+        padding: 1lh 2ch;
+        gap: 1lh;
         --box-border-color: var(--background1);
       }
 
@@ -43,8 +72,58 @@ import Widgets from './widgets/Widgets.astro';
     }
   }
 
+  #next-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5lh;
+    padding-top: 1lh;
+    padding-left: 2ch;
+    padding-right: 2ch;
+    overflow: hidden;
+    background-color: var(--background0);
+
+    & > column {
+      --box-border-color: var(--background1);
+      position: absolute;
+      width: calc(100% - 4ch);
+      height: 5lh;
+    }
+  }
+
+  @media (max-width: 50ch) {
+    #container {
+      #content, #main {
+        padding: 1lh 1ch;
+      }
+    }
+  }
 
   [is-="separator"] {
     --separator-color: var(--background2);
   }
 </style>
+
+<script>
+  import { isUserTyping } from "@/utils/vim";
+
+  const introLink = document.querySelector("#intro-link") as HTMLAnchorElement;
+  const featuresLink = document.querySelector("#features-link") as HTMLAnchorElement;
+  const themesLink = document.querySelector("#themes-link") as HTMLAnchorElement;
+  const sponsorsLink = document.querySelector("#sponsors-link") as HTMLAnchorElement;
+
+  window.addEventListener("keydown", (event) => {
+    if(isUserTyping()) return;
+
+    if(event.key === "i") {
+      introLink.click();
+    } else if(event.key === "f") {
+      featuresLink.click();
+    } else if(event.key === "t") {
+      themesLink.click();
+    } else if(event.key === "s") {
+      sponsorsLink.click();
+    }
+  })
+</script>
