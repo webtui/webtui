@@ -23,29 +23,32 @@ import Widgets from './widgets/Widgets.astro';
       </column>
     </column>
   </column>
-  <column id="next-section">
-    <column box-="square" shear-="top" is-="typography-block">
-      <row><span is-="badge" variant-="background0">On this page</span></row>
-      <row pad-="1 0">
-        <row self-="grow !basis" gap-="1">
-          <span is-="badge" variant-="background1">i</span>
-          <a id="intro-link" href="#intro">Introduction</a>
+  <column id="contents">
+    <column id="contents-strip" />
+    <column id="contents-wrapper">
+      <column id="contents-container" box-="square" shear-="top" is-="typography-block">
+        <row><span is-="badge" variant-="background0">On this page</span></row>
+        <row pad-="1 0">
+          <row self-="grow !basis" gap-="1">
+            <span is-="badge" variant-="background1">i</span>
+            <a id="intro-link" href="#intro">Intro</a>
+          </row>
+          <row self-="grow !basis" gap-="1">
+            <span is-="badge" variant-="background1">f</span>
+            <a id="features-link" href="#features">Features</a>
+          </row>
         </row>
-        <row self-="grow !basis" gap-="1">
-          <span is-="badge" variant-="background1">f</span>
-          <a id="features-link" href="#features">Features</a>
+        <row pad-="1 0">
+          <row self-="grow !basis" gap-="1">
+            <span is-="badge" variant-="background1">t</span>
+            <a id="themes-link" href="#themes">Themes</a>
+          </row>
+          <row self-="grow !basis" gap-="1">
+            <span is-="badge" variant-="background1">s</span>
+            <a id="sponsors-link" href="#sponsors">Sponsors</a>
+          </row>
         </row>
-      </row>
-      <row pad-="1 0">
-        <row self-="grow !basis" gap-="1">
-          <span is-="badge" variant-="background1">t</span>
-          <a id="themes-link" href="#themes">Themes</a>
-        </row>
-        <row self-="grow !basis" gap-="1">
-          <span is-="badge" variant-="background1">s</span>
-          <a id="sponsors-link" href="#sponsors">Sponsors</a>
-        </row>
-      </row>
+      </column>
     </column>
   </column>
 </column>
@@ -72,23 +75,39 @@ import Widgets from './widgets/Widgets.astro';
     }
   }
 
-  #next-section {
+  #contents {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
     height: 5lh;
-    padding-top: 1lh;
-    padding-left: 2ch;
-    padding-right: 2ch;
     overflow: hidden;
-    background-color: var(--background0);
 
-    & > column {
-      --box-border-color: var(--background1);
+    #contents-strip {
       position: absolute;
-      width: calc(100% - 4ch);
-      height: 5lh;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 1lh;
+      background-color: var(--mantle);
+    }
+
+    #contents-wrapper {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 64ch;
+      width: 100%;
+      padding-top: 1lh;
+      padding-left: 2ch;
+      padding-right: 2ch;
+      background-color: var(--background0);
+
+      #contents-container {
+        --box-border-color: var(--background1);
+      }
     }
   }
 
