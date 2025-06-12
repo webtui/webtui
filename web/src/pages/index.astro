@@ -1,37 +1,24 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Intro from '@/components/landing/Intro.astro';
+import Intro from '@/components/landing/sections/Intro.astro';
 import VimNavigation from '@/components/landing/VimNavigation.astro';
+import FeaturePureCss from '@/components/landing/sections/FeaturePureCss.astro';
+import FeatureSemantic from '@/components/landing/sections/FeatureSemantic.astro';
+import FeatureThemes from '@/components/landing/sections/FeatureThemes.astro';
+import Gallery from '@/components/landing/sections/Gallery.astro';
+import Sponsors from '@/components/landing/sections/Sponsors.astro';
+import Cta from '@/components/landing/sections/Cta.astro';
 ---
 
 <Layout>
   <main>
-    <header id="intro">
-      <Intro />
-    </header>
-    <section id="features">
-      <h1>modular</h1>
-    </section>
-    <section>
-      <h1>pure css</h1>
-    </section>
-    <section>
-      <h1>semantic approach</h1>
-    </section>
-    <section id="themes">
-      <h1>themes</h1>
-    </section>
-    <section id="sponsors">
-      <h1>sponsors</h1>
-    </section>
-    <section>
-      <column self-="grow">
-        <h1>final cta</h1>
-      </column>
-      <footer>
-        foot
-      </footer>
-    </section>
+    <Intro />
+    <FeatureSemantic />
+    <FeaturePureCss />
+    <FeatureThemes />
+    <Gallery />
+    <Sponsors />
+    <Cta />
   </main>
   <VimNavigation />
 </Layout>
@@ -67,7 +54,16 @@ import VimNavigation from '@/components/landing/VimNavigation.astro';
     flex-direction: column;
   }
 
-  header {
-    background-color: var(--crust);
+  section .content {
+    max-width: 80ch;
+    width: round(calc(100% - 2ch), 1ch);
+    row-gap: 2ch;
+    column-gap: 1lh;
+  }
+
+  @media (max-width: 1000px) {
+    section .content {
+      flex-direction: column-reverse;
+    }
   }
 </style>
