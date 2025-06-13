@@ -1,0 +1,79 @@
+@layer base {
+  [data-webtui-theme|="vitesse-dark"],
+  [data-webtui-theme|="vitesse-black"] {
+    --vitesse-dark-bg1: #2f363d;
+    --vitesse-dark-bg2: #393a34;
+    --vitesse-dark-bg3: #444d56;
+    --vitesse-dark-bg4: #586069;
+    --vitesse-dark-fg0: #dbd7ca;
+    --vitesse-dark-fg1: #c9c8c0;
+    --vitesse-dark-fg2: #b8bab7;
+    --vitesse-dark-fg3: #a6abae;
+    --vitesse-dark-fg4: #959da5;
+    --vitesse-dark-gray: #586069;
+    --vitesse-red: #cb7676;
+    --vitesse-green: #4d9375;
+    --vitesse-yellow: #e6cc77;
+    --vitesse-blue: #6394bf;
+    --vitesse-purple: #d9739f;
+    --vitesse-aqua: #5eaab5;
+    --vitesse-orange: #d4976c;
+
+    --background1: var(--vitesse-dark-bg1);
+    --background2: var(--vitesse-dark-bg2);
+    --background3: var(--vitesse-dark-bg3);
+    --foreground0: var(--vitesse-dark-fg0);
+    --foreground1: var(--vitesse-dark-fg1);
+    --foreground2: var(--vitesse-dark-fg2);
+  }
+
+  [data-webtui-theme="vitesse-dark-soft"] {
+    --vitesse-dark-bg0: #222;
+    --background0: var(--vitesse-dark-bg0);
+  }
+  [data-webtui-theme="vitesse-dark"] {
+    --vitesse-dark-bg0: #121212;
+    --background0: var(--vitesse-dark-bg0);
+  }
+  [data-webtui-theme="vitesse-black"] {
+    --vitesse-dark-bg0: #000000;
+    --background0: var(--vitesse-dark-bg0);
+  }
+
+  [data-webtui-theme|="vitesse-light"] {
+    --vitesse-light-bg1: #f5f3f0;
+    --vitesse-light-bg2: #d1d5da;
+    --vitesse-light-bg3: #aaaaaa;
+    --vitesse-light-bg4: #969696;
+    --vitesse-light-fg0: #393a34;
+    --vitesse-light-fg1: #4e4f47;
+    --vitesse-light-fg2: #6a737d;
+    --vitesse-light-fg3: #82868b;
+    --vitesse-light-fg4: #999999;
+    --vitesse-light-gray: #d1d5da;
+    --vitesse-red: #ab5959;
+    --vitesse-green: #1e754f;
+    --vitesse-yellow: #bda437;
+    --vitesse-blue: #296aa3;
+    --vitesse-purple: #a13865;
+    --vitesse-aqua: #2993a3;
+    --vitesse-orange: #a65e2b;
+
+    --background1: var(--vitesse-light-bg1);
+    --background2: var(--vitesse-light-bg2);
+    --background3: var(--vitesse-light-bg3);
+    --foreground0: var(--vitesse-light-fg0);
+    --foreground1: var(--vitesse-light-fg1);
+    --foreground2: var(--vitesse-light-fg2);
+  }
+
+  [data-webtui-theme="vitesse-light-soft"] {
+    --vitesse-light-bg0: #f1f0e9;
+    --vitesse-light-bg1: #e8e3dc;
+    --background0: var(--vitesse-light-bg0);
+  }
+  [data-webtui-theme="vitesse-light"] {
+    --vitesse-light-bg0: #ffffff;
+    --background0: var(--vitesse-light-bg0);
+  }
+}
