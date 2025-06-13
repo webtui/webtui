@@ -1,0 +1,48 @@
+@layer components {
+  [data-webtui-theme|="vitesse"] {
+    button {
+      &[variant-="red"] {
+        --button-primary: var(--vitesse-red);
+        --button-secondary: var(--background0);
+      }
+      &[variant-="green"] {
+        --button-primary: var(--vitesse-green);
+        --button-secondary: var(--background0);
+      }
+      &[variant-="yellow"] {
+        --button-primary: var(--vitesse-yellow);
+        --button-secondary: var(--background0);
+      }
+      &[variant-="blue"] {
+        --button-primary: var(--vitesse-blue);
+        --button-secondary: var(--background0);
+      }
+      &[variant-="purple"] {
+        --button-primary: var(--vitesse-purple);
+        --button-secondary: var(--background0);
+      }
+      &[variant-="aqua"] {
+        --button-primary: var(--vitesse-aqua);
+        --button-secondary: var(--background0);
+      }
+      &[variant-="orange"] {
+        --button-primary: var(--vitesse-orange);
+        --button-secondary: var(--background0);
+      }
+    }
+  }
+
+  [data-webtui-theme|="vitesse-dark"] {
+    button[variant-="gray"] {
+      --button-primary: var(--vitesse-dark-gray);
+      --button-secondary: var(--background0);
+    }
+  }
+
+  [data-webtui-theme|="vitesse-light"] {
+    button[variant-="gray"] {
+      --button-primary: var(--vitesse-light-gray);
+      --button-secondary: var(--background0);
+    }
+  }
+}

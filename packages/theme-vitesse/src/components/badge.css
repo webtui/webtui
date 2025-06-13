@@ -1,0 +1,48 @@
+@layer components {
+  [data-webtui-theme|="vitesse"] {
+    [is-~="badge"] {
+      &[variant-="red"] {
+        --badge-color: var(--vitesse-red);
+        --badge-text: var(--background0);
+      }
+      &[variant-="green"] {
+        --badge-color: var(--vitesse-green);
+        --badge-text: var(--background0);
+      }
+      &[variant-="yellow"] {
+        --badge-color: var(--vitesse-yellow);
+        --badge-text: var(--background0);
+      }
+      &[variant-="blue"] {
+        --badge-color: var(--vitesse-blue);
+        --badge-text: var(--background0);
+      }
+      &[variant-="purple"] {
+        --badge-color: var(--vitesse-purple);
+        --badge-text: var(--background0);
+      }
+      &[variant-="aqua"] {
+        --badge-color: var(--vitesse-aqua);
+        --badge-text: var(--background0);
+      }
+      &[variant-="orange"] {
+        --badge-color: var(--vitesse-orange);
+        --badge-text: var(--background0);
+      }
+    }
+  }
+
+  [data-webtui-theme|="vitesse-dark"] {
+    [is-~="badge"][variant-="gray"] {
+      --badge-color: var(--vitesse-dark-gray);
+      --badge-text: var(--background0);
+    }
+  }
+
+  [data-webtui-theme|="vitesse-light"] {
+    [is-~="badge"][variant-="gray"] {
+      --badge-color: var(--vitesse-light-gray);
+      --badge-text: var(--background0);
+    }
+  }
+}
