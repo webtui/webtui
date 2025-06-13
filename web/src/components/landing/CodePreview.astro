@@ -4,25 +4,27 @@ type LineHighlight = 'add' | 'remove' | 'change';
 
 interface Props {
   code: string;
-  lang?: 'xml' | 'css';
+  lang?: 'html' | 'css';
   file?: {
     name: string;
     icon: [string, string] | string;
   }
   highlights?: [number, LineHighlight][];
+  withShadow?: boolean;
 }
 
 const {
   code,
   highlights,
-  lang = 'xml',
+  lang = 'html',
   file,
+  withShadow = false,
   ...props
 } = Astro.props;
 
 const highlighter = await getSingletonHighlighter({
   themes: ['catppuccin-mocha'],
-  langs: ['xml', 'css'],
+  langs: ['html', 'css'],
 });
 const tokens = highlighter.codeToTokens(code, {
   lang,
@@ -43,7 +45,7 @@ const fileIconColor = Array.isArray(file?.icon) ? file.icon[1] : undefined;
       </row>
     </span>
   </row>}
-  <table>
+  <table class={withShadow ? "shadow" : undefined}>
     <colgroup>
       <col id="line-number" />
       <col />
@@ -67,6 +69,10 @@ table {
   border-collapse: collapse;
   background-color: var(--background1);
   flex-grow: 1;
+
+  &.shadow {
+    box-shadow: 1ch 0.5lh 0 0 var(--mantle);
+  }
 }
 
 #line-number {
@@ -90,7 +96,7 @@ tr {
     }
 
     &[highlight-="change"] {
-      --highlight-color: var(--yellow);
+      --highlight-color: var(--mauve);
       --highlight-symbol: "~";
     }
 
@@ -108,7 +114,7 @@ tr {
     }
 
     .line-code {
-      background-color: color-mix(in srgb, var(--highlight-color) 25%, var(--background1) 50%);
+      background-color: color-mix(in srgb, var(--highlight-color) 15%, var(--background1) 50%);
     }
   }
 }
