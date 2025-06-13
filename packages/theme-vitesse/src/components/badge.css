@@ -34,14 +34,14 @@
 
   [data-webtui-theme|="vitesse-dark"] {
     [is-~="badge"][variant-="gray"] {
-      --badge-color: var(--vitesse-dark-gray);
+      --badge-color: var(--vitesse-gray);
       --badge-text: var(--background0);
     }
   }
 
   [data-webtui-theme|="vitesse-light"] {
     [is-~="badge"][variant-="gray"] {
-      --badge-color: var(--vitesse-light-gray);
+      --badge-color: var(--vitesse-gray);
       --badge-text: var(--background0);
     }
   }

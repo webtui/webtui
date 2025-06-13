@@ -130,24 +130,24 @@ Raw color tokens and base semantic variables (`--background*`, `--foreground*`) 
     --vitesse-orange: #d4976c; /* Dim Orange */
 
     /* Semantic Mapping (Dark) */
-    --background0: var(--vitesse-dark-bg0);
-    --background1: var(--vitesse-dark-bg1);
-    --background2: var(--vitesse-dark-bg2);
-    --background3: var(--vitesse-dark-bg3);
-    --foreground0: var(--vitesse-dark-fg1);
-    --foreground1: var(--vitesse-dark-fg2);
-    --foreground2: var(--vitesse-dark-fg3);
+    --background0: var(--vitesse-bg0);
+    --background1: var(--vitesse-bg1);
+    --background2: var(--vitesse-bg2);
+    --background3: var(--vitesse-bg3);
+    --foreground0: var(--vitesse-fg1);
+    --foreground1: var(--vitesse-fg2);
+    --foreground2: var(--vitesse-fg3);
   }
 
   /* Dark Contrast Specific bg0 */
   [data-webtui-theme="vitesse-dark"] {
-    --vitesse-dark-bg0: #121212;
+    --vitesse-bg0: #121212;
   }
   [data-webtui-theme="vitesse-dark-soft"] {
-    --vitesse-dark-bg0: #222;
+    --vitesse-bg0: #222;
   }
   [data-webtui-theme="vitesse-black"] {
-    --vitesse-dark-bg0: #000000;
+    --vitesse-bg0: #000000;
   }
 
   /* Common Light Variables & Semantic Mapping */
@@ -156,21 +156,21 @@ Raw color tokens and base semantic variables (`--background*`, `--foreground*`) 
     --vitesse-orange: #a65e2b; /* Faded Orange */
 
     /* Semantic Mapping (Light) */
-    --background0: var(--vitesse-light-bg0);
-    --background1: var(--vitesse-light-bg1);
-    --background2: var(--vitesse-light-bg2);
-    --background3: var(--vitesse-light-bg3);
-    --foreground0: var(--vitesse-light-fg1);
-    --foreground1: var(--vitesse-light-fg2);
-    --foreground2: var(--vitesse-light-fg3);
+    --background0: var(--vitesse-bg0);
+    --background1: var(--vitesse-bg1);
+    --background2: var(--vitesse-bg2);
+    --background3: var(--vitesse-bg3);
+    --foreground0: var(--vitesse-fg1);
+    --foreground1: var(--vitesse-fg2);
+    --foreground2: var(--vitesse-fg3);
   }
 
   /* Light Contrast Specific bg0 */
   [data-webtui-theme="vitesse-light"] {
-    --vitesse-light-bg0: #ffffff;
+    --vitesse-bg0: #ffffff;
   }
   [data-webtui-theme="vitesse-light-soft"] {
-    --vitesse-light-bg0: #f1f0e9;
+    --vitesse-bg0: #f1f0e9;
   }
 }
 ```
