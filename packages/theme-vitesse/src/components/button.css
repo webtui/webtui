@@ -34,14 +34,14 @@
 
   [data-webtui-theme|="vitesse-dark"] {
     button[variant-="gray"] {
-      --button-primary: var(--vitesse-dark-gray);
+      --button-primary: var(--vitesse-gray);
       --button-secondary: var(--background0);
     }
   }
 
   [data-webtui-theme|="vitesse-light"] {
     button[variant-="gray"] {
-      --button-primary: var(--vitesse-light-gray);
+      --button-primary: var(--vitesse-gray);
       --button-secondary: var(--background0);
     }
   }
