@@ -1,0 +1,37 @@
+---
+import CodePreview from '../CodePreview.astro';
+---
+
+<section>
+  <column self-="grow" align-="center">
+    <row class="content">
+      <CodePreview 
+        code={`<button variant-="foreground0">
+  Click
+</button>
+
+<label>
+  <input type="checkbox" is-="switch" />
+  Hello there
+</label>
+
+<span is-="badge" variant-="yellow">
+  Warning
+</span>`} 
+        file={{
+          name: "index.html",
+          icon: ["\ue736", "var(--red)"],
+        }}
+        self-="grow !shrink"
+        withShadow
+      />
+      <column self-="shrink" gap-="1" pad-="0 1">
+        <row>
+          <span is-="badge" variant-="green">Semantic Approach</span>
+        </row>
+        <p>HTML tags and attributes determine the behavior and appearance of different components</p>
+        <p>Custom variant attributes end with a dash (<code>-</code>), making WebTUI compatible with frameworks like React</p>
+      </column>
+    </row>
+  </column>
+</section>
