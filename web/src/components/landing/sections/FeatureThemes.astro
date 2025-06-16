@@ -67,7 +67,7 @@ const themeKeys = {
             <button size-="small" variant-="background2">&#xf054;</button>
             <button size-="small" variant-="background2">&#xe348;</button>
           </row>
-          <row self-="grow" id="urlbar">http://<span>localhost</span>:4321</row>
+          <row self-="grow" id="urlbar">http://<span>stackoverflow.com</span>/questions/123456</row>
         </row>
         <column box-="round" id="browser-content">
           <span>How to determine if a number is odd in Javascript</span>
@@ -170,26 +170,11 @@ const themeKeys = {
 </style>
 
 <script>
-const scrollContainer = document.querySelector("main") as HTMLElement;
+import { attachScrollSnapListener } from "@/utils/scroll";
+
 const themePreview = document.querySelector("#theme-preview") as HTMLElement;
-const themeSection = document.querySelector("#theme-section") as HTMLElement;
 
 let currentTarget: HTMLElement | undefined;
-
-const determineSnapTarget = () => {
-  const snapTargets = document.querySelectorAll(".snap");
-
-  const target = Array.from(snapTargets).find((snapTarget) => {
-    const rect = snapTarget.getBoundingClientRect();
-
-    return (rect.top < window.innerHeight && rect.bottom > 0)
-  })
-
-  const themeSectionRect = themeSection.getBoundingClientRect();
-  const themeSectionIntersecting = themeSectionRect.top < window.innerHeight && themeSectionRect.bottom > 0;
-
-  return (target as HTMLElement | undefined) ?? (themeSectionIntersecting ? themeSection : undefined);
-}
 
 const handleTargetChange = (target?: HTMLElement) => {
     if(!target || currentTarget === target) return;
@@ -198,30 +183,10 @@ const handleTargetChange = (target?: HTMLElement) => {
 
     const theme = target.dataset.theme;
 
-    console.log(theme);
-
     if(theme) {
       themePreview.setAttribute("data-webtui-theme", theme);
     }
 }
 
-if('onscrollsnapchange' in window) {
-  // Chromium
-  scrollContainer.addEventListener('scrollsnapchange', (e) => {
-    const target = (e as Event & { snapTargetBlock: HTMLElement }).snapTargetBlock;
-    handleTargetChange(target);
-  })
-} else if('onscrollend' in window) {
-  // Firefox
-  scrollContainer.addEventListener('scrollend', () => {
-    const target = determineSnapTarget();
-    handleTargetChange(target);
-  })
-} else {
-  // Safari
-  scrollContainer.addEventListener('scroll', () => {
-    const target = determineSnapTarget();
-    handleTargetChange(target);
-  })
-}
+attachScrollSnapListener(".snap", handleTargetChange, "#theme-section");
 </script>

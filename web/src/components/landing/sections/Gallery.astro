@@ -1,3 +1,149 @@
-<section>
-  <h1>gallery</h1>
+---
+interface Project {
+  name: string;
+  url: string;
+  image: string;
+}
+
+const projects: Array<[Project, Project] | [Project]> = [
+  [
+    {
+      name: 'Stefan Vučković - Software Engineer',
+      url: 'https://stefvuck.dev',
+      image: '/gallery/stefvuck-dev.png',
+    },
+    {
+      name: 'Placeholder',
+      url: 'https://example.com',
+      image: '/gallery/placeholder.png',
+    },
+  ],
+  [
+    {
+      name: 'Placeholder',
+      url: 'https://example.com',
+      image: '/gallery/placeholder.png',
+    },
+    {
+      name: 'Placeholder',
+      url: 'https://example.com',
+      image: '/gallery/placeholder.png',
+    },
+  ],
+  [
+    {
+      name: 'Placeholder',
+      url: 'https://example.com',
+      image: '/gallery/placeholder.png',
+    },
+  ],
+];
+---
+
+<section id="gallery" style={{ minHeight: `${200 + ((projects.length - 2) * 50)}vh`}} data-index="0">
+  <column id="visible-content" align-="center">
+    <column class="content">
+      <row>
+        <span is-="badge" variant-="peach">&#xf121; Gallery</span>
+      </row>
+      <column id="projects" gap-="1">
+        {projects.map((projects, i) => 
+          <row class="project-row" data-index={i} data-visible={i === 0}>
+            {projects.map((project) =>
+              <a href={project.url} target="_blank" class="project" box-="round">
+                <!-- <img src={project.image} alt={project.name} /> -->
+                <div is-="separator" style="--separator-color: var(--background1)" cap-="bisect" />
+                <column>
+                  <span>{project.name}</span>
+                </column>
+              </a>
+            )}
+          </row>
+        )}
+      </column>
+    </column>
+  </column>
+  {projects.map((_, i) => 
+    i === 0 ? null : <div class="project-scroll-marker" data-index={i} />
+  )}
 </section>
+
+<style>
+section {
+  position: relative;
+}
+
+#gallery-projects {
+  max-width: 80ch;
+  width: round(calc(100% - 2ch), 1ch);
+  row-gap: 2ch;
+  column-gap: 1lh;
+}
+
+#visible-content {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#projects {
+  .project-row {
+    flex-wrap: wrap;
+    row-gap: 1lh;
+    column-gap: 2ch;
+    overflow: hidden;
+    display: none;
+
+    &[data-visible="true"] {
+      display: flex;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-basis: 0;
+      max-height: 50vh;
+      --box-border-color: var(--background1);
+
+      img {
+        aspect-ratio: 3 / 2;
+        display: flex;
+      }
+    }
+  }
+}
+
+.project-scroll-marker {
+  min-height: 50vh;
+  scroll-snap-align: start;
+
+  &:last-of-type {
+    min-height: 100vh;
+  }
+}
+</style>
+
+<script>
+  import { attachScrollSnapListener } from "@/utils/scroll";
+
+  let currentRow: HTMLElement | undefined;
+
+  const handleTargetChange = (target?: HTMLElement) => {
+    if(!target || currentRow === target) return;
+
+    currentRow = target;
+
+    const rowIndex = target.dataset.index;
+
+    if(rowIndex) {
+      (document.querySelectorAll(".project-row") as NodeListOf<HTMLElement>).forEach((row) => {
+        row.setAttribute("data-visible", row.dataset.index === rowIndex ? "true" : "false");
+      });
+    }
+  }
+
+  attachScrollSnapListener(".project-scroll-marker", handleTargetChange, "#gallery");
+</script>
