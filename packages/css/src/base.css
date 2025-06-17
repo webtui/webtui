@@ -16,7 +16,7 @@
     --font-weight-normal: 400;
     --font-family: monospace;
 
-    --box-border-color: var(--background3);
+    --box-border-color: var(--foreground0);
   }
 
   [data-webtui-theme="dark"] {

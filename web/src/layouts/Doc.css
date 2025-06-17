@@ -1,5 +1,4 @@
 #mobile-nav {
-  --box-border-color: var(--background1);
   display: none;
   gap: 1ch;
 
@@ -119,7 +118,6 @@ article {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  --box-border-color: var(--background1);
 
   &:focus-within {
     --box-border-color: var(--foreground1);

@@ -25,6 +25,7 @@
       "Symbols Nerd Font";
     --font-size: 18px;
     --line-height: 1.4;
+    --box-border-color: var(--background1);
   }
 
   body,

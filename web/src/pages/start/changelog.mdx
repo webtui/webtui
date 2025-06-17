@@ -14,6 +14,8 @@ import preStyle from '@webtui/css/components/pre.css?raw';
 - Added edge/bisecting caps to the [Separator Component](/components/separator)
 - Properly aligns [Badges](/components/badge) vertically
 - Removes an invalid `initial-value` property from the [Dialog Component](/components/dialog)
+- Removes the markdown-like `#` markers prefixing heading elements `<h1>`-`<h6>`
+- Allows the `--box-border-color` CSS to be inherited and controlled with CSS variables
 
 ### Migration Guide from < 0.1.1
 
@@ -30,6 +32,32 @@ h3::before { content: "### "; }
 h4::before { content: "#### "; }
 h5::before { content: "##### "; }
 h6::before { content: "###### "; }
+```
+
+#### Box Borders
+
+Prior to this release, the `--box-border-color` CSS variable **always** defaulted to `--foreground0`.
+
+Now all child elements of an element with the `--box-border-color` CSS variable will inherit the value
+
+```html
+<body style="--box-border-color: red;">
+    <div box-="square">red border</div>
+    <div box-="square" style="--box-border-color: blue;">blue border</div>
+    <div style="--box-border-color: green;">
+        <div box-="square">green border</div>
+    </div>
+</body>
+```
+
+The default box border color can also be controlled from `:root`
+
+```css
+@layer base {
+    :root {
+        --box-border-color: var(--background1);
+    }
+}
 ```
 
 ## 0.1.1

@@ -50,7 +50,6 @@ const { pathname: urlPath } = Astro.url;
     flex-direction: column;
     overflow: hidden;
     flex-grow: 1;
-    --box-border-color: var(--background1);
 
     &:focus-within {
       --box-border-color: var(--foreground2);
@@ -70,10 +69,6 @@ const { pathname: urlPath } = Astro.url;
       gap: 1lh;
       padding: 0 1ch;
       overflow-y: auto;
-    }
-
-    #keybind-container {
-      --box-border-color: var(--background1);
     }
   }
 
@@ -103,10 +98,6 @@ const { pathname: urlPath } = Astro.url;
     }
   }
 
-  #filter-container {
-    --box-border-color: var(--foreground2);
-  }
-
   details {
     summary {
       font-weight: var(--font-weight-bold);
@@ -133,12 +124,6 @@ const { pathname: urlPath } = Astro.url;
   details.hidden,
   .hidden {
     display: none;
-  }
-
-  @media (max-width: 96ch) {
-    #keybind-container {
-      display: none;
-    }
   }
 </style>
 
