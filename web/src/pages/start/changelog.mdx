@@ -16,6 +16,8 @@ import preStyle from '@webtui/css/components/pre.css?raw';
 - Removes an invalid `initial-value` property from the [Dialog Component](/components/dialog)
 - Removes the markdown-like `#` markers prefixing heading elements `<h1>`-`<h6>`
 - Allows the `--box-border-color` CSS to be inherited and controlled with CSS variables
+- Allows the `--table-border-color` CSS to be inherited and controlled with CSS variables
+- Allows the `--separator-color` CSS to be inherited and controlled with CSS variables
 
 ### Migration Guide from < 0.1.1
 
@@ -34,11 +36,11 @@ h5::before { content: "##### "; }
 h6::before { content: "###### "; }
 ```
 
-#### Box Borders
+#### Inherited Color Variables
 
-Prior to this release, the `--box-border-color` CSS variable **always** defaulted to `--foreground0`.
+Prior to this release, `--box-border-color`, `--table-border-color`, and `--separator-color` **always** defaulted to `--foreground0`.
 
-Now all child elements of an element with the `--box-border-color` CSS variable will inherit the value
+Now all child elements of an element with any of these CSS variables will inherit the value from its closest ancestor
 
 ```html
 <body style="--box-border-color: red;">
@@ -50,12 +52,14 @@ Now all child elements of an element with the `--box-border-color` CSS variable 
 </body>
 ```
 
-The default box border color can also be controlled from `:root`
+The defaults for these variables can be controlled from `:root`
 
 ```css
 @layer base {
     :root {
         --box-border-color: var(--background1);
+        --table-border-color: var(--background2);
+        --separator-color: var(--cyan);
     }
 }
 ```

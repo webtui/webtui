@@ -58,6 +58,11 @@ Additional color accents/variants can be added to components individually with C
         /* Foreground levels 1-2 */
         --foreground1: #444;
         --foreground2: #888;
+
+        /* Border colors for various components/utils */
+        --box-border-color: var(--foreground0);
+        --table-border-color: var(--foreground0);
+        --separator-color: var(--foreground0);
     }
 }
 ```

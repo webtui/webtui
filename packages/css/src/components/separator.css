@@ -6,6 +6,8 @@
   }
 
   [is-~="separator"] {
+    --separator-bg-fallback: var(--separator-background, transparent);
+
     display: inline-flex;
     position: relative;
 
@@ -15,12 +17,12 @@
       height: 1lh;
       background-image: linear-gradient(
         0deg,
-        var(--separator-background) 0,
-        var(--separator-background) calc(0.5lh - var(--separator-width) / 2),
+        var(--separator-bg-fallback) 0,
+        var(--separator-bg-fallback) calc(0.5lh - var(--separator-width) / 2),
         var(--separator-color) calc(0.5lh - (var(--separator-width) / 2)),
         var(--separator-color) calc(0.5lh + (var(--separator-width) / 2)),
-        var(--separator-background) calc(0.5lh + (var(--separator-width) / 2)),
-        var(--separator-background)
+        var(--separator-bg-fallback) calc(0.5lh + (var(--separator-width) / 2)),
+        var(--separator-bg-fallback)
       );
 
       &[cap-^="bisect"]::before {
@@ -49,12 +51,12 @@
       width: 1ch;
       background-image: linear-gradient(
         to right,
-        var(--separator-background) 0,
-        var(--separator-background) calc(0.5ch - (var(--separator-width) / 2)),
+        var(--separator-bg-fallback) 0,
+        var(--separator-bg-fallback) calc(0.5ch - (var(--separator-width) / 2)),
         var(--separator-color) calc(0.5ch - (var(--separator-width) / 2)),
         var(--separator-color) calc(0.5ch + (var(--separator-width) / 2)),
-        var(--separator-background) calc(0.5ch + (var(--separator-width) / 2)),
-        var(--separator-background)
+        var(--separator-bg-fallback) calc(0.5ch + (var(--separator-width) / 2)),
+        var(--separator-bg-fallback)
       );
 
       &[cap-^="bisect"]::before {
@@ -87,22 +89,6 @@
         height: 1lh;
         background-image: inherit;
       }
-    }
-
-    &[variant-="foreground0"],
-    &:not([variant-]) {
-      --separator-color: var(--foreground0);
-      --separator-background: transparent;
-    }
-
-    &[variant-="foreground1"] {
-      --separator-color: var(--foreground1);
-      --separator-background: transparent;
-    }
-
-    &[variant-="foreground2"] {
-      --separator-color: var(--foreground2);
-      --separator-background: transparent;
     }
   }
 }
