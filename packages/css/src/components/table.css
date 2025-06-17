@@ -6,8 +6,6 @@
   }
 
   table {
-    --table-border-color: var(--foreground0);
-
     border: none;
     outline: none;
     font-family: var(--font-family);
@@ -32,6 +30,11 @@
       &:first-of-type td,
       &:first-of-type th {
         padding-top: 1lh;
+      }
+
+      &:first-of-type:last-of-type td::before,
+      &:first-of-type:last-of-type th::before {
+        height: calc(100% - 1lh);
       }
 
       th {

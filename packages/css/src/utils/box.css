@@ -21,8 +21,6 @@
   [box-="square"],
   [box-="round"],
   [box-="double"] {
-    --box-border-color: var(--foreground0);
-
     position: relative;
     isolation: isolate;
     padding: 1lh 1ch;

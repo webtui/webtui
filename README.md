@@ -60,6 +60,10 @@ This repository is a monorepo that contains the website and all the official Web
     ```bash
     bun i
     ```
+4. Build the project
+    ```bash
+    bun run build
+    ```
 4. Start the dev server
     ```bash
     bun run dev

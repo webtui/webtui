@@ -1,0 +1,39 @@
+---
+import CodePreview from '../CodePreview.astro';
+---
+
+<section>
+  <column self-="grow" align-="center">
+    <row class="content">
+      <CodePreview 
+        code={`@import "@webtui/css/base.css";
+
+/* Utils */
+@import "@webtui/css/utils/box.css";
+
+/* Components */
+@import "@webtui/css/components/typography.css";
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/badge.css";
+`} 
+        lang="css"
+        file={{
+          name: "style.css",
+          icon: ["\ue749", "var(--blue)"],
+        }}
+        highlights={[
+          [8, "add"]
+        ]}
+        withShadow
+        self-="grow !shrink"
+      />
+      <column self-="shrink" gap-="1" pad-="0 1">
+        <row>
+          <h2 is-="badge" variant-="blue" style="color: var(--background0)">Pure, Modular CSS</h2>
+        </row>
+        <p>WebTUI is built with <strong>Pure CSS</strong> and does not require any JavaScript</p>
+        <p>Import and use only what you need</p>
+      </column>
+    </row>
+  </column>
+</section>

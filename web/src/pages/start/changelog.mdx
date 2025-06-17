@@ -7,6 +7,63 @@ import Example from '@/components/Example.astro';
 import buttonStyle from '@webtui/css/components/button.css?raw';
 import preStyle from '@webtui/css/components/pre.css?raw';
 
+## 0.1.2
+
+- [Switches](/components/switch) appear dimmer when unchecked
+- [Switches](/components/switch) correctly show the track when the `<input>` stylesheet is imported
+- Added edge/bisecting caps to the [Separator Component](/components/separator)
+- Properly aligns [Badges](/components/badge) vertically
+- Removes an invalid `initial-value` property from the [Dialog Component](/components/dialog)
+- Removes the markdown-like `#` markers prefixing heading elements `<h1>`-`<h6>`
+- Allows the `--box-border-color` CSS to be inherited and controlled with CSS variables
+- Allows the `--table-border-color` CSS to be inherited and controlled with CSS variables
+- Allows the `--separator-color` CSS to be inherited and controlled with CSS variables
+
+### Migration Guide from < 0.1.1
+
+#### Heading Markers
+
+The markdown-like `#` markers on heading elements `<h1>`-`<h6>` have been removed
+
+If you intend to keep this behavior, use the following CSS code
+
+```css
+h1::before { content: "# "; }
+h2::before { content: "## "; }
+h3::before { content: "### "; }
+h4::before { content: "#### "; }
+h5::before { content: "##### "; }
+h6::before { content: "###### "; }
+```
+
+#### Inherited Color Variables
+
+Prior to this release, `--box-border-color`, `--table-border-color`, and `--separator-color` **always** defaulted to `--foreground0`.
+
+Now all child elements of an element with any of these CSS variables will inherit the value from its closest ancestor
+
+```html
+<body style="--box-border-color: red;">
+    <div box-="square">red border</div>
+    <div box-="square" style="--box-border-color: blue;">blue border</div>
+    <div style="--box-border-color: green;">
+        <div box-="square">green border</div>
+    </div>
+</body>
+```
+
+The defaults for these variables can be controlled from `:root`
+
+```css
+@layer base {
+    :root {
+        --box-border-color: var(--background1);
+        --table-border-color: var(--background2);
+        --separator-color: var(--cyan);
+    }
+}
+```
+
 ## 0.1.1
 
 - Adds the [Switch Component](/components/switch)

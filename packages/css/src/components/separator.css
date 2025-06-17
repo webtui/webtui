@@ -6,7 +6,10 @@
   }
 
   [is-~="separator"] {
+    --separator-bg-fallback: var(--separator-background, transparent);
+
     display: inline-flex;
+    position: relative;
 
     &[direction-="x"],
     &[direction-="horizontal"],
@@ -14,13 +17,33 @@
       height: 1lh;
       background-image: linear-gradient(
         0deg,
-        var(--separator-background) 0,
-        var(--separator-background) calc(0.5lh - var(--separator-width) / 2),
+        var(--separator-bg-fallback) 0,
+        var(--separator-bg-fallback) calc(0.5lh - var(--separator-width) / 2),
         var(--separator-color) calc(0.5lh - (var(--separator-width) / 2)),
         var(--separator-color) calc(0.5lh + (var(--separator-width) / 2)),
-        var(--separator-background) calc(0.5lh + (var(--separator-width) / 2)),
-        var(--separator-background)
+        var(--separator-bg-fallback) calc(0.5lh + (var(--separator-width) / 2)),
+        var(--separator-bg-fallback)
       );
+
+      &[cap-^="bisect"]::before {
+        left: -0.5ch;
+      }
+
+      &[cap-$="bisect"]::after {
+        right: -0.5ch;
+      }
+
+      &[cap-^="edge"]:not([cap-="edge"]) {
+        clip-path: inset(0 -0.5ch 0 0.5ch);
+      }
+
+      &[cap-$="edge"]:not([cap-="edge"]) {
+        clip-path: inset(0 0.5ch 0 -0.5ch);
+      }
+
+      &[cap-="edge"] {
+        clip-path: inset(0 0.5ch);
+      }
     }
 
     &[direction-="y"],
@@ -28,29 +51,44 @@
       width: 1ch;
       background-image: linear-gradient(
         to right,
-        var(--separator-background) 0,
-        var(--separator-background) calc(0.5ch - (var(--separator-width) / 2)),
+        var(--separator-bg-fallback) 0,
+        var(--separator-bg-fallback) calc(0.5ch - (var(--separator-width) / 2)),
         var(--separator-color) calc(0.5ch - (var(--separator-width) / 2)),
         var(--separator-color) calc(0.5ch + (var(--separator-width) / 2)),
-        var(--separator-background) calc(0.5ch + (var(--separator-width) / 2)),
-        var(--separator-background)
+        var(--separator-bg-fallback) calc(0.5ch + (var(--separator-width) / 2)),
+        var(--separator-bg-fallback)
       );
+
+      &[cap-^="bisect"]::before {
+        top: -0.5lh;
+      }
+
+      &[cap-$="bisect"]::after {
+        bottom: -0.5lh;
+      }
+
+      &[cap-^="edge"]:not([cap-="edge"]) {
+        clip-path: inset(0.5lh 0 -0.5lh 0);
+      }
+
+      &[cap-$="edge"]:not([cap-="edge"]) {
+        clip-path: inset(-0.5lh 0 0.5lh 0);
+      }
+
+      &[cap-="edge"] {
+        clip-path: inset(0.5lh 0);
+      }
     }
 
-    &[variant-="foreground0"],
-    &:not([variant-]) {
-      --separator-color: var(--foreground0);
-      --separator-background: var(--background0);
-    }
-
-    &[variant-="foreground1"] {
-      --separator-color: var(--foreground1);
-      --separator-background: var(--background0);
-    }
-
-    &[variant-="foreground2"] {
-      --separator-color: var(--foreground2);
-      --separator-background: var(--background0);
+    &[cap-] {
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 1ch;
+        height: 1lh;
+        background-image: inherit;
+      }
     }
   }
 }

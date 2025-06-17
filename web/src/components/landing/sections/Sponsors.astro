@@ -1,0 +1,82 @@
+---
+const corporate: Array<{ url: string, image?: string }> = [
+  {}, {}, {}, {}
+]
+
+const individuals: Array<{ url?: string, image?: string }> = [
+  {}, {}, {}, {}, {}
+]
+---
+
+<section>
+  <column self-="grow" align-="center">
+    <column class="content">
+      <column gap-="1">
+        <row>
+          <span is-="badge" variant-="rosewater">&#xee6b; Sponsors</span>
+        </row>
+        <p>WebTUI can be supported via <a href="https://github.com/sponsors/webtui/" target="_blank">Github Sponsors</a></p>
+        <p>Thanks to all our generous <a href="https://github.com/sponsors/webtui/?o=esb" target="_blank">supporters</a>, including:</p>
+      </column>
+      <column gap-="1">
+        <row gap-="1">
+          <span is-="badge" variant-="yellow">Corporate Sponsors</span>
+          {corporate.every(c => !c.image) && <span style="color: var(--foreground2)">(Nothing&apos;s here yet)</span>}
+        </row>
+        <row id="corporate-sponsors" gap-="1">
+          {corporate.map((corporate) => <a 
+            class="corporate-sponsor" 
+            href={corporate.url} 
+            target="_blank" 
+            style={`background-image: url(${corporate.image})`} 
+          />)}
+        </row>
+      </column>
+      <column gap-="1">
+        <row gap-="1">
+          <span is-="badge" variant-="teal">Goated Individuals</span>
+          {individuals.every(i => !i.image) && <span style="color: var(--foreground2)">(Nothing&apos;s here yet)</span>}
+        </row>
+        <row id="individual-sponsors" gap-="1">
+          {individuals.map((individual) => <a 
+            class="individual-sponsor" 
+            href={individual.url}
+            target="_blank"
+            style={`background-image: url(${individual.image})`} 
+          />)}
+        </row>
+      </column>
+    </column>
+  </column>
+</section>
+
+<style>
+  .content {
+    flex-direction: column !important;
+    row-gap: 2lh;
+  }
+
+  #corporate-sponsors {
+    column-gap: 2ch;
+  }
+
+  #corporate-sponsors, #individual-sponsors {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .corporate-sponsor, .individual-sponsor {
+      height: 2lh;
+      background-color: var(--background1);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .individual-sponsor {
+      width: 4ch;
+    }
+
+    .corporate-sponsor {
+      width: 16ch;
+    }
+  }
+</style>

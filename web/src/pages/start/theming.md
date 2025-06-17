@@ -58,6 +58,11 @@ Additional color accents/variants can be added to components individually with C
         /* Foreground levels 1-2 */
         --foreground1: #444;
         --foreground2: #888;
+
+        /* Border colors for various components/utils */
+        --box-border-color: var(--foreground0);
+        --table-border-color: var(--foreground0);
+        --separator-color: var(--foreground0);
     }
 }
 ```
@@ -83,3 +88,17 @@ Theme plugins change the base colors and often include additional color variants
 ![catppuccin-badges.png](../../assets/catppuccin-badges.png)
 
 Check out the [Plugins](/plugins/intro) page for a list of available themes
+
+### Using Multiple Theme Accents
+
+Some themes provide different accent colors such as `--red`, `--green`, etc
+
+Not all themes use the same accent names (e.g. `--blue` vs `--aqua`)
+
+If you intend to use multiple themes, you can use CSS variable fallbacks to use the desired accent color
+
+```css
+#my-element {
+    color: var(--gb-aqua, var(--blue, var(--cyan)))
+}
+```

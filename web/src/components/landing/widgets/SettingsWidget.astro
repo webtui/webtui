@@ -1,0 +1,38 @@
+<column box-="square" class="widget" id="settings-widget" gap-="1" pad-="2 1">
+  <span>Settings</span>
+  <column gap-="1" self-="grow">
+    <column pad-="1 0" gap-="1">
+      <label>
+        <input type="checkbox" is-="switch" bar-="thin" checked />
+        Developer Mode
+      </label>
+      <label>
+        <input type="checkbox" is-="switch" bar-="thin" />
+        Show Inspector
+      </label>
+    </column>
+    <column box-="square" shear-="top">
+      <row><span is-="badge" variant-="background0" style="--badge-color: var(--crust)">Theme</span></row>
+      <label>
+        <input type="radio" name="theme" checked />
+        <span>Dark</span>
+      </label>      
+      <label>
+        <input type="radio" name="theme" />
+        <span>Light</span>
+      </label>      
+      <label>
+        <input type="radio" name="theme" />
+        <span>System</span>
+      </label>      
+    </column>
+  </column>
+  <button variant-="background1">Save</button>
+</column>
+
+<style>
+#settings-widget {
+  grid-column: 3;
+  grid-row: 3 / 5;
+}
+</style>
