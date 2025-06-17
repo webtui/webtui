@@ -11,7 +11,7 @@
       transparent
     );
     display: inline-flex;
-    vertical-align: middle;
+    vertical-align: top;
     white-space: nowrap;
     height: 1lh;
     line-height: 1lh;

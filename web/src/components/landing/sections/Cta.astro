@@ -1,0 +1,92 @@
+---
+const isPast2025 = new Date().getFullYear() > 2025;
+---
+
+<section>
+  <column self-="grow" align-="center">
+    <column class="content">
+      <column gap-="1">
+        <row gap-="1">
+          <span is-="badge" variant-="flamingo">󱙳 Fin.</span>
+        </row>
+        <column>
+          <row>
+            <a href="/start/intro">
+              <button>Get Started</button>
+            </a>
+          </row>
+          <row>
+            <a href="/examples">
+              <button variant-="background2">View Examples</button>
+            </a>
+          </row>
+          <row>
+            <a href="https://github.com/webtui/webtui" target="_blank">
+              <button variant-="background2">Star on Github &#xf08e;</button>
+            </a>
+          </row>
+        </column>
+      </column>
+    </column>
+  </column>
+  <footer pad-="1">
+    <column gap-="1">
+      <a id="logo" href="/">&lt;/<span>#&gt;</span><span>WebTUI</span></a>
+      <p>Modular CSS Library that brings the beauty of Terminal UIs to the browser</p>
+      <row id="links">
+        <a href="/">Home</a>
+        <a href="/start/intro">Documentation</a>
+        <a href="/examples">Examples</a>
+        <a href="https://github.com/webtui/webtui" target="_blank">Github &#xf08e;</a>
+        <a href="https://discord.gg/yUS6T8YnfT" target="_blank">Discord &#xf08e;</a>
+      </row>
+      <div is-="separator" style="--separator-color: var(--background2)" />
+      <span>&copy; <a href="https://ironclad.sh" targe="_blank">IroncladDev &#xf08e;</a> 2025{isPast2025 ? `-${new Date().getFullYear()}` : ''}</span>
+    </column>
+  </footer>
+</section>
+
+<style>
+.content {
+  max-width: 80ch;
+  width: round(calc(100% - 2ch), 1ch);
+}
+
+footer {
+  background-color: var(--background1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  column {
+    width: 100%;
+    max-width: 80ch;
+
+    a {
+      color: var(--sky)
+    }
+
+    #links {
+      flex-wrap: wrap;
+      column-gap: 1ch;
+      row-gap: 0;
+    }
+
+    #logo {
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--foreground1);
+
+      span:first-of-type {
+        color: #a6e3a1;
+      }
+
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+</style>

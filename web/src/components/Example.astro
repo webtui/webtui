@@ -4,7 +4,8 @@ import webtuiBase from '@webtui/css/base.css?raw';
 import Dropdown from '@/components/ui/Dropdown.astro';
 import Tabs from '@/components/ui/Tabs.astro';
 
-import { getHighlighter } from 'shiki';
+import { getSingletonHighlighter } from 'shiki';
+import CodePreview from './landing/CodePreview.astro';
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   html: string;
@@ -18,7 +19,7 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 
 const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
 
-const highlighter = await getHighlighter({
+const highlighter = await getSingletonHighlighter({
   themes: ['catppuccin-mocha'],
   langs: ['xml', 'css'],
 });
@@ -60,8 +61,12 @@ ${css ? `<style>${css}</style>` : ""}
 <body>${html}</body>
 </html>
 `}></iframe>
-      <div id="html-container" set:html={htmlCodePreHtml} />
-      {css && <div id="css-container" set:html={cssCodePreHtml} />}
+      <div id="html-container">
+        <CodePreview code={html} />
+      </div>
+      {css && <div id="css-container">
+        <CodePreview code={css} lang="css" />
+      </div>}
     </div>
 
     <div id="header">
@@ -129,12 +134,10 @@ ${css ? `<style>${css}</style>` : ""}
       min-height: 240px;
       overflow-y: auto;
       overflow-x: hidden;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
       background-color: var(--background1);
-
-      pre {
-        white-space: pre-wrap;
-        background-color: var(--background1) !important;
-      }
     }
 
     #preview,
@@ -152,13 +155,13 @@ ${css ? `<style>${css}</style>` : ""}
 
   doc-example:has(#example-code-tabs[data-tab="code"]) {
     #html-container {
-      display: block;
+      display: flex;
     }
   }
 
   doc-example:has(#example-code-tabs[data-tab="css"]) {
     #css-container {
-      display: block;
+      display: flex;
     }
   }
 </style>

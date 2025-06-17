@@ -1,0 +1,41 @@
+---
+import Chart from './Chart.astro';
+import Clock from './Clock.astro';
+import SettingsWidget from './SettingsWidget.astro';
+import Player from './Player.astro';
+import FileTree from './FileTree.astro';
+import "@webtui/css/components/radio.css";
+---
+
+<div id="widgets-grid">
+  <Chart />
+  <Player />
+  <FileTree />
+  <Clock />
+  <SettingsWidget />
+</div>
+
+<style is:global>
+#widgets-grid {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(round(-50%, 1ch), round(-50%, 1lh));
+  display: grid;
+  max-width: 96ch;
+  max-height: 40lh;
+  min-width: 80ch;
+  min-height: 32lh;
+  width: round(calc(100vw - 4ch), 1ch);
+  height: round(calc(100vh - 2lh), 1lh);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(8lh, 10lh);
+  grid-column-gap: 1ch;
+  pointer-events: none;
+  opacity: 0.5;
+
+  & > * {
+    --box-border-color: var(--background1);
+  }
+}
+</style>
