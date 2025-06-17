@@ -155,6 +155,18 @@ if (headings.length > 0) {
       return;
     }
 
+    // ctrl-o -> "navigate out"
+    if (e.key === 'o' && e.ctrlKey) {
+      e.preventDefault();
+      window.history.back();
+    }
+
+    // ctrl-i -> "navigate in"
+    if (e.key === 'i' && e.ctrlKey) {
+      e.preventDefault();
+      window.history.forward();
+    }
+
     if (e.key === "l") {
       const elementToFocus =
         currentElement ?? findFirstFocusableElement() ?? null;
