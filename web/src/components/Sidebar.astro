@@ -1,6 +1,7 @@
 ---
 import { compareUrlPaths } from '@/utils/url';
 import { makeSortedCategoryEntries, categoryLabels } from '@/utils/content';
+import VimNavigation from './landing/VimNavigation.astro';
 
 const categories = makeSortedCategoryEntries();
 
@@ -8,7 +9,6 @@ const { pathname: urlPath } = Astro.url;
 ---
 
 <nav box-="square" shear-="top" id="sidebar">
-  <div><span is-="badge" variant-="background1">Documentation</span></div>
   <div id="category-container">
     <div id="category-list">
       {
@@ -31,19 +31,20 @@ const { pathname: urlPath } = Astro.url;
       }
     </div>
   </div>
-  <div box-="square" shear-="top" id="keybind-container">
-    <span is-="badge" variant-="background0">Shortcuts</span>
-    <ul marker-="none" pad-="1">
-      <li><code>h</code> focus sidebar</li>
-      <li><code>j</code> down</li>
-      <li><code>k</code> up</li>
-      <li><code>l</code> focus content</li>
-      <li><code>/</code> search</li>
-    </ul>
+  <div id="sidebar-vim-nav-container">
+    <VimNavigation showHL />
   </div>
 </nav>
 
 <style>
+  #sidebar-vim-nav-container {
+    padding-left: 1ch;
+    padding-right: 2ch;
+    padding-top: 1lh;
+    padding-bottom: 1lh;
+    display: flex;
+    flex-direction: row;
+  }
   #sidebar {
     display: flex;
     flex-direction: column;

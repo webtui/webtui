@@ -1,17 +1,23 @@
+---
+interface Props {
+  showHL?: boolean;
+}
+
+const { showHL = false } = Astro.props as Props;
+---
+
 <row gap-="1" align-="center" cap-="round" id="vim-navigation">
   <span>&#xe62b;</span>
-  <button size-="sm" variant-="background2" id="btn-h">h</button> 
+  {showHL && <button size-="sm" variant-="background2" id="btn-h">h</button>}
   <button size-="sm" variant-="background2" id="btn-j">j</button>
   <button size-="sm" variant-="background2" id="btn-k">k</button> 
-  <button size-="sm" variant-="background2" id="btn-l">l</button> 
+  {showHL && <button size-="sm" variant-="background2" id="btn-l">l</button>}
+  <button size-="sm" variant-="background2" id="btn-slash">/</button>
 </row>
 
 <style>
 #vim-navigation {
-  position: fixed;
   padding: 0 1ch;
-  top: 1lh;
-  right: 2ch;
   background-color: var(--background1);
   box-shadow: 1ch 0.5lh 0 0 var(--mantle);
 
@@ -35,9 +41,18 @@
   const buttonJ = document.querySelector("#btn-j") as HTMLButtonElement;
   const buttonK = document.querySelector("#btn-k") as HTMLButtonElement;
   const buttonL = document.querySelector("#btn-l") as HTMLButtonElement;
+  const buttonSlash = document.querySelector("#btn-slash") as HTMLButtonElement;
 
   buttonJ.addEventListener("click", () => content?.scrollBy(0, 1));
   buttonK.addEventListener("click", () => content?.scrollBy(0, -1));
+  buttonSlash.addEventListener("click", () => {
+    // Execute / key press
+    content?.dispatchEvent(new KeyboardEvent("keydown", {
+      key: "/",
+      bubbles: true,
+      cancelable: true,
+    }));
+  });
 
   window.addEventListener("keydown", (event) => {
     if(isUserTyping()) return;
