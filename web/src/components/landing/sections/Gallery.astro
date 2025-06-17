@@ -3,6 +3,7 @@ interface Project {
   name: string;
   url: string;
   image: string;
+  tags?: string[];
 }
 
 const projects: Array<[Project, Project] | [Project]> = [
@@ -11,30 +12,27 @@ const projects: Array<[Project, Project] | [Project]> = [
       name: 'Stefan Vučković - Software Engineer',
       url: 'https://stefvuck.dev',
       image: '/gallery/stefvuck-dev.png',
+      tags: ['Personal Portfolio'],
     },
     {
       name: 'Placeholder',
       url: 'https://example.com',
       image: '/gallery/placeholder.png',
-    },
-  ],
-  [
-    {
-      name: 'Placeholder',
-      url: 'https://example.com',
-      image: '/gallery/placeholder.png',
-    },
-    {
-      name: 'Placeholder',
-      url: 'https://example.com',
-      image: '/gallery/placeholder.png',
+      tags: ['Unknown']
     },
   ],
   [
     {
-      name: 'Placeholder',
+      name: 'Todo',
+      url: 'https://localhost:3000',
+      image: '/gallery/placeholder.png',
+      tags: ['Feature', 'Bug']
+    },
+    {
+      name: 'Another Placeholder',
       url: 'https://example.com',
       image: '/gallery/placeholder.png',
+      tags: ['Not here yet']
     },
   ],
 ];
@@ -43,18 +41,25 @@ const projects: Array<[Project, Project] | [Project]> = [
 <section id="gallery" style={{ minHeight: `${200 + ((projects.length - 2) * 50)}vh`}} data-index="0">
   <column id="visible-content" align-="center">
     <column class="content">
-      <row>
+      <row gap-="1">
         <span is-="badge" variant-="peach">&#xf121; Gallery</span>
+        <span><span id="index-counter">0</span>/{projects.length}</span>
       </row>
+      <p>Awesome projects built with WebTUI</p>
       <column id="projects" gap-="1">
         {projects.map((projects, i) => 
           <row class="project-row" data-index={i} data-visible={i === 0}>
             {projects.map((project) =>
-              <a href={project.url} target="_blank" class="project" box-="round">
-                <!-- <img src={project.image} alt={project.name} /> -->
-                <div is-="separator" style="--separator-color: var(--background1)" cap-="bisect" />
-                <column>
-                  <span>{project.name}</span>
+              <a href={project.url} target="_blank" class="project">
+                <column class="preview" box-="round">
+                  <img src={project.image} alt={project.name} />
+                </column>
+                <column class="project-description">
+                  <strong>{project.name}</strong>
+                  <p>{project.url}</p>
+                  <row gap-="1">
+                    {project.tags?.map((tag) => <span is-="badge" variant-="background3" cap-="round">{tag}</span>)}
+                  </row>
                 </column>
               </a>
             )}
@@ -71,6 +76,10 @@ const projects: Array<[Project, Project] | [Project]> = [
 <style>
 section {
   position: relative;
+}
+
+.content {
+  flex-direction: column !important;
 }
 
 #gallery-projects {
@@ -96,6 +105,10 @@ section {
     overflow: hidden;
     display: none;
 
+    a {
+      text-decoration: none;
+    }
+
     &[data-visible="true"] {
       display: flex;
     }
@@ -105,12 +118,34 @@ section {
       flex-direction: column;
       flex-grow: 1;
       flex-basis: 0;
-      max-height: 50vh;
-      --box-border-color: var(--background1);
+      max-height: 24lh;
+      min-width: 30ch;
+      background-color: var(--background1);
 
-      img {
-        aspect-ratio: 3 / 2;
-        display: flex;
+      .preview {
+        flex-grow: 1;
+        flex-basis: 0;
+        flex-shrink: 1;
+        --box-border-color: var(--background2);
+      }
+
+      &:focus .preview {
+        --box-border-color: var(--blue);
+      }
+
+      .project-description {
+        padding: 1ch;
+        flex-shrink: 0;
+        color: var(--foreground0);
+        background-color: var(--background2);
+
+        strong {
+          color: var(--sky);
+        }
+
+        p {
+          color: var(--foreground2);
+        }
       }
     }
   }
@@ -130,6 +165,7 @@ section {
   import { attachScrollSnapListener } from "@/utils/scroll";
 
   let currentRow: HTMLElement | undefined;
+  const indexCounter = document.querySelector("#index-counter") as HTMLElement;
 
   const handleTargetChange = (target?: HTMLElement) => {
     if(!target || currentRow === target) return;
@@ -141,6 +177,7 @@ section {
     if(rowIndex) {
       (document.querySelectorAll(".project-row") as NodeListOf<HTMLElement>).forEach((row) => {
         row.setAttribute("data-visible", row.dataset.index === rowIndex ? "true" : "false");
+        indexCounter.innerText = String(Number(rowIndex) + 1);
       });
     }
   }

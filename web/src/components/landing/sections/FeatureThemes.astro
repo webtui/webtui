@@ -16,8 +16,9 @@ const themeKeys = {
   <column id="visible-content" align-="center">
     <column class="content">
       <column gap-="1">
-        <row>
+        <row gap-="1">
           <span is-="badge" variant-="mauve">&#xefcc; Easily Themable</span> 
+          <span><span id="theme-index">0</span>/4</span>
         </row>
         <p>Install beautiful pre-built color themes or create your own</p>
       </column>
@@ -173,6 +174,7 @@ const themeKeys = {
 import { attachScrollSnapListener } from "@/utils/scroll";
 
 const themePreview = document.querySelector("#theme-preview") as HTMLElement;
+const themeIndex = document.querySelector("#theme-index") as HTMLElement;
 
 let currentTarget: HTMLElement | undefined;
 
@@ -185,6 +187,7 @@ const handleTargetChange = (target?: HTMLElement) => {
 
     if(theme) {
       themePreview.setAttribute("data-webtui-theme", theme);
+      themeIndex.innerText = String(Array.from(document.querySelectorAll(".snap")).indexOf(target) + 1);
     }
 }
 
