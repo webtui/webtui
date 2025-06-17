@@ -62,8 +62,11 @@ import Widgets from '../widgets/Widgets.astro';
         --box-border-color: var(--background1);
       }
 
-      h1 { color: var(--foreground0) }
-      h1::before { content: "" }
+      h1 { 
+        color: var(--foreground0); 
+        display: inline-flex; 
+        gap: 1ch;
+      }
     }
   }
 

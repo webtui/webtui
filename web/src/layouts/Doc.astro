@@ -3,7 +3,6 @@ import Sidebar from '@/components/Sidebar.astro';
 import Layout from '@/layouts/Layout.astro';
 import { makeSortedCategoryEntries } from '@/utils/content';
 import { compareUrlPaths } from '@/utils/url';
-import Contents from '@/components/Contents.astro';
 import Navbar from '@/components/Navbar.astro';
 
 const { frontmatter, headings } = Astro.props;
@@ -115,12 +114,6 @@ if (headings.length > 0) {
               </div>
             </main>
           </div>
-          {
-            headers.length > 0 &&
-              headers.every((group) => group.length > 0) && (
-                <Contents headers={headers} />
-              )
-          }
         </row>
       </article>
     </row>

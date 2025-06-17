@@ -9,11 +9,28 @@ import preStyle from '@webtui/css/components/pre.css?raw';
 
 ## 0.1.2
 
-- Fixes a transparency/background issue with the [Switch Component](/components/switch)
 - [Switches](/components/switch) appear dimmer when unchecked
+- [Switches](/components/switch) correctly show the track when the `<input>` stylesheet is imported
 - Added edge/bisecting caps to the [Separator Component](/components/separator)
 - Properly aligns [Badges](/components/badge) vertically
 - Removes an invalid `initial-value` property from the [Dialog Component](/components/dialog)
+
+### Migration Guide from < 0.1.1
+
+#### Heading Markers
+
+The markdown-like `#` markers on heading elements `<h1>`-`<h6>` have been removed
+
+If you intend to keep this behavior, use the following CSS code
+
+```css
+h1::before { content: "# "; }
+h2::before { content: "## "; }
+h3::before { content: "### "; }
+h4::before { content: "#### "; }
+h5::before { content: "##### "; }
+h6::before { content: "###### "; }
+```
 
 ## 0.1.1
 

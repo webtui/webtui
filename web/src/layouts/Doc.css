@@ -8,6 +8,25 @@
   }
 }
 
+h1::before {
+  content: "# ";
+}
+h2::before {
+  content: "## ";
+}
+h3::before {
+  content: "### ";
+}
+h4::before {
+  content: "#### ";
+}
+h5::before {
+  content: "##### ";
+}
+h6::before {
+  content: "###### ";
+}
+
 #sidebar-container {
   display: flex;
   max-width: 32ch;

@@ -4,7 +4,6 @@ import webtuiBase from '@webtui/css/base.css?raw';
 import Dropdown from '@/components/ui/Dropdown.astro';
 import Tabs from '@/components/ui/Tabs.astro';
 
-import { getSingletonHighlighter } from 'shiki';
 import CodePreview from './landing/CodePreview.astro';
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
@@ -18,21 +17,6 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
 }
 
 const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
-
-const highlighter = await getSingletonHighlighter({
-  themes: ['catppuccin-mocha'],
-  langs: ['xml', 'css'],
-});
-const htmlCodePreHtml = highlighter.codeToHtml(html.trim(), {
-  lang: 'xml',
-  theme: 'catppuccin-mocha',
-});
-const cssCodePreHtml = css
-  ? highlighter.codeToHtml(css.trim(), {
-      lang: 'css',
-      theme: 'catppuccin-mocha',
-    })
-  : '';
 ---
 
 <doc-example {...rest}>
@@ -104,6 +88,7 @@ ${css ? `<style>${css}</style>` : ""}
   #container {
     display: flex;
     flex-direction: column-reverse;
+    max-width: 80ch;
   }
 
   #header {
