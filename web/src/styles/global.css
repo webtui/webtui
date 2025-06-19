@@ -17,6 +17,7 @@
 @import "@webtui/theme-catppuccin";
 @import "@webtui/theme-nord";
 @import "@webtui/theme-gruvbox";
+@import "@webtui/theme-vitesse";
 @import "@webtui/plugin-nf";
 
 @layer base {
