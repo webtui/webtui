@@ -18,6 +18,8 @@
     "@webtui/css": "workspace:*",
     "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
+    "@webtui/theme-nord": "workspace:*",
+    "@webtui/theme-gruvbox": "workspace:*",
     "@webtui/plugin-nf": "workspace:*",
     "astro": "^5.4.2"
   }
