@@ -6,7 +6,7 @@
     h4,
     h5,
     h6 {
-      color: var(--vitesse-green);
+      color: var(--green);
     }
 
     p,
@@ -14,16 +14,16 @@
     li,
     [is-~="typography-block"] {
       a {
-        color: var(--vitesse-blue);
+        color: var(--blue);
         text-decoration: underline;
 
         &:hover {
-          color: var(--vitesse-aqua);
+          color: var(--aqua);
         }
       }
 
       code {
-        color: var(--vitesse-orange);
+        color: var(--orange);
       }
     }
   }

@@ -2,31 +2,31 @@
   [data-webtui-theme|="vitesse"] {
     button {
       &[variant-="red"] {
-        --button-primary: var(--vitesse-red);
+        --button-primary: var(--red);
         --button-secondary: var(--background0);
       }
       &[variant-="green"] {
-        --button-primary: var(--vitesse-green);
+        --button-primary: var(--green);
         --button-secondary: var(--background0);
       }
       &[variant-="yellow"] {
-        --button-primary: var(--vitesse-yellow);
+        --button-primary: var(--yellow);
         --button-secondary: var(--background0);
       }
       &[variant-="blue"] {
-        --button-primary: var(--vitesse-blue);
+        --button-primary: var(--blue);
         --button-secondary: var(--background0);
       }
       &[variant-="purple"] {
-        --button-primary: var(--vitesse-purple);
+        --button-primary: var(--purple);
         --button-secondary: var(--background0);
       }
       &[variant-="aqua"] {
-        --button-primary: var(--vitesse-aqua);
+        --button-primary: var(--aqua);
         --button-secondary: var(--background0);
       }
       &[variant-="orange"] {
-        --button-primary: var(--vitesse-orange);
+        --button-primary: var(--orange);
         --button-secondary: var(--background0);
       }
     }
@@ -34,14 +34,14 @@
 
   [data-webtui-theme|="vitesse-dark"] {
     button[variant-="gray"] {
-      --button-primary: var(--vitesse-gray);
+      --button-primary: var(--gray);
       --button-secondary: var(--background0);
     }
   }
 
   [data-webtui-theme|="vitesse-light"] {
     button[variant-="gray"] {
-      --button-primary: var(--vitesse-gray);
+      --button-primary: var(--gray);
       --button-secondary: var(--background0);
     }
   }

@@ -56,18 +56,13 @@ Supports dark and light modes, each with hard, medium, and soft contrast levels.
 ```html
 <!-- Dark Variants -->
 <html data-webtui-theme="vitesse-black">
-  <html data-webtui-theme="vitesse-dark-soft">
-    <!-- Default: vitesse-dark or vitesse-black -->
-    <html data-webtui-theme="vitesse-dark">
-      <!-- Light Variants -->
-      <html data-webtui-theme="vitesse-light">
-          <!-- Default: vitesse-light -->
-          <html data-webtui-theme="vitesse-light-soft"></html>
-        </html>
-      </html>
-    </html>
-  </html>
-</html>
+<html data-webtui-theme="vitesse-dark-soft">
+<!-- Default: vitesse-dark or vitesse-black -->
+<html data-webtui-theme="vitesse-dark">
+<!-- Light Variants -->
+<html data-webtui-theme="vitesse-light">
+<!-- Default: vitesse-light -->
+<html data-webtui-theme="vitesse-light-soft">
 ```
 
 ## Components
@@ -80,9 +75,9 @@ Components affected/modified by the theme:
 
 ### Typography
 
-- Colors headings from `h1` to `h6` using `var(--vitesse-green)`.
-- Inline `<a>` tags are underlined and colored `var(--vitesse-blue)`, changing to `var(--vitesse-aqua)` on hover.
-- Inline `<code>` tags are colored `var(--vitesse-orange)`.
+- Colors headings from `h1` to `h6` using `var(--green)`.
+- Inline `<a>` tags are underlined and colored `var(--blue)`, changing to `var(--aqua)` on hover.
+- Inline `<code>` tags are colored `var(--orange)`.
 
 ```html
 <h1>Heading 1</h1>
@@ -127,50 +122,50 @@ Raw color tokens and base semantic variables (`--background*`, `--foreground*`) 
   /* Common Dark Variables & Semantic Mapping */
   [data-webtui-theme|="vitesse-dark"] {
     /* ... raw dark vars ... */
-    --vitesse-orange: #d4976c; /* Dim Orange */
+    --orange: #d4976c; /* Dim Orange */
 
     /* Semantic Mapping (Dark) */
-    --background0: var(--vitesse-bg0);
-    --background1: var(--vitesse-bg1);
-    --background2: var(--vitesse-bg2);
-    --background3: var(--vitesse-bg3);
-    --foreground0: var(--vitesse-fg1);
-    --foreground1: var(--vitesse-fg2);
-    --foreground2: var(--vitesse-fg3);
+    --background0: var(--bg0);
+    --background1: var(--bg1);
+    --background2: var(--bg2);
+    --background3: var(--bg3);
+    --foreground0: var(--fg1);
+    --foreground1: var(--fg2);
+    --foreground2: var(--fg3);
   }
 
   /* Dark Contrast Specific bg0 */
   [data-webtui-theme="vitesse-dark"] {
-    --vitesse-bg0: #121212;
+    --bg0: #121212;
   }
   [data-webtui-theme="vitesse-dark-soft"] {
-    --vitesse-bg0: #222;
+    --bg0: #222;
   }
   [data-webtui-theme="vitesse-black"] {
-    --vitesse-bg0: #000000;
+    --bg0: #000000;
   }
 
   /* Common Light Variables & Semantic Mapping */
   [data-webtui-theme|="vitesse-light"] {
     /* ... raw light vars ... */
-    --vitesse-orange: #a65e2b; /* Faded Orange */
+    --orange: #a65e2b; /* Faded Orange */
 
     /* Semantic Mapping (Light) */
-    --background0: var(--vitesse-bg0);
-    --background1: var(--vitesse-bg1);
-    --background2: var(--vitesse-bg2);
-    --background3: var(--vitesse-bg3);
-    --foreground0: var(--vitesse-fg1);
-    --foreground1: var(--vitesse-fg2);
-    --foreground2: var(--vitesse-fg3);
+    --background0: var(--bg0);
+    --background1: var(--bg1);
+    --background2: var(--bg2);
+    --background3: var(--bg3);
+    --foreground0: var(--fg1);
+    --foreground1: var(--fg2);
+    --foreground2: var(--fg3);
   }
 
   /* Light Contrast Specific bg0 */
   [data-webtui-theme="vitesse-light"] {
-    --vitesse-bg0: #ffffff;
+    --bg0: #ffffff;
   }
   [data-webtui-theme="vitesse-light-soft"] {
-    --vitesse-bg0: #f1f0e9;
+    --bg0: #f1f0e9;
   }
 }
 ```
