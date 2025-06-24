@@ -103,4 +103,14 @@
     color: var(--foreground2);
     text-decoration: line-through;
   }
+
+  label:has(input[type="range"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  label:has(+ input[type="range"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
