@@ -18,7 +18,7 @@
     line-height: var(--line-height);
     position: relative;
 
-    &::-webkit-slider-track {
+    &::-webkit-slider-runnable-track {
       appearance: none;
       -webkit-appearance: none;
       width: 100%;
@@ -37,6 +37,8 @@
       border: none;
       cursor: pointer;
       position: relative;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     &::-moz-range-track {
