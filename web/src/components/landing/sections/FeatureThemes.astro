@@ -2,13 +2,14 @@
 import CodePreview from '../CodePreview.astro';
 import '@webtui/theme-gruvbox';
 import '@webtui/theme-nord';
+import '@webtui/theme-vitesse';
 
 const themeKeys = {
   'catppuccin-mocha': 'theme-catppuccin',
   'catppuccin-latte': 'theme-catppuccin',
   nord: 'theme-nord',
   'gruvbox-dark-hard': 'theme-gruvbox',
-  'gruvbox-light-hard': 'theme-gruvbox',
+  'vitesse-dark-soft': 'theme-vitesse',
 };
 ---
 
@@ -93,7 +94,7 @@ const themeKeys = {
   <div class="snap" data-theme="catppuccin-latte"></div>
   <div class="snap" data-theme="nord"></div>
   <div class="snap" data-theme="gruvbox-dark-hard"></div>
-  <div class="snap" data-theme="gruvbox-light-hard"></div>
+  <div class="snap" data-theme="vitesse-dark-soft"></div>
 </section>
 
 <style>
@@ -117,7 +118,7 @@ const themeKeys = {
     &:has(#theme-preview[data-webtui-theme="catppuccin-latte"]) .code-preview[data-theme-key="catppuccin-latte"],
     &:has(#theme-preview[data-webtui-theme="nord"]) .code-preview[data-theme-key="nord"],
     &:has(#theme-preview[data-webtui-theme^="gruvbox-dark-hard"]) .code-preview[data-theme-key="gruvbox-dark-hard"],
-    &:has(#theme-preview[data-webtui-theme^="gruvbox-light-hard"]) .code-preview[data-theme-key="gruvbox-light-hard"] {
+    &:has(#theme-preview[data-webtui-theme^="vitesse-dark-soft"]) .code-preview[data-theme-key="vitesse-dark-soft"] {
       display: block;
     }
   }

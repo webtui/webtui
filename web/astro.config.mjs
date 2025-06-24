@@ -26,6 +26,7 @@ export default defineConfig({
         '@webtui/theme-catppuccin',
         '@webtui/theme-nord',
         '@webtui/theme-gruvbox',
+        '@webtui/theme-vitesse',
         '@webtui/plugin-nf',
       ],
     },
