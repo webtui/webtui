@@ -75,6 +75,18 @@
       --range-thumb-size: 1.2ch;
     }
 
+    &[thumb-="small"] {
+      --range-thumb-size: 0.6ch;
+    }
+
+    &[thumb-="medium"] {
+      --range-thumb-size: 1ch;
+    }
+
+    &[thumb-="large"] {
+      --range-thumb-size: 1.4ch;
+    }
+
     &[bar-="thick"] {
       --range-track-height: 1lh;
 

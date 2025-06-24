@@ -68,6 +68,25 @@ body {
 `}
 />
 
+### Thumb Sizes
+
+<Example
+    stylesheets={[
+        rangeStyle,
+    ]}
+    css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}`}
+    html={`
+<input type="range" thumb-="small" min="0" max="100" value="30" />
+<input type="range" thumb-="medium" min="0" max="100" value="50" />
+<input type="range" thumb-="large" min="0" max="100" value="70" />
+`}
+/>
+
 ### Track Styles
 
 <Example
@@ -219,6 +238,9 @@ Use CSS custom properties to customize the range appearance
 
 - `size-="small"` - Smaller range slider (10ch width)
 - `size-="large"` - Larger range slider (30ch width)
+- `thumb-="small"` - Smaller thumb (0.6ch size)
+- `thumb-="medium"` - Medium thumb (1ch size, default)
+- `thumb-="large"` - Larger thumb (1.4ch size)
 - `bar-="thick"` - Thicker track (1lh height)
 - `bar-="line"` - Thin line track (1px height)
 
