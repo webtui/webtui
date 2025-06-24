@@ -62,6 +62,13 @@
         "vite": "^6.2.0",
       },
     },
+    "packages/theme-vitesse": {
+      "name": "@webtui/theme-vitesse",
+      "version": "0.0.1",
+      "devDependencies": {
+        "vite": "^6.2.0",
+      },
+    },
     "web": {
       "name": "docs",
       "version": "0.0.1",
@@ -72,6 +79,9 @@
         "@webtui/plugin-nf": "workspace:*",
         "@webtui/rehype-tabindex": "workspace:*",
         "@webtui/theme-catppuccin": "workspace:*",
+        "@webtui/theme-gruvbox": "workspace:*",
+        "@webtui/theme-nord": "workspace:*",
+        "@webtui/theme-vitesse": "workspace:*",
         "astro": "^5.4.2",
       },
     },
@@ -354,6 +364,8 @@
     "@webtui/theme-gruvbox": ["@webtui/theme-gruvbox@workspace:packages/theme-gruvbox"],
 
     "@webtui/theme-nord": ["@webtui/theme-nord@workspace:packages/theme-nord"],
+
+    "@webtui/theme-vitesse": ["@webtui/theme-vitesse@workspace:packages/theme-vitesse"],
 
     "acorn": ["acorn@8.15.0", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg=="],
 
