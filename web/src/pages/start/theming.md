@@ -87,7 +87,7 @@ Theme plugins change the base colors and often include additional color variants
 
 ![catppuccin-badges.png](../../assets/catppuccin-badges.png)
 
-Check out the [Plugins](/plugins/intro) page for a list of available themes
+Check out the [Plugins](/start/plugins) page for a list of available themes
 
 ### Using Multiple Theme Accents
 
