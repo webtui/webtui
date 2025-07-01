@@ -1,9 +1,9 @@
 @layer components {
   input[type="range"] {
     --range-track-color: var(--background1);
-    --range-thumb-color: var(--foreground0);
-    --range-progress-color: var(--foreground2);
-    --range-track-height: 3px;
+    --range-thumb-color: var(--foreground2);
+    --range-thumb-color-focus: var(--foreground0);
+    --range-track-height: 2px;
     --range-thumb-size: 1ch;
 
     appearance: none;
@@ -11,7 +11,7 @@
     -moz-appearance: none;
     background: transparent;
     outline: none;
-    width: 20ch;
+    min-width: 20ch;
     height: 1lh;
     font-family: var(--font-family);
     font-size: var(--font-size);
@@ -41,6 +41,11 @@
       transform: translateY(-50%);
     }
 
+    &:focus::-webkit-slider-thumb,
+    &:active::-webkit-slider-thumb {
+      background: var(--range-thumb-color-focus);
+    }
+
     &::-moz-range-track {
       width: 100%;
       height: var(--range-track-height);
@@ -58,6 +63,11 @@
       border-radius: 0;
     }
 
+    &:focus::-moz-range-thumb,
+    &:active::-moz-range-thumb {
+      background: var(--range-thumb-color-focus);
+    }
+
     &:disabled {
       --range-track-color: var(--background2);
       --range-thumb-color: var(--foreground2);
@@ -72,11 +82,11 @@
 
     &[size-="large"] {
       width: 30ch;
-      --range-thumb-size: 1.2ch;
+      --range-thumb-size: 1ch;
     }
 
     &[thumb-="small"] {
-      --range-thumb-size: 0.6ch;
+      --range-thumb-size: 0.5ch;
     }
 
     &[thumb-="medium"] {
@@ -84,7 +94,7 @@
     }
 
     &[thumb-="large"] {
-      --range-thumb-size: 1.4ch;
+      --range-thumb-size: 2ch;
     }
 
     &[bar-="thick"] {
@@ -114,15 +124,5 @@
   label:has(input[type="range"]:disabled) {
     color: var(--foreground2);
     text-decoration: line-through;
-  }
-
-  label:has(input[type="range"]:focus) {
-    font-weight: bold;
-    text-decoration: underline;
-  }
-
-  label:has(+ input[type="range"]:focus) {
-    font-weight: bold;
-    text-decoration: underline;
   }
 }

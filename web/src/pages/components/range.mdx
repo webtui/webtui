@@ -222,15 +222,16 @@ body {
 Use CSS custom properties to customize the range appearance
 
 - `--range-track-color`: Color of the slider track
-- `--range-thumb-color`: Color of the slider thumb
-- `--range-progress-color`: Color of the progress/filled portion
+- `--range-thumb-color`: Default color of the slider thumb
+- `--range-thumb-color-focus`: Color of the slider thumb when focused or active
 - `--range-track-height`: Height of the track
 - `--range-thumb-size`: Size of the thumb
 
 ```css
 #my-range {
   --range-track-color: var(--background2);
-  --range-thumb-color: var(--foreground0);
+  --range-thumb-color: var(--foreground2);
+  --range-thumb-color-focus: var(--foreground0);
 }
 ```
 
