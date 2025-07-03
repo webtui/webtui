@@ -1,0 +1,167 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+
+const placeholderEmails = [
+  {
+    name: 'John Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Social', color: 'foreground2', cap: 'square' },
+    date: 'Yesterday at 5:30 PM',
+  },
+  {
+    name: 'Jane Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Promotions', color: 'green', cap: 'ribbon' },
+    date: 'Yesterday at 4:30 PM',
+  },
+  {
+    name: 'Play Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Shopping', color: 'yellow', cap: 'round' },
+    date: 'Yesterday at 3:30 PM',
+  },
+  {
+    name: 'Bread Dough',
+    subject: 'Hello World!',
+    body: 'Lorem Ipsum Dolor Sit amet your mom never gonna give you up',
+    category: { label: 'Spam', color: 'red', cap: 'triangle' },
+    date: 'Yesterday at 2:30 PM',
+  },
+];
+---
+
+<Layout>
+  <Navbar />
+  <row gap-="1" self-="grow">
+    <!-- Sidebar -->
+    <column gap-="1" id="sidebar" box-="square">
+      <column pad-="1 0">
+        <button size-="small">[C] Compose &#xf1d8;</button>
+      </column>
+      <column pad-="1 0" is-="typography-block">
+        <div>&#xf0687; Inbox</div>
+        <div>&#xf1d8; Sent</div>
+        <div>&#xea7b; Drafts</div>
+        <div>&#xf1f8; Trash</div>
+        <div>&#xf1767; Spam</div>
+        <div>&#xf003c; Archive</div>
+        <hr />
+        <div>&#xf4fd; Social</div>
+        <div>&#xeb9a; Updates</div>
+        <div>&#xf07a; Shopping</div>
+        <div>&#xf1167; Promotions</div>
+      </column>
+    </column>
+
+    <!-- Mail Container -->
+    <column self-="grow !basis" box-="square" shear-="top">
+      <row>
+        <span is-="badge" variant-="background0">Mail</span>
+      </row>
+      <column gap-="1" pad-="1 0">
+        {
+          placeholderEmails.map((email) => (
+            <column
+              gap-="1"
+              is-="typography-block"
+              box-="round"
+              shear-="both"
+              class="mail-item"
+            >
+              <row align-="between">
+                <span is-="badge" variant-="background0">
+                  <strong>{email.name}</strong>
+                </span>
+                <span is-="badge" variant-="background0">
+                  {email.subject}
+                </span>
+              </row>
+              <p pad-="1 0">{email.body}</p>
+              <row align-="between">
+                <span
+                  is-="badge"
+                  variant-={email.category.color}
+                  cap-={email.category.cap}
+                >
+                  {email.category.label}
+                </span>
+                <span is-="badge" variant-="background0">
+                  {email.date}
+                </span>
+              </row>
+            </column>
+          ))
+        }
+      </column>
+    </column>
+
+    <!-- Mail Preview -->
+    <column self-="grow !basis" box-="square" shear-="top">
+      <row>
+        <span is-="badge" variant-="background0">Preview</span>
+      </row>
+
+      <!-- Mail Actions -->
+      <row align-="between" pad-="1 0">
+        <row gap-="1">
+          <button size-="small" variant-="background1">&#xf1f8;</button>
+          <button size-="small" variant-="background1">&#xf1767;</button>
+          <button size-="small" variant-="background1">&#xf003c;</button>
+        </row>
+        <row gap-="1">
+          <button size-="small" variant-="background1">&#xf112;</button>
+          <button size-="small" variant-="background1">&#xf122;</button>
+          <button size-="small" variant-="background1">&#xf064;</button>
+        </row>
+      </row>
+
+      <hr />
+
+      <!-- Preview Content -->
+      <column gap-="1" pad-="1 0">
+        <h1>Hello World!</h1>
+        <p>
+          Lorem <strong>Ipsum</strong>
+          <em>Dolor</em> Sit amet your mom never gonna give you up
+        </p>
+        <h2>Ipsum Lorem</h2>
+        <p>
+          Sed euismod, nulla sit amet aliquam lacinia, nisl nisl aliquam nisl, nec
+          aliquam nisl nisl sit amet nisl.
+        </p>
+        <h3>Ipsum Bacon</h3>
+        <p>
+          C*m sociis natoque penatibus et magnis dis parturient montes, nascetur
+          ridiculus mus.up
+        </p>
+        <p>
+          Lorem Ipsum Dolor Sit amet your mom never gonna giveCras mattis
+          consectetur purus sit amet fermentum.
+        </p>
+        <row gap-="1">
+          <button box-="round">Reply</button>
+          <button box-="round">Reply All</button>
+        </row>
+      </column>
+    </column>
+  </row>
+</Layout>
+
+<style>
+  #sidebar {
+    min-width: 24ch;
+    height: 100%;
+  }
+
+  [box-~="square"] {
+    --box-border-color: var(--background1);
+  }
+
+  .mail-item {
+    --box-border-color: var(--background2);
+  }
+</style>

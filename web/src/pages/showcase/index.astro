@@ -1,0 +1,24 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { intersection } from 'astro:schema';
+
+interface Project {
+  name: string;
+  url: string;
+  image: string;
+  tags?: string[];
+}
+
+const projects: Array<Project> = [
+  {
+    name: 'Stefan Vučković - Software Engineer',
+    url: 'https://stefvuck.dev',
+    image: '/gallery/stefvuck-dev.png',
+    tags: ['Personal Portfolio'],
+  },
+];
+---
+
+<Layout>
+
+</Layout>

@@ -1,0 +1,153 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Sidebar from './Sidebar.astro';
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+---
+
+<Layout>
+  <Navbar />
+  <column align-="center" self-="grow" id="container">
+    <column id="center">
+      <Header />
+
+      <row self-="grow" id="content" gap-="1">
+        <Sidebar />
+        <column id="preview" self-="grow !basis">
+          <column gap-="1" data-id="flow">
+            <column>
+              <span>flow</span>
+              <p>medium roast | 12oz | whole beans</p>
+            </column>
+            <strong>$22</strong>
+            <p>Created in collaboration with Raycast, Flow is a medium roast from the Sidama region of Ethiopia. Featuring notes segfault of red berries, tropical fruits, and caramel, this is the best way to get in the flow — the perfect state of productivity.</p>
+          </column>
+
+          <column gap-="1" data-id="cron">
+            <column>
+              <span>cron</span>
+              <p>12oz</p>
+            </column>
+            <strong>$30</strong>
+            <p>Subscribe to Cron, the official Terminal membership and. Each month you'll receive a scheduled delivery with a special flavor-of-the-month blend. You'll also get receive additional gifts, exclusive offers, and invites to Terminal events.</p>
+          </column>
+
+          <column gap-="1" data-id="artisan">
+            <column>
+              <span>artisan</span>
+              <p>medium roast | 12oz | whole beans</p>
+            </column>
+            <strong>$22</strong>
+            <p>Working the backend and frontend of the palette, this new artisinal infusion is a collaboration with Laravel from Colombia and Papua New Guinea and is full stack in flavour and texture.</p>
+          </column>
+
+          <column gap-="1" data-id="object-object">
+            <column>
+              <span>[object Object]</span>
+              <p>medium roast | 12oz | whole beans</p>
+            </column>
+            <strong>$22</strong>
+            <p>The interpolation of Caturra and Castillo varietals from Las Cochitas creates this refreshing citrusy and complex coffee.</p>
+          </column>
+
+          <column gap-="1" data-id="segfault">
+            <column>
+              <span>segfault</span>
+              <p>medium roast | 12oz | whole beans</p>
+            </column>
+            <strong>$22</strong>
+            <p>A savory yet sweet blend created from a natural fault in the coffee cherry that causes it to develop one bean instead of two.</p>
+          </column>
+
+          <column gap-="1" data-id="dark-mode">
+            <column>
+              <span>dark mode</span>
+              <p>medium roast | 12oz | whole beans</p>
+            </column>
+            <strong>$22</strong>
+            <p>A dark roast from the Cerrado region of Brazil, an expansive lush and tropical savanna that creates a dark chocolate blend with hints of almond.</p>
+          </column>
+
+          <column gap-="1" data-id="404">
+            <column>
+              <span>404</span>
+              <p>medium roast | 12oz | whole beans</p>
+            </column>
+            <strong>$22</strong>
+            <p>A flavorful decaf coffee processed in the mountain waters of Brazil to create a dark chocolatey blend.</p>
+          </column>
+        </column>
+      </row>
+
+      <Footer />
+    </column>
+  </column>
+</Layout>
+
+<style is:global>
+#preview {
+  [data-id] {
+    display: none;
+  }
+}
+
+#content:has(button[variant-="flow"]:focus), 
+#content:not(:has(button:focus)) {
+  [data-id="flow"] {
+    display: flex;
+  }
+}
+
+#content:has(button[variant-="cron"]:focus) [data-id="cron"] { display: flex; }
+#content:has(button[variant-="artisan"]:focus) [data-id="artisan"] { display: flex; }
+#content:has(button[variant-="object-object"]:focus) [data-id="object-object"] { display: flex; }
+#content:has(button[variant-="segfault"]:focus) [data-id="segfault"] { display: flex; }
+#content:has(button[variant-="dark-mode"]:focus) [data-id="dark-mode"] { display: flex; }
+#content:has(button[variant-="404"]:focus) [data-id="404"] { display: flex; }
+
+</style>
+
+<style is:global>
+  #center {
+    max-width: 58ch;
+    max-height: 28lh;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1lh;
+    padding: 0 1ch;
+  }
+
+  .secondary {
+    color: var(--foreground2);
+  }
+
+  #footer [is-="separator"] {
+    width: 100%;
+    --separator-color: var(--foreground2);
+  }
+
+  #content {
+    width: 100%;
+  }
+
+  #sidebar {
+    min-width: 20ch;
+  }
+
+  #header {
+    row {
+      padding: 1lh 2ch;
+      flex-grow: 1;
+      flex-basis: 0;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    div[is-="separator"] {
+      height: calc(2lh - 2px);
+    }
+  }
+</style>
