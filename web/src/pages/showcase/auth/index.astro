@@ -1,7 +1,9 @@
 ---
+import Layout from '@/layouts/Layout.astro';
 import Login from './Login.astro';
 import Signup from './Signup.astro';
 import TwoFa from './TwoFa.astro';
+import Navbar from '@/components/Navbar.astro';
 
 const asciiArt = ` ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣧⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -12,35 +14,36 @@ const asciiArt = ` ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀�
 ⠉⠉⠙⠛⠛⠻⠿⠿⠿⢿⡿⢛⣿⣿⣿⡿⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠉⠉⠉⠉`;
 ---
 
-<row self-="grow" id="container">
-  <column 
-    self-="grow !basis"
-    align-="center" 
-    gap-="1"
-    box-="square" 
-    id="left-panel"
-  >
-    <span><strong>Some SaaS</strong></span>
-    <pre>{asciiArt}</pre>
-    <p>nExT gEnErAtIoN pRoDuCtIvItY pOwErEd By Ai</p>
-  </column>
-  <column 
-    self-="grow !basis" 
-    align-="center" 
-    box-="square" 
-    id="right-panel"
-    data-active="login-contents"
-  >
-    <Login />
-    <Signup />
-    <TwoFa />
-  </column>
-</row>
+<Layout>
+  <Navbar />
+  <row self-="grow" id="container">
+    <column 
+      self-="grow !basis"
+      align-="center" 
+      gap-="1"
+      box-="square" 
+      id="left-panel"
+    >
+      <span><strong>Some SaaS</strong></span>
+      <pre>{asciiArt}</pre>
+      <p>nExT gEnErAtIoN pRoDuCtIvItY pOwErEd By Ai</p>
+    </column>
+    <column 
+      self-="grow !basis" 
+      align-="center" 
+      box-="square" 
+      id="right-panel"
+      data-active="login-contents"
+    >
+      <Login />
+      <Signup />
+      <TwoFa />
+    </column>
+  </row>
+</Layout>
 
 <style is:global>
 #container {
-  min-height: 100vh;
-
   #left-panel {
     --box-border-color: var(--background1);
 

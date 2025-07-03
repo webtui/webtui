@@ -3,10 +3,10 @@ import Filter from '@/components/Filter.astro';
 
 const url = Astro.url;
 
-let isOn: 'docs' | 'examples' | 'home' = 'docs';
+let isOn: 'docs' | 'showcase' | 'home' = 'docs';
 
-if (url.pathname.startsWith('/examples')) {
-  isOn = 'examples';
+if (url.pathname.startsWith('/showcase')) {
+  isOn = 'showcase';
 }
 
 if (url.pathname === '/') {
@@ -23,9 +23,9 @@ if (url.pathname === '/') {
       <span>&#xf15c</span>
       <span>Docs</span>
     </a>
-    <a href="/examples" data-active={isOn === "examples"}>
+    <a href="/showcase" data-active={isOn === "showcase"}>
       <span>&#xebeb</span>
-      <span>Examples</span>
+      <span>Showcase</span>
     </a>
     <a href="https://github.com/webtui/webtui" target="_blank">
       <span>&#xe709</span>
