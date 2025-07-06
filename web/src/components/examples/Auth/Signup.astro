@@ -1,0 +1,39 @@
+<column gap-="1" id="signup-contents">
+  <column>
+    <label box-="round" shear-="top">
+      <row><span is-="badge" variant-="background0">Username</span></row>
+      <input />
+    </label>
+    <label box-="round" shear-="top">
+      <row><span is-="badge" variant-="background0">Email</span></row>
+      <input type="email" />
+    </label>
+    <label box-="round" shear-="top">
+      <row><span is-="badge" variant-="background0">Password</span></row>
+      <input type="password" />
+    </label>
+    <label box-="round" shear-="top">
+      <row><span is-="badge" variant-="background0">Confirm Password</span></row>
+      <input type="password" />
+    </label>
+  </column>
+  <button variant-="foreground1" id="signup-button">Sign Up</button>
+  <column>
+    <row class="social-providers">
+      <button box-="round">&#xe7f0;</button>
+      <button box-="round">&#xe709;</button>
+      <button box-="round">&#xe8c9;</button>
+      <button box-="round">&#xf36f;</button>
+    </row>
+  </column>
+  <p>Already have an account? <a href="#" id="login-link">Log In</a></p>
+</column>
+
+<script>
+(document.querySelector("#signup-contents") as HTMLDivElement).addEventListener("keydown", (e) => {
+  if(e.key === "Enter") {
+    e.preventDefault();
+    alert("Signup complete [placeholder]");
+  }
+});
+</script>

@@ -3,7 +3,6 @@ import Sidebar from '@/components/Sidebar.astro';
 import Layout from '@/layouts/Layout.astro';
 import { makeSortedCategoryEntries } from '@/utils/content';
 import { compareUrlPaths } from '@/utils/url';
-import Contents from '@/components/Contents.astro';
 import Navbar from '@/components/Navbar.astro';
 
 const { frontmatter, headings } = Astro.props;
@@ -47,13 +46,13 @@ if (headings.length > 0) {
 </style>
 
 <Layout>
-  <column self-="grow" space-="px:2 py:1">
+  <column self-="grow">
     <Navbar />
     <row self-="grow" gap-="1">
       <div id="sidebar-container" class="mobile-hidden">
         <Sidebar />
       </div>
-      <article box-="square contain:!top">
+      <article box-="square" shear-="top">
         <header is-="row" align-="between">
           <div is-="badge" variant-="background0">
             <h1>{frontmatter.title}</h1>
@@ -69,15 +68,20 @@ if (headings.length > 0) {
                     <a
                       href={`/${prevDoc.id}`}
                       class="prev"
-                      box-="round contain:!top"
+                      box-="round"
+                      shear-="top"
                       tabindex="0"
                     >
                       <div is-="typography-block">
                         <span is-="badge" variant-="background0">
-                          ← <code space-="mx:1">&lt;C-p&gt;</code> Previous
+                          <row gap-="1">
+                            <span>←</span>
+                            <code>&lt;C-p&gt;</code>
+                            <span>Previous</span>
+                          </row>
                         </span>
                       </div>
-                      <span space-="px:1">
+                      <span pad-="1 0">
                         {prevDoc.id.split("/")[0]}/{prevDoc.data.title}
                       </span>
                     </a>
@@ -88,15 +92,20 @@ if (headings.length > 0) {
                     <a
                       href={`/${nextDoc.id}`}
                       class="next"
-                      box-="round contain:!top"
+                      box-="round"
+                      shear-="top"
                       tabindex="0"
                     >
                       <row align-="start end" is-="typography-block">
                         <span is-="badge" variant-="background0">
-                          Next <code space-="mx:1">&lt;C-n&gt;</code> →
+                          <row gap-="1">
+                            <span>Next</span>
+                            <code>&lt;C-n&gt;</code>
+                            <span>→</span>
+                          </row>
                         </span>
                       </row>
-                      <span space-="px:1">
+                      <span pad-="1 0">
                         {nextDoc.id.split("/")[0]}/{nextDoc.data.title}
                       </span>
                     </a>
@@ -105,20 +114,14 @@ if (headings.length > 0) {
               </div>
             </main>
           </div>
-          {
-            headers.length > 0 &&
-              headers.every((group) => group.length > 0) && (
-                <Contents headers={headers} />
-              )
-          }
         </row>
       </article>
     </row>
     <div id="mobile-nav">
-      <button variant-="background1" size-="small" id="menu-button"
-        >&#xeb86; Menu</button
-      >
-      <button id="docs-button" size-="small">&#xf15b; Docs</button>
+      <button variant-="background1" id="menu-button">
+        &#xeb86; Menu
+      </button>
+      <button id="docs-button">&#xf15b; Docs</button>
     </div>
   </column>
 </Layout>
@@ -150,6 +153,18 @@ if (headings.length > 0) {
     // Don't navigate if the user is typing
     if (isUserTyping()) {
       return;
+    }
+
+    // ctrl-o -> "navigate out"
+    if (e.key === 'o' && e.ctrlKey) {
+      e.preventDefault();
+      window.history.back();
+    }
+
+    // ctrl-i -> "navigate in"
+    if (e.key === 'i' && e.ctrlKey) {
+      e.preventDefault();
+      window.history.forward();
     }
 
     if (e.key === "l") {

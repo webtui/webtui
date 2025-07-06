@@ -1,0 +1,169 @@
+---
+layout: "@/layouts/Doc.astro"
+title: "Changelog"
+---
+
+import Example from '@/components/Example.astro';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import preStyle from '@webtui/css/components/pre.css?raw';
+
+## 0.1.2
+
+- [Switches](/components/switch) appear dimmer when unchecked
+- [Switches](/components/switch) correctly show the track when the `<input>` stylesheet is imported
+- Added edge/bisecting caps to the [Separator Component](/components/separator)
+- Properly aligns [Badges](/components/badge) vertically
+- Removes an invalid `initial-value` property from the [Dialog Component](/components/dialog)
+- Removes the markdown-like `#` markers prefixing heading elements `<h1>`-`<h6>`
+- Allows the `--box-border-color` CSS to be inherited and controlled with CSS variables
+- Allows the `--table-border-color` CSS to be inherited and controlled with CSS variables
+- Allows the `--separator-color` CSS to be inherited and controlled with CSS variables
+
+### Migration Guide from < 0.1.1
+
+#### Heading Markers
+
+The markdown-like `#` markers on heading elements `<h1>`-`<h6>` have been removed
+
+If you intend to keep this behavior, use the following CSS code
+
+```css
+h1::before { content: "# "; }
+h2::before { content: "## "; }
+h3::before { content: "### "; }
+h4::before { content: "#### "; }
+h5::before { content: "##### "; }
+h6::before { content: "###### "; }
+```
+
+#### Inherited Color Variables
+
+Prior to this release, `--box-border-color`, `--table-border-color`, and `--separator-color` **always** defaulted to `--foreground0`.
+
+Now all child elements of an element with any of these CSS variables will inherit the value from its closest ancestor
+
+```html
+<body style="--box-border-color: red;">
+    <div box-="square">red border</div>
+    <div box-="square" style="--box-border-color: blue;">blue border</div>
+    <div style="--box-border-color: green;">
+        <div box-="square">green border</div>
+    </div>
+</body>
+```
+
+The defaults for these variables can be controlled from `:root`
+
+```css
+@layer base {
+    :root {
+        --box-border-color: var(--background1);
+        --table-border-color: var(--background2);
+        --separator-color: var(--cyan);
+    }
+}
+```
+
+## 0.1.1
+
+- Adds the [Switch Component](/components/switch)
+- Adds a half-block height variant to the [Pre Component](/components/pre) so it doesn't appear so tall
+- Tooltips remain visible when you hover over their content
+
+### Migration Guide from 0.1.0
+
+#### Pre Size
+
+The default size for `pre` elements has been changed to make them shorter
+
+<Example 
+    stylesheets={[
+        preStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+}`}
+    html={`<pre size-="small">Small</pre>
+<pre>Default</pre>
+<pre size-="large">Large (old default)</pre>`}
+/>
+
+## 0.1.0
+
+- Removed the `contain:*` keyword from the `box-` utility property in favor of `shear-`
+- Adds the [pre Component](/components/pre)
+- Adds the [Tooltip Component](/components/tooltip)
+- Adds the [Table Component](/components/table)
+- Adds the [Dialog Component](/components/dialog)
+- Adds a half-block height variants to [Buttons](/components/button) so they don't appear so tall
+
+### Migration Guide from 0.0.x
+
+#### Box Containment
+
+In versions prior to 0.1.0, a second keyword was added to the `box-` utility property to control whether the box should pad the top and/or bottom lines
+
+```html
+<div box-="square contain:!top"></div>
+<div box-="square contain:!bottom"></div>
+<div box-="square contain:none"></div>
+```
+
+This has been replaced with the `shear-` property
+
+```html
+<div box-="square" shear-="top"></div>
+<div box-="square" shear-="bottom"></div>
+<div box-="square" shear-="both"></div>
+```
+
+Since the selector for `box-` no longer allows more than one keyword, most elements using the `box-` utility will be affected by this change
+
+#### Button Variants
+
+The default button variant has been changed to make the button shorter
+
+<Example 
+    stylesheets={[
+        buttonStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1ch;
+}`}
+    html={`<button size-="large">Large (old default)</button>
+<button>Default</button>
+<button size-="small">Small</button>
+`}
+/>
+
+The `default` button variant is still three lines tall but appears to be shorter as its background doesn't take up the full height of three lines
+
+## 0.0.6
+
+- Added the Separator Component
+- Added the Radio Component
+
+## 0.0.5
+
+- Fixed black lines between badges
+- Split out nerd font plugin to only provide the font
+
+## 0.0.4
+
+- Introduced Checkbox Component
+
+## 0.0.3
+
+- Introduced Popover Component
+
+## 0.0.2
+
+- Introduced Dynamic Theme Approach
+
+## 0.0.1
+
+- Initial Release

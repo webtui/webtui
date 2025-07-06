@@ -1,204 +1,77 @@
 ---
-import Filter from '@/components/Filter.astro';
-import Layout from '../layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
+import Layout from '@/layouts/Layout.astro';
+import Intro from '@/components/landing/sections/Intro.astro';
+import VimNavigation from '@/components/landing/VimNavigation.astro';
+import FeaturePureCss from '@/components/landing/sections/FeaturePureCss.astro';
+import FeatureSemantic from '@/components/landing/sections/FeatureSemantic.astro';
+import FeatureThemes from '@/components/landing/sections/FeatureThemes.astro';
+import Gallery from '@/components/landing/sections/Gallery.astro';
+import Sponsors from '@/components/landing/sections/Sponsors.astro';
+import Cta from '@/components/landing/sections/Cta.astro';
 ---
 
 <Layout>
-  <row self-="grow" align-="center" id="section">
-    <column>
-      <column gap-="1" space-="px:2 py:1" id="main">
-        <Navbar />
-        <column gap-="1">
-          <header is-="column" gap-="1" space-="px:1">
-            <h1 tabindex="0" autofocus>
-              UI Design that goes <strong>HARD</strong>
-            </h1>
-            <p tabindex="0">
-              WebTUI is a modular CSS library that brings the beauty of Terminal
-              UIs to the browser
-            </p>
-            <div id="start-links" box-="square contain:!top">
-              <row>
-                <span is-="badge" variant-="background0" tabindex="0"
-                  >Contents</span
-                >
-              </row>
-              <column space-="px:1 pb:1" is-="typography-block">
-                <a tabindex="0" href="/start/intro"
-                  ><code>S</code>
-                  <span>Get Started</span>
-                </a>
-                <a tabindex="0" href="/examples"
-                  ><code>E</code>
-                  <span>View Examples</span>
-                </a>
-                <a tabindex="0" href="/examples"
-                  ><code>/</code>
-                  <span>Search</span>
-                </a>
-              </column>
-            </div>
-          </header>
-        </column>
-      </column>
-      <row id="statusline">
-        <span is-="badge" variant-="blue">NORMAL</span>
-        <span is-="badge" variant-="background1">
-          <span class="branch-name">&#xe725; master</span>
-        </span>
-        <row self-="grow">
-          <span is-="badge" variant-="background0">index.astro</span>
-        </row>
-        <span is-="badge" variant-="background0">utf-8</span>
-        <span is-="badge" variant-="background1">
-          <span id="percent">Top</span>
-        </span>
-        <span is-="badge" variant-="blue"><span id="line">1</span>:1</span>
-      </row>
-      <input id="cmdline" aria-label="vim cmdline" />
-    </column>
-  </row>
-  <Filter />
+  <main>
+    <Intro />
+    <FeatureSemantic />
+    <FeaturePureCss />
+    <FeatureThemes />
+    <Gallery />
+    <Sponsors />
+    <Cta />
+  </main>
+  <div id="vim-navigation-container">
+    <VimNavigation />
+  </div>
 </Layout>
 
-<style>
-  #start-links {
-    --box-border-color: var(--background2);
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
+<style is:global>
+  #vim-navigation-container {
+    position: fixed;
+    top: 1lh;
+    right: 2ch;
+  }
 
-    a {
-      text-decoration: none;
-      color: var(--foreground1);
-      display: inline-flex;
-      gap: 1ch;
+  @layer base {
+    :root {
+      --font-size: 20px;
+    }
 
-      span {
-        text-decoration: underline;
+    @media (max-width: 100ch) {
+      :root {
+        --font-size: 18px;
       }
     }
   }
 
-  #statusline {
-    background-color: var(--background0);
+  main {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--foreground1) var(--background2);
   }
 
-  #cmdline {
-    background-color: var(--background0);
-    padding: 0;
+  section, header {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
   }
 
-  #section {
-    background-color: var(--crust);
-    padding: 1lh 2ch;
-
-    #main {
-      background-color: var(--background0);
-      width: 100%;
-      max-width: 84ch;
-    }
+  section .content {
+    max-width: 80ch;
+    width: round(calc(100% - 2ch), 1ch);
+    row-gap: 2ch;
+    column-gap: 1lh;
   }
 
-  header h1 strong {
-    text-decoration: underline;
-    color: #eba0ac;
-  }
-
-  header [tabindex="0"]:focus {
-    background-color: var(--background1);
-  }
-
-  .branch-name {
-    color: #89b4fa;
-  }
-
-  #shorcuts-badge {
-    display: inline-flex;
-  }
-
-  #content-badge {
-    display: none;
-  }
-
-  @media (max-width: 80ch) {
-    #statusline,
-    #cmdline {
-      display: none;
-    }
-
-    #start-links code {
-      display: none;
-    }
-
-    #shorcuts-badge {
-      display: none;
-    }
-
-    #content-badge {
-      display: inline-flex;
+  @media (max-width: 1000px) {
+    section .content {
+      flex-direction: column-reverse;
     }
   }
 </style>
-
-<script>
-  import {
-    applyVimCursorHighlight,
-    applyVimNavigation,
-    isUserTyping,
-  } from "@/utils/vim";
-
-  const header = document.querySelector("header") as HTMLElement;
-  const headerElements: NodeListOf<HTMLElement> = header.querySelectorAll(
-    'header [tabindex="0"]',
-  );
-  const lineNumber = document.getElementById("line") as HTMLSpanElement;
-  const percentage = document.getElementById("percent") as HTMLSpanElement;
-  const cmdline = document.getElementById("cmdline") as HTMLInputElement;
-
-  if (window.innerHeight > 800) {
-    applyVimCursorHighlight(headerElements[0]);
-  }
-
-  applyVimNavigation(header, 'header [tabindex="0"]', (element) => {
-    const index = Array.from(headerElements).indexOf(element);
-
-    lineNumber.innerText = String(index + 1);
-
-    if (index === 0) {
-      percentage.innerText = "Top";
-    } else if (index === headerElements.length) {
-      percentage.innerText = "Bot";
-    } else {
-      const percent = Math.round((index / headerElements.length) * 100);
-      percentage.innerText = String(percent) + "%";
-    }
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (isUserTyping()) return;
-
-    if (e.key === ":") {
-      cmdline.focus();
-    }
-
-    if (e.key === "s" || e.key === "S") {
-      window.location.href = "/start/intro";
-    }
-
-    if (e.key === "e" || e.key === "E") {
-      window.location.href = "/examples";
-    }
-  });
-
-  cmdline.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const value = cmdline.value;
-
-      if (value.startsWith(":") && value.includes("q")) {
-        alert("Skill Issue");
-      }
-    }
-  });
-</script>

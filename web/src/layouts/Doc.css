@@ -1,11 +1,29 @@
 #mobile-nav {
-  --box-border-color: var(--background1);
   display: none;
   gap: 1ch;
 
   button {
     flex-grow: 1;
   }
+}
+
+h1::before {
+  content: "# ";
+}
+h2::before {
+  content: "## ";
+}
+h3::before {
+  content: "### ";
+}
+h4::before {
+  content: "#### ";
+}
+h5::before {
+  content: "##### ";
+}
+h6::before {
+  content: "###### ";
 }
 
 #sidebar-container {
@@ -32,16 +50,15 @@
       color: var(--foreground0);
     }
 
-    & > [tabindex="0"] {
+    & > [tabindex="0"],
+    & > ul > li[tabindex="0"] {
       outline: none;
 
       &:focus {
         background-color: var(--background1);
 
-        &:is(pre) {
-          span.line:first-child {
-            text-decoration: underline;
-          }
+        &:not(:is(pre)) code {
+          background-color: var(--background2);
         }
 
         &:has(> div.image-caption) {
@@ -49,6 +66,12 @@
 
           figcaption {
             background-color: var(--background1);
+          }
+        }
+
+        &:is(pre) {
+          span.line:first-child {
+            background-color: var(--background2);
           }
         }
       }
@@ -95,7 +118,6 @@ article {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  --box-border-color: var(--background1);
 
   &:focus-within {
     --box-border-color: var(--foreground1);
@@ -129,9 +151,7 @@ article {
 pre.astro-code {
   display: flex !important;
   overflow: unset !important;
-  background-color: var(--background1) !important;
   position: relative;
-  padding: 1lh 1ch;
 
   code {
     overflow: hidden;
@@ -147,24 +167,14 @@ pre.astro-code {
   }
 }
 
-div[box-]:has(> .image-caption) {
+p:has(> img) {
+  display: flex;
+
   max-width: 48ch;
   max-height: 24lh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  --box-border-color: var(--background2);
 
-  & .image-caption {
-    display: flex;
-
-    & figcaption {
-      background-color: var(--background0);
-      padding: 0 1ch;
-    }
-  }
-
-  & img {
+  img {
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;

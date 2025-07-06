@@ -1,0 +1,78 @@
+@layer components {
+  @property --tooltip-offset-x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --tooltip-offset-y {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --tooltip-delay {
+    syntax: "<time>";
+    inherits: true;
+    initial-value: 0.5s;
+  }
+
+  [is-~="tooltip"] {
+    position: relative;
+
+    [is-~="tooltip-content"] {
+      opacity: 0;
+      transition: all 0s linear 0s;
+      transform: scale(0);
+      overflow: hidden;
+      position: absolute;
+    }
+
+    &:has([is-~="tooltip-trigger"]:hover) > [is-~="tooltip-content"],
+    &:has([is-~="tooltip-trigger"]:focus) > [is-~="tooltip-content"],
+    &:has([is-~="tooltip-content"]:hover) > [is-~="tooltip-content"] {
+      opacity: 1;
+      z-index: 2;
+      transform: scale(1);
+      transition-delay: var(--tooltip-delay);
+
+      &[position-~="baseline-left"],
+      &:not([position-]) {
+        left: 0%;
+      }
+
+      &[position-~="baseline-right"] {
+        left: 100%;
+        translate: -100%;
+      }
+
+      &[position-~="left"] {
+        left: calc(var(--tooltip-offset-x) * -1);
+        translate: -100%;
+      }
+
+      &[position-~="right"] {
+        left: calc(100% + var(--tooltip-offset-x));
+      }
+
+      &[position-~="baseline-top"] {
+        top: 0%;
+      }
+
+      &[position-~="baseline-bottom"] {
+        top: 100%;
+        transform: translateY(-100%);
+      }
+
+      &[position-~="top"],
+      &:not([position-]) {
+        top: calc(var(--tooltip-offset-y) * -1);
+        transform: translateY(-100%);
+      }
+
+      &[position-~="bottom"] {
+        top: calc(100% + var(--tooltip-offset-y));
+      }
+    }
+  }
+}

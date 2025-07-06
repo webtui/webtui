@@ -1,0 +1,33 @@
+@layer components {
+  textarea,
+  [is-~="textarea"] {
+    background-color: var(--background1);
+    color: var(--foreground0);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
+    outline: none;
+    border: none;
+    resize: vertical;
+    min-width: 24ch;
+
+    &::placeholder {
+      color: var(--foreground2);
+    }
+
+    &:not([size-]) {
+      min-height: 2lh;
+      padding: 0 1ch;
+    }
+
+    &[size-="small"] {
+      min-height: 2lh;
+      padding: 0 0;
+    }
+    &[size-="large"] {
+      min-height: 4lh;
+      padding: 1lh 2ch;
+    }
+  }
+}

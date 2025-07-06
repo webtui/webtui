@@ -1,0 +1,196 @@
+---
+import CodePreview from '../CodePreview.astro';
+import '@webtui/theme-gruvbox';
+import '@webtui/theme-nord';
+import '@webtui/theme-vitesse';
+
+const themeKeys = {
+  'catppuccin-mocha': 'theme-catppuccin',
+  'catppuccin-latte': 'theme-catppuccin',
+  nord: 'theme-nord',
+  'gruvbox-dark-hard': 'theme-gruvbox',
+  'vitesse-dark-soft': 'theme-vitesse',
+};
+---
+
+<section id="theme-section" data-theme="catppuccin-mocha">
+  <column id="visible-content" align-="center">
+    <column class="content">
+      <column gap-="1">
+        <row gap-="1">
+          <h2 is-="badge" variant-="mauve" style="color: var(--background0)">&#xefcc; Easily Themable</h2> 
+          <span><span id="theme-index">0</span>/4</span>
+        </row>
+        <p>Install beautiful pre-built color themes or create your own</p>
+      </column>
+      {Object.entries(themeKeys).map(([key, value]) => (
+        <div class="code-preview" data-theme-key={key}>
+          <CodePreview
+            code={`<style>
+@import "@webtui/${value}";
+</style>
+
+<html data-webtui-theme="${key}"></html>`}
+            lang="html"
+            file={{
+              name: "index.html",
+              icon: ["\ue736", "var(--red)"],
+            }}
+            highlights={[
+              [1, "change"],
+              [4, "change"],
+            ]}
+            withShadow
+          />
+        </div>
+      ))}
+      <column id="theme-preview" data-webtui-theme="catppuccin" pad-="1 0">
+        <row gap-="1">
+          <row gap-="1">
+            <span id="close-button">&#xf111;</span>
+            <span id="minimize-button">&#xf111;</span>
+            <span id="maximize-button">&#xf111;</span>
+          </row>
+          <row>
+            <span is-="badge" class="tab" variant-="background2" cap-="slant-bottom">
+              <span class="so-icon">&#xf16c;</span>
+              <span pad-="1 0">StackOverflow</span>
+              <span class="tab-close">&#xf467;</span>
+            </span>
+            <span is-="badge" variant-="background1">
+              <span>&#xf09b;</span>
+              <span pad-="1 0">Github</span>
+            </span>
+          </row>
+        </row>
+        <row>
+          <row>
+            <button size-="small" variant-="background2">&#xf053;</button>
+            <button size-="small" variant-="background2">&#xf054;</button>
+            <button size-="small" variant-="background2">&#xe348;</button>
+          </row>
+          <row self-="grow" id="urlbar">http://<span>stackoverflow.com</span>/questions/123456</row>
+        </row>
+        <column box-="round" id="browser-content">
+          <span>How to determine if a number is odd in Javascript</span>
+          <div is-="separator" style="--separator-color: var(--background3)" />
+          <row>
+            <column align-="center">
+              <span>&#xeb71;</span>
+              <span>341</span>
+              <span>&#xeb6e;</span>
+              <span>&#xeaa5;</span>
+              <span>&#xf1da;</span>
+            </column>
+            <column self-="grow" gap-="1" pad-="1 0">
+              <p>Can anyone point me to some code to determine if a number in JavaScript is even or odd?</p>
+              <row><span is-="badge" variant-="background2">javascript</span></row>
+            </column>
+          </row>
+        </column>
+      </column>
+    </column>
+  </column>
+  <div class="snap" data-theme="catppuccin-latte"></div>
+  <div class="snap" data-theme="nord"></div>
+  <div class="snap" data-theme="gruvbox-dark-hard"></div>
+  <div class="snap" data-theme="vitesse-dark-soft"></div>
+</section>
+
+<style>
+  #theme-section {
+    min-height: 350vh;
+    position: relative;
+
+    #visible-content {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .content {
+      flex-direction: column !important;
+    }
+
+    &:has(#theme-preview[data-webtui-theme="catppuccin-mocha"]) .code-preview[data-theme-key="catppuccin-mocha"],
+    &:has(#theme-preview[data-webtui-theme="catppuccin-latte"]) .code-preview[data-theme-key="catppuccin-latte"],
+    &:has(#theme-preview[data-webtui-theme="nord"]) .code-preview[data-theme-key="nord"],
+    &:has(#theme-preview[data-webtui-theme^="gruvbox-dark-hard"]) .code-preview[data-theme-key="gruvbox-dark-hard"],
+    &:has(#theme-preview[data-webtui-theme^="vitesse-dark-soft"]) .code-preview[data-theme-key="vitesse-dark-soft"] {
+      display: block;
+    }
+  }
+
+  #theme-preview {
+    background-color: var(--background1);
+    color: var(--foreground0);
+    box-shadow: 1ch 0.5lh #181825;
+    flex-grow: 1;
+
+    #browser-content {
+      --box-border-color: var(--background3);
+    }
+
+    .tab-close {
+      color: var(--foreground2);
+    }
+    .so-icon {
+      color: var(--gb-orange, var(--nord12, var(--peach)));
+    }
+
+    #urlbar {
+      background: var(--background3);
+      padding: 0 1ch;
+      color: var(--foreground2);
+      span { color: var(--foreground0); }
+    }
+    #close-button {
+      color: var(--gb-red, var(--nord11, var(--red)));
+    }
+    #minimize-button {
+      color: var(--gb-yellow, var(--nord13, var(--yellow)));
+    }
+    #maximize-button, .solution {
+      color: var(--gb-green, var(--nord14, var(--green)));
+    }
+  }
+
+  .snap {
+    scroll-snap-align: start;
+    height: 50vh;
+
+    &:last-of-type {
+      height: 100vh;
+    }
+  }
+
+  .code-preview {
+    display: none;
+  }
+</style>
+
+<script>
+import { attachScrollSnapListener } from "@/utils/scroll";
+
+const themePreview = document.querySelector("#theme-preview") as HTMLElement;
+const themeIndex = document.querySelector("#theme-index") as HTMLElement;
+
+let currentTarget: HTMLElement | undefined;
+
+const handleTargetChange = (target?: HTMLElement) => {
+    if(!target || currentTarget === target) return;
+
+    currentTarget = target;
+
+    const theme = target.dataset.theme;
+
+    if(theme) {
+      themePreview.setAttribute("data-webtui-theme", theme);
+      themeIndex.innerText = String(Array.from(document.querySelectorAll(".snap")).indexOf(target) + 1);
+    }
+}
+
+attachScrollSnapListener(".snap", handleTargetChange, "#theme-section");
+</script>

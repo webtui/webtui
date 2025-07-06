@@ -21,7 +21,14 @@ export default defineConfig({
   integrations: [mdx({ extendMarkdownConfig: true })],
   vite: {
     ssr: {
-      noExternal: ['@webtui/theme-catppuccin', '@webtui/css'],
+      noExternal: [
+        '@webtui/css',
+        '@webtui/theme-catppuccin',
+        '@webtui/theme-nord',
+        '@webtui/theme-gruvbox',
+        '@webtui/theme-vitesse',
+        '@webtui/plugin-nf',
+      ],
     },
   },
 });

@@ -12,5 +12,13 @@
 @import "./components/typography.css";
 @import "./components/badge.css";
 @import "./components/input.css";
+@import "./components/textarea.css";
 @import "./components/popover.css";
 @import "./components/checkbox.css";
+@import "./components/separator.css";
+@import "./components/radio.css";
+@import "./components/pre.css";
+@import "./components/tooltip.css";
+@import "./components/table.css";
+@import "./components/switch.css";
+@import "./components/dialog.css";

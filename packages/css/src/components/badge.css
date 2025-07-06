@@ -11,14 +11,14 @@
       transparent
     );
     display: inline-flex;
-    vertical-align: middle;
+    vertical-align: top;
     white-space: nowrap;
     height: 1lh;
     line-height: 1lh;
 
     /* Color Variants */
     &[variant-="foreground0"],
-    &:not([variant]) {
+    &:not([variant-]) {
       --badge-color: var(--foreground0);
       --badge-text: var(--background0);
     }

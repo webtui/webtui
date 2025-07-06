@@ -1,0 +1,156 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Switch
+---
+
+import Example from '@/components/Example.astro';
+import switchStyle from '@webtui/css/components/switch.css?raw';
+
+Displays a switch
+
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+    html={`<label>
+    <input type="checkbox" is-="switch" />
+    Switch
+</label>`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/switch.css";
+```
+
+## Usage
+
+```html
+<label>
+    <input type="checkbox" is-="switch" />
+    Switch
+</label>
+```
+
+## Examples
+
+### Checked/Unchecked
+
+Use the `checked` attribute to set the initial value of the switch checkbox
+
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
+<label>
+    <input type="checkbox" is-="switch" />
+    Unchecked
+</label>
+<label>
+    <input type="checkbox" is-="switch" checked />
+    Checked
+</label>
+`}
+/>
+
+### Disabled
+
+Use the `disabled` attribute to disable the switch
+
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
+<label>
+    <input type="checkbox" is-="switch" disabled />
+    Disabled
+</label>
+<label>
+    <input type="checkbox" is-="switch" checked disabled />
+    Checked Disabled
+</label>
+`}
+/>
+
+### Size
+
+Use the `size-` attribute to set the size of the switch
+
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
+<label>
+    <input type="checkbox" is-="switch" size-="small" />
+    Small
+</label>
+<label>
+    <input type="checkbox" is-="switch" />
+    Default
+</label>
+`}
+/>
+
+### Bar Size
+
+Set the `bar-` attribute to `thin` or `line` to set the size of the switch bar
+
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
+<label>
+    <input type="checkbox" is-="switch" />
+    Default
+</label>
+<label>
+    <input type="checkbox" is-="switch" bar-="thin" />
+    Thin Bar
+</label>
+<label>
+    <input type="checkbox" is-="switch" bar-="line" />
+    Line Bar
+</label>
+`}
+/>
+
+## Reference
+
+### Properties
+
+- `--switch-thumb-color`: The color of the switch thumb
+- `--switch-track-color`: The color of the switch track
+
+```css
+#my-switch-input {
+  --switch-thumb-color: var(--foreground0);
+  --switch-track-color: var(--background1);
+}
+```
+
+### Extending
+
+To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+  input[type="checkbox"][is-="switch"] {
+    /* ... */
+  }
+}
+```
+
+### Scope
+
+- All native `<input type="checkbox">` elements with `is-="switch"`
+
+```css
+input[type="checkbox"][is-="switch"] {
+  /* ... */
+}
+```

@@ -11,7 +11,7 @@
     initial-value: 0;
   }
 
-  details[is-="popover"] {
+  details[is-~="popover"] {
     --popover-backdrop-color: transparent;
 
     position: relative;
@@ -38,7 +38,6 @@
           inset: 0;
           z-index: 1;
           background-color: var(--popover-backdrop-color);
-          cursor: default;
         }
 
         &::marker {

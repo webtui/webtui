@@ -1,0 +1,55 @@
+@layer components {
+  input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    position: relative;
+    width: 3ch;
+    min-width: initial;
+    vertical-align: text-top;
+    color: var(--foreground2);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    outline: none;
+  }
+
+  input[type="radio"]::before {
+    content: "( )";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3ch;
+    height: 1lh;
+    background: var(--background1);
+  }
+
+  input[type="radio"]:checked::before {
+    content: "(*)";
+  }
+
+  label:has(input[type="radio"]) {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 1ch;
+    max-width: fit-content;
+  }
+
+  label:has(input[type="radio"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  input[type="radio"]:disabled {
+    color: var(--foreground2);
+    pointer-events: none;
+  }
+
+  label:has(input[type="radio"]:disabled) {
+    color: var(--foreground2);
+    text-decoration: line-through;
+  }
+}

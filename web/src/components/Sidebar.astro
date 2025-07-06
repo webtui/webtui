@@ -1,20 +1,20 @@
 ---
 import { compareUrlPaths } from '@/utils/url';
-import { makeSortedCategoryEntries } from '@/utils/content';
+import { makeSortedCategoryEntries, categoryLabels } from '@/utils/content';
+import VimNavigation from './landing/VimNavigation.astro';
 
 const categories = makeSortedCategoryEntries();
 
 const { pathname: urlPath } = Astro.url;
 ---
 
-<nav box-="square contain:!top" id="sidebar">
-  <div><span is-="badge" variant-="background0">Documentation</span></div>
+<nav box-="square" shear-="top" id="sidebar">
   <div id="category-container">
     <div id="category-list">
       {
         categories.map(([slug, pages]) => (
           <details open>
-            <summary>{slug}</summary>
+            <summary>{categoryLabels[slug]}</summary>
             <ul>
               {pages.map(({ id, data: { title } }) => (
                 <a
@@ -31,26 +31,25 @@ const { pathname: urlPath } = Astro.url;
       }
     </div>
   </div>
-  <div box-="square contain:!top" id="keybind-container">
-    <span is-="badge" variant-="background0">Shortcuts</span>
-    <ul marker-="none" space-="p:1">
-      <li><code>h</code> focus sidebar</li>
-      <li><code>j</code> down</li>
-      <li><code>k</code> up</li>
-      <li><code>l</code> focus content</li>
-      <li><code>/</code> search</li>
-    </ul>
+  <div id="sidebar-vim-nav-container">
+    <VimNavigation showHL />
   </div>
 </nav>
 
 <style>
+  #sidebar-vim-nav-container {
+    padding-left: 1ch;
+    padding-right: 2ch;
+    padding-top: 1lh;
+    padding-bottom: 1lh;
+    display: flex;
+    flex-direction: row;
+  }
   #sidebar {
     display: flex;
     flex-direction: column;
-    gap: 1lh;
     overflow: hidden;
     flex-grow: 1;
-    --box-border-color: var(--background1);
 
     &:focus-within {
       --box-border-color: var(--foreground2);
@@ -59,6 +58,7 @@ const { pathname: urlPath } = Astro.url;
     #category-container {
       position: relative;
       flex-grow: 1;
+      margin-top: 1lh;
     }
 
     #category-list {
@@ -70,14 +70,10 @@ const { pathname: urlPath } = Astro.url;
       padding: 0 1ch;
       overflow-y: auto;
     }
-
-    #keybind-container {
-      --box-border-color: var(--background1);
-    }
   }
 
   ul > a[href] {
-    color: var(--foreground1);
+    color: var(--foreground2);
     text-decoration: none;
     outline: none;
     display: list-item;
@@ -91,7 +87,9 @@ const { pathname: urlPath } = Astro.url;
     }
 
     &.active {
-      color: var(--sky);
+      color: var(--foreground0);
+      text-decoration: underline;
+      font-weight: var(--font-weight-bold);
       background-color: var(--background1);
     }
 
@@ -100,24 +98,32 @@ const { pathname: urlPath } = Astro.url;
     }
   }
 
-  #filter-container {
-    --box-border-color: var(--foreground2);
-  }
+  details {
+    summary {
+      font-weight: var(--font-weight-bold);
+      &::marker {
+        color: var(--foreground2);
+        content: "\eab6\ ";
+      }
 
-  details summary:hover, details summary:focus {
-    background-color: var(--background1);
+      &:hover, &:focus {
+        background-color: var(--background1);
+      }
+    }
+
+    &[open] {
+      summary {
+        &::marker {
+          content: "\eab4\ "
+        }
+      }
+    }
   }
 
   details[open] a.hidden,
   details.hidden,
   .hidden {
     display: none;
-  }
-
-  @media (max-width: 96ch) {
-    #keybind-container {
-      display: none;
-    }
   }
 </style>
 

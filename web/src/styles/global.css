@@ -1,12 +1,23 @@
 @layer base, utils, components;
 
-@import "@webtui/css";
+@import "@webtui/css/base.css";
+@import "@webtui/css/utils/box.css";
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/typography.css";
+@import "@webtui/css/components/badge.css";
+@import "@webtui/css/components/input.css";
+@import "@webtui/css/components/textarea.css";
+@import "@webtui/css/components/popover.css";
+@import "@webtui/css/components/separator.css";
+@import "@webtui/css/components/pre.css";
+@import "@webtui/css/components/dialog.css";
+
 @import "@/styles/flexbox.css";
-@import "@/styles/spacing.css";
+@import "@/styles/padding.css";
 @import "@webtui/theme-catppuccin";
 @import "@webtui/theme-nord";
 @import "@webtui/theme-gruvbox";
-@import "@webtui/theme-everforest";
+@import "@webtui/theme-vitesse";
 @import "@webtui/plugin-nf";
 
 @layer base {
@@ -15,6 +26,7 @@
       "Symbols Nerd Font";
     --font-size: 18px;
     --line-height: 1.4;
+    --box-border-color: var(--background1);
   }
 
   body,
