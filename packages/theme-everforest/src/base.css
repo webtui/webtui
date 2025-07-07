@@ -1,35 +1,35 @@
 @layer base {
   /* base color for all themes' variants */
   :root {
-    --red: #f85552;
-    --orange: #f57d26;
-    --yellow: #dfa000;
-    --green: #8da101;
-    --aqua: #35a77c;
-    --blue: #3a94c5;
-    --purple: #df69ba;
+    --ef-red: #f85552;
+    --ef-orange: #f57d26;
+    --ef-yellow: #dfa000;
+    --ef-green: #8da101;
+    --ef-aqua: #35a77c;
+    --ef-blue: #3a94c5;
+    --ef-purple: #df69ba;
   }
 
   /* Base Dark Theme */
   [data-webtui-theme|="everforest-dark"] {
     /* Background colors */
-    --ef-dark-bg1: #2d353b;
-    --ef-dark-bg2: #343f44;
-    --ef-dark-bg3: #3d484d;
-    --ef-dark-bg4: #475258;
-    --ef-dark-bg5: #4f585e;
+    --bg1: #2d353b;
+    --bg2: #343f44;
+    --bg3: #3d484d;
+    --bg4: #475258;
+    --bg5: #4f585e;
 
     /* Foreground colors */
-    --ef-dark-fg: #d3c6aa;
-    --ef-dark-fg-dim: #9da9a0;
+    --fg: #d3c6aa;
+    --fg-dim: #9da9a0;
 
-    --ef-dark-red: #e67e80;
-    --ef-dark-orange: #e69875;
-    --ef-dark-yellow: #dbbc7f;
-    --ef-dark-green: #a7c080;
-    --ef-dark-aqua: #83c092;
-    --ef-dark-blue: #7fbbb3;
-    --ef-dark-purple: #d699b6;
+    --red: #e67e80;
+    --orange: #e69875;
+    --yellow: #dbbc7f;
+    --green: #a7c080;
+    --aqua: #83c092;
+    --blue: #7fbbb3;
+    --purple: #d699b6;
 
     /* Status colors */
     --statusline1: #a7c080;
@@ -42,55 +42,48 @@
     --gray2: #9da9a0;
 
     /* Semantic variables colors */
-    --background1: var(--ef-dark-bg2);
-    --background2: var(--ef-dark-bg3);
-    --background3: var(--ef-dark-bg4);
-    --foreground0: var(--ef-dark-fg);
-    --foreground1: var(--ef-dark-fg);
-    --foreground2: var(--ef-dark-fg-dim);
+    --background1: var(--bg2);
+    --background2: var(--bg3);
+    --background3: var(--bg4);
+    --foreground0: var(--fg);
+    --foreground1: var(--fg);
+    --foreground2: var(--dim);
   }
 
   /* Dark Hard Variant */
   [data-webtui-theme="everforest-dark-hard"] {
-    --ef-dark-bg0: #272e33;
-    --background0: var(--ef-dark-bg0);
-  }
-
-  /* Dark Medium Variant  */
-  [data-webtui-theme="everforest-dark-medium"],
-  [data-webtui-theme="everforest-dark"],
-  [data-webtui-theme="everforest"] {
-    --ef-dark-bg0: #2d353b;
-    --background0: var(--ef-dark-bg0);
+    --bg0: #272e33;
+    --background0: var(--bg0);
+    --background1: var(--bg4);
   }
 
   /* Dark Soft Variant */
   [data-webtui-theme="everforest-dark-soft"] {
-    --ef-dark-bg0: #333c43;
-    --background0: var(--ef-dark-bg0);
-    --background1: var(--ef-dark-bg1);
+    --bg0: #333c43;
+    --background0: var(--bg0);
+    --background1: var(--bg1);
   }
 
   /* Base Light Theme */
   [data-webtui-theme|="everforest-light"] {
     /* Background colors */
-    --ef-light-bg1: #f2efdf;
-    --ef-light-bg2: #edeada;
-    --ef-light-bg3: #e8e5d5;
-    --ef-light-bg4: #e0ded0;
-    --ef-light-bg5: #d8d6cc;
+    --bg1: #f2efdf;
+    --bg2: #edeada;
+    --bg3: #e8e5d5;
+    --bg4: #e0ded0;
+    --bg5: #d8d6cc;
 
     /* Foreground colors */
-    --ef-light-fg: #5c6a72;
-    --ef-light-fg-dim: #939f91;
+    --fg: #5c6a72;
+    --fg-dim: #939f91;
 
-    --ef-light-red: #f85552;
-    --ef-light-orange: #f57d26;
-    --ef-light-yellow: #dfa000;
-    --ef-light-green: #8da101;
-    --ef-light-aqua: #35a77c;
-    --ef-light-blue: #3a94c5;
-    --ef-light-purple: #df69ba;
+    --red: #f85552;
+    --orange: #f57d26;
+    --yellow: #dfa000;
+    --green: #8da101;
+    --aqua: #35a77c;
+    --blue: #3a94c5;
+    --purple: #df69ba;
 
     /* Status colors */
     --statusline1: #93b259;
@@ -103,51 +96,43 @@
     --gray2: #829181;
 
     /* Semantic variables */
-    --background1: var(--ef-light-bg1);
-    --background2: var(--ef-light-bg2);
-    --background3: var(--ef-light-bg3);
-    --foreground0: var(--ef-light-fg);
-    --foreground1: var(--ef-light-fg);
-    --foreground2: var(--ef-light-fg-dim);
+    --background1: var(--bg1);
+    --background2: var(--bg2);
+    --background3: var(--bg3);
+    --foreground0: var(--fg);
+    --foreground1: var(--fg);
+    --foreground2: var(--fg-dim);
 
-    --ef-red: var(--ef-light-red);
-    --ef-orange: var(--ef-light-orange);
-    --ef-yellow: var(--ef-light-yellow);
-    --ef-green: var(--ef-light-green);
-    --ef-aqua: var(--ef-light-aqua);
-    --ef-blue: var(--ef-light-blue);
-    --ef-purple: var(--ef-light-purple);
+    --red: var(--red);
+    --orange: var(--orange);
+    --yellow: var(--yellow);
+    --green: var(--green);
+    --aqua: var(--aqua);
+    --blue: var(--blue);
+    --purple: var(--purple);
   }
 
   /* Light Hard Variant */
   [data-webtui-theme="everforest-light-hard"] {
-    --ef-light-bg0: #fffbef;
-    --ef-light-bg1: #f0f2d4;
-    --background0: var(--ef-light-bg0);
-  }
-
-  /* Light Medium Variant */
-  [data-webtui-theme="everforest-light-medium"],
-  [data-webtui-theme="everforest-light"] {
-    --ef-light-bg0: #fdf6e3;
-    --ef-light-bg1: #eaedc8;
-    --background0: var(--ef-light-bg0);
+    --bg0: #fffbef;
+    --bg1: #f0f2d4;
+    --background0: var(--bg0);
   }
 
   /* Light Soft Variant */
   [data-webtui-theme="everforest-light-soft"] {
-    --ef-light-bg0: #f3ead3;
-    --ef-light-bg1: #e1e4bd;
-    --background0: var(--ef-light-bg0);
+    --bg0: #f3ead3;
+    --bg1: #e1e4bd;
+    --background0: var(--bg0);
   }
 
   [data-webtui-theme|="everforest-dark"] {
-    --ef-red: var(--ef-dark-red);
-    --ef-orange: var(--ef-dark-orange);
-    --ef-yellow: var(--ef-dark-yellow);
-    --ef-green: var(--ef-dark-green);
-    --ef-aqua: var(--ef-dark-aqua);
-    --ef-blue: var(--ef-dark-blue);
-    --ef-purple: var(--ef-dark-purple);
+    --red: var(--ef-red);
+    --orange: var(--ef-orange);
+    --yellow: var(--ef-yellow);
+    --green: var(--ef-green);
+    --aqua: var(--ef-aqua);
+    --blue: var(--ef-blue);
+    --purple: var(--ef-purple);
   }
 }

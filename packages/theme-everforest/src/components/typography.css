@@ -6,7 +6,7 @@
     h4,
     h5,
     h6 {
-      color: var(--gb-green);
+      color: var(--ef-green);
     }
 
     p,
@@ -14,16 +14,16 @@
     li,
     [is-~="typography-block"] {
       a {
-        color: var(--gb-blue);
+        color: var(--ef-blue);
         text-decoration: underline;
 
         &:hover {
-          color: var(--gb-aqua);
+          color: var(--ef-aqua);
         }
       }
 
       code {
-        color: var(--gb-orange);
+        color: var(--ef-orange);
       }
     }
   }
