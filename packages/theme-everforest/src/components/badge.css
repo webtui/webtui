@@ -2,35 +2,31 @@
   [data-webtui-theme|="everforest"] {
     [is-~="badge"] {
       &[variant-="red"] {
-        --badge-color: var(--ef-red);
+        --badge-color: var(--red);
         --badge-text: var(--background0);
       }
       &[variant-="green"] {
-        --badge-color: var(--ef-green);
+        --badge-color: var(--green);
         --badge-text: var(--background0);
       }
       &[variant-="yellow"] {
-        --badge-color: var(--ef-yellow);
+        --badge-color: var(--yellow);
         --badge-text: var(--background0);
       }
       &[variant-="blue"] {
-        --badge-color: var(--ef-blue);
+        --badge-color: var(--blue);
         --badge-text: var(--background0);
       }
       &[variant-="purple"] {
-        --badge-color: var(--ef-purple);
+        --badge-color: var(--purple);
         --badge-text: var(--background0);
       }
       &[variant-="aqua"] {
-        --badge-color: var(--ef-aqua);
+        --badge-color: var(--aqua);
         --badge-text: var(--background0);
       }
       &[variant-="orange"] {
-        --badge-color: var(--ef-orange);
-        --badge-text: var(--background0);
-      }
-      &[variant-="foreground2"] {
-        --badge-color: var(--fg-dim);
+        --badge-color: var(--orange);
         --badge-text: var(--background0);
       }
     }

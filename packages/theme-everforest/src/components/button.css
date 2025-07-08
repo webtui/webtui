@@ -2,47 +2,33 @@
   [data-webtui-theme|="everforest"] {
     button {
       &[variant-="red"] {
-        --button-primary: var(--ef-red);
+        --button-primary: var(--red);
         --button-secondary: var(--background0);
       }
       &[variant-="green"] {
-        --button-primary: var(--ef-green);
+        --button-primary: var(--green);
         --button-secondary: var(--background0);
       }
       &[variant-="yellow"] {
-        --button-primary: var(--ef-yellow);
+        --button-primary: var(--yellow);
         --button-secondary: var(--background0);
       }
       &[variant-="blue"] {
-        --button-primary: var(--ef-blue);
+        --button-primary: var(--blue);
         --button-secondary: var(--background0);
       }
       &[variant-="purple"] {
-        --button-primary: var(--ef-purple);
+        --button-primary: var(--purple);
         --button-secondary: var(--background0);
       }
       &[variant-="aqua"] {
-        --button-primary: var(--ef-aqua);
+        --button-primary: var(--aqua);
         --button-secondary: var(--background0);
       }
       &[variant-="orange"] {
-        --button-primary: var(--ef-orange);
+        --button-primary: var(--orange);
         --button-secondary: var(--background0);
       }
-    }
-  }
-
-  [data-webtui-theme|="everforest-dark"] {
-    button[variant-="gray"] {
-      --button-primary: var(--gray1);
-      --button-secondary: var(--background0);
-    }
-  }
-
-  [data-webtui-theme|="everforest-light"] {
-    button[variant-="gray"] {
-      --button-primary: var(--gray1);
-      --button-secondary: var(--background0);
     }
   }
 }
