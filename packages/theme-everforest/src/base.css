@@ -32,7 +32,9 @@
     --bg-blue: #384b55;
   }
 
-  [data-webtui-theme="everforest-dark-medium"] {
+  [data-webtui-theme="everforest-dark-medium"],
+  [data-webtui-theme="everforest-dark"],
+  [data-webtui-theme="everforest"] {
     --bg-dim: #232a2e;
     --bg0: #2d353b;
     --bg1: #343f44;
@@ -94,7 +96,8 @@
     --bg-yellow: #fef2d5;
   }
 
-  [data-webtui-theme="everforest-light-medium"] {
+  [data-webtui-theme="everforest-light-medium"],
+  [data-webtui-theme="everforest-light"] {
     --bg-dim: #efebd4;
     --bg0: #fdf6e3;
     --bg1: #f4f0d9;

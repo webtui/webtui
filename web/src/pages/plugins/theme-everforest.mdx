@@ -151,62 +151,51 @@ Adds additional variants to buttons matching everforest accent colors.
 
 ## CSS Variables
 
-Adds the following CSS variables within the `base` layer.
-
-Raw color tokens and base semantic variables (`--background*`, `--foreground*`) are defined within theme-specific variant blocks. Dark mode uses bright accents, Light mode uses standard/faded accents.
+Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
-@layer base {
-  /* Common Dark Variables & Semantic Mapping */
-  [data-webtui-theme|="everforest-dark"] {
-    /* ... raw dark vars ... */
-    --ef-orange: #fe8019; /* Bright Orange */
+[data-webtui-theme="everforest-*-*"] {
+  --red: #e67e80;
+  --orange: #e69875;
+  --yellow: #dbbc7f;
+  --green: #a7c080;
+  --blue: #7fbbb3;
+  --aqua: #83c092;
+  --purple: #d699b6;
+  --fg: #d3c6aa;
+  --statusline1: #a7c080;
+  --statusline2: #d3c6aa;
+  --statusline3: #e67e80;
+  --gray0: #7a8478;
+  --gray1: #859289;
+  --gray2: #9da9a0;
 
-    /* Semantic Mapping (Dark) */
-    --background0: var(--ef-dark-bg0);
-    --background1: var(--ef-dark-bg1);
-    --background2: var(--ef-dark-bg2);
-    --background3: var(--ef-dark-bg3);
-    --foreground0: var(--ef-dark-fg1);
-    --foreground1: var(--ef-dark-fg2);
-    --foreground2: var(--ef-dark-fg3);
-  }
+  --bg-dim: #232a2e;
+  --bg0: #2d353b;
+  --bg1: #343f44;
+  --bg2: #3d484d;
+  --bg3: #475258;
+  --bg4: #4f585e;
+  --bg5: #56635f;
+  --bg-red: #4c3743;
+  --bg-visual: #493b40;
+  --bg-yellow: #45443c;
+  --bg-green: #3c4841;
+  --bg-blue: #384b55;
+}
+```
 
-  /* Dark Contrast Specific bg0 */
-  [data-webtui-theme="everforest-dark-hard"] {
-    --ef-dark-bg0: #1d2021;
-  }
-  [data-webtui-theme="everforest-dark-medium"] {
-    --ef-dark-bg0: #282828;
-  }
-  [data-webtui-theme="everforest-dark-soft"] {
-    --ef-dark-bg0: #32302f;
-  }
+The base background/foreground colors use the following CSS variables from the Everforest palette
 
-  /* Common Light Variables & Semantic Mapping */
-  [data-webtui-theme|="everforest-light"] {
-    /* ... raw light vars ... */
-    --ef-orange: #d65d0e; /* Standard/Faded Orange */
+```css
+[data-webtui-theme="everforest-*-*"] {
+  --background0: var(--bg0);
+  --background1: var(--bg1);
+  --background2: var(--bg2);
+  --background3: var(--bg3);
 
-    /* Semantic Mapping (Light) */
-    --background0: var(--ef-light-bg0);
-    --background1: var(--ef-light-bg1);
-    --background2: var(--ef-light-bg2);
-    --background3: var(--ef-light-bg3);
-    --foreground0: var(--ef-light-fg1);
-    --foreground1: var(--ef-light-fg2);
-    --foreground2: var(--ef-light-fg3);
-  }
-
-  /* Light Contrast Specific bg0 */
-  [data-webtui-theme="everforest-light-hard"] {
-    --ef-light-bg0: #f9f5d7;
-  }
-  [data-webtui-theme="everforest-light-medium"] {
-    --ef-light-bg0: #fbf1c7;
-  }
-  [data-webtui-theme="everforest-light-soft"] {
-    --ef-light-bg0: #f2e5bc;
-  }
+  --foreground0: var(--fg);
+  --foreground1: var(--gray2);
+  --foreground2: var(--gray1);
 }
 ```
