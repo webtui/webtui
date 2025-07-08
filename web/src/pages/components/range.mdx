@@ -49,25 +49,6 @@ body {
 `}
 />
 
-### Sizing
-
-<Example
-    stylesheets={[
-        rangeStyle,
-    ]}
-    css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}`}
-    html={`
-<input type="range" size-="small" min="0" max="100" value="30" />
-<input type="range" min="0" max="100" value="50" />
-<input type="range" size-="large" min="0" max="100" value="70" />
-`}
-/>
-
 ### Thumb Sizes
 
 <Example
@@ -119,7 +100,7 @@ body {
     gap: 1lh;
 }
 .range-container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     gap: 0.5lh;
 }
@@ -128,13 +109,6 @@ body {
     justify-content: space-between;
     font-size: 0.9em;
     color: var(--foreground2);
-    width: 20ch;
-}
-.range-labels.small {
-    width: 10ch;
-}
-.range-labels.large {
-    width: 30ch;
 }`}
     html={`
 <label>
@@ -150,11 +124,6 @@ body {
         <span>100%</span>
     </div>
 </div>
-
-<label>
-    Temperature: <span id="temp-value">22°C</span>
-    <input type="range" min="10" max="35" value="22" oninput="document.getElementById('temp-value').textContent = this.value + '°C'" />
-</label>
 `}
 />
 
@@ -183,38 +152,6 @@ body {
 `}
 />
 
-### Box Borders
-
-<Example
-    stylesheets={[
-        rangeStyle,
-        boxStyle,
-    ]}
-    css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}
-.range-box {
-    padding: 1lh;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5lh;
-}`}
-    html={`
-<div class="range-box" box-="round">
-    <label>System Volume</label>
-    <input type="range" min="0" max="100" value="65" />
-</div>
-
-<div class="range-box" box-="double">
-    <label>Playback Speed</label>
-    <input type="range" min="0.5" max="2" value="1" step="0.1" />
-</div>
-`}
-/>
-
 ## Reference
 
 ### Properties
@@ -234,17 +171,6 @@ Use CSS custom properties to customize the range appearance
   --range-thumb-color-focus: var(--foreground0);
 }
 ```
-
-### Attributes
-
-- `size-="small"` - Smaller range slider (10ch width)
-- `size-="large"` - Larger range slider (30ch width)
-- `thumb-="small"` - Smaller thumb (0.6ch size)
-- `thumb-="medium"` - Medium thumb (1ch size, default)
-- `thumb-="large"` - Larger thumb (1.4ch size)
-- `bar-="thick"` - Thicker track (1lh height)
-- `bar-="line"` - Thin line track (1px height)
-
 
 ### Extending
 

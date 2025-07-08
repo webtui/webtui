@@ -33,8 +33,10 @@
       -webkit-appearance: none;
       width: var(--range-thumb-size);
       height: 1lh;
-      background: var(--range-thumb-color);
-      border: none;
+      background: transparent;
+      border: 1px solid var(--range-thumb-color);
+      border-radius: 0;
+      box-sizing: border-box;
       cursor: pointer;
       position: relative;
       top: 50%;
@@ -44,6 +46,7 @@
     &:focus::-webkit-slider-thumb,
     &:active::-webkit-slider-thumb {
       background: var(--range-thumb-color-focus);
+      border: none;
     }
 
     &::-moz-range-track {
@@ -57,15 +60,17 @@
     &::-moz-range-thumb {
       width: var(--range-thumb-size);
       height: 1lh;
-      background: var(--range-thumb-color);
-      border: none;
-      cursor: pointer;
+      background: transparent;
+      border: 1px solid var(--range-thumb-color);
       border-radius: 0;
+      box-sizing: border-box;
+      cursor: pointer;
     }
 
     &:focus::-moz-range-thumb,
     &:active::-moz-range-thumb {
       background: var(--range-thumb-color-focus);
+      border: none;
     }
 
     &:disabled {
@@ -73,16 +78,6 @@
       --range-thumb-color: var(--foreground2);
       pointer-events: none;
       opacity: 0.6;
-    }
-
-    &[size-="small"] {
-      width: 10ch;
-      --range-thumb-size: 0.8ch;
-    }
-
-    &[size-="large"] {
-      width: 30ch;
-      --range-thumb-size: 1ch;
     }
 
     &[thumb-="small"] {
