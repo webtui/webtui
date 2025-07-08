@@ -1,138 +1,136 @@
 @layer base {
-  /* base color for all themes' variants */
-  :root {
-    --ef-red: #f85552;
-    --ef-orange: #f57d26;
-    --ef-yellow: #dfa000;
-    --ef-green: #8da101;
-    --ef-aqua: #35a77c;
-    --ef-blue: #3a94c5;
-    --ef-purple: #df69ba;
-  }
-
   /* Base Dark Theme */
   [data-webtui-theme|="everforest-dark"] {
-    /* Background colors */
-    --bg1: #2d353b;
-    --bg2: #343f44;
-    --bg3: #3d484d;
-    --bg4: #475258;
-    --bg5: #4f585e;
-
-    /* Foreground colors */
-    --fg: #d3c6aa;
-    --fg-dim: #9da9a0;
-
     --red: #e67e80;
     --orange: #e69875;
     --yellow: #dbbc7f;
     --green: #a7c080;
-    --aqua: #83c092;
     --blue: #7fbbb3;
+    --aqua: #83c092;
     --purple: #d699b6;
-
-    /* Status colors */
+    --fg: #d3c6aa;
     --statusline1: #a7c080;
     --statusline2: #d3c6aa;
     --statusline3: #e67e80;
-
-    /* Gray tones */
     --gray0: #7a8478;
     --gray1: #859289;
     --gray2: #9da9a0;
-
-    /* Semantic variables colors */
-    --background1: var(--bg2);
-    --background2: var(--bg3);
-    --background3: var(--bg4);
-    --foreground0: var(--fg);
-    --foreground1: var(--fg);
-    --foreground2: var(--dim);
   }
 
-  /* Dark Hard Variant */
   [data-webtui-theme="everforest-dark-hard"] {
+    --bg-dim: #1e2326;
     --bg0: #272e33;
-    --background0: var(--bg0);
-    --background1: var(--bg4);
+    --bg1: #2e383c;
+    --bg2: #374145;
+    --bg3: #414b50;
+    --bg4: #495156;
+    --bg5: #4f5b58;
+    --bg-red: #4c3743;
+    --bg-visual: #493b40;
+    --bg-yellow: #45443c;
+    --bg-green: #3c4841;
+    --bg-blue: #384b55;
   }
 
-  /* Dark Soft Variant */
+  [data-webtui-theme="everforest-dark-medium"] {
+    --bg-dim: #232a2e;
+    --bg0: #2d353b;
+    --bg1: #343f44;
+    --bg2: #3d484d;
+    --bg3: #475258;
+    --bg4: #4f585e;
+    --bg5: #56635f;
+    --bg-red: #4c3743;
+    --bg-visual: #493b40;
+    --bg-yellow: #45443c;
+    --bg-green: #3c4841;
+    --bg-blue: #384b55;
+  }
+
   [data-webtui-theme="everforest-dark-soft"] {
+    --bg-dim: #293136;
     --bg0: #333c43;
-    --background0: var(--bg0);
-    --background1: var(--bg1);
+    --bg1: #3a464c;
+    --bg2: #434f55;
+    --bg3: #4d5960;
+    --bg4: #555f66;
+    --bg5: #5d6b66;
+    --bg-red: #5c3f4f;
+    --bg-visual: #59464c;
+    --bg-yellow: #55544a;
+    --bg-green: #48584e;
+    --bg-blue: #3f5865;
   }
 
-  /* Base Light Theme */
   [data-webtui-theme|="everforest-light"] {
-    /* Background colors */
-    --bg1: #f2efdf;
-    --bg2: #edeada;
-    --bg3: #e8e5d5;
-    --bg4: #e0ded0;
-    --bg5: #d8d6cc;
-
-    /* Foreground colors */
-    --fg: #5c6a72;
-    --fg-dim: #939f91;
-
     --red: #f85552;
     --orange: #f57d26;
     --yellow: #dfa000;
     --green: #8da101;
-    --aqua: #35a77c;
     --blue: #3a94c5;
+    --aqua: #35a77c;
     --purple: #df69ba;
-
-    /* Status colors */
+    --fg: #5c6a72;
     --statusline1: #93b259;
     --statusline2: #708089;
     --statusline3: #e66868;
-
-    /* Gray tones */
     --gray0: #a6b0a0;
     --gray1: #939f91;
     --gray2: #829181;
+  }
 
-    /* Semantic variables */
+  [data-webtui-theme="everforest-light-hard"] {
+    --bg-dim: #f2efdf;
+    --bg0: #fffbef;
+    --bg1: #f8f5e4;
+    --bg2: #f2efdf;
+    --bg3: #edeada;
+    --bg4: #e8e5d5;
+    --bg5: #bec5b2;
+    --bg-visual: #f0f2d4;
+    --bg-red: #ffe7de;
+    --bg-green: #f3f5d9;
+    --bg-blue: #ecf5ed;
+    --bg-yellow: #fef2d5;
+  }
+
+  [data-webtui-theme="everforest-light-medium"] {
+    --bg-dim: #efebd4;
+    --bg0: #fdf6e3;
+    --bg1: #f4f0d9;
+    --bg2: #efebd4;
+    --bg3: #e6e2cc;
+    --bg4: #e0dcc7;
+    --bg5: #bdc3af;
+    --bg-visual: #eaedc8;
+    --bg-red: #fbe3da;
+    --bg-green: #f0f1d2;
+    --bg-blue: #e9f0e9;
+    --bg-yellow: #faedcd;
+  }
+
+  [data-webtui-theme="everforest-light-soft"] {
+    --bg-dim: #e5dfc5;
+    --bg0: #f3ead3;
+    --bg1: #eae4ca;
+    --bg2: #e5dfc5;
+    --bg3: #ddd8be;
+    --bg4: #d8d3ba;
+    --bg5: #b9c0ab;
+    --bg-visual: #e1e4bd;
+    --bg-red: #f4dbd0;
+    --bg-green: #e5e6c5;
+    --bg-blue: #e1e7dd;
+    --bg-yellow: #f1e4c5;
+  }
+
+  [data-webtui-theme|="everforest"] {
+    --background0: var(--bg0);
     --background1: var(--bg1);
     --background2: var(--bg2);
     --background3: var(--bg3);
     --foreground0: var(--fg);
-    --foreground1: var(--fg);
-    --foreground2: var(--fg-dim);
-
-    --red: var(--red);
-    --orange: var(--orange);
-    --yellow: var(--yellow);
-    --green: var(--green);
-    --aqua: var(--aqua);
-    --blue: var(--blue);
-    --purple: var(--purple);
-  }
-
-  /* Light Hard Variant */
-  [data-webtui-theme="everforest-light-hard"] {
-    --bg0: #fffbef;
-    --bg1: #f0f2d4;
-    --background0: var(--bg0);
-  }
-
-  /* Light Soft Variant */
-  [data-webtui-theme="everforest-light-soft"] {
-    --bg0: #f3ead3;
-    --bg1: #e1e4bd;
-    --background0: var(--bg0);
-  }
-
-  [data-webtui-theme|="everforest-dark"] {
-    --red: var(--ef-red);
-    --orange: var(--ef-orange);
-    --yellow: var(--ef-yellow);
-    --green: var(--ef-green);
-    --aqua: var(--ef-aqua);
-    --blue: var(--ef-blue);
-    --purple: var(--ef-purple);
+    --foreground1: var(--gray2);
+    --foreground2: var(--gray1);
   }
 }
