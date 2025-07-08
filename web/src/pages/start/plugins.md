@@ -16,6 +16,7 @@ Plugins are external stylesheets that are designed to work alongside `@webtui/cs
 - [Nord Theme](/plugins/theme-nord)
 - [Gruvbox Theme](/plugins/theme-gruvbox)
 - [Vitesse Theme](/plugins/theme-vitesse)
+  [Everforest Theme](/plugins/theme-everforest)
 
 ## Community Plugins
 

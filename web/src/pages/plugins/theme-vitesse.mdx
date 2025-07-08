@@ -149,87 +149,42 @@ Adds additional variants to buttons matching Vitesse accent colors.
 
 ## CSS Variables
 
-Adds the following CSS variables within the `base` layer.
-
-Raw color tokens and base semantic variables (`--background*`, `--foreground*`) are defined within theme-specific variant blocks. Dark mode uses bright accents, Light mode uses standard/faded accents.
+Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
-@layer base {
-  /* Common Dark Variables & Semantic Mapping */
-  [data-webtui-theme|="vitesse-dark"] {
-    /* ... raw dark vars ... */
-    --orange: #d4976c; /* Dim Orange */
+[data-webtui-theme="vitesse-*-*"] {
+  --bg1: #2f363d;
+  --bg2: #393a34;
+  --bg3: #444d56;
+  --bg4: #586069;
+  --fg0: #dbd7ca;
+  --fg1: #c9c8c0;
+  --fg2: #b8bab7;
+  --fg3: #a6abae;
+  --fg4: #959da5;
 
-    /* Semantic Mapping (Dark) */
-    --background0: var(--bg0);
-    --background1: var(--bg1);
-    --background2: var(--bg2);
-    --background3: var(--bg3);
-    --foreground0: var(--fg1);
-    --foreground1: var(--fg2);
-    --foreground2: var(--fg3);
-  }
-
-  /* Dark Contrast Specific bg0 */
-  [data-webtui-theme="vitesse-dark"] {
-    --bg0: #121212;
-  }
-  [data-webtui-theme="vitesse-dark-soft"] {
-    --bg0: #222;
-  }
-  [data-webtui-theme="vitesse-black"] {
-    --bg0: #000000;
-  }
-
-  /* Common Light Variables & Semantic Mapping */
-  [data-webtui-theme|="vitesse-light"] {
-    /* ... raw light vars ... */
-    --orange: #a65e2b; /* Faded Orange */
-
-    /* Semantic Mapping (Light) */
-    --background0: var(--bg0);
-    --background1: var(--bg1);
-    --background2: var(--bg2);
-    --background3: var(--bg3);
-    --foreground0: var(--fg1);
-    --foreground1: var(--fg2);
-    --foreground2: var(--fg3);
-  }
-
-  /* Light Contrast Specific bg0 */
-  [data-webtui-theme="vitesse-light"] {
-    --bg0: #ffffff;
-  }
-  [data-webtui-theme="vitesse-light-soft"] {
-    --bg0: #f1f0e9;
-  }
+  --gray: #586069;
+  --red: #cb7676;
+  --green: #4d9375;
+  --yellow: #e6cc77;
+  --blue: #6394bf;
+  --purple: #d9739f;
+  --aqua: #5eaab5;
+  --orange: #d4976c;
 }
 ```
 
-The base WebTUI background/foreground variables are mapped like this:
+The base background/foreground colors use the following CSS variables from the Vitesse palette
 
 ```css
-[data-webtui-theme|="vitesse"] {
-  /* Defaults to dark values */
+[data-webtui-theme="vitesse-*-*"] {
   --background0: var(--bg0);
   --background1: var(--bg1);
   --background2: var(--bg2);
   --background3: var(--bg3);
 
-  --foreground0: var(--fg1);
-  --foreground1: var(--fg2);
-  --foreground2: var(--fg3);
-
-  /* Override for any light variant */
-  [data-webtui-theme|="vitesse-light"] & {
-    --background0: var(--bg0);
-    --background1: var(--bg1);
-    --background2: var(--bg2);
-    --background3: var(--bg3);
-
-    --foreground0: var(--fg1);
-    --foreground1: var(--fg2);
-    --foreground2: var(--fg3);
-  }
+  --foreground0: var(--fg0);
+  --foreground1: var(--fg1);
+  --foreground2: var(--fg2);
 }
 ```

@@ -19,6 +19,7 @@
 @import "@webtui/theme-gruvbox";
 @import "@webtui/theme-vitesse";
 @import "@webtui/plugin-nf";
+@import "@webtui/theme-everforest";
 
 @layer base {
   :root {

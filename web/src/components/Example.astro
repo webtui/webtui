@@ -24,7 +24,7 @@ const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
     <div id="content">
       <iframe
         id="preview"
-        srcdoc={`<html data-webtui-theme="${rest['data-initial-theme']}">
+        srcdoc={`<html data-webtui-theme="${rest["data-initial-theme"]}">
 <head>
 <style>@layer base, utils, components;</style>
 <style>${webtuiBase}</style>
@@ -76,7 +76,7 @@ ${css ? `<style>${css}</style>` : ""}
           dark: "Dark",
           light: "Light",
         }}
-        data-value={rest['data-initial-theme']}
+        data-value={rest["data-initial-theme"]}
         id="theme-dropdown"
         position="bottom baseline-right"
       />

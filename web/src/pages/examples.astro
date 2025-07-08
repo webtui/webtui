@@ -30,6 +30,12 @@ const themes = {
   'vitesse-black': 'Vitesse Black',
   'vitesse-light': 'Vitesse Light',
   'vitesse-light-soft': 'Vitesse Light Soft',
+  'everforest-dark-hard': 'Everforest Dark Hard',
+  'everforest-dark-medium': 'Everforest Dark Medium',
+  'everforest-dark-soft': 'Everforest Dark Soft',
+  'everforest-light-hard': 'Everforest Light Hard',
+  'everforest-light-medium': 'Everforest Light Medium',
+  'everforest-light-soft': 'Everforest Light Soft',
 };
 ---
 
@@ -119,7 +125,9 @@ const themes = {
 
 <!-- Theme Switcher -->
 <script>
-  const themeDropdown = document.querySelector("#theme-dropdown") as HTMLElement;
+  const themeDropdown = document.querySelector(
+    "#theme-dropdown",
+  ) as HTMLElement;
   const html = document.querySelector("html")! as HTMLElement;
 
   new MutationObserver(() => {

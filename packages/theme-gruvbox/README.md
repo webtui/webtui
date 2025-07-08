@@ -119,62 +119,48 @@ Adds additional variants to buttons matching Gruvbox accent colors.
 
 ## CSS Variables
 
-Adds the following CSS variables within the `base` layer.
-
-Raw color tokens and base semantic variables (`--background*`, `--foreground*`) are defined within theme-specific variant blocks. Dark mode uses bright accents, Light mode uses standard/faded accents.
+Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
-@layer base {
-  /* Common Dark Variables & Semantic Mapping */
-  [data-webtui-theme|="gruvbox-dark"] {
-    /* ... raw dark vars ... */
-    --gb-orange: #fe8019; /* Bright Orange */
+[data-webtui-theme="gruvbox-*-*"] {
+  --gb-dark-bg1: #3c3836;
+  --gb-dark-bg2: #504945;
+  --gb-dark-bg3: #665c54;
+  --gb-dark-bg4: #7c6f64;
+  --gb-dark-fg0: #fbf1c7;
+  --gb-dark-fg1: #ebdbb2;
+  --gb-dark-fg2: #d5c4a1;
+  --gb-dark-fg3: #bdae93;
+  --gb-dark-fg4: #a89984;
+  --gb-dark-gray: #928374;
+  --gb-red: #fb4934;
+  --gb-green: #b8bb26;
+  --gb-yellow: #fabd2f;
+  --gb-blue: #83a598;
+  --gb-purple: #d3869b;
+  --gb-aqua: #8ec07c;
+  --gb-orange: #fe8019;
 
-    /* Semantic Mapping (Dark) */
-    --background0: var(--gb-dark-bg0);
-    --background1: var(--gb-dark-bg1);
-    --background2: var(--gb-dark-bg2);
-    --background3: var(--gb-dark-bg3);
-    --foreground0: var(--gb-dark-fg1);
-    --foreground1: var(--gb-dark-fg2);
-    --foreground2: var(--gb-dark-fg3);
-  }
+  --background1: var(--gb-dark-bg1);
+  --background2: var(--gb-dark-bg2);
+  --background3: var(--gb-dark-bg3);
+  --foreground0: var(--gb-dark-fg1);
+  --foreground1: var(--gb-dark-fg2);
+  --foreground2: var(--gb-dark-fg3);
+}
+```
 
-  /* Dark Contrast Specific bg0 */
-  [data-webtui-theme="gruvbox-dark-hard"] {
-    --gb-dark-bg0: #1d2021;
-  }
-  [data-webtui-theme="gruvbox-dark-medium"] {
-    --gb-dark-bg0: #282828;
-  }
-  [data-webtui-theme="gruvbox-dark-soft"] {
-    --gb-dark-bg0: #32302f;
-  }
+The base background/foreground colors use the following CSS variables from the Gruvbox palette
 
-  /* Common Light Variables & Semantic Mapping */
-  [data-webtui-theme|="gruvbox-light"] {
-    /* ... raw light vars ... */
-    --gb-orange: #d65d0e; /* Standard/Faded Orange */
+```css
+[data-webtui-theme="gruvbox-*-*"] {
+  --background0: var(--gb-dark-bg0);
+  --background1: var(--gb-dark-bg1);
+  --background2: var(--gb-dark-bg2);
+  --background3: var(--gb-dark-bg3);
 
-    /* Semantic Mapping (Light) */
-    --background0: var(--gb-light-bg0);
-    --background1: var(--gb-light-bg1);
-    --background2: var(--gb-light-bg2);
-    --background3: var(--gb-light-bg3);
-    --foreground0: var(--gb-light-fg1);
-    --foreground1: var(--gb-light-fg2);
-    --foreground2: var(--gb-light-fg3);
-  }
-
-  /* Light Contrast Specific bg0 */
-  [data-webtui-theme="gruvbox-light-hard"] {
-    --gb-light-bg0: #f9f5d7;
-  }
-  [data-webtui-theme="gruvbox-light-medium"] {
-    --gb-light-bg0: #fbf1c7;
-  }
-  [data-webtui-theme="gruvbox-light-soft"] {
-    --gb-light-bg0: #f2e5bc;
-  }
+  --foreground0: var(--gb-dark-fg0);
+  --foreground1: var(--gb-dark-fg1);
+  --foreground2: var(--gb-dark-fg2);
 }
 ```

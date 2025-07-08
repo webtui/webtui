@@ -1,0 +1,30 @@
+@layer components {
+  [data-webtui-theme|="everforest"] {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--ef-green);
+    }
+
+    p,
+    blockquote,
+    li,
+    [is-~="typography-block"] {
+      a {
+        color: var(--ef-blue);
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--ef-aqua);
+        }
+      }
+
+      code {
+        color: var(--ef-orange);
+      }
+    }
+  }
+}
