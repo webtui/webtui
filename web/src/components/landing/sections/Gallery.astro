@@ -1,38 +1,35 @@
 ---
-interface Project {
-  name: string;
-  url: string;
-  image: string;
-  tags?: string[];
-}
+import type { Project as ProjectType } from "@/types";
+import Project from "@/components/Project.astro";
 
-const projects: Array<[Project, Project] | [Project]> = [
+const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
   [
     {
-      name: 'Stefan Vučković - Software Engineer',
+      title: 'Stefan Vučković - Software Engineer',
       url: 'https://stefvuck.dev',
-      image: '/gallery/stefvuck-dev.png',
+      imageUrl: '/gallery/stefvuck-dev.png',
       tags: ['Personal Portfolio'],
     },
     {
-      name: 'Placeholder',
-      url: 'https://example.com',
-      image: '/gallery/placeholder.png',
-      tags: ['Unknown']
+      title: 'AI Terminal',
+      url: 'https://ai-terminal-production.up.railway.app',
+      imageUrl: '/gallery/ai-terminal.png',
+      source: 'https://github.com/chandrapratamar/ai-terminal/',
+      tags: ['AI Chat'],
     },
   ],
   [
     {
-      name: 'Todo',
+      title: 'Todo',
       url: 'https://localhost:3000',
-      image: '/gallery/placeholder.png',
-      tags: ['Feature', 'Bug']
+      imageUrl: '/gallery/placeholder.png',
+      tags: ['Feature', 'Bug'],
     },
     {
-      name: 'Another Placeholder',
+      title: 'Another Placeholder',
       url: 'https://example.com',
-      image: '/gallery/placeholder.png',
-      tags: ['Not here yet']
+      imageUrl: '/gallery/placeholder.png',
+      tags: ['Not here yet'],
     },
   ],
 ];
@@ -49,20 +46,7 @@ const projects: Array<[Project, Project] | [Project]> = [
       <column id="projects" gap-="1">
         {projects.map((projects, i) => 
           <row class="project-row" data-index={i} data-visible={i === 0}>
-            {projects.map((project) =>
-              <a href={project.url} target="_blank" class="project">
-                <column class="preview" box-="round">
-                  <img src={project.image} alt={project.name} />
-                </column>
-                <column class="project-description">
-                  <strong>{project.name}</strong>
-                  <p>{project.url}</p>
-                  <row gap-="1">
-                    {project.tags?.map((tag) => <span is-="badge" variant-="background3" cap-="round">{tag}</span>)}
-                  </row>
-                </column>
-              </a>
-            )}
+            {projects.map(project => <Project {...project} />)}
           </row>
         )}
       </column>
@@ -82,13 +66,6 @@ section {
   flex-direction: column !important;
 }
 
-#gallery-projects {
-  max-width: 80ch;
-  width: round(calc(100% - 2ch), 1ch);
-  row-gap: 2ch;
-  column-gap: 1lh;
-}
-
 #visible-content {
   position: sticky;
   top: 0;
@@ -98,55 +75,20 @@ section {
 }
 
 #projects {
+  max-width: 80ch;
+  width: round(calc(100% - 2ch), 1ch);
+  row-gap: 2ch;
+  column-gap: 1lh;
+
   .project-row {
     flex-wrap: wrap;
     row-gap: 1lh;
     column-gap: 2ch;
-    overflow: hidden;
     display: none;
-
-    a {
-      text-decoration: none;
-    }
+    width: 100%;
 
     &[data-visible="true"] {
       display: flex;
-    }
-
-    .project {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      flex-basis: 0;
-      max-height: 24lh;
-      min-width: 30ch;
-      background-color: var(--background1);
-
-      .preview {
-        flex-grow: 1;
-        flex-basis: 0;
-        flex-shrink: 1;
-        --box-border-color: var(--background2);
-      }
-
-      &:focus .preview {
-        --box-border-color: var(--blue);
-      }
-
-      .project-description {
-        padding: 1ch;
-        flex-shrink: 0;
-        color: var(--foreground0);
-        background-color: var(--background2);
-
-        strong {
-          color: var(--sky);
-        }
-
-        p {
-          color: var(--foreground2);
-        }
-      }
     }
   }
 }
@@ -154,6 +96,7 @@ section {
 .project-scroll-marker {
   min-height: 50vh;
   scroll-snap-align: start;
+  flex: none;
 
   &:last-of-type {
     min-height: 100vh;
