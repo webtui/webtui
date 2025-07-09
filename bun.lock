@@ -48,6 +48,13 @@
         "vite": "^6.2.0",
       },
     },
+    "packages/theme-everforest": {
+      "name": "@webtui/theme-everforest",
+      "version": "0.0.3",
+      "devDependencies": {
+        "vite": "^6.2.0",
+      },
+    },
     "packages/theme-gruvbox": {
       "name": "@webtui/theme-gruvbox",
       "version": "0.0.1",
@@ -360,6 +367,8 @@
     "@webtui/rehype-tabindex": ["@webtui/rehype-tabindex@workspace:packages/rehype-tabindex"],
 
     "@webtui/theme-catppuccin": ["@webtui/theme-catppuccin@workspace:packages/theme-catppuccin"],
+
+    "@webtui/theme-everforest": ["@webtui/theme-everforest@workspace:packages/theme-everforest"],
 
     "@webtui/theme-gruvbox": ["@webtui/theme-gruvbox@workspace:packages/theme-gruvbox"],
 
