@@ -4,7 +4,6 @@
     --range-thumb-color: var(--foreground2);
     --range-thumb-color-focus: var(--foreground0);
     --range-track-height: 2px;
-    --range-thumb-size: 1ch;
 
     appearance: none;
     -webkit-appearance: none;
@@ -31,20 +30,19 @@
     &::-webkit-slider-thumb {
       appearance: none;
       -webkit-appearance: none;
-      width: var(--range-thumb-size);
+      width: 1ch;
       height: 1lh;
       background: transparent;
       border: 1px solid var(--range-thumb-color);
       border-radius: 0;
       box-sizing: border-box;
-      cursor: pointer;
       position: relative;
       top: 50%;
       transform: translateY(-50%);
     }
 
-    &:focus::-webkit-slider-thumb,
-    &:active::-webkit-slider-thumb {
+    &:not(:disabled):focus::-webkit-slider-thumb,
+    &:not(:disabled):active::-webkit-slider-thumb {
       background: var(--range-thumb-color-focus);
       border: none;
     }
@@ -58,17 +56,16 @@
     }
 
     &::-moz-range-thumb {
-      width: var(--range-thumb-size);
+      width: 1ch;
       height: 1lh;
       background: transparent;
       border: 1px solid var(--range-thumb-color);
       border-radius: 0;
       box-sizing: border-box;
-      cursor: pointer;
     }
 
-    &:focus::-moz-range-thumb,
-    &:active::-moz-range-thumb {
+    &:not(:disabled):focus::-moz-range-thumb,
+    &:not(:disabled):active::-moz-range-thumb {
       background: var(--range-thumb-color-focus);
       border: none;
     }
@@ -78,18 +75,6 @@
       --range-thumb-color: var(--foreground2);
       pointer-events: none;
       opacity: 0.6;
-    }
-
-    &[thumb-="small"] {
-      --range-thumb-size: 0.5ch;
-    }
-
-    &[thumb-="medium"] {
-      --range-thumb-size: 1ch;
-    }
-
-    &[thumb-="large"] {
-      --range-thumb-size: 2ch;
     }
 
     &[bar-="thick"] {
@@ -114,6 +99,11 @@
     align-items: center;
     gap: 1ch;
     max-width: fit-content;
+  }
+
+  label:has(input[type="range"]:focus) {
+    font-weight: bold;
+    text-decoration: underline;
   }
 
   label:has(input[type="range"]:disabled) {
