@@ -1,5 +1,15 @@
 @layer components {
-  input,
+  input
+    :not([type="button"])
+    :not([type="checkbox"])
+    :not([type="color"])
+    :not([type="file"])
+    :not([type="hidden"])
+    :not([type="image"])
+    :not([type="radio"])
+    :not([type="range"])
+    :not([type="reset"])
+    :not([type="submit"]),
   [is-~="input"] {
     background-color: var(--background1);
     color: var(--foreground0);
