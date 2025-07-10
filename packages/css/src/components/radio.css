@@ -24,10 +24,10 @@
       width: 3ch;
       height: 1lh;
       background: var(--background1);
-      
-      &:checked {
-        content: "(*)";
-      }
+    }
+
+    &:checked::before {
+      content: "(*)";
     }
 
     &:disabled {
