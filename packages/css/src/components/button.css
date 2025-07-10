@@ -1,5 +1,8 @@
 @layer components {
   button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
   [is-~="button"] {
     --button-primary: var(--foreground0);
     --button-secondary: var(--background0);
