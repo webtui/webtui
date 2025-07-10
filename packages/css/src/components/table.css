@@ -57,7 +57,7 @@
           right: calc(0.5ch - var(--table-border-width) / 2);
           bottom: calc(0.5lh - var(--table-border-width) / 2);
           border-left: solid var(--table-border-width) var(--table-border-color);
-          height: 2lh;
+          height: 100%;
         }
 
         &::after {
