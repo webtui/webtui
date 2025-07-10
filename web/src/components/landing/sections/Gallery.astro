@@ -1,6 +1,6 @@
 ---
-import type { Project as ProjectType } from "@/types";
-import Project from "@/components/Project.astro";
+import type { Project as ProjectType } from '@/types';
+import Project from '@/components/Project.astro';
 
 const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
   [
@@ -20,16 +20,18 @@ const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
   ],
   [
     {
-      title: 'Todo',
-      url: 'https://localhost:3000',
+      title: 'Placeholder',
+      url: 'https://example.com',
       imageUrl: '/gallery/placeholder.png',
+      source: 'https://github.com/webtui/webtui',
       tags: ['Feature', 'Bug'],
     },
     {
-      title: 'Another Placeholder',
+      title: 'Placeholder',
       url: 'https://example.com',
       imageUrl: '/gallery/placeholder.png',
-      tags: ['Not here yet'],
+      source: 'https://github.com/webtui/webtui',
+      tags: ['Feature', 'Bug'],
     },
   ],
 ];
