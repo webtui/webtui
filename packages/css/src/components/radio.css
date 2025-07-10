@@ -13,22 +13,27 @@
     font-size: var(--font-size);
     line-height: var(--line-height);
     outline: none;
-  }
 
-  input[type="radio"]::before {
-    content: "( )";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3ch;
-    height: 1lh;
-    background: var(--background1);
-  }
+    &::before {
+      content: "( )";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3ch;
+      height: 1lh;
+      background: var(--background1);
+    }
 
-  input[type="radio"]:checked::before {
-    content: "(*)";
+    &:checked::before {
+      content: "(*)";
+    }
+
+    &:disabled {
+      color: var(--foreground2);
+      pointer-events: none;
+    }
   }
 
   label:has(input[type="radio"]) {
@@ -41,11 +46,6 @@
   label:has(input[type="radio"]:focus) {
     font-weight: bold;
     text-decoration: underline;
-  }
-
-  input[type="radio"]:disabled {
-    color: var(--foreground2);
-    pointer-events: none;
   }
 
   label:has(input[type="radio"]:disabled) {

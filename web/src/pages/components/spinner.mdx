@@ -1,0 +1,173 @@
+---
+layout: "@/layouts/Doc.astro"
+title: Spinner
+---
+
+import Example from '@/components/Example.astro';
+import spinnerStyle from '@webtui/css/components/spinner.css?raw'
+
+Displays a spinner
+
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    html={`
+<span is-="spinner"></span>
+<span is-="spinner" variant-="dots"></span>
+<span is-="spinner" variant-="arrows"></span>
+<span is-="spinner" variant-="cross"></span>
+<span is-="spinner" variant-="square"></span>
+<span is-="spinner" variant-="pie"></span>
+<span is-="spinner" variant-="half"></span>
+<span is-="spinner" variant-="bar-vertical"></span>
+<span is-="spinner" variant-="bar-horizontal"></span>
+`}
+/>
+
+## Import
+
+```css
+@import "@webtui/css/components/spinner.css";
+```
+
+## Usage
+
+```html
+<span is-="spinner"></span>
+```
+
+## Examples
+
+### Variants
+
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    css={`body {
+      display: flex;
+      flex-direction: column;
+    }`}
+    html={`<span>
+    <span is-="spinner"></span>
+    Default (Line)
+</span>
+<span>
+    <span is-="spinner" variant-="dots"></span>
+    Dots
+</span>
+<span>
+    <span is-="spinner" variant-="arrows"></span>
+    Arrows
+</span>
+<span>
+    <span is-="spinner" variant-="cross"></span>
+    Cross
+</span>
+<span>
+    <span is-="spinner" variant-="square"></span>
+    Square
+</span>
+<span>
+    <span is-="spinner" variant-="pie"></span>
+    Pie
+</span>
+<span>
+    <span is-="spinner" variant-="half"></span>
+    Half
+</span>
+<span>
+    <span is-="spinner" variant-="bar-vertical"></span>
+    Bar Vertical
+</span>
+<span>
+    <span is-="spinner" variant-="bar-horizontal"></span>
+    Bar Horizontal
+</span>`}
+/>
+
+### Speed
+
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    css={`body {
+      display: flex;
+      flex-direction: column;
+    }`}
+    html={`
+<span>
+  <span is-="spinner" speed-="slow"></span>
+  Slow
+</span>
+<span>
+  <span is-="spinner" speed-="medium"></span>
+  Medium
+</span>
+<span>
+  <span is-="spinner" speed-="fast"></span>
+  Fast
+</span>
+`}
+/>
+
+### Direction
+
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    css={`body {
+      display: flex;
+      flex-direction: column;
+    }`}
+    html={`
+<span>
+  <span is-="spinner" variant-="dots"></span>
+  Default
+</span>
+<span>
+  <span is-="spinner" variant-="dots" direction-="reverse"></span>
+  Reverse
+</span>
+`}
+/>
+
+## Reference
+
+### Properties
+
+- `--spinner-chars`: The characters to use for the spinner
+- `--spinner-steps`: The number of steps to animate the spinner. Must be equal to the length of `--spinner-chars`
+- `--spinner-duration`: The duration of the spinner animation
+
+```css
+.my-spinner {
+    --spinner-chars: "◐◓◑◒";
+    --spinner-steps: 4;
+    --spinner-duration: 1s;
+}
+```
+
+### Extending
+
+To extend the Spinner stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    [is-="spinner"] {
+        &[variant-="numbers"] {
+          --spinner-chars: "0123456789";
+          --spinner-steps: 10;
+        }
+    }
+}
+```
+
+### Scope
+
+```css
+[is-="spinner"] { /* ... */ }
+```
