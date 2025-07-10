@@ -10,6 +10,7 @@ export default defineConfig({
   redirects: {
     '/docs': '/start/intro',
     '/start': '/start/intro',
+    '/examples': '/showcase',
   },
   markdown: {
     rehypePlugins: [rehypeHeadingIds, rehypeTabIndex],
