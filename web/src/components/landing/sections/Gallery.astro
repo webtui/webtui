@@ -1,40 +1,8 @@
 ---
-import type { Project as ProjectType } from '@/types';
+import { projects as showcase } from '@/projects';
 import Project from '@/components/Project.astro';
 
-const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
-  [
-    {
-      title: 'Stefan Vučković - Software Engineer',
-      url: 'https://stefvuck.dev',
-      imageUrl: '/gallery/stefvuck-dev.png',
-      tags: ['Personal Portfolio'],
-    },
-    {
-      title: 'AI Terminal',
-      url: 'https://ai-terminal-production.up.railway.app',
-      imageUrl: '/gallery/ai-terminal.png',
-      source: 'https://github.com/chandrapratamar/ai-terminal/',
-      tags: ['AI Chat'],
-    },
-  ],
-  [
-    {
-      title: 'Placeholder',
-      url: 'https://example.com',
-      imageUrl: '/gallery/placeholder.png',
-      source: 'https://github.com/webtui/webtui',
-      tags: ['Feature', 'Bug'],
-    },
-    {
-      title: 'Placeholder',
-      url: 'https://example.com',
-      imageUrl: '/gallery/placeholder.png',
-      source: 'https://github.com/webtui/webtui',
-      tags: ['Feature', 'Bug'],
-    },
-  ],
-];
+const projects = showcase.slice(0, 2);
 ---
 
 <section id="gallery" style={{ minHeight: `${200 + ((projects.length - 2) * 50)}vh`}} data-index="0">

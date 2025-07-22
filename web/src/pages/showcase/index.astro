@@ -2,24 +2,9 @@
 import Layout from '@/layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
-import type { Project as ProjectType } from '@/types';
 import Project from '@/components/Project.astro';
 
-const showcase: Array<ProjectType> = [
-  {
-    title: 'Stefan Vučković - Software Engineer',
-    url: 'https://stefvuck.dev',
-    imageUrl: '/gallery/stefvuck-dev.png',
-    tags: ['Personal Portfolio'],
-  },
-  {
-    title: 'AI Terminal',
-    url: 'https://ai-terminal-production.up.railway.app',
-    imageUrl: '/gallery/ai-terminal.png',
-    source: 'https://github.com/chandrapratamar/ai-terminal/',
-    tags: ['AI Chat'],
-  },
-];
+import { projects } from '@/projects';
 ---
 
 <Layout>
@@ -31,7 +16,7 @@ const showcase: Array<ProjectType> = [
         <p>Projects built with WebTUI</p>
       </column>
       <row id='projects-list'>
-        {showcase.map((project) =>
+        {projects.flat().map((project) =>
           <Project {...project} />
         )}
       </row>

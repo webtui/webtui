@@ -13,7 +13,7 @@ const { hostname } = new URL(url);
   <column class='info'>
     <a href={url} target="_blank" class='title-link'><strong>{title}</strong></a>
     <ul marker-='open tree'>
-      <li><a href={url} target="_blank">&#xeb01; {hostname.split('.').slice(-2).join('.')} &#xf08e;</a></li>
+      <li><a href={url} target="_blank">&#xeb01; {hostname} &#xf08e;</a></li>
       {source && <li><a href={source} target="_blank">&#xe709; Source &#xf08e;</a></li>}
       {tags && <li class='badge-list'>
         <row gap-='1' pad-='1 0'>
