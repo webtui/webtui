@@ -22,6 +22,7 @@ const props = Astro.props
         constructor() {
             super()
 
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             const self = this
             const items = Array.from(
                 self.querySelectorAll(
@@ -51,6 +52,7 @@ const props = Astro.props
         }
 
         initializeTab(item: HTMLElement) {
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
             const self = this
             const activeVariant =
                 self.getAttribute('data-active-variant') ?? 'default'

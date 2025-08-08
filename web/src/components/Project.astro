@@ -1,9 +1,7 @@
 ---
 import type { Project } from '@/types'
 
-interface Props extends Project {}
-
-const { title, url, imageUrl, source, tags } = Astro.props as Props
+const { title, url, imageUrl, source, tags } = Astro.props as Project
 
 const { hostname } = new URL(url)
 ---
