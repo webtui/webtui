@@ -117,3 +117,4 @@ The base background/foreground colors use the following CSS variables from the N
     --foreground2: var(--nord4);
 }
 ```
+

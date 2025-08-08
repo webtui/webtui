@@ -1,129 +1,99 @@
 ---
-import { projects as showcase } from '@/projects'
-import Project from '@/components/Project.astro'
+import { projects as showcase } from '@/projects';
+import Project from '@/components/Project.astro';
 
-const projects = showcase.slice(0, 2)
+const projects = showcase.slice(0, 2);
 ---
 
-<section
-    id="gallery"
-    style={{ minHeight: `${200 + (projects.length - 2) * 50}vh` }}
-    data-index="0">
-    <column id="visible-content" align-="center">
-        <column class="content">
-            <row gap-="1">
-                <h2
-                    is-="badge"
-                    variant-="peach"
-                    style="color: var(--background0)">
-                    &#xefc9; Gallery
-                </h2>
-                <span><span id="index-counter">0</span>/{projects.length}</span>
-            </row>
-            <p>Awesome projects built with WebTUI</p>
-            <column id="projects" gap-="1">
-                {
-                    projects.map((projects, i) => (
-                        <row
-                            class="project-row"
-                            data-index={i}
-                            data-visible={i === 0}>
-                            {projects.map((project) => (
-                                <Project {...project} />
-                            ))}
-                        </row>
-                    ))
-                }
-            </column>
-        </column>
+<section id="gallery" style={{ minHeight: `${200 + ((projects.length - 2) * 50)}vh`}} data-index="0">
+  <column id="visible-content" align-="center">
+    <column class="content">
+      <row gap-="1">
+        <h2 is-="badge" variant-="peach" style="color: var(--background0)">&#xefc9; Gallery</h2>
+        <span><span id="index-counter">0</span>/{projects.length}</span>
+      </row>
+      <p>Awesome projects built with WebTUI</p>
+      <column id="projects" gap-="1">
+        {projects.map((projects, i) => 
+          <row class="project-row" data-index={i} data-visible={i === 0}>
+            {projects.map(project => <Project {...project} />)}
+          </row>
+        )}
+      </column>
     </column>
-    {
-        projects.map((_, i) =>
-            i === 0 ? null : (
-                <div class="project-scroll-marker" data-index={i} />
-            ),
-        )
-    }
+  </column>
+  {projects.map((_, i) => 
+    i === 0 ? null : <div class="project-scroll-marker" data-index={i} />
+  )}
 </section>
 
 <style>
-    section {
-        position: relative;
+section {
+  position: relative;
+}
+
+.content {
+  flex-direction: column !important;
+}
+
+#visible-content {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#projects {
+  max-width: 80ch;
+  width: round(calc(100% - 2ch), 1ch);
+  row-gap: 2ch;
+  column-gap: 1lh;
+
+  .project-row {
+    flex-wrap: wrap;
+    row-gap: 1lh;
+    column-gap: 2ch;
+    display: none;
+    width: 100%;
+
+    &[data-visible="true"] {
+      display: flex;
     }
+  }
+}
 
-    .content {
-        flex-direction: column !important;
-    }
+.project-scroll-marker {
+  min-height: 50vh;
+  scroll-snap-align: start;
+  flex: none;
 
-    #visible-content {
-        position: sticky;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    #projects {
-        max-width: 80ch;
-        width: round(calc(100% - 2ch), 1ch);
-        row-gap: 2ch;
-        column-gap: 1lh;
-
-        .project-row {
-            flex-wrap: wrap;
-            row-gap: 1lh;
-            column-gap: 2ch;
-            display: none;
-            width: 100%;
-
-            &[data-visible='true'] {
-                display: flex;
-            }
-        }
-    }
-
-    .project-scroll-marker {
-        min-height: 50vh;
-        scroll-snap-align: start;
-        flex: none;
-
-        &:last-of-type {
-            min-height: 100vh;
-        }
-    }
+  &:last-of-type {
+    min-height: 100vh;
+  }
+}
 </style>
 
 <script>
-    import { attachScrollSnapListener } from '@/utils/scroll'
+  import { attachScrollSnapListener } from "@/utils/scroll";
 
-    let currentRow: HTMLElement | undefined
-    const indexCounter = document.querySelector('#index-counter') as HTMLElement
+  let currentRow: HTMLElement | undefined;
+  const indexCounter = document.querySelector("#index-counter") as HTMLElement;
 
-    const handleTargetChange = (target?: HTMLElement) => {
-        if (!target || currentRow === target) return
+  const handleTargetChange = (target?: HTMLElement) => {
+    if(!target || currentRow === target) return;
 
-        currentRow = target
+    currentRow = target;
 
-        const rowIndex = target.dataset.index
+    const rowIndex = target.dataset.index;
 
-        if (rowIndex) {
-            ;(
-                document.querySelectorAll(
-                    '.project-row',
-                ) as NodeListOf<HTMLElement>
-            ).forEach((row) => {
-                row.setAttribute(
-                    'data-visible',
-                    row.dataset.index === rowIndex ? 'true' : 'false',
-                )
-                indexCounter.innerText = String(Number(rowIndex) + 1)
-            })
-        }
+    if(rowIndex) {
+      (document.querySelectorAll(".project-row") as NodeListOf<HTMLElement>).forEach((row) => {
+        row.setAttribute("data-visible", row.dataset.index === rowIndex ? "true" : "false");
+        indexCounter.innerText = String(Number(rowIndex) + 1);
+      });
     }
+  }
 
-    attachScrollSnapListener(
-        '.project-scroll-marker',
-        handleTargetChange,
-        '#gallery',
-    )
+  attachScrollSnapListener(".project-scroll-marker", handleTargetChange, "#gallery");
 </script>

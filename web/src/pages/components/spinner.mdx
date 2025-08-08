@@ -1,15 +1,17 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Spinner
 ---
 
-import Example from '@/components/Example.astro'
+import Example from '@/components/Example.astro';
 import spinnerStyle from '@webtui/css/components/spinner.css?raw'
 
 Displays a spinner
 
-<Example
-    stylesheets={[spinnerStyle]}
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
     html={`
 <span is-="spinner"></span>
 <span is-="spinner" variant-="dots"></span>
@@ -26,7 +28,7 @@ Displays a spinner
 ## Import
 
 ```css
-@import '@webtui/css/components/spinner.css';
+@import "@webtui/css/components/spinner.css";
 ```
 
 ## Usage
@@ -39,14 +41,14 @@ Displays a spinner
 
 ### Variants
 
-<Example
-    stylesheets={[spinnerStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-    `}
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    css={`body {
+      display: flex;
+      flex-direction: column;
+    }`}
     html={`<span>
     <span is-="spinner"></span>
     Default (Line)
@@ -87,14 +89,14 @@ Displays a spinner
 
 ### Speed
 
-<Example
-    stylesheets={[spinnerStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-    `}
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    css={`body {
+      display: flex;
+      flex-direction: column;
+    }`}
     html={`
 <span>
   <span is-="spinner" speed-="slow"></span>
@@ -113,14 +115,14 @@ Displays a spinner
 
 ### Direction
 
-<Example
-    stylesheets={[spinnerStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-    `}
+<Example 
+    stylesheets={[
+      spinnerStyle
+    ]}
+    css={`body {
+      display: flex;
+      flex-direction: column;
+    }`}
     html={`
 <span>
   <span is-="spinner" variant-="dots"></span>
@@ -143,7 +145,7 @@ Displays a spinner
 
 ```css
 .my-spinner {
-    --spinner-chars: '◐◓◑◒';
+    --spinner-chars: "◐◓◑◒";
     --spinner-steps: 4;
     --spinner-duration: 1s;
 }
@@ -155,10 +157,10 @@ To extend the Spinner stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    [is-='spinner'] {
-        &[variant-='numbers'] {
-            --spinner-chars: '0123456789';
-            --spinner-steps: 10;
+    [is-="spinner"] {
+        &[variant-="numbers"] {
+          --spinner-chars: "0123456789";
+          --spinner-steps: 10;
         }
     }
 }
@@ -167,7 +169,5 @@ To extend the Spinner stylesheet, define a CSS rule on the `components` layer
 ### Scope
 
 ```css
-[is-='spinner'] {
-    /* ... */
-}
+[is-="spinner"] { /* ... */ }
 ```

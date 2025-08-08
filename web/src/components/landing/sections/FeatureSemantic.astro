@@ -1,12 +1,12 @@
 ---
-import CodePreview from '../CodePreview.astro'
+import CodePreview from '../CodePreview.astro';
 ---
 
 <section>
-    <column self-="grow" align-="center">
-        <row class="content">
-            <CodePreview
-                code={`<button variant-="foreground0">
+  <column self-="grow" align-="center">
+    <row class="content">
+      <CodePreview 
+        code={`<button variant-="foreground0">
   Click
 </button>
 
@@ -17,32 +17,21 @@ import CodePreview from '../CodePreview.astro'
 
 <span is-="badge" variant-="yellow">
   Warning
-</span>`}
-                file={{
-                    name: 'index.html',
-                    icon: ['\ue736', 'var(--red)'],
-                }}
-                self-="grow !shrink"
-                withShadow
-            />
-            <column self-="shrink" gap-="1" pad-="0 1">
-                <row>
-                    <h2
-                        is-="badge"
-                        variant-="green"
-                        style="color: var(--background0)">
-                        Semantic Approach
-                    </h2>
-                </row>
-                <p>
-                    HTML tags and attributes determine the behavior and
-                    appearance of different components
-                </p>
-                <p>
-                    The dash at the end of each attribute name (<code>-</code>),
-                    makes WebTUI compatible with frameworks like React
-                </p>
-            </column>
+</span>`} 
+        file={{
+          name: "index.html",
+          icon: ["\ue736", "var(--red)"],
+        }}
+        self-="grow !shrink"
+        withShadow
+      />
+      <column self-="shrink" gap-="1" pad-="0 1">
+        <row>
+          <h2 is-="badge" variant-="green" style="color: var(--background0)">Semantic Approach</h2>
         </row>
-    </column>
+        <p>HTML tags and attributes determine the behavior and appearance of different components</p>
+        <p>The dash at the end of each attribute name (<code>-</code>), makes WebTUI compatible with frameworks like React</p>
+      </column>
+    </row>
+  </column>
 </section>

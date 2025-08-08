@@ -1,18 +1,18 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Typography
 order: 1
 ---
 
-import Example from '@/components/Example.astro'
-import typographyStylesheet from '@webtui/css/components/typography.css?raw'
+import Example from "@/components/Example.astro";
+import typographyStylesheet from '@webtui/css/components/typography.css?raw';
 
 The **Typography** stylesheet provides styles for headings and inline elements
 
 ## Import
 
 ```css
-@import '@webtui/css/components/typography.css';
+@import "@webtui/css/components/typography.css";
 ```
 
 ## Usage
@@ -21,8 +21,10 @@ The **Typography** stylesheet provides styles for headings and inline elements
 
 Headings
 
-<Example
-    stylesheets={[typographyStylesheet]}
+<Example 
+    stylesheets={[
+        typographyStylesheet, 
+    ]} 
     html={`<h1>Heading 1</h1>
 <h2>Heading 2</h2>
 <h3>Heading 3</h3>
@@ -110,14 +112,13 @@ Add the `marker-` attribute to a `<ul>` element to customize its list markers
 
 ```html
 <ul marker-="bullet">
-    <ul marker-="tree"></ul>
-</ul>
+<ul marker-="tree">
 ```
 
 <Example
     stylesheets={[
-        typographyStylesheet,
-        `body { display: flex; flex-direction: column; gap: 1lh; }`,
+        typographyStylesheet, 
+        `body { display: flex; flex-direction: column; gap: 1lh; }`
     ]}
     html={`
 <ul>
@@ -142,16 +143,14 @@ Use the `open` keyword at the start and/or end of the `marker-` attribute to lea
 
 ```html
 <ul marker-="tree open">
-    <ul marker-="open tree">
-        <ul marker-="open tree open"></ul>
-    </ul>
-</ul>
+<ul marker-="open tree">
+<ul marker-="open tree open">
 ```
 
 <Example
     stylesheets={[
-        typographyStylesheet,
-        `body { display: flex; flex-direction: column; gap: 1lh; }`,
+        typographyStylesheet, 
+        `body { display: flex; flex-direction: column; gap: 1lh; }`
     ]}
     html={`
 <ul marker-="tree open">
@@ -177,7 +176,9 @@ Use the `open` keyword at the start and/or end of the `marker-` attribute to lea
 Apply typography styles to an element's children
 
 ```html
-<div is-="typography-block">Typography block</div>
+<div is-="typography-block">
+    Typography block
+</div>
 ```
 
 ## Scope
@@ -186,35 +187,19 @@ Apply typography styles to an element's children
 - paragraphs, blockquotes, lists, list items, elements with `is-="typography-block"` and their respective inline elements
 
 ```css
-h1,
-h2,
-h3,
-h4,
-h5 {
-    /* ... */
-}
+h1, h2, h3, h4, h5 {/* ... */}
 
-ul {
-    /* ... */
-}
-ol {
-    /* ... */
-}
+ul {/* ... */}
+ol {/* ... */}
 
 p,
 blockquote,
 li,
-[is-~='typography-block'] {
+[is-~="typography-block"] {
     /* ... */
 
-    strong {
-        /* ... */
-    }
-    a {
-        /* ... */
-    }
-    code {
-        /* ... */
-    }
+    strong {/* ... */}
+    a {/* ... */}
+    code {/* ... */}
 }
 ```

@@ -1,93 +1,93 @@
 @layer components {
-    [is-='spinner'] {
-        --spinner-steps: 4;
-        --spinner-chars: '/-\\|';
-        --spinner-duration: 1s;
+  [is-="spinner"] {
+    --spinner-steps: 4;
+    --spinner-chars: "/-\\|";
+    --spinner-duration: 1s;
 
-        width: 1ch;
-        height: 1lh;
-        overflow: hidden;
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
+    width: 1ch;
+    height: 1lh;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
 
-        &[variant-='dots'] {
-            --spinner-steps: 8;
-            --spinner-chars: '⣷⣯⣟⡿⢿⣻⣽⣾';
-        }
-
-        &[variant-='arrows'] {
-            --spinner-steps: 8;
-            --spinner-chars: '←↖↑↗→↘↓↙';
-        }
-
-        &[variant-='cross'] {
-            --spinner-steps: 2;
-            --spinner-chars: '+x';
-        }
-
-        &[variant-='square'] {
-            --spinner-steps: 4;
-            --spinner-chars: '◰◳◲◱';
-        }
-
-        &[variant-='pie'] {
-            --spinner-steps: 4;
-            --spinner-chars: '◴◷◶◵';
-        }
-
-        &[variant-='half'] {
-            --spinner-steps: 4;
-            --spinner-chars: '◐◓◑◒';
-        }
-
-        &[variant-='bar-vertical'] {
-            --spinner-steps: 12;
-            --spinner-chars: '▁▃▄▅▆▇█▇▆▅▄▃';
-        }
-
-        &[variant-='bar-horizontal'] {
-            --spinner-steps: 13;
-            --spinner-chars: '▉▊▋▌▍▎▏▎▍▌▋▊▉';
-        }
-
-        &[speed-='slow'] {
-            --spinner-duration: 2s;
-        }
-
-        &[speed-='medium'],
-        &[speed-='default'],
-        &:not([speed-]) {
-            --spinner-duration: 1s;
-        }
-
-        &[speed-='fast'] {
-            --spinner-duration: 0.5s;
-        }
-
-        &::before {
-            content: var(--spinner-chars);
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: inherit;
-            white-space: nowrap;
-            height: 1lh;
-            animation: spinner-pan var(--spinner-duration)
-                steps(var(--spinner-steps)) infinite;
-        }
-
-        &[direction-='reverse']::before {
-            animation-direction: reverse;
-        }
+    &[variant-="dots"] {
+      --spinner-steps: 8;
+      --spinner-chars: "⣷⣯⣟⡿⢿⣻⣽⣾";
     }
 
-    @keyframes spinner-pan {
-        from {
-            translate: 0ch;
-        }
-        to {
-            translate: -100%;
-        }
+    &[variant-="arrows"] {
+      --spinner-steps: 8;
+      --spinner-chars: "←↖↑↗→↘↓↙";
     }
+
+    &[variant-="cross"] {
+      --spinner-steps: 2;
+      --spinner-chars: "+x";
+    }
+
+    &[variant-="square"] {
+      --spinner-steps: 4;
+      --spinner-chars: "◰◳◲◱";
+    }
+
+    &[variant-="pie"] {
+      --spinner-steps: 4;
+      --spinner-chars: "◴◷◶◵";
+    }
+
+    &[variant-="half"] {
+      --spinner-steps: 4;
+      --spinner-chars: "◐◓◑◒";
+    }
+
+    &[variant-="bar-vertical"] {
+      --spinner-steps: 12;
+      --spinner-chars: "▁▃▄▅▆▇█▇▆▅▄▃";
+    }
+
+    &[variant-="bar-horizontal"] {
+      --spinner-steps: 13;
+      --spinner-chars: "▉▊▋▌▍▎▏▎▍▌▋▊▉";
+    }
+
+    &[speed-="slow"] {
+      --spinner-duration: 2s;
+    }
+
+    &[speed-="medium"],
+    &[speed-="default"],
+    &:not([speed-]) {
+      --spinner-duration: 1s;
+    }
+
+    &[speed-="fast"] {
+      --spinner-duration: 0.5s;
+    }
+
+    &::before {
+      content: var(--spinner-chars);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: inherit;
+      white-space: nowrap;
+      height: 1lh;
+      animation: spinner-pan var(--spinner-duration) steps(var(--spinner-steps))
+        infinite;
+    }
+
+    &[direction-="reverse"]::before {
+      animation-direction: reverse;
+    }
+  }
+
+  @keyframes spinner-pan {
+    from {
+      translate: 0ch;
+    }
+    to {
+      translate: -100%;
+    }
+  }
 }

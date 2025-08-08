@@ -1,46 +1,46 @@
 @layer components {
-    input[type='text'],
-    input[type='email'],
-    input[type='password'],
-    input[type='search'],
-    input[type='tel'],
-    input[type='url'],
-    input[type='number'],
-    input[type='date'],
-    input[type='datetime'],
-    input[type='datetime-local'],
-    input[type='month'],
-    input[type='time'],
-    input[type='week'],
-    input:not([type]),
-    [is-~='input'] {
-        background-color: var(--background1);
-        color: var(--foreground0);
-        font-family: var(--font-family);
-        font-size: var(--font-size);
-        font-weight: var(--font-weight-normal);
-        line-height: var(--line-height);
-        outline: none;
-        border: none;
-        min-width: 24ch;
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input:not([type]),
+  [is-~="input"] {
+    background-color: var(--background1);
+    color: var(--foreground0);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height);
+    outline: none;
+    border: none;
+    min-width: 24ch;
 
-        &::placeholder {
-            color: var(--foreground2);
-        }
-
-        &:not([size-]) {
-            height: 1lh;
-            padding: 0 1ch;
-        }
-
-        &[size-='small'] {
-            height: 1lh;
-            padding: 0 0;
-        }
-
-        &[size-='large'] {
-            height: 3lh;
-            padding: 1lh 2ch;
-        }
+    &::placeholder {
+      color: var(--foreground2);
     }
+
+    &:not([size-]) {
+      height: 1lh;
+      padding: 0 1ch;
+    }
+
+    &[size-="small"] {
+      height: 1lh;
+      padding: 0 0;
+    }
+
+    &[size-="large"] {
+      height: 3lh;
+      padding: 1lh 2ch;
+    }
+  }
 }

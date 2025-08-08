@@ -2,25 +2,25 @@
 @layer base, utils, components;
 
 /* Base Styles */
-@import './base.css';
+@import "./base.css";
 
 /* Utilities */
-@import './utils/box.css';
+@import "./utils/box.css";
 
 /* Components */
-@import './components/button.css';
-@import './components/typography.css';
-@import './components/badge.css';
-@import './components/input.css';
-@import './components/textarea.css';
-@import './components/popover.css';
-@import './components/checkbox.css';
-@import './components/separator.css';
-@import './components/radio.css';
-@import './components/pre.css';
-@import './components/tooltip.css';
-@import './components/table.css';
-@import './components/switch.css';
-@import './components/range.css';
-@import './components/dialog.css';
-@import './components/spinner.css';
+@import "./components/button.css";
+@import "./components/typography.css";
+@import "./components/badge.css";
+@import "./components/input.css";
+@import "./components/textarea.css";
+@import "./components/popover.css";
+@import "./components/checkbox.css";
+@import "./components/separator.css";
+@import "./components/radio.css";
+@import "./components/pre.css";
+@import "./components/tooltip.css";
+@import "./components/table.css";
+@import "./components/switch.css";
+@import "./components/range.css";
+@import "./components/dialog.css";
+@import "./components/spinner.css";

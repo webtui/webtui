@@ -1,106 +1,102 @@
 ---
 interface Props extends astroHTML.JSX.HTMLAttributes {
-    items: Record<string, string>
-    label: string
-    position?: string
+  items: Record<string, string>;
+  label: string;
+  position?: string;
 }
 
-const { items, label, position, ...props } = Astro.props as Props
+const { items, label, position, ...props } = Astro.props as Props;
 
-const itemEntries = Object.entries(items)
-const initialValue = props['data-value'] ?? itemEntries[0][0]
+const itemEntries = Object.entries(items);
+const initialValue = props['data-value'] ?? itemEntries[0][0];
 ---
 
 <select-dropdown data-value={initialValue} {...props}>
-    <details is-="popover" position-={position}>
-        <summary tabindex="0" is-="button" size-="small">{label}</summary>
-        <column id="options">
-            {
-                itemEntries.map(([key, value]) => (
-                    <button
-                        data-value={key}
-                        size-="small"
-                        variant-={
-                            initialValue === key ? 'default' : 'background1'
-                        }
-                        aria-selected={initialValue === key ? 'true' : 'false'}>
-                        {value}
-                    </button>
-                ))
-            }
-        </column>
-    </details>
+  <details is-="popover" position-={position}>
+    <summary tabindex="0" is-="button" size-="small">{label}</summary>
+    <column id="options">
+      {
+        itemEntries.map(([key, value]) => (
+          <button
+            data-value={key}
+            size-="small"
+            variant-={initialValue === key ? "default" : "background1"}
+            aria-selected={initialValue === key ? "true" : "false"}
+          >
+            {value}
+          </button>
+        ))
+      }
+    </column>
+  </details>
 </select-dropdown>
 
 <style>
-    #options {
-        background-color: var(--background0);
+  #options {
+    background-color: var(--background0);
 
-        button {
-            white-space: nowrap;
-            justify-content: flex-start;
-        }
+    button {
+      white-space: nowrap;
+      justify-content: flex-start;
     }
+  }
 </style>
 
 <script>
-    import { paginateElements } from '@/utils/vim'
+  import { paginateElements } from "@/utils/vim";
 
-    class Dropdown extends HTMLElement {
-        constructor() {
-            super()
+  class Dropdown extends HTMLElement {
+    constructor() {
+      super();
 
-            const self = this
-            const items = Array.from(
-                self.querySelectorAll(
-                    '#options > button',
-                ) as NodeListOf<HTMLButtonElement>,
-            )
+      const self = this;
+      const items = Array.from(
+        self.querySelectorAll(
+          "#options > button",
+        ) as NodeListOf<HTMLButtonElement>,
+      );
 
-            const trigger = self.querySelector('summary')!
-            const details = self.querySelector('details')!
+      const trigger = self.querySelector("summary")!;
+      const details = self.querySelector("details")!;
 
-            items.forEach((item) => {
-                item.setAttribute('tabindex', '0')
+      items.forEach((item) => {
+        item.setAttribute("tabindex", "0");
 
-                item.addEventListener('click', () => {
-                    items.forEach((item) => {
-                        item.setAttribute('aria-selected', 'false')
-                        item.setAttribute('variant-', 'background1')
-                    })
-                    item.setAttribute('variant-', 'default')
-                    item.setAttribute('aria-selected', 'true')
-                    self.setAttribute(
-                        'data-value',
-                        item.getAttribute('data-value')!,
-                    )
-                    trigger.click()
-                })
-            })
+        item.addEventListener("click", () => {
+          items.forEach((item) => {
+            item.setAttribute("aria-selected", "false");
+            item.setAttribute("variant-", "background1");
+          });
+          item.setAttribute("variant-", "default");
+          item.setAttribute("aria-selected", "true");
+          self.setAttribute("data-value", item.getAttribute("data-value")!);
+          trigger.click();
+        });
+      });
 
-            details.addEventListener('toggle', () => {
-                if (!details.open) return
+      details.addEventListener("toggle", () => {
+        if (!details.open) return;
 
-                const dataValue = self.getAttribute('data-value')
+        const dataValue = self.getAttribute("data-value");
 
-                const activeItem = items.find(
-                    (item) => item.getAttribute('data-value') === dataValue,
-                )
+        const activeItem = items.find(
+          (item) => item.getAttribute("data-value") === dataValue,
+        );
 
-                if (activeItem) activeItem.focus()
-            })
+        if (activeItem) activeItem.focus();
+      });
 
-            self.addEventListener('keydown', (e) => {
-                const { next, prev } = paginateElements(
-                    document.activeElement as HTMLElement,
-                    items,
-                )
+      self.addEventListener("keydown", (e) => {
+        const { next, prev } = paginateElements(
+          document.activeElement as HTMLElement,
+          items,
+        );
 
-                if (e.key === 'ArrowDown' || e.key === 'j') next.focus()
-                if (e.key === 'ArrowUp' || e.key === 'k') prev.focus()
-            })
-        }
+        if (e.key === "ArrowDown" || e.key === "j") next.focus();
+        if (e.key === "ArrowUp" || e.key === "k") prev.focus();
+      });
     }
+  }
 
-    customElements.define('select-dropdown', Dropdown)
+  customElements.define("select-dropdown", Dropdown);
 </script>

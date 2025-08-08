@@ -1,116 +1,97 @@
 ---
-import Navbar from '../../Navbar.astro'
-import Widgets from '../widgets/Widgets.astro'
+import Navbar from '../../Navbar.astro';
+import Widgets from '../widgets/Widgets.astro';
 ---
 
 <header id="intro">
-    <Widgets />
-    <column id="content">
-        <Navbar />
-        <column id="main" box-="square">
-            <h1>
-                <span is-="badge" variant-="green">&#xf4b5; Terminal UIs</span>
-                for the
-                <span is-="badge" variant-="blue">&#xeb01; Web</span>
-            </h1>
-            <column>
-                <p>
-                    WebTUI is a <strong>modular CSS library</strong> that brings
-                    the beauty of <a href="/start/tuis-vs-guis">Terminal UIs</a>
-                    to the browser
-                </p>
-                <div is-="separator"></div>
-                <row gap-="1">
-                    <a href="/start/intro"><button>Get Started</button></a>
-                    <a href="/examples"
-                        ><button variant-="background1">Examples</button></a
-                    >
-                </row>
-            </column>
-        </column>
-    </column>
-    <column id="statusline">
-        <row>
-            <span
-                is-="badge"
-                variant-="blue"
-                style="--badge-text: var(--background0)">NORMAL</span
-            >
-            <span
-                is-="badge"
-                variant-="background1"
-                style="--badge-text: var(--blue)">&#xe725; master</span
-            >
-            <row self-="grow">
-                <span is-="badge" variant-="background0">index.astro</span>
-            </row>
-            <row id="statusline-right">
-                <span is-="badge" variant-="background0">utf-8</span>
-                <span is-="badge" variant-="background1">Top</span>
-                <span
-                    is-="badge"
-                    variant-="blue"
-                    style="--badge-text: var(--background0)">1:1</span
-                >
-            </row>
+  <Widgets />
+  <column id="content">
+    <Navbar />
+    <column id="main" box-="square">
+      <h1>
+        <span is-="badge" variant-="green">&#xf4b5; Terminal UIs</span>
+        for the
+        <span is-="badge" variant-="blue">&#xeb01; Web</span>
+      </h1>
+      <column>
+        <p>WebTUI is a <strong>modular CSS library</strong> that brings the beauty of <a href="/start/tuis-vs-guis">Terminal UIs</a> to the browser</p>
+        <div is-="separator" />
+        <row gap-="1">
+          <a href="/start/intro"><button>Get Started</button></a>
+          <a href="/examples"><button variant-="background1">Examples</button></a>
         </row>
+      </column>
     </column>
+  </column>
+  <column id="statusline">
+    <row>
+      <span is-="badge" variant-="blue" style="--badge-text: var(--background0)">NORMAL</span>
+      <span is-="badge" variant-="background1" style="--badge-text: var(--blue)">&#xe725; master</span>
+      <row self-="grow">
+        <span is-="badge" variant-="background0">index.astro</span>
+      </row>
+      <row id="statusline-right">
+        <span is-="badge" variant-="background0">utf-8</span>
+        <span is-="badge" variant-="background1">Top</span>
+        <span is-="badge" variant-="blue" style="--badge-text: var(--background0)">1:1</span>
+      </row>
+    </row>
+  </column>
 </header>
 
 <style>
-    #intro {
-        position: relative;
-        background-color: var(--crust);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+  #intro {
+    position: relative;
+    background-color: var(--crust);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-        #content {
-            position: absolute;
-            background-color: var(--background0);
-            max-width: 64ch;
-            width: round(calc(100% - 2ch), 1ch);
-            padding: 1lh 2ch;
+    #content {
+      position: absolute;
+      background-color: var(--background0);
+      max-width: 64ch;
+      width: round(calc(100% - 2ch), 1ch);
+      padding: 1lh 2ch;
 
-            #main {
-                padding: 1lh 2ch;
-                gap: 1lh;
-                --box-border-color: var(--background1);
-            }
+      #main {
+        padding: 1lh 2ch;
+        gap: 1lh;
+        --box-border-color: var(--background1);
+      }
 
-            h1 {
-                color: var(--foreground0);
-                display: inline-flex;
-                gap: 1ch;
-            }
-        }
+      h1 { 
+        color: var(--foreground0); 
+        display: inline-flex; 
+        gap: 1ch;
+      }
+    }
+  }
+
+  #statusline {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2lh;
+    background-color: var(--background0);
+    box-shadow: 0 -1lh 0 0 var(--mantle);
+  }
+
+  @media (max-width: 50ch) {
+    #container {
+      #content, #main {
+        padding: 1lh 1ch;
+      }
     }
 
-    #statusline {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 2lh;
-        background-color: var(--background0);
-        box-shadow: 0 -1lh 0 0 var(--mantle);
+    #statusline-right {
+      display: none;
     }
+  }
 
-    @media (max-width: 50ch) {
-        #container {
-            #content,
-            #main {
-                padding: 1lh 1ch;
-            }
-        }
-
-        #statusline-right {
-            display: none;
-        }
-    }
-
-    [is-='separator'] {
-        --separator-color: var(--background2);
-    }
+  [is-="separator"] {
+    --separator-color: var(--background2);
+  }
 </style>

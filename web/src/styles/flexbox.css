@@ -1,58 +1,58 @@
 @layer utils {
-    column,
-    [is-~='column'] {
-        flex-direction: column;
+  column,
+  [is-~="column"] {
+    flex-direction: column;
+  }
+
+  row,
+  column,
+  [is-~="row"],
+  [is-~="column"] {
+    display: flex;
+
+    column-gap: attr(gap- ch);
+    row-gap: attr(gap- lh);
+
+    &[self-~="grow"] {
+      flex-grow: 1;
+    }
+    &[self-~="!grow"] {
+      flex-grow: 0;
+    }
+    &[self-~="shrink"] {
+      flex-shrink: 1;
+    }
+    &[self-~="!shrink"] {
+      flex-shrink: 0;
+    }
+    &[self-~="!basis"] {
+      flex-basis: 0;
     }
 
-    row,
-    column,
-    [is-~='row'],
-    [is-~='column'] {
-        display: flex;
-
-        column-gap: attr(gap- ch);
-        row-gap: attr(gap- lh);
-
-        &[self-~='grow'] {
-            flex-grow: 1;
-        }
-        &[self-~='!grow'] {
-            flex-grow: 0;
-        }
-        &[self-~='shrink'] {
-            flex-shrink: 1;
-        }
-        &[self-~='!shrink'] {
-            flex-shrink: 0;
-        }
-        &[self-~='!basis'] {
-            flex-basis: 0;
-        }
-
-        &[align-^='start'] {
-            align-items: flex-start;
-        }
-        &[align-^='end'] {
-            align-items: flex-end;
-        }
-        &[align-^='center'] {
-            align-items: center;
-        }
-        &[align-^='stretch'] {
-            align-items: stretch;
-        }
-
-        &[align-$='between'] {
-            justify-content: space-between;
-        }
-        &[align-$='start'] {
-            justify-content: flex-start;
-        }
-        &[align-$='end'] {
-            justify-content: flex-end;
-        }
-        &[align-$='center'] {
-            justify-content: center;
-        }
+    &[align-^="start"] {
+      align-items: flex-start;
     }
+    &[align-^="end"] {
+      align-items: flex-end;
+    }
+    &[align-^="center"] {
+      align-items: center;
+    }
+    &[align-^="stretch"] {
+      align-items: stretch;
+    }
+
+    &[align-$="between"] {
+      justify-content: space-between;
+    }
+    &[align-$="start"] {
+      justify-content: flex-start;
+    }
+    &[align-$="end"] {
+      justify-content: flex-end;
+    }
+    &[align-$="center"] {
+      justify-content: center;
+    }
+  }
 }

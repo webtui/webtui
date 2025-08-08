@@ -1,146 +1,146 @@
 ---
-import Filter from '@/components/Filter.astro'
+import Filter from '@/components/Filter.astro';
 
-const url = Astro.url
+const url = Astro.url;
 
-let isOn: 'docs' | 'showcase' | 'home' = 'docs'
+let isOn: 'docs' | 'showcase' | 'home' = 'docs';
 
 if (url.pathname.startsWith('/showcase')) {
-    isOn = 'showcase'
+  isOn = 'showcase';
 }
 
 if (url.pathname === '/') {
-    isOn = 'home'
+  isOn = 'home';
 }
 ---
 
 <nav box-="square">
-    <a href="/" id="home-link">
-        &lt;/<span>#&gt;</span><span>WebTUI</span>
+  <a href="/" id="home-link">
+    &lt;/<span>#&gt;</span><span>WebTUI</span>
+  </a>
+  <row id="links">
+    <a href="/start/intro" data-active={isOn === "docs"}>
+      <span>&#xf15c</span>
+      <span>Docs</span>
     </a>
-    <row id="links">
-        <a href="/start/intro" data-active={isOn === 'docs'}>
-            <span>&#xf15c</span>
-            <span>Docs</span>
-        </a>
-        <a href="/showcase" data-active={isOn === 'showcase'}>
-            <span>&#xebeb</span>
-            <span>Showcase</span>
-        </a>
-        <a href="https://github.com/webtui/webtui" target="_blank">
-            <span>&#xe709</span>
-            <span>Github</span>
-        </a>
-        <button id="search-button" size-="small">
-            <span>&#xea6d;</span>
-            <span>Search</span>
-        </button>
-    </row>
+    <a href="/showcase" data-active={isOn === "showcase"}>
+      <span>&#xebeb</span>
+      <span>Showcase</span>
+    </a>
+    <a href="https://github.com/webtui/webtui" target="_blank">
+      <span>&#xe709</span>
+      <span>Github</span>
+    </a>
+    <button id="search-button" size-="small">
+      <span>&#xea6d;</span>
+      <span>Search</span>
+    </button>
+  </row>
 </nav>
 <Filter />
 
 <style>
-    nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1lh 2ch;
-        container-type: inline-size;
-        container-name: navbar;
-        white-space: nowrap;
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1lh 2ch;
+    container-type: inline-size;
+    container-name: navbar;
+    white-space: nowrap;
 
-        #home-link {
-            text-decoration: none;
-            font-weight: bold;
-            color: var(--foreground1);
+    #home-link {
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--foreground1);
 
-            span:first-of-type {
-                color: #a6e3a1;
-            }
+      span:first-of-type {
+        color: #a6e3a1;
+      }
 
-            &:focus,
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
 
+  #links {
+    row-gap: 2ch;
+    column-gap: 1lh;
+
+    a {
+      display: inline-flex;
+      gap: 1ch;
+      text-decoration: none;
+      color: var(--foreground2);
+
+      &[data-active="true"] {
+        color: var(--foreground0);
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #search-button {
+    display: inline-flex;
+    gap: 1ch;
+  }
+
+  @media (max-width: 84ch) {
     #links {
-        row-gap: 2ch;
-        column-gap: 1lh;
+      gap: 1ch;
 
-        a {
-            display: inline-flex;
-            gap: 1ch;
-            text-decoration: none;
-            color: var(--foreground2);
-
-            &[data-active='true'] {
-                color: var(--foreground0);
-                font-weight: bold;
-                text-decoration: underline;
-            }
-
-            &:focus,
-            &:hover {
-                text-decoration: underline;
-            }
+      a {
+        background-color: var(--background1);
+        padding: 0 1ch;
+        span:last-of-type {
+          display: none;
         }
+      }
     }
+  }
 
-    #search-button {
-        display: inline-flex;
-        gap: 1ch;
+  @media (max-width: 54ch) {
+    nav {
+      align-items: normal;
+      gap: 10px;
     }
-
-    @media (max-width: 84ch) {
-        #links {
-            gap: 1ch;
-
-            a {
-                background-color: var(--background1);
-                padding: 0 1ch;
-                span:last-of-type {
-                    display: none;
-                }
-            }
-        }
+    #search-button span:last-of-type {
+      display: none;
     }
+  }
 
-    @media (max-width: 54ch) {
-        nav {
-            align-items: normal;
-            gap: 10px;
-        }
-        #search-button span:last-of-type {
-            display: none;
-        }
+  @media (max-width: 44ch) {
+    nav {
+      flex-direction: column;
     }
-
-    @media (max-width: 44ch) {
-        nav {
-            flex-direction: column;
-        }
-    }
+  }
 </style>
 
 <script>
-    import { isUserTyping } from '@/utils/vim'
+  import { isUserTyping } from "@/utils/vim";
 
-    const searchDialog = document.getElementById(
-        'search-dialog',
-    ) as HTMLDialogElement
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement;
 
-    document.getElementById('search-button')?.addEventListener('click', () => {
-        searchDialog.showModal()
-    })
+  document.getElementById("search-button")?.addEventListener("click", () => {
+    searchDialog.showModal();
+  });
 
-    window.addEventListener('keydown', (e) => {
-        if (isUserTyping()) return
+  window.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
 
-        if (e.key === '/') {
-            e.preventDefault()
-            searchDialog.showModal()
-        }
-    })
+    if (e.key === "/") {
+      e.preventDefault();
+      searchDialog.showModal();
+    }
+  });
 </script>

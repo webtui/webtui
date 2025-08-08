@@ -1,107 +1,99 @@
 ---
-const props = Astro.props
+const props = Astro.props;
 ---
 
 <tabs-component role="tablist" {...props}>
-    <style>
-        #tabs-list {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-    </style>
-    <div id="tabs-list">
-        <slot />
-    </div>
+  <style>
+    #tabs-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  </style>
+  <div id="tabs-list">
+    <slot />
+  </div>
 </tabs-component>
 
 <script>
-    import { paginateElements } from '@/utils/vim'
+  import { paginateElements } from "@/utils/vim";
 
-    class Tabs extends HTMLElement {
-        constructor() {
-            super()
+  class Tabs extends HTMLElement {
+    constructor() {
+      super();
 
-            const self = this
-            const items = Array.from(
-                self.querySelectorAll(
-                    '#tabs-list > button',
-                ) as NodeListOf<HTMLButtonElement>,
-            )
+      const self = this;
+      const items = Array.from(
+        self.querySelectorAll(
+          "#tabs-list > button",
+        ) as NodeListOf<HTMLButtonElement>,
+      );
 
-            if (items.length === 0)
-                throw new Error(
-                    'Tabs component requires at least one child element',
-                )
-            if (!items.every((item) => item.hasAttribute('data-value'))) {
-                throw new Error(
-                    'Each direct child of Tabs must have a `data-tab` attribute',
-                )
-            }
+      if (items.length === 0)
+        throw new Error("Tabs component requires at least one child element");
+      if (!items.every((item) => item.hasAttribute("data-value"))) {
+        throw new Error(
+          "Each direct child of Tabs must have a `data-tab` attribute",
+        );
+      }
 
-            if (!self.hasAttribute('data-tab'))
-                self.setAttribute(
-                    'data-tab',
-                    items[0].getAttribute('data-value')!,
-                )
+      if (!self.hasAttribute("data-tab"))
+        self.setAttribute("data-tab", items[0].getAttribute("data-value")!);
 
-            for (const item of items) {
-                self.initializeTab(item)
-            }
-        }
-
-        initializeTab(item: HTMLElement) {
-            const self = this
-            const activeVariant =
-                self.getAttribute('data-active-variant') ?? 'default'
-            const secondaryVariant =
-                self.getAttribute('data-secondary-variant') ?? 'background1'
-
-            const items = self.querySelectorAll(
-                '#tabs-list > button',
-            ) as NodeListOf<HTMLButtonElement>
-
-            const value =
-                self.getAttribute('data-tab') ??
-                items[0].getAttribute('data-value')
-
-            const setCurrentTab = () => {
-                items.forEach((item) => {
-                    item.setAttribute('aria-selected', 'false')
-                    item.setAttribute('variant-', secondaryVariant)
-                })
-
-                self.setAttribute(
-                    'data-tab',
-                    item.getAttribute('data-value') as string,
-                )
-                item.setAttribute('variant-', activeVariant)
-                item.setAttribute('aria-selected', 'true')
-            }
-
-            const isSelected = value === item.getAttribute('data-value')
-
-            item.setAttribute('aria-selected', isSelected ? 'true' : 'false')
-            item.setAttribute(
-                'variant-',
-                isSelected ? activeVariant : secondaryVariant,
-            )
-            item.setAttribute('tabindex', '0')
-            item.setAttribute('role', 'tab')
-            item.addEventListener('click', setCurrentTab)
-            item.addEventListener('focus', setCurrentTab)
-
-            item.addEventListener('keydown', (e) => {
-                const { next, prev } = paginateElements(
-                    document.activeElement as HTMLElement,
-                    items,
-                )
-
-                if (e.key === 'ArrowLeft' || e.key === 'h') prev.focus()
-                if (e.key === 'ArrowRight' || e.key === 'l') next.focus()
-            })
-        }
+      for (const item of items) {
+        self.initializeTab(item);
+      }
     }
 
-    customElements.define('tabs-component', Tabs)
+    initializeTab(item: HTMLElement) {
+      const self = this;
+      const activeVariant = self.getAttribute("data-active-variant") ?? "default";
+      const secondaryVariant = self.getAttribute("data-secondary-variant") ?? "background1";
+
+      const items = self.querySelectorAll(
+        "#tabs-list > button",
+      ) as NodeListOf<HTMLButtonElement>;
+
+      const value =
+        self.getAttribute("data-tab") ?? items[0].getAttribute("data-value");
+
+      const setCurrentTab = () => {
+        items.forEach((item) => {
+          item.setAttribute("aria-selected", "false");
+          item.setAttribute("variant-", secondaryVariant);
+        });
+
+        self.setAttribute(
+          "data-tab",
+          item.getAttribute("data-value") as string,
+        );
+        item.setAttribute("variant-", activeVariant);
+        item.setAttribute("aria-selected", "true");
+      };
+
+      const isSelected = value === item.getAttribute("data-value");
+
+      item.setAttribute(
+        "aria-selected",
+        isSelected ? "true" : "false",
+      );
+      item.setAttribute("variant-", isSelected ? activeVariant: secondaryVariant);
+      item.setAttribute("tabindex", "0");
+      item.setAttribute("role", "tab");
+      item.addEventListener("click", setCurrentTab);
+      item.addEventListener("focus", setCurrentTab);
+
+      item.addEventListener("keydown", (e) => {
+        const { next, prev } = paginateElements(
+          document.activeElement as HTMLElement,
+          items,
+        );
+
+        if (e.key === "ArrowLeft" || e.key === "h") prev.focus();
+        if (e.key === "ArrowRight" || e.key === "l") next.focus();
+      });
+    }
+  }
+
+  customElements.define("tabs-component", Tabs);
 </script>

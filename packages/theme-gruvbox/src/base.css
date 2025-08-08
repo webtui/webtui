@@ -1,84 +1,84 @@
 @layer base {
-    [data-webtui-theme|='gruvbox-dark'] {
-        --gb-dark-bg1: #3c3836;
-        --gb-dark-bg2: #504945;
-        --gb-dark-bg3: #665c54;
-        --gb-dark-bg4: #7c6f64;
-        --gb-dark-fg0: #fbf1c7;
-        --gb-dark-fg1: #ebdbb2;
-        --gb-dark-fg2: #d5c4a1;
-        --gb-dark-fg3: #bdae93;
-        --gb-dark-fg4: #a89984;
-        --gb-dark-gray: #928374;
-        --gb-red: #fb4934;
-        --gb-green: #b8bb26;
-        --gb-yellow: #fabd2f;
-        --gb-blue: #83a598;
-        --gb-purple: #d3869b;
-        --gb-aqua: #8ec07c;
-        --gb-orange: #fe8019;
+  [data-webtui-theme|="gruvbox-dark"] {
+    --gb-dark-bg1: #3c3836;
+    --gb-dark-bg2: #504945;
+    --gb-dark-bg3: #665c54;
+    --gb-dark-bg4: #7c6f64;
+    --gb-dark-fg0: #fbf1c7;
+    --gb-dark-fg1: #ebdbb2;
+    --gb-dark-fg2: #d5c4a1;
+    --gb-dark-fg3: #bdae93;
+    --gb-dark-fg4: #a89984;
+    --gb-dark-gray: #928374;
+    --gb-red: #fb4934;
+    --gb-green: #b8bb26;
+    --gb-yellow: #fabd2f;
+    --gb-blue: #83a598;
+    --gb-purple: #d3869b;
+    --gb-aqua: #8ec07c;
+    --gb-orange: #fe8019;
 
-        --background1: var(--gb-dark-bg1);
-        --background2: var(--gb-dark-bg2);
-        --background3: var(--gb-dark-bg3);
-        --foreground0: var(--gb-dark-fg1);
-        --foreground1: var(--gb-dark-fg2);
-        --foreground2: var(--gb-dark-fg3);
-    }
+    --background1: var(--gb-dark-bg1);
+    --background2: var(--gb-dark-bg2);
+    --background3: var(--gb-dark-bg3);
+    --foreground0: var(--gb-dark-fg1);
+    --foreground1: var(--gb-dark-fg2);
+    --foreground2: var(--gb-dark-fg3);
+  }
 
-    [data-webtui-theme='gruvbox-dark-hard'] {
-        --gb-dark-bg0: #1d2021;
-        --background0: var(--gb-dark-bg0);
-    }
-    [data-webtui-theme='gruvbox-dark-medium'],
-    [data-webtui-theme='gruvbox-dark'],
-    [data-webtui-theme='gruvbox'] {
-        --gb-dark-bg0: #282828;
-        --background0: var(--gb-dark-bg0);
-    }
-    [data-webtui-theme='gruvbox-dark-soft'] {
-        --gb-dark-bg0: #32302f;
-        --background0: var(--gb-dark-bg0);
-    }
+  [data-webtui-theme="gruvbox-dark-hard"] {
+    --gb-dark-bg0: #1d2021;
+    --background0: var(--gb-dark-bg0);
+  }
+  [data-webtui-theme="gruvbox-dark-medium"],
+  [data-webtui-theme="gruvbox-dark"],
+  [data-webtui-theme="gruvbox"] {
+    --gb-dark-bg0: #282828;
+    --background0: var(--gb-dark-bg0);
+  }
+  [data-webtui-theme="gruvbox-dark-soft"] {
+    --gb-dark-bg0: #32302f;
+    --background0: var(--gb-dark-bg0);
+  }
 
-    [data-webtui-theme|='gruvbox-light'] {
-        --gb-light-bg1: #ebdbb2;
-        --gb-light-bg2: #d5c4a1;
-        --gb-light-bg3: #bdae93;
-        --gb-light-bg4: #a89984;
-        --gb-light-fg0: #282828;
-        --gb-light-fg1: #3c3836;
-        --gb-light-fg2: #504945;
-        --gb-light-fg3: #665c54;
-        --gb-light-fg4: #7c6f64;
-        --gb-light-gray: #a89984;
-        --gb-red: #cc241d;
-        --gb-green: #98971a;
-        --gb-yellow: #d79921;
-        --gb-blue: #458588;
-        --gb-purple: #b16286;
-        --gb-aqua: #689d6a;
-        --gb-orange: #d65d0e;
+  [data-webtui-theme|="gruvbox-light"] {
+    --gb-light-bg1: #ebdbb2;
+    --gb-light-bg2: #d5c4a1;
+    --gb-light-bg3: #bdae93;
+    --gb-light-bg4: #a89984;
+    --gb-light-fg0: #282828;
+    --gb-light-fg1: #3c3836;
+    --gb-light-fg2: #504945;
+    --gb-light-fg3: #665c54;
+    --gb-light-fg4: #7c6f64;
+    --gb-light-gray: #a89984;
+    --gb-red: #cc241d;
+    --gb-green: #98971a;
+    --gb-yellow: #d79921;
+    --gb-blue: #458588;
+    --gb-purple: #b16286;
+    --gb-aqua: #689d6a;
+    --gb-orange: #d65d0e;
 
-        --background1: var(--gb-light-bg1);
-        --background2: var(--gb-light-bg2);
-        --background3: var(--gb-light-bg3);
-        --foreground0: var(--gb-light-fg1);
-        --foreground1: var(--gb-light-fg2);
-        --foreground2: var(--gb-light-fg3);
-    }
+    --background1: var(--gb-light-bg1);
+    --background2: var(--gb-light-bg2);
+    --background3: var(--gb-light-bg3);
+    --foreground0: var(--gb-light-fg1);
+    --foreground1: var(--gb-light-fg2);
+    --foreground2: var(--gb-light-fg3);
+  }
 
-    [data-webtui-theme='gruvbox-light-hard'] {
-        --gb-light-bg0: #f9f5d7;
-        --background0: var(--gb-light-bg0);
-    }
-    [data-webtui-theme='gruvbox-light-medium'],
-    [data-webtui-theme='gruvbox-light'] {
-        --gb-light-bg0: #fbf1c7;
-        --background0: var(--gb-light-bg0);
-    }
-    [data-webtui-theme='gruvbox-light-soft'] {
-        --gb-light-bg0: #f2e5bc;
-        --background0: var(--gb-light-bg0);
-    }
+  [data-webtui-theme="gruvbox-light-hard"] {
+    --gb-light-bg0: #f9f5d7;
+    --background0: var(--gb-light-bg0);
+  }
+  [data-webtui-theme="gruvbox-light-medium"],
+  [data-webtui-theme="gruvbox-light"] {
+    --gb-light-bg0: #fbf1c7;
+    --background0: var(--gb-light-bg0);
+  }
+  [data-webtui-theme="gruvbox-light-soft"] {
+    --gb-light-bg0: #f2e5bc;
+    --background0: var(--gb-light-bg0);
+  }
 }

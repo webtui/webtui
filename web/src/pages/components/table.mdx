@@ -1,15 +1,17 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Table
 ---
 
-import Example from '@/components/Example.astro'
-import tableStyle from '@webtui/css/components/table.css?raw'
+import Example from '@/components/Example.astro';
+import tableStyle from '@webtui/css/components/table.css?raw';
 
 Displays a table
 
-<Example
-    stylesheets={[tableStyle]}
+<Example 
+    stylesheets={[
+        tableStyle,
+    ]}
     html={`<table>
     <thead>
         <tr>
@@ -36,7 +38,7 @@ Displays a table
 ## Import
 
 ```css
-@import '@webtui/css/components/table.css';
+@import "@webtui/css/components/table.css";
 ```
 
 ## Usage
@@ -93,24 +95,18 @@ To extend the Table stylesheet, define a CSS rule on the `components` layer
 
 ### Scope
 
-- All `<table>` elements
+- All `<table>` elements 
 - All `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, and `<td>` elements that are children of a `<table>`
 
 ```css
 table {
-    thead,
-    tbody,
-    tfoot {
+    thead, tbody, tfoot {
         /* ... */
     }
 
     tr {
-        th {
-            /* ... */
-        }
-        td {
-            /* ... */
-        }
+        th { /* ... */ }
+        td { /* ... */ }
     }
 }
 ```

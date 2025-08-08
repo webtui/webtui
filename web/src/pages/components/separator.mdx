@@ -1,22 +1,22 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Separator
 ---
 
-import Example from '@/components/Example.astro'
-import separatorStyle from '@webtui/css/components/separator.css?raw'
-import boxStyle from '@webtui/css/utils/box.css?raw'
+import Example from '@/components/Example.astro';
+import separatorStyle from '@webtui/css/components/separator.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
 
 A horizontal or vertical separator
 
-<Example
-    stylesheets={[separatorStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-    `}
+<Example 
+    stylesheets={[
+        separatorStyle,
+    ]}
+css={`body {
+    display: flex;
+    flex-direction: column;
+}`}
     html={`<p>The quick brown fox obliterates</p>
 <div is-="separator"></div>
 <p>the lazy dog</p>
@@ -26,7 +26,7 @@ A horizontal or vertical separator
 ## Import
 
 ```css
-@import '@webtui/css/components/separator.css';
+@import "@webtui/css/components/separator.css";
 ```
 
 ## Usage
@@ -48,14 +48,14 @@ If `direction-` is not specified, separators are horizontal by default.
 
 ### Vertical
 
-<Example
-    stylesheets={[separatorStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: row;
-        }
-    `}
+<Example 
+    stylesheets={[
+        separatorStyle,
+    ]}
+css={`body {
+    display: flex;
+    flex-direction: row;
+}`}
     html={`<p>The lazy brown<br/>dog licks</p>
 <div is-="separator" direction-="vertical"></div>
 <p>the yucky<br/>fox</p>
@@ -70,21 +70,21 @@ Use the `cap-` attribute to control how the ends of the separator behave
 
 `cap-="bisect"` extends the edges of the separator by `0.5ch` making it ideal to use alongside the `box-` utility
 
-<Example
-    stylesheets={[separatorStyle, boxStyle]}
-    css={`
-        body,
-        .row {
-            display: flex;
-            flex-direction: row;
-            flex: 1;
-        }
-        .column {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-    `}
+<Example 
+    stylesheets={[
+        separatorStyle,
+        boxStyle,
+    ]}
+css={`body, .row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}`}
     html={`
 <div class="column">
     <div box-="square" class="column">
@@ -117,22 +117,22 @@ Use the `cap-` attribute to control how the ends of the separator behave
 
 `cap-="edge"` clips off the edges of the separator by `0.5ch` making it ideal for corners
 
-<Example
-    stylesheets={[separatorStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-            gap: 1lh;
-        }
-        .column {
-            display: flex;
-            flex-direction: column;
-        }
-        div[direction-='y'] {
-            height: 2lh;
-        }
-    `}
+<Example 
+    stylesheets={[
+        separatorStyle,
+    ]}
+css={`body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+div[direction-="y"] {
+    height: 2lh;
+}`}
     html={`
 <div class="column">
     <span>bisect</span>
@@ -165,22 +165,23 @@ You can specify two values for the `cap-` attribute to control the start and end
 <div is-="separator" cap-="bisect default"></div>
 ```
 
-<Example
-    stylesheets={[separatorStyle, boxStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-            gap: 1lh;
-        }
-        .column {
-            display: flex;
-            flex-direction: column;
-        }
-        div[direction-='y'] {
-            height: 2lh;
-        }
-    `}
+<Example 
+    stylesheets={[
+        separatorStyle,
+        boxStyle,
+    ]}
+css={`body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+div[direction-="y"] {
+    height: 2lh;
+}`}
     html={`
 <div box-="square" class="column">
     <div class="column">
@@ -209,19 +210,19 @@ Use the following custom CSS properties to style separators
 - `--separator-color`: The color of the separator line
 - `--separator-background`: The background color of the separator behind the line
 
-<Example
-    stylesheets={[separatorStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-        div[is-='separator'] {
-            --separator-width: 1px;
-            --separator-color: orange;
-            --separator-background: #444;
-        }
-    `}
+<Example 
+    stylesheets={[
+        separatorStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    flex-direction: column;
+}
+div[is-="separator"] {
+    --separator-width: 1px;
+    --separator-color: orange;
+    --separator-background: #444;
+}`}
     html={`<p>The quick green dog</p>
 <div is-="separator"></div>
 <p>eats the lazy fox</p>`}
@@ -233,9 +234,9 @@ To extend the Separator stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    input[type='checkbox'] {
-        /* ... */
-    }
+  input[type="checkbox"] {
+    /* ... */
+  }
 }
 ```
 
@@ -244,7 +245,7 @@ To extend the Separator stylesheet, define a CSS rule on the `components` layer
 - All elements with the `is-~="separator"` selector
 
 ```css
-input[type='checkbox'] {
-    /* ... */
+input[type="checkbox"] {
+  /* ... */
 }
 ```

@@ -1,23 +1,28 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Nord Theme
 ---
 
-import Example from '@/components/Example.astro'
-import typographyStyle from '@webtui/css/components/typography.css?raw'
-import badgeStyle from '@webtui/css/components/badge.css?raw'
-import buttonStyle from '@webtui/css/components/button.css?raw'
-import nordStyle from '@webtui/theme-nord?raw'
+import Example from '@/components/Example.astro';
+import typographyStyle from '@webtui/css/components/typography.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import nordStyle from '@webtui/theme-nord?raw';
 
 A port of the [Nord](https://nordtheme.com) color palette to WebTUI
 
 <Example
-    stylesheets={[typographyStyle, buttonStyle, badgeStyle, nordStyle]}
+    stylesheets={[
+        typographyStyle,
+        buttonStyle,
+        badgeStyle,
+        nordStyle,
+    ]}
     themes={{
-        nord: 'Nord',
+        'nord': 'Nord',
     }}
     data-initial-theme="nord"
-    html={`
+html={`
 <h1>Headings</h1>
 <h2>Are</h2>
 <h3>Colored</h3>
@@ -59,7 +64,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 Set the `data-webtui-theme` attribute to the `<html>` tag
 
 ```html
-<html data-webtui-theme="nord"></html>
+<html data-webtui-theme="nord">
 ```
 
 To only apply the theme to a specific element, use the same attribute

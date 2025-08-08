@@ -1,183 +1,155 @@
 ---
-import { getSingletonHighlighter } from 'shiki'
-type LineHighlight = 'add' | 'remove' | 'change'
+import { getSingletonHighlighter } from "shiki";
+type LineHighlight = "add" | "remove" | "change";
 
 interface Props {
-    code: string
-    lang?: 'html' | 'css'
-    file?: {
-        name: string
-        icon: [string, string] | string
-    }
-    highlights?: [number, LineHighlight][]
-    withShadow?: boolean
+	code: string;
+	lang?: "html" | "css";
+	file?: {
+		name: string;
+		icon: [string, string] | string;
+	};
+	highlights?: [number, LineHighlight][];
+	withShadow?: boolean;
 }
 
 const {
-    code,
-    highlights,
-    lang = 'html',
-    file,
-    withShadow = false,
-    ...props
-} = Astro.props
+	code,
+	highlights,
+	lang = "html",
+	file,
+	withShadow = false,
+	...props
+} = Astro.props;
 
 const highlighter = await getSingletonHighlighter({
-    themes: ['catppuccin-mocha'],
-    langs: ['html', 'css'],
-})
+	themes: ["catppuccin-mocha"],
+	langs: ["html", "css"],
+});
 const tokens = highlighter.codeToTokens(code, {
-    lang,
-    theme: 'catppuccin-mocha',
-})
+	lang,
+	theme: "catppuccin-mocha",
+});
 
-const fileIconText = Array.isArray(file?.icon) ? file.icon[0] : file?.icon
-const fileIconColor = Array.isArray(file?.icon) ? file.icon[1] : undefined
+const fileIconText = Array.isArray(file?.icon) ? file.icon[0] : file?.icon;
+const fileIconColor = Array.isArray(file?.icon) ? file.icon[1] : undefined;
 ---
 
 <column {...props}>
-    {
-        file && (
-            <row>
-                <span is-="badge" variant-="background1" cap-="slant-bottom">
-                    <row gap-="1" pad-="1 0">
-                        {fileIconText && (
-                            <span style={{ color: fileIconColor }}>
-                                {fileIconText}
-                            </span>
-                        )}
-                        <span>{file.name}</span>
-                        <span style="color: var(--foreground2)">&#xf467;</span>
-                    </row>
-                </span>
-            </row>
-        )
-    }
-    <table class={withShadow ? 'shadow' : undefined}>
-        <colgroup>
-            <col id="line-number" />
-            <col />
-        </colgroup>
-        <tbody>
-            {
-                tokens.tokens.map((tokensList, index) => (
-                    <tr
-                        highlight-={
-                            highlights?.find(([l]) => l === index)?.[1]
-                        }>
-                        <td class="line-number">{index + 1}</td>
-                        <td class="line-code">
-                            {tokensList.map((token) => (
-                                <span
-                                    style={{
-                                        color: token.color,
-                                        fontStyle: token.fontStyle,
-                                    }}>
-                                    {token.content}
-                                </span>
-                            ))}
-                        </td>
-                    </tr>
-                ))
-            }
-        </tbody>
-    </table>
+  {file && <row>
+    <span is-="badge" variant-="background1" cap-="slant-bottom">
+      <row gap-="1" pad-="1 0">
+        {fileIconText && <span style={{ color: fileIconColor }}>{fileIconText}</span>}
+        <span>{file.name}</span>
+        <span style="color: var(--foreground2)">&#xf467;</span>
+      </row>
+    </span>
+  </row>}
+  <table class={withShadow ? "shadow" : undefined}>
+    <colgroup>
+      <col id="line-number" />
+      <col />
+    </colgroup>
+    <tbody>
+      {tokens.tokens.map((tokensList, index) => (
+        <tr highlight-={highlights?.find(([l]) => l === index)?.[1]}>
+          <td class="line-number">{index + 1}</td>
+          <td class="line-code">{tokensList.map(token => <span style={{
+              color: token.color,
+              fontStyle: token.fontStyle,
+            }}>{token.content}</span>)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 </column>
 
 <style>
-    table {
-        border-collapse: collapse;
-        background-color: var(--background1);
-        flex-grow: 1;
+table {
+  border-collapse: collapse;
+  background-color: var(--background1);
+  flex-grow: 1;
 
-        &.shadow {
-            box-shadow: 1ch 0.5lh 0 0 var(--mantle);
-        }
+  &.shadow {
+    box-shadow: 1ch 0.5lh 0 0 var(--mantle);
+  }
+}
+
+#line-number {
+    background: linear-gradient(
+        to right, 
+        var(--background1) 0%,
+        var(--background1) calc(100% - 2px),
+        var(--background2) calc(100% - 2px),
+        var(--background2) 100%
+    );
+}
+
+colgroup {
+    height: 100%;
+}
+
+tr {
+  overflow: hidden;
+
+  &[highlight-] {
+    --highlight-color: var(--green);
+    --highlight-symbol: "+";
+
+    &[highlight-="remove"] {
+      --highlight-color: var(--red);
+      --highlight-symbol: "-";
     }
 
-    #line-number {
-        background: linear-gradient(
-            to right,
-            var(--background1) 0%,
-            var(--background1) calc(100% - 2px),
-            var(--background2) calc(100% - 2px),
-            var(--background2) 100%
-        );
-    }
-
-    colgroup {
-        height: 100%;
-    }
-
-    tr {
-        overflow: hidden;
-
-        &[highlight-] {
-            --highlight-color: var(--green);
-            --highlight-symbol: '+';
-
-            &[highlight-='remove'] {
-                --highlight-color: var(--red);
-                --highlight-symbol: '-';
-            }
-
-            &[highlight-='change'] {
-                --highlight-color: var(--mauve);
-                --highlight-symbol: '~';
-            }
-
-            .line-number {
-                background-color: color-mix(
-                    in srgb,
-                    var(--highlight-color) 30%,
-                    var(--background2) 50%
-                );
-                color: var(--foreground0);
-                position: relative;
-
-                &::before {
-                    content: var(--highlight-symbol);
-                    color: var(--highlight-color);
-                    position: absolute;
-                    left: 0;
-                }
-            }
-
-            .line-code {
-                background-color: color-mix(
-                    in srgb,
-                    var(--highlight-color) 15%,
-                    var(--background1) 50%
-                );
-            }
-        }
+    &[highlight-="change"] {
+      --highlight-color: var(--mauve);
+      --highlight-symbol: "~";
     }
 
     .line-number {
-        color: var(--foreground2);
-        text-align: right;
-        padding: 0 1ch;
-        width: 1%;
-        vertical-align: top;
-        text-align: right;
-        user-select: none;
+      background-color: color-mix(in srgb, var(--highlight-color) 30%, var(--background2) 50%);
+      color: var(--foreground0);
+      position: relative;
+
+      &::before {
+        content: var(--highlight-symbol);
+        color: var(--highlight-color);
+        position: absolute;
+        left: 0;
+      }
     }
 
     .line-code {
-        width: 100%;
-        white-space: pre-wrap;
-        white-space-collapse: preserve-spaces;
-        padding: 0 1ch;
-        vertical-align: top;
+      background-color: color-mix(in srgb, var(--highlight-color) 15%, var(--background1) 50%);
     }
+  }
+}
 
-    @media (max-width: 400px) {
-        .line-number {
-            display: none;
-        }
+.line-number {
+  color: var(--foreground2);
+  text-align: right;
+  padding: 0 1ch;
+  width: 1%;
+  vertical-align: top;
+  text-align: right;
+  user-select: none;
+}
 
-        #line-number {
-            /* background-color: var(--background0); */
-        }
-    }
+.line-code {
+  width: 100%;
+  white-space: pre-wrap;
+  white-space-collapse: preserve-spaces;
+  padding: 0 1ch;
+  vertical-align: top;
+}
+
+@media(max-width: 400px) {
+  .line-number {
+    display: none;
+  }
+
+  #line-number {
+    /* background-color: var(--background0); */
+  }
+}
 </style>

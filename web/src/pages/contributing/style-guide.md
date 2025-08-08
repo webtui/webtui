@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Style Guide
 ---
 
@@ -21,14 +21,13 @@ All selectors in components, utilities, and plugins should be nested within a CS
 
 ```css
 @layer components {
-    input[type='file'],
-    [is-=~'fileinput'] {
+    input[type="file"], [is-=~"fileinput"] {
         /* ... */
     }
 }
 
 @layer utils {
-    [is-~='tooltip'] {
+    [is-~="tooltip"] {
         /* ... */
     }
 }

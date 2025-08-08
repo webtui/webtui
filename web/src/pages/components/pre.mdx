@@ -1,21 +1,24 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Pre
 ---
 
-import Example from '@/components/Example.astro'
-import preStyle from '@webtui/css/components/pre.css?raw'
-import badgeStyle from '@webtui/css/components/badge.css?raw'
-import boxStyle from '@webtui/css/utils/box.css?raw'
+import Example from '@/components/Example.astro';
+import preStyle from '@webtui/css/components/pre.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
 
 Displays preformatted text
 
-<Example stylesheets={[preStyle]} html="<pre>This is preformatted text</pre>" />
+<Example 
+    stylesheets={[preStyle]}
+    html="<pre>This is preformatted text</pre>"
+/>
 
 ## Import
 
 ```css
-@import '@webtui/css/components/pre.css';
+@import "@webtui/css/components/pre.css";
 ```
 
 ## Usage
@@ -28,15 +31,15 @@ Displays preformatted text
 
 ### Sizing
 
-<Example
-    stylesheets={[preStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-            gap: 1lh;
-        }
-    `}
+<Example 
+    stylesheets={[
+        preStyle, 
+    ]}
+  css={`body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}`}
     html={`<pre size-="small">Small pre</pre>
 <pre>Default pre</pre>
 <pre size-="large">Large pre</pre>`}
@@ -60,9 +63,8 @@ To extend the Pre stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    pre,
-    [is-~='pre'] {
-        &[size-='thicc'] {
+    pre, [is-~="pre"] {
+        &[size-="thicc"] {
             height: 3lh;
             padding: 1lh 8ch;
         }
@@ -78,8 +80,5 @@ To extend the Pre stylesheet, define a CSS rule on the `components` layer
 - All elements with the `is-~="pre"` selector
 
 ```css
-pre,
-[is-~='pre'] {
-    /* ... */
-}
-```
+pre, [is-~="pre"] { /* ... */ }
+``` 

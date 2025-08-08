@@ -1,15 +1,17 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Switch
 ---
 
-import Example from '@/components/Example.astro'
-import switchStyle from '@webtui/css/components/switch.css?raw'
+import Example from '@/components/Example.astro';
+import switchStyle from '@webtui/css/components/switch.css?raw';
 
 Displays a switch
 
-<Example
-    stylesheets={[switchStyle]}
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
     html={`<label>
     <input type="checkbox" is-="switch" />
     Switch
@@ -19,7 +21,7 @@ Displays a switch
 ## Import
 
 ```css
-@import '@webtui/css/components/switch.css';
+@import "@webtui/css/components/switch.css";
 ```
 
 ## Usage
@@ -37,9 +39,11 @@ Displays a switch
 
 Use the `checked` attribute to set the initial value of the switch checkbox
 
-<Example
-    stylesheets={[switchStyle]}
-    html={`
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
 <label>
     <input type="checkbox" is-="switch" />
     Unchecked
@@ -55,9 +59,11 @@ Use the `checked` attribute to set the initial value of the switch checkbox
 
 Use the `disabled` attribute to disable the switch
 
-<Example
-    stylesheets={[switchStyle]}
-    html={`
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
 <label>
     <input type="checkbox" is-="switch" disabled />
     Disabled
@@ -73,9 +79,11 @@ Use the `disabled` attribute to disable the switch
 
 Use the `size-` attribute to set the size of the switch
 
-<Example
-    stylesheets={[switchStyle]}
-    html={`
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
 <label>
     <input type="checkbox" is-="switch" size-="small" />
     Small
@@ -91,9 +99,11 @@ Use the `size-` attribute to set the size of the switch
 
 Set the `bar-` attribute to `thin` or `line` to set the size of the switch bar
 
-<Example
-    stylesheets={[switchStyle]}
-    html={`
+<Example 
+    stylesheets={[
+        switchStyle, 
+    ]}
+html={`
 <label>
     <input type="checkbox" is-="switch" />
     Default
@@ -118,8 +128,8 @@ Set the `bar-` attribute to `thin` or `line` to set the size of the switch bar
 
 ```css
 #my-switch-input {
-    --switch-thumb-color: var(--foreground0);
-    --switch-track-color: var(--background1);
+  --switch-thumb-color: var(--foreground0);
+  --switch-track-color: var(--background1);
 }
 ```
 
@@ -129,9 +139,9 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    input[type='checkbox'][is-='switch'] {
-        /* ... */
-    }
+  input[type="checkbox"][is-="switch"] {
+    /* ... */
+  }
 }
 ```
 
@@ -140,7 +150,7 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 - All native `<input type="checkbox">` elements with `is-="switch"`
 
 ```css
-input[type='checkbox'][is-='switch'] {
-    /* ... */
+input[type="checkbox"][is-="switch"] {
+  /* ... */
 }
 ```

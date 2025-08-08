@@ -1,85 +1,84 @@
 @layer utils {
-    @property --box-rounded-radius {
-        syntax: '<length>';
-        inherits: false;
-        initial-value: 4px;
+  @property --box-rounded-radius {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 4px;
+  }
+
+  @property --box-border-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 2px;
+  }
+
+  @property --box-double-border-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 1px;
+  }
+
+  /* Requires `box-` to contain `square`, `round`, or `double` in order to work */
+  [box-="square"],
+  [box-="round"],
+  [box-="double"] {
+    position: relative;
+    isolation: isolate;
+    padding: 1lh 1ch;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: calc(100% - 1ch - var(--box-border-width));
+      height: calc(100% - 1lh - var(--box-border-width));
+      border: solid var(--box-border-width) var(--box-border-color);
+      z-index: -1;
     }
 
-    @property --box-border-width {
-        syntax: '<length>';
-        inherits: false;
-        initial-value: 2px;
+    /* Apply border radius to the inner and outer (if present) border */
+    &[box-="round"] {
+      &::before {
+        border-radius: var(--box-rounded-radius);
+      }
+
+      &::after {
+        border-radius: calc(var(--box-rounded-radius) + 2px);
+      }
     }
 
-    @property --box-double-border-width {
-        syntax: '<length>';
-        inherits: false;
-        initial-value: 1px;
+    /* Adds the second border to the element */
+    &[box-="double"] {
+      &::before {
+        border-width: var(--box-double-border-width);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        width: calc(100% - 1ch + var(--box-double-border-width) * 2);
+        height: calc(100% - 1lh + var(--box-double-border-width) * 2);
+        border: solid var(--box-double-border-width) var(--box-border-color);
+        z-index: -1;
+      }
     }
 
-    /* Requires `box-` to contain `square`, `round`, or `double` in order to work */
-    [box-='square'],
-    [box-='round'],
-    [box-='double'] {
-        position: relative;
-        isolation: isolate;
-        padding: 1lh 1ch;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            width: calc(100% - 1ch - var(--box-border-width));
-            height: calc(100% - 1lh - var(--box-border-width));
-            border: solid var(--box-border-width) var(--box-border-color);
-            z-index: -1;
-        }
-
-        /* Apply border radius to the inner and outer (if present) border */
-        &[box-='round'] {
-            &::before {
-                border-radius: var(--box-rounded-radius);
-            }
-
-            &::after {
-                border-radius: calc(var(--box-rounded-radius) + 2px);
-            }
-        }
-
-        /* Adds the second border to the element */
-        &[box-='double'] {
-            &::before {
-                border-width: var(--box-double-border-width);
-            }
-
-            &::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                translate: -50% -50%;
-                width: calc(100% - 1ch + var(--box-double-border-width) * 2);
-                height: calc(100% - 1lh + var(--box-double-border-width) * 2);
-                border: solid var(--box-double-border-width)
-                    var(--box-border-color);
-                z-index: -1;
-            }
-        }
-
-        /* Containment Variants */
-        &[shear-='both'] {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        &[shear-='top'] {
-            padding-top: 0;
-        }
-
-        &[shear-='bottom'] {
-            padding-bottom: 0;
-        }
+    /* Containment Variants */
+    &[shear-="both"] {
+      padding-top: 0;
+      padding-bottom: 0;
     }
+
+    &[shear-="top"] {
+      padding-top: 0;
+    }
+
+    &[shear-="bottom"] {
+      padding-bottom: 0;
+    }
+  }
 }

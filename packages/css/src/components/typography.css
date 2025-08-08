@@ -1,101 +1,101 @@
 @layer components {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: var(--font-family);
-        font-size: var(--font-size);
-        line-height: var(--line-height);
-        font-weight: var(--font-weight-bold);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    font-weight: var(--font-weight-bold);
 
-        code {
-            color: inherit;
-            background-color: var(--background1);
-            padding: 0 1ch;
-        }
+    code {
+      color: inherit;
+      background-color: var(--background1);
+      padding: 0 1ch;
+    }
+  }
+
+  ol {
+    list-style-position: inside;
+
+    li > ol {
+      margin-left: 2ch;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+
+    li::before {
+      color: inherit;
+      content: "- ";
     }
 
-    ol {
-        list-style-position: inside;
-
-        li > ol {
-            margin-left: 2ch;
-        }
+    &[marker-="bullet"] li::before {
+      content: "• ";
     }
 
-    ul {
-        list-style-type: none;
+    &[marker-~="tree"] {
+      li::before {
+        content: "├ ";
+      }
 
-        li::before {
-            color: inherit;
-            content: '- ';
-        }
+      &:not([marker-^="open"]) li:first-of-type::before {
+        content: "┌ ";
+      }
 
-        &[marker-='bullet'] li::before {
-            content: '• ';
-        }
-
-        &[marker-~='tree'] {
-            li::before {
-                content: '├ ';
-            }
-
-            &:not([marker-^='open']) li:first-of-type::before {
-                content: '┌ ';
-            }
-
-            &:not([marker-$='open']) li:last-of-type::before {
-                content: '└ ';
-            }
-        }
-
-        li > ul {
-            margin-left: 2ch;
-        }
+      &:not([marker-$="open"]) li:last-of-type::before {
+        content: "└ ";
+      }
     }
 
-    p,
-    blockquote,
-    li,
-    [is-~='typography-block'] {
-        font-family: var(--font-family);
-        font-size: var(--font-size);
-        line-height: var(--line-height);
-        color: var(--foreground1);
-
-        &:is(blockquote) {
-            padding-left: 2ch;
-            position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0.5ch;
-                width: var(--box-border-width, 2px);
-                height: 100%;
-                translate: -50%;
-                background-color: var(--background2);
-            }
-        }
-
-        strong {
-            font-weight: var(--font-weight-bold);
-            color: var(--foreground0);
-        }
-
-        a {
-            text-decoration: underline;
-            color: var(--foreground2);
-        }
-
-        code {
-            display: inline-block;
-            background-color: var(--background1);
-            padding-left: 1ch;
-            padding-right: 1ch;
-        }
+    li > ul {
+      margin-left: 2ch;
     }
+  }
+
+  p,
+  blockquote,
+  li,
+  [is-~="typography-block"] {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    color: var(--foreground1);
+
+    &:is(blockquote) {
+      padding-left: 2ch;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0.5ch;
+        width: var(--box-border-width, 2px);
+        height: 100%;
+        translate: -50%;
+        background-color: var(--background2);
+      }
+    }
+
+    strong {
+      font-weight: var(--font-weight-bold);
+      color: var(--foreground0);
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--foreground2);
+    }
+
+    code {
+      display: inline-block;
+      background-color: var(--background1);
+      padding-left: 1ch;
+      padding-right: 1ch;
+    }
+  }
 }

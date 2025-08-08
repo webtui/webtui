@@ -1,45 +1,40 @@
 ---
-import Footer from '@/components/Footer.astro'
+import Footer from '@/components/Footer.astro';
 ---
 
 <section>
-    <column self-="grow" align-="center">
-        <column class="content">
-            <column gap-="1">
-                <row gap-="1">
-                    <span is-="badge" variant-="flamingo">󱙳 Fin.</span>
-                </row>
-                <column>
-                    <row>
-                        <a href="/start/intro">
-                            <button>Get Started</button>
-                        </a>
-                    </row>
-                    <row>
-                        <a href="/examples">
-                            <button variant-="background2">View Examples</button
-                            >
-                        </a>
-                    </row>
-                    <row>
-                        <a
-                            href="https://github.com/webtui/webtui"
-                            target="_blank">
-                            <button variant-="background2"
-                                >Star on Github &#xf08e;</button
-                            >
-                        </a>
-                    </row>
-                </column>
-            </column>
+  <column self-="grow" align-="center">
+    <column class="content">
+      <column gap-="1">
+        <row gap-="1">
+          <span is-="badge" variant-="flamingo">󱙳 Fin.</span>
+        </row>
+        <column>
+          <row>
+            <a href="/start/intro">
+              <button>Get Started</button>
+            </a>
+          </row>
+          <row>
+            <a href="/examples">
+              <button variant-="background2">View Examples</button>
+            </a>
+          </row>
+          <row>
+            <a href="https://github.com/webtui/webtui" target="_blank">
+              <button variant-="background2">Star on Github &#xf08e;</button>
+            </a>
+          </row>
         </column>
+      </column>
     </column>
-    <Footer />
+  </column>
+  <Footer />
 </section>
 
 <style>
-    .content {
-        max-width: 80ch;
-        width: round(calc(100% - 2ch), 1ch);
-    }
+.content {
+  max-width: 80ch;
+  width: round(calc(100% - 2ch), 1ch);
+}
 </style>

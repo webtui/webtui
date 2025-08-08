@@ -1,11 +1,11 @@
 ---
-layout: '@/layouts/Doc.astro'
-title: 'Changelog'
+layout: "@/layouts/Doc.astro"
+title: "Changelog"
 ---
 
-import Example from '@/components/Example.astro'
-import buttonStyle from '@webtui/css/components/button.css?raw'
-import preStyle from '@webtui/css/components/pre.css?raw'
+import Example from '@/components/Example.astro';
+import buttonStyle from '@webtui/css/components/button.css?raw';
+import preStyle from '@webtui/css/components/pre.css?raw';
 
 ## 0.1.4
 
@@ -39,24 +39,12 @@ The markdown-like `#` markers on heading elements `<h1>`-`<h6>` have been remove
 If you intend to keep this behavior, use the following CSS code
 
 ```css
-h1::before {
-    content: '# ';
-}
-h2::before {
-    content: '## ';
-}
-h3::before {
-    content: '### ';
-}
-h4::before {
-    content: '#### ';
-}
-h5::before {
-    content: '##### ';
-}
-h6::before {
-    content: '###### ';
-}
+h1::before { content: "# "; }
+h2::before { content: "## "; }
+h3::before { content: "### "; }
+h4::before { content: "#### "; }
+h5::before { content: "##### "; }
+h6::before { content: "###### "; }
 ```
 
 #### Inherited Color Variables
@@ -99,15 +87,15 @@ The defaults for these variables can be controlled from `:root`
 
 The default size for `pre` elements has been changed to make them shorter
 
-<Example
-    stylesheets={[preStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-            gap: 1ch;
-        }
-    `}
+<Example 
+    stylesheets={[
+        preStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+}`}
     html={`<pre size-="small">Small</pre>
 <pre>Default</pre>
 <pre size-="large">Large (old default)</pre>`}
@@ -148,15 +136,15 @@ Since the selector for `box-` no longer allows more than one keyword, most eleme
 
 The default button variant has been changed to make the button shorter
 
-<Example
-    stylesheets={[buttonStyle]}
-    css={`
-        body {
-            display: flex;
-            align-items: flex-start;
-            gap: 1ch;
-        }
-    `}
+<Example 
+    stylesheets={[
+        buttonStyle, 
+    ]}
+    css={`body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1ch;
+}`}
     html={`<button size-="large">Large (old default)</button>
 <button>Default</button>
 <button size-="small">Small</button>

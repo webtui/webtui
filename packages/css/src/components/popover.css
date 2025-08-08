@@ -1,93 +1,93 @@
 @layer components {
-    @property --popover-offset-x {
-        syntax: '<length>';
-        inherits: true;
-        initial-value: 0;
+  @property --popover-offset-x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --popover-offset-y {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  details[is-~="popover"] {
+    --popover-backdrop-color: transparent;
+
+    position: relative;
+
+    summary {
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &::marker {
+        content: "";
+        display: none;
+      }
     }
 
-    @property --popover-offset-y {
-        syntax: '<length>';
-        inherits: true;
-        initial-value: 0;
-    }
-
-    details[is-~='popover'] {
-        --popover-backdrop-color: transparent;
-
-        position: relative;
-
-        summary {
-            &:focus {
-                text-decoration: underline;
-            }
-
-            &::marker {
-                content: '';
-                display: none;
-            }
+    &[open] {
+      summary {
+        &::before {
+          content: "";
+          display: block;
+          width: 100vw;
+          height: 100vh;
+          position: fixed;
+          inset: 0;
+          z-index: 1;
+          background-color: var(--popover-backdrop-color);
         }
 
-        &[open] {
-            summary {
-                &::before {
-                    content: '';
-                    display: block;
-                    width: 100vw;
-                    height: 100vh;
-                    position: fixed;
-                    inset: 0;
-                    z-index: 1;
-                    background-color: var(--popover-backdrop-color);
-                }
-
-                &::marker {
-                    content: '';
-                    display: none;
-                }
-            }
-
-            summary + * {
-                position: absolute;
-                z-index: 2;
-            }
-
-            &[position-~='baseline-left'] summary + *,
-            &:not([position-]) summary + * {
-                left: 0%;
-            }
-
-            &[position-~='baseline-right'] summary + * {
-                left: 100%;
-                translate: -100%;
-            }
-
-            &[position-~='left'] summary + * {
-                left: calc(var(--popover-offset-x) * -1);
-                translate: -100%;
-            }
-
-            &[position-~='right'] summary + * {
-                left: calc(100% + var(--popover-offset-x));
-            }
-
-            &[position-~='baseline-top'] summary + * {
-                top: 0%;
-            }
-
-            &[position-~='baseline-bottom'] summary + * {
-                top: 100%;
-                transform: translateY(-100%);
-            }
-
-            &[position-~='top'] summary + * {
-                top: calc(var(--popover-offset-y) * -1);
-                transform: translateY(-100%);
-            }
-
-            &[position-~='bottom'] summary + *,
-            &:not([position-]) summary + * {
-                top: calc(100% + var(--popover-offset-y));
-            }
+        &::marker {
+          content: "";
+          display: none;
         }
+      }
+
+      summary + * {
+        position: absolute;
+        z-index: 2;
+      }
+
+      &[position-~="baseline-left"] summary + *,
+      &:not([position-]) summary + * {
+        left: 0%;
+      }
+
+      &[position-~="baseline-right"] summary + * {
+        left: 100%;
+        translate: -100%;
+      }
+
+      &[position-~="left"] summary + * {
+        left: calc(var(--popover-offset-x) * -1);
+        translate: -100%;
+      }
+
+      &[position-~="right"] summary + * {
+        left: calc(100% + var(--popover-offset-x));
+      }
+
+      &[position-~="baseline-top"] summary + * {
+        top: 0%;
+      }
+
+      &[position-~="baseline-bottom"] summary + * {
+        top: 100%;
+        transform: translateY(-100%);
+      }
+
+      &[position-~="top"] summary + * {
+        top: calc(var(--popover-offset-y) * -1);
+        transform: translateY(-100%);
+      }
+
+      &[position-~="bottom"] summary + *,
+      &:not([position-]) summary + * {
+        top: calc(100% + var(--popover-offset-y));
+      }
     }
+  }
 }

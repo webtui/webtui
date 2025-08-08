@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: TUIs vs GUIs
 order: 2
 ---
@@ -59,11 +59,12 @@ If I were to create a box that is 10 characters wide and 5 lines tall, I would u
 
 ```css
 .box {
-    width: 10ch;
-    height: 5lh;
+  width: 10ch;
+  height: 5lh;
 }
 ```
 
 ---
 
 Now that you understand the differences between building TUIs and GUIs, let's dive in
+

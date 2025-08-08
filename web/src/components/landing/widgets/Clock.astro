@@ -1,27 +1,27 @@
 <row box-="square" class="widget" id="clock-widget" pad-="2 1">
-    <column align-="center" self-="!shrink" id="clock-circle">
-        <span>| |</span>
-        <span>⣀⡾⠋⠉⠉⠙⢷⣄</span>
-        <span>⡾ <span style="color: var(--red)">/</span> ⢷</span>
-        <span>⣇ <span style="color: var(--lavender)">|</span> ⢹</span>
-        <span>⢿ <span style="color: var(--lavender)">|</span> ⡾</span>
-        <span>⠙⢷⣄⣀⣀⣀⡾⠋</span>
-        <span>| |</span>
-    </column>
-    <column self-="grow" align-="center" gap-="1">
-        <span>Mon Jun 9</span>
-        <span>2:31 PM CST</span>
-    </column>
+  <column align-="center" self-="!shrink" id="clock-circle">
+    <span>|    |</span>
+    <span>⣀⡾⠋⠉⠉⠙⢷⣄</span>
+    <span>⡾    <span style="color: var(--red)">/</span>   ⢷</span>
+    <span>⣇   <span style="color: var(--lavender)">|</span>    ⢹</span>
+    <span>⢿   <span style="color: var(--lavender)">|</span>    ⡾</span>
+    <span>⠙⢷⣄⣀⣀⣀⡾⠋</span>
+    <span>|    |</span>
+  </column>
+  <column self-="grow" align-="center" gap-="1">
+    <span>Mon Jun 9</span>
+    <span>2:31 PM CST</span>
+  </column>
 </row>
 
 <style>
-    #clock-widget {
-        grid-column: 2;
-        grid-row: 4 / 5;
-    }
+#clock-widget {
+  grid-column: 2;
+  grid-row: 4 / 5;
+}
 
-    #clock-circle span {
-        white-space: pre;
-        color: var(--foreground2);
-    }
+#clock-circle span {
+  white-space: pre;
+  color: var(--foreground2);
+}
 </style>

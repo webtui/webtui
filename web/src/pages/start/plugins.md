@@ -1,5 +1,5 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Plugins
 order: -2
 ---

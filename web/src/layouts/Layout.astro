@@ -1,73 +1,64 @@
 ---
-import '@/styles/global.css'
+import '@/styles/global.css';
 ---
 
 <!doctype html>
 <html lang="en" data-webtui-theme="catppuccin">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <meta name="generator" content={Astro.generator} />
-        <title>WebTUI</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <meta name="generator" content={Astro.generator} />
+    <title>WebTUI</title>
 
-        <!-- Icon(s) -->
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-        <link rel="icon" type="image/png" href="/logo@64.png" />
+    <!-- Icon(s) -->
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" type="image/png" href="/logo@64.png" />
 
-        <!-- OpenGraph / X Title -->
-        <meta property="og:title" content="WebTUI" />
-        <meta name="twitter:title" content="WebTUI" />
+    <!-- OpenGraph / X Title -->
+    <meta property="og:title" content="WebTUI" />
+    <meta name="twitter:title" content="WebTUI" />
 
-        <!-- OpenGraph / X Description -->
-        <meta
-            name="description"
-            content="Modular CSS Library that brings the beauty of Terminal UIs to the browser"
-        />
-        <meta
-            name="og:description"
-            content="Modular CSS Library that brings the beauty of Terminal UIs to the browser"
-        />
-        <meta
-            name="twitter:description"
-            content="Modular CSS Library that brings the beauty of Terminal UIs to the browser"
-        />
+    <!-- OpenGraph / X Description -->
+    <meta
+      name="description"
+      content="Modular CSS Library that brings the beauty of Terminal UIs to the browser"
+    />
+    <meta
+      name="og:description"
+      content="Modular CSS Library that brings the beauty of Terminal UIs to the browser"
+    />
+    <meta
+      name="twitter:description"
+      content="Modular CSS Library that brings the beauty of Terminal UIs to the browser"
+    />
 
-        <!-- OpenGraph / X Cover Image -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:image"
-            content="https://webtui.ironclad.sh/cover.png"
-        />
-        <meta
-            property="og:image"
-            content="https://webtui.ironclad.sh/cover.png"
-        />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1920" />
-        <meta property="og:image:height" content="1200" />
+    <!-- OpenGraph / X Cover Image -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://webtui.ironclad.sh/cover.png" />
+    <meta property="og:image" content="https://webtui.ironclad.sh/cover.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1200" />
 
-        <!-- Misc Metadata -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://webtui.ironclad.sh" />
-        <meta name="twitter:site" content="@webtui" />
-        <meta name="twitter:creator" content="@IroncladDev" />
-        <meta name="twitter:url" content="https://webtui.ironclad.sh" />
-        <meta
-            name="keywords"
-            content="terminal, css, ui, tui, library, web, open-source"
-        />
-        <meta name="theme-color" content="#1e1e2e" />
+    <!-- Misc Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://webtui.ironclad.sh" />
+    <meta name="twitter:site" content="@webtui" />
+    <meta name="twitter:creator" content="@IroncladDev" />
+    <meta name="twitter:url" content="https://webtui.ironclad.sh" />
+    <meta
+      name="keywords"
+      content="terminal, css, ui, tui, library, web, open-source"
+    />
+    <meta name="theme-color" content="#1e1e2e" />
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <slot />
-    </body>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>

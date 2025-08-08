@@ -1,24 +1,26 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Input
 ---
 
-import Example from '@/components/Example.astro'
-import inputStyle from '@webtui/css/components/input.css?raw'
-import boxStyle from '@webtui/css/utils/box.css?raw'
-import badgeStyle from '@webtui/css/components/badge.css?raw'
+import Example from '@/components/Example.astro';
+import inputStyle from '@webtui/css/components/input.css?raw';
+import boxStyle from '@webtui/css/utils/box.css?raw';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
 
 Displays an input
 
-<Example
-    stylesheets={[inputStyle]}
+<Example 
+    stylesheets={[
+        inputStyle, 
+    ]}
     html={`<input placeholder="Type something" />`}
 />
 
 ## Import
 
 ```css
-@import '@webtui/css/components/input.css';
+@import "@webtui/css/components/input.css";
 ```
 
 ## Usage
@@ -31,15 +33,16 @@ Displays an input
 
 ### Sizing
 
-<Example
-    stylesheets={[inputStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-            gap: 1lh;
-        }
-    `}
+<Example 
+    stylesheets={[
+        inputStyle, 
+    ]}
+css={`
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}`}
     html={`
 <input size-="small" placeholder="Small" />
 <input placeholder="Default" />
@@ -53,21 +56,24 @@ The `box-` utility cannot be used directly on `<input>` elements because inputs 
 
 Instead, wrap an `<input>` with a `<label box-="*">` or use a `contenteditable` element
 
-<Example
-    stylesheets={[inputStyle, badgeStyle, boxStyle]}
+<Example 
+    stylesheets={[
+        inputStyle, 
+        badgeStyle,
+        boxStyle, 
+    ]}
     css={`
-        input {
-            background-color: var(--background0);
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            gap: 1lh;
-        }
-        .row {
-            display: flex;
-        }
-    `}
+input {
+    background-color: var(--background0);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+.row {
+    display: flex;
+}`}
     html={`<label box-="round" shear-="top">
     <div clas="row">
         <span is-="badge" variant-="background0">Username</span>
@@ -88,8 +94,8 @@ To extend the Input stylesheet, define a CSS rule on the `components` layer
 ```css
 @layer components {
     input,
-    [is-~='input'] {
-        &[size-='thicc'] {
+    [is-~="input"] {
+        &[size-="thicc"] {
             height: 3lh;
             padding: 1lh 8ch;
         }
@@ -106,7 +112,5 @@ To extend the Input stylesheet, define a CSS rule on the `components` layer
 
 ```css
 input,
-[is-~='input'] {
-    /* ... */
-}
+[is-~="input"] { /* ... */ }
 ```

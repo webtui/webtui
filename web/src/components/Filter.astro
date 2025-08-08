@@ -1,284 +1,278 @@
 ---
-import { docPages } from '@/utils/content'
-import type { MarkdownHeading } from 'astro'
+import { docPages } from '@/utils/content';
+import type { MarkdownHeading } from 'astro';
 
 const docHeadings = docPages
-    .map((page) => ({
-        headings:
-            (page.rendered?.metadata?.headings as
-                | Array<MarkdownHeading>
-                | undefined) ?? [],
-        title: page.data.title,
-        id: page.id,
-    }))
-    .reduce(
-        (prev, curr) => {
-            const headings: Array<[string, string | MarkdownHeading]> = [
-                [curr.id, curr.title],
-            ]
+  .map((page) => ({
+    headings:
+      (page.rendered?.metadata?.headings as
+        | Array<MarkdownHeading>
+        | undefined) ?? [],
+    title: page.data.title,
+    id: page.id,
+  }))
+  .reduce(
+    (prev, curr) => {
+      const headings: Array<[string, string | MarkdownHeading]> = [
+        [curr.id, curr.title],
+      ];
 
-            for (const heading of curr.headings) {
-                headings.push([curr.id, heading])
-            }
+      for (const heading of curr.headings) {
+        headings.push([curr.id, heading]);
+      }
 
-            return prev.concat(headings)
-        },
-        [] as Array<[string, string | MarkdownHeading]>,
-    )
+      return prev.concat(headings);
+    },
+    [] as Array<[string, string | MarkdownHeading]>,
+  );
 ---
 
 <dialog id="search-dialog" size-="small" position-="center" container-="fill">
-    <div box-="round" shear-="top" id="search-content">
-        <row align-="between">
-            <span is-="badge" variant-="background0">&#xea6d; Search</span>
-            <button id="close-btn" variant-="foreground0" size-="small"
-                >x</button
-            >
-        </row>
-        <column box-="round">
-            <input id="search-input" placeholder="Filter" autofocus />
-        </column>
+  <div box-="round" shear-="top" id="search-content">
+    <row align-="between">
+      <span is-="badge" variant-="background0">&#xea6d; Search</span>
+      <button id="close-btn" variant-="foreground0" size-="small">x</button>
+    </row>
+    <column box-="round">
+      <input id="search-input" placeholder="Filter" autofocus />
+    </column>
 
-        <div id="search-results">
-            <div id="search-results-container">
-                {
-                    docHeadings.map(([id, header], i) => {
-                        const headerText =
-                            typeof header === 'string' ? header : header.text
+    <div id="search-results">
+      <div id="search-results-container">
+        {
+          docHeadings.map(([id, header], i) => {
+            const headerText =
+              typeof header === "string" ? header : header.text;
 
-                        return (
-                            <a
-                                class:list={[
-                                    'search-result',
-                                    i === 0 ? 'active' : '',
-                                ]}
-                                tabindex="0"
-                                href={`/${id}${typeof header === 'string' ? '' : `#${header.slug}`}`}
-                                data-value={`${id}: ${headerText}`}>
-                                {id}:{' '}
-                                {typeof header === 'string'
-                                    ? ''
-                                    : '#'.repeat(header.depth)}
-                                {headerText}
-                            </a>
-                        )
-                    })
-                }
-            </div>
-        </div>
+            return (
+              <a
+                class:list={["search-result", i === 0 ? "active" : ""]}
+                tabindex="0"
+                href={`/${id}${typeof header === "string" ? "" : `#${header.slug}`}`}
+                data-value={`${id}: ${headerText}`}
+              >
+                {id}:{" "}
+                {typeof header === "string" ? "" : "#".repeat(header.depth)}
+                {headerText}
+              </a>
+            );
+          })
+        }
+      </div>
     </div>
+  </div>
 </dialog>
 
 <style>
-    #search-dialog {
-        position: fixed;
+  #search-dialog {
+    position: fixed;
 
-        &::backdrop {
-            backdrop-filter: grayscale(100%);
+    &::backdrop {
+      backdrop-filter: grayscale(100%);
+    }
+  }
+
+  #search-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #search-results {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+
+    #search-results-container {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding-left: 1ch;
+      padding-right: 1ch;
+      display: flex;
+      flex-direction: column;
+
+      .search-result {
+        text-decoration: none;
+        color: var(--foreground1);
+
+        &.hidden {
+          display: none;
         }
-    }
 
-    #search-content {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    #search-results {
-        flex-grow: 1;
-        overflow: hidden;
-        position: relative;
-
-        #search-results-container {
-            position: absolute;
-            inset: 0;
-            overflow-y: auto;
-            padding-left: 1ch;
-            padding-right: 1ch;
-            display: flex;
-            flex-direction: column;
-
-            .search-result {
-                text-decoration: none;
-                color: var(--foreground1);
-
-                &.hidden {
-                    display: none;
-                }
-
-                &:focus,
-                &:hover,
-                &.active {
-                    background-color: var(--background1);
-                }
-            }
+        &:focus,
+        &:hover,
+        &.active {
+          background-color: var(--background1);
         }
+      }
     }
+  }
 
-    #search-input {
-        background-color: var(--background0);
-    }
+  #search-input {
+    background-color: var(--background0);
+  }
 
-    &::highlight(search) {
-        background-color: var(--background2);
-        color: var(--foreground0);
-    }
+  &::highlight(search) {
+    background-color: var(--background2);
+    color: var(--foreground0);
+  }
 </style>
 
 <script>
-    import { isUserTyping, paginateElements } from '@/utils/vim'
+  import { isUserTyping, paginateElements } from "@/utils/vim";
 
-    const searchInput = document.getElementById(
-        'search-input',
-    ) as HTMLInputElement
-    const searchDialog = document.getElementById(
-        'search-dialog',
-    ) as HTMLDialogElement
-    const focusableLinks = document.querySelectorAll('.search-result')
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement;
+  const focusableLinks = document.querySelectorAll(".search-result");
 
-    let activeLink: HTMLAnchorElement | null =
-        (focusableLinks[0] as HTMLAnchorElement | null) ?? null
+  let activeLink: HTMLAnchorElement | null =
+    (focusableLinks[0] as HTMLAnchorElement | null) ?? null;
 
-    const treeWalker = document.createTreeWalker(
-        document.getElementById('search-results-container') as HTMLElement,
-        NodeFilter.SHOW_TEXT,
-    )
-    const allTextNodes: Array<Text> = []
-    let currentNode = treeWalker.nextNode()
-    while (currentNode) {
-        allTextNodes.push(currentNode as Text)
-        currentNode = treeWalker.nextNode()
+  const treeWalker = document.createTreeWalker(
+    document.getElementById("search-results-container") as HTMLElement,
+    NodeFilter.SHOW_TEXT,
+  );
+  const allTextNodes: Array<Text> = [];
+  let currentNode = treeWalker.nextNode();
+  while (currentNode) {
+    allTextNodes.push(currentNode as Text);
+    currentNode = treeWalker.nextNode();
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (isUserTyping()) return;
+
+    if (e.key === "/") {
+      e.preventDefault();
+      searchDialog.showModal();
+    }
+  });
+
+  searchInput.addEventListener("input", () => {
+    const value = searchInput.value.trim();
+
+    const focusableLinks = document.querySelectorAll(".search-result");
+
+    focusableLinks.forEach((element) => {
+      element.classList.remove("hidden");
+
+      if (
+        element
+          .getAttribute("data-value")
+          ?.toLowerCase()
+          .includes(value.toLowerCase())
+      )
+        return;
+
+      element.classList.add("hidden");
+    });
+
+    const visibleLinks = document.querySelectorAll(
+      ".search-result:not(.hidden)",
+    );
+
+    if (visibleLinks.length > 0) {
+      activeLink = visibleLinks[0] as HTMLAnchorElement;
+    } else {
+      activeLink = null;
     }
 
-    window.addEventListener('keydown', (e) => {
-        if (isUserTyping()) return
+    CSS.highlights.clear();
 
-        if (e.key === '/') {
-            e.preventDefault()
-            searchDialog.showModal()
-        }
-    })
+    if (!value) return;
 
-    searchInput.addEventListener('input', () => {
-        const value = searchInput.value.trim()
+    const ranges = allTextNodes
+      .map((el) => {
+        return { el, text: el.textContent?.toLowerCase() };
+      })
+      .map(({ text, el }) => {
+        const indices = [];
+        let startPos = 0;
 
-        const focusableLinks = document.querySelectorAll('.search-result')
-
-        focusableLinks.forEach((element) => {
-            element.classList.remove('hidden')
-
-            if (
-                element
-                    .getAttribute('data-value')
-                    ?.toLowerCase()
-                    .includes(value.toLowerCase())
-            )
-                return
-
-            element.classList.add('hidden')
-        })
-
-        const visibleLinks = document.querySelectorAll(
-            '.search-result:not(.hidden)',
-        )
-
-        if (visibleLinks.length > 0) {
-            activeLink = visibleLinks[0] as HTMLAnchorElement
-        } else {
-            activeLink = null
+        if (!text) return [];
+        while (startPos < text.length) {
+          const index = text.indexOf(value, startPos);
+          if (index === -1) break;
+          indices.push(index);
+          startPos = index + value.length;
         }
 
-        CSS.highlights.clear()
+        // Create a range object for each instance of
+        // str we found in the text node.
+        return indices.map((index) => {
+          const range = new Range();
+          range.setStart(el, index);
+          range.setEnd(el, index + value.length);
+          return range;
+        });
+      });
 
-        if (!value) return
+    // Create a Highlight object for the ranges.
+    const searchResultsHighlight = new Highlight(...ranges.flat());
 
-        const ranges = allTextNodes
-            .map((el) => {
-                return { el, text: el.textContent?.toLowerCase() }
-            })
-            .map(({ text, el }) => {
-                const indices = []
-                let startPos = 0
+    // Register the Highlight object in the registry.
+    CSS.highlights.set("search", searchResultsHighlight);
+  });
 
-                if (!text) return []
-                while (startPos < text.length) {
-                    const index = text.indexOf(value, startPos)
-                    if (index === -1) break
-                    indices.push(index)
-                    startPos = index + value.length
-                }
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || (e.key === "c" && e.ctrlKey)) {
+      e.preventDefault();
+      searchDialog.close();
+      return;
+    }
 
-                // Create a range object for each instance of
-                // str we found in the text node.
-                return indices.map((index) => {
-                    const range = new Range()
-                    range.setStart(el, index)
-                    range.setEnd(el, index + value.length)
-                    return range
-                })
-            })
+    if (!activeLink) return;
 
-        // Create a Highlight object for the ranges.
-        const searchResultsHighlight = new Highlight(...ranges.flat())
+    const visibleLinks = document.querySelectorAll(
+      ".search-result[tabindex]:not(.hidden)",
+    ) as NodeListOf<HTMLAnchorElement>;
 
-        // Register the Highlight object in the registry.
-        CSS.highlights.set('search', searchResultsHighlight)
-    })
+    const { prev, next } = paginateElements(activeLink, visibleLinks);
 
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' || (e.key === 'c' && e.ctrlKey)) {
-            e.preventDefault()
-            searchDialog.close()
-            return
-        }
+    if ((e.key === "n" && e.ctrlKey) || e.key === "ArrowDown") {
+      e.preventDefault();
 
-        if (!activeLink) return
+      visibleLinks.forEach((link) => {
+        link.classList.remove("active");
+      });
+      next.scrollIntoView({ block: "nearest", inline: "nearest" });
+      next.classList.add("active");
+    }
 
-        const visibleLinks = document.querySelectorAll(
-            '.search-result[tabindex]:not(.hidden)',
-        ) as NodeListOf<HTMLAnchorElement>
+    if ((e.key === "p" && e.ctrlKey) || e.key === "ArrowUp") {
+      e.preventDefault();
 
-        const { prev, next } = paginateElements(activeLink, visibleLinks)
+      visibleLinks.forEach((link) => {
+        link.classList.remove("active");
+      });
+      prev.scrollIntoView({ block: "nearest", inline: "nearest" });
+      prev.classList.add("active");
+    }
 
-        if ((e.key === 'n' && e.ctrlKey) || e.key === 'ArrowDown') {
-            e.preventDefault()
+    if (e.key === "Enter") {
+      e.preventDefault();
 
-            visibleLinks.forEach((link) => {
-                link.classList.remove('active')
-            })
-            next.scrollIntoView({ block: 'nearest', inline: 'nearest' })
-            next.classList.add('active')
-        }
+      activeLink?.click();
+    }
+  });
 
-        if ((e.key === 'p' && e.ctrlKey) || e.key === 'ArrowUp') {
-            e.preventDefault()
+  document.querySelectorAll(".search-result:not(.hidden)").forEach((link) => {
+    link.addEventListener("click", () => {
+      searchDialog.close();
+    });
+  });
 
-            visibleLinks.forEach((link) => {
-                link.classList.remove('active')
-            })
-            prev.scrollIntoView({ block: 'nearest', inline: 'nearest' })
-            prev.classList.add('active')
-        }
+  document.getElementById("close-btn")?.addEventListener("click", () => {
+    searchDialog.close();
+  });
 
-        if (e.key === 'Enter') {
-            e.preventDefault()
-
-            activeLink?.click()
-        }
-    })
-
-    document.querySelectorAll('.search-result:not(.hidden)').forEach((link) => {
-        link.addEventListener('click', () => {
-            searchDialog.close()
-        })
-    })
-
-    document.getElementById('close-btn')?.addEventListener('click', () => {
-        searchDialog.close()
-    })
-
-    searchDialog.addEventListener('click', (e) => {
-        if (e.target === searchDialog) searchDialog.close()
-    })
+  searchDialog.addEventListener("click", (e) => {
+    if (e.target === searchDialog) searchDialog.close();
+  });
 </script>

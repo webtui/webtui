@@ -1,15 +1,17 @@
 ---
-layout: '@/layouts/Doc.astro'
+layout: "@/layouts/Doc.astro"
 title: Badge
 ---
 
-import Example from '@/components/Example.astro'
-import badgeStyle from '@webtui/css/components/badge.css?raw'
+import Example from '@/components/Example.astro';
+import badgeStyle from '@webtui/css/components/badge.css?raw';
 
 Displays a badge
 
-<Example
-    stylesheets={[badgeStyle]}
+<Example 
+    stylesheets={[
+        badgeStyle, 
+    ]}
     html={`
 <span is-="badge">Badge</span>
 `}
@@ -18,7 +20,7 @@ Displays a badge
 ## Import
 
 ```css
-@import '@webtui/css/components/badge.css';
+@import "@webtui/css/components/badge.css";
 ```
 
 ## Usage
@@ -38,10 +40,10 @@ Use the `variant-` attribute to change the color of a badge
 <span is-="badge" variant-="background2">background2</span>
 ```
 
-<Example
+<Example 
     stylesheets={[
-        badgeStyle,
-        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`,
+        badgeStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
     ]}
     html={`
 <span is-="badge" variant-="background0">background0</span>
@@ -66,10 +68,10 @@ Use the `cap-` attribute to customize badges' end cap styles
 <span is-="badge" cap-="triangle">triangle</span>
 ```
 
-<Example
+<Example 
     stylesheets={[
-        badgeStyle,
-        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`,
+        badgeStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
     ]}
     html={`
 <span is-="badge" cap-="square">square</span>
@@ -83,10 +85,10 @@ Use the `cap-` attribute to customize badges' end cap styles
 
 Pass two values separated by a space to customize the start and end cap styles
 
-<Example
+<Example 
     stylesheets={[
-        badgeStyle,
-        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`,
+        badgeStyle, 
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
     ]}
     html={`
 <span is-="badge" cap-="square round">square round</span>
@@ -109,22 +111,22 @@ Use the following custom CSS properties to style badges
 
 ```css
 #my-custom-badge {
-    --badge-color: #ffffff;
-    --badge-text: #000000;
+  --badge-color: #ffffff;
+  --badge-text: #000000;
 }
 ```
 
 Using `background-color` directly will color behind the badge instead of coloring the badge shape
 
-<Example
-    stylesheets={[badgeStyle]}
-    css={`
-        span[is-='badge'] {
-            --badge-color: var(--foreground0);
-            --badge-text: var(--background0);
-            background-color: grey;
-        }
-    `}
+<Example 
+    stylesheets={[
+        badgeStyle, 
+    ]}
+    css={`span[is-="badge"] {
+    --badge-color: var(--foreground0);
+    --badge-text: var(--background0);
+    background-color: grey;
+}`}
     html={`<span is-="badge" cap-="slant-top">badge</span>`}
 />
 
@@ -134,8 +136,8 @@ To extend the Badge stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    [is-~='badge'] {
-        &[variant-='red'] {
+    [is-~="badge"] {
+        &[variant-="red"] {
             --badge-color: red;
             --badge-text: white;
         }
@@ -150,7 +152,5 @@ To extend the Badge stylesheet, define a CSS rule on the `components` layer
 - All elements with the `is-~="badge"` selector
 
 ```css
-[is-~='badge'] {
-    /* ... */
-}
+[is-~="badge"] { /* ... */ }
 ```
