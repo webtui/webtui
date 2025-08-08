@@ -1,45 +1,45 @@
 @layer components {
-  [data-webtui-theme|="catppuccin"] {
-    h1 {
-      color: var(--red);
-    }
-
-    h2 {
-      color: var(--peach);
-    }
-
-    h3 {
-      color: var(--yellow);
-    }
-
-    h4 {
-      color: var(--green);
-    }
-
-    h5 {
-      color: var(--blue);
-    }
-
-    h6 {
-      color: var(--lavender);
-    }
-
-    p,
-    blockquote,
-    li,
-    [is-~="typography-block"] {
-      a {
-        color: var(--sky);
-        text-decoration: underline;
-
-        &:hover {
-          color: var(--blue);
+    [data-webtui-theme|='catppuccin'] {
+        h1 {
+            color: var(--red);
         }
-      }
 
-      code {
-        color: var(--red);
-      }
+        h2 {
+            color: var(--peach);
+        }
+
+        h3 {
+            color: var(--yellow);
+        }
+
+        h4 {
+            color: var(--green);
+        }
+
+        h5 {
+            color: var(--blue);
+        }
+
+        h6 {
+            color: var(--lavender);
+        }
+
+        p,
+        blockquote,
+        li,
+        [is-~='typography-block'] {
+            a {
+                color: var(--sky);
+                text-decoration: underline;
+
+                &:hover {
+                    color: var(--blue);
+                }
+            }
+
+            code {
+                color: var(--red);
+            }
+        }
     }
-  }
 }

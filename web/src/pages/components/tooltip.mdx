@@ -1,34 +1,30 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Tooltip
 ---
 
-import Example from '@/components/Example.astro';
-import tooltipStyle from '@webtui/css/components/tooltip.css?raw';
-import buttonStyle from '@webtui/css/components/button.css?raw';
-import badgeStyle from '@webtui/css/components/badge.css?raw';
+import Example from '@/components/Example.astro'
+import tooltipStyle from '@webtui/css/components/tooltip.css?raw'
+import buttonStyle from '@webtui/css/components/button.css?raw'
+import badgeStyle from '@webtui/css/components/badge.css?raw'
 
 Displays information in a popup when a specified trigger is focused or hovered over
 
-<Example 
-    stylesheets={[
-        tooltipStyle, 
-buttonStyle,
-        badgeStyle
-    ]}
-css={`
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-[is-="tooltip-content"] {
-    background-color: var(--background1);
-    padding: 1lh 1ch;
-    width: 100%;
-}
-`}
+<Example
+    stylesheets={[tooltipStyle, buttonStyle, badgeStyle]}
+    css={`
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        [is-='tooltip-content'] {
+            background-color: var(--background1);
+            padding: 1lh 1ch;
+            width: 100%;
+        }
+    `}
     html={`
 <div is-="tooltip">
     <span is-="tooltip-trigger badge" variant-="background2">Hover me</span>
@@ -42,7 +38,7 @@ body {
 ## Import
 
 ```css
-@import "@webtui/css/components/tooltip.css";
+@import '@webtui/css/components/tooltip.css';
 ```
 
 ## Usage
@@ -60,30 +56,27 @@ body {
 
 ### Positioning
 
-<Example 
-    stylesheets={[
-        tooltipStyle, 
-        badgeStyle,
-    ]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-    justify-content: center;
-    height: 100vh;
-}
-.row {
-    display: flex;
-    gap: 1ch;
-aling-items: center;
-    justify-content: center;
-}
-[is-="tooltip-content"] {
-    background-color: var(--background1);
-    padding: 1lh 1ch;
-}
-`}
+<Example
+    stylesheets={[tooltipStyle, badgeStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+            justify-content: center;
+            height: 100vh;
+        }
+        .row {
+            display: flex;
+            gap: 1ch;
+            aling-items: center;
+            justify-content: center;
+        }
+        [is-='tooltip-content'] {
+            background-color: var(--background1);
+            padding: 1lh 1ch;
+        }
+    `}
     html={`
 <div class="row">
     <div is-="tooltip">
@@ -118,30 +111,27 @@ aling-items: center;
 
 Use `baseline-*` values to position the content relative to the edges of the tooltip
 
-<Example 
-    stylesheets={[
-        tooltipStyle, 
-        badgeStyle,
-    ]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-    justify-content: center;
-    height: 100vh;
-}
-.row {
-    display: flex;
-    gap: 1ch;
-aling-items: center;
-    justify-content: center;
-}
-[is-="tooltip-content"] {
-    background-color: var(--background1);
-    padding: 1lh 1ch;
-}
-`}
+<Example
+    stylesheets={[tooltipStyle, badgeStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+            justify-content: center;
+            height: 100vh;
+        }
+        .row {
+            display: flex;
+            gap: 1ch;
+            aling-items: center;
+            justify-content: center;
+        }
+        [is-='tooltip-content'] {
+            background-color: var(--background1);
+            padding: 1lh 1ch;
+        }
+    `}
     html={`
 <div class="row">
     <div is-="tooltip">
@@ -200,8 +190,8 @@ To extend the Tooltip stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    [is-~="tooltip"] {
-        &[variant-="inverted"] {
+    [is-~='tooltip'] {
+        &[variant-='inverted'] {
             /* ... */
         }
 
@@ -217,8 +207,12 @@ To extend the Tooltip stylesheet, define a CSS rule on the `components` layer
 - Children of `is-="tooltip"` with the `is-~="tooltip-content"` selector
 
 ```css
-[is-~="tooltip"] { 
-    [is-~="tooltip-trigger"] { /* ... */ }
-    [is-~="tooltip-content"] { /* ... */ }
+[is-~='tooltip'] {
+    [is-~='tooltip-trigger'] {
+        /* ... */
+    }
+    [is-~='tooltip-content'] {
+        /* ... */
+    }
 }
 ```

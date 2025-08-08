@@ -1,11 +1,11 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Nerd Font Plugin
 order: 2
 ---
 
-import pluginNf from "@webtui/plugin-nf?raw";
-import Example from "@/components/Example.astro";
+import pluginNf from '@webtui/plugin-nf?raw'
+import Example from '@/components/Example.astro'
 
 Provides additional glyphs from popular icon packs such as [Font Awesome](https://fontawesome.com), [Devicons](http://vorillaz.github.io/devicons/), [Octicons](https://github.com/github/octicons), and more (see https://nerdfonts.com)
 
@@ -25,11 +25,11 @@ pnpm i @webtui/plugin-nf
 Import the plugin at the end of your import chain
 
 ```css
-@import "@webtui/css/base.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/base.css';
+@import '@webtui/css/components/typography.css';
 /* ... */
 
-@import "@webtui/plugin-nf";
+@import '@webtui/plugin-nf';
 ```
 
 Add "Symbols Nerd Font" to the **end** of the `--font-family` fallback stack
@@ -54,6 +54,6 @@ Now you can use nerd font icons in your HTML and CSS
 }
 
 #rust::before {
-    content: "\\e68b"; 
+content: "\\e68b";
 }`}
 />

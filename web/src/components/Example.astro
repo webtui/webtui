@@ -1,34 +1,34 @@
 ---
-import webtuiBase from '@webtui/css/base.css?raw';
+import webtuiBase from '@webtui/css/base.css?raw'
 
-import Dropdown from '@/components/ui/Dropdown.astro';
-import Tabs from '@/components/ui/Tabs.astro';
+import Dropdown from '@/components/ui/Dropdown.astro'
+import Tabs from '@/components/ui/Tabs.astro'
 
-import CodePreview from './landing/CodePreview.astro';
+import CodePreview from './landing/CodePreview.astro'
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
-  html: string;
-  css?: string;
-  stylesheets?: string[];
-  /**
-   * A key-value pair of theme keys and labels
-   */
-  themes?: Record<string, string>;
+    html: string
+    css?: string
+    stylesheets?: string[]
+    /**
+     * A key-value pair of theme keys and labels
+     */
+    themes?: Record<string, string>
 }
 
-const { html, css, stylesheets, themes, ...rest } = Astro.props as Props;
+const { html, css, stylesheets, themes, ...rest } = Astro.props as Props
 ---
 
 <doc-example {...rest}>
-  <div id="container">
-    <div id="content">
-      <iframe
-        id="preview"
-        srcdoc={`<html data-webtui-theme="${rest["data-initial-theme"]}">
+    <div id="container">
+        <div id="content">
+            <iframe
+                id="preview"
+                srcdoc={`<html data-webtui-theme="${rest['data-initial-theme']}">
 <head>
 <style>@layer base, utils, components;</style>
 <style>${webtuiBase}</style>
-${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).join("") : ""}
+${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).join('') : ''}
 <style>
 @layer base {
   :root {
@@ -40,176 +40,188 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
   }
 }
 </style>
-${css ? `<style>${css}</style>` : ""}
+${css ? `<style>${css}</style>` : ''}
 </head>
 <body>${html}</body>
 </html>
 `}></iframe>
-      <div id="html-container">
-        <CodePreview code={html} />
-      </div>
-      {css && <div id="css-container">
-        <CodePreview code={css} lang="css" />
-      </div>}
-    </div>
+            <div id="html-container">
+                <CodePreview code={html} />
+            </div>
+            {
+                css && (
+                    <div id="css-container">
+                        <CodePreview code={css} lang="css" />
+                    </div>
+                )
+            }
+        </div>
 
-    <div id="header">
-      <Tabs id="example-code-tabs" data-secondary-variant="background2">
-        <button data-value="example" size-="small" variant-="foreground0">
-          &#xf03e; Example
-        </button>
-        <button data-value="code" size-="small" variant-="background2">
-          &#xf121; HTML
-        </button>
-        {
-          css && (
-            <button data-value="css" size-="small" variant-="background2">
-              &#xf121; CSS
-            </button>
-          )
-        }
-      </Tabs>
-      <Dropdown
-        label="󰏘 Theme "
-        items={{
-          ...themes,
-          dark: "Dark",
-          light: "Light",
-        }}
-        data-value={rest["data-initial-theme"]}
-        id="theme-dropdown"
-        position="bottom baseline-right"
-      />
+        <div id="header">
+            <Tabs id="example-code-tabs" data-secondary-variant="background2">
+                <button
+                    data-value="example"
+                    size-="small"
+                    variant-="foreground0">
+                    &#xf03e; Example
+                </button>
+                <button data-value="code" size-="small" variant-="background2">
+                    &#xf121; HTML
+                </button>
+                {
+                    css && (
+                        <button
+                            data-value="css"
+                            size-="small"
+                            variant-="background2">
+                            &#xf121; CSS
+                        </button>
+                    )
+                }
+            </Tabs>
+            <Dropdown
+                label="󰏘 Theme "
+                items={{
+                    ...themes,
+                    dark: 'Dark',
+                    light: 'Light',
+                }}
+                data-value={rest['data-initial-theme']}
+                id="theme-dropdown"
+                position="bottom baseline-right"
+            />
+        </div>
     </div>
-  </div>
 </doc-example>
 
 <style>
-  #container {
-    display: flex;
-    flex-direction: column-reverse;
-    max-width: 80ch;
-  }
-
-  #header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--background2);
-
-    #button-tabs {
-      display: flex;
-    }
-  }
-
-  #content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    #preview {
-      border: none;
-      outline: none;
-      min-height: 240px;
+    #container {
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: 80ch;
     }
 
-    #html-container,
-    #css-container {
-      max-height: 360px;
-      min-height: 240px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      background-color: var(--background1);
+    #header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--background2);
+
+        #button-tabs {
+            display: flex;
+        }
     }
 
-    #preview,
-    #html-container,
-    #css-container {
-      display: none;
-    }
-  }
+    #content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
 
-  doc-example:has(#example-code-tabs[data-tab="example"]) {
-    #preview {
-      display: block;
-    }
-  }
+        #preview {
+            border: none;
+            outline: none;
+            min-height: 240px;
+        }
 
-  doc-example:has(#example-code-tabs[data-tab="code"]) {
-    #html-container {
-      display: flex;
-    }
-  }
+        #html-container,
+        #css-container {
+            max-height: 360px;
+            min-height: 240px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--background1);
+        }
 
-  doc-example:has(#example-code-tabs[data-tab="css"]) {
-    #css-container {
-      display: flex;
+        #preview,
+        #html-container,
+        #css-container {
+            display: none;
+        }
     }
-  }
+
+    doc-example:has(#example-code-tabs[data-tab='example']) {
+        #preview {
+            display: block;
+        }
+    }
+
+    doc-example:has(#example-code-tabs[data-tab='code']) {
+        #html-container {
+            display: flex;
+        }
+    }
+
+    doc-example:has(#example-code-tabs[data-tab='css']) {
+        #css-container {
+            display: flex;
+        }
+    }
 </style>
 
 <script>
-  class Example extends HTMLElement {
-    constructor() {
-      super();
+    class Example extends HTMLElement {
+        constructor() {
+            super()
 
-      const self = this;
+            const self = this
 
-      const iframe = self.querySelector("#preview") as HTMLIFrameElement;
-      const colorPreference = window.matchMedia("(prefers-color-scheme: dark)");
-      const initialTheme = self.getAttribute("data-initial-theme");
-      const preferredTheme =
-        initialTheme ?? (colorPreference.matches ? "dark" : "light");
+            const iframe = self.querySelector('#preview') as HTMLIFrameElement
+            const colorPreference = window.matchMedia(
+                '(prefers-color-scheme: dark)',
+            )
+            const initialTheme = self.getAttribute('data-initial-theme')
+            const preferredTheme =
+                initialTheme ?? (colorPreference.matches ? 'dark' : 'light')
 
-      const iframeDocument = iframe.contentDocument;
+            const iframeDocument = iframe.contentDocument
 
-      if (!iframeDocument || iframeDocument.readyState === "loading") {
-        iframe.addEventListener("load", () => {
-          self.updateIframeTheme(preferredTheme);
-        });
-      } else {
-        // Weird race condition where the iframe can already be loaded
-        self.updateIframeTheme(preferredTheme);
-      }
+            if (!iframeDocument || iframeDocument.readyState === 'loading') {
+                iframe.addEventListener('load', () => {
+                    self.updateIframeTheme(preferredTheme)
+                })
+            } else {
+                // Weird race condition where the iframe can already be loaded
+                self.updateIframeTheme(preferredTheme)
+            }
 
-      const themeDropdown = self.querySelector(
-        "#theme-dropdown",
-      ) as HTMLElement;
-      const html = document.querySelector("html") as HTMLElement;
+            const themeDropdown = self.querySelector(
+                '#theme-dropdown',
+            ) as HTMLElement
+            const html = document.querySelector('html') as HTMLElement
 
-      // Watch for changes in the theme dropdown
-      new MutationObserver(() => {
-        const value = themeDropdown.getAttribute("data-value") as string;
-        html.setAttribute("data-example-theme", value);
-      }).observe(themeDropdown, {
-        attributes: true,
-        attributeFilter: ["data-value"],
-      });
+            // Watch for changes in the theme dropdown
+            new MutationObserver(() => {
+                const value = themeDropdown.getAttribute('data-value') as string
+                html.setAttribute('data-example-theme', value)
+            }).observe(themeDropdown, {
+                attributes: true,
+                attributeFilter: ['data-value'],
+            })
 
-      // Watch for changes in the html element
-      new MutationObserver(() => {
-        const value = html.getAttribute("data-example-theme");
-        self.updateIframeTheme(value ?? preferredTheme);
-      }).observe(html, {
-        attributes: true,
-        attributeFilter: ["data-example-theme"],
-      });
+            // Watch for changes in the html element
+            new MutationObserver(() => {
+                const value = html.getAttribute('data-example-theme')
+                self.updateIframeTheme(value ?? preferredTheme)
+            }).observe(html, {
+                attributes: true,
+                attributeFilter: ['data-example-theme'],
+            })
+        }
+
+        updateIframeTheme(theme: string) {
+            const iframe = this.querySelector('#preview') as HTMLIFrameElement
+
+            const previewDoc = iframe.contentDocument
+            const previewHtml = previewDoc?.querySelector('html')
+
+            if (!previewHtml) return
+
+            previewHtml.setAttribute('data-webtui-theme', theme)
+        }
     }
 
-    updateIframeTheme(theme: string) {
-      const iframe = this.querySelector("#preview") as HTMLIFrameElement;
-
-      const previewDoc = iframe.contentDocument;
-      const previewHtml = previewDoc?.querySelector("html");
-
-      if (!previewHtml) return;
-
-      previewHtml.setAttribute("data-webtui-theme", theme);
-    }
-  }
-
-  customElements.define("doc-example", Example);
+    customElements.define('doc-example', Example)
 </script>

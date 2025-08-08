@@ -1,50 +1,56 @@
-<column box-="square" align-="stretch end" class="widget" id="chart-widget" pad-="2 1">
-  <row>
+<column
+    box-="square"
+    align-="stretch end"
+    class="widget"
+    id="chart-widget"
+    pad-="2 1">
     <row>
-      <column gap-="1">
-        <span>4</span>
-        <span>2</span>
-        <span>0</span>
-      </column>
-      <div is-="separator" direction-="vertical" cap-="default edge" />
+        <row>
+            <column gap-="1">
+                <span>4</span>
+                <span>2</span>
+                <span>0</span>
+            </column>
+            <div is-="separator" direction-="vertical" cap-="default edge">
+            </div>
+        </row>
+        <column self-="grow">
+            <row self-="grow" gap-="1" align-="end start">
+                <div class="line" height-="2"></div>
+                <div class="line" height-="4"></div>
+                <div class="line" height-="3"></div>
+                <div class="line" height-="1"></div>
+                <div class="line" height-="2"></div>
+                <div class="line" height-="0"></div>
+                <div class="line" height-="1"></div>
+                <div class="line" height-="3"></div>
+            </row>
+            <row>
+                <row is-="separator" self-="grow" cap-="bisect default"></row>
+            </row>
+        </column>
     </row>
-    <column self-="grow">
-      <row self-="grow" gap-="1" align-="end start">
-        <div class="line" height-="2" />
-        <div class="line" height-="4" />
-        <div class="line" height-="3" />
-        <div class="line" height-="1" />
-        <div class="line" height-="2" />
-        <div class="line" height-="0" />
-        <div class="line" height-="1" />
-        <div class="line" height-="3" />
-      </row>  
-      <row>
-        <row is-="separator" self-="grow" cap-="bisect default" />
-      </row>
-    </column>
-  </row>
 </column>
 
 <style>
-#chart-widget {
-  grid-column: 1 / 2;
-  grid-row: 1;
-}
+    #chart-widget {
+        grid-column: 1 / 2;
+        grid-row: 1;
+    }
 
-.line {
-  height: attr(height- lh);
-  width: 1ch;
-  background-color: var(--green);
-}
+    .line {
+        height: attr(height- lh);
+        width: 1ch;
+        background-color: var(--green);
+    }
 
-[is-="separator"] {
-  --separator-width: 1px;
-  --separator-color: var(--background3);
-}
+    [is-='separator'] {
+        --separator-width: 1px;
+        --separator-color: var(--background3);
+    }
 
-#caption {
-  color: var(--foreground2);
-  white-space: nowrap;
-}
+    #caption {
+        color: var(--foreground2);
+        white-space: nowrap;
+    }
 </style>

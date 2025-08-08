@@ -1,5 +1,5 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Theming
 order: -1
 ---
@@ -16,7 +16,7 @@ These can be customized with the CSS `:root` selector on the `base` layer
 @layer base {
     :root {
         --font-size: 18px;
-        --font-family: "JetBrainsMono", monospace;
+        --font-family: 'JetBrainsMono', monospace;
     }
 }
 ```
@@ -54,7 +54,7 @@ Additional color accents/variants can be added to components individually with C
         --background3: #999;
 
         /* Default foreground color */
-        --foreground0: #000;        
+        --foreground0: #000;
         /* Foreground levels 1-2 */
         --foreground1: #444;
         --foreground2: #888;
@@ -78,7 +78,7 @@ Shown below is a screenshot showing the background and foreground colors of a ba
 To enable the dark theme, simply add `data-webtui-theme="dark"` to the `<html>` tag, or any element that should inherit the theme colors
 
 ```html
-<html data-webtui-theme="dark">
+<html data-webtui-theme="dark"></html>
 ```
 
 ## Theme Plugins
@@ -99,6 +99,6 @@ If you intend to use multiple themes, you can use CSS variable fallbacks to use 
 
 ```css
 #my-element {
-    color: var(--gb-aqua, var(--blue, var(--cyan)))
+    color: var(--gb-aqua, var(--blue, var(--cyan)));
 }
 ```

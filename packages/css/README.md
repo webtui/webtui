@@ -20,7 +20,7 @@ In your global CSS file, define the order of layers using the `@layer` at-rule [
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
+@import '@webtui/css/base.css';
 ```
 
 Import the desired utilities, components, and themes **after** importing the base stylesheet
@@ -28,12 +28,12 @@ Import the desired utilities, components, and themes **after** importing the bas
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
+@import '@webtui/css/base.css';
 
 /* Utils */
-@import "@webtui/css/utils/box.css";
+@import '@webtui/css/utils/box.css';
 
 /* Components */
-@import "@webtui/css/components/button.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/components/button.css';
+@import '@webtui/css/components/typography.css';
 ```

@@ -1,24 +1,18 @@
-
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Vitesse Theme
 ---
 
-import Example from '@/components/Example.astro';
-import typographyStyle from '@webtui/css/components/typography.css?raw';
-import vitesseStyle from '@webtui/theme-vitesse?raw';
-import badgeStyle from '@webtui/css/components/badge.css?raw';
-import buttonStyle from '@webtui/css/components/button.css?raw';
+import Example from '@/components/Example.astro'
+import typographyStyle from '@webtui/css/components/typography.css?raw'
+import vitesseStyle from '@webtui/theme-vitesse?raw'
+import badgeStyle from '@webtui/css/components/badge.css?raw'
+import buttonStyle from '@webtui/css/components/button.css?raw'
 
 A port of the [Vitesse](https://github.com/antfu/vscode-theme-vitesse) color palette to [WebTUI](https://github.com/webtui/webtui).
 
 <Example
-    stylesheets={[
-        typographyStyle,
-        buttonStyle,
-        badgeStyle,
-        vitesseStyle,
-    ]}
+    stylesheets={[typographyStyle, buttonStyle, badgeStyle, vitesseStyle]}
     themes={{
         'vitesse-dark': 'Vitesse Dark',
         'vitesse-dark-soft': 'Vitesse Dark Soft',
@@ -27,7 +21,7 @@ A port of the [Vitesse](https://github.com/antfu/vscode-theme-vitesse) color pal
         'vitesse-light-soft': 'Vitesse Light Soft',
     }}
     data-initial-theme="vitesse-dark"
-html={`
+    html={`
 <h1>Headings</h1>
 <h2>Are</h2>
 <h3>Colored</h3>
@@ -60,11 +54,11 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/base.css';
+@import '@webtui/css/components/typography.css';
 /* ... */
 
-@import "@webtui/theme-vitesse";
+@import '@webtui/theme-vitesse';
 ```
 
 Set the `data-webtui-theme` attribute on the `<html>` tag or a container element.
@@ -77,15 +71,15 @@ To only apply the theme to a specific element:
 
 ```html
 <html data-webtui-theme="dark">
-  <!-- Example base theme -->
-  <body>
-    <div data-webtui-theme="vitesse-light">
-      <!-- Vitesse light styles applied here -->
-    </div>
-    <div data-webtui-theme="vitesse-dark-soft">
-      <!-- Vitesse dark-soft styles applied here -->
-    </div>
-  </body>
+    <!-- Example base theme -->
+    <body>
+        <div data-webtui-theme="vitesse-light">
+            <!-- Vitesse light styles applied here -->
+        </div>
+        <div data-webtui-theme="vitesse-dark-soft">
+            <!-- Vitesse dark-soft styles applied here -->
+        </div>
+    </body>
 </html>
 ```
 
@@ -96,11 +90,16 @@ Supports dark and light modes, each with normal and soft contrast levels.
 ```html
 <!-- defaults to vitesse-dark -->
 <html data-webtui-theme="vitesse-black">
-<html data-webtui-theme="vitesse-dark-soft">
-<html data-webtui-theme="vitesse-dark">
-<html data-webtui-theme="vitesse-light">
-<html data-webtui-theme="vitesse-light-soft">
+    <html data-webtui-theme="vitesse-dark-soft">
+        <html data-webtui-theme="vitesse-dark">
+            <html data-webtui-theme="vitesse-light">
+                <html data-webtui-theme="vitesse-light-soft"></html>
+            </html>
+        </html>
+    </html>
+</html>
 ```
+
 ## Components
 
 Components affected/modified by the theme:
@@ -152,39 +151,39 @@ Adds additional variants to buttons matching Vitesse accent colors.
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
-[data-webtui-theme="vitesse-*-*"] {
-  --bg1: #2f363d;
-  --bg2: #393a34;
-  --bg3: #444d56;
-  --bg4: #586069;
-  --fg0: #dbd7ca;
-  --fg1: #c9c8c0;
-  --fg2: #b8bab7;
-  --fg3: #a6abae;
-  --fg4: #959da5;
+[data-webtui-theme='vitesse-*-*'] {
+    --bg1: #2f363d;
+    --bg2: #393a34;
+    --bg3: #444d56;
+    --bg4: #586069;
+    --fg0: #dbd7ca;
+    --fg1: #c9c8c0;
+    --fg2: #b8bab7;
+    --fg3: #a6abae;
+    --fg4: #959da5;
 
-  --gray: #586069;
-  --red: #cb7676;
-  --green: #4d9375;
-  --yellow: #e6cc77;
-  --blue: #6394bf;
-  --purple: #d9739f;
-  --aqua: #5eaab5;
-  --orange: #d4976c;
+    --gray: #586069;
+    --red: #cb7676;
+    --green: #4d9375;
+    --yellow: #e6cc77;
+    --blue: #6394bf;
+    --purple: #d9739f;
+    --aqua: #5eaab5;
+    --orange: #d4976c;
 }
 ```
 
 The base background/foreground colors use the following CSS variables from the Vitesse palette
 
 ```css
-[data-webtui-theme="vitesse-*-*"] {
-  --background0: var(--bg0);
-  --background1: var(--bg1);
-  --background2: var(--bg2);
-  --background3: var(--bg3);
+[data-webtui-theme='vitesse-*-*'] {
+    --background0: var(--bg0);
+    --background1: var(--bg1);
+    --background2: var(--bg2);
+    --background3: var(--bg3);
 
-  --foreground0: var(--fg0);
-  --foreground1: var(--fg1);
-  --foreground2: var(--fg2);
+    --foreground0: var(--fg0);
+    --foreground1: var(--fg1);
+    --foreground2: var(--fg2);
 }
 ```

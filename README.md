@@ -46,6 +46,8 @@ All the officially-maintained packages in the monorepo
 - [@webtui/theme-catppuccin](https://npmjs.com/package/@webtui/theme-catppuccin)
 - [@webtui/theme-gruvbox](https://npmjs.com/package/@webtui/theme-gruvbox)
 - [@webtui/theme-nord](https://npmjs.com/package/@webtui/theme-nord)
+- [@webtui/theme-vitesse](https://npmjs.com/package/@webtui/theme-vitesse)
+- [@webtui/theme-everforest](https://npmjs.com/package/@webtui/theme-everforest)
 
 ## Development
 
@@ -68,5 +70,3 @@ This repository is a monorepo that contains the website and all the official Web
     ```bash
     bun run dev
     ```
-
-You'll want to set up [Biome](https://biomejs.dev/) as your linter and formatter

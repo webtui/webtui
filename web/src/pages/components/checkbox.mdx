@@ -1,17 +1,15 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Checkbox
 ---
 
-import Example from '@/components/Example.astro';
-import checkboxStyle from '@webtui/css/components/checkbox.css?raw';
+import Example from '@/components/Example.astro'
+import checkboxStyle from '@webtui/css/components/checkbox.css?raw'
 
 Displays a checkbox
 
-<Example 
-    stylesheets={[
-        checkboxStyle, 
-    ]}
+<Example
+    stylesheets={[checkboxStyle]}
     html={`<label>
     <input type="checkbox" />
     Checkbox
@@ -21,7 +19,7 @@ Displays a checkbox
 ## Import
 
 ```css
-@import "@webtui/css/components/checkbox.css";
+@import '@webtui/css/components/checkbox.css';
 ```
 
 ## Usage
@@ -37,11 +35,9 @@ Displays a checkbox
 
 ### Checked/Unchecked
 
-<Example 
-    stylesheets={[
-        checkboxStyle, 
-    ]}
-html={`
+<Example
+    stylesheets={[checkboxStyle]}
+    html={`
 <label>
     <input type="checkbox" />
     Unchecked
@@ -55,11 +51,9 @@ html={`
 
 ### Disabled
 
-<Example 
-    stylesheets={[
-        checkboxStyle, 
-    ]}
-html={`
+<Example
+    stylesheets={[checkboxStyle]}
+    html={`
 <label>
     <input type="checkbox" disabled />
     Disabled
@@ -79,9 +73,9 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-  input[type="checkbox"]:not([is-="switch"]) {
-    /* ... */
-  }
+    input[type='checkbox']:not([is-='switch']) {
+        /* ... */
+    }
 }
 ```
 
@@ -90,7 +84,7 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 - All native `<input type="checkbox">` elements without `is-="switch"`
 
 ```css
-input[type="checkbox"]:not([is-="switch"]) {
-  /* ... */
+input[type='checkbox']:not([is-='switch']) {
+    /* ... */
 }
 ```
