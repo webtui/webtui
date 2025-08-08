@@ -1,5 +1,5 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Installation
 order: 3
 ---
@@ -28,7 +28,7 @@ Ensure you define the layer order **before** importing the base stylesheet
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
+@import '@webtui/css/base.css';
 ```
 
 Import the desired utilities, components, and themes **after** the base stylesheet
@@ -36,14 +36,14 @@ Import the desired utilities, components, and themes **after** the base styleshe
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
+@import '@webtui/css/base.css';
 
 /* Utils */
-@import "@webtui/css/utils/box.css";
+@import '@webtui/css/utils/box.css';
 
 /* Components */
-@import "@webtui/css/components/button.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/components/button.css';
+@import '@webtui/css/components/typography.css';
 ```
 
 If you aren't using a bundler, see [Using a CDN](#using-a-cdn) instead
@@ -53,14 +53,14 @@ If you aren't using a bundler, see [Using a CDN](#using-a-cdn) instead
 Stylesheets can be imported via ESM if your bundler supports it
 
 ```tsx
-import "@webtui/css/components/button.css";
+import '@webtui/css/components/button.css'
 
 type Props = {
-  /* ... */
-};
+    /* ... */
+}
 
 export default function Button(props: Props) {
-  return <button>{props.children}</button>;
+    return <button>{props.children}</button>
 }
 ```
 
@@ -72,16 +72,16 @@ If you aren't using a bundler, you can import the CSS files from a CDN like [JSD
 
 ```html
 <style>
-  @layer base, utils, components;
+    @layer base, utils, components;
 
-  @import "https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/base.css";
+    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/base.css';
 
-  /* Utils */
-  @import "https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/utils/box.css";
+    /* Utils */
+    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/utils/box.css';
 
-  /* Components */
-  @import "https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/components/button.css";
-  @import "https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/components/typography.css";
+    /* Components */
+    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/components/button.css';
+    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/components/typography.css';
 </style>
 ```
 
@@ -99,7 +99,7 @@ Import the library using the direct package name **after** defining the order of
 
 ```html
 <style>
-    @import "@webtui/css";
+    @import '@webtui/css';
 </style>
 ```
 
@@ -110,7 +110,7 @@ If you aren't using a bundler, see [CDN](#cdn)
 Import the library using the direct package name
 
 ```js
-import "@webtui/css";
+import '@webtui/css'
 ```
 
 ### CDN
@@ -119,7 +119,7 @@ Import the `/dist/full.css` path instead of the base path
 
 ```html
 <style>
-    @import "https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/full.css";
+    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/full.css';
 </style>
 ```
 
@@ -127,7 +127,6 @@ Optionally, you can use a `<link>` tag
 
 ```html
 <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/full.css"
-/>
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/full.css" />
 ```

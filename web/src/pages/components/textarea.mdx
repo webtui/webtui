@@ -1,27 +1,25 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Textarea
 ---
 
-import Example from '@/components/Example.astro';
-import textareaStyle from '@webtui/css/components/textarea.css?raw';
-import boxStyle from '@webtui/css/utils/box.css?raw';
-import badgeStyle from '@webtui/css/components/badge.css?raw';
+import Example from '@/components/Example.astro'
+import textareaStyle from '@webtui/css/components/textarea.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
+import badgeStyle from '@webtui/css/components/badge.css?raw'
 
 Displays a textarea.
 
-<Example 
-    stylesheets={[
-        textareaStyle, 
-    ]}
+<Example
+    stylesheets={[textareaStyle]}
     html={`<textarea placeholder="Type something..."></textarea>`}
 />
 
 ## Import
 
 ```css
-@import "@webtui/css/components/textarea.css";
-````
+@import '@webtui/css/components/textarea.css';
+```
 
 ## Usage
 
@@ -34,16 +32,15 @@ Displays a textarea.
 ### Sizing
 
 <Example
-stylesheets={[
-textareaStyle,
-]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}`}
-html={`
+    stylesheets={[textareaStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+        }
+    `}
+    html={`
 <textarea size-="small" placeholder="Small textarea"></textarea>
 <textarea placeholder="Default textarea"></textarea>
 <textarea size-="large" placeholder="Large textarea"></textarea>
@@ -59,8 +56,8 @@ To customize textarea styles, extend the component using `@layer components`:
 ```css
 @layer components {
     textarea,
-    [is-~="textarea"] {
-        &[size-="thicc"] {
+    [is-~='textarea'] {
+        &[size-='thicc'] {
             min-height: 6lh;
             padding: 2lh 4ch;
         }
@@ -72,12 +69,12 @@ To customize textarea styles, extend the component using `@layer components`:
 
 ### Scope
 
-* All native `<textarea>` elements
-* Any element with `is-~="textarea"`
+- All native `<textarea>` elements
+- Any element with `is-~="textarea"`
 
 ```css
 textarea,
-[is-~="textarea"] {
-  /* ... */
+[is-~='textarea'] {
+    /* ... */
 }
 ```

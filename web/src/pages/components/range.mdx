@@ -1,25 +1,23 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Range
 ---
 
-import Example from '@/components/Example.astro';
-import rangeStyle from '@webtui/css/components/range.css?raw';
-import boxStyle from '@webtui/css/utils/box.css?raw';
+import Example from '@/components/Example.astro'
+import rangeStyle from '@webtui/css/components/range.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
 
 A range slider input
 
 <Example
-    stylesheets={[
-        rangeStyle,
-    ]}
+    stylesheets={[rangeStyle]}
     html={`<input type="range" min="0" max="100" value="50" />`}
 />
 
 ## Import
 
 ```css
-@import "@webtui/css/components/range.css";
+@import '@webtui/css/components/range.css';
 ```
 
 ## Usage
@@ -33,15 +31,14 @@ A range slider input
 ### Basic Range
 
 <Example
-    stylesheets={[
-        rangeStyle,
-    ]}
+    stylesheets={[rangeStyle]}
     css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}`}
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+        }
+    `}
     html={`
 <input type="range" min="0" max="100" value="25" />
 <input type="range" min="0" max="100" value="50" />
@@ -52,15 +49,14 @@ body {
 ### Track Styles
 
 <Example
-    stylesheets={[
-        rangeStyle,
-    ]}
+    stylesheets={[rangeStyle]}
     css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}`}
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+        }
+    `}
     html={`
 <input type="range" min="0" max="100" value="40" />
 <input type="range" bar-="thick" min="0" max="100" value="50" />
@@ -71,14 +67,14 @@ body {
 ### With Labels
 
 <Example
-    stylesheets={[
-        rangeStyle,
-    ]}
-    css={`body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}`}
+    stylesheets={[rangeStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+        }
+    `}
     html={`
 <label>
     Volume
@@ -117,8 +113,7 @@ body {
     Disabled
     <input type="range" min="0" max="100" value="30" disabled />
 </label>
-`}
-/>
+`} />
 
 ## Reference
 
@@ -133,9 +128,9 @@ Use CSS custom properties to customize the range appearance
 
 ```css
 #my-range {
-  --range-track-color: var(--background2);
-  --range-thumb-color: var(--foreground2);
-  --range-thumb-color-focus: var(--foreground0);
+    --range-track-color: var(--background2);
+    --range-thumb-color: var(--foreground2);
+    --range-thumb-color-focus: var(--foreground0);
 }
 ```
 
@@ -145,8 +140,8 @@ To extend the Range stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    input[type="range"] {
-        &[variant-="accent"] {
+    input[type='range'] {
+        &[variant-='accent'] {
             --range-track-color: var(--accent-color);
             --range-thumb-color: var(--accent-foreground);
         }
@@ -161,5 +156,7 @@ To extend the Range stylesheet, define a CSS rule on the `components` layer
 - All `<input type="range">` elements
 
 ```css
-input[type="range"] { /* ... */ }
+input[type='range'] {
+    /* ... */
+}
 ```

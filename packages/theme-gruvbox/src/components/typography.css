@@ -1,30 +1,30 @@
 @layer components {
-  [data-webtui-theme|="gruvbox"] {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: var(--gb-green);
-    }
-
-    p,
-    blockquote,
-    li,
-    [is-~="typography-block"] {
-      a {
-        color: var(--gb-blue);
-        text-decoration: underline;
-
-        &:hover {
-          color: var(--gb-aqua);
+    [data-webtui-theme|='gruvbox'] {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--gb-green);
         }
-      }
 
-      code {
-        color: var(--gb-orange);
-      }
+        p,
+        blockquote,
+        li,
+        [is-~='typography-block'] {
+            a {
+                color: var(--gb-blue);
+                text-decoration: underline;
+
+                &:hover {
+                    color: var(--gb-aqua);
+                }
+            }
+
+            code {
+                color: var(--gb-orange);
+            }
+        }
     }
-  }
 }

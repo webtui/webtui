@@ -1,5 +1,5 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Developing Plugins
 order: -1
 ---
@@ -20,8 +20,13 @@ The requirements for developing a plugin are very simple:
 To define styles for a specific layer, use the CSS `@layer` at-rule [[MDN Reference]](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
 
 ```css
-@layer base {/* ... */}
-@layer utils {/* ... */}
-@layer components {/* ... */}
+@layer base {
+    /* ... */
+}
+@layer utils {
+    /* ... */
+}
+@layer components {
+    /* ... */
+}
 ```
-

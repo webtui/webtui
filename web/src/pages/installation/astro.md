@@ -1,5 +1,5 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Astro
 order: 3
 ---
@@ -18,7 +18,7 @@ Define the order of layers and import the base stylesheet in your global CSS fil
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
+@import '@webtui/css/base.css';
 ```
 
 Import additional utilities, components, and themes the CSS file
@@ -26,21 +26,21 @@ Import additional utilities, components, and themes the CSS file
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
+@import '@webtui/css/base.css';
 
 /* Utils */
-@import "@webtui/css/utils/box.css";
+@import '@webtui/css/utils/box.css';
 
 /* Components */
-@import "@webtui/css/components/button.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/components/button.css';
+@import '@webtui/css/components/typography.css';
 ```
 
 Import the global CSS file in your root layout file in the frontmatter section
 
 ```astro
 ---
-import '../styles/global.css';
+import '../styles/global.css'
 ---
 ```
 
@@ -54,7 +54,7 @@ Import the desired file in the frontmatter section of your component
 
 ```astro
 ---
-import '@webtui/css/components/button.css';
+import '@webtui/css/components/button.css'
 ---
 ```
 
@@ -66,7 +66,7 @@ Add the `is:global` modifier to the `<style>` tag if you intend to import a CSS 
 
 ```html
 <style is:global>
-    @import "@webtui/css/components/button.css";
+    @import '@webtui/css/components/button.css';
 </style>
 ```
 
@@ -75,13 +75,13 @@ Add the `is:global` modifier to the `<style>` tag if you intend to import a CSS 
 Modify `astro.config.mjs` and enable `noExternal` for `@webtui/css` if you intend to import the [Full Library](/start/installation#full-library-import) [[docs](https://docs.astro.build/en/guides/styling/#import-a-stylesheet-from-an-npm-package)]
 
 ```js
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-  vite: {
-    ssr: {
-      noExternal: ['package-name'],
-    }
-  }
+    vite: {
+        ssr: {
+            noExternal: ['package-name'],
+        },
+    },
 })
 ```

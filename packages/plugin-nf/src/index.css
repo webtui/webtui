@@ -1,9 +1,10 @@
 @font-face {
-  font-family: "Symbols Nerd Font";
-  src: local("SymbolsNerdFont-Regular"),
-    url("https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@latest/build/fonts/SymbolsNerdFont-Regular.woff2")
-    format("woff2");
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400;
+    font-family: 'Symbols Nerd Font';
+    src:
+        local('SymbolsNerdFont-Regular'),
+        url('https://cdn.jsdelivr.net/gh/mshaugh/nerdfont-webfonts@latest/build/fonts/SymbolsNerdFont-Regular.woff2')
+            format('woff2');
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
 }

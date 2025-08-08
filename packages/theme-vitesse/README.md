@@ -20,11 +20,11 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/base.css';
+@import '@webtui/css/components/typography.css';
 /* ... */
 
-@import "@webtui/theme-vitesse";
+@import '@webtui/theme-vitesse';
 ```
 
 Set the `data-webtui-theme` attribute on the `<html>` tag or a container element.
@@ -37,15 +37,15 @@ To only apply the theme to a specific element:
 
 ```html
 <html data-webtui-theme="dark">
-  <!-- Example base theme -->
-  <body>
-    <div data-webtui-theme="vitesse-light-soft">
-      <!-- Vitesse light-soft styles applied here -->
-    </div>
-    <div data-webtui-theme="vitesse-dark-soft">
-      <!-- Vitesse dark-soft styles applied here -->
-    </div>
-  </body>
+    <!-- Example base theme -->
+    <body>
+        <div data-webtui-theme="vitesse-light-soft">
+            <!-- Vitesse light-soft styles applied here -->
+        </div>
+        <div data-webtui-theme="vitesse-dark-soft">
+            <!-- Vitesse dark-soft styles applied here -->
+        </div>
+    </body>
 </html>
 ```
 
@@ -56,13 +56,17 @@ Supports dark and light modes, each with hard, medium, and soft contrast levels.
 ```html
 <!-- Dark Variants -->
 <html data-webtui-theme="vitesse-black">
-<html data-webtui-theme="vitesse-dark-soft">
-<!-- Default: vitesse-dark or vitesse-black -->
-<html data-webtui-theme="vitesse-dark">
-<!-- Light Variants -->
-<html data-webtui-theme="vitesse-light">
-<!-- Default: vitesse-light -->
-<html data-webtui-theme="vitesse-light-soft">
+    <html data-webtui-theme="vitesse-dark-soft">
+        <!-- Default: vitesse-dark or vitesse-black -->
+        <html data-webtui-theme="vitesse-dark">
+            <!-- Light Variants -->
+            <html data-webtui-theme="vitesse-light">
+                <!-- Default: vitesse-light -->
+                <html data-webtui-theme="vitesse-light-soft"></html>
+            </html>
+        </html>
+    </html>
+</html>
 ```
 
 ## Components
@@ -116,39 +120,39 @@ Adds additional variants to buttons matching Vitesse accent colors.
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
-[data-webtui-theme="vitesse-*-*"] {
-  --bg1: #2f363d;
-  --bg2: #393a34;
-  --bg3: #444d56;
-  --bg4: #586069;
-  --fg0: #dbd7ca;
-  --fg1: #c9c8c0;
-  --fg2: #b8bab7;
-  --fg3: #a6abae;
-  --fg4: #959da5;
+[data-webtui-theme='vitesse-*-*'] {
+    --bg1: #2f363d;
+    --bg2: #393a34;
+    --bg3: #444d56;
+    --bg4: #586069;
+    --fg0: #dbd7ca;
+    --fg1: #c9c8c0;
+    --fg2: #b8bab7;
+    --fg3: #a6abae;
+    --fg4: #959da5;
 
-  --gray: #586069;
-  --red: #cb7676;
-  --green: #4d9375;
-  --yellow: #e6cc77;
-  --blue: #6394bf;
-  --purple: #d9739f;
-  --aqua: #5eaab5;
-  --orange: #d4976c;
+    --gray: #586069;
+    --red: #cb7676;
+    --green: #4d9375;
+    --yellow: #e6cc77;
+    --blue: #6394bf;
+    --purple: #d9739f;
+    --aqua: #5eaab5;
+    --orange: #d4976c;
 }
 ```
 
 The base background/foreground colors use the following CSS variables from the Vitesse palette
 
 ```css
-[data-webtui-theme="vitesse-*-*"] {
-  --background0: var(--bg0);
-  --background1: var(--bg1);
-  --background2: var(--bg2);
-  --background3: var(--bg3);
+[data-webtui-theme='vitesse-*-*'] {
+    --background0: var(--bg0);
+    --background1: var(--bg1);
+    --background2: var(--bg2);
+    --background3: var(--bg3);
 
-  --foreground0: var(--fg0);
-  --foreground1: var(--fg1);
-  --foreground2: var(--fg2);
+    --foreground0: var(--fg0);
+    --foreground1: var(--fg1);
+    --foreground2: var(--fg2);
 }
 ```

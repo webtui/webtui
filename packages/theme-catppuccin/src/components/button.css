@@ -1,75 +1,75 @@
 @layer components {
-  [data-webtui-theme|="catppuccin"] {
-    button {
-      &[variant-="rosewater"] {
-        --button-primary: var(--rosewater);
-        --button-secondary: var(--background0);
-      }
+    [data-webtui-theme|='catppuccin'] {
+        button {
+            &[variant-='rosewater'] {
+                --button-primary: var(--rosewater);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="flamingo"] {
-        --button-primary: var(--flamingo);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='flamingo'] {
+                --button-primary: var(--flamingo);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="pink"] {
-        --button-primary: var(--pink);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='pink'] {
+                --button-primary: var(--pink);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="mauve"] {
-        --button-primary: var(--mauve);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='mauve'] {
+                --button-primary: var(--mauve);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="red"] {
-        --button-primary: var(--red);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='red'] {
+                --button-primary: var(--red);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="maroon"] {
-        --button-primary: var(--maroon);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='maroon'] {
+                --button-primary: var(--maroon);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="peach"] {
-        --button-primary: var(--peach);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='peach'] {
+                --button-primary: var(--peach);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="yellow"] {
-        --button-primary: var(--yellow);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='yellow'] {
+                --button-primary: var(--yellow);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="green"] {
-        --button-primary: var(--green);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='green'] {
+                --button-primary: var(--green);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="teal"] {
-        --button-primary: var(--teal);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='teal'] {
+                --button-primary: var(--teal);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="sky"] {
-        --button-primary: var(--sky);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='sky'] {
+                --button-primary: var(--sky);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="sapphire"] {
-        --button-primary: var(--sapphire);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='sapphire'] {
+                --button-primary: var(--sapphire);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="blue"] {
-        --button-primary: var(--blue);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='blue'] {
+                --button-primary: var(--blue);
+                --button-secondary: var(--background0);
+            }
 
-      &[variant-="lavender"] {
-        --button-primary: var(--lavender);
-        --button-secondary: var(--background0);
-      }
+            &[variant-='lavender'] {
+                --button-primary: var(--lavender);
+                --button-secondary: var(--background0);
+            }
+        }
     }
-  }
 }

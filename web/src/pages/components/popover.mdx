@@ -1,23 +1,21 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Popover
 ---
 
-import Example from '@/components/Example.astro';
-import popoverStyle from '@webtui/css/components/popover.css?raw';
+import Example from '@/components/Example.astro'
+import popoverStyle from '@webtui/css/components/popover.css?raw'
 
 Creates a popover component powered by the [Details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) and [Summary](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary) elements
 
-<Example 
-    stylesheets={[
-        popoverStyle, 
-    ]}
-css={`
-div {
-    background-color: var(--background1);
-    padding: 1lh 1ch;
-}
-`}
+<Example
+    stylesheets={[popoverStyle]}
+    css={`
+        div {
+            background-color: var(--background1);
+            padding: 1lh 1ch;
+        }
+    `}
     html={`
 <details is-="popover">
     <summary>Click Me</summary>
@@ -29,7 +27,7 @@ div {
 ## Import
 
 ```css
-@import "@webtui/css/components/popover.css";
+@import '@webtui/css/components/popover.css';
 ```
 
 ## Usage
@@ -57,33 +55,31 @@ Pass two values into `position-` to set the horizontal and vertical position anc
 <details is-="popover" position-="start end"></details>
 ```
 
-<Example 
-    stylesheets={[
-        popoverStyle, 
-    ]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-    justify-content: center;
-    height: 100vh;
-}
-.row {
-    display: flex;
-    gap: 1ch;
-aling-items: center;
-    justify-content: center;
-}
-summary {
-    background-color: var(--background1);
-}
-.popover-content {
-    background-color: var(--background1);
-    white-space: nowrap;
-    padding: 1lh 1ch;
-}
-`}
+<Example
+    stylesheets={[popoverStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+            justify-content: center;
+            height: 100vh;
+        }
+        .row {
+            display: flex;
+            gap: 1ch;
+            aling-items: center;
+            justify-content: center;
+        }
+        summary {
+            background-color: var(--background1);
+        }
+        .popover-content {
+            background-color: var(--background1);
+            white-space: nowrap;
+            padding: 1lh 1ch;
+        }
+    `}
     html={`
 <div class="row">
     <details is-="popover" position-="bottom right">
@@ -110,29 +106,27 @@ summary {
 
 Use `baseline-*` values to position the content relative to the edges of the popover
 
-<Example 
-    stylesheets={[
-        popoverStyle, 
-    ]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}
-.row {
-    display: flex;
-    gap: 1ch;
-}
-summary {
-    background-color: var(--background1);
-}
-.popover-content {
-    background-color: var(--background1);
-    white-space: nowrap;
-    padding: 1lh 1ch;
-}
-`}
+<Example
+    stylesheets={[popoverStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+        }
+        .row {
+            display: flex;
+            gap: 1ch;
+        }
+        summary {
+            background-color: var(--background1);
+        }
+        .popover-content {
+            background-color: var(--background1);
+            white-space: nowrap;
+            padding: 1lh 1ch;
+        }
+    `}
     html={`
 <div class="row">
     <details is-="popover" position-="bottom baseline-right">
@@ -163,25 +157,23 @@ The image below shows the values and positions that can be used in the `position
 
 ### Backdrop
 
-<Example 
-    stylesheets={[
-        popoverStyle, 
-    ]}
-css={`
-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-}
-[is-="popover"] {
-    --popover-backdrop-color: rgba(0, 0, 0, 0.5);
-}
-.popover-content {
-    background-color: var(--background1);
-    white-space: nowrap;
-    padding: 1lh 1ch;
-}
-`}
+<Example
+    stylesheets={[popoverStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+        }
+        [is-='popover'] {
+            --popover-backdrop-color: rgba(0, 0, 0, 0.5);
+        }
+        .popover-content {
+            background-color: var(--background1);
+            white-space: nowrap;
+            padding: 1lh 1ch;
+        }
+    `}
     html={`<details is-="popover">
     <summary>Click Me</summary>
     <div class="popover-content">Popover content</div>
@@ -206,7 +198,9 @@ Elements using the `box-` utility that appear **after** the popover in the html 
         <summary>Popover</summary>
         <div>Popover content</div>
     </details>
-    <div box-="square">Will appear above the open popover since defined after it in the html</div>
+    <div box-="square">
+        Will appear above the open popover since defined after it in the html
+    </div>
 </div>
 ```
 
@@ -221,7 +215,9 @@ As a workaround, you can set the `flex-direction` to `row-reverse` or `column-re
 </style>
 
 <div class="column-reverse">
-    <div box-="square">Will appear behind the open popover since defined before it in the html</div>
+    <div box-="square">
+        Will appear behind the open popover since defined before it in the html
+    </div>
     <details is-="popover">
         <summary>Popover</summary>
         <div>Popover content</div>
@@ -251,8 +247,8 @@ To extend the Popover stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    details[is-~="popover"] {
-        &[variant-="inverted"] {
+    details[is-~='popover'] {
+        &[variant-='inverted'] {
             /* ... */
         }
 
@@ -261,9 +257,10 @@ To extend the Popover stylesheet, define a CSS rule on the `components` layer
 }
 ```
 
-
 ### Scope
 
 ```css
-details[is-~="popover"] { /* ... */ }
+details[is-~='popover'] {
+    /* ... */
+}
 ```

@@ -1,23 +1,18 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Catppuccin Theme
 ---
 
-import Example from '@/components/Example.astro';
-import typographyStyle from '@webtui/css/components/typography.css?raw';
-import badgeStyle from '@webtui/css/components/badge.css?raw';
-import buttonStyle from '@webtui/css/components/button.css?raw';
-import catppuccinStyle from '@webtui/theme-catppuccin?raw';
+import Example from '@/components/Example.astro'
+import typographyStyle from '@webtui/css/components/typography.css?raw'
+import badgeStyle from '@webtui/css/components/badge.css?raw'
+import buttonStyle from '@webtui/css/components/button.css?raw'
+import catppuccinStyle from '@webtui/theme-catppuccin?raw'
 
 A port of the [Catppuccin](https://catppuccin.com) color palette to WebTUI
 
 <Example
-    stylesheets={[
-        typographyStyle,
-        badgeStyle,
-        buttonStyle,
-        catppuccinStyle,
-    ]}
+    stylesheets={[typographyStyle, badgeStyle, buttonStyle, catppuccinStyle]}
     themes={{
         'catppuccin-mocha': 'Catppuccin Mocha',
         'catppuccin-macchiato': 'Catppuccin Macchiato',
@@ -25,7 +20,7 @@ A port of the [Catppuccin](https://catppuccin.com) color palette to WebTUI
         'catppuccin-latte': 'Catppuccin Latte',
     }}
     data-initial-theme="catppuccin-macchiato"
-html={`
+    html={`
 <h1>Lots</h1>
 <h2>Of</h2>
 <h3>Colored</h3>
@@ -70,7 +65,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 Set the `data-webtui-theme` attribute to the `<html>` tag
 
 ```html
-<html data-webtui-theme="catppuccin-mocha">
+<html data-webtui-theme="catppuccin-mocha"></html>
 ```
 
 To only apply the theme to a specific element, use the same attribute
@@ -92,10 +87,14 @@ Supports all four Catppuccin theme flavors.
 ```html
 <!-- `catppuccin` defaults to `catppuccin-mocha` -->
 <html data-webtui-theme="catppuccin">
-<html data-webtui-theme="catppuccin-mocha">
-<html data-webtui-theme="catppuccin-macchiato">
-<html data-webtui-theme="catppuccin-frappe">
-<html data-webtui-theme="catppuccin-latte">
+    <html data-webtui-theme="catppuccin-mocha">
+        <html data-webtui-theme="catppuccin-macchiato">
+            <html data-webtui-theme="catppuccin-frappe">
+                <html data-webtui-theme="catppuccin-latte"></html>
+            </html>
+        </html>
+    </html>
+</html>
 ```
 
 ## Components
@@ -149,7 +148,7 @@ Adds additional variants to buttons matching all custom accent colors
 Adds the following CSS variables to the `base` layer
 
 ```css
-[data-webtui-theme="catppuccin-*"] {
+[data-webtui-theme='catppuccin-*'] {
     /* Accent Colors */
     --rosewater: #f5e0dc;
     --flamingo: #f2cdcd;
@@ -185,7 +184,7 @@ Adds the following CSS variables to the `base` layer
 The base background/foreground colors use the following CSS variables from the Catppuccin palette
 
 ```css
-[data-webtui-theme="catppuccin-*"] {
+[data-webtui-theme='catppuccin-*'] {
     --background0: var(--base);
     --background1: var(--surface0);
     --background2: var(--surface1);
