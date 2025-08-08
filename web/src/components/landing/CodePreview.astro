@@ -1,34 +1,34 @@
 ---
-import { getSingletonHighlighter } from 'shiki';
-type LineHighlight = 'add' | 'remove' | 'change';
+import { getSingletonHighlighter } from "shiki";
+type LineHighlight = "add" | "remove" | "change";
 
 interface Props {
-  code: string;
-  lang?: 'html' | 'css';
-  file?: {
-    name: string;
-    icon: [string, string] | string;
-  }
-  highlights?: [number, LineHighlight][];
-  withShadow?: boolean;
+	code: string;
+	lang?: "html" | "css";
+	file?: {
+		name: string;
+		icon: [string, string] | string;
+	};
+	highlights?: [number, LineHighlight][];
+	withShadow?: boolean;
 }
 
 const {
-  code,
-  highlights,
-  lang = 'html',
-  file,
-  withShadow = false,
-  ...props
+	code,
+	highlights,
+	lang = "html",
+	file,
+	withShadow = false,
+	...props
 } = Astro.props;
 
 const highlighter = await getSingletonHighlighter({
-  themes: ['catppuccin-mocha'],
-  langs: ['html', 'css'],
+	themes: ["catppuccin-mocha"],
+	langs: ["html", "css"],
 });
 const tokens = highlighter.codeToTokens(code, {
-  lang,
-  theme: 'catppuccin-mocha',
+	lang,
+	theme: "catppuccin-mocha",
 });
 
 const fileIconText = Array.isArray(file?.icon) ? file.icon[0] : file?.icon;
@@ -76,7 +76,13 @@ table {
 }
 
 #line-number {
-  background-color: var(--background2);
+    background: linear-gradient(
+        to right, 
+        var(--background1) 0%,
+        var(--background1) calc(100% - 2px),
+        var(--background2) calc(100% - 2px),
+        var(--background2) 100%
+    );
 }
 
 colgroup {
@@ -126,6 +132,7 @@ tr {
   width: 1%;
   vertical-align: top;
   text-align: right;
+  user-select: none;
 }
 
 .line-code {
@@ -142,7 +149,7 @@ tr {
   }
 
   #line-number {
-    background-color: var(--background1);
+    /* background-color: var(--background0); */
   }
 }
 </style>
