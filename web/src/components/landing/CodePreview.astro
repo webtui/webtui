@@ -66,17 +66,15 @@ const fileIconColor = Array.isArray(file?.icon) ? file.icon[1] : undefined
                             highlights?.find(([l]) => l === index)?.[1]
                         }>
                         <td class="line-number">{index + 1}</td>
-                        <td class="line-code">
-                            {tokensList.map((token) => (
-                                <span
-                                    style={{
-                                        color: token.color,
-                                        fontStyle: token.fontStyle,
-                                    }}>
-                                    {token.content}
-                                </span>
-                            ))}
-                        </td>
+                        <td
+                            class="line-code"
+                            set:html={tokensList
+                                .map(
+                                    (token) =>
+                                        `<span style="color: ${token.color}; font-style: ${token.fontStyle};">${token.content.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</span>`,
+                                )
+                                .join('')}
+                        />
                     </tr>
                 ))
             }
@@ -166,7 +164,7 @@ const fileIconColor = Array.isArray(file?.icon) ? file.icon[1] : undefined
     .line-code {
         width: 100%;
         white-space: pre-wrap;
-        white-space-collapse: preserve-spaces;
+        tap-size: 4;
         padding: 0 1ch;
         vertical-align: top;
     }
@@ -174,10 +172,6 @@ const fileIconColor = Array.isArray(file?.icon) ? file.icon[1] : undefined
     @media (max-width: 400px) {
         .line-number {
             display: none;
-        }
-
-        #line-number {
-            /* background-color: var(--background0); */
         }
     }
 </style>
