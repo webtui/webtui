@@ -1,40 +1,38 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
-import Project from '@/components/Project.astro';
+import Layout from '@/layouts/Layout.astro'
+import Navbar from '@/components/Navbar.astro'
+import Footer from '@/components/Footer.astro'
+import Project from '@/components/Project.astro'
 
-import { projects } from '@/projects';
+import { projects } from '@/projects'
 ---
 
 <Layout>
-  <Navbar />
-  <column align-="center" self-="grow">
-    <column id="content" gap-='1'>
-      <column gap-="1">
-        <h1><span is-="badge" variant-="red">Showcase</span></h1>
-        <p>Projects built with WebTUI</p>
-      </column>
-      <row id='projects-list'>
-        {projects.flat().map((project) =>
-          <Project {...project} />
-        )}
-      </row>
+    <Navbar />
+    <column align-="center" self-="grow">
+        <column id="content" gap-="1">
+            <column gap-="1">
+                <h1><span is-="badge" variant-="red">Showcase</span></h1>
+                <p>Projects built with WebTUI</p>
+            </column>
+            <row id="projects-list">
+                {projects.flat().map((project) => <Project {...project} />)}
+            </row>
+        </column>
     </column>
-  </column> 
-  <Footer />
+    <Footer />
 </Layout>
 
 <style>
-#content {
-  max-width: 80ch;
-  width: round(calc(100% - 2ch), 1ch);
-  padding-top: 6lh;
-  padding-bottom: 6lh;
-}
-#projects-list {
-  flex-wrap: wrap; 
-  row-gap: 1lh;
-  column-gap: 2ch;
-}
+    #content {
+        max-width: 80ch;
+        width: round(calc(100% - 2ch), 1ch);
+        padding-top: 6lh;
+        padding-bottom: 6lh;
+    }
+    #projects-list {
+        flex-wrap: wrap;
+        row-gap: 1lh;
+        column-gap: 2ch;
+    }
 </style>

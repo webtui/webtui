@@ -1,37 +1,35 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Dialog
 ---
 
-import Example from '@/components/Example.astro';
-import dialogStyle from '@webtui/css/components/dialog.css?raw';
-import boxStyle from '@webtui/css/utils/box.css?raw';
-import buttonStyle from '@webtui/css/components/button.css?raw';
+import Example from '@/components/Example.astro'
+import dialogStyle from '@webtui/css/components/dialog.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
+import buttonStyle from '@webtui/css/components/button.css?raw'
 
 A dialog
 
-<Example 
-    stylesheets={[
-        dialogStyle, 
-        boxStyle, 
-        buttonStyle,
-    ]}
-css={`dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-#content {
-    display: flex;
-    flex-direction: column;
-    gap: 1lh;
-    padding: 2lh 2ch 1lh 2ch;
-    background-color: var(--background1);
-}
-#buttons {
-    display: flex;
-    gap: 1ch;
-    justify-content: flex-end;
-}`}
-html={`<dialog id="dialog" popover>
+<Example
+    stylesheets={[dialogStyle, boxStyle, buttonStyle]}
+    css={`
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        #content {
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+            padding: 2lh 2ch 1lh 2ch;
+            background-color: var(--background1);
+        }
+        #buttons {
+            display: flex;
+            gap: 1ch;
+            justify-content: flex-end;
+        }
+    `}
+    html={`<dialog id="dialog" popover>
     <div box-="round" id="content">
         <p>Are you sure you want to delete this?</p>
         <div id="buttons">
@@ -46,7 +44,7 @@ html={`<dialog id="dialog" popover>
 ## Import
 
 ```css
-@import "@webtui/css/components/dialog.css";
+@import '@webtui/css/components/dialog.css';
 ```
 
 ## Usage
@@ -103,6 +101,7 @@ html={`<div class="row">
 
     <dialog id="end-start" position-="end start" popover>end start</dialog>
     <button popovertarget="end-start">end start</button>
+
 </div>
 
 <div class="row">
@@ -114,6 +113,7 @@ html={`<div class="row">
 
     <dialog id="end-center" position-="end center" popover>end center</dialog>
     <button popovertarget="end-center">end center</button>
+
 </div>
 
 <div class="row">
@@ -125,6 +125,7 @@ html={`<div class="row">
 
     <dialog id="end" position-="end" popover>end</dialog>
     <button popovertarget="end">end</button>
+
 </div>`}
 />
 
@@ -152,6 +153,7 @@ html={`<div class="row">
 
     <dialog id="fill" container-="fill" popover>fill</dialog>
     <button popovertarget="fill">fill</button>
+
 </div>`}
 />
 
@@ -183,6 +185,7 @@ html={`<div class="row">
 
     <dialog id="full" size-="full" container-="fill" popover>full (esc to close)</dialog>
     <button popovertarget="full">full</button>
+
 </div>`}
 />
 
@@ -214,6 +217,7 @@ html={`<div class="row">
 
     <dialog id="offset" size-="full" container-="fill" popover>offsets (esc or click on backdrop to close)</dialog>
     <button popovertarget="offset">offsets</button>
+
 </div>`}
 />
 
@@ -242,7 +246,7 @@ To extend the Dialog stylesheet, define a CSS rule on the `components` layer
 ```css
 @layer components {
     dialog {
-        &[size-="tiny"] {
+        &[size-='tiny'] {
             /* ... */
         }
 
@@ -254,5 +258,7 @@ To extend the Dialog stylesheet, define a CSS rule on the `components` layer
 ### Scope
 
 ```css
-dialog { /* ... */ }
+dialog {
+    /* ... */
+}
 ```

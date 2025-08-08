@@ -18,11 +18,11 @@ pnpm i @webtui/plugin-nf
 Import the plugin at the end of your import chain
 
 ```css
-@import "@webtui/css/base.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/base.css';
+@import '@webtui/css/components/typography.css';
 /* ... */
 
-@import "@webtui/plugin-nf";
+@import '@webtui/plugin-nf';
 ```
 
 Add "Symbols Nerd Font" to the **end** of the `--font-family` fallback stack
@@ -41,12 +41,12 @@ Now you can use nerd font icons in your HTML and CSS
 <style>
     @layer base {
         :root {
-            --font-family: Menlo, Monaco, monospace, "Symbols Nerd Font";
+            --font-family: Menlo, Monaco, monospace, 'Symbols Nerd Font';
         }
     }
 
     #rust::before {
-        content: "\\e68b";
+        content: '\\e68b';
     }
 </style>
 

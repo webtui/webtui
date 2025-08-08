@@ -1,77 +1,78 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Intro from '@/components/landing/sections/Intro.astro';
-import VimNavigation from '@/components/landing/VimNavigation.astro';
-import FeaturePureCss from '@/components/landing/sections/FeaturePureCss.astro';
-import FeatureSemantic from '@/components/landing/sections/FeatureSemantic.astro';
-import FeatureThemes from '@/components/landing/sections/FeatureThemes.astro';
-import Gallery from '@/components/landing/sections/Gallery.astro';
-import Sponsors from '@/components/landing/sections/Sponsors.astro';
-import Cta from '@/components/landing/sections/Cta.astro';
+import Layout from '@/layouts/Layout.astro'
+import Intro from '@/components/landing/sections/Intro.astro'
+import VimNavigation from '@/components/landing/VimNavigation.astro'
+import FeaturePureCss from '@/components/landing/sections/FeaturePureCss.astro'
+import FeatureSemantic from '@/components/landing/sections/FeatureSemantic.astro'
+import FeatureThemes from '@/components/landing/sections/FeatureThemes.astro'
+import Gallery from '@/components/landing/sections/Gallery.astro'
+import Sponsors from '@/components/landing/sections/Sponsors.astro'
+import Cta from '@/components/landing/sections/Cta.astro'
 ---
 
 <Layout>
-  <main>
-    <Intro />
-    <FeatureSemantic />
-    <FeaturePureCss />
-    <FeatureThemes />
-    <Gallery />
-    <Sponsors />
-    <Cta />
-  </main>
-  <div id="vim-navigation-container">
-    <VimNavigation />
-  </div>
+    <main>
+        <Intro />
+        <FeatureSemantic />
+        <FeaturePureCss />
+        <FeatureThemes />
+        <Gallery />
+        <Sponsors />
+        <Cta />
+    </main>
+    <div id="vim-navigation-container">
+        <VimNavigation />
+    </div>
 </Layout>
 
 <style is:global>
-  #vim-navigation-container {
-    position: fixed;
-    top: 1lh;
-    right: 2ch;
-  }
-
-  @layer base {
-    :root {
-      --font-size: 20px;
+    #vim-navigation-container {
+        position: fixed;
+        top: 1lh;
+        right: 2ch;
     }
 
-    @media (max-width: 100ch) {
-      :root {
-        --font-size: 18px;
-      }
+    @layer base {
+        :root {
+            --font-size: 20px;
+        }
+
+        @media (max-width: 100ch) {
+            :root {
+                --font-size: 18px;
+            }
+        }
     }
-  }
 
-  main {
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--foreground1) var(--background2);
-  }
+    main {
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--foreground1) var(--background2);
+    }
 
-  section, header {
-    min-height: 100vh;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-  }
+    section,
+    header {
+        min-height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+    }
 
-  section .content {
-    max-width: 80ch;
-    width: round(calc(100% - 2ch), 1ch);
-    row-gap: 2ch;
-    column-gap: 1lh;
-  }
-
-  @media (max-width: 1000px) {
     section .content {
-      flex-direction: column-reverse;
+        max-width: 80ch;
+        width: round(calc(100% - 2ch), 1ch);
+        row-gap: 2ch;
+        column-gap: 1lh;
     }
-  }
+
+    @media (max-width: 1000px) {
+        section .content {
+            flex-direction: column-reverse;
+        }
+    }
 </style>

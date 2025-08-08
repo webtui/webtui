@@ -1,165 +1,169 @@
 ---
-import { compareUrlPaths } from '@/utils/url';
-import { makeSortedCategoryEntries, categoryLabels } from '@/utils/content';
-import VimNavigation from './landing/VimNavigation.astro';
+import { compareUrlPaths } from '@/utils/url'
+import { makeSortedCategoryEntries, categoryLabels } from '@/utils/content'
+import VimNavigation from './landing/VimNavigation.astro'
 
-const categories = makeSortedCategoryEntries();
+const categories = makeSortedCategoryEntries()
 
-const { pathname: urlPath } = Astro.url;
+const { pathname: urlPath } = Astro.url
 ---
 
 <nav box-="square" shear-="top" id="sidebar">
-  <div id="category-container">
-    <div id="category-list">
-      {
-        categories.map(([slug, pages]) => (
-          <details open>
-            <summary>{categoryLabels[slug]}</summary>
-            <ul>
-              {pages.map(({ id, data: { title } }) => (
-                <a
-                  href={`/${id}`}
-                  class={compareUrlPaths(urlPath, id) ? "active" : ""}
-                  data-slug={id}
-                >
-                  {title}
-                </a>
-              ))}
-            </ul>
-          </details>
-        ))
-      }
+    <div id="category-container">
+        <div id="category-list">
+            {
+                categories.map(([slug, pages]) => (
+                    <details open>
+                        <summary>{categoryLabels[slug]}</summary>
+                        <ul>
+                            {pages.map(({ id, data: { title } }) => (
+                                <a
+                                    href={`/${id}`}
+                                    class={
+                                        compareUrlPaths(urlPath, id)
+                                            ? 'active'
+                                            : ''
+                                    }
+                                    data-slug={id}>
+                                    {title}
+                                </a>
+                            ))}
+                        </ul>
+                    </details>
+                ))
+            }
+        </div>
     </div>
-  </div>
-  <div id="sidebar-vim-nav-container">
-    <VimNavigation showHL />
-  </div>
+    <div id="sidebar-vim-nav-container">
+        <VimNavigation showHL />
+    </div>
 </nav>
 
 <style>
-  #sidebar-vim-nav-container {
-    padding-left: 1ch;
-    padding-right: 2ch;
-    padding-top: 1lh;
-    padding-bottom: 1lh;
-    display: flex;
-    flex-direction: row;
-  }
-  #sidebar {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    flex-grow: 1;
-
-    &:focus-within {
-      --box-border-color: var(--foreground2);
+    #sidebar-vim-nav-container {
+        padding-left: 1ch;
+        padding-right: 2ch;
+        padding-top: 1lh;
+        padding-bottom: 1lh;
+        display: flex;
+        flex-direction: row;
     }
+    #sidebar {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        flex-grow: 1;
 
-    #category-container {
-      position: relative;
-      flex-grow: 1;
-      margin-top: 1lh;
-    }
-
-    #category-list {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1lh;
-      padding: 0 1ch;
-      overflow-y: auto;
-    }
-  }
-
-  ul > a[href] {
-    color: var(--foreground2);
-    text-decoration: none;
-    outline: none;
-    display: list-item;
-
-    &::before {
-      content: "├ ";
-    }
-
-    &:last-of-type::before {
-      content: "└ ";
-    }
-
-    &.active {
-      color: var(--foreground0);
-      text-decoration: underline;
-      font-weight: var(--font-weight-bold);
-      background-color: var(--background1);
-    }
-
-    &:focus {
-      background-color: var(--background1);
-    }
-  }
-
-  details {
-    summary {
-      font-weight: var(--font-weight-bold);
-      &::marker {
-        color: var(--foreground2);
-        content: "\eab6\ ";
-      }
-
-      &:hover, &:focus {
-        background-color: var(--background1);
-      }
-    }
-
-    &[open] {
-      summary {
-        &::marker {
-          content: "\eab4\ "
+        &:focus-within {
+            --box-border-color: var(--foreground2);
         }
-      }
-    }
-  }
 
-  details[open] a.hidden,
-  details.hidden,
-  .hidden {
-    display: none;
-  }
+        #category-container {
+            position: relative;
+            flex-grow: 1;
+            margin-top: 1lh;
+        }
+
+        #category-list {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1lh;
+            padding: 0 1ch;
+            overflow-y: auto;
+        }
+    }
+
+    ul > a[href] {
+        color: var(--foreground2);
+        text-decoration: none;
+        outline: none;
+        display: list-item;
+
+        &::before {
+            content: '├ ';
+        }
+
+        &:last-of-type::before {
+            content: '└ ';
+        }
+
+        &.active {
+            color: var(--foreground0);
+            text-decoration: underline;
+            font-weight: var(--font-weight-bold);
+            background-color: var(--background1);
+        }
+
+        &:focus {
+            background-color: var(--background1);
+        }
+    }
+
+    details {
+        summary {
+            font-weight: var(--font-weight-bold);
+            &::marker {
+                color: var(--foreground2);
+                content: '\eab6\ ';
+            }
+
+            &:hover,
+            &:focus {
+                background-color: var(--background1);
+            }
+        }
+
+        &[open] {
+            summary {
+                &::marker {
+                    content: '\eab4\ ';
+                }
+            }
+        }
+    }
+
+    details[open] a.hidden,
+    details.hidden,
+    .hidden {
+        display: none;
+    }
 </style>
 
 <script>
-  import {
-    applyVimNavigation,
-    isUserTyping,
-    vimFocusElement,
-  } from "@/utils/vim";
+    import {
+        applyVimNavigation,
+        isUserTyping,
+        vimFocusElement,
+    } from '@/utils/vim'
 
-  let currentElement: HTMLElement | null =
-    document.querySelector(`ul > a.active`);
+    let currentElement: HTMLElement | null =
+        document.querySelector(`ul > a.active`)
 
-  window.addEventListener("keydown", (e) => {
-    // Don't navigate if the user is typing
-    if (isUserTyping()) {
-      return;
+    window.addEventListener('keydown', (e) => {
+        // Don't navigate if the user is typing
+        if (isUserTyping()) {
+            return
+        }
+
+        if (e.key === 'h') {
+            const elementToFocus = currentElement ?? null
+
+            if (elementToFocus) {
+                vimFocusElement(elementToFocus)
+            }
+        }
+    })
+
+    const sidebar = document.getElementById('sidebar')
+    if (sidebar) {
+        applyVimNavigation(
+            sidebar,
+            'details:not(.hidden)[open] a:not(.hidden), details:not(.hidden) summary',
+            (element) => {
+                currentElement = element
+            },
+        )
     }
-
-    if (e.key === "h") {
-      const elementToFocus = currentElement ?? null;
-
-      if (elementToFocus) {
-        vimFocusElement(elementToFocus);
-      }
-    }
-  });
-
-  const sidebar = document.getElementById("sidebar");
-  if (sidebar) {
-    applyVimNavigation(
-      sidebar,
-      "details:not(.hidden)[open] a:not(.hidden), details:not(.hidden) summary",
-      (element) => {
-        currentElement = element;
-      },
-    );
-  }
 </script>

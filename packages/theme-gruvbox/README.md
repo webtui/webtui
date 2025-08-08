@@ -20,11 +20,11 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 ```css
 @layer base, utils, components;
 
-@import "@webtui/css/base.css";
-@import "@webtui/css/components/typography.css";
+@import '@webtui/css/base.css';
+@import '@webtui/css/components/typography.css';
 /* ... */
 
-@import "@webtui/theme-gruvbox";
+@import '@webtui/theme-gruvbox';
 ```
 
 Set the `data-webtui-theme` attribute on the `<html>` tag or a container element.
@@ -37,15 +37,15 @@ To only apply the theme to a specific element:
 
 ```html
 <html data-webtui-theme="dark">
-  <!-- Example base theme -->
-  <body>
-    <div data-webtui-theme="gruvbox-light-hard">
-      <!-- Gruvbox light-hard styles applied here -->
-    </div>
-    <div data-webtui-theme="gruvbox-dark-soft">
-      <!-- Gruvbox dark-soft styles applied here -->
-    </div>
-  </body>
+    <!-- Example base theme -->
+    <body>
+        <div data-webtui-theme="gruvbox-light-hard">
+            <!-- Gruvbox light-hard styles applied here -->
+        </div>
+        <div data-webtui-theme="gruvbox-dark-soft">
+            <!-- Gruvbox dark-soft styles applied here -->
+        </div>
+    </body>
 </html>
 ```
 
@@ -56,18 +56,18 @@ Supports dark and light modes, each with hard, medium, and soft contrast levels.
 ```html
 <!-- Dark Variants -->
 <html data-webtui-theme="gruvbox-dark-hard">
-  <html data-webtui-theme="gruvbox-dark-medium">
-    <!-- Default: gruvbox-dark or gruvbox -->
-    <html data-webtui-theme="gruvbox-dark-soft">
-      <!-- Light Variants -->
-      <html data-webtui-theme="gruvbox-light-hard">
-        <html data-webtui-theme="gruvbox-light-medium">
-          <!-- Default: gruvbox-light -->
-          <html data-webtui-theme="gruvbox-light-soft"></html>
+    <html data-webtui-theme="gruvbox-dark-medium">
+        <!-- Default: gruvbox-dark or gruvbox -->
+        <html data-webtui-theme="gruvbox-dark-soft">
+            <!-- Light Variants -->
+            <html data-webtui-theme="gruvbox-light-hard">
+                <html data-webtui-theme="gruvbox-light-medium">
+                    <!-- Default: gruvbox-light -->
+                    <html data-webtui-theme="gruvbox-light-soft"></html>
+                </html>
+            </html>
         </html>
-      </html>
     </html>
-  </html>
 </html>
 ```
 
@@ -122,45 +122,45 @@ Adds additional variants to buttons matching Gruvbox accent colors.
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
-[data-webtui-theme="gruvbox-*-*"] {
-  --gb-dark-bg1: #3c3836;
-  --gb-dark-bg2: #504945;
-  --gb-dark-bg3: #665c54;
-  --gb-dark-bg4: #7c6f64;
-  --gb-dark-fg0: #fbf1c7;
-  --gb-dark-fg1: #ebdbb2;
-  --gb-dark-fg2: #d5c4a1;
-  --gb-dark-fg3: #bdae93;
-  --gb-dark-fg4: #a89984;
-  --gb-dark-gray: #928374;
-  --gb-red: #fb4934;
-  --gb-green: #b8bb26;
-  --gb-yellow: #fabd2f;
-  --gb-blue: #83a598;
-  --gb-purple: #d3869b;
-  --gb-aqua: #8ec07c;
-  --gb-orange: #fe8019;
+[data-webtui-theme='gruvbox-*-*'] {
+    --gb-dark-bg1: #3c3836;
+    --gb-dark-bg2: #504945;
+    --gb-dark-bg3: #665c54;
+    --gb-dark-bg4: #7c6f64;
+    --gb-dark-fg0: #fbf1c7;
+    --gb-dark-fg1: #ebdbb2;
+    --gb-dark-fg2: #d5c4a1;
+    --gb-dark-fg3: #bdae93;
+    --gb-dark-fg4: #a89984;
+    --gb-dark-gray: #928374;
+    --gb-red: #fb4934;
+    --gb-green: #b8bb26;
+    --gb-yellow: #fabd2f;
+    --gb-blue: #83a598;
+    --gb-purple: #d3869b;
+    --gb-aqua: #8ec07c;
+    --gb-orange: #fe8019;
 
-  --background1: var(--gb-dark-bg1);
-  --background2: var(--gb-dark-bg2);
-  --background3: var(--gb-dark-bg3);
-  --foreground0: var(--gb-dark-fg1);
-  --foreground1: var(--gb-dark-fg2);
-  --foreground2: var(--gb-dark-fg3);
+    --background1: var(--gb-dark-bg1);
+    --background2: var(--gb-dark-bg2);
+    --background3: var(--gb-dark-bg3);
+    --foreground0: var(--gb-dark-fg1);
+    --foreground1: var(--gb-dark-fg2);
+    --foreground2: var(--gb-dark-fg3);
 }
 ```
 
 The base background/foreground colors use the following CSS variables from the Gruvbox palette
 
 ```css
-[data-webtui-theme="gruvbox-*-*"] {
-  --background0: var(--gb-dark-bg0);
-  --background1: var(--gb-dark-bg1);
-  --background2: var(--gb-dark-bg2);
-  --background3: var(--gb-dark-bg3);
+[data-webtui-theme='gruvbox-*-*'] {
+    --background0: var(--gb-dark-bg0);
+    --background1: var(--gb-dark-bg1);
+    --background2: var(--gb-dark-bg2);
+    --background3: var(--gb-dark-bg3);
 
-  --foreground0: var(--gb-dark-fg0);
-  --foreground1: var(--gb-dark-fg1);
-  --foreground2: var(--gb-dark-fg2);
+    --foreground0: var(--gb-dark-fg0);
+    --foreground1: var(--gb-dark-fg1);
+    --foreground2: var(--gb-dark-fg2);
 }
 ```

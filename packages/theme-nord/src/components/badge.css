@@ -1,88 +1,88 @@
 @layer components {
-  [data-webtui-theme="nord"] {
-    [is-~="badge"] {
-      /* nord0 - nord3 are the same as background0 - background3 */
-      &[variant-="nord0"] {
-        --badge-color: var(--background0);
-        --badge-text: var(--foreground0);
-      }
+    [data-webtui-theme='nord'] {
+        [is-~='badge'] {
+            /* nord0 - nord3 are the same as background0 - background3 */
+            &[variant-='nord0'] {
+                --badge-color: var(--background0);
+                --badge-text: var(--foreground0);
+            }
 
-      &[variant-="nord1"] {
-        --badge-color: var(--background1);
-        --badge-text: var(--foreground0);
-      }
+            &[variant-='nord1'] {
+                --badge-color: var(--background1);
+                --badge-text: var(--foreground0);
+            }
 
-      &[variant-="nord2"] {
-        --badge-color: var(--background2);
-        --badge-text: var(--foreground0);
-      }
+            &[variant-='nord2'] {
+                --badge-color: var(--background2);
+                --badge-text: var(--foreground0);
+            }
 
-      &[variant-="nord3"] {
-        --badge-color: var(--background3);
-        --badge-text: var(--foreground0);
-      }
+            &[variant-='nord3'] {
+                --badge-color: var(--background3);
+                --badge-text: var(--foreground0);
+            }
 
-      /* nord6 - nord4 are the same as foreground0 - foreground2 */
-      &[variant-="nord6"] {
-        --badge-color: var(--foreground0);
-        --badge-text: var(--background0);
-      }
+            /* nord6 - nord4 are the same as foreground0 - foreground2 */
+            &[variant-='nord6'] {
+                --badge-color: var(--foreground0);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord5"] {
-        --badge-color: var(--foreground1);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord5'] {
+                --badge-color: var(--foreground1);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord4"] {
-        --badge-color: var(--foreground2);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord4'] {
+                --badge-color: var(--foreground2);
+                --badge-text: var(--background0);
+            }
 
-      /* accent colors */
-      &[variant-="nord7"] {
-        --badge-color: var(--nord7);
-        --badge-text: var(--background0);
-      }
+            /* accent colors */
+            &[variant-='nord7'] {
+                --badge-color: var(--nord7);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord8"] {
-        --badge-color: var(--nord8);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord8'] {
+                --badge-color: var(--nord8);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord9"] {
-        --badge-color: var(--nord9);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord9'] {
+                --badge-color: var(--nord9);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord10"] {
-        --badge-color: var(--nord10);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord10'] {
+                --badge-color: var(--nord10);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord11"] {
-        --badge-color: var(--nord11);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord11'] {
+                --badge-color: var(--nord11);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord12"] {
-        --badge-color: var(--nord12);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord12'] {
+                --badge-color: var(--nord12);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord13"] {
-        --badge-color: var(--nord13);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord13'] {
+                --badge-color: var(--nord13);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord14"] {
-        --badge-color: var(--nord14);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord14'] {
+                --badge-color: var(--nord14);
+                --badge-text: var(--background0);
+            }
 
-      &[variant-="nord15"] {
-        --badge-color: var(--nord15);
-        --badge-text: var(--background0);
-      }
+            &[variant-='nord15'] {
+                --badge-color: var(--nord15);
+                --badge-text: var(--background0);
+            }
+        }
     }
-  }
 }

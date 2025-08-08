@@ -1,19 +1,16 @@
 ---
-layout: "@/layouts/Doc.astro"
+layout: '@/layouts/Doc.astro'
 title: Button
 ---
 
-import Example from '@/components/Example.astro';
-import buttonStyle from '@webtui/css/components/button.css?raw';
-import boxStyle from '@webtui/css/utils/box.css?raw';
+import Example from '@/components/Example.astro'
+import buttonStyle from '@webtui/css/components/button.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
 
 Displays a button
 
-<Example 
-    stylesheets={[
-        buttonStyle, 
-        boxStyle, 
-    ]}
+<Example
+    stylesheets={[buttonStyle, boxStyle]}
     html={`
 <button>Click Me</button>
 `}
@@ -22,13 +19,13 @@ Displays a button
 ## Import
 
 ```css
-@import "@webtui/css/components/button.css";
+@import '@webtui/css/components/button.css';
 ```
 
 To add box borders to button, import the [Box Utility](/start/ascii-boxes) stylesheet (optional)
 
 ```css
-@import "@webtui/css/utils/box.css";
+@import '@webtui/css/utils/box.css';
 ```
 
 ## Usage
@@ -47,10 +44,10 @@ Apply `is-="button"` to any HTML element to style it as a button
 
 ### Variants
 
-<Example 
+<Example
     stylesheets={[
-        buttonStyle, 
-        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`
+        buttonStyle,
+        `body { display: flex; flex-wrap: wrap; gap: 1lh 1ch;}`,
     ]}
     html={`
 <button variant-="background0">background0</button>
@@ -69,11 +66,8 @@ Available variants match the [base theme colors](/start/theming#colors)
 
 Requires the [Box Utility](/start/ascii-boxes)
 
-<Example 
-    stylesheets={[
-        buttonStyle, 
-        boxStyle, 
-    ]}
+<Example
+    stylesheets={[buttonStyle, boxStyle]}
     html={`
 <button box-="round">Round</button>
 <button box-="square">Square</button>
@@ -81,13 +75,10 @@ Requires the [Box Utility](/start/ascii-boxes)
 `}
 />
 
-
 ### Sizes
 
-<Example 
-    stylesheets={[
-        buttonStyle, 
-    ]}
+<Example
+    stylesheets={[buttonStyle]}
     html={`
 <button>Default</button>
 <button size-="small">Small</button>
@@ -97,10 +88,8 @@ Requires the [Box Utility](/start/ascii-boxes)
 
 ### `disabled`
 
-<Example 
-    stylesheets={[
-        buttonStyle, 
-    ]}
+<Example
+    stylesheets={[buttonStyle]}
     html={`
 <button disabled>Disabled</button>
 `}
@@ -130,8 +119,9 @@ To extend the Button stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    button, [is-~="button"] {
-        &[variant-="red"] {
+    button,
+    [is-~='button'] {
+        &[variant-='red'] {
             --button-primary: red;
             --button-secondary: white;
         }
@@ -144,5 +134,8 @@ To extend the Button stylesheet, define a CSS rule on the `components` layer
 ### Scope
 
 ```css
-button, [is-~="button"] { /* ... */ }
+button,
+[is-~='button'] {
+    /* ... */
+}
 ```
