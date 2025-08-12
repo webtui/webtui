@@ -21,6 +21,10 @@
                 text-decoration: underline;
             }
 
+            &::-webkit-details-marker {
+                display: none;
+            }
+
             &::marker {
                 content: '';
                 display: none;
@@ -38,11 +42,6 @@
                     inset: 0;
                     z-index: 1;
                     background-color: var(--popover-backdrop-color);
-                }
-
-                &::marker {
-                    content: '';
-                    display: none;
                 }
             }
 
