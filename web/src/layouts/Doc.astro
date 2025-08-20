@@ -181,25 +181,23 @@ if (headings.length > 0) {
                 vimFocusElement(elementToFocus)
             }
         }
+
+        const nextHref = document.querySelector('.next')?.getAttribute('href')
+        const prevHref = document.querySelector('.prev')?.getAttribute('href')
+
+        if (e.key === 'n' && e.ctrlKey && nextHref) {
+            window.location.href = nextHref
+        }
+
+        if (e.key === 'p' && e.ctrlKey && prevHref) {
+            window.location.href = prevHref
+        }
     })
 
     const mainContent = document.getElementById('main-content') as HTMLElement
 
     applyVimNavigation(mainContent, queryString, (element) => {
         currentElement = element
-    })
-
-    mainContent.addEventListener('keydown', (event) => {
-        const nextHref = document.querySelector('.next')?.getAttribute('href')
-        const prevHref = document.querySelector('.prev')?.getAttribute('href')
-
-        if (event.key === 'n' && event.ctrlKey && nextHref) {
-            window.location.href = nextHref
-        }
-
-        if (event.key === 'p' && event.ctrlKey && prevHref) {
-            window.location.href = prevHref
-        }
     })
 </script>
 
