@@ -136,7 +136,7 @@ const themeKeys = {
 
 <style>
     #theme-section {
-        min-height: 350vh;
+        min-height: 500vh;
         position: relative;
 
         #visible-content {
@@ -204,10 +204,11 @@ const themeKeys = {
 
     .snap {
         scroll-snap-align: start;
-        height: 50vh;
+        height: 100vh;
+        width: 100vw;
 
-        &:last-of-type {
-            height: 100vh;
+        &:nth-of-type(odd) {
+            background: var(--crust);
         }
     }
 
