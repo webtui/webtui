@@ -8,7 +8,7 @@ import progressStyle from '@webtui/css/components/progress.css?raw'
 
 Displays a progress bar
 
-**Note:** The progress bar component automatically rounds the `value/max` value to the nearest character width
+**Note:** The progress bar component automatically rounds the progress display value to the nearest character width
 
 <Example
     stylesheets={[
@@ -97,9 +97,9 @@ Displays a progress bar
             max-width: 24ch;
         }
     `}
-    html={`<span>[<progress value="75" max="100" id="one">75%</progress>] 75%</span>
-<span>(<progress value="50" max="100" id="two">50%</progress>) 50%</span>
-<span>|<progress value="25" max="100" id="three">50%</progress>| 25%</span>`}
+    html={`<progress value="75" max="100" id="one">75%</progress>
+<progress value="50" max="100" id="two">50%</progress>
+<progress value="25" max="100" id="three">50%</progress>`}
 />
 
 ### Hybrid
@@ -138,9 +138,9 @@ Displays a progress bar
             max-width: 24ch;
         }
     `}
-    html={`<span>&lt;<progress value="25" max="100" id="one">25%</progress>&gt; 25%</span>
-<span>|<progress value="50" max="100" id="two">50%</progress>| 50%</span>
-<span>]<progress value="75" max="100" id="three">75%</progress>[ 75%</span>`}
+    html={`<progress value="25" max="100" id="one">25%</progress>
+<progress value="50" max="100" id="two">50%</progress>
+<progress value="75" max="100" id="three">75%</progress>`}
 />
 
 ## Reference
