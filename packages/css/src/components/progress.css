@@ -24,7 +24,7 @@
         --progress-empty-color: var(--foreground0);
         --progress-empty-content: '';
 
-        width: round(100%, 1ch);
+        width: round(down, 100%, 1ch);
         height: 1lh;
         margin: 0;
         background-color: var(--progress-background-empty);
@@ -43,6 +43,7 @@
             vertical-align: top;
             color: var(--progress-value-color);
             width: round(
+                nearest,
                 calc(
                     attr(value type(<number>)) / attr(max type(<number>)) * 100%
                 ),
@@ -64,6 +65,7 @@
             color: var(--progress-empty-color);
             overflow: hidden;
             width: round(
+                up,
                 calc(
                     100% - attr(value type(<number>)) /
                         attr(max type(<number>)) * 100%
