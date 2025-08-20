@@ -1,0 +1,80 @@
+@layer components {
+    progress {
+        -webkit-appearance: none;
+        appearance: none;
+        border: none;
+        outline: none;
+    }
+
+    ::-webkit-progress-value,
+    ::-webkit-progress-bar {
+        background-color: transparent;
+    }
+
+    ::-moz-progress-bar {
+        background-color: transparent;
+    }
+
+    progress,
+    [is-~='progress'] {
+        --progress-value-background: var(--foreground0);
+        --progress-value-color: var(--foreground0);
+        --progress-value-content: '';
+        --progress-empty-background: var(--background1);
+        --progress-empty-color: var(--foreground0);
+        --progress-empty-content: '';
+
+        width: round(down, 100%, 1ch);
+        height: 1lh;
+        margin: 0;
+        background-color: var(--progress-background-empty);
+        color: var(--progress-color-empty);
+        color: transparent;
+        position: relative;
+        vertical-align: top;
+        display: inline-flex;
+
+        &::before {
+            content: var(--progress-value-content);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1lh;
+            vertical-align: top;
+            color: var(--progress-value-color);
+            width: round(
+                nearest,
+                calc(
+                    attr(value type(<number>)) / attr(max type(<number>)) * 100%
+                ),
+                1ch
+            );
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: var(--progress-value-background);
+            z-index: 1;
+        }
+
+        &::after {
+            content: var(--progress-empty-content);
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 1lh;
+            vertical-align: top;
+            color: var(--progress-empty-color);
+            overflow: hidden;
+            width: round(
+                up,
+                calc(
+                    100% - attr(value type(<number>)) /
+                        attr(max type(<number>)) * 100%
+                ),
+                1ch
+            );
+            white-space: nowrap;
+            background-color: var(--progress-empty-background);
+            z-index: 0;
+        }
+    }
+}

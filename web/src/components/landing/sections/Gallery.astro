@@ -83,12 +83,13 @@ const projects = showcase.slice(0, 2)
     }
 
     .project-scroll-marker {
-        min-height: 50vh;
+        min-height: 100vh;
         scroll-snap-align: start;
         flex: none;
+        background: var(--crust);
 
-        &:last-of-type {
-            min-height: 100vh;
+        &:nth-of-type(odd) {
+            background: var(--crust);
         }
     }
 </style>

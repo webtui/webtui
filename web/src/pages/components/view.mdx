@@ -1,0 +1,141 @@
+---
+layout: '@/layouts/Doc.astro'
+title: View
+---
+
+import Example from '@/components/Example.astro'
+import viewStyle from '@webtui/css/components/view.css?raw'
+
+Displays a TUI-accurate view that automatically rounds its width and height to the nearest `ch` and `lh` units respectively
+
+Useful for building tiled UIs or a partial GUI/TUI application
+
+<Example
+    stylesheets={[viewStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            gap: 10px;
+            background: linear-gradient(45deg, #5f5ba5, #8c59a5);
+            height: 100vh;
+            animation: pad 5s infinite linear;
+        }
+        .tile {
+            flex: 1 1 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        [is-='view-content'] {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        @keyframes pad {
+            0% {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                gap: 10px;
+            }
+            25% {
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                gap: 50px;
+            }
+            50% {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                gap: 10px;
+            }
+            75% {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                gap: 10px;
+            }
+            100% {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                gap: 10px;
+            }
+        }
+    `}
+    html={`<div class="tile" is-="view">
+    <div is-="view-content">root@Macbook-Pro ~# yes no<br/>no<br/>no<br/>no<br/>no<br/>no<br/>no<br/>no<br/>no<br/>no<br/>no<br/>no<br/></div>
+</div>
+<div class="tile" is-="view">
+    <div is-="view-content">root@Macbook-Pro ~# emacs<br/>zsh: command not found: emacs</div>
+</div>`}
+/>
+
+## Import
+
+```css
+@import '@webtui/css/components/view.css';
+```
+
+## Usage
+
+```html
+<div is-="view">
+    <div is-="view-content">
+        <!-- TUI contents -->
+    </div>
+</div>
+```
+
+## Examples
+
+### Basic usage
+
+<Example
+    stylesheets={[viewStyle]}
+    html={`<div is-="view" id="view-outer">
+    <div is-="view-content" id="view-inner">root@Macbook-Pro ~# cowsay m${'oÖ'.repeat(1000)}</div>
+</div>`}
+    css={`
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--background1);
+        }
+        #view-outer {
+            flex: 1 1 0;
+        }
+        #view-inner {
+            background: var(--background2);
+        }
+    `}
+/>
+
+## Reference
+
+### Extending
+
+To extend the View stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    [is-~='view'] {
+        /* ... */
+    }
+
+    [is-~='view-content'] {
+        /* ... */
+    }
+}
+```

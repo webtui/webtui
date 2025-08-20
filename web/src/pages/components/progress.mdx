@@ -1,0 +1,193 @@
+---
+layout: '@/layouts/Doc.astro'
+title: Progress
+---
+
+import Example from '@/components/Example.astro'
+import progressStyle from '@webtui/css/components/progress.css?raw'
+
+Displays a progress bar
+
+**Note:** The progress bar component automatically rounds the progress display value to the nearest character width
+
+<Example
+    stylesheets={[
+        progressStyle,
+        `body{display:flex;flex-direction:column;gap:1lh;}`,
+    ]}
+    html={`<progress value="50" max="100">50%</progress>
+<div is-="progress" value="25" max="100">50%</div>`}
+/>
+
+## Import
+
+```css
+@import '@webtui/css/components/progress.css';
+```
+
+## Usage
+
+```html
+<progress value="50" max="100">50%</progress>
+<progress value="25" max="50">20/50</progress>
+<div is-="progress" value="2" max="5">2/5</div>
+```
+
+## Examples
+
+### Color
+
+<Example
+    stylesheets={[
+        progressStyle,
+        `body{display:flex;flex-direction:column;gap:1lh;}`,
+    ]}
+    css={`
+        #red {
+            --progress-value-background: red;
+            --progress-empty-background: grey;
+        }
+        #green {
+            --progress-value-background: green;
+            --progress-empty-background: white;
+        }
+        #blue {
+            --progress-value-background: blue;
+        }
+    `}
+    html={`<progress value="50" max="100" id="red">50%</progress>
+<progress value="40" max="100" id="green">40%</progress>
+<progress value="30" max="100" id="blue">30%</progress>
+<progress value="20" max="100" style="--progress-value-background: orange">20%</progress>`}
+/>
+
+### Text content
+
+<Example
+    stylesheets={[
+        progressStyle,
+        `body{display:flex;flex-direction:column;gap:1lh;}`,
+    ]}
+    css={`
+        #one {
+            --progress-value-background: transparent;
+            --progress-value-color: var(--foreground0);
+            --progress-value-content: '========================';
+            --progress-empty-background: transparent;
+            --progress-empty-color: var(--foreground0);
+            --progress-empty-content: '';
+            max-width: 24ch;
+        }
+        #two {
+            --progress-value-background: transparent;
+            --progress-value-color: var(--foreground0);
+            --progress-value-content: '########################';
+            --progress-empty-background: transparent;
+            --progress-empty-color: var(--foreground0);
+            --progress-empty-content: '........................';
+            max-width: 24ch;
+        }
+        #three {
+            --progress-value-background: transparent;
+            --progress-value-color: var(--foreground0);
+            --progress-value-content: '████████████████████████';
+            --progress-empty-background: transparent;
+            --progress-empty-color: var(--foreground0);
+            --progress-empty-content: '';
+            max-width: 24ch;
+        }
+    `}
+    html={`<progress value="75" max="100" id="one">75%</progress>
+<progress value="50" max="100" id="two">50%</progress>
+<progress value="25" max="100" id="three">50%</progress>`}
+/>
+
+### Hybrid
+
+<Example
+    stylesheets={[
+        progressStyle,
+        `body{display:flex;flex-direction:column;gap:1lh;}`,
+    ]}
+    css={`
+        #one {
+            --progress-value-background: var(--background2);
+            --progress-value-color: var(--foreground0);
+            --progress-value-content: 'OOOOOOOOOOOOOOOOOOOOOOOO';
+            --progress-empty-background: var(--background1);
+            --progress-empty-color: var(--foreground0);
+            --progress-empty-content: '........................';
+            max-width: 24ch;
+        }
+        #two {
+            --progress-value-background: red;
+            --progress-value-color: var(--foreground0);
+            --progress-value-content: '()()()()()()()()()()()()';
+            --progress-empty-background: transparent;
+            --progress-empty-color: var(--foreground0);
+            --progress-empty-content: '';
+            max-width: 24ch;
+        }
+        #three {
+            --progress-value-background: var(--foreground2);
+            --progress-value-color: var(--foreground0);
+            --progress-value-content: '>>>>>>>>>>>>>>>>>>>>>>>>';
+            --progress-empty-background: var(--background2);
+            --progress-empty-color: var(--foreground0);
+            --progress-empty-content: '------------------------';
+            max-width: 24ch;
+        }
+    `}
+    html={`<progress value="25" max="100" id="one">25%</progress>
+<progress value="50" max="100" id="two">50%</progress>
+<progress value="75" max="100" id="three">75%</progress>`}
+/>
+
+## Reference
+
+### Properties
+
+- `--progress-value-background`: The background color of the progress value bar
+- `--progress-value-color`: The text color of the progress value bar
+- `--progress-value-content`: The text content of the progress value bar
+- `--progress-empty-background`: The background color of the remaining empty space in the progress bar
+- `--progress-empty-color`: The text color of the remaining empty space in the progress bar
+- `--progress-empty-content`: The text content of the remaining empty space in the progress bar
+
+**Important:** Since CSS doesn't have a way to arbitrarily repeat text a number of times, you will have to repeat a character an arbitrary amount of times for `--progress-value-content` or `--progress-empty-content`
+
+```css
+progress {
+    --progress-value-background: var(--background2);
+    --progress-value-color: var(--foreground0);
+    --progress-value-content: '[#######################';
+    --progress-empty-background: var(--background1);
+    --progress-empty-color: var(--foreground0);
+    --progress-empty-content: '.......................]';
+}
+```
+
+### Extending
+
+To extend the Progress stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    progress,
+    [is-~='progress'] {
+        &[variant='green'] {
+            /* ... */
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+```css
+[is-~='progress'] {
+    /* ... */
+}
+```
