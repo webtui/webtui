@@ -13,15 +13,19 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^6.3.8",
     "@astrojs/mdx": "^4.1.0",
     "@shikijs/transformers": "^3.2.1",
     "@webtui/css": "workspace:*",
+    "@webtui/plugin-nf": "workspace:*",
     "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
+    "@webtui/theme-everforest": "workspace:*",
     "@webtui/theme-gruvbox": "workspace:*",
     "@webtui/theme-nord": "workspace:*",
     "@webtui/theme-vitesse": "workspace:*",
-    "@webtui/plugin-nf": "workspace:*",
-    "astro": "^5.4.2"
+    "astro": "^5.4.2",
+    "sharp": "^0.34.4",
+    "shiki": "^3.13.0"
   }
 }
