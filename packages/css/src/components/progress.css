@@ -34,6 +34,41 @@
         vertical-align: top;
         display: inline-flex;
 
+        @supports not (x: attr(x type(*))) {
+            &::before {
+                /* AAAAAAAAAAAAAAAAAA */
+            }
+
+            &::after {
+                /* AAAAAAAAAAAAAAAAAA */
+                /* AAAAAAAAAAAAAAAAAA */
+                /* I HATE GECKO BROWSERS */
+            }
+        }
+
+        @supports (x: attr(x type(*))) {
+            &::before {
+                width: round(
+                    nearest,
+                    calc(
+                        attr(value type(<number>)) / attr(max type(<number>)) *
+                            100%
+                    ),
+                    1ch
+                );
+            }
+            &::after {
+                width: round(
+                    up,
+                    calc(
+                        100% - attr(value type(<number>)) /
+                            attr(max type(<number>)) * 100%
+                    ),
+                    1ch
+                );
+            }
+        }
+
         &::before {
             content: var(--progress-value-content);
             position: absolute;
@@ -42,13 +77,6 @@
             height: 1lh;
             vertical-align: top;
             color: var(--progress-value-color);
-            width: round(
-                nearest,
-                calc(
-                    attr(value type(<number>)) / attr(max type(<number>)) * 100%
-                ),
-                1ch
-            );
             overflow: hidden;
             white-space: nowrap;
             background-color: var(--progress-value-background);
@@ -64,14 +92,6 @@
             vertical-align: top;
             color: var(--progress-empty-color);
             overflow: hidden;
-            width: round(
-                up,
-                calc(
-                    100% - attr(value type(<number>)) /
-                        attr(max type(<number>)) * 100%
-                ),
-                1ch
-            );
             white-space: nowrap;
             background-color: var(--progress-empty-background);
             z-index: 0;
