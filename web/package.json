@@ -18,7 +18,6 @@
     "@shikijs/transformers": "^3.2.1",
     "@webtui/css": "workspace:*",
     "@webtui/plugin-nf": "workspace:*",
-    "@webtui/rehype-tabindex": "workspace:*",
     "@webtui/theme-catppuccin": "workspace:*",
     "@webtui/theme-everforest": "workspace:*",
     "@webtui/theme-gruvbox": "workspace:*",
@@ -26,6 +25,7 @@
     "@webtui/theme-vitesse": "workspace:*",
     "astro": "^5.16.7",
     "sharp": "^0.34.4",
-    "shiki": "^3.13.0"
+    "shiki": "^3.13.0",
+    "unist-util-visit": "^5.0.0"
   }
 }
