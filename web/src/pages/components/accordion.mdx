@@ -1,0 +1,92 @@
+---
+layout: '@/layouts/Doc.astro'
+title: Accordion
+---
+
+import Example from '@/components/Example.astro'
+import accordionStyle from '@webtui/css/components/accordion.css?raw'
+
+Displays an accordion
+
+<Example
+    stylesheets={[accordionStyle]}
+    html={`
+    <details is-="accordion">
+        <summary>Open me</summary>
+        <p>Accordion content</p>
+    </details>
+`}
+/>
+
+## Import
+
+```css
+@import '@webtui/css/components/accordion.css';
+```
+
+## Usage
+
+```html
+<details is-="accordion">
+    <summary>Summary title</summary>
+    <p>Accordion content</p>
+</details>
+```
+
+## Examples
+
+### Nesting
+
+<Example
+    stylesheets={[accordionStyle]}
+    html={`
+    <details is-="accordion">
+        <summary>Parent</summary>
+        <details is-="accordion">
+            <summary>Favorite Child</summary>
+            <details is-="accordion">
+                <summary>Grandchild</summary>
+                <p>Grandchild content</p>
+            </details>
+        </details>
+        <details is-="accordion">
+            <summary>Normal Child</summary>
+            <p>Normal Child content</p>
+        </details>
+    </details>
+`}
+/>
+
+## Reference
+
+### Extending
+
+To extend the Badge stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    details[is-~='accordion'] {
+        &[variant-='directory'] {
+            summary::before {
+                content: '> ';
+            }
+
+            &[open] summary::before {
+                content: 'v ';
+            }
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All `<details>` elements with the `is-~="accordion"` selector
+
+```css
+details[is-~='accordion'] {
+    /* ... */
+}
+```
