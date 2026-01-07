@@ -7,6 +7,36 @@ import Example from '@/components/Example.astro'
 import buttonStyle from '@webtui/css/components/button.css?raw'
 import preStyle from '@webtui/css/components/pre.css?raw'
 
+## 0.1.6
+
+- Properly display the [Table Component](/components/table) when it has a
+  single row
+- Adds the [Accordion Component](/components/accordion)
+- Updated the [Progress Component](/components/progress) to use CSS variables
+  for better cross-browser compatibility
+
+### Migration Guide from 0.1.5
+
+You can no longer use the `<progress>` HTML element to display a styled
+progress bar due to incompatibilities with Gecko-based browsers. Use something
+like a `<div>` that supports CSS pseudo-elements.
+
+Additionally, you can no longer use the `value` and `max` attributes to control
+the progress bar. Use the `--progress-value` and `--progress-max` instead.
+
+```html
+<div is-="progress" style="--progress-value: 50;">50%</div>
+<div is-="progress" style="--progress-value: 8; --progress-max: 10;">8/10</div>
+```
+
+To control the progress bar dynamically with JavaScript:
+
+```js
+document
+    .getElementById('my-progress-element')
+    .style.setProperty('--progress-max', '100')
+```
+
 ## 0.1.5
 
 - Added the [View Component](/components/view)

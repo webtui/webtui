@@ -1,22 +1,17 @@
 @layer components {
-    progress {
-        -webkit-appearance: none;
-        appearance: none;
-        border: none;
-        outline: none;
+    @property --progress-value {
+        syntax: '<number>';
+        inherits: false;
     }
 
-    ::-webkit-progress-value,
-    ::-webkit-progress-bar {
-        background-color: transparent;
+    @property --progress-max {
+        syntax: '<number>';
+        inherits: false;
     }
 
-    ::-moz-progress-bar {
-        background-color: transparent;
-    }
-
-    progress,
     [is-~='progress'] {
+        --progress-value: 0;
+        --progress-max: 100;
         --progress-value-background: var(--foreground0);
         --progress-value-color: var(--foreground0);
         --progress-value-content: '';
@@ -44,9 +39,7 @@
             color: var(--progress-value-color);
             width: round(
                 nearest,
-                calc(
-                    attr(value type(<number>)) / attr(max type(<number>)) * 100%
-                ),
+                calc((var(--progress-value) / var(--progress-max)) * 100%),
                 1ch
             );
             overflow: hidden;
@@ -67,8 +60,7 @@
             width: round(
                 up,
                 calc(
-                    100% - attr(value type(<number>)) /
-                        attr(max type(<number>)) * 100%
+                    100% - (var(--progress-value) / var(--progress-max) * 100%)
                 ),
                 1ch
             );

@@ -26,17 +26,23 @@
             border: solid var(--table-border-width) var(--table-border-color);
         }
 
-        tr {
-            &:first-of-type td,
-            &:first-of-type th {
-                padding-top: 1lh;
-            }
+        :first-child > tr:first-child > td,
+        :first-child > tr:first-child > th {
+            padding-top: 1lh;
 
-            &:first-of-type:last-of-type td::before,
-            &:first-of-type:last-of-type th::before {
+            &::before {
                 height: calc(100% - 1lh);
             }
+        }
 
+        :last-child > tr:last-child > td,
+        :last-child > tr:last-child > th {
+            &::before {
+                height: calc(100% + 1lh);
+            }
+        }
+
+        tr {
             th {
                 font-weight: var(--font-weight-bold);
             }
