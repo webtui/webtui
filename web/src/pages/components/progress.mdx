@@ -15,8 +15,8 @@ Displays a progress bar
         progressStyle,
         `body{display:flex;flex-direction:column;gap:1lh;}`,
     ]}
-    html={`<progress value="50" max="100">50%</progress>
-<div is-="progress" value="25" max="100">50%</div>`}
+    html={`<div is-="progress" style="--progress-value:50;">50%</div>
+<div is-="progress" style="--progress-value:25;">25%</div>`}
 />
 
 ## Import
@@ -27,10 +27,22 @@ Displays a progress bar
 
 ## Usage
 
+Unfortunately, due to gecko-based browsers not supporting [modern `attr()` usage](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr), you have to use CSS variables for controlling the progress value.
+
 ```html
-<progress value="50" max="100">50%</progress>
-<progress value="25" max="50">20/50</progress>
-<div is-="progress" value="2" max="5">2/5</div>
+<div is-="progress" style="--progress-value: 50;">50%</div>
+<div is-="progress" style="--progress-value: 2; --progress-max: 5;">2/5</div>
+```
+
+To dynamically update the progress value with JavaScript:
+
+```js
+document
+    .getElementById('my-progress-element')
+    .style.setProperty('--progress-max', '100')
+document
+    .getElementById('my-progress-element')
+    .style.setProperty('--progress-value', '50')
 ```
 
 ## Examples
@@ -55,10 +67,10 @@ Displays a progress bar
             --progress-value-background: blue;
         }
     `}
-    html={`<progress value="50" max="100" id="red">50%</progress>
-<progress value="40" max="100" id="green">40%</progress>
-<progress value="30" max="100" id="blue">30%</progress>
-<progress value="20" max="100" style="--progress-value-background: orange">20%</progress>`}
+    html={`<div is-="progress" style="--progress-value:50;--progress-max:100" id="red">50%</div>
+<div is-="progress" style="--progress-value:40;--progress-max:100" id="green">40%</div>
+<div is-="progress" style="--progress-value:30;--progress-max:100" id="blue">30%</div>
+<div is-="progress" style="--progress-value:20;--progress-max:100; --progress-value-background: orange">20%</div>`}
 />
 
 ### Text content
@@ -97,9 +109,9 @@ Displays a progress bar
             max-width: 24ch;
         }
     `}
-    html={`<progress value="75" max="100" id="one">75%</progress>
-<progress value="50" max="100" id="two">50%</progress>
-<progress value="25" max="100" id="three">50%</progress>`}
+    html={`<div is-="progress" style="--progress-value:75;" id="one">75%</div>
+<div is-="progress" style="--progress-value:50;" id="two">50%</div>
+<div is-="progress" style="--progress-value:25;" id="three">50%</div>`}
 />
 
 ### Hybrid
@@ -138,15 +150,17 @@ Displays a progress bar
             max-width: 24ch;
         }
     `}
-    html={`<progress value="25" max="100" id="one">25%</progress>
-<progress value="50" max="100" id="two">50%</progress>
-<progress value="75" max="100" id="three">75%</progress>`}
+    html={`<div is-="progress" style="--progress-value:25;" id="one">25%</div>
+<div is-="progress" style="--progress-value:50;" id="two">50%</div>
+<div is-="progress" style="--progress-value:75;" id="three">75%</div>`}
 />
 
 ## Reference
 
 ### Properties
 
+- `--progress-value`: The current progress value (defaults to 0). Typically this is dynamically set by JavaScript
+- `--progress-max`: The maximum progress value (defaults to 100)
 - `--progress-value-background`: The background color of the progress value bar
 - `--progress-value-color`: The text color of the progress value bar
 - `--progress-value-content`: The text content of the progress value bar
@@ -158,6 +172,8 @@ Displays a progress bar
 
 ```css
 progress {
+    --progress-value: 50;
+    --progress-max: 100;
     --progress-value-background: var(--background2);
     --progress-value-color: var(--foreground0);
     --progress-value-content: '[#######################';
@@ -173,10 +189,15 @@ To extend the Progress stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    progress,
     [is-~='progress'] {
-        &[variant='green'] {
-            /* ... */
+        &[variant='yarn'] {
+            --progress-value-content: '[#######################';
+            --progress-empty-content: '.......................]';
+        }
+
+        &[variant='npm'] {
+            --progress-value-content: '[████████████████████';
+            --progress-empty-content: '░░░░░░░░░░░░░░░░░░░░]';
         }
 
         /* ... */
