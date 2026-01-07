@@ -7,11 +7,6 @@ import rehypeTabIndex from '@webtui/rehype-tabindex'
 // https://astro.build/config
 export default defineConfig({
     compressHTML: false,
-    redirects: {
-        '/docs': '/start/intro',
-        '/start': '/start/intro',
-        '/examples': '/showcase',
-    },
     markdown: {
         rehypePlugins: [rehypeHeadingIds, rehypeTabIndex],
         shikiConfig: {

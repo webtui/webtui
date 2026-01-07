@@ -24,6 +24,7 @@
         }
     },
     "devDependencies": {
+        "@types/hast": "^3.0.4",
         "rehype": "^13.0.2",
         "vite": "^6.2.0",
         "vite-plugin-dts": "^4.5.3"

@@ -24,7 +24,7 @@
     "@webtui/theme-gruvbox": "workspace:*",
     "@webtui/theme-nord": "workspace:*",
     "@webtui/theme-vitesse": "workspace:*",
-    "astro": "^5.4.2",
+    "astro": "^5.16.7",
     "sharp": "^0.34.4",
     "shiki": "^3.13.0"
   }
