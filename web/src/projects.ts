@@ -10,14 +10,20 @@ export const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
             tags: ['Calendar', 'AI'],
         },
         {
+            title: 'Justin Gu',
+            url: 'https://justin.run',
+            imageUrl: '/gallery/justin-gu.png',
+            tags: ['Personal Website'],
+        },
+    ],
+    [
+        {
             title: 'BitTerm',
             url: 'https://bitterm-eight.vercel.app',
             imageUrl: '/gallery/bitterm.png',
             source: 'https://github.com/chandrapratamar/BitTerm/',
             tags: ['WebTorrent Client'],
         },
-    ],
-    [
         {
             title: 'Metazoa WebTUI',
             url: 'http://45.79.200.131:3000',
@@ -25,6 +31,8 @@ export const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
             source: 'https://github.com/benjamman/metazoa-webtui',
             tags: ['Search Engine'],
         },
+    ],
+    [
         {
             title: 'fullstackbrett',
             url: 'https://fullstackbrett.com',
@@ -32,14 +40,14 @@ export const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
             source: 'https://github.com/brettsmith212/fullstackbrett',
             tags: ['Blog'],
         },
-    ],
-    [
         {
             title: 'Stefan Vučković - Software Engineer',
             url: 'https://stefvuck.dev',
             imageUrl: '/gallery/stefvuck-dev.png',
-            tags: ['Personal Portfolio'],
+            tags: ['Personal Website'],
         },
+    ],
+    [
         {
             title: 'AI Terminal',
             url: 'https://ai-terminal-production.up.railway.app',
