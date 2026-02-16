@@ -5,7 +5,7 @@ title: Contributing
 
 If you are interested in contributing, please ensure that you have read the [Style Guide](/contributing/style-guide)
 
-If you need help on something, join [chat.ironclad.sh](https://chat.ironclad.sh)
+If you need help on something, join [chat.ironclad.sh](https://webtui.ironclad.sh/chat) and ask in the `#webtui` channel
 
 ## Local Development
 
