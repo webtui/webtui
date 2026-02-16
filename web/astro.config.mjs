@@ -50,4 +50,7 @@ export default defineConfig({
             ],
         },
     },
+    redirects: {
+        "/chat": "https://chat.ironclad.sh/join/g4S1-pAaX-KYuM",
+    },
 })
