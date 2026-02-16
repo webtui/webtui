@@ -4,6 +4,8 @@ title: Installation
 order: 3
 ---
 
+import { version } from '../../../../packages/css/package.json'
+
 This guide covers how to install WebTUI with CSS, ESM, and CDN imports
 
 For framework-specific guides, check out the [Installation](/installation/nextjs) section
@@ -70,20 +72,47 @@ Ensure you have previously defined the order of layers in your global CSS file
 
 If you aren't using a bundler, you can import the CSS files from a CDN like [JSDelivr](https://www.jsdelivr.com/)
 
-```html
-<style>
-    @layer base, utils, components;
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4;overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="css">
+    <style>{`.weird-but-specific-code-block-with-dynamic-version .line{display:block;min-height:1lh;}`}</style>
 
-    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/base.css';
+    <code class="weird-but-specific-code-block-with-dynamic-version">
+        <span class="line">
+            <span style="color:#CBA6F7">@layer</span>
+            <span style="color:#CDD6F4"> base, utils, components</span>
+            <span style="color:#9399B2">;</span>
+        </span>
+        <span class="line"></span>
+        <span class="line">
+            <span style="color:#CBA6F7">@import</span>
+            <span style="color:#A6E3A1">{` 'https://cdn.jsdelivr.net/npm/@webtui/css@${version}/dist/base.css'`}</span>
+            <span style="color:#9399B2">;</span>
+        </span>
+        <span class="line"></span>
+        <span class="line">
+            <span style="color:#9399B2;font-style:italic">/* Utils */</span>
+        </span>
+        <span class="line">
+            <span style="color:#CBA6F7">@import</span>
+            <span style="color:#A6E3A1">{` 'https://cdn.jsdelivr.net/npm/@webtui/css@${version}/dist/utils/box.css'`}</span>
+            <span style="color:#9399B2">;</span>
+        </span>
+        <span class="line"></span>
+        <span class="line">
+            <span style="color:#9399B2;font-style:italic">/* Components */</span>
+        </span>
+        <span class="line">
+            <span style="color:#CBA6F7">@import</span>
+            <span style="color:#A6E3A1">{` 'https://cdn.jsdelivr.net/npm/@webtui/css@${version}/dist/components/button.css'`}</span>
+            <span style="color:#9399B2">;</span>
+        </span>
+        <span class="line">
+            <span style="color:#CBA6F7">@import</span>
+            <span style="color:#A6E3A1">{` 'https://cdn.jsdelivr.net/npm/@webtui/css@${version}/dist/components/typography.css'`}</span>
+            <span style="color:#9399B2">;</span>
+        </span>
+    </code>
 
-    /* Utils */
-    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/utils/box.css';
-
-    /* Components */
-    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/components/button.css';
-    @import 'https://cdn.jsdelivr.net/npm/@webtui/css@0.0.5/dist/components/typography.css';
-</style>
-```
+</pre>
 
 Browse all the available CSS files on the [JSDelivr page](https://cdn.jsdelivr.net/npm/@webtui/css/dist/)
 
