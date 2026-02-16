@@ -5,7 +5,7 @@ title: Contributing
 
 If you are interested in contributing, please ensure that you have read the [Style Guide](/contributing/style-guide)
 
-If you need help on something, join the [Discord Server](https://discord.gg/yUS6T8YnfT)
+If you need help on something, join [chat.ironclad.sh](https://chat.ironclad.sh)
 
 ## Local Development
 
@@ -27,8 +27,6 @@ Ensure [Bun](https://bun.sh/) is installed
 ## Issues
 
 Bug reports, feature requests, and improvements are all welcome as issues.
-
-If you need help, join the [Discord Server](https://discord.gg/yUS6T8YnfT)
 
 ## Pull Requests
 

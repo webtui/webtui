@@ -4,7 +4,7 @@ Modular CSS Library that brings the beauty of Terminal UIs to the browser
 
 - Docs: https://webtui.ironclad.sh
 - Examples: https://webtui.ironclad.sh/showcase
-- Discord Server: https://discord.gg/yUS6T8YnfT
+- Chat and Support: https://chat.ironclad.sh
 
 ## Quickstart
 
