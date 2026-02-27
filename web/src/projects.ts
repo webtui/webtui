@@ -25,11 +25,11 @@ export const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
             tags: ['WebTorrent Client'],
         },
         {
-            title: 'Metazoa WebTUI',
-            url: 'http://45.79.200.131:3000',
-            imageUrl: '/gallery/metazoa.png',
-            source: 'https://github.com/benjamman/metazoa-webtui',
-            tags: ['Search Engine'],
+            title: 'friends.dorm.social',
+            url: 'https://friends.dorm.social/',
+            imageUrl: '/gallery/dorm.png',
+            source: 'https://github.com/ourdorm/friends',
+            tags: ['community'],
         },
     ],
     [
