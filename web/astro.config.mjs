@@ -51,6 +51,6 @@ export default defineConfig({
         },
     },
     redirects: {
-        "/chat": "https://chat.ironclad.sh/join/g4S1-pAaX-KYuM",
+        "/chat": "https://signal.group/#CjQKICa96QpSIMdst0m-PtK--r99-CqzLYhDlLWKd7cYky7aEhBKzLbbL8jxvYQnVsX8DS6f",
     },
 })
