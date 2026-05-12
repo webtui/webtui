@@ -2,11 +2,13 @@
     @property --progress-value {
         syntax: '<number>';
         inherits: false;
+        initial-value: 0;
     }
 
     @property --progress-max {
         syntax: '<number>';
         inherits: false;
+        initial-value: 100;
     }
 
     [is-~='progress'] {
