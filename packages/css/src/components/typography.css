@@ -29,7 +29,7 @@
         list-style-type: none;
 
         li::before {
-            color: inherit;
+            color: var(--list-marker-color, inherit);
             content: '- ';
         }
 
@@ -77,7 +77,10 @@
                 width: var(--box-border-width, 2px);
                 height: 100%;
                 translate: -50%;
-                background-color: var(--background2);
+                background-color: var(
+                    --blockquote-indent-color,
+                    var(--background2)
+                );
             }
         }
 

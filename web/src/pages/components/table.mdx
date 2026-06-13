@@ -69,9 +69,36 @@ Displays a table
 </table>
 ```
 
+## Examples
+
+### Variants
+
+Use the `variant-` attribute to change the color of the table borders
+
+```html
+<table variant-="foreground1"></table>
+```
+
+<Example
+    stylesheets={[tableStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+    `}
+    html={`<table variant-="foreground0"><tr><th>variant-</th><td>foreground0</td></tr></table>
+<table variant-="foreground1"><tr><th>variant-</th><td>foreground1</td></tr></table>
+<table variant-="foreground2"><tr><th>variant-</th><td>foreground2</td></tr></table>
+<table variant-="background0"><tr><th>variant-</th><td>background0</td></tr></table>
+<table variant-="background1"><tr><th>variant-</th><td>background1</td></tr></table>
+<table variant-="background2"><tr><th>variant-</th><td>background2</td></tr></table>
+<table variant-="background3"><tr><th>variant-</th><td>background3</td></tr></table>`}
+/>
+
 ## Caveats
 
-The `<caption>` element absolutely obliterates the ascii box-like styling
+The `<caption>` element absolutely obliterates the ascii box-like styling, don't use it
 
 ## Reference
 
