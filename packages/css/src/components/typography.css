@@ -51,6 +51,20 @@
             }
         }
 
+        &[marker-~='round-tree'] {
+            li::before {
+                content: '├ ';
+            }
+
+            &:not([marker-^='open']) li:first-of-type::before {
+                content: '╭ ';
+            }
+
+            &:not([marker-$='open']) li:last-of-type::before {
+                content: '╰ ';
+            }
+        }
+
         li > ul {
             margin-left: 2ch;
         }
