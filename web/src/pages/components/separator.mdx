@@ -40,11 +40,44 @@ A horizontal or vertical separator
 <!-- Vertical -->
 <div is-="separator" direction-="vertical"></div>
 <div is-="separator" direction-="y"></div>
+
+<!-- Color Variant -->
+<div is-="separator" variant-="background1"></div>
+<div is-="separator" variant-="foreground1"></div>
 ```
 
 If `direction-` is not specified, separators are horizontal by default.
 
 ## Examples
+
+### Variants
+
+<Example
+    stylesheets={[separatorStyle]}
+    css={`
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+    `}
+    html={`<span>foreground0:</span>
+<div is-="separator" variant-="foreground0"></div>
+<span>foreground1:</span>
+<div is-="separator" variant-="foreground1"></div>
+<span>foreground2:</span>
+<div is-="separator" variant-="foreground2"></div>
+<span>background0:</span>
+<div is-="separator" variant-="background0"></div>
+<span>background1:</span>
+<div is-="separator" variant-="background1"></div>
+<span>background2:</span>
+<div is-="separator" variant-="background2"></div>
+<span>background3:</span>
+<div is-="separator" variant-="background3"></div>
+`}
+/>
+
+Available variants match the [base theme colors](/start/theming#colors)
 
 ### Vertical
 
@@ -233,7 +266,7 @@ To extend the Separator stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    input[type='checkbox'] {
+    [is-~='separator'] {
         /* ... */
     }
 }
@@ -244,7 +277,7 @@ To extend the Separator stylesheet, define a CSS rule on the `components` layer
 - All elements with the `is-~="separator"` selector
 
 ```css
-input[type='checkbox'] {
+[is-~='separator'] {
     /* ... */
 }
 ```

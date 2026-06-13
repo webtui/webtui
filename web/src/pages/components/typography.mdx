@@ -70,6 +70,28 @@ Block Quotes
 `}
 />
 
+Use the `--blockquote-indent-color` CSS variable to change the color of the indentation
+
+```css
+blockquote {
+    --blockquote-indent-color: red;
+}
+```
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    css={`
+        blockquote {
+            --blockquote-indent-color: red;
+        }
+    `}
+    html={`
+<blockquote>
+    Lorem Ipsum Dolor Sit Amet
+</blockquote>
+`}
+/>
+
 ### `<ol>`
 
 Ordered Lists
@@ -105,9 +127,9 @@ Unordered Lists
 Add the `marker-` attribute to a `<ul>` element to customize its list markers
 
 ```html
-<ul marker-="bullet">
-    <ul marker-="tree"></ul>
-</ul>
+<ul marker-="bullet"></ul>
+<ul marker-="tree"></ul>
+<ul marker-="round-tree"></ul>
 ```
 
 <Example
@@ -117,18 +139,23 @@ Add the `marker-` attribute to a `<ul>` element to customize its list markers
     ]}
     html={`
 <ul>
+    <li>default</li>
     <li>List</li>
-    <li>With</li>
     <li><code>default</code> Markers</li>
 </ul>
 <ul marker-="bullet">
+    <li>bullet</li>
     <li>List</li>
-    <li>With</li>
     <li><code>bullet</code> Markers</li>
 </ul>
 <ul marker-="tree">
+    <li>tree</li>
     <li>List</li>
-    <li>With</li>
+    <li><code>tree</code> Markers</li>
+</ul>
+<ul marker-="round-tree">
+    <li>round-tree</li>
+    <li>List</li>
     <li><code>tree</code> Markers</li>
 </ul>
 `}
@@ -137,11 +164,9 @@ Add the `marker-` attribute to a `<ul>` element to customize its list markers
 Use the `open` keyword at the start and/or end of the `marker-` attribute to leave the top/bottom tree markers open
 
 ```html
-<ul marker-="tree open">
-    <ul marker-="open tree">
-        <ul marker-="open tree open"></ul>
-    </ul>
-</ul>
+<ul marker-="tree open"></ul>
+<ul marker-="open tree"></ul>
+<ul marker-="open tree open"></ul>
 ```
 
 <Example
@@ -151,21 +176,61 @@ Use the `open` keyword at the start and/or end of the `marker-` attribute to lea
     ]}
     html={`
 <ul marker-="tree open">
-    <li>Tree</li>
+    <li>tree</li>
     <li>With</li>
     <li><code>marker-="tree open"</code></li>
 </ul>
 <ul marker-="open tree">
-    <li>Tree</li>
+    <li>tree</li>
     <li>With</li>
     <li><code>marker-="open tree"</code></li>
 </ul>
 <ul marker-="open tree open">
-    <li>Tree</li>
+    <li>tree</li>
     <li>With</li>
     <li><code>marker-="open tree open"</code></li>
 </ul>
+<ul marker-="round-tree open">
+    <li>round-tree</li>
+    <li>With</li>
+    <li><code>marker-="round-tree open"</code></li>
+</ul>
+<ul marker-="open round-tree">
+    <li>round-tree</li>
+    <li>With</li>
+    <li><code>marker-="open round-tree"</code></li>
+</ul>
+<ul marker-="open round-tree open">
+    <li>round-tree</li>
+    <li>With</li>
+    <li><code>marker-="open round-tree open"</code></li>
+</ul>
 `}
+/>
+
+Use the `--list-marker-color` CSS variable to change the color of list markers
+
+```css
+li {
+    --list-marker-color: red;
+}
+```
+
+<Example
+    stylesheets={[
+        typographyStylesheet,
+        `body { display: flex; flex-direction: column; gap: 1lh; }`,
+    ]}
+    css={`
+        li {
+            --list-marker-color: red;
+        }
+    `}
+    html={`<ul>
+    <li>red</li>
+    <li>hot</li>
+    <li>list markers</li>
+</ul>`}
 />
 
 ### `[is-="typography-block"]`
