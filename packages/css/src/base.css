@@ -42,6 +42,7 @@
         font-weight: var(--font-weight-normal);
         line-height: var(--line-height, 1.5);
         font-variant-ligatures: common-ligatures;
+        word-break: break-all;
     }
 
     * {
