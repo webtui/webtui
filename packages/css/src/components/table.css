@@ -15,31 +15,20 @@
         text-align: left;
         position: relative;
         border-spacing: 0 0;
+        padding-top: 1lh;
+        padding-left: 1ch;
 
         &::before {
             content: '';
             position: absolute;
             top: calc(0.5lh - (var(--table-border-width) / 2));
             left: calc(0.5ch - (var(--table-border-width) / 2));
-            width: calc(100% - 1ch - var(--table-border-width));
-            height: calc(100% - 1lh - var(--table-border-width));
-            border: solid var(--table-border-width) var(--table-border-color);
-        }
-
-        :first-child > tr:first-child > td,
-        :first-child > tr:first-child > th {
-            padding-top: 1lh;
-
-            &::before {
-                height: calc(100% - 1lh);
-            }
-        }
-
-        :last-child > tr:last-child > td,
-        :last-child > tr:last-child > th {
-            &::before {
-                height: calc(100% + 1lh);
-            }
+            width: calc(100% - 1ch);
+            height: calc(100% - 1lh);
+            border-top: solid var(--table-border-width)
+                var(--table-border-color);
+            border-left: solid var(--table-border-width)
+                var(--table-border-color);
         }
 
         tr {
@@ -47,12 +36,7 @@
                 font-weight: var(--font-weight-bold);
             }
 
-            th,
-            td {
-                &:first-of-type {
-                    padding-left: 1ch;
-                }
-
+            & > *:is(th, td) {
                 position: relative;
                 padding-right: 1ch;
                 padding-bottom: 1lh;
@@ -70,15 +54,11 @@
                 &::after {
                     content: '';
                     position: absolute;
-                    left: calc(0.5ch + var(--table-border-width) / 2);
+                    left: calc(-0.5ch);
                     bottom: calc(0.5lh - var(--table-border-width) / 2);
                     width: 100%;
                     border-top: solid var(--table-border-width)
                         var(--table-border-color);
-                }
-
-                &:last-of-type::after {
-                    width: calc(100% - 1ch);
                 }
             }
         }
