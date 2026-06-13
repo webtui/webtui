@@ -17,9 +17,6 @@
         --font-family: monospace;
 
         --box-border-color: var(--foreground0);
-        --table-border-color: var(--box-border-color);
-        --separator-color: var(--box-border-color);
-        --separator-background: transparent;
     }
 
     [data-webtui-theme='dark'] {

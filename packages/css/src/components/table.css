@@ -6,6 +6,8 @@
     }
 
     table {
+        --table-border-color: var(--box-border-color);
+
         border: none;
         outline: none;
         font-family: var(--font-family);
@@ -89,6 +91,28 @@
             &:first-of-type th {
                 padding-top: 0;
             }
+        }
+
+        &[variant-='foreground0'] {
+            --table-border-color: var(--foreground0);
+        }
+        &[variant-='foreground1'] {
+            --table-border-color: var(--foreground1);
+        }
+        &[variant-='foreground2'] {
+            --table-border-color: var(--foreground2);
+        }
+        &[variant-='background0'] {
+            --table-border-color: var(--background0);
+        }
+        &[variant-='background1'] {
+            --table-border-color: var(--background1);
+        }
+        &[variant-='background2'] {
+            --table-border-color: var(--background2);
+        }
+        &[variant-='background3'] {
+            --table-border-color: var(--background3);
         }
     }
 }

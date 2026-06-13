@@ -70,6 +70,28 @@ Block Quotes
 `}
 />
 
+Use the `--blockquote-indent-color` CSS variable to change the color of the indentation
+
+```css
+blockquote {
+    --blockquote-indent-color: red;
+}
+```
+
+<Example
+    stylesheets={[typographyStylesheet]}
+    css={`
+        blockquote {
+            --blockquote-indent-color: red;
+        }
+    `}
+    html={`
+<blockquote>
+    Lorem Ipsum Dolor Sit Amet
+</blockquote>
+`}
+/>
+
 ### `<ol>`
 
 Ordered Lists
@@ -166,6 +188,31 @@ Use the `open` keyword at the start and/or end of the `marker-` attribute to lea
     <li><code>marker-="open tree open"</code></li>
 </ul>
 `}
+/>
+
+Use the `--list-marker-color` CSS variable to change the color of list markers
+
+```css
+li {
+    --list-marker-color: red;
+}
+```
+
+<Example
+    stylesheets={[
+        typographyStylesheet,
+        `body { display: flex; flex-direction: column; gap: 1lh; }`,
+    ]}
+    css={`
+        li {
+            --list-marker-color: red;
+        }
+    `}
+    html={`<ul>
+    <li>red</li>
+    <li>hot</li>
+    <li>list markers</li>
+</ul>`}
 />
 
 ### `[is-="typography-block"]`
