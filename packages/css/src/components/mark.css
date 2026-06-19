@@ -1,0 +1,55 @@
+@layer components {
+    mark,
+    [is-~='mark'] {
+        background-color: inherit;
+        color: inherit;
+
+        &[bg-] {
+            &[bg-='background0'] {
+                background-color: var(--background0);
+            }
+            &[bg-='background1'] {
+                background-color: var(--background1);
+            }
+            &[bg-='background2'] {
+                background-color: var(--background2);
+            }
+            &[bg-='background3'] {
+                background-color: var(--background3);
+            }
+            &[bg-='foreground0'] {
+                background-color: var(--foreground0);
+            }
+            &[bg-='foreground1'] {
+                background-color: var(--foreground1);
+            }
+            &[bg-='foreground2'] {
+                background-color: var(--foreground2);
+            }
+        }
+
+        &[fg-] {
+            &[fg-='background0'] {
+                color: var(--background0);
+            }
+            &[fg-='background1'] {
+                color: var(--background1);
+            }
+            &[fg-='background2'] {
+                color: var(--background2);
+            }
+            &[fg-='background3'] {
+                color: var(--background3);
+            }
+            &[fg-='foreground0'] {
+                color: var(--foreground0);
+            }
+            &[fg-='foreground1'] {
+                color: var(--foreground1);
+            }
+            &[fg-='foreground2'] {
+                color: var(--foreground2);
+            }
+        }
+    }
+}
