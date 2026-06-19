@@ -1,0 +1,50 @@
+@layer components {
+    [data-webtui-theme|='gruvbox'] {
+        [is-~='mark'],
+        mark {
+            &[bg-='red'] {
+                background-color: var(--gb-red);
+            }
+            &[bg-='green'] {
+                background-color: var(--gb-green);
+            }
+            &[bg-='yellow'] {
+                background-color: var(--gb-yellow);
+            }
+            &[bg-='blue'] {
+                background-color: var(--gb-blue);
+            }
+            &[bg-='purple'] {
+                background-color: var(--gb-purple);
+            }
+            &[bg-='aqua'] {
+                background-color: var(--gb-aqua);
+            }
+            &[bg-='orange'] {
+                background-color: var(--gb-orange);
+            }
+
+            &[fg-='red'] {
+                color: var(--gb-red);
+            }
+            &[fg-='green'] {
+                color: var(--gb-green);
+            }
+            &[fg-='yellow'] {
+                color: var(--gb-yellow);
+            }
+            &[fg-='blue'] {
+                color: var(--gb-blue);
+            }
+            &[fg-='purple'] {
+                color: var(--gb-purple);
+            }
+            &[fg-='aqua'] {
+                color: var(--gb-aqua);
+            }
+            &[fg-='orange'] {
+                color: var(--gb-orange);
+            }
+        }
+    }
+}
