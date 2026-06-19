@@ -76,6 +76,7 @@ Components affected/modified by the theme:
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -97,9 +98,10 @@ Adds additional variants to badges matching Everforest accent colors.
 
 ```html
 <span is-="badge" variant-="red">red</span>
-<!-- ... -->
 <span is-="badge" variant-="aqua">aqua</span>
+<!-- ... -->
 <span is-="badge" variant-="orange">orange</span>
+<span is-="badge" variant-="statusline1">statusline1</span>
 ```
 
 ### Button
@@ -108,9 +110,22 @@ Adds additional variants to buttons matching Everforest accent colors.
 
 ```html
 <button variant-="red">red</button>
-<!-- ... -->
 <button variant-="aqua">aqua</button>
+<!-- ... -->
 <button variant-="orange">orange</button>
+<button variant-="statusline2">statusline2</button>
+```
+
+## Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching the accent colors.
+
+```html
+<mark fg-="red">red</mark>
+<mark bg-="aqua">aqua</mark>
+<!-- ... -->
+<mark bg-="orange">orange</mark>
+<mark fg-="statusline3">statusline3</mark>
 ```
 
 ## CSS Variables
@@ -119,6 +134,7 @@ Adds the following CSS variables within the `base` layer, each of which change b
 
 ```css
 [data-webtui-theme='everforest-*-*'] {
+    /* Accent Colors */
     --red: #e67e80;
     --orange: #e69875;
     --yellow: #dbbc7f;
@@ -126,10 +142,11 @@ Adds the following CSS variables within the `base` layer, each of which change b
     --blue: #7fbbb3;
     --aqua: #83c092;
     --purple: #d699b6;
-    --fg: #d3c6aa;
     --statusline1: #a7c080;
     --statusline2: #d3c6aa;
     --statusline3: #e67e80;
+
+    --fg: #d3c6aa;
     --gray0: #7a8478;
     --gray1: #859289;
     --gray2: #9da9a0;

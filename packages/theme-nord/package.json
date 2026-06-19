@@ -1,6 +1,6 @@
 {
     "name": "@webtui/theme-nord",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "license": "MIT",
     "type": "module",
     "scripts": {

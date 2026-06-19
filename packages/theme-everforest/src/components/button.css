@@ -29,6 +29,18 @@
                 --button-primary: var(--orange);
                 --button-secondary: var(--background0);
             }
+            &[variant-='statusline1'] {
+                --button-primary: var(--statusline1);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='statusline2'] {
+                --button-primary: var(--statusline2);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='statusline3'] {
+                --button-primary: var(--statusline3);
+                --button-secondary: var(--background0);
+            }
         }
     }
 }

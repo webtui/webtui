@@ -1,0 +1,96 @@
+---
+layout: '@/layouts/Doc.astro'
+title: Mark
+---
+
+import Example from '@/components/Example.astro'
+import markStyle from '@webtui/css/components/mark.css?raw'
+import typographyStyle from '@webtui/css/components/typography.css?raw'
+
+Uses the `<mark>` HTML element to highlight text
+
+<Example
+    stylesheets={[typographyStyle, markStyle]}
+    html={`
+<p>
+    This is a
+    <mark fg-="foreground0">paragraph</mark>
+    with
+    <mark fg-="background0" bg-="foreground2">highlighted</mark>
+    <mark bg-="background2">text</mark></p>
+`}
+/>
+
+## Import
+
+```css
+@import '@webtui/css/components/mark.css';
+```
+
+## Usage
+
+```html
+<mark fg-="foreground1">highlight foreground</mark>
+<mark bg-="background2">highlight background</mark>
+<mark fg-="foreground2" bg-="background2"
+    >highlight background and foreground</mark
+>
+<span is-="mark" fg-="..." bg-="...">highlight a different tag</span>
+```
+
+## Examples
+
+Use the `fg-` (foreground) and `bg-` (background) attributes to change the color and background color of the `<mark>`
+
+<Example
+    stylesheets={[typographyStyle, markStyle]}
+    html={`
+<ul>
+    <li>fg- only: <mark fg-="foreground2">fg-="foreground1"</mark></li>
+    <li>bg- only: <mark bg-="background1">bg-="backrground1"</mark></li>
+    <li>fg- and bg-: <mark bg-="foreground1" fg-="background0">bg-="foreground1" fg-="background0"</mark></li>
+</ul>
+    `}
+/>
+
+By default, `fg-`, and `bg-` match the [base theme colors](/start/theming#colors) but can be extended with themes
+
+## Reference
+
+### Extending
+
+To extend the Badge stylesheet, define a CSS rule on the `components` layer
+
+```css
+@layer components {
+    mark,
+    [is-~='mark'] {
+        &[bg-='red'] {
+            background-color: red;
+        }
+        &[fg-='red'] {
+            color: red;
+        }
+        &[bg-='blue'] {
+            background-color: blue;
+        }
+        &[fg-='blue'] {
+            color: blue;
+        }
+
+        /* ... */
+    }
+}
+```
+
+### Scope
+
+- All elements with the `is-~="mark"` selector
+- All `<mark>` elements
+
+```css
+mark,
+[is-~='mark'] {
+    /* ... */
+}
+```

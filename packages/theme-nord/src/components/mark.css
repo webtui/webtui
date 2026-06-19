@@ -1,0 +1,104 @@
+@layer components {
+    [data-webtui-theme='nord'] {
+        [is-~='mark'],
+        mark {
+            &[bg-='nord0'] {
+                background-color: var(--nord0);
+            }
+            &[bg-='nord1'] {
+                background-color: var(--nord1);
+            }
+            &[bg-='nord2'] {
+                background-color: var(--nord2);
+            }
+            &[bg-='nord3'] {
+                background-color: var(--nord3);
+            }
+            &[bg-='nord4'] {
+                background-color: var(--nord4);
+            }
+            &[bg-='nord5'] {
+                background-color: var(--nord5);
+            }
+            &[bg-='nord6'] {
+                background-color: var(--nord6);
+            }
+            &[bg-='nord7'] {
+                background-color: var(--nord7);
+            }
+            &[bg-='nord8'] {
+                background-color: var(--nord8);
+            }
+            &[bg-='nord9'] {
+                background-color: var(--nord9);
+            }
+            &[bg-='nord10'] {
+                background-color: var(--nord10);
+            }
+            &[bg-='nord11'] {
+                background-color: var(--nord11);
+            }
+            &[bg-='nord12'] {
+                background-color: var(--nord12);
+            }
+            &[bg-='nord13'] {
+                background-color: var(--nord13);
+            }
+            &[bg-='nord14'] {
+                background-color: var(--nord14);
+            }
+            &[bg-='nord15'] {
+                background-color: var(--nord15);
+            }
+
+            &[fg-='nord0'] {
+                color: var(--nord0);
+            }
+            &[fg-='nord1'] {
+                color: var(--nord1);
+            }
+            &[fg-='nord2'] {
+                color: var(--nord2);
+            }
+            &[fg-='nord3'] {
+                color: var(--nord3);
+            }
+            &[fg-='nord4'] {
+                color: var(--nord4);
+            }
+            &[fg-='nord5'] {
+                color: var(--nord5);
+            }
+            &[fg-='nord6'] {
+                color: var(--nord6);
+            }
+            &[fg-='nord7'] {
+                color: var(--nord7);
+            }
+            &[fg-='nord8'] {
+                color: var(--nord8);
+            }
+            &[fg-='nord9'] {
+                color: var(--nord9);
+            }
+            &[fg-='nord10'] {
+                color: var(--nord10);
+            }
+            &[fg-='nord11'] {
+                color: var(--nord11);
+            }
+            &[fg-='nord12'] {
+                color: var(--nord12);
+            }
+            &[fg-='nord13'] {
+                color: var(--nord13);
+            }
+            &[fg-='nord14'] {
+                color: var(--nord14);
+            }
+            &[fg-='nord15'] {
+                color: var(--nord15);
+            }
+        }
+    }
+}

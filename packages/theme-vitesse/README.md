@@ -76,6 +76,7 @@ Components affected/modified by the theme:
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -115,12 +116,34 @@ Adds additional variants to buttons matching Vitesse accent colors.
 <button variant-="orange">orange</button>
 ```
 
+### Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching the accent colors.
+
+```html
+<mark bg-="gray">gray</mark>
+<mark fg-="red">red</mark>
+<!-- ... -->
+<mark bg-="aqua">aqua</mark>
+<mark fg-="orange">orange</mark>
+```
+
 ## CSS Variables
 
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
 [data-webtui-theme='vitesse-*-*'] {
+    /* Accent Colors */
+    --gray: #586069;
+    --red: #cb7676;
+    --green: #4d9375;
+    --yellow: #e6cc77;
+    --blue: #6394bf;
+    --purple: #d9739f;
+    --aqua: #5eaab5;
+    --orange: #d4976c;
+
     --bg1: #2f363d;
     --bg2: #393a34;
     --bg3: #444d56;
@@ -130,15 +153,6 @@ Adds the following CSS variables within the `base` layer, each of which change b
     --fg2: #b8bab7;
     --fg3: #a6abae;
     --fg4: #959da5;
-
-    --gray: #586069;
-    --red: #cb7676;
-    --green: #4d9375;
-    --yellow: #e6cc77;
-    --blue: #6394bf;
-    --purple: #d9739f;
-    --aqua: #5eaab5;
-    --orange: #d4976c;
 }
 ```
 
