@@ -8,21 +8,28 @@ import typographyStyle from '@webtui/css/components/typography.css?raw'
 import everforestStyle from '@webtui/theme-everforest?raw'
 import badgeStyle from '@webtui/css/components/badge.css?raw'
 import buttonStyle from '@webtui/css/components/button.css?raw'
+import markStyle from '@webtui/css/components/mark.css?raw'
 
 A port of the [Everforest](https://github.com/morhetz/everforest) color palette to [WebTUI](https://github.com/webtui/webtui).
 
 <Example
-  stylesheets={[typographyStyle, buttonStyle, badgeStyle, everforestStyle]}
-  themes={{
-    "everforest-dark-hard": "Everforest Dark Hard",
-    "everforest-dark-medium": "Everforest Dark Medium",
-    "everforest-dark-soft": "Everforest Dark Soft",
-    "everforest-light-hard": "Everforest Light Hard",
-    "everforest-light-medium": "Everforest Light Medium",
-    "everforest-light-soft": "Everforest Light Soft",
-  }}
-  data-initial-theme="everforest-dark-hard"
-  html={`
+    stylesheets={[
+        typographyStyle,
+        buttonStyle,
+        badgeStyle,
+        markStyle,
+        everforestStyle,
+    ]}
+    themes={{
+        'everforest-dark-hard': 'Everforest Dark Hard',
+        'everforest-dark-medium': 'Everforest Dark Medium',
+        'everforest-dark-soft': 'Everforest Dark Soft',
+        'everforest-light-hard': 'Everforest Light Hard',
+        'everforest-light-medium': 'Everforest Light Medium',
+        'everforest-light-soft': 'Everforest Light Soft',
+    }}
+    data-initial-theme="everforest-dark-hard"
+    html={`
 <h1>Heading</h1>
 <p>Typography demo with <a>links</a> and <code>inline code</code></p>
 <span is-="badge" variant-="red">Lots</span>
@@ -35,7 +42,7 @@ A port of the [Everforest](https://github.com/morhetz/everforest) color palette 
 <button variant-="green">And</button>
 <button variant-="orange">Buttons</button>
 <button variant-="yellow">Too</button>
-
+<p>Roses are <mark fg-="red">red</mark>, violets are <mark fg-="purple">purple</mark>, oranges are <mark bg-="orange" fg-="background0">orange</mark>, and so are <mark fg-="blue" bg-=="background2">blue</mark></p>
 `}
 />
 
@@ -111,6 +118,7 @@ Components affected/modified by the theme:
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -148,12 +156,25 @@ Adds additional variants to buttons matching everforest accent colors.
 <button variant-="orange">orange</button>
 ```
 
+## Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching the accent colors.
+
+```html
+<mark fg-="red">red</mark>
+<mark bg-="aqua">aqua</mark>
+<!-- ... -->
+<mark bg-="orange">orange</mark>
+<mark fg-="statusline3">statusline3</mark>
+```
+
 ## CSS Variables
 
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
 [data-webtui-theme='everforest-*-*'] {
+    /* Accent Colors */
     --red: #e67e80;
     --orange: #e69875;
     --yellow: #dbbc7f;
@@ -161,10 +182,11 @@ Adds the following CSS variables within the `base` layer, each of which change b
     --blue: #7fbbb3;
     --aqua: #83c092;
     --purple: #d699b6;
-    --fg: #d3c6aa;
     --statusline1: #a7c080;
     --statusline2: #d3c6aa;
     --statusline3: #e67e80;
+
+    --fg: #d3c6aa;
     --gray0: #7a8478;
     --gray1: #859289;
     --gray2: #9da9a0;
