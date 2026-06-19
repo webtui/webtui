@@ -29,6 +29,18 @@
                 --badge-color: var(--orange);
                 --badge-text: var(--background0);
             }
+            &[variant-='statusline1'] {
+                --badge-color: var(--statusline1);
+                --badge-text: var(--background0);
+            }
+            &[variant-='statusline2'] {
+                --badge-color: var(--statusline2);
+                --badge-text: var(--background0);
+            }
+            &[variant-='statusline3'] {
+                --badge-color: var(--statusline3);
+                --badge-text: var(--background0);
+            }
         }
     }
 }

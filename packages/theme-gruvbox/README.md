@@ -78,6 +78,7 @@ Components affected/modified by the theme:
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -117,12 +118,33 @@ Adds additional variants to buttons matching Gruvbox accent colors.
 <button variant-="orange">orange</button>
 ```
 
+### Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching the accent colors.
+
+```html
+<mark fg-="red">red</mark>
+<!-- ... -->
+<mark bg-="aqua">aqua</mark>
+<mark fg-="orange">orange</mark>
+```
+
 ## CSS Variables
 
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
 [data-webtui-theme='gruvbox-*-*'] {
+    /* Accent Colors */
+    --gb-red: #fb4934;
+    --gb-green: #b8bb26;
+    --gb-yellow: #fabd2f;
+    --gb-blue: #83a598;
+    --gb-purple: #d3869b;
+    --gb-aqua: #8ec07c;
+    --gb-orange: #fe8019;
+
+    /* Background / Foreground Colors */
     --gb-dark-bg1: #3c3836;
     --gb-dark-bg2: #504945;
     --gb-dark-bg3: #665c54;
@@ -133,13 +155,6 @@ Adds the following CSS variables within the `base` layer, each of which change b
     --gb-dark-fg3: #bdae93;
     --gb-dark-fg4: #a89984;
     --gb-dark-gray: #928374;
-    --gb-red: #fb4934;
-    --gb-green: #b8bb26;
-    --gb-yellow: #fabd2f;
-    --gb-blue: #83a598;
-    --gb-purple: #d3869b;
-    --gb-aqua: #8ec07c;
-    --gb-orange: #fe8019;
 
     --background1: var(--gb-dark-bg1);
     --background2: var(--gb-dark-bg2);

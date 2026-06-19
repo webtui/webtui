@@ -7,12 +7,19 @@ import Example from '@/components/Example.astro'
 import typographyStyle from '@webtui/css/components/typography.css?raw'
 import badgeStyle from '@webtui/css/components/badge.css?raw'
 import buttonStyle from '@webtui/css/components/button.css?raw'
+import markStyle from '@webtui/css/components/mark.css?raw'
 import nordStyle from '@webtui/theme-nord?raw'
 
 A port of the [Nord](https://nordtheme.com) color palette to WebTUI
 
 <Example
-    stylesheets={[typographyStyle, buttonStyle, badgeStyle, nordStyle]}
+    stylesheets={[
+        typographyStyle,
+        buttonStyle,
+        badgeStyle,
+        markStyle,
+        nordStyle,
+    ]}
     themes={{
         nord: 'Nord',
     }}
@@ -30,6 +37,7 @@ A port of the [Nord](https://nordtheme.com) color palette to WebTUI
 <button variant-="nord13">All</button>
 <button variant-="nord14">The</button>
 <button variant-="nord15">Buttons</button>
+<p>Roses are <mark fg-="nord11">nord11</mark>, violets are <mark bg-="nord15" fg-="background0">nord15</mark>, apples are <mark fg-="nord12">nord12</mark>, and so is <mark fg-="nord10">nord10</mark></p>
 `}
 />
 
@@ -81,6 +89,7 @@ Components affected/modified by the theme
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -118,6 +127,18 @@ Adds additional variants to buttons matching all custom accent colors
 <!-- ... -->
 <button variant-="nord14">nord14</button>
 <button variant-="nord15">nord15</button>
+```
+
+### Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching all custom accent colors
+
+```html
+<mark fg-="nord0">nord0</mark>
+<mark bg-="nord1">nord1</mark>
+<!-- ... -->
+<mark bg-="nord14">nord14</mark>
+<mark fg-="nord15">nord15</mark>
 ```
 
 ## CSS Variables

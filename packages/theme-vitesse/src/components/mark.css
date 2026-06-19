@@ -1,0 +1,56 @@
+@layer components {
+    [data-webtui-theme|='vitesse'] {
+        [is-~='mark'],
+        mark {
+            &[bg-='red'] {
+                background-color: var(--red);
+            }
+            &[bg-='green'] {
+                background-color: var(--green);
+            }
+            &[bg-='yellow'] {
+                background-color: var(--yellow);
+            }
+            &[bg-='blue'] {
+                background-color: var(--blue);
+            }
+            &[bg-='purple'] {
+                background-color: var(--purple);
+            }
+            &[bg-='aqua'] {
+                background-color: var(--aqua);
+            }
+            &[bg-='orange'] {
+                background-color: var(--orange);
+            }
+            &[bg-='gray'] {
+                background-color: var(--gray);
+            }
+
+            &[fg-='red'] {
+                color: var(--red);
+            }
+            &[fg-='green'] {
+                color: var(--green);
+            }
+            &[fg-='yellow'] {
+                color: var(--yellow);
+            }
+            &[fg-='blue'] {
+                color: var(--blue);
+            }
+            &[fg-='purple'] {
+                color: var(--purple);
+            }
+            &[fg-='aqua'] {
+                color: var(--aqua);
+            }
+            &[fg-='orange'] {
+                color: var(--orange);
+            }
+            &[fg-='gray'] {
+                color: var(--gray);
+            }
+        }
+    }
+}
