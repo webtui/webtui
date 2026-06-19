@@ -5,6 +5,7 @@ title: Table
 
 import Example from '@/components/Example.astro'
 import tableStyle from '@webtui/css/components/table.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
 
 Displays a table
 
@@ -55,7 +56,6 @@ Displays a table
         <tr>
             <td>...</td>
             <td>...</td>
-            <td>...</td>
         </tr>
     </thead>
     <tbody>
@@ -66,39 +66,145 @@ Displays a table
         </tr>
         ...
     </tbody>
+    <tfoot>
+        <tr>
+            <td>...</td>
+        </tr>
+    </tfoot>
 </table>
 ```
 
 ## Examples
 
-### Variants
+### Divide
 
-Use the `variant-` attribute to change the color of the table borders
+Use the `divide-` attribute to change the direction of the table dividers
 
 ```html
-<table variant-="foreground1"></table>
+<table variant-="horizontal"></table>
+<table variant-="vertical"></table>
+<table variant-="both"></table>
+<!-- Not providing `variant-` is the same as `variant-="both"` -->
+<table></table>
 ```
 
 <Example
-    stylesheets={[tableStyle]}
-    css={`
-        body {
-            display: flex;
-            flex-direction: column;
-        }
+    stylesheets={[tableStyle, `table {margin-bottom: 1lh;}`]}
+    html={`
+<table divide-="both">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>both</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>or</td>
+            <td>also</td>
+        </tr>
+        <tr>
+            <td>divide-</td>
+            <td>&lt;not provided&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="horizontal">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>horizontal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>horizontal</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="vertical">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>vertical</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>vertical</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
     `}
-    html={`<table variant-="foreground0"><tr><th>variant-</th><td>foreground0</td></tr></table>
-<table variant-="foreground1"><tr><th>variant-</th><td>foreground1</td></tr></table>
-<table variant-="foreground2"><tr><th>variant-</th><td>foreground2</td></tr></table>
-<table variant-="background0"><tr><th>variant-</th><td>background0</td></tr></table>
-<table variant-="background1"><tr><th>variant-</th><td>background1</td></tr></table>
-<table variant-="background2"><tr><th>variant-</th><td>background2</td></tr></table>
-<table variant-="background3"><tr><th>variant-</th><td>background3</td></tr></table>`}
 />
 
-## Caveats
+## ASCII Boxes
 
-The `<caption>` element absolutely obliterates the ascii box-like styling, don't use it
+Pair the table component with the [`box-` utility](/start/ascii-boxes) to add box borders around the table
+
+```html
+<table box-="square" divide-="both"></table>
+<table box-="round" divide-="horizontal"></table>
+<table box-="double" divide-="vertical"></table>
+```
+
+<Example
+    stylesheets={[tableStyle, `table {margin-bottom: 1lh;}`, boxStyle]}
+    html={`
+<table divide-="both" box-="square">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>both</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>square</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="horizontal" box-="round">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>horizontal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>round</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="vertical" box-="double">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>vertical</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>double</td>
+        </tr>
+    </tbody>
+</table>
+    `}
+/>
 
 ## Reference
 
@@ -106,6 +212,8 @@ The `<caption>` element absolutely obliterates the ascii box-like styling, don't
 
 - `--table-border-width`: The width of the table borders
 - `--table-border-color`: The color of the table borders
+
+**Note**: If used with `box-`, `--table-border-color` inherits the value of `--box-border-color`
 
 ```css
 table {
@@ -129,16 +237,10 @@ To extend the Table stylesheet, define a CSS rule on the `components` layer
 ### Scope
 
 - All `<table>` elements
-- All `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, and `<td>` elements that are children of a `<table>`
+- All `<tr>`, `<th>`, and `<td>` elements that are children of a `<table>`
 
 ```css
 table {
-    thead,
-    tbody,
-    tfoot {
-        /* ... */
-    }
-
     tr {
         th {
             /* ... */
