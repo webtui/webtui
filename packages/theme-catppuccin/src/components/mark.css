@@ -1,0 +1,92 @@
+@layer components {
+    [data-webtui-theme|='catppuccin'] {
+        mark,
+        [is-~='mark'] {
+            &[bg-='rosewater'] {
+                background-color: var(--rosewater);
+            }
+            &[bg-='flamingo'] {
+                background-color: var(--flamingo);
+            }
+            &[bg-='pink'] {
+                background-color: var(--pink);
+            }
+            &[bg-='mauve'] {
+                background-color: var(--mauve);
+            }
+            &[bg-='red'] {
+                background-color: var(--red);
+            }
+            &[bg-='maroon'] {
+                background-color: var(--maroon);
+            }
+            &[bg-='peach'] {
+                background-color: var(--peach);
+            }
+            &[bg-='yellow'] {
+                background-color: var(--yellow);
+            }
+            &[bg-='green'] {
+                background-color: var(--green);
+            }
+            &[bg-='teal'] {
+                background-color: var(--teal);
+            }
+            &[bg-='sky'] {
+                background-color: var(--sky);
+            }
+            &[bg-='sapphire'] {
+                background-color: var(--sapphire);
+            }
+            &[bg-='blue'] {
+                background-color: var(--blue);
+            }
+            &[bg-='lavender'] {
+                background-color: var(--lavender);
+            }
+
+            &[fg-='rosewater'] {
+                color: var(--rosewater);
+            }
+            &[fg-='flamingo'] {
+                color: var(--flamingo);
+            }
+            &[fg-='pink'] {
+                color: var(--pink);
+            }
+            &[fg-='mauve'] {
+                color: var(--mauve);
+            }
+            &[fg-='red'] {
+                color: var(--red);
+            }
+            &[fg-='maroon'] {
+                color: var(--maroon);
+            }
+            &[fg-='peach'] {
+                color: var(--peach);
+            }
+            &[fg-='yellow'] {
+                color: var(--yellow);
+            }
+            &[fg-='green'] {
+                color: var(--green);
+            }
+            &[fg-='teal'] {
+                color: var(--teal);
+            }
+            &[fg-='sky'] {
+                color: var(--sky);
+            }
+            &[fg-='sapphire'] {
+                color: var(--sapphire);
+            }
+            &[fg-='blue'] {
+                color: var(--blue);
+            }
+            &[fg-='lavender'] {
+                color: var(--lavender);
+            }
+        }
+    }
+}

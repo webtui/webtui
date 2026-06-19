@@ -7,12 +7,19 @@ import Example from '@/components/Example.astro'
 import typographyStyle from '@webtui/css/components/typography.css?raw'
 import badgeStyle from '@webtui/css/components/badge.css?raw'
 import buttonStyle from '@webtui/css/components/button.css?raw'
+import markStyle from '@webtui/css/components/mark.css?raw'
 import catppuccinStyle from '@webtui/theme-catppuccin?raw'
 
 A port of the [Catppuccin](https://catppuccin.com) color palette to WebTUI
 
 <Example
-    stylesheets={[typographyStyle, badgeStyle, buttonStyle, catppuccinStyle]}
+    stylesheets={[
+        typographyStyle,
+        badgeStyle,
+        buttonStyle,
+        markStyle,
+        catppuccinStyle,
+    ]}
     themes={{
         'catppuccin-mocha': 'Catppuccin Mocha',
         'catppuccin-macchiato': 'Catppuccin Macchiato',
@@ -36,6 +43,7 @@ A port of the [Catppuccin](https://catppuccin.com) color palette to WebTUI
 <button variant-="maroon">Sick</button>
 <button variant-="rosewater">Button</button>
 <button variant-="sky">Variants</button>
+<p>Roses are <mark fg-="rosewater">rowewater</mark>, violets are <mark fg-="lavender">lavender</mark>, peaches are <mark bg-="peach" fg-="background0">peach</mark>, and so are <mark fg-="blue" bg-="background2">blue</mark></p>
 `}
 />
 
@@ -104,6 +112,7 @@ Components affected/modified by the theme
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -141,6 +150,18 @@ Adds additional variants to buttons matching all custom accent colors
 <!-- ... -->
 <button variant-="blue">blue</button>
 <button variant-="lavender">lavender</button>
+```
+
+## Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching the accent colors.
+
+```html
+<mark fg-="rosewater">rosewater</mark>
+<mark fg-="flamingo" bg-="rosewater">flamingo</mark>
+<!-- ... -->
+<mark bg-="blue">blue</mark>
+<mark fg-="lavender">lavender</mark>
 ```
 
 ## CSS Variables
