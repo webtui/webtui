@@ -1,0 +1,61 @@
+@layer utils {
+    :is(
+        [data-webtui-scrollbar='themed'],
+        [data-webtui-scrollbar='themed'] *,
+        [scrollbar-='themed']
+    ) {
+        scrollbar-width: thin;
+        scrollbar-color: var(--foreground1) var(--background2);
+    }
+
+    :is(
+        [data-webtui-scrollbar='themed'],
+        [data-webtui-scrollbar='themed'] *,
+        [scrollbar-='themed']
+    )::-webkit-scrollbar {
+        width: 1ch;
+        height: 1ch;
+    }
+
+    :is(
+        [data-webtui-scrollbar='themed'],
+        [data-webtui-scrollbar='themed'] *,
+        [scrollbar-='themed']
+    )::-webkit-scrollbar-track {
+        background: var(--background2);
+    }
+
+    :is(
+        [data-webtui-scrollbar='themed'],
+        [data-webtui-scrollbar='themed'] *,
+        [scrollbar-='themed']
+    )::-webkit-scrollbar-thumb {
+        background: var(--foreground1);
+    }
+
+    :is(
+            [data-webtui-scrollbar='themed'],
+            [data-webtui-scrollbar='themed'] *,
+            [scrollbar-='themed']
+        )::-webkit-scrollbar-thumb:hover {
+        background: var(--foreground0);
+    }
+
+    :is(
+        [data-webtui-scrollbar='hidden'],
+        [data-webtui-scrollbar='hidden'] *,
+        [scrollbar-='hidden'],
+        [data-webtui-scrollbar='themed'] [scrollbar-='hidden']
+    ) {
+        scrollbar-width: none;
+    }
+
+    :is(
+        [data-webtui-scrollbar='hidden'],
+        [data-webtui-scrollbar='hidden'] *,
+        [scrollbar-='hidden'],
+        [data-webtui-scrollbar='themed'] [scrollbar-='hidden']
+    )::-webkit-scrollbar {
+        display: none;
+    }
+}

@@ -6,6 +6,7 @@
 
 /* Utilities */
 @import './utils/box.css';
+@import './utils/scrollbar.css';
 
 /* Components */
 @import './components/button.css';

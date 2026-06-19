@@ -1,0 +1,119 @@
+---
+layout: '@/layouts/Doc.astro'
+title: Scrollbars
+---
+
+import Example from '@/components/Example.astro'
+import scrollbarStyle from '@webtui/css/utils/scrollbar.css?raw'
+import boxStyle from '@webtui/css/utils/box.css?raw'
+import catppuccinStyle from '@webtui/theme-catppuccin?raw'
+
+The scrollbar utility styles scrollbars with theme colors. Scrollbar styling is **opt-in**, omit the attribute to keep native browser scrollbars
+
+## Import
+
+```css
+@import '@webtui/css/utils/scrollbar.css';
+```
+
+## Global Toggle
+
+Set `data-webtui-scrollbar` on the `<html>` tag (or any container) to style all scrollable descendants
+
+```html
+<html data-webtui-scrollbar="themed"></html>
+<html data-webtui-scrollbar="hidden"></html>
+```
+
+| Value    | Effect                                        |
+| -------- | --------------------------------------------- |
+| `themed` | Thin scrollbars using theme colors            |
+| `hidden` | Hide scrollbars while keeping scroll behavior |
+| _(omit)_ | Native browser scrollbars                     |
+
+## Per-Element
+
+Apply scrollbar styling to individual scroll containers with the `scrollbar-` attribute
+
+<Example
+    previewHeight="14lh"
+    stylesheets={[scrollbarStyle, boxStyle, catppuccinStyle]}
+    themes={{
+        catppuccin: 'Catppuccin',
+    }}
+    data-initial-theme="catppuccin"
+    css={`
+        .panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1ch;
+            block-size: 100%;
+            overflow: hidden;
+        }
+
+        .panels > [box-='square'] {
+            overflow: hidden;
+            min-block-size: 0;
+        }
+
+        .scroll {
+            block-size: 100%;
+            overflow-y: scroll;
+            padding: 0 1ch;
+        }
+    `}
+    html={`<div class="panels">
+    <div box-="square" shear-="both">
+        <div class="scroll" scrollbar-="themed"><pre>Themed scrollbars follow the active theme.
+
+Line 01
+Line 02
+Line 03
+Line 04
+Line 05
+Line 06
+Line 07
+Line 08
+Line 09
+Line 10
+Line 11
+Line 12
+Line 13
+Line 14
+Line 15</pre></div>
+
+</div>
+<div box-="square" shear-="both">
+<div class="scroll"><pre>Native scrollbars (no attribute).
+Line 01
+Line 02
+Line 03
+Line 04
+Line 05
+Line 06
+Line 07
+Line 08
+Line 09
+Line 10
+Line 11
+Line 12
+Line 13
+Line 14
+Line 15</pre></div>
+</div>
+
+</div>`}
+/>
+
+Per-element `scrollbar-="hidden"` overrides a global `data-webtui-scrollbar="themed"` on an ancestor.
+
+### Customizing
+
+**Themed scrollbars read `--foreground1`, `--background2`, and `--foreground0`. Override those on a container to restyle scrollbars without touching the utility:**
+
+```css
+#my-scroll-area {
+    --foreground1: var(--background3);
+    --background2: var(--background1);
+}
+```

@@ -10,13 +10,15 @@ interface Props extends astroHTML.JSX.HTMLAttributes {
     html: string
     css?: string
     stylesheets?: string[]
+    previewHeight?: string
     /**
      * A key-value pair of theme keys and labels
      */
     themes?: Record<string, string>
 }
 
-const { html, css, stylesheets, themes, ...rest } = Astro.props as Props
+const { html, css, stylesheets, themes, previewHeight, ...rest } =
+    Astro.props as Props
 ---
 
 <doc-example {...rest}>
@@ -24,6 +26,9 @@ const { html, css, stylesheets, themes, ...rest } = Astro.props as Props
         <div id="content">
             <iframe
                 id="preview"
+                style={previewHeight
+                    ? `height: ${previewHeight}; width: 100%;`
+                    : undefined}
                 srcdoc={`<html data-webtui-theme="${rest['data-initial-theme']}">
 <head>
 <style>@layer base, utils, components;</style>
@@ -40,6 +45,7 @@ ${stylesheets ? stylesheets.map((stylesheet) => `<style>${stylesheet}</style>`).
   }
 }
 </style>
+${previewHeight ? '<style>html, body { block-size: 100%; overflow: hidden; }</style>' : ''}
 ${css ? `<style>${css}</style>` : ''}
 </head>
 <body>${html}</body>
