@@ -8,11 +8,12 @@ import typographyStyle from '@webtui/css/components/typography.css?raw'
 import vitesseStyle from '@webtui/theme-vitesse?raw'
 import badgeStyle from '@webtui/css/components/badge.css?raw'
 import buttonStyle from '@webtui/css/components/button.css?raw'
+import markStyle from '@webtui/css/components/mark.css?raw'
 
 A port of the [Vitesse](https://github.com/antfu/vscode-theme-vitesse) color palette to [WebTUI](https://github.com/webtui/webtui).
 
 <Example
-    stylesheets={[typographyStyle, buttonStyle, badgeStyle, vitesseStyle]}
+    stylesheets={[typographyStyle, buttonStyle, badgeStyle, markStyle, vitesseStyle]}
     themes={{
         'vitesse-dark': 'Vitesse Dark',
         'vitesse-dark-soft': 'Vitesse Dark Soft',
@@ -35,6 +36,7 @@ A port of the [Vitesse](https://github.com/antfu/vscode-theme-vitesse) color pal
 <button variant-="green">And</button>
 <button variant-="orange">The</button>
 <button variant-="yellow">Buttons</button>
+<p>Roses are <mark fg-="red">red</mark>, violets are <mark fg-="purple">purple</mark>, oranges are <mark bg-="orange" fg-="background0">orange</mark>, and so are <mark fg-="blue" bg-=="background2">blue</mark></p>
 `}
 />
 
@@ -107,6 +109,7 @@ Components affected/modified by the theme:
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -146,12 +149,35 @@ Adds additional variants to buttons matching Vitesse accent colors.
 <button variant-="orange">orange</button>
 ```
 
+### Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching the accent colors.
+
+```html
+<mark bg-="gray">gray</mark>
+<mark fg-="red">red</mark>
+<!-- ... -->
+<mark bg-="aqua">aqua</mark>
+<mark fg-="orange">orange</mark>
+```
+
+
 ## CSS Variables
 
 Adds the following CSS variables within the `base` layer, each of which change based on the theme variant
 
 ```css
 [data-webtui-theme='vitesse-*-*'] {
+    /* Accent Colors */
+    --gray: #586069;
+    --red: #cb7676;
+    --green: #4d9375;
+    --yellow: #e6cc77;
+    --blue: #6394bf;
+    --purple: #d9739f;
+    --aqua: #5eaab5;
+    --orange: #d4976c;
+
     --bg1: #2f363d;
     --bg2: #393a34;
     --bg3: #444d56;
@@ -161,15 +187,6 @@ Adds the following CSS variables within the `base` layer, each of which change b
     --fg2: #b8bab7;
     --fg3: #a6abae;
     --fg4: #959da5;
-
-    --gray: #586069;
-    --red: #cb7676;
-    --green: #4d9375;
-    --yellow: #e6cc77;
-    --blue: #6394bf;
-    --purple: #d9739f;
-    --aqua: #5eaab5;
-    --orange: #d4976c;
 }
 ```
 
