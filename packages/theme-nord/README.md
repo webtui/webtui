@@ -32,6 +32,7 @@ Ensure you import the theme **after** all the other stylesheets from `@webtui/cs
 - [Typography](#typography)
 - [Badge](#badge)
 - [Button](#button)
+- [Mark](#mark)
 
 ### Typography
 
@@ -69,6 +70,18 @@ Adds additional variants to buttons matching all custom accent colors
 <!-- ... -->
 <button variant-="nord14">nord14</button>
 <button variant-="nord15">nord15</button>
+```
+
+### Mark
+
+Adds additional `fg-` and `bg-` variants to the mark component matching all custom accent colors
+
+```html
+<mark fg-="nord0">nord0</mark>
+<mark bg-="nord1">nord1</mark>
+<!-- ... -->
+<mark bg-="nord14">nord14</mark>
+<mark fg-="nord15">nord15</mark>
 ```
 
 ## CSS Variables
