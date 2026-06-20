@@ -1,0 +1,176 @@
+@layer components {
+    [data-webtui-theme='osmium'] {
+        mark,
+        [is-~='mark'] {
+            &[bg-='blue-bg'] {
+                background-color: var(--blue-bg);
+            }
+            &[bg-='blue-bg-bright'] {
+                background-color: var(--blue-bg-bright);
+            }
+            &[bg-='blue-fg'] {
+                background-color: var(--blue-fg);
+            }
+            &[bg-='blue-fg-dim'] {
+                background-color: var(--blue-fg-dim);
+            }
+            &[bg-='purple-bg'] {
+                background-color: var(--purple-bg);
+            }
+            &[bg-='purple-bg-bright'] {
+                background-color: var(--purple-bg-bright);
+            }
+            &[bg-='purple-fg'] {
+                background-color: var(--purple-fg);
+            }
+            &[bg-='purple-fg-dim'] {
+                background-color: var(--purple-fg-dim);
+            }
+            &[bg-='pink-bg'] {
+                background-color: var(--pink-bg);
+            }
+            &[bg-='pink-bg-bright'] {
+                background-color: var(--pink-bg-bright);
+            }
+            &[bg-='pink-fg'] {
+                background-color: var(--pink-fg);
+            }
+            &[bg-='pink-fg-dim'] {
+                background-color: var(--pink-fg-dim);
+            }
+            &[bg-='orange-bg'] {
+                background-color: var(--orange-bg);
+            }
+            &[bg-='orange-bg-bright'] {
+                background-color: var(--orange-bg-bright);
+            }
+            &[bg-='orange-fg'] {
+                background-color: var(--orange-fg);
+            }
+            &[bg-='orange-fg-dim'] {
+                background-color: var(--orange-fg-dim);
+            }
+            &[bg-='green-bg'] {
+                background-color: var(--green-bg);
+            }
+            &[bg-='green-bg-bright'] {
+                background-color: var(--green-bg-bright);
+            }
+            &[bg-='green-fg'] {
+                background-color: var(--green-fg);
+            }
+            &[bg-='green-fg-dim'] {
+                background-color: var(--green-fg-dim);
+            }
+            &[bg-='red-bg'] {
+                background-color: var(--red-bg);
+            }
+            &[bg-='red-bg-bright'] {
+                background-color: var(--red-bg-bright);
+            }
+            &[bg-='red-fg'] {
+                background-color: var(--red-fg);
+            }
+            &[bg-='red-fg-dim'] {
+                background-color: var(--red-fg-dim);
+            }
+            &[bg-='yellow-bg'] {
+                background-color: var(--yellow-bg);
+            }
+            &[bg-='yellow-bg-bright'] {
+                background-color: var(--yellow-bg-bright);
+            }
+            &[bg-='yellow-fg'] {
+                background-color: var(--yellow-fg);
+            }
+            &[bg-='yellow-fg-dim'] {
+                background-color: var(--yellow-fg-dim);
+            }
+
+            &[fg-='blue-bg'] {
+                color: var(--blue-bg);
+            }
+            &[fg-='blue-bg-bright'] {
+                color: var(--blue-bg-bright);
+            }
+            &[fg-='blue-fg'] {
+                color: var(--blue-fg);
+            }
+            &[fg-='blue-fg-dim'] {
+                color: var(--blue-fg-dim);
+            }
+            &[fg-='purple-bg'] {
+                color: var(--purple-bg);
+            }
+            &[fg-='purple-bg-bright'] {
+                color: var(--purple-bg-bright);
+            }
+            &[fg-='purple-fg'] {
+                color: var(--purple-fg);
+            }
+            &[fg-='purple-fg-dim'] {
+                color: var(--purple-fg-dim);
+            }
+            &[fg-='pink-bg'] {
+                color: var(--pink-bg);
+            }
+            &[fg-='pink-bg-bright'] {
+                color: var(--pink-bg-bright);
+            }
+            &[fg-='pink-fg'] {
+                color: var(--pink-fg);
+            }
+            &[fg-='pink-fg-dim'] {
+                color: var(--pink-fg-dim);
+            }
+            &[fg-='orange-bg'] {
+                color: var(--orange-bg);
+            }
+            &[fg-='orange-bg-bright'] {
+                color: var(--orange-bg-bright);
+            }
+            &[fg-='orange-fg'] {
+                color: var(--orange-fg);
+            }
+            &[fg-='orange-fg-dim'] {
+                color: var(--orange-fg-dim);
+            }
+            &[fg-='green-bg'] {
+                color: var(--green-bg);
+            }
+            &[fg-='green-bg-bright'] {
+                color: var(--green-bg-bright);
+            }
+            &[fg-='green-fg'] {
+                color: var(--green-fg);
+            }
+            &[fg-='green-fg-dim'] {
+                color: var(--green-fg-dim);
+            }
+            &[fg-='red-bg'] {
+                color: var(--red-bg);
+            }
+            &[fg-='red-bg-bright'] {
+                color: var(--red-bg-bright);
+            }
+            &[fg-='red-fg'] {
+                color: var(--red-fg);
+            }
+            &[fg-='red-fg-dim'] {
+                color: var(--red-fg-dim);
+            }
+            &[fg-='yellow-bg'] {
+                color: var(--yellow-bg);
+            }
+            &[fg-='yellow-bg-bright'] {
+                color: var(--yellow-bg-bright);
+            }
+            &[fg-='yellow-fg'] {
+                color: var(--yellow-fg);
+            }
+            &[fg-='yellow-fg-dim'] {
+                color: var(--yellow-fg-dim);
+            }
+        }
+    }
+}

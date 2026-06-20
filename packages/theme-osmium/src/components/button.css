@@ -1,0 +1,118 @@
+@layer components {
+    [data-webtui-theme='osmium'] {
+        button {
+            &[variant-='blue-fg'] {
+                --button-primary: var(--blue-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='blue-fg-dim'] {
+                --button-primary: var(--blue-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='blue-bg'] {
+                --button-primary: var(--blue-bg);
+                --button-secondary: var(--blue-fg);
+            }
+            &[variant-='blue-bg-bright'] {
+                --button-primary: var(--blue-bg-bright);
+                --button-secondary: var(--blue-fg);
+            }
+            &[variant-='purple-fg'] {
+                --button-primary: var(--purple-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='purple-fg-dim'] {
+                --button-primary: var(--purple-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='purple-bg'] {
+                --button-primary: var(--purple-bg);
+                --button-secondary: var(--purple-fg);
+            }
+            &[variant-='purple-bg-bright'] {
+                --button-primary: var(--purple-bg-bright);
+                --button-secondary: var(--purple-fg);
+            }
+            &[variant-='pink-fg'] {
+                --button-primary: var(--pink-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='pink-fg-dim'] {
+                --button-primary: var(--pink-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='pink-bg'] {
+                --button-primary: var(--pink-bg);
+                --button-secondary: var(--pink-fg);
+            }
+            &[variant-='pink-bg-bright'] {
+                --button-primary: var(--pink-bg-bright);
+                --button-secondary: var(--pink-fg);
+            }
+            &[variant-='orange-fg'] {
+                --button-primary: var(--orange-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='orange-fg-dim'] {
+                --button-primary: var(--orange-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='orange-bg'] {
+                --button-primary: var(--orange-bg);
+                --button-secondary: var(--orange-fg);
+            }
+            &[variant-='orange-bg-bright'] {
+                --button-primary: var(--orange-bg-bright);
+                --button-secondary: var(--orange-fg);
+            }
+            &[variant-='green-fg'] {
+                --button-primary: var(--green-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='green-fg-dim'] {
+                --button-primary: var(--green-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='green-bg'] {
+                --button-primary: var(--green-bg);
+                --button-secondary: var(--green-fg);
+            }
+            &[variant-='green-bg-bright'] {
+                --button-primary: var(--green-bg-bright);
+                --button-secondary: var(--green-fg);
+            }
+            &[variant-='red-fg'] {
+                --button-primary: var(--red-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='red-fg-dim'] {
+                --button-primary: var(--red-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='red-bg'] {
+                --button-primary: var(--red-bg);
+                --button-secondary: var(--red-fg);
+            }
+            &[variant-='red-bg-bright'] {
+                --button-primary: var(--red-bg-bright);
+                --button-secondary: var(--red-fg);
+            }
+            &[variant-='yellow-fg'] {
+                --button-primary: var(--yellow-fg);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='yellow-fg-dim'] {
+                --button-primary: var(--yellow-fg-dim);
+                --button-secondary: var(--background0);
+            }
+            &[variant-='yellow-bg'] {
+                --button-primary: var(--yellow-bg);
+                --button-secondary: var(--yellow-fg);
+            }
+            &[variant-='yellow-bg-bright'] {
+                --button-primary: var(--yellow-bg-bright);
+                --button-secondary: var(--yellow-fg);
+            }
+        }
+    }
+}
