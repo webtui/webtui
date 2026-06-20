@@ -1,0 +1,118 @@
+@layer components {
+    [data-webtui-theme='osmium'] {
+        [is-~='badge'] {
+            &[variant-='blue-fg'] {
+                --badge-color: var(--blue-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='blue-fg-dim'] {
+                --badge-color: var(--blue-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='blue-bg'] {
+                --badge-color: var(--blue-bg);
+                --badge-text: var(--blue-fg);
+            }
+            &[variant-='blue-bg-bright'] {
+                --badge-color: var(--blue-bg-bright);
+                --badge-text: var(--blue-fg);
+            }
+            &[variant-='purple-fg'] {
+                --badge-color: var(--purple-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='purple-fg-dim'] {
+                --badge-color: var(--purple-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='purple-bg'] {
+                --badge-color: var(--purple-bg);
+                --badge-text: var(--purple-fg);
+            }
+            &[variant-='purple-bg-bright'] {
+                --badge-color: var(--purple-bg-bright);
+                --badge-text: var(--purple-fg);
+            }
+            &[variant-='pink-fg'] {
+                --badge-color: var(--pink-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='pink-fg-dim'] {
+                --badge-color: var(--pink-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='pink-bg'] {
+                --badge-color: var(--pink-bg);
+                --badge-text: var(--pink-fg);
+            }
+            &[variant-='pink-bg-bright'] {
+                --badge-color: var(--pink-bg-bright);
+                --badge-text: var(--pink-fg);
+            }
+            &[variant-='orange-fg'] {
+                --badge-color: var(--orange-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='orange-fg-dim'] {
+                --badge-color: var(--orange-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='orange-bg'] {
+                --badge-color: var(--orange-bg);
+                --badge-text: var(--orange-fg);
+            }
+            &[variant-='orange-bg-bright'] {
+                --badge-color: var(--orange-bg-bright);
+                --badge-text: var(--orange-fg);
+            }
+            &[variant-='green-fg'] {
+                --badge-color: var(--green-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='green-fg-dim'] {
+                --badge-color: var(--green-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='green-bg'] {
+                --badge-color: var(--green-bg);
+                --badge-text: var(--green-fg);
+            }
+            &[variant-='green-bg-bright'] {
+                --badge-color: var(--green-bg-bright);
+                --badge-text: var(--green-fg);
+            }
+            &[variant-='red-fg'] {
+                --badge-color: var(--red-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='red-fg-dim'] {
+                --badge-color: var(--red-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='red-bg'] {
+                --badge-color: var(--red-bg);
+                --badge-text: var(--red-fg);
+            }
+            &[variant-='red-bg-bright'] {
+                --badge-color: var(--red-bg-bright);
+                --badge-text: var(--red-fg);
+            }
+            &[variant-='yellow-fg'] {
+                --badge-color: var(--yellow-fg);
+                --badge-text: var(--background0);
+            }
+            &[variant-='yellow-fg-dim'] {
+                --badge-color: var(--yellow-fg-dim);
+                --badge-text: var(--background0);
+            }
+            &[variant-='yellow-bg'] {
+                --badge-color: var(--yellow-bg);
+                --badge-text: var(--yellow-fg);
+            }
+            &[variant-='yellow-bg-bright'] {
+                --badge-color: var(--yellow-bg-bright);
+                --badge-text: var(--yellow-fg);
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+@layer components {
+    [data-webtui-theme='osmium'] {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--green-fg);
+        }
+
+        p,
+        blockquote,
+        li,
+        [is-~='typography-block'] {
+            a {
+                color: var(--blue-fg);
+                text-decoration: underline;
+            }
+
+            code {
+                color: var(--orange-fg);
+            }
+        }
+    }
+}

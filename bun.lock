@@ -18,7 +18,7 @@
     },
     "packages/css": {
       "name": "@webtui/css",
-      "version": "0.1.8",
+      "version": "0.1.9",
       "devDependencies": {
         "glob": "^11.0.1",
         "vite": "^6.2.0",
@@ -33,35 +33,42 @@
     },
     "packages/theme-catppuccin": {
       "name": "@webtui/theme-catppuccin",
-      "version": "0.0.4",
+      "version": "0.0.5",
       "devDependencies": {
         "vite": "^6.2.0",
       },
     },
     "packages/theme-everforest": {
       "name": "@webtui/theme-everforest",
-      "version": "0.0.4",
+      "version": "0.0.5",
       "devDependencies": {
         "vite": "^6.2.0",
       },
     },
     "packages/theme-gruvbox": {
       "name": "@webtui/theme-gruvbox",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "devDependencies": {
         "vite": "^6.2.0",
       },
     },
     "packages/theme-nord": {
       "name": "@webtui/theme-nord",
-      "version": "0.0.3",
+      "version": "0.0.4",
+      "devDependencies": {
+        "vite": "^6.2.0",
+      },
+    },
+    "packages/theme-osmium": {
+      "name": "@webtui/theme-osmium",
+      "version": "0.0.1",
       "devDependencies": {
         "vite": "^6.2.0",
       },
     },
     "packages/theme-vitesse": {
       "name": "@webtui/theme-vitesse",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "devDependencies": {
         "vite": "^6.2.0",
       },
@@ -79,6 +86,7 @@
         "@webtui/theme-everforest": "workspace:*",
         "@webtui/theme-gruvbox": "workspace:*",
         "@webtui/theme-nord": "workspace:*",
+        "@webtui/theme-osmium": "workspace:*",
         "@webtui/theme-vitesse": "workspace:*",
         "astro": "^5.16.7",
         "sharp": "^0.34.4",
@@ -374,6 +382,8 @@
     "@webtui/theme-gruvbox": ["@webtui/theme-gruvbox@workspace:packages/theme-gruvbox"],
 
     "@webtui/theme-nord": ["@webtui/theme-nord@workspace:packages/theme-nord"],
+
+    "@webtui/theme-osmium": ["@webtui/theme-osmium@workspace:packages/theme-osmium"],
 
     "@webtui/theme-vitesse": ["@webtui/theme-vitesse@workspace:packages/theme-vitesse"],
 
