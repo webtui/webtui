@@ -81,6 +81,7 @@ Displays a table
 Use the `divide-` attribute to change the direction of the table dividers
 
 ```html
+<table variant="none"></table>
 <table variant-="horizontal"></table>
 <table variant-="vertical"></table>
 <table variant-="both"></table>
@@ -141,6 +142,24 @@ Use the `divide-` attribute to change the direction of the table dividers
         </tr>
         <tr>
             <td>vertical</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="none">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>none</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>no</td>
             <td>lines</td>
         </tr>
     </tbody>
