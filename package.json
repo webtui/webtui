@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "turbo run build",
-        "dev": "turbo run dev",
+        "dev": "turbo run dev --concurrency 99",
         "format": "turbo run format",
         "format:check": "turbo run format:check",
         "lint": "turbo run lint",

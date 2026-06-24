@@ -26,20 +26,4 @@
             padding-bottom: 2lh;
         }
     }
-
-    /* TODO: deprecate space- in favor of pad- */
-    [space-] {
-        &[space-~='px:0'] {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        &[space-~='px:1'] {
-            padding-left: 1ch;
-            padding-right: 1ch;
-        }
-        &[space-~='px:2'] {
-            padding-left: 2ch;
-            padding-right: 2ch;
-        }
-    }
 }

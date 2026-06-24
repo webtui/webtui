@@ -1,34 +1,41 @@
 @layer utils {
-    column,
-    [is-~='column'] {
-        flex-direction: column;
-    }
-
     row,
     column,
     [is-~='row'],
     [is-~='column'] {
         display: flex;
 
-        column-gap: attr(gap- ch);
-        row-gap: attr(gap- lh);
+        &[is-='column'],
+        &:is(column) {
+            flex-direction: column;
+        }
 
+        /* gap- */
+        &[gap-='1'] {
+            gap: 1lh 1ch;
+        }
+        &[gap-='2'] {
+            gap: 2lh 2ch;
+        }
+
+        /* self- */
         &[self-~='grow'] {
             flex-grow: 1;
         }
-        &[self-~='!grow'] {
+        &[self-~='nogrow'] {
             flex-grow: 0;
         }
         &[self-~='shrink'] {
             flex-shrink: 1;
         }
-        &[self-~='!shrink'] {
+        &[self-~='noshrink'] {
             flex-shrink: 0;
         }
-        &[self-~='!basis'] {
+        &[self-~='nobasis'] {
             flex-basis: 0;
         }
 
+        /* align- (align) */
         &[align-^='start'] {
             align-items: flex-start;
         }
@@ -42,6 +49,7 @@
             align-items: stretch;
         }
 
+        /* align- (justify) */
         &[align-$='between'] {
             justify-content: space-between;
         }
