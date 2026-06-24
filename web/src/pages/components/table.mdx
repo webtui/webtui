@@ -81,10 +81,11 @@ Displays a table
 Use the `divide-` attribute to change the direction of the table dividers
 
 ```html
-<table variant-="horizontal"></table>
-<table variant-="vertical"></table>
-<table variant-="both"></table>
-<!-- Not providing `variant-` is the same as `variant-="both"` -->
+<table divide-="none"></table>
+<table divide-="horizontal"></table>
+<table divide-="vertical"></table>
+<table divide-="both"></table>
+<!-- Not providing `divide-` is the same as `divide-="both"` -->
 <table></table>
 ```
 
@@ -145,6 +146,24 @@ Use the `divide-` attribute to change the direction of the table dividers
         </tr>
     </tbody>
 </table>
+<table divide-="none">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>none</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hey</td>
+            <td>look</td>
+        </tr>
+        <tr>
+            <td>no</td>
+            <td>lines</td>
+        </tr>
+    </tbody>
+</table>
     `}
 />
 
@@ -153,6 +172,7 @@ Use the `divide-` attribute to change the direction of the table dividers
 Pair the table component with the [`box-` utility](/start/ascii-boxes) to add box borders around the table
 
 ```html
+<table box-="none" divide-="none"></table>
 <table box-="square" divide-="both"></table>
 <table box-="round" divide-="horizontal"></table>
 <table box-="double" divide-="vertical"></table>
@@ -200,6 +220,20 @@ Pair the table component with the [`box-` utility](/start/ascii-boxes) to add bo
         <tr>
             <td>box-</td>
             <td>double</td>
+        </tr>
+    </tbody>
+</table>
+<table divide-="none" box-="none">
+    <thead>
+        <tr>
+            <th>divide-</th>
+            <th>none</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>box-</td>
+            <td>none</td>
         </tr>
     </tbody>
 </table>
