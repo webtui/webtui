@@ -24,6 +24,13 @@
         "vite": "^6.2.0",
       },
     },
+    "packages/plugin-declarative-layout": {
+      "name": "@webtui/plugin-declarative-layout",
+      "version": "0.0.1",
+      "devDependencies": {
+        "vite": "^6.2.0",
+      },
+    },
     "packages/plugin-nf": {
       "name": "@webtui/plugin-nf",
       "version": "0.1.2",
@@ -81,6 +88,7 @@
         "@astrojs/mdx": "^4.1.0",
         "@shikijs/transformers": "^3.2.1",
         "@webtui/css": "workspace:*",
+        "@webtui/plugin-declarative-layout": "workspace:*",
         "@webtui/plugin-nf": "workspace:*",
         "@webtui/theme-catppuccin": "workspace:*",
         "@webtui/theme-everforest": "workspace:*",
@@ -372,6 +380,8 @@
     "@ungap/structured-clone": ["@ungap/structured-clone@1.3.0", "", {}, "sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g=="],
 
     "@webtui/css": ["@webtui/css@workspace:packages/css"],
+
+    "@webtui/plugin-declarative-layout": ["@webtui/plugin-declarative-layout@workspace:packages/plugin-declarative-layout"],
 
     "@webtui/plugin-nf": ["@webtui/plugin-nf@workspace:packages/plugin-nf"],
 

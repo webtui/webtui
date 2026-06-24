@@ -12,14 +12,13 @@
 @import '@webtui/css/components/pre.css';
 @import '@webtui/css/components/dialog.css';
 
-@import '@/styles/flexbox.css';
-@import '@/styles/padding.css';
 @import '@webtui/theme-catppuccin';
 @import '@webtui/theme-nord';
 @import '@webtui/theme-gruvbox';
 @import '@webtui/theme-vitesse';
-@import '@webtui/plugin-nf';
 @import '@webtui/theme-everforest';
+@import '@webtui/plugin-nf';
+@import '@webtui/plugin-declarative-layout';
 
 @layer base {
     :root {

@@ -1,0 +1,23 @@
+{
+    "name": "@webtui/plugin-declarative-layout",
+    "version": "0.0.1",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "vite build --watch",
+        "build": "rm -rf dist && vite build",
+        "clean": "rm -rf dist .turbo node_modules",
+        "format": "prettier --write 'src/**/*.css' 'vite.config.ts' 'README.md'",
+        "format:check": "prettier --check 'src/**/*.css' 'vite.config.ts' 'README.md'",
+        "prepublishOnly": "bun run build"
+    },
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": "./dist/index.css"
+    },
+    "devDependencies": {
+        "vite": "^6.2.0"
+    }
+}
