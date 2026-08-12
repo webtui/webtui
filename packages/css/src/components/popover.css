@@ -50,41 +50,41 @@
                 z-index: 2;
             }
 
-            &[position-~='baseline-left'] summary + *,
-            &:not([position-]) summary + * {
+            & summary + *[position-~='baseline-left'],
+            & summary + *:not([position-]) {
                 left: 0%;
             }
 
-            &[position-~='baseline-right'] summary + * {
+            & summary + *[position-~='baseline-right'] {
                 left: 100%;
                 translate: -100%;
             }
 
-            &[position-~='left'] summary + * {
+            & summary + *[position-~='left'] {
                 left: calc(var(--popover-offset-x) * -1);
                 translate: -100%;
             }
 
-            &[position-~='right'] summary + * {
+            & summary + *[position-~='right'] {
                 left: calc(100% + var(--popover-offset-x));
             }
 
-            &[position-~='baseline-top'] summary + * {
+            & summary + *[position-~='baseline-top'] {
                 top: 0%;
             }
 
-            &[position-~='baseline-bottom'] summary + * {
+            & summary + *[position-~='baseline-bottom'] {
                 top: 100%;
                 transform: translateY(-100%);
             }
 
-            &[position-~='top'] summary + * {
+            & summary + *[position-~='top'] {
                 top: calc(var(--popover-offset-y) * -1);
                 transform: translateY(-100%);
             }
 
-            &[position-~='bottom'] summary + *,
-            &:not([position-]) summary + * {
+            & summary + *[position-~='bottom'],
+            & summary + *:not([position-]) {
                 top: calc(100% + var(--popover-offset-y));
             }
         }

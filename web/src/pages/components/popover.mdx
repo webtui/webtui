@@ -45,14 +45,12 @@ Creates a popover component powered by the [Details](https://developer.mozilla.o
 
 Use the `position-` property to control the position of the popover
 
-Pass two values into `position-` to set the horizontal and vertical position anchor
-
 ```html
-<details is-="popover" position-="<anchor>"></details>
-<details is-="popover" position-="<x-anchor> <y-anchor>"></details>
-
-<details is-="popover" position-="center"></details>
-<details is-="popover" position-="start end"></details>
+<details is-="popover"
+    >">
+    <summary>Popover</summary>
+    <div position-="bottom baseline-left">Popover content</div>
+</details>
 ```
 
 <Example
@@ -82,22 +80,22 @@ Pass two values into `position-` to set the horizontal and vertical position anc
     `}
     html={`
 <div class="row">
-    <details is-="popover" position-="bottom right">
+    <details is-="popover">
         <summary>BR ↘</summary>
-        <div class="popover-content">Popover content</div>
+        <div class="popover-content" position-="bottom right">Popover content</div>
     </details>
-    <details is-="popover" position-="bottom left">
+    <details is-="popover">
         <summary>BL ↙</summary>
-        <div class="popover-content">Popover content</div>
+        <div class="popover-content" position-="bottom left">Popover content</div>
     </details>
 </div>
 <div class="row">
-    <details is-="popover" position-="top right">
-        <summary>TR ↗</summary>
+    <details is-="popover">
+        <summary position-="top right">TR ↗</summary>
         <div class="popover-content">Popover content</div>
     </details>
-    <details is-="popover" position-="top left">
-        <summary>TL ↖</summary>
+    <details is-="popover">
+        <summary position-="top left">TL ↖</summary>
         <div class="popover-content">Popover content</div>
     </details>
 </div>
@@ -129,23 +127,23 @@ Use `baseline-*` values to position the content relative to the edges of the pop
     `}
     html={`
 <div class="row">
-    <details is-="popover" position-="bottom baseline-right">
+    <details is-="popover">
         <summary>Bottom Baseline-Right</summary>
-        <div class="popover-content">Popover content</div>
+        <div class="popover-content" position-="bottom baseline-right">Popover content</div>
     </details>
-    <details is-="popover" position-="bottom baseline-left">
+    <details is-="popover">
         <summary>Bottom Baseline-Left</summary>
-        <div class="popover-content">Popover content</div>
+        <div class="popover-content" position-="bottom baseline-left">Popover content</div>
     </details>
 </div>
 <div class="row">
-    <details is-="popover" position-="right baseline-top">
+    <details is-="popover">
         <summary>Right Baseline-Top</summary>
-        <div class="popover-content">Popover content</div>
+        <div class="popover-content" position-="right baseline-top">Popover content</div>
     </details>
-    <details is-="popover" position-="left baseline-bottom">
+    <details is-="popover">
         <summary>Left Baseline-Bottom</summary>
-        <div class="popover-content">Popover content</div>
+        <div class="popover-content" position-="left baseline-bottom">Popover content</div>
     </details>
 </div>
 `}
