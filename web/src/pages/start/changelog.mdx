@@ -12,10 +12,31 @@ import preStyle from '@webtui/css/components/pre.css?raw'
 - Allows for more control over the [Checkbox Component](/components/checkbox) with CSS variables
 - Requires `is-="checkbox"` for the [Checkbox Component](/components/checkbox)
 - Allows for more control over the [Radio Component](/components/radio) with CSS variables
+- The `position-` property for the [Popover Component](/components/popover) is now applied on the popover content element
 
 ### Migration Guide from 0.1.9
 
+#### Checkbox Styling
+
 All checkboxes now require you to add `is-="checkbox"` otherwise they will be unstyled
+
+#### Popover Positioning
+
+Instead of applying the `position-` property to the `<details>` element, you will need to apply it on the content element
+
+```html
+<!-- Old (<0.1.10) -->
+<details is-="popover" position-="bottom right">
+    <summary>Bottom Right</summary>
+    <div>Popover content</div>
+</details>
+
+<!-- New (>=0.1.10) -->
+<details is-="popover">
+    <summary>Bottom Right</summary>
+    <div position-="bottom right">Popover content</div>
+</details>
+```
 
 ## 0.1.9
 
