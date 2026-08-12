@@ -51,7 +51,7 @@
             --spinner-chars: '▉▊▋▌▍▎▏▎▍▌▋▊▉';
         }
 
-        &[variant-="cursor"] {
+        &[variant-='cursor'] {
             --spinner-steps: 3;
             --spinner-chars: '█ █';
         }
