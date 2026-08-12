@@ -68,13 +68,15 @@ Both `type="checkbox"` and `is-="checkbox"` are necessary because the [switch](/
 
 <Example
     stylesheets={[checkboxStyle]}
-    css={`input[type="checkbox"][is-="checkbox"].custom {
-    --placeholder-content: '( )';
-    --placeholder-background: var(--background2);
-    --placeholder-color: var(--foreground1);
-    --checked-content: 'X';
-    --checked-color: red;
-}`}
+    css={`
+        input[type='checkbox'][is-='checkbox'].custom {
+            --placeholder-content: '( )';
+            --placeholder-background: var(--background2);
+            --placeholder-color: var(--foreground1);
+            --checked-content: 'X';
+            --checked-color: red;
+        }
+    `}
     html={`
 <label>
     <input type="checkbox" is-="checkbox" />

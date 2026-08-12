@@ -6,16 +6,18 @@ title: Radio
 import Example from '@/components/Example.astro'
 import radioStyle from '@webtui/css/components/radio.css?raw'
 
-Displays a radio input styled like a terminal UI radio
+Displays a radio button
 
 <Example
     stylesheets={[radioStyle]}
-    html={`
-<label>
-    <input type="radio" name="choice" />
-    Option
+    html={`<label>
+    <input type="radio" name="radio-group" />
+    Unchecked
 </label>
-`}
+<label>
+    <input type="radio" checked name="radio-group" />
+    Checked
+</label>`}
 />
 
 ## Import
@@ -28,40 +30,24 @@ Displays a radio input styled like a terminal UI radio
 
 ```html
 <label>
-    <input type="radio" name="choice" />
-    Option
+    <input type="radio" />
+    Radio
 </label>
 ```
 
 ## Examples
 
-### Checked/Unchecked
+### `disabled`
 
 <Example
     stylesheets={[radioStyle]}
     html={`
 <label>
-    <input type="radio" name="r" /> 
-    Unchecked 
-</label>
-<label>
-    <input type="radio" name="r" checked /> 
-    Checked 
-</label>
-`}
-/>
-
-### Disabled
-
-<Example
-    stylesheets={[radioStyle]}
-    html={`
-<label>
-    <input type="radio" name="r2" disabled />
+    <input type="radio" disabled name="radio-group" />
     Disabled
 </label>
 <label>
-    <input type="radio" name="r2" checked disabled /> 
+    <input type="radio" checked disabled name="radio-group" />
     Checked Disabled
 </label>
 `}
@@ -69,9 +55,49 @@ Displays a radio input styled like a terminal UI radio
 
 ## Reference
 
+### Properties
+
+- `--placeholder-content`: The content of the unchecked radio placeholder
+- `--placeholder-background`: The background color of the unchecked radio placeholder
+- `--placeholder-color`: The text color of the unchecked radio placeholder
+- `--checked-content`: The content of the radio button when checked
+- `--checked-background`: The background color of the radio button when checked
+- `--checked-color`: The text color of the radio button when checked
+
+<Example
+    stylesheets={[radioStyle]}
+    css={`
+        input[type='radio'].custom {
+            --placeholder-content: '< >';
+            --placeholder-background: var(--background2);
+            --placeholder-color: var(--foreground1);
+            --checked-content: 'O';
+            --checked-color: red;
+        }
+    `}
+    html={`
+<label>
+    <input type="radio" name="default" />
+    Default
+</label>
+<label>
+    <input type="radio" checked name="default" />
+    Default Checked
+</label><br/>
+<label>
+    <input type="radio" class="custom" name="custom" />
+    Custom
+</label>
+<label>
+    <input type="radio" checked class="custom" name="custom" />
+    Custom Checked
+</label>
+`}
+/>
+
 ### Extending
 
-To extend the Radio stylesheet, define a CSS rule on the `components` layer:
+To extend the Radio stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
