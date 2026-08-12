@@ -11,8 +11,12 @@ Displays a checkbox
 <Example
     stylesheets={[checkboxStyle]}
     html={`<label>
-    <input type="checkbox" />
-    Checkbox
+    <input type="checkbox" is-="checkbox" />
+    Unchecked
+</label>
+<label>
+    <input type="checkbox" is-="checkbox" checked />
+    Checked
 </label>`}
 />
 
@@ -24,42 +28,28 @@ Displays a checkbox
 
 ## Usage
 
+Both `type="checkbox"` and `is-="checkbox"` are necessary because the [switch](/components/switch) component is also a checkbox under the hood
+
 ```html
 <label>
-    <input type="checkbox" />
+    <input type="checkbox" is-="checkbox" />
     Checkbox
 </label>
 ```
 
 ## Examples
 
-### Checked/Unchecked
+### `disabled`
 
 <Example
     stylesheets={[checkboxStyle]}
     html={`
 <label>
-    <input type="checkbox" />
-    Unchecked
-</label>
-<label>
-    <input type="checkbox" checked />
-    Checked
-</label>
-`}
-/>
-
-### Disabled
-
-<Example
-    stylesheets={[checkboxStyle]}
-    html={`
-<label>
-    <input type="checkbox" disabled />
+    <input type="checkbox" is-="checkbox" disabled />
     Disabled
 </label>
 <label>
-    <input type="checkbox" checked disabled />
+    <input type="checkbox" is-="checkbox" checked disabled />
     Checked Disabled
 </label>
 `}
@@ -67,13 +57,53 @@ Displays a checkbox
 
 ## Reference
 
+### Properties
+
+- `--placeholder-content`: The content of the checkbox placeholder
+- `--placeholder-background`: The background color of the checkbox placeholder
+- `--placeholder-color`: The text color of the checkbox placeholder
+- `--checked-content`: The content of the checkbox when checked
+- `--checked-background`: The background color of the checkbox when checked
+- `--checked-color`: The text color of the checkbox when checked
+
+<Example
+    stylesheets={[checkboxStyle]}
+    css={`
+        input[type='checkbox'][is-='checkbox'].custom {
+            --placeholder-content: '( )';
+            --placeholder-background: var(--background2);
+            --placeholder-color: var(--foreground1);
+            --checked-content: 'X';
+            --checked-color: red;
+        }
+    `}
+    html={`
+<label>
+    <input type="checkbox" is-="checkbox" />
+    Default
+</label>
+<label>
+    <input type="checkbox" is-="checkbox" checked />
+    Default Checked
+</label><br/>
+<label>
+    <input type="checkbox" is-="checkbox" class="custom" />
+    Custom
+</label>
+<label>
+    <input type="checkbox" is-="checkbox" checked class="custom" />
+    Custom Checked
+</label>
+`}
+/>
+
 ### Extending
 
 To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 
 ```css
 @layer components {
-    input[type='checkbox']:not([is-='switch']) {
+    input[type='checkbox'][is-='checkbox'] {
         /* ... */
     }
 }
@@ -81,10 +111,10 @@ To extend the Checkbox stylesheet, define a CSS rule on the `components` layer
 
 ### Scope
 
-- All native `<input type="checkbox">` elements without `is-="switch"`
+- All native `<input type="checkbox">` elements with `is-="checkbox"`
 
 ```css
-input[type='checkbox']:not([is-='switch']) {
+input[type='checkbox'][is-='checkbox'] {
     /* ... */
 }
 ```

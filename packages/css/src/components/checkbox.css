@@ -1,5 +1,12 @@
 @layer components {
-    input[type='checkbox']:not([is-='switch']) {
+    input[type='checkbox'][is-='checkbox'] {
+        --placeholder-content: '[ ]';
+        --placeholder-background: var(--background1);
+        --placeholder-color: var(--foreground2);
+        --checked-content: '✓';
+        --checked-background: transparent;
+        --checked-color: var(--foreground0);
+
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -8,48 +15,45 @@
         width: 3ch;
         min-width: initial;
         vertical-align: text-top;
-        color: var(--foreground2);
         font-family: var(--font-family);
         font-size: var(--font-size);
         line-height: var(--line-height);
         outline: none;
-    }
 
-    input[type='checkbox']:not([is-='switch'])::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 3ch;
-        height: 1lh;
-        background: var(--background1);
-    }
+        &::before,
+        &::after {
+            position: absolute;
+            inset: 0;
+            text-align: center;
+            width: 3ch;
+            height: 1lh;
+        }
 
-    input[type='checkbox']:not([is-='switch']):checked::before {
-        content: 'X';
-    }
+        &::before {
+            content: var(--placeholder-content);
+            background-color: var(--placeholder-background);
+            color: var(--placeholder-color);
+        }
 
-    label:has(input[type='checkbox']:not([is-='switch'])) {
-        display: inline-flex;
-        align-items: flex-start;
-        gap: 1ch;
-        max-width: fit-content;
-    }
+        &:checked::after {
+            content: var(--checked-content);
+            background-color: var(--checked-background);
+            color: var(--checked-color);
+        }
 
-    label:has(input[type='checkbox']:not([is-='switch']):focus) {
-        font-weight: bold;
-        text-decoration: underline;
-    }
+        &:disabled {
+            &::before,
+            &::after {
+                color: var(--placeholder-color);
+                text-decoration: line-through;
+                text-decoration-color: var(--placeholder-foreground);
+            }
+        }
 
-    input[type='checkbox']:not([is-='switch']):disabled {
-        color: var(--foreground2);
-        pointer-events: none;
-    }
-
-    label:has(input[type='checkbox']:not([is-='switch']):disabled) {
-        color: var(--foreground2);
-        text-decoration: line-through;
+        &:focus,
+        &:focus::before,
+        &:focus::after {
+            text-decoration: underline;
+        }
     }
 }
