@@ -51,6 +51,11 @@
             --spinner-chars: '▉▊▋▌▍▎▏▎▍▌▋▊▉';
         }
 
+        &[variant-="cursor"] {
+            --spinner-steps: 3;
+            --spinner-chars: '█ █';
+        }
+
         &[speed-='slow'] {
             --spinner-duration: 2s;
         }
