@@ -56,4 +56,12 @@ export const projects: Array<[ProjectType, ProjectType] | [ProjectType]> = [
             tags: ['AI Chat'],
         },
     ],
+    [
+        {
+            title: 'Ironclad',
+            url: 'https://ironclad.sh',
+            imageUrl: '/gallery/ironclad.png',
+            tags: ['Personal Website'],
+        },
+    ],
 ]
